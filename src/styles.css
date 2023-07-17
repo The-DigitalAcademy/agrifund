@@ -1,19 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
-
 :root {
 
     --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
     --secondary-colour: #D15F20;
-
+    
     --dark: #2E2E2E;/*default colour for text*/
     --dark-grey: #4C5359;/* colour of paragraphs*/
-    --background-colour: #F8F9FA;/*default background colour*/
-
+    --bg-colour: #F8F9FA;/*default background colour*/
 
     --grey: #6C757D;/* grey-text, fine prints, placeholder colour */
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
 
+}
+
+button {
+    display: flex;
+    width: 251px;
+    height: 36px;
+    padding: 4px 14px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+
+    border-radius: 3px;
+    border: 1px solid var(--primary-colour);
+    background: var(--primary-colour);
+
+    color: var(--bg-colour)
 }
