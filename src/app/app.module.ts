@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BookkeepComponent } from './pages/bookkeep/bookkeep/bookkeep.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, BookkeepComponent],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
