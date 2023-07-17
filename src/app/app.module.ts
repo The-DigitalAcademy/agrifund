@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookkeepComponent } from './pages/bookkeep/bookkeep/bookkeep.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-    declarations: [AppComponent, BookkeepComponent],
+    declarations: [AppComponent, NavbarComponent],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
