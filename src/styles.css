@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
 :root {
 
     --primary-colour: #606C38;/*primary green colour */
