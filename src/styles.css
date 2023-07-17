@@ -8,7 +8,7 @@
     
     --dark: #2E2E2E;/*default colour for text*/
     --dark-grey: #4C5359;/* colour of paragraphs*/
-    --bg-colour: #F8F9FA;/*default background colour*/
+    --light: #F8F9FA;/*default background colour and colour of text on colour backgrounds*/
 
     --grey: #6C757D;/* grey-text, fine prints, placeholder colour */
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
@@ -30,6 +30,5 @@ button {
     border-radius: 3px;
     border: 1px solid var(--primary-colour);
     background: var(--primary-colour);
-
-    color: var(--bg-colour)
+    color: var(--light);
 }
