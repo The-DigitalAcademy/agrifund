@@ -1,4 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import 'src/assets/fonts/_fonts.css';
+
 :root {
 
     /* COLOUR PALETTE */
@@ -16,17 +18,30 @@
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
 
+
+    /* FONTS */
+    --fancy-font:'Arvo';
+    --normal-font:'Lato';
+
     /* FONT SIZES */
-    --font-large: 24px;
+    --font-x-large: 24px;
+    --font-large: 22px;
     --font-medium: 18px;
     --font-normal: 16px;
     --font-small: 14px; 
     --font-x-small: 12px;
 
+    /* FONT WEIGHTS */
+    --thin:100;
+    --light-font: 300;
+    --regular:400;
+    --bold:700;
+    
+
     /* BORDERS */
     --border-radius: 3px;
-    --btn-border: 2px solid;
-    --container-border: 1px solid;
+    --thick-border: 2px solid;
+    --thin-border: 1px solid;
 
     /* SPACING & SIZING*/
     --x-small-s:4px;
@@ -36,51 +51,160 @@
     --x-larger-s: 36px;
 }
 
-/* TEXT */
-h1 .arvo{
+body{
+    font-family: var(--normal-font);
+    color: var(--dark);
 
+    background-color: var(--light);
 }
 
-h1 .lato{
+/* TEXT */
+h1{
+    font-family: var(--fancy-font);
+    font-size: var(--font-x-large);
+    font-weight: var(--bold);
 
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
 }
 
 h2{
+    font-family: var(--fancy-font);
+    font-size: var(--font-normal);
+    font-weight: var(--bold);
 
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
 }
 
 h3{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+p{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+a{
+    color:var(--primary-colour) !important;
+    
+}
+
+a:hover, a:active{
+    text-decoration: underline !important;
+}
+
+/* FORMS */
+label, .form-label{
+    font-family: var(--normal);
+    font-size: var(--font-regular);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--small-s) 0px;
+
+    color:var(--dark);
+}
+
+input, .form-control{
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+
+    background-color: var(--light);
 
 }
+
+.form-group{
+
+}
+
+.form-input{
+    padding: var(--x-small-s);
+    margin: var(--normal-s) 0px;
+}
+
+.form-text{
+    margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
+}
+
+textarea:focus, 
+textarea.form-control:focus, 
+input.form-control:focus, 
+input[type=text]:focus, 
+input[type=password]:focus, 
+input[type=email]:focus, 
+input[type=number]:focus, 
+[type=text].form-control:focus, 
+[type=password].form-control:focus, 
+[type=email].form-control:focus, 
+[type=tel].form-control:focus, 
+[contenteditable].form-control:focus {
+  box-shadow: none;
+  border: var(--thin-border) var(--dark);
+}
+
+
 
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-    border: var(--container-border);
+    border: var(--thin-border);
 }
 
 
 /* BUTTONS */
-button {
+.btn, button{
+    font-family: var(--normal-font);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
     display: flex;
-    width: 251px;
-    height: var(--x-larger-s);
-    padding: var(--x-small-s) var(--normal-s);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--normal-s);
-    flex-shrink: 0;
 
     border-radius: var(--border-radius);
-    border: var(--primary-colour);
-    background: var(--primary-colour);
-    color: var(--light);
+
+    height: var(--x-larger-s);
+    
+    padding: var(--small-s);
 }
 .container{
     background-color: var(--light);
 
 }
+
+
+.colourful-btn{
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
+}
+
+.icon-btn{
+    color: var(--grey) !important;
+}
+
+.outline-btn{
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+
+}
+
 
 /* HIDE ITEMS*/
 .hidden{
