@@ -1,9 +1,12 @@
 input {
     padding: 5px;
-    background-color: var(--grey); /* Use the custom CSS variable here */
-    color: #fff; /* Set text color to white to make it visible on the grey background */
-    border: none; /* Remove borders to make it look better */
+    background-color: var(--light); /* Use the custom CSS variable here */
+    color: var(--grey); /* Set text color to white to make it visible on the grey background */
+    border: var(--container-border); /* Remove borders to make it look better */
+    border-color: var(--lighter-grey);
     border-radius: 3px; /* Add some border radius for a rounded look */
+
+    
   }
 
   .form-container {
@@ -12,7 +15,7 @@ input {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f7f7f7;
+    background-color: white;
   }
   
   .form-group {
@@ -20,5 +23,11 @@ input {
     flex-direction: column;
     margin-bottom: 10px;
   }
-  
+  label{
+    color: var(--dark);
+    font-size: var( --font-normal);
+    font-weight: bold;
+    margin-bottom: 8px;
+    
+  }
   
