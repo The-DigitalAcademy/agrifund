@@ -1,14 +1,27 @@
-<form [formGroup] ="RegisterForm">
-<div class="container">    
-<div class="row">
-    <div class="col-6">
-        <h1>Register</h1>
-        <label for="name">Name:</label><br>
-        <input id="name" type="text" FormControlName="name"><br>
-        <label for="surname">Surname:</label><br>
-        <input id="surname" type="text" FormControlName="surname">
-    </div>
-  <div class="col-6">.col-6</div>
+<div class="container">
+    <form [formGroup]="RegisterForm">
+        <div class="row">
+            <div class="col-6">
+                <h1>Register</h1>
+                <label for="name">Name:</label><br />
+                <input
+                    formControlName="name"
+                    class="form-control"
+                    id="NameInput" />
+
+                <label for="surname">Surname:</label><br />
+                <input
+                    formControlName="surname"
+                    class="form-control"
+                    id="surnameInput" />
+
+                <label for="surname">ID Number:</label><br />
+                <input
+                    formControlName="id"
+                    class="form-control"
+                    id="idnumInput" />
+            </div>
+            <div class="col-6">.col-6</div>
+        </div>
+    </form>
 </div>
-</div>
-</form>
