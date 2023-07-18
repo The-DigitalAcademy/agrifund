@@ -1,52 +1,8 @@
-/* Remove any margin and padding from the body element */
-body {
-  margin: 0;
-  padding: 0;
+.container{
+  margin: 130px 60px 100px 60px;
+  border-color:var(--light-grey) ;
 }
-
-/* Set the outer container to fill the whole screen */
-.outer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-}
-
-/* Set the container to have a margin of 20px on both sides */
-.container {
-  position: absolute; /* Use position: absolute to make it fill the .outer container */
-  top: 80px;
-  left: 20px;
-  right: 20px;
-  bottom: 80px;
-  background-color: #f0f0f0; /* Set the desired background color for the container */
-}
-
-form {
-  /* Add your styles for the form here if needed */
-  max-width: 400px; /* Optional: Limit the width of the form within the container */
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  
-}
-
-label {
-  color: var(--dark);
-  font-size: var(--font-normal);
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-input {
-  padding: 5px;
-  color: var(--grey);
-  border: var(--container-border);
-  border-color: var(--lighter-grey);
-  border-radius: 3px;
+.form-control{
+  border-color:var(--lighter-grey) ;
   
 }
