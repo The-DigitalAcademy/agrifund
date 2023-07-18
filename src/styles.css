@@ -20,8 +20,8 @@
 
 
     /* FONTS */
-    --fancy:'Arvo';
-    --normal:'Lato';
+    --fancy-font:'Arvo';
+    --normal-font:'Lato';
 
     /* FONT SIZES */
     --font-x-large: 24px;
@@ -51,9 +51,13 @@
     --x-larger-s: 36px;
 }
 
+body{
+    font-family: var();
+}
+
 /* TEXT */
 h1{
-    font-family: var(--fancy);
+    font-family: var(--fancy-font);
     font-size: var(--font-x-large);
     font-weight: var(--bold);
 
@@ -63,7 +67,7 @@ h1{
 }
 
 h2{
-    font-family: var(--fancy);
+    font-family: var(--fancy-font);
     font-size: var(--font-normal);
     font-weight: var(--bold);
 
