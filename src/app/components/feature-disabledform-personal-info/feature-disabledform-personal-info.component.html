@@ -21,28 +21,32 @@
   </div>
 </div>
    -->
-   <div class="container">
-    <form [formGroup]="myForm" disabled>
-      <div class="form-input">
-        <label for="exampleInputEmail1" class="form-label">First Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
-      </div>
-      <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Last Name</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" disabled>
-      </div>
-      <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Cell Number</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" disabled>
-      </div>
-      <div class="form-input">
-        <label class="form-label" for="document">Proof of ID</label>
-        <input type="file" id="document" (change)="onFileSelected($event)">
-      </div>
-      <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" disabled>
-      </div>
-    </form>
-  </div>
+   <!-- personal-info-form.component.html -->
+
+<div class="divider"></div>
+<div class="container">
+  <form [formGroup]="myForm" disabled>
+    <div class="form-input">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+    </div>
+    <div class="form-input">
+      <label for="exampleInputPassword1" class="form-label">Last Name</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" disabled>
+    </div>
+    <div class="form-input">
+      <label for="exampleInputPassword1" class="form-label">Cell Number</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" disabled>
+    </div>
+    <div class="form-input">
+      <label class="form-label" for="document">Proof of ID</label>
+      <input type="file" id="document" (change)="onFileSelected($event)">
+    </div>
+    <div class="form-input">
+      <label for="exampleInputPassword1" class="form-label">Email</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" disabled>
+    </div>
+  </form>
+</div>
+
   
