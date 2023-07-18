@@ -3,12 +3,11 @@ button {
     background: var(--primary-colour);
     
 }
-img {
-    display: block;
-    max-height: 300px;
-    max-width: 100%;
-    padding: 8rem;
-    margin-inline: auto;
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+
 
   }
   .carousel-inner{
@@ -20,10 +19,22 @@ img {
     gap: 24px;
     background-color: var(--light-grey);
     align-items: left;
-    justify-content: center;
+    justify-items: center;
     border-radius: var(--border-radius 3px);
-    border: var(--container-border 1px solid);
+    border: var(--container-border 3px solid);
     
   }
+
+  .container{
+    text-align: center;
+  }
+ 
+/* h2{
+   margin-top: 40%;
+  }
+p {
+  margin-bottom: 60px;
+}  */
+
 
   
