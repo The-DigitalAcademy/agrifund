@@ -11,21 +11,19 @@ img {
     margin-inline: auto;
 
   }
-  .carousel {
+  .carousel-inner{
     display: block;
-    width: 100%;
+    margin: auto;
+    width: 750px;
+    height: 600px;
+    padding: 24px;
+    gap: 24px;
     background-color: var(--light-grey);
-    border-radius: 3px;
+    align-items: left;
+    justify-content: center;
+    border-radius: var(--border-radius 3px);
     border: var(--container-border 1px solid);
-
-
     
   }
-  .p{
-display: block;
-  }
-  .h5{
-    font-size: var(----normal-s 14px);
-    margin-top: 10px 2px;
-  }
+
   
