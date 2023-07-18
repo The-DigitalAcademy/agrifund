@@ -7,7 +7,7 @@ img {
     display: block;
     max-height: 300px;
     max-width: 100%;
-    padding: 3rem;
+    padding: 8rem;
     margin-inline: auto;
 
   }
@@ -15,9 +15,17 @@ img {
     display: block;
     width: 100%;
     background-color: var(--light-grey);
+    border-radius: 3px;
+    border: var(--container-border 1px solid);
+
+
     
   }
   .p{
 display: block;
+  }
+  .h5{
+    font-size: var(----normal-s 14px);
+    margin-top: 10px 2px;
   }
   
