@@ -1,5 +1,6 @@
-<div class="form-container">
-    <form [formGroup]="myForm">
+<div class="outer">
+<div class="container">
+    <form [formGroup]="myForm" disabled>
       <div class="form-group">
         <label>First Name:</label>
         <input type="text" formControlName="firstName">
@@ -18,4 +19,5 @@
       </div>
     </form>
   </div>
+</div>
   

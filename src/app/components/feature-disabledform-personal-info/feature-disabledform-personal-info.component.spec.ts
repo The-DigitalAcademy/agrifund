@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DisabledformPersonalInfoComponent } from './feature-disabledform-personal-info.component';
 
-import { FeatureDisabledformPersonalInfoComponent } from './feature-disabledform-personal-info.component';
 
-describe('FeatureDisabledformPersonalInfoComponent', () => {
-  let component: FeatureDisabledformPersonalInfoComponent;
-  let fixture: ComponentFixture<FeatureDisabledformPersonalInfoComponent>;
+
+describe('DisabledformPersonalInfoComponent', () => {
+  let component: DisabledformPersonalInfoComponent;
+  let fixture: ComponentFixture<DisabledformPersonalInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeatureDisabledformPersonalInfoComponent ]
+      declarations: [ DisabledformPersonalInfoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FeatureDisabledformPersonalInfoComponent);
+    fixture = TestBed.createComponent(DisabledformPersonalInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

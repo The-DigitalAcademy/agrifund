@@ -6,7 +6,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './feature-disabledform-personal-info.component.html',
   styleUrls: ['./feature-disabledform-personal-info.component.css']
 })
-export class FeatureDisabledformPersonalInfoComponent {
+export class DisabledformPersonalInfoComponent {
   myForm!: FormGroup;
 
   constructor(private fb: FormBuilder) { }

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FeatureDisabledformPersonalInfoComponent } from './components/feature-disabledform-personal-info/feature-disabledform-personal-info.component';
+import { DisabledformPersonalInfoComponent } from './components/feature-disabledform-personal-info/feature-disabledform-personal-info.component';
+
 
 const routes: Routes = [
-    {path: '',component: FeatureDisabledformPersonalInfoComponent}
+    {path: '',component: DisabledformPersonalInfoComponent}
 ];
 
 @NgModule({
