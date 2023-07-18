@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule, FaIconLibrary} from '@fortawesome/angular-fontawesome';
-import { faCalendar, faPlus, faTable } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faAngleDown, faAngleLeft, faAngleRight, faArrowLeft, faArrowRight, faBars, faCalculator, faCalendar, faChartPie, faCheck, faCoins, faExternalLinkAlt, faFileDownload, faFilter, faHome, faPen, faPlus, faSave, faSearch, faTable, faTimes, faTrash, faUpload, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
     declarations: [AppComponent, NavbarComponent],
@@ -15,6 +15,33 @@ import { faCalendar, faPlus, faTable } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppModule {
     constructor(iconLib: FaIconLibrary){
-        iconLib.addIcons(faPlus, faCalendar, faTable);
+        iconLib.addIcons(
+            faBars,
+            faHome,
+            faChartPie,
+            faTable, 
+            faAddressCard,
+            faCoins,
+            faCalculator,
+            faUsers,
+            faUser,
+            faArrowRight,
+            faArrowLeft,
+            faAngleRight,
+            faAngleLeft,
+            faAngleDown,
+            faExternalLinkAlt,
+            faSearch,
+            faCalendar,
+            faFilter,
+            faPlus, 
+            faPen,
+            faTrash,
+            faSave,
+            faUpload,
+            faFileDownload,
+            faTimes,
+            faCheck
+            );
     }
 }
