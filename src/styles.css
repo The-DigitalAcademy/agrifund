@@ -21,8 +21,8 @@
 
 
     /* FONTS */
-    --fancy:'Arvo';
-    --normal:'Lato';
+    --fancy-font:'Arvo';
+    --normal-font:'Lato';
 
     /* FONT SIZES */
     --font-x-large: 24px;
@@ -34,7 +34,7 @@
 
     /* FONT WEIGHTS */
     --thin:100;
-    --light: 300;
+    --light-font: 300;
     --regular:400;
     --bold:700;
     
@@ -52,9 +52,13 @@
     --x-larger-s: 36px;
 }
 
+body{
+    font-family: var();
+}
+
 /* TEXT */
 h1{
-    font-family: var(--fancy);
+    font-family: var(--fancy-font);
     font-size: var(--font-x-large);
     font-weight: var(--bold);
 
@@ -64,7 +68,7 @@ h1{
 }
 
 h2{
-    font-family: var(--fancy);
+    font-family: var(--fancy-font);
     font-size: var(--font-normal);
     font-weight: var(--bold);
 
@@ -141,20 +145,27 @@ input, .form-control{
 
 /* BUTTONS */
 .btn, button{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
     display: flex;
-    width: 251px;
-    height: var(--x-larger-s);
-    padding: var(--x-small-s) var(--normal-s);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--normal-s);
-    flex-shrink: 0;
 
     border-radius: var(--border-radius);
-    border: var(--primary-colour);
-    background: var(--primary-colour);
-    color: var(--light);
+
+    height: var(--x-larger-s);
+    
+    padding: var(--small-s);
+}
+
+
+.colourful-btn{
+    border: var(--primary-colour) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
 }
 
 /* HIDE ITEMS*/
