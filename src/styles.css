@@ -28,6 +28,10 @@
     --small: 14px; 
     --x-small: 12px;
 
+    /* BORDERS */
+    --border-radius: 3px;
+    --btn-border: 2px solid;
+    --container-border: 1px solid;
 }
 
 /* TEXT */
