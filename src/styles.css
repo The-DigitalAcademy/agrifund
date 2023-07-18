@@ -21,11 +21,30 @@
     /* Todo: add small, medium and large spacing*/
     /* Todo: add font sizes*/
 
+    /* FONT SIZES */
+    --large: 24px;
+    --medium: 18px;
+    --normal: 16px;
+    --small: 14px; 
+
 }
 
 /* TEXT */
+h1{
 
+}
 
+h1{
+
+}
+
+h2{
+
+}
+
+h3{
+
+}
 
 /* CONTAINERS */
 
