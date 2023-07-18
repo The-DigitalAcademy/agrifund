@@ -1,4 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import 'src/assets/fonts/_fonts.css';
+
 :root {
 
     /* COLOUR PALETTE */
@@ -16,12 +18,24 @@
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
 
+
+    /* FONTS */
+    --fancy:'Arvo';
+    --normal:'Lato';
+
     /* FONT SIZES */
     --font-large: 24px;
     --font-medium: 18px;
     --font-normal: 16px;
     --font-small: 14px; 
     --font-x-small: 12px;
+
+    /* FONT WEIGHTS */
+    --thin:100;
+    --light: 300;
+    --regular:400;
+    --bold:700;
+    
 
     /* BORDERS */
     --border-radius: 3px;
@@ -37,11 +51,8 @@
 }
 
 /* TEXT */
-h1 .arvo{
+h1{
 
-}
-
-h1 .lato{
 
 }
 
