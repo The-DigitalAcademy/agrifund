@@ -10,19 +10,18 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
+  isDisabled: boolean = true;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    // Sample data for the form fields (you can replace this with your own data)
     const userData = {
       firstName: 'John',
       lastName: 'Doe',
       email: 'john@example.com',
       phoneNumber: '123-456-7890'
     };
-
-    // Create the form controls with the provided data and set them as disabled
+  
     this.myForm = this.fb.group({
       firstName: new FormControl({ value: userData.firstName, disabled: true }),
       lastName: new FormControl({ value: userData.lastName, disabled: true }),
@@ -31,10 +30,15 @@ export class DisabledformPersonalInfoComponent implements OnInit {
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
     });
   }
+  
 
- 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File; // Store the selected file
   }
-  
+
+  enableFields() {
+    this.isDisabled = false; // Enable the fields by setting isDisabled to false
+    this.myForm.enable(); // Enable the formGroup
+    console.log("enableFields");
+  }
 }

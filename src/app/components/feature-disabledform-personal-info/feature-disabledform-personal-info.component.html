@@ -22,33 +22,38 @@
 </div>
    -->
    <!-- personal-info-form.component.html -->
-<div class="edit-icon-container">
-    <span class="edit-icon">✎</span>
-</div>
+<!-- disabledform-personal-info.component.html -->
+
+
 <div class="divider"></div>
 <div class="container">
-  <form [formGroup]="myForm" disabled>
+  <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
+  <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
     <div class="form-input">
       <label for="exampleInputEmail1" class="form-label">First Name</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+             formControlName="firstName">
     </div>
     <div class="form-input">
       <label for="exampleInputPassword1" class="form-label">Last Name</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" disabled>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="lastName">
     </div>
     <div class="form-input">
       <label for="exampleInputPassword1" class="form-label">Cell Number</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" disabled>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber">
     </div>
     <div class="form-input">
       <label class="form-label" for="document">Proof of ID</label>
+      <div class="file-container">
+        <label for="farm-label" >Upload Document</label><br>
       <input type="file" id="document" (change)="onFileSelected($event)">
+      </div>
     </div>
     <div class="form-input">
       <label for="exampleInputPassword1" class="form-label">Email</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" disabled>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="email">
     </div>
   </form>
 </div>
 
-  
+
