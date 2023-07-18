@@ -8,7 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     declarations: [AppComponent, NavbarComponent, RegisterComponent],
-    imports: [BrowserModule, AppRoutingModule],
+    imports: [BrowserModule, AppRoutingModule,ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })

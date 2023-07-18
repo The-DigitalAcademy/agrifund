@@ -1,7 +1,14 @@
-<div class="container">
-    
+<form [formGroup] ="RegisterForm">
+<div class="container">    
 <div class="row">
-    <div class="col-6">Register</div>
+    <div class="col-6">
+        <h1>Register</h1>
+        <label for="name">Name:</label><br>
+        <input id="name" type="text" FormControlName="name"><br>
+        <label for="surname">Surname:</label><br>
+        <input id="surname" type="text" FormControlName="surname">
+    </div>
   <div class="col-6">.col-6</div>
 </div>
 </div>
+</form>
