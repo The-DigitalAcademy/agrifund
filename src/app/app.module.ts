@@ -4,8 +4,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FontAwesomeModule, FaIconLibrary} from '@fortawesome/angular-fontawesome';
-import { faAddressCard, faAngleDown, faAngleLeft, faAngleRight, faArrowLeft, faArrowRight, faBars, faCalculator, faCalendar, faChartPie, faCheck, faCoins, faExternalLinkAlt, faFileDownload, faFilter, faHome, faPen, faPlus, faSave, faSearch, faTable, faTimes, faTrash, faUpload, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import {
+    FontAwesomeModule,
+    FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import {
+    faAddressCard,
+    faAngleDown,
+    faAngleLeft,
+    faAngleRight,
+    faArrowLeft,
+    faArrowRight,
+    faBars,
+    faCalculator,
+    faCalendar,
+    faChartPie,
+    faCheck,
+    faCoins,
+    faExternalLinkAlt,
+    faFileDownload,
+    faFilter,
+    faHome,
+    faPen,
+    faPlus,
+    faSave,
+    faSearch,
+    faTable,
+    faTimes,
+    faTrash,
+    faUpload,
+    faUser,
+    faUsers,
+} from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
     declarations: [AppComponent, NavbarComponent],
@@ -14,12 +44,12 @@ import { faAddressCard, faAngleDown, faAngleLeft, faAngleRight, faArrowLeft, faA
     bootstrap: [AppComponent],
 })
 export class AppModule {
-    constructor(iconLib: FaIconLibrary){
+    constructor(iconLib: FaIconLibrary) {
         iconLib.addIcons(
             faBars,
             faHome,
             faChartPie,
-            faTable, 
+            faTable,
             faAddressCard,
             faCoins,
             faCalculator,
@@ -34,7 +64,7 @@ export class AppModule {
             faSearch,
             faCalendar,
             faFilter,
-            faPlus, 
+            faPlus,
             faPen,
             faTrash,
             faSave,
@@ -42,6 +72,6 @@ export class AppModule {
             faFileDownload,
             faTimes,
             faCheck
-            );
+        );
     }
 }
