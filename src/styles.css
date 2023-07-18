@@ -40,8 +40,8 @@
 
     /* BORDERS */
     --border-radius: 3px;
-    --btn-border: 2px solid;
-    --container-border: 1px solid;
+    --thick-border: 2px solid;
+    --thin-border: 1px solid;
 
     /* SPACING & SIZING*/
     --x-small-s:4px;
@@ -52,7 +52,10 @@
 }
 
 body{
-    font-family: var();
+    font-family: var(--normal-font);
+    color: var(--dark);
+
+    background-color: var(--light);
 }
 
 /* TEXT */
@@ -118,7 +121,9 @@ label, .form-label{
 
 input, .form-control{
     border-radius: var(--border-radius);
-    border: var(--container-border) var(--lighter-grey);
+    border: var(--thin-border) var(--lighter-grey);
+
+    background-color: var(--light);
 
 }
 
@@ -135,10 +140,28 @@ input, .form-control{
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
 }
 
+textarea:focus, 
+textarea.form-control:focus, 
+input.form-control:focus, 
+input[type=text]:focus, 
+input[type=password]:focus, 
+input[type=email]:focus, 
+input[type=number]:focus, 
+[type=text].form-control:focus, 
+[type=password].form-control:focus, 
+[type=email].form-control:focus, 
+[type=tel].form-control:focus, 
+[contenteditable].form-control:focus {
+  box-shadow: none;
+  border: var(--thin-border) var(--dark);
+}
+
+
+
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-    border: var(--container-border);
+    border: var(--thin-border);
 }
 
 
@@ -162,7 +185,7 @@ input, .form-control{
 
 
 .colourful-btn{
-    border: var(--primary-colour) !important;
+    border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
@@ -171,6 +194,12 @@ input, .form-control{
     color: var(--grey) !important;
 }
 
+.outline-btn{
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+
+}
 
 
 /* HIDE ITEMS*/
