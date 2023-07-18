@@ -74,4 +74,9 @@ button {
     color: var(--light);
 }
 
+/* HIDE ITEMS*/
+.hidden{
+    display: none;
+}
+
 
