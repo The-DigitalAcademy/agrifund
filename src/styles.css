@@ -4,7 +4,6 @@
 :root {
 
     /* COLOUR PALETTE */
-
     --primary-darker: #5A6537;
     --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
@@ -175,7 +174,6 @@ input[type=number]:focus,
 .btn, button{
     font-family: var(--normal-font);
     font-size: var(--font-medium);
-    font-weight: var(--regular);
 
     display: flex;
     flex-direction: column;
@@ -197,7 +195,13 @@ input[type=number]:focus,
 }
 
 .icon-btn{
-    color: var(--grey) !important;
+    font-weight: var(--bold);
+    color: var(--grey) !important; 
+}
+
+.icon-btn-dark{
+    font-weight: var(--bold);
+    color: var(--dark) !important;
 }
 
 .outline-btn{
@@ -217,6 +221,14 @@ input[type=number]:focus,
     border: var(--thick-border) var(--primary-lighter) !important;
     background-color: var(--light) !important;
     color: var(--primary-lighter) !important;
+}
+
+.icon-btn:hover, .icon-btn:focus{
+    color: var(--dark) !important;
+}
+
+.icon-btn-dark:hover, .icon-btn-dark:focus{
+    color: var(--primary-colour) !important;
 }
 
 button[disabled]{
