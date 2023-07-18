@@ -167,6 +167,12 @@ input, .form-control{
     color: var(--light) !important;
 }
 
+.icon-btn{
+    color: var(--grey) !important;
+}
+
+
+
 /* HIDE ITEMS*/
 .hidden{
     display: none;
