@@ -1,5 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import 'src/assets/fonts/_fonts.css';
+
 :root {
+
+    /* COLOUR PALETTE */
 
     --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
@@ -14,21 +18,158 @@
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
 
+
+    /* FONTS */
+    --fancy-font:'Arvo';
+    --normal-font:'Lato';
+
+    /* FONT SIZES */
+    --font-x-large: 24px;
+    --font-large: 22px;
+    --font-medium: 18px;
+    --font-normal: 16px;
+    --font-small: 14px; 
+    --font-x-small: 12px;
+
+    /* FONT WEIGHTS */
+    --thin:100;
+    --light-font: 300;
+    --regular:400;
+    --bold:700;
+    
+
+    /* BORDERS */
+    --border-radius: 3px;
+    --btn-border: 2px solid;
+    --container-border: 1px solid;
+
+    /* SPACING & SIZING*/
+    --x-small-s:4px;
+    --small-s: 8px;
+    --normal-s: 14px;
+    --large-s:24px;
+    --x-larger-s: 36px;
 }
 
-button {
+body{
+    font-family: var();
+}
+
+/* TEXT */
+h1{
+    font-family: var(--fancy-font);
+    font-size: var(--font-x-large);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+h2{
+    font-family: var(--fancy-font);
+    font-size: var(--font-normal);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+h3{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+p{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+a{
+    color:var(--primary-colour) !important;
+    
+}
+
+a:hover, a:active{
+    text-decoration: underline !important;
+}
+
+/* FORMS */
+label, .form-label{
+    font-family: var(--normal);
+    font-size: var(--font-regular);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--small-s) 0px;
+
+    color:var(--dark);
+}
+
+input, .form-control{
+    border-radius: var(--border-radius);
+    border: var(--container-border) var(--lighter-grey);
+
+}
+
+.form-group{
+
+}
+
+.form-input{
+    padding: var(--x-small-s);
+    margin: var(--normal-s) 0px;
+}
+
+.form-text{
+    margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
+}
+
+/* CONTAINERS */
+.container{
+    border-radius: var(--border-radius);
+    border: var(--container-border);
+}
+
+
+/* BUTTONS */
+.btn, button{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
     display: flex;
-    width: 251px;
-    height: 36px;
-    padding: 4px 14px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 14px;
-    flex-shrink: 0;
 
-    border-radius: 3px;
-    border: 1px solid var(--primary-colour);
-    background: var(--primary-colour);
-    color: var(--light);
+    border-radius: var(--border-radius);
+
+    height: var(--x-larger-s);
+    
+    padding: var(--small-s);
 }
+
+
+.colourful-btn{
+    border: var(--primary-colour) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
+}
+
+/* HIDE ITEMS*/
+.hidden{
+    display: none;
+}
+
+
