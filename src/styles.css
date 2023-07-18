@@ -106,7 +106,8 @@ input, .form-control{
 }
 
 .form-input{
-    margin: var(--x-small-s);
+    padding: var(--x-small-s);
+    margin: var(--normal-s) 0px;
 }
 
 .form-text{
