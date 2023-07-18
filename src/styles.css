@@ -165,7 +165,9 @@ input[type=number]:focus,
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-    border: var(--thin-border);
+    border: var(--thin-border) var(--lighter-grey);
+
+    background-color: var(--light);
 }
 
 
