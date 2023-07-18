@@ -1,16 +1,23 @@
 button {
-    display: flex;
-    width: 251px;
-    height: 36px;
-    padding: 4px 14px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    flex-shrink: 0;
 
-    border-radius: 3px;
-    border: 1px solid var(--primary-colour);
     background: var(--primary-colour);
-    color: var(--light);
+    
 }
+img {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+    padding: 3rem;
+    margin-inline: auto;
+
+  }
+  .carousel {
+    display: block;
+    width: 100%;
+    background-color: var(--light-grey);
+    
+  }
+  .p{
+display: block;
+  }
+  
