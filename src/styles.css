@@ -24,7 +24,8 @@
     --normal:'Lato';
 
     /* FONT SIZES */
-    --font-large: 24px;
+    --font-x-large: 24px;
+    --font-large: 22px;
     --font-medium: 18px;
     --font-normal: 16px;
     --font-small: 14px; 
@@ -53,16 +54,26 @@
 /* TEXT */
 h1{
     font-family: var(--fancy);
-    font-size: var(--font-large);
+    font-size: var(--font-x-large);
     font-weight: var(--bold);
+
+    color:var(--dark);
 }
 
 h2{
+    font-family: var(--fancy);
+    font-size: var(--font-large);
+    font-weight: var(--bold);
 
+    color:var(--dark);
 }
 
 h3{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
 
+    color:var(--dark);
 }
 
 /* CONTAINERS */
