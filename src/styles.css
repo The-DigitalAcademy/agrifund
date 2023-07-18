@@ -114,7 +114,7 @@ label, .form-label{
     font-size: var(--font-regular);
     font-weight: var(--bold);
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px 0px var(--x-small-s) 0px;
 
     color:var(--dark);
 }
@@ -125,6 +125,8 @@ input, .form-control{
 
     background-color: var(--light);
 
+    height:30px;
+
 }
 
 .form-group{
@@ -133,7 +135,7 @@ input, .form-control{
 
 .form-input{
     padding: var(--x-small-s);
-    margin: var(--normal-s) 0px;
+    margin: var(--small-s) 0px;
 }
 
 .form-text{
@@ -161,7 +163,8 @@ input[type=number]:focus,
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-    border: var(--thin-border);
+     border: var(--thin-border) var(--lighter-grey);
+    background-color: var(--light);
 }
 
 
@@ -182,10 +185,7 @@ input[type=number]:focus,
     
     padding: var(--small-s);
 }
-.container{
-    background-color: var(--light);
 
-}
 
 
 .colourful-btn{
