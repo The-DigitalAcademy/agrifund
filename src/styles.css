@@ -5,6 +5,7 @@
 
     /* COLOUR PALETTE */
 
+    --primary-darker: #5A6537;
     --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
@@ -199,6 +200,18 @@ input[type=number]:focus,
     background-color: var(--light) !important;
     color: var(--primary-colour) !important;
 
+}
+
+.colourful-btn:hover, .colourful-btn:focus{
+    border: var(--thick-border) var(--primary-lighter) !important;
+    background-color: var(--primary-lighter) !important;
+    color: var(--light) !important;
+}
+
+.outline-btn:hover, .outline-btn:focus{
+    border: var(--thick-border) var(--primary-lighter) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-lighter) !important;
 }
 
 
