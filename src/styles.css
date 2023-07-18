@@ -33,7 +33,7 @@
 
     /* FONT WEIGHTS */
     --thin:100;
-    --light: 300;
+    --light-font: 300;
     --regular:400;
     --bold:700;
     
@@ -140,20 +140,27 @@ input, .form-control{
 
 /* BUTTONS */
 .btn, button{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
     display: flex;
-    width: 251px;
-    height: var(--x-larger-s);
-    padding: var(--x-small-s) var(--normal-s);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--normal-s);
-    flex-shrink: 0;
 
     border-radius: var(--border-radius);
-    border: var(--primary-colour);
-    background: var(--primary-colour);
-    color: var(--light);
+
+    height: var(--x-larger-s);
+    
+    padding: var(--small-s);
+}
+
+
+.colourful-btn{
+    border: var(--primary-colour) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
 }
 
 /* HIDE ITEMS*/
