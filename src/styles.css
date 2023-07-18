@@ -84,6 +84,35 @@ p{
     color:var(--dark);
 }
 
+/* FORMS */
+label, .form-label{
+    font-family: var(--normal);
+    font-size: var(--font-regular);
+    font-weight: var(--bold);
+
+    margin: 0px 0px var(--small-s) 0px;
+
+    color:var(--dark);
+}
+
+input, .form-control{
+    border-radius: var(--border-radius);
+    border: var(--container-border) var(--lighter-grey);
+
+}
+
+.form-group{
+
+}
+
+.form-input{
+    margin: var(--x-small-s);
+}
+
+.form-text{
+    margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
+}
+
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
@@ -92,7 +121,7 @@ p{
 
 
 /* BUTTONS */
-button {
+.btn, button{
     display: flex;
     width: 251px;
     height: var(--x-larger-s);
