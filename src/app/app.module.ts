@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DisabledformPersonalInfoComponent } from './components/feature-disabledform-personal-info/feature-disabledform-personal-info.component';
+import { EnableformPersonalInfoComponent } from './components/enableform-personal-info/enableform-personal-info.component';
 
 
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent, DisabledformPersonalInfoComponent],
+    declarations: [AppComponent, NavbarComponent, DisabledformPersonalInfoComponent, EnableformPersonalInfoComponent],
     imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
