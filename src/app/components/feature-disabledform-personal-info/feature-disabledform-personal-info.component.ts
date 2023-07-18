@@ -7,6 +7,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./feature-disabledform-personal-info.component.css']
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
+enableFields() {
+throw new Error('Method not implemented.');
+}
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
 
@@ -35,4 +38,5 @@ export class DisabledformPersonalInfoComponent implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File; // Store the selected file
   }
+  
 }
