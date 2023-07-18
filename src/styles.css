@@ -214,6 +214,12 @@ input[type=number]:focus,
     color: var(--primary-lighter) !important;
 }
 
+button[disabled]{
+    background-color: var(--light) !important;
+    border-color: var(--grey) !important;
+    color: var(--grey) !important;
+}
+
 
 /* HIDE ITEMS*/
 .hidden{
