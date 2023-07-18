@@ -1,2 +1,24 @@
+input {
+    padding: 5px;
+    background-color: var(--grey); /* Use the custom CSS variable here */
+    color: #fff; /* Set text color to white to make it visible on the grey background */
+    border: none; /* Remove borders to make it look better */
+    border-radius: 3px; /* Add some border radius for a rounded look */
+  }
 
+  .form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
   
