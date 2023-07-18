@@ -84,6 +84,15 @@ p{
     color:var(--dark);
 }
 
+a{
+    color:var(--primary-colour) !important;
+    
+}
+
+a:hover, a:active{
+    text-decoration: underline !important;
+}
+
 /* FORMS */
 label, .form-label{
     font-family: var(--normal);
