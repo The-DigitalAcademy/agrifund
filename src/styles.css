@@ -1,6 +1,8 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 :root {
 
+    /* COLOUR PALETTE */
+
     --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
@@ -14,8 +16,21 @@
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
 
+    /* SIZING & SPACING */
+
+    /* Todo: add small, medium and large spacing*/
+    /* Todo: add font sizes*/
+
 }
 
+/* TEXT */
+
+
+
+/* CONTAINERS */
+
+
+/* BUTTONS */
 button {
     display: flex;
     width: 251px;
@@ -32,3 +47,5 @@ button {
     background: var(--primary-colour);
     color: var(--light);
 }
+
+
