@@ -19,14 +19,13 @@
     /* SIZING & SPACING */
 
     /* Todo: add small, medium and large spacing*/
-    /* Todo: add font sizes*/
 
     /* FONT SIZES */
-    --large: 24px;
-    --medium: 18px;
-    --normal: 16px;
-    --small: 14px; 
-    --x-small: 12px;
+    --font-large: 24px;
+    --font-medium: 18px;
+    --font-normal: 16px;
+    --font-small: 14px; 
+    --font-x-small: 12px;
 
     /* BORDERS */
     --border-radius: 3px;
