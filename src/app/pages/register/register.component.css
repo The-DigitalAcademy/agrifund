@@ -1,0 +1,11 @@
+.btn{
+    background-color: var(--primary-colour);
+    border-color: var(--primary-colour);
+}
+a{
+    color: var(--primary-colour);
+}
+img{
+    width: 100%;
+
+}
