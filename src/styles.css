@@ -62,7 +62,7 @@ h1{
 
 h2{
     font-family: var(--fancy);
-    font-size: var(--font-large);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     color:var(--dark);
@@ -72,6 +72,14 @@ h3{
     font-family: var(--normal);
     font-size: var(--font-medium);
     font-weight: var(--bold);
+
+    color:var(--dark);
+}
+
+p{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
 
     color:var(--dark);
 }
