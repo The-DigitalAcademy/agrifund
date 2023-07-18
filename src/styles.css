@@ -144,7 +144,7 @@ input, .form-control{
 
 /* BUTTONS */
 .btn, button{
-    font-family: var(--normal);
+    font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
 
