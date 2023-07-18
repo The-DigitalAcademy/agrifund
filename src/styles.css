@@ -37,11 +37,11 @@
 }
 
 /* TEXT */
-h1{
+h1 .arvo{
 
 }
 
-h1{
+h1 .lato{
 
 }
 
@@ -54,6 +54,10 @@ h3{
 }
 
 /* CONTAINERS */
+.container{
+    border-radius: var(--border-radius);
+    border: var(--container-border);
+}
 
 
 /* BUTTONS */
@@ -69,7 +73,7 @@ button {
     flex-shrink: 0;
 
     border-radius: var(--border-radius);
-    border: 1px solid var(--primary-colour);
+    border: var(--primary-colour);
     background: var(--primary-colour);
     color: var(--light);
 }
