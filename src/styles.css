@@ -16,10 +16,6 @@
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
 
-    /* SIZING & SPACING */
-
-    /* Todo: add small, medium and large spacing*/
-
     /* FONT SIZES */
     --font-large: 24px;
     --font-medium: 18px;
@@ -31,6 +27,13 @@
     --border-radius: 3px;
     --btn-border: 2px solid;
     --container-border: 1px solid;
+
+    /* SPACING */
+    --x-small-space:4px;
+    --small-space: 8px;
+    --normal-space: 14px;
+    --large-space:24px;
+    --x-larger-space: 34px;
 }
 
 /* TEXT */
