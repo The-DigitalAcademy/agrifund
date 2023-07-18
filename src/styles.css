@@ -52,8 +52,9 @@
 
 /* TEXT */
 h1{
-
-
+    font-family: var(--fancy);
+    font-size: var(--font-large);
+    font-weight: var(--bold);
 }
 
 h2{
