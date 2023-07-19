@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-disabledform-crop-info',
@@ -7,14 +7,13 @@ import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
   styleUrls: ['./disabledform-crop-info.component.css']
 })
 export class DisabledformCropInfoComponent implements OnInit {
-
   myForm!: FormGroup;
   isDisabled: boolean = true;
 
   cropOptions: string[] = ['Corn', 'Tomatoes', 'Potatoes', 'Carrots', 'Lettuce'];
   farmerData = { // Replace this with the actual farmer data
     seasonFarm: 'Spring',
-    crops: ['Corn', 'Tomatoes'],
+    selectedCrops: ['Corn', 'Tomatoes'], // Selected crops as an array
     seedsAmount: '50'
   };
 
@@ -23,7 +22,7 @@ export class DisabledformCropInfoComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.fb.group({
       seasonFarm: new FormControl({ value: this.farmerData.seasonFarm, disabled: true }),
-      selectedCrops: new FormControl({ value: this.farmerData.crops, disabled: true }),
+      selectedCrops: new FormControl({ value: this.farmerData.selectedCrops, disabled: true }),
       seedsAmount: new FormControl({ value: this.farmerData.seedsAmount, disabled: true })
     });
   }
@@ -34,8 +33,7 @@ export class DisabledformCropInfoComponent implements OnInit {
   }
 
   getSelectedCropsAsString() {
-    const selectedCropsArray = this.myForm.get('selectedCrops') as FormArray;
-    const selectedCrops = selectedCropsArray.value;
+    const selectedCrops = this.myForm.get('selectedCrops')?.value as string[];
     return selectedCrops.join(', ');
   }
 }

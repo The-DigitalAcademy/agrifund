@@ -1,0 +1,9 @@
+.edit-icon-container {
+    position: absolute;
+    top: 55px;
+    right: 90px;
+    font-size: 20px;
+    cursor: pointer;
+    color: grey;
+    padding: 5px;
+    }
