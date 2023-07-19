@@ -33,14 +33,14 @@ img{
     border: var(--container-border 3px solid) 
   }
 
+
   .carousel-inner{
-    border-top: 100px;
-    border-left: 100px;
-    border-right: 100px;
-    border-bottom: 100px;
-    border-color: var( --light);
+   
+    border-width: thin thin;
+    border-color: var(--primary-colour);
     border-style: solid;
-  }
+    }
+
   .container{
     text-align: center;
   
