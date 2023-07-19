@@ -1,1 +1,20 @@
-<p>disabledform-crop-info works!</p>
+
+<div class="container">
+
+  <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
+    <div class="form-input">
+      <label for="seasonFarm" class="form-label">I usually fam during:</label>
+      
+    </div>
+    <div class="form-input">
+      <label for="crops" class="form-label">I farm with these crops:</label>
+    
+    </div>
+    <div class="form-input">
+      <label for="exampleInputPassword1" class="form-label">I usually spend this amount on seeds per kg:</label>
+      
+    </div>
+    
+    
+  </form>
+</div>
