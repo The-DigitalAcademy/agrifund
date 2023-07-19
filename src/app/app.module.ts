@@ -39,7 +39,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent],
+    declarations: [AppComponent, NavbarComponent,GetStartedComponent],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
