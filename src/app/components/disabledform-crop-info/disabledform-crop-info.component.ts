@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './disabledform-crop-info.component.html',
   styleUrls: ['./disabledform-crop-info.component.css']
 })
-export class DisabledformCropInfoComponent {
+export class DisabledformCropInfoComponent implements OnInit {
 
   myForm!: FormGroup;
   isDisabled: boolean = true;
@@ -19,7 +19,7 @@ export class DisabledformCropInfoComponent {
       crops: ['Corn', 'Tomatoes'],
       seedAmount: '50'
     };
-  
+
     this.myForm = this.fb.group({
       seasonFarm: new FormControl({ value: userData.seasonFarm, disabled: true }),
       crops: new FormControl({ value: userData.crops, disabled: true }),
@@ -31,5 +31,4 @@ export class DisabledformCropInfoComponent {
     this.isDisabled = false;
     this.myForm.enable();
   }
-
 }
