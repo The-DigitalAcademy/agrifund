@@ -36,9 +36,10 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
     providers: [],
     bootstrap: [AppComponent],
