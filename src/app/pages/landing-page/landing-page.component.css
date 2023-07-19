@@ -19,3 +19,7 @@
         cursor: pointer;
 } 
 
+.container{
+  border-radius: none;
+  border: none;
+}

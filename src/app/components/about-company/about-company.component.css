@@ -2,24 +2,18 @@ h2 {
     height:90px;
     width:550%;
    
-    }  
+    } 
 
-
-   
     .column {
     float: left;
     width: 50%;
     max-width:150%;
     padding: 7%;
+    background-color: var(white);
     }
-
-    .row:after {
-    content: "";
-    display: table;
-   
-    }
-    img {
-        display: block;
-        max-width:100%;
-        max-height:100%;
-      }
+      img {
+    display: flex;
+    max-width:100%;
+    max-height:100%;
+  }
+  
