@@ -23,3 +23,7 @@
   border-radius: none;
   border: none;
 }
+
+body {
+  background-image: url("src/app/components/team-section/team-section.component.html");
+}
