@@ -11,14 +11,21 @@
           <option value="Winter">Winter</option>
         </select>
       </div>
-    <div class="form-input">
-      <label for="crops" class="form-label">I farm with these crops:</label>
-    
-    </div>
-    <div class="form-input">
-      <label for="exampleInputPassword1" class="form-label">I usually spend this amount on seeds per kg:</label>
-      
-    </div>
+      <div class="form-input">
+        <label for="crops" class="form-label">I farm with these crops:</label>
+        <ng-container *ngIf="!isDisabled; else disabledCropField">
+          <select id="crops" class="form-control" formControlName="selectedCrops" multiple>
+            <option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</option>
+          </select>
+        </ng-container>
+        <ng-template #disabledCropField>
+          <input type="text" class="form-control" [value]="getSelectedCropsAsString()" disabled>
+        </ng-template>
+      </div>
+      <div class="form-input">
+        <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
+        <input type="text" class="form-control" formControlName="seedsAmount" [attr.disabled]="isDisabled ? 'disabled' : null">
+      </div>
     
     
   </form>
