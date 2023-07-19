@@ -67,6 +67,16 @@ body {
     margin-top: 60px;
 }
 
+/* DISPLAY */
+
+/* CONTAINERS */
+.container {
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+
+    background-color: var(--light);
+}
+
 /* TEXT */
 h1 {
     font-family: var(--fancy-font);
@@ -190,15 +200,6 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
-/* CONTAINERS */
-.container {
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-
-    background-color: var(--light);
-}
-
-
 /* BUTTONS */
 .btn,
 button {
@@ -273,6 +274,14 @@ button[disabled] {
     background-color: var(--light) !important;
     border-color: var(--grey) !important;
     color: var(--grey) !important;
+}
+
+hr {
+    background-color: var(--lighter-grey);
+    height: 1.5px;
+    margin: var(--x-small-s) 0px;
+
+    border: none !important;
 }
 
 
