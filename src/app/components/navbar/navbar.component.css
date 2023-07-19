@@ -80,11 +80,22 @@ span{
 }
 
 /* BUTTONS */
-.btn{
+.nav-right .btn{
     width: 100px !important;
 
     margin: 0px var(--small-s);
 }
+
+.icon-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0px var(--small-s);
+}
+
+
+
 
 @media only screen and  (max-width: 768px) {
 

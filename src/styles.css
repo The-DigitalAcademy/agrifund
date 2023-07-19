@@ -124,6 +124,18 @@ a:active {
 }
 
 fa-icon {
+    font-size: var(--font-normal);
+    line-height: var(--font-normal);
+    text-align: center;
+
+    height: var(--font-normal);
+
+    padding:0px;
+
+    color: var(--light);
+}
+
+.svg-inline--fa{
     height: var(--font-normal);
 }
 
@@ -191,6 +203,7 @@ input[type=number]:focus,
 button {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
+    text-align: center;
 
     display: flex;
     flex-direction: column;
