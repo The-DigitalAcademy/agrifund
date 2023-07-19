@@ -1,0 +1,39 @@
+nav {
+    height: 60px !important;
+
+    overflow: hidden;
+    background-color: var(--light);
+}
+
+.nav-left{
+    display: flex;
+    justify-self: flex-start;
+    justify-content: flex-start;
+
+    padding: 0px var(--normal-s);
+}
+
+.nav-right{
+    display: flex;
+    justify-self: flex-end;
+    justify-content: flex-end;
+
+    padding: 0px var(--normal-s);
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* BUTTONS */
+.btn{
+    width: 100px !important;
+
+    margin: 0px var(--small-s);
+}
+
+
+
+
