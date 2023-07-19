@@ -21,3 +21,8 @@ img {
     width: 100%;
     height: 1000px;
 }
+.btn2{
+margin: auto;
+border: var(--thin-border) var(--lighter-grey);
+color: var(--grey);
+}
