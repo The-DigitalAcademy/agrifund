@@ -10,6 +10,14 @@ img{
 
 
   }
+  .carousel-indicators button {
+    height: 10px !important;
+    width: 10px !important;
+    margin: 0 10px !important;
+    border-radius: 100%;
+    background-color: #1963ac !important;
+}
+
   .carousel-inner{
     display: block;
     margin: auto;
