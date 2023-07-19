@@ -4,7 +4,7 @@
 :root {
 
     /* COLOUR PALETTE */
-
+    --primary-darker: #5A6537;
     --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
@@ -101,11 +101,18 @@ p{
 
 a{
     color:var(--primary-colour) !important;
+    text-decoration: underline !important;
     
 }
 
 a:hover, a:active{
+    color:var(--primary-lighter) !important;
     text-decoration: underline !important;
+    
+}
+
+fa-icon{
+    height: var(--font-normal);
 }
 
 /* FORMS */
@@ -163,7 +170,7 @@ input[type=number]:focus,
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-     border: var(--thin-border) var(--lighter-grey);
+    border: var(--thin-border) var(--lighter-grey);
     background-color: var(--light);
 }
 
@@ -172,7 +179,6 @@ input[type=number]:focus,
 .btn, button{
     font-family: var(--normal-font);
     font-size: var(--font-medium);
-    font-weight: var(--regular);
 
     display: flex;
     flex-direction: column;
@@ -195,7 +201,13 @@ input[type=number]:focus,
 }
 
 .icon-btn{
-    color: var(--grey) !important;
+    font-weight: var(--bold);
+    color: var(--grey) !important; 
+}
+
+.icon-btn-dark{
+    font-weight: var(--bold);
+    color: var(--dark) !important;
 }
 
 .outline-btn{
@@ -203,6 +215,32 @@ input[type=number]:focus,
     background-color: var(--light) !important;
     color: var(--primary-colour) !important;
 
+}
+
+.colourful-btn:hover, .colourful-btn:focus{
+    border: var(--thick-border) var(--primary-lighter) !important;
+    background-color: var(--primary-lighter) !important;
+    color: var(--light) !important;
+}
+
+.outline-btn:hover, .outline-btn:focus{
+    border: var(--thick-border) var(--primary-lighter) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-lighter) !important;
+}
+
+.icon-btn:hover, .icon-btn:focus{
+    color: var(--dark) !important;
+}
+
+.icon-btn-dark:hover, .icon-btn-dark:focus{
+    color: var(--primary-colour) !important;
+}
+
+button[disabled]{
+    background-color: var(--light) !important;
+    border-color: var(--grey) !important;
+    color: var(--grey) !important;
 }
 
 
