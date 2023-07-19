@@ -21,6 +21,7 @@ img{
   .carousel-inner{
     display: block;
     margin: auto;
+    margin-top: 50px;
     width: 750px;
     height: 600px;
     padding: 24px;
@@ -29,26 +30,26 @@ img{
     align-items: left;
     justify-items: center;
     border-radius: var(--primary-colour 3px);
-    border: var(--container-border 3px solid);
-    border-top: 50px;
-    border-left: 50px;
-    border-right: 50px;
-    border-bottom: 50px;
-    border-color: var(--primary-colour);
-    border-style: solid;
-
-    
+    border: var(--container-border 3px solid) 
   }
 
+  .carousel-inner{
+    border-top: 100px;
+    border-left: 100px;
+    border-right: 100px;
+    border-bottom: 100px;
+    border-color: var( --light);
+    border-style: solid;
+  }
   .container{
     text-align: center;
+  
   }
- 
 h2{
-   margin-top: 10%;
+  font-size: var(--normal-s 14px);
   }
 p {
-  margin-bottom: 50%;
+  margin-bottom: 100%;
 } 
 
 
