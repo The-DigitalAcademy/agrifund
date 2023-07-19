@@ -287,13 +287,18 @@ button[disabled] {
         font-size: var(--font-small);
     }
 
+    /* HIDE ITEMS*/
+    .large-hidden {
+        display: none !important;
+    }
+
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 768px) and (max-width: 1200px) {
 
     /* HIDE ITEMS*/
-    .hidden-for-large {
-        display: none;
+    .mobile-hidden{
+        display: none !important;
     }
 
 }
