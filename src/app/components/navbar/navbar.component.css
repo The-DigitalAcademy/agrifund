@@ -17,6 +17,13 @@ nav {
     
 }
 
+.navbar-toggler,
+.navbar-collapse {
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .nav-left{
     display: flex;
     justify-content: flex-start;
@@ -104,6 +111,10 @@ span{
     nav{
         height: 45px !important;
         background-color: var(--primary-colour);
+    }
+
+    .offcanvas{
+        width: 100%;
     }
     
 }

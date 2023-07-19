@@ -2,7 +2,8 @@
 
   <!--before login-->
   <div class="nav-left">
-    <button class="btn icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
+    <button class="icon-btn navbar-toggler navbar-toggler-start d-lg-none d-md-none" type="button"
+      data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
       <fa-icon icon="bars"></fa-icon>
     </button>
 
@@ -14,7 +15,7 @@
   </div>
 
 
-  <div class="nav-right">
+  <div class="nav-right mobile-hidden">
     <button type="button" class="btn colourful-btn">Login</button>
     <button type="button" class="btn outline-btn">Register</button>
   </div>
@@ -32,23 +33,24 @@
 </nav>
 
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="true" id="left-sidebar" tabindex="-1">
+<div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="true" id="offcanvas" tabindex="-1">
 
-  <h1 class="nav-brand">
-    <span>Agri</span>
-    <img src="agrifund/src/assets/images/logo/f_carrot.png" class="icon-img" alt="F">
-    <span>und</span>
-  </h1>
-
-  <div class="offcanvas-header pe-6">
-    <h1 class="offcanvas-title">
-      <span class="colour">Fashion</span>
-      <span class="white">Hut</span>
+  <div class="offcanvas-header">
+    <h1 class="nav-brand offcanvas-title">
+      <span>Agri</span>
+      <img src="agrifund/src/assets/images/logo/f_carrot.png" class="icon-img" alt="F">
+      <span>und</span>
     </h1>
-    <button class="btn icon-btn" type="button" data-bs-dismiss="offcanvas">
-      <!-- <fa-icon [icon]='times'></fa-icon>  -->
-    </button>
+
   </div>
+
+
+
+
+    <button class="btn icon-btn" type="button" data-bs-dismiss="offcanvas">
+      <fa-icon icon="times"></fa-icon>
+    </button>
+
 
 
 
@@ -58,7 +60,7 @@
 
 
   <!-- before login -->
-  
+
 
 
   <!-- after login -->

@@ -63,6 +63,8 @@ body {
     color: var(--dark);
 
     background-color: var(--light);
+
+    margin-top: 60px;
 }
 
 /* TEXT */
@@ -129,13 +131,14 @@ fa-icon {
     text-align: center;
 
     height: var(--font-normal);
+    width: var(--font-normal);
 
-    padding:0px;
+    padding: 0px;
 
     color: var(--light);
 }
 
-.svg-inline--fa{
+.svg-inline--fa {
     height: var(--font-normal);
 }
 
@@ -187,8 +190,6 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
-
-
 /* CONTAINERS */
 .container {
     border-radius: var(--border-radius);
@@ -211,6 +212,9 @@ button {
     align-items: center;
 
     border-radius: var(--border-radius);
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 
     height: var(--x-larger-s);
 
@@ -297,7 +301,7 @@ button[disabled] {
 @media only screen and (max-width: 768px) and (max-width: 1200px) {
 
     /* HIDE ITEMS*/
-    .mobile-hidden{
+    .mobile-hidden {
         display: none !important;
     }
 
