@@ -28,8 +28,15 @@ img{
     background-color: var(--light-grey);
     align-items: left;
     justify-items: center;
-    border-radius: var(--border-radius 3px);
+    border-radius: var(--primary-colour 3px);
     border: var(--container-border 3px solid);
+    border-top: 50px;
+    border-left: 50px;
+    border-right: 50px;
+    border-bottom: 50px;
+    border-color: var(--primary-colour);
+    border-style: solid;
+
     
   }
 
