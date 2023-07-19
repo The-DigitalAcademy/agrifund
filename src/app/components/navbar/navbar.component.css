@@ -1,5 +1,9 @@
 nav {
+    display: flex;
+    vertical-align: center !important;
+
     height: 60px !important;
+    width: 100%;
 
     overflow: hidden;
     background-color: var(--light);
@@ -19,6 +23,17 @@ nav {
     justify-content: flex-end;
 
     padding: 0px var(--normal-s);
+}
+
+.nav-brand{
+    display: flex;
+
+
+    vertical-align: center !important;
+}
+
+.nav-brand img{
+    height:30px !important;
 }
 
 .sticky {
