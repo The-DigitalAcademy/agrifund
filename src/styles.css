@@ -229,6 +229,12 @@ button {
     color: var(--light) !important;
 }
 
+.white-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
 .icon-btn {
     font-weight: var(--bold);
     color: var(--grey) !important;
@@ -243,7 +249,12 @@ button {
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--light) !important;
     color: var(--primary-colour) !important;
+}
 
+.white-outline-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
 }
 
 .colourful-btn:hover,

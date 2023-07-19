@@ -42,29 +42,35 @@
       <span>und</span>
     </h1>
 
-  </div>
-
-
-
-
-    <button class="btn icon-btn" type="button" data-bs-dismiss="offcanvas">
+    <button class="btn  icon-btn" type="button" data-bs-dismiss="offcanvas">
       <fa-icon icon="times"></fa-icon>
     </button>
+  </div>
+  <hr>
+  <div class="offcanvas-body">
 
-
-
-
-
-
-
-
+    <ul class="navbar-nav justify-content-end flew-grow-1 pe-6">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['']">Login</a>
+      </li>
+      <div class="vr align-self-center"></div>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['']">Sign up</a>
+      </li>
+      <div class="vr align-self-center"></div>
+    </ul>
+  </div>
 
   <!-- before login -->
-
-
+  <div class="offcanvas-footer">
+      <button class="btn white-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
+        Login
+      </button>
+      <button class="btn white-outline-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
+        Register
+      </button>
+  </div>
 
   <!-- after login -->
-
-
 
 </div>
