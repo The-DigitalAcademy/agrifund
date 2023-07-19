@@ -39,6 +39,5 @@ export class DisabledformPersonalInfoComponent implements OnInit {
   enableFields() {
     this.isDisabled = false; // Enable the fields by setting isDisabled to false
     this.myForm.enable(); // Enable the formGroup
-    console.log("enableFields");
   }
 }

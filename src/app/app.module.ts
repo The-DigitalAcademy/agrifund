@@ -42,8 +42,8 @@ import { PersonalInfoFormComponent } from './components/personal-info-form/perso
 
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent],
-    imports: [BrowserModule, AppRoutingModule],
+    declarations: [AppComponent, NavbarComponent, DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent],
+    imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })
