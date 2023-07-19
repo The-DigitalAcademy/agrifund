@@ -75,7 +75,7 @@ span{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    
+
     margin: 0px var(--small-s);
 }
 
@@ -86,6 +86,11 @@ span{
     margin: 0px var(--small-s);
 }
 
+@media only screen and  (max-width: 768px) {
 
-
-
+    nav{
+        height: 45px !important;
+        background-color: var(--primary-colour);
+    }
+    
+}
