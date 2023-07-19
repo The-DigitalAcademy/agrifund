@@ -94,8 +94,10 @@ span{
     margin: 0px var(--small-s);
 }
 
-
-
+/* OFFCANVAS */
+.offcanvas {
+    background-color: var(--primary-colour);
+}
 
 @media only screen and  (max-width: 768px) {
 
