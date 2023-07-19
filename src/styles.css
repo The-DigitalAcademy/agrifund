@@ -289,20 +289,7 @@ button[disabled] {
 
 }
 
-@media only screen and (min-width: 769px) {
-
-    /* TEXT */
-    h1 {
-        font-size: var(--font-medium);
-    }
-
-    h2 {
-        font-size: var(--font-normal);
-    }
-
-    h3 {
-        font-size: var(--font-small);
-    }
+@media only screen and (max-width: 769px) {
 
     /* HIDE ITEMS*/
     .hidden-for-large {
