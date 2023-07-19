@@ -7,3 +7,25 @@ img {
     flex-shrink: 0;
  align-self: stretch;
 }
+.col-6 {
+    padding: var(--large-s);
+}
+.container {
+    width: 850px;  
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    }
+    .btn2{
+        margin: auto;
+        border: none;
+        color: var(--grey);
+        background-color:var(--light) ;
+        padding-right: 175px;
+    }
+    h1{
+        margin: auto;
+        display: flex;
+        }
