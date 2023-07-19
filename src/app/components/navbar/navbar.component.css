@@ -31,7 +31,7 @@ nav {
 
 .nav-right{
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
 
     height: 100%;
@@ -56,8 +56,11 @@ img{
     width: 100%;
 }
 
-h1{
+p, h1{
     margin:0px !important;
+}
+
+h1{ 
     color: var(--light) !important;
 }
 
@@ -66,6 +69,14 @@ span{
     vertical-align: middle;
     justify-content: center;
 
+}
+
+.name-greeting{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+    margin: 0px var(--small-s);
 }
 
 /* BUTTONS */
