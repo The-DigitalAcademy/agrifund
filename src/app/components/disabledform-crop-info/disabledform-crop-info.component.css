@@ -1,7 +1,17 @@
 .container {
-    margin: 110px 60px 100px 60px;
+    margin: 30px 60px 100px 60px;
     border-color: var(--light-grey);
   }
+  
   .form-control {
     border-color: var(--lighter-grey);
   }
+  
+  .divider {
+    width: calc(100% - 120px); /* Subtract the left and right margins from the container width */
+    height: 1px;
+    background-color: #ccc;
+    margin-top: 100px;
+    margin-left: 60px;
+  }
+  
