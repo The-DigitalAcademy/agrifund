@@ -92,7 +92,8 @@
                     <div class="search justify-end">
 
                         <div class="input-group justify-end">
-                            <input class="form-control searchbar mobile-hidden" type="text" name="search" autocomplete="off">
+                            <input class="form-control searchbar mobile-hidden" type="text" name="search"
+                                autocomplete="off">
                             <button type="button" class="btn colourful-btn">
                                 <fa-icon icon="search"></fa-icon>
                             </button>
@@ -101,7 +102,7 @@
                 </div>
 
                 <div class="container record-table">
-                    <table class="table">
+                    <table class="table mobile-hidden">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -112,7 +113,7 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody *ngFor="let record of counter(15)">
+                        <tbody *ngFor="let record of counter(10)">
                             <tr>
                                 <td scope="row">Bought Seeds</td>
                                 <td>Money Out</td>
@@ -138,22 +139,34 @@
                                 </div>
                             </tr>
                         </tbody>
-
-                        <tr *ngFor="50; last as isLast">
-
-
-
-                            <div class="mobile-record-row">
-
-                            </div>
-
-
-                            <hr *ngIf="!isLast ">
-                        </tr>
-
-
-
                     </table>
+
+                    <div class="large-hidden" *ngFor="let record of counter(10); last as isLast">
+                        <div class="info">
+                            <div class="left justify-start">
+                                <p class="bold">Bought Seeds</p>
+                                <p class="greyed">22/12/2022</p>
+                            </div>
+                            <div class="right justify-end">
+                                <p class="bold">R 1,200.00</p>
+                                <p class="greyed">Money Out</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <div class="left justify-start">
+                                <p class="bold">Sold Produce</p>
+                                <p class="greyed">22/12/2022</p>
+                            </div>
+                            <div class="right justify-end">
+                                <p class="bold">R 1,200.00</p>
+                                <p class="greyed">Money In</p>
+                            </div>
+                        </div>
+                        <hr *ngIf="!isLast ">
+                    </div>
+
+
                     <hr>
                     <nav class=" actions justify-center">
                         <ul class="pagination">
