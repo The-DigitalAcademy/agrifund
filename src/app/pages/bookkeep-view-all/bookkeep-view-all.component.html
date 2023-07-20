@@ -1,0 +1,193 @@
+<app-navbar></app-navbar>
+
+<div class="row page-body g-0">
+    <div class="col-lg-2 g-0 sidebar mobile-hidden">
+        <hr>
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-12 col-lg-10 g-0 page-content">
+        <div class="page-heading">
+            <h1>Bookkeep</h1>
+        </div>
+        <div class="container">
+            <div class="actions">
+                <div class="justify-start">
+                    <button class="btn colourful-btn">
+                        <span>
+                            <fa-icon icon="file-download"></fa-icon>
+                            Generate Report
+                        </span>
+                    </button>
+                </div>
+                <div class="date-filter justify-end">
+                    <div class="form-input mobile-hidden">
+                        <label for="fromDate" class="form-label">From</label>
+                        <input type="date" class="form-control" id="fromDate">
+                    </div>
+                    <div class="form-input mobile-hidden">
+                        <label for="toDate" class="form-label">To</label>
+                        <input type="date" class="form-control" id="toDate">
+                    </div>
+
+                    <button class="btn icon-btn large-hidden">
+                        <fa-icon icon="filter"></fa-icon>
+                        Filter by date
+                    </button>
+                </div>
+
+            </div>
+            <div class="row card-summary">
+                <div class="col-4 mobile-hidden">
+                    <div class="card money-in-card">
+                        <label class="card-title"> Total Money In</label>
+                        <h2 class="amount">R 1,200.00</h2>
+                    </div>
+                </div>
+                <div class="col-4 mobile-hidden">
+                    <div class="card profit-card">
+                        <label class="card-title">Profit</label>
+                        <h2 class="amount">R 300.00</h2>
+                    </div>
+                </div>
+                <div class="col-4 mobile-hidden">
+                    <div class="card money-out-card">
+                        <label class="card-title">Total Money Out</label>
+                        <h2 class="amount">R 800.00</h2>
+                    </div>
+                </div>
+
+                <div class="col-12 large-hidden">
+                    <div class="card profit-card">
+                        <label class="card-title">Profit</label>
+                        <h2 class="amount">R 300.00</h2>
+                    </div>
+
+                </div>
+                <div class="col-6 large-hidden">
+                    <div class="card money-in-card">
+                        <label class="card-title"> Total Money In</label>
+                        <h2 class="amount">R 1,200.00</h2>
+                    </div>
+                </div>
+                <div class="col-6 large-hidden">
+                    <div class="card money-out-card">
+                        <label class="card-title">Total Money Out</label>
+                        <h2 class="amount">R 800.00</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container bookkeep-actions">
+
+                <div class="actions">
+                    <div class="justify-start">
+                        <button class="btn colourful-btn">
+                            <span>
+                                <fa-icon icon="plus"></fa-icon>
+                                Create Record
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="search justify-end">
+
+                        <div class="input-group justify-end">
+                            <input class="form-control searchbar mobile-hidden" type="text" name="search"
+                                autocomplete="off">
+                            <button type="button" class="btn colourful-btn">
+                                <fa-icon icon="search"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container record-table">
+                    <table class="table mobile-hidden">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Date Added</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Uploaded Proof</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let record of counter(10)">
+                            <tr>
+                                <td scope="row">Bought Seeds</td>
+                                <td>Money Out</td>
+                                <td>22/12/2022</td>
+                                <td>R 1,200.00</td>
+                                <td>No</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <div class="delete-btn"></div>
+                                        <div class="view-btn"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Sold Produce</td>
+                                <td>Money In</td>
+                                <td>13/12/2022</td>
+                                <td>R 1,200.00</td>
+                                <td>Yes</td>
+                                <div class="action-buttons">
+                                    <div class="delete-btn"></div>
+                                    <div class="view-btn"></div>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="large-hidden" *ngFor="let record of counter(10); last as isLast">
+                        <div class="info">
+                            <div class="left justify-start">
+                                <p class="bold">Bought Seeds</p>
+                                <p class="greyed">22/12/2022</p>
+                            </div>
+                            <div class="right justify-end">
+                                <p class="bold">R 1,200.00</p>
+                                <p class="greyed">Money Out</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <div class="left justify-start">
+                                <p class="bold">Sold Produce</p>
+                                <p class="greyed">22/12/2022</p>
+                            </div>
+                            <div class="right justify-end">
+                                <p class="bold">R 1,200.00</p>
+                                <p class="greyed">Money In</p>
+                            </div>
+                        </div>
+                        <hr *ngIf="!isLast ">
+                    </div>
+
+
+                    <hr>
+                    <nav class=" actions justify-center">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
