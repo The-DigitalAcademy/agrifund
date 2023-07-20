@@ -167,9 +167,7 @@ label,
 input,
 .form-control {
     border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-
-    background-color: var(--light);
+    border: var(--container-border) var(--lighter-grey);
 
 }
 

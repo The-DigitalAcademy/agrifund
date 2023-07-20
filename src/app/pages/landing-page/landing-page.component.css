@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    height:100%;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: none;
+    border: none;
+  }
+  
+
+
+    .button {
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 1px 2px;
+        cursor: pointer;
+} 
+
+
+.card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12px 12px;
+  padding-top: 4px;
+}
+.card-img-overlay h1,
+.card-img-overlay a {
+  padding-left: 15px;
+}
