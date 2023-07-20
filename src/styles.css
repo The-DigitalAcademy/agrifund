@@ -211,6 +211,14 @@ label,
     color: var(--dark);
 }
 
+.table th{
+    color: var(--grey);
+}
+
+.table> :not(caption)>*>*{
+    background-color: transparent !important;
+}
+
 input,
 .form-control {
     border-radius: var(--border-radius);
