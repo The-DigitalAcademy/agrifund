@@ -7,7 +7,7 @@
     /* opacity: 0.7; */
 }
 
-.container{
+.container {
     width: 100%;
 }
 
@@ -16,8 +16,8 @@
     height: 100%;
 }
 
-.bookkeep-activities{
-   width: 100vw;
+.bookkeep-activities {
+    width: 100vw;
 }
 
 .overall-actions {
@@ -68,16 +68,16 @@
     margin: 0px;
 }
 
-fa-icon{
-    margin: 0px var(--small-s) 0px 0px ;
+fa-icon {
+    margin: 0px var(--small-s) 0px 0px;
 }
 
-h2{
+h2 {
     font-family: var(--normal-font);
     font-size: var(--font-large);
 }
 
-.row{
+.row {
     padding: inherit;
 }
 
@@ -85,16 +85,17 @@ h2{
     margin-bottom: var(--large-s);
 }
 
-.profit-card{
+.profit-card {
     background-color: var(--primary-colour);
     margin: 0px var(--small-s);
 }
 
-.profit-card h2, .profit-card label{
+.profit-card h2,
+.profit-card label {
     color: var(--light);
 }
 
-.money-in-card{
+.money-in-card {
     margin: 0px var(--small-s) 0px 0px;
 }
 
@@ -103,34 +104,42 @@ h2{
 }
 
 @media only screen and (max-width: 576px) {
-    .card-summary{
+    .card-summary {
         display: flex;
         justify-content: column;
 
         margin-bottom: var(--normal-s);
     }
 
-        .profit-card {
-            margin: var(--small-s) 0px;
-            padding: var(--small-s);
-        }
-    
-        .money-in-card {
-            margin: var(--small-s) var(--small-s) 0px 0px ;
-            padding: var(--small-s);
-        }
-    
-        .money-out-card {
-            margin: var(--small-s) 0px 0px var(--small-s);
-            padding: var(--small-s);
-        }
-    
+    .profit-card {
+        margin: var(--small-s) 0px;
+        padding: var(--small-s);
+    }
+
+    .money-in-card {
+        margin: var(--small-s) var(--small-s) 0px 0px;
+        padding: var(--small-s);
+    }
+
+    .money-out-card {
+        margin: var(--small-s) 0px 0px var(--small-s);
+        padding: var(--small-s);
+    }
+
 }
 
 @media only screen and (max-width: 576px) {
 
     .sidebar {
         display: none !important;
+    }
+
+    .bookkeep-actions {
+        padding: var(--small-s);
+    }
+
+    .record-table {
+        padding: var(--small-s);
     }
 
 }
