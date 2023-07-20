@@ -40,6 +40,13 @@
     width: 100%
 }
 
+.justify-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
 .date-filter .form-input {
     flex-direction: row;
     margin: 0px 0px 0px var(--small-s);
