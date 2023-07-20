@@ -13,19 +13,16 @@
 
 .sidebar {
     background-color: var(--primary-colour);
-    height: 100%;
 }
 
-.bookkeep-activities {
-    width: 100vw;
-}
-
-.overall-actions {
+.actions {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 
     margin-bottom: var(--normal-s);
+
+    width:100%
 }
 
 .report-btn {

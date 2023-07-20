@@ -10,7 +10,7 @@
             <h1>Bookkeep</h1>
         </div>
         <div class="container">
-            <div class="overall-actions">
+            <div class="actions">
                 <div class="report-btn">
                     <button class="btn colourful-btn">
                         <span>
@@ -79,6 +79,33 @@
 
             <div class="container bookkeep-actions">
 
+                <div class="actions">
+                    <div class="create-btn">
+                        <button class="btn colourful-btn">
+                            <span>
+                                <fa-icon icon="file-download"></fa-icon>
+                                Generate Report
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="search">
+                        <div class="form-input mobile-hidden">
+                            <label for="fromDate" class="form-label">From</label>
+                            <input type="date" class="form-control" id="fromDate">
+                        </div>
+                        <div class="form-input mobile-hidden">
+                            <label for="toDate" class="form-label">To</label>
+                            <input type="date" class="form-control" id="toDate">
+                        </div>
+                
+                        <button class="btn icon-btn large-hidden">
+                            <fa-icon icon="filter"></fa-icon>
+                            Filter by date
+                        </button>
+                    </div>
+                </div>
+
                 <div class="container record-table">
 
                     <table class="table">
@@ -92,8 +119,7 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <hr>
-                        <tbody *ngFor="let record of counter(50)">
+                        <tbody *ngFor="let record of counter(15)">
                             <tr>
                                 <td scope="row">Bought Seeds</td>
                                 <td>Money Out</td>
@@ -121,14 +147,14 @@
                         </tbody>
 
                         <tr *ngFor="50; last as isLast">
-                        
-                        
-                        
-                        <div class="mobile-record-row">
 
-                        </div>
-                        
-                        
+
+
+                            <div class="mobile-record-row">
+
+                            </div>
+
+
                             <hr *ngIf="!isLast ">
                         </tr>
 
@@ -136,7 +162,7 @@
 
                     </table>
 
-                    
+
                 </div>
 
 

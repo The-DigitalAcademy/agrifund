@@ -27,10 +27,11 @@ a fa-icon {
 }
 
 .sidebar-content{
-    position: absolute;
+    position: fixed;
     padding: var(--normal-s);
     background-color: var(--primary-colour);
-    z-index: 100;
+    height: 100%;
+        z-index: 1;
 }
 
 
