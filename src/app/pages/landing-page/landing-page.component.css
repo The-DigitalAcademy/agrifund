@@ -4,6 +4,8 @@
     width:100%;
     justify-content: center;
     align-items: center;
+    border-radius: none;
+    border: none;
   }
   
 
@@ -19,10 +21,6 @@
         cursor: pointer;
 } 
 
-.container{
-  border-radius: none;
-  border: none;
-}
 
 .card-img-overlay {
   display: flex;
