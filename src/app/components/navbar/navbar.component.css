@@ -83,6 +83,10 @@ span {
 
 }
 
+.icon-btn fa-icon {
+    color: var(--light) !important;
+}
+
 .name-greeting {
     display: flex;
     justify-content: flex-end;

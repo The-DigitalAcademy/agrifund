@@ -291,7 +291,6 @@ button {
 .icon-btn fa-icon {
     color: var(--grey) !important;
     margin: var(--x-small-s) 0px;
-
 }
 
 .icon-btn-dark {
