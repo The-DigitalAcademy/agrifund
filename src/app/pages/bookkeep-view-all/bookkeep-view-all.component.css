@@ -1,0 +1,13 @@
+.page-body {
+    height: 100vh;
+
+    background-image: url("src/assets/images/background/orange-trees.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.sidebar {
+    background-color: var(--primary-colour);
+    height: 100%;
+    ;
+}

@@ -1,7 +1,7 @@
-<nav class="navbar sticky">
+<nav class="navbar row g-0">
 
   <!--before login-->
-  <div class="nav-left">
+  <div class="nav-left col-lg-3 g-0">
     <button class="icon-btn navbar-toggler navbar-toggler-start d-lg-none d-md-none" type="button"
       data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
       <fa-icon icon="bars"></fa-icon>
@@ -14,22 +14,21 @@
     </h1>
   </div>
 
-
-  <div class="nav-right mobile-hidden">
+  <div class="nav-right col-lg-9 g-0 mobile-hidden">
     <button type="button" class="btn colourful-btn">Login</button>
     <button type="button" class="btn outline-btn">Register</button>
   </div>
 
 
   <!--after login-->
-  <!-- <div class="nav-right"> 
+  <!-- <div class="nav-right col-lg-9 g-0">
     <span class="name-greeting">
-      <p>Hello,</p> <pre>&#x20;</pre>
-      <a>FirstName</a>
+      <p>Hello,</p>
+      <pre>&#x20;</pre>
+      <a class="username">FirstName</a>
     </span>
     <button type="button" class="btn outline-btn">Logout</button>
   </div> -->
-
 </nav>
 
 
@@ -48,18 +47,22 @@
   </div>
   <hr>
   <div class="offcanvas-body">
+<<<<<<< HEAD
 
     <!-- <app-sidebar></app-sidebar> -->
+=======
+    <app-sidebar></app-sidebar>
+>>>>>>> 08f61216b0febc8355376fb90c98d059e70c45ba
   </div>
 
   <!-- before login -->
   <div class="offcanvas-footer">
-      <button class="btn white-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
-        Login
-      </button>
-      <button class="btn white-outline-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
-        Register
-      </button>
+    <button class="btn white-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
+      Login
+    </button>
+    <button class="btn white-outline-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
+      Register
+    </button>
   </div>
 
   <!-- after login -->

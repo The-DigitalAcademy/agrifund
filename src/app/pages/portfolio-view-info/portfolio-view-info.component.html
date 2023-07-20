@@ -1,28 +1,41 @@
-<div class="portfolio-view-info">
-    <div class="sidebar-wrapper">
+
+<app-navbar></app-navbar>
+<div class="row page-body g-0">
+
+    <div class="col-lg-3 g-0 sidebar mobile-hidden">
+        <hr>
         <app-sidebar></app-sidebar>
     </div>
 
-    <div class="main-content">
-        <app-navbar></app-navbar>
-        <!-- <app-heading-page></app-heading-page> -->
-        <div class="portfolio">
-            <div class="page-body">
-                <div class="div-2">
-                    <!-- <app-progress></app-progress> -->
-                    <!-- <app-farm-info></app-farm-info> -->
 
+    <!-- portfolio page -->
+    <div class="col-md-12 col-lg-9 g-0 content">
+        
+            <div class="portfolio-view-info">
+                <div class="main-content">
+
+                    <!-- <app-heading-page></app-heading-page> -->
+                    <div class="portfolio">
+                        <div class="page-body">
+                            <div class="div-2">
+                                <!-- <app-progress></app-progress> -->
+                                <!-- <app-farm-info></app-farm-info> -->
+
+                            </div>
+
+                            <div class="div-2">
+                                <app-personal-info-form></app-personal-info-form>
+                                <!-- <app-crop-form></app-crop-form> -->
+                            </div>
+                        </div>
+
+                        <div class="bottom">
+                            <!-- <app-equipment-tool-info></app-equipment-tool-info> -->
+                        </div>
+                    </div>
                 </div>
-
-                <div class="div-2">
-                    <app-personal-info-form></app-personal-info-form>
-                    <!-- <app-crop-form></app-crop-form> -->
-                </div>
-            </div>
-
-            <div class="bottom">
-                <!-- <app-equipment-tool-info></app-equipment-tool-info> -->
             </div>
         </div>
+
     </div>
-</div>
+

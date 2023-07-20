@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
 import {
     FontAwesomeModule,
     FaIconLibrary} from '@fortawesome/angular-fontawesome';
@@ -48,7 +49,7 @@ import { PortfolioProgressbarComponent } from './components/portfolio-progressba
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

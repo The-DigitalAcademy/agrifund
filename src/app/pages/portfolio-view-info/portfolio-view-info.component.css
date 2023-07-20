@@ -1,12 +1,15 @@
-.portfolio-view-info{
+.page-body {
   align-items: flex-start;
   background-image: url(src/assets/images/background/orange-trees.webp);
-  background-position: 50% 50%;
   background-size: cover;
-  border: 3px none;
   display: flex;
-  min-height: 1533px;
-  min-width: 1280px;
   position: relative;
   width: 100%;
+  height: 100%;
 }
+
+.sidebar {
+    background-color: var(--primary-colour);
+    height: 100%;
+}
+

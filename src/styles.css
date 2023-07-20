@@ -68,7 +68,7 @@ body {
 
     background-color: var(--light);
 
-    margin-top: 60px;
+    /* margin-top: 60px; */
 }
 
 /* DISPLAY */
@@ -78,7 +78,13 @@ body {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
+    padding: var(--normal-s);
+
     background-color: var(--light);
+}
+
+.row>* {
+    padding: 0px;
 }
 
 /* TEXT */
@@ -128,8 +134,6 @@ a {
     font-weight: var(--regular);
 
     color: var(--primary-colour) !important;
-    text-decoration: underline !important;
-
 }
 
 a:hover,
@@ -316,6 +320,7 @@ hr {
     }
 
     /* HIDE ITEMS*/
+    /* hide items on large screens */
     .large-hidden {
         display: none !important;
     }
@@ -325,7 +330,8 @@ hr {
 @media only screen and (max-width: 768px) and (max-width: 1200px) {
 
     /* HIDE ITEMS*/
-    .mobile-hidden {
+    /* hide items on small screens */
+    .mobile-hidden { 
         display: none !important;
     }
 
