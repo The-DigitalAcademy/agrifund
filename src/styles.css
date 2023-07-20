@@ -243,7 +243,6 @@ button[disabled]{
     color: var(--grey) !important;
 }
 
-
 /* HIDE ITEMS*/
 .hidden{
     display: none;

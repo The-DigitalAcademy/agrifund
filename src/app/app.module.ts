@@ -39,9 +39,10 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { LoginComponent } from './pages/login/login.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent,RegisterComponent, LoginComponent],
+    declarations: [AppComponent, NavbarComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
