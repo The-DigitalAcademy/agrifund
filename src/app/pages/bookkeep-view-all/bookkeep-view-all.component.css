@@ -77,11 +77,18 @@ h2{
 }
 
 .profit-card{
-    
     background-color: var(--primary-colour);
-    margin: 0px var(--normal-s);
+    margin: 0px var(--small-s);
 }
 
 .profit-card h2, .profit-card label{
     color: var(--light);
+}
+
+.money-in-card{
+    margin: 0px var(--small-s) 0px 0px;
+}
+
+.money-out-card {
+    margin: 0px 0px 0px var(--small-s);
 }
