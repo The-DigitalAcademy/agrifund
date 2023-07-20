@@ -11,7 +11,8 @@ const routes: Routes = [
     {path: '',component: PersonalInfoFormComponent},
     {path: 'crop',component: DisabledformCropInfoComponent},
     {path: 'portfolio',component: PortfolioViewInfoComponent},
-    {path: 'progressbar',component:PortfolioProgressbarComponent}
+    {path: 'progressbar',component:PortfolioProgressbarComponent},
+    
 ];
 
 @NgModule({

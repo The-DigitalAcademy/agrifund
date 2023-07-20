@@ -17,3 +17,22 @@
     margin-bottom: var(--normal-s);
 }
 
+.crop-info{
+    margin-top:20px;
+}
+
+.page-heading{
+    display: flex;
+  align-items: center;
+  width:100%;
+}
+.headings{
+    display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+
+ 
+  
