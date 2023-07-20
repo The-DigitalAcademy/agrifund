@@ -81,6 +81,10 @@ h2{
     padding: inherit;
 }
 
+.card-summary {
+    margin-bottom: var(--large-s);
+}
+
 .profit-card{
     background-color: var(--primary-colour);
     margin: 0px var(--small-s);
@@ -102,6 +106,8 @@ h2{
     .card-summary{
         display: flex;
         justify-content: column;
+
+        margin-bottom: var(--normal-s);
     }
 
         .profit-card {
