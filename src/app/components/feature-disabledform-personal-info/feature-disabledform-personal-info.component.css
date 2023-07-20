@@ -16,9 +16,7 @@ hr {
   border-color: var(--grey);
   border: 1px solid #ccc;
   margin-bottom: 20px;
-  
-  
-}
+  }
 
 
 
@@ -39,7 +37,16 @@ hr {
     margin-top: 5px;
   }
   
-
+  h1{
+    color: var(--grey);
+    font-family: var(--normal);
+    font-size: var(--medium-s);
+    font-weight: var(--bold);
+    margin-top: 6px;
+}
+.profile-heading{
+  display: flex;
+}
 
 
 

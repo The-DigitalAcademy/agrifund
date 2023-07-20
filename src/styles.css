@@ -46,6 +46,7 @@
     --thin: 100;
     --light-font: 300;
     --regular: 400;
+
     --bold: 700;
 
 
@@ -58,6 +59,7 @@
     --x-small-s: 4px;
     --small-s: 8px;
     --normal-s: 14px;
+    --medium-s: 20px;
     --large-s: 24px;
     --x-larger-s: 36px;
 }
