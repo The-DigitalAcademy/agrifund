@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-enableform-crop-info',
@@ -7,9 +8,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class EnableformCropInfoComponent {
   @Output() enableFields = new EventEmitter<void>();
+  @Output() saveData = new EventEmitter<any>();
+  myForm!: FormGroup;
 
   onEditClicked() {
     this.enableFields.emit();
+  }
+
+
+  onSaveClicked() {
+    this.saveData.emit(this.myForm.value);
   }
 
 }

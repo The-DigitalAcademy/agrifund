@@ -7,8 +7,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./disabledform-crop-info.component.css']
 })
 export class DisabledformCropInfoComponent implements OnInit {
+
   myForm!: FormGroup;
   isDisabled: boolean = true;
+  editedData: any = null;
 
   cropOptions: string[] = ['Corn', 'Tomatoes', 'Potatoes', 'Carrots', 'Lettuce'];
   farmerData = { // Replace this with the actual farmer data
@@ -36,4 +38,15 @@ export class DisabledformCropInfoComponent implements OnInit {
     const selectedCrops = this.myForm.get('selectedCrops')?.value as string[];
     return selectedCrops.join(', ');
   }
+
+  saveFields() {
+    this.editedData = this.myForm.value; 
+    this.isDisabled = true; 
+    }
+
+    onSaveClicked(formData: any) {
+      this.farmerData = formData;
+      this.isDisabled = true;
+      this.myForm.disable();
+    }
 }

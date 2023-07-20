@@ -1,6 +1,6 @@
 <div class="divider"></div>
 <div class="container">
-<app-enableform-crop-info (enableFields)="enableFields()"></app-enableform-crop-info>
+<app-enableform-crop-info (enableFields)="enableFields()" (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
   <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
     <div class="form-input">
         <label for="seasonFarm" class="form-label">I usually farm during:</label>
@@ -21,7 +21,13 @@
         <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
         <input type="text" class="form-control" formControlName="seedsAmount" [attr.disabled]="isDisabled ? 'disabled' : null">
       </div>
-    
-    
+      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
+
+      <!-- Show the edited data when the form is disabled and data is available -->
+      <div *ngIf="isDisabled && editedData">
+        <p>Season: {{ editedData.seasonFarm }}</p>
+        <p>Selected Crops: {{ getSelectedCropsAsString() }}</p>
+        <p>Seeds Amount: {{ editedData.seedsAmount }}</p>
+      </div>
   </form>
 </div>
