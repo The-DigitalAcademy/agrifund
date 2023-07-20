@@ -43,11 +43,12 @@ import { EnableformCropInfoComponent } from './components/enableform-crop-info/e
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { OffcanvasComponent } from './components/offcanvas/offcanvas.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
+import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
 
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

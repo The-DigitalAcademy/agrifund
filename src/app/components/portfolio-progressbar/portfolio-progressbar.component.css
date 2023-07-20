@@ -1,0 +1,18 @@
+.progress-bar {
+    background: linear-gradient(180deg, rgb(155, 166, 111) 0%, rgb(125, 137, 83) 50%, rgb(96, 108, 56) 100%);
+    border-radius: 3px;
+    
+   
+    height: 29px;
+    min-width: 406px;
+
+
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+
+}
+  
