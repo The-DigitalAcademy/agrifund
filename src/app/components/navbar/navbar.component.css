@@ -122,11 +122,11 @@ span {
 }
 
 .white-btn{
-        margin: var(--small-s) var(--small-s) var(--small-s) var(--normal-s) !important;
+    margin: var(--small-s) var(--normal-s) var(--normal-s) var(--small-s) !important;
 }
 
 .white-outline-btn{
-    margin: var(--small-s) var(--normal-s) var(--small-s) var(--small-s) !important;
+    margin: var(--small-s) var(--normal-s) var(--normal-s) var(--small-s) !important;
 }
 
 @media only screen and (max-width: 768px) {
