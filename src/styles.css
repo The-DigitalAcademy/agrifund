@@ -230,7 +230,7 @@ input[type=number]:focus,
 .btn,
 button {
     font-family: var(--normal-font);
-    font-size: var(--font-medium);
+    font-size: var(--font-normal);
     text-align: center;
 
     display: flex;
