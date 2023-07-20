@@ -68,5 +68,16 @@ h2{
   padding: 50px;
 }
 
+.controls{
+  background-color: var(--primary-colour);
+}
 
 
+.carousel-control-prev,
+.carousel-control-next{
+  bottom: 200px;
+}
+
+.button{
+  margin: 450px;
+}
