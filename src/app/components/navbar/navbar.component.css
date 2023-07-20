@@ -50,8 +50,11 @@ nav {
 
 .nav-brand {
     display: flex;
-
     vertical-align: center !important;
+}
+
+.offcanvas .nav-brand {
+    padding: 0px var(--normal-s);
 }
 
 img {
