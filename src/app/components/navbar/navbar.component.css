@@ -1,6 +1,6 @@
 nav {
     display: flex;
-    vertical-align: middle !important;
+    vertical-align: center !important;
 
     width: 100%;
     height: 55px !important;
@@ -111,6 +111,12 @@ span {
     background-color: var(--primary-colour);
 }
 
+.offcanvas-body{
+    display: flex;
+    justify-content: flex-start;
+    align-items: top;
+}
+
 .offcanvas-footer {
     display: flex;
     justify-content: center;
@@ -122,7 +128,7 @@ span {
 }
 
 .white-btn{
-    margin: var(--small-s) var(--normal-s) var(--normal-s) var(--small-s) !important;
+    margin: var(--small-s) var(--small-s) var(--normal-s) var(--normal-s) !important;
 }
 
 .white-outline-btn{

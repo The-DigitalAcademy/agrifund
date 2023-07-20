@@ -108,7 +108,7 @@ h3 {
     color: var(--dark);
 }
 
-p {
+p{
     font-family: var(--normal);
     font-size: var(--font-medium);
     font-weight: var(--regular);
