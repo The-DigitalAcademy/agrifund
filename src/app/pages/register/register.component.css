@@ -50,6 +50,7 @@ align-items: flex-start;
     width: 100%;
     align-items: flex-end;
     justify-content: center;
+    border: none;
    
 
 
@@ -58,4 +59,8 @@ align-items: flex-start;
   display: flex;  
   width: 100%;
   align-items: flex-start;
+}
+.icon-btn {
+    margin: auto;
+    border: none;
 }

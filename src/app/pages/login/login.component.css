@@ -40,3 +40,24 @@ h1 {
     align-self: center;
      */
 }
+.heading{
+    width: 100%;
+   
+align-items: flex-start;
+    justify-content: center;
+    
+}
+.action{
+    width: 100%;
+    align-items: flex-end;
+    justify-content: center;
+    border: none;
+   
+
+
+}
+.container-header{
+  display: flex;  
+  width: 100%;
+  align-items: flex-start;
+}
