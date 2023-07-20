@@ -37,15 +37,25 @@ hr {
     margin-top: 5px;
   }
   
-  h1{
-    color: var(--grey);
-    font-family: var(--normal);
-    font-size: var(--medium-s);
-    font-weight: var(--bold);
-    margin-top: 6px;
-}
+
 .profile-heading{
   display: flex;
+  align-items: center;
+  width:100%;
+}
+
+.heading{
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.action{
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 

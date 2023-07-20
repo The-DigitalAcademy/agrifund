@@ -1,6 +1,16 @@
-<div class="divider"></div>
+
+
 <div class="container">
+    <div class="profile-heading">
+      <div class="heading">
+        <h3>Your Personal Info</h3>
+      </div>
+      <div class="action">
 <app-enableform-crop-info (enableFields)="enableFields()" (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+   </div>
+    </div>
+   <hr>
+   <div class="container">
   <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
     <div class="form-input">
         <label for="seasonFarm" class="form-label">I usually farm during:</label>
@@ -32,3 +42,5 @@
       </div>
   </form>
 </div>
+    </div>
+    

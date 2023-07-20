@@ -1,9 +1,4 @@
-.edit-icon-container {
-    position: absolute;
-    top: 55px;
-    right: 90px;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 5px;
-    background-color: aqua;
-    }
+fa-icon{
+    color: var(--grey);
+    
+}
