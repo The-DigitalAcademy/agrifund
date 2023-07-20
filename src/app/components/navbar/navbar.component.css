@@ -22,6 +22,8 @@ nav {
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
+
+    padding: 0px;
 }
 
 .nav-left {
@@ -119,6 +121,8 @@ span {
     display: flex;
     justify-content: flex-start;
     align-items: top;
+
+    padding:0px !important;
 }
 
 .offcanvas-footer {
