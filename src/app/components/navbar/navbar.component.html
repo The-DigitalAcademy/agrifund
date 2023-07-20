@@ -16,8 +16,8 @@
 
 
   <div class="nav-right mobile-hidden">
-    <button type="button" class="btn colourful-btn">Login</button>
-    <button type="button" class="btn outline-btn">Register</button>
+    <button type="button" class="btn colourful-btn" [routerLink]="['/login']">Login</button>
+    <button type="button" class="btn outline-btn"[routerLink]="['/register']">Register</button>
   </div>
 
 
@@ -54,10 +54,10 @@
 
   <!-- before login -->
   <div class="offcanvas-footer">
-      <button class="btn white-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
+      <button class="btn white-btn" [routerLink]="['/login']" data-bs-dismiss="offcanvas">
         Login
       </button>
-      <button class="btn white-outline-btn" [routerLink]="['']" data-bs-dismiss="offcanvas">
+      <button class="btn white-outline-btn" [routerLink]="['/register']" data-bs-dismiss="offcanvas">
         Register
       </button>
   </div>
