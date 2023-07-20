@@ -22,6 +22,7 @@
         <input type="text" class="form-control" formControlName="seedsAmount" [attr.disabled]="isDisabled ? 'disabled' : null">
       </div>
       <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
+      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
 
       <!-- Show the edited data when the form is disabled and data is available -->
       <div *ngIf="isDisabled && editedData">

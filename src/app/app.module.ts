@@ -40,11 +40,14 @@ import { EnableformPersonalInfoComponent } from './components/enableform-persona
 import { PersonalInfoFormComponent } from './components/personal-info-form/personal-info-form.component';
 import { DisabledformCropInfoComponent } from './components/disabledform-crop-info/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/enableform-crop-info/enableform-crop-info.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { OffcanvasComponent } from './components/offcanvas/offcanvas.component';
+import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 
 
-
-@NgModule({
-    declarations: [AppComponent, NavbarComponent, DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent],
+ 
+    @NgModule({
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

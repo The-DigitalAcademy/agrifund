@@ -7,6 +7,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./disabledform-crop-info.component.css']
 })
 export class DisabledformCropInfoComponent implements OnInit {
+onCancelClicked() {
+throw new Error('Method not implemented.');
+}
+
 
   myForm!: FormGroup;
   isDisabled: boolean = true;
@@ -49,4 +53,6 @@ export class DisabledformCropInfoComponent implements OnInit {
       this.isDisabled = true;
       this.myForm.disable();
     }
+
+    
 }

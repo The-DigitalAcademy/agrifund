@@ -17,4 +17,10 @@
  .btn{
     width: 100px;
  }
+ .label{
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: fit-content;
+ }
   
