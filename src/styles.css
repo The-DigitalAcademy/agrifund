@@ -198,6 +198,14 @@ fa-icon {
     font-weight: var(--bold);
 }
 
+.bold{
+    font-weight: var(--bold);
+}
+
+.greyed {
+    color: var(--grey);
+}
+
 /* FORMS */
 label,
 .form-label {
