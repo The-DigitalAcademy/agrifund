@@ -26,10 +26,6 @@ a fa-icon {
     font-size: var(--font-medium);
 }
 
-a{
-    text-decoration: none;
-}
-
 .sidebar-content{
     height: 100%;
     width: 100%;

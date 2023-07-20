@@ -128,8 +128,6 @@ a {
     font-weight: var(--regular);
 
     color: var(--primary-colour) !important;
-    text-decoration: underline !important;
-
 }
 
 a:hover,

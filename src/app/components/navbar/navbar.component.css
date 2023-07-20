@@ -86,6 +86,10 @@ span {
     margin: 0px var(--small-s);
 }
 
+.username {
+    text-decoration: underline;
+}
+
 /* BUTTONS */
 .nav-right .btn {
     width: 100px !important;
@@ -111,7 +115,7 @@ span {
     background-color: var(--primary-colour);
 }
 
-.offcanvas-body{
+.offcanvas-body {
     display: flex;
     justify-content: flex-start;
     align-items: top;
@@ -127,11 +131,11 @@ span {
     width: 100%;
 }
 
-.white-btn{
+.white-btn {
     margin: var(--small-s) var(--small-s) var(--normal-s) var(--normal-s) !important;
 }
 
-.white-outline-btn{
+.white-outline-btn {
     margin: var(--small-s) var(--normal-s) var(--normal-s) var(--small-s) !important;
 }
 
