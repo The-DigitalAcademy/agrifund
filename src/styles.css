@@ -88,6 +88,7 @@ body {
 }
 
 .container {
+    margin:0px !important;
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
@@ -95,7 +96,7 @@ body {
 
     background-color: var(--light);
     background-size: 100%;
-
+    width: 100% !important;
 }
 
 .card {
@@ -285,6 +286,10 @@ button {
 
 .icon-btn {
     font-weight: var(--bold);
+    color: var(--grey) !important;
+}
+
+.icon-btn fa-icon{
     color: var(--grey) !important;
 }
 
