@@ -5,7 +5,7 @@
 } */
 h1{
   text-align: center;
-  padding: 50px;
+  padding: 30px;
 }
 
 img{
@@ -24,8 +24,8 @@ img{
    .carousel-inner{
     display: block;
     margin: auto;
-    margin-top: 30px;
-    width: 550px;
+    margin-top: 50px;
+    width: 650px;
     height: 500px;
     padding: 24px;
     gap: 24px;
@@ -35,10 +35,7 @@ img{
     border-radius: var(--primary-colour 3px);
     border: var(--container-border 3px solid) 
   } 
-  .carousel-control-next{
-        bottom: 75%;
-  }
-  
+
 
   .container{
     margin-bottom: 100%;
@@ -48,8 +45,8 @@ img{
     text-align: center;
   }
 h2{
-  margin-top: 10%;
   font-size: var(--normal-s 14px);
+  margin-top: 10%;
   }
 
 /* .carousel-inner{
