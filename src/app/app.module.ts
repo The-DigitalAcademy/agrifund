@@ -40,9 +40,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent],
+    declarations: [AppComponent, NavbarComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

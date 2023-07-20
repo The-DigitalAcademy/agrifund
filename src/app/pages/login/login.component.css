@@ -19,7 +19,7 @@ img {
     align-items: center;
     gap: var(--large-s);
 }
-.btn2 {
+.icon-btn {
     margin: auto;
     border: none;
     color: var(--grey);
