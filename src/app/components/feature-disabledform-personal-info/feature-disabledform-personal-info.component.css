@@ -1,4 +1,8 @@
-
+.container-form {
+  margin: 30px 60px 100px 60px;
+  border: 1px solid #ccc;
+  
+}
 
 .container {
   margin: 30px 60px 100px 60px;

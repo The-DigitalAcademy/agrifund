@@ -27,11 +27,8 @@ a fa-icon {
 }
 
 .sidebar-content{
-    height: 100%;
-    width: 100%;
-
+    position: absolute;
     padding: var(--normal-s);
-
     background-color: var(--primary-colour);
 }
 

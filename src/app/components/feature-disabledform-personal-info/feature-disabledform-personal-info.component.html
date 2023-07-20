@@ -25,8 +25,10 @@
 <!-- disabledform-personal-info.component.html -->
 
 
-<div class="divider"></div>
+
 <div class="container">
+  <div class="divider"></div>
+  <div class="container-form">
   <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
   <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
     <div class="form-input">
@@ -45,7 +47,7 @@
     <div class="form-input">
       <label class="form-label" for="document">Proof of ID</label>
       <div class="file-container">
-        <label for="farm-label" >Upload Document</label>br
+        <label for="farm-label" >Upload Document</label> 
       <input type="file" id="document" (change)="onFileSelected($event)">
       </div>
     </div>
@@ -55,5 +57,5 @@
     </div>
   </form>
 </div>
-
+</div>
 
