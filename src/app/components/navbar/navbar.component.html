@@ -1,1 +1,67 @@
-<p>navbar works!</p>
+<nav class="navbar sticky">
+
+  <!--before login-->
+  <div class="nav-left">
+    <button class="icon-btn navbar-toggler navbar-toggler-start d-lg-none d-md-none" type="button"
+      data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
+      <fa-icon icon="bars"></fa-icon>
+    </button>
+
+    <h1 class="nav-brand">
+      <span>Agri</span>
+      <img src="agrifund/src/assets/images/logo/f_carrot.png" class="icon-img" alt="F">
+      <span>und</span>
+    </h1>
+  </div>
+
+
+  <div class="nav-right mobile-hidden">
+    <button type="button" class="btn colourful-btn" [routerLink]="['/login']">Login</button>
+    <button type="button" class="btn outline-btn"[routerLink]="['/register']">Register</button>
+  </div>
+
+
+  <!--after login-->
+  <!-- <div class="nav-right"> 
+    <span class="name-greeting">
+      <p>Hello,</p> <pre>&#x20;</pre>
+      <a>FirstName</a>
+    </span>
+    <button type="button" class="btn outline-btn">Logout</button>
+  </div> -->
+
+</nav>
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="true" id="offcanvas" tabindex="-1">
+
+  <div class="offcanvas-header">
+    <h1 class="nav-brand offcanvas-title">
+      <span>Agri</span>
+      <img src="agrifund/src/assets/images/logo/f_carrot.png" class="icon-img" alt="F">
+      <span>und</span>
+    </h1>
+
+    <button class="btn  icon-btn" type="button" data-bs-dismiss="offcanvas">
+      <fa-icon icon="times"></fa-icon>
+    </button>
+  </div>
+  <hr>
+  <div class="offcanvas-body">
+
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- before login -->
+  <div class="offcanvas-footer">
+      <button class="btn white-btn" [routerLink]="['/login']" data-bs-dismiss="offcanvas">
+        Login
+      </button>
+      <button class="btn white-outline-btn" [routerLink]="['/register']" data-bs-dismiss="offcanvas">
+        Register
+      </button>
+  </div>
+
+  <!-- after login -->
+
+</div>

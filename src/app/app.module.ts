@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormGroup } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { GetStartedComponent } from './pages/get-started/get-started.component';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -37,10 +36,15 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { OffcanvasComponent } from './components/offcanvas/offcanvas.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent,GetStartedComponent],
-    imports: [BrowserModule, AppRoutingModule],
+    declarations: [AppComponent, NavbarComponent],
+    imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
     providers: [],
     bootstrap: [AppComponent],
 })

@@ -1,0 +1,33 @@
+li,
+.nav-item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-decoration: none;
+}
+
+li:hover,
+li:active {
+    text-decoration: none;
+    color: var(--light-grey) !important;
+}
+
+.nav-link {
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
+    text-decoration: none;
+
+    margin: var(--small-s) 0px;
+
+    color: var(--light) !important;
+}
+
+a fa-icon {
+    margin: 0px var(--small-s);
+    font-size: var(--font-medium);
+
+}
+
+a{
+    text-decoration: none;
+}
