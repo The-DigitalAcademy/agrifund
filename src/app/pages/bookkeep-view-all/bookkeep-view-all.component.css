@@ -106,14 +106,25 @@ h2{
 
         .profit-card {
             margin: var(--small-s) 0px;
+            padding: var(--small-s);
         }
     
         .money-in-card {
-            margin: var(--small-s) 0px;
+            margin: var(--small-s) var(--small-s) 0px 0px ;
+            padding: var(--small-s);
         }
     
         .money-out-card {
-            margin: var(--small-s) 0px;
+            margin: var(--small-s) 0px 0px var(--small-s);
+            padding: var(--small-s);
         }
     
+}
+
+@media only screen and (max-width: 576px) {
+
+    .sidebar {
+        display: none !important;
+    }
+
 }
