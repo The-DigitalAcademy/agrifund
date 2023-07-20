@@ -38,12 +38,14 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { OffcanvasComponent } from './components/offcanvas/offcanvas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
