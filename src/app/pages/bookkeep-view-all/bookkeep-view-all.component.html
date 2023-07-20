@@ -92,18 +92,51 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
+                        <hr>
+                        <tbody *ngFor="let record of counter(50)">
+                            <tr>
+                                <td scope="row">Bought Seeds</td>
+                                <td>Money Out</td>
+                                <td>22/12/2022</td>
+                                <td>R 1,200.00</td>
+                                <td>No</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <div class="delete-btn"></div>
+                                        <div class="view-btn"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Sold Produce</td>
+                                <td>Money In</td>
+                                <td>13/12/2022</td>
+                                <td>R 1,200.00</td>
+                                <td>Yes</td>
+                                <div class="action-buttons">
+                                    <div class="delete-btn"></div>
+                                    <div class="view-btn"></div>
+                                </div>
+                            </tr>
+                        </tbody>
+
+                        <tr *ngFor="50; last as isLast">
+                        
+                        
+                        
+                        <div class="mobile-record-row">
+
+                        </div>
+                        
+                        
+                            <hr *ngIf="!isLast ">
+                        </tr>
+
+
 
                     </table>
 
-                    <div *ngFor="50; last as isLast">
-
-
-
-
-
-
-                        <hr *ngIf="!isLast">
-                    </div>
+                    
                 </div>
 
 

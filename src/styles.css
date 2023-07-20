@@ -141,7 +141,7 @@ h2 {
 }
 
 h3 {
-    font-family: var(--normal);
+    font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--bold);
 
@@ -151,7 +151,7 @@ h3 {
 }
 
 p {
-    font-family: var(--normal);
+    font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
 
@@ -161,7 +161,7 @@ p {
 }
 
 a {
-    font-family: var(--normal);
+    font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
 
@@ -208,14 +208,6 @@ label,
     margin: 0px 0px var(--small-s) 0px;
 
     color: var(--dark);
-}
-
-.table th{
-    color: var(--grey);
-}
-
-.table> :not(caption)>*>*{
-    background-color: transparent !important;
 }
 
 input,
@@ -347,12 +339,47 @@ button[disabled] {
     color: var(--grey) !important;
 }
 
+/* TABLES */
+
+.table> :not(caption)>*>* {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0px;
+}
+
+thead {
+    
+    border-bottom: var(--thin-border) var(--lighter-grey);
+}
+
+.table th {
+    font-family: var(--normal-font);
+    font-size: var(--font-regular);
+    font-weight: var(--bold);
+
+    padding: var(--normal-s) 0px;
+    color: var(--grey);
+}
+
+td {
+    font-family: var(--normal-font);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+
+    padding: var(--normal-s) 0px !important;
+
+    color: var(--dark-grey) !important;
+}
+
+
 hr {
     background-color: var(--lighter-grey);
     height: 1.5px;
     margin: var(--x-small-s) 0px;
 
     border: none !important;
+    width: 100% !important;
 }
 
 
