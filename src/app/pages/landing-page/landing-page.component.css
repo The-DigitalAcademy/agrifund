@@ -7,6 +7,10 @@
     border-radius: none;
     border: none;
   }
+
+  .container-fluid {
+    margin-top: 60px;
+  }
   
 
 
