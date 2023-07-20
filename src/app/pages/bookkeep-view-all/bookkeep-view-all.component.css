@@ -1,3 +1,8 @@
 .page-body{
     height: 100vh;
 }
+
+.sidebar{
+    background-color: var(--primary-colour);
+    height: 100%;;
+}
