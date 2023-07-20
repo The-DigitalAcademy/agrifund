@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { TeamSectionComponent } from './components/team-section/team-section.component';
 import { AboutCompanyComponent } from './components/about-company/about-company.component';
+import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -48,7 +49,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent, BookkeepViewAllComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

@@ -3,7 +3,6 @@ li,
     display: flex;
     justify-content: start;
     align-items: center;
-    text-decoration: none;
 }
 
 li:hover,
@@ -25,9 +24,16 @@ li:active {
 a fa-icon {
     margin: 0px var(--small-s);
     font-size: var(--font-medium);
-
 }
 
-a{
-    text-decoration: none;
+.sidebar-content{
+    position: fixed;
+    padding: var(--normal-s);
+    background-color: var(--primary-colour);
+    height: 100%;
+    z-index: 1;
 }
+
+
+
+
