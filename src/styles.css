@@ -96,7 +96,7 @@ body {
 
     background-color: var(--light);
     background-size: 100%;
-    width: 100% !important;
+    max-width: 100% !important;
 }
 
 .card {
@@ -110,7 +110,6 @@ body {
     padding: var(--font-normal);
 }
 
-.colourful-card {}
 
 .row>* {
     padding: 0px;
@@ -396,5 +395,4 @@ hr {
     .large-hidden {
         display: none !important;
     }
-
 }
