@@ -370,6 +370,13 @@ hr {
         display: none !important;
     }
 
+    .page-content {
+        padding: 0px !important;
+    }
+
+    .page-heading {
+        padding: var(--normal-s) 0px 0px var(--normal-s);
+    }
 
 
 }
