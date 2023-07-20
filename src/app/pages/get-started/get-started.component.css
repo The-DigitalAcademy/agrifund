@@ -24,12 +24,12 @@ img{
    .carousel-inner{
     display: block;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 650px;
     height: 500px;
     padding: 24px;
     gap: 24px;
-    background-color: var(--primary-colour);
+    background-color: var(--light);
     align-items: left;
     justify-items: center;
     border-radius: var(--primary-colour 3px);
@@ -40,7 +40,7 @@ img{
   .container{
     margin-bottom: 100%;
     padding: 25px;
-    width: 500px;
+    width: 750px;
     height: 600px;
     text-align: center;
   }
