@@ -54,6 +54,7 @@
     --x-small-s: 4px;
     --small-s: 8px;
     --normal-s: 14px;
+    --medium-s: 20px;
     --large-s: 24px;
     --x-larger-s: 36px;
 }
@@ -95,6 +96,21 @@ body {
     background-color: var(--light);
     background-size: 100%;
 
+}
+
+.card {
+    align-items: center;
+    background-color: var(--light-grey);
+    border-radius: var(--border-radius);
+    border: none;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: var(--font-normal);
+}
+
+.colourful-card{
+    
 }
 
 .row>* {
@@ -176,6 +192,12 @@ fa-icon {
 
 .svg-inline--fa {
     height: var(--font-normal);
+}
+
+.card-title {
+    color: var(--grey);
+    font-size: var(--font-normal);
+    font-weight: var(--bold);
 }
 
 /* FORMS */
@@ -322,7 +344,7 @@ hr {
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
 
     /* TEXT */
     h1 {
