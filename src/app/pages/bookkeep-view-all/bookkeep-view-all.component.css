@@ -25,7 +25,7 @@
     width:100%
 }
 
-.report-btn {
+.justify-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -33,20 +33,11 @@
     width: 100%
 }
 
-.report-btn .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.date-filter {
-    width: 100%
-}
-
-.date-filter {
+.justify-end {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: 100%
 }
 
 .date-filter .form-input {

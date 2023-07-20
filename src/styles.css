@@ -212,10 +212,12 @@ label,
 
 input,
 .form-control {
+
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
     background-color: var(--light);
+    height: var(--x-larger-s);
 
 }
 

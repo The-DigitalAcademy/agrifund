@@ -11,7 +11,7 @@
         </div>
         <div class="container">
             <div class="actions">
-                <div class="report-btn">
+                <div class="justify-start">
                     <button class="btn colourful-btn">
                         <span>
                             <fa-icon icon="file-download"></fa-icon>
@@ -19,7 +19,7 @@
                         </span>
                     </button>
                 </div>
-                <div class="date-filter">
+                <div class="data-filter justify-end">
                     <div class="form-input mobile-hidden">
                         <label for="fromDate" class="form-label">From</label>
                         <input type="date" class="form-control" id="fromDate">
@@ -80,29 +80,23 @@
             <div class="container bookkeep-actions">
 
                 <div class="actions">
-                    <div class="create-btn">
+                    <div class="justify-start">
                         <button class="btn colourful-btn">
                             <span>
-                                <fa-icon icon="file-download"></fa-icon>
-                                Generate Report
+                                <fa-icon icon="plus"></fa-icon>
+                                Create Record
                             </span>
                         </button>
                     </div>
 
-                    <div class="search">
-                        <div class="form-input mobile-hidden">
-                            <label for="fromDate" class="form-label">From</label>
-                            <input type="date" class="form-control" id="fromDate">
+                    <div class="search justify-end">
+
+                        <div class="input-group">
+                            <input class="form-control searchbar" type="text" name="search" autocomplete="off">
+                            <button type="button" class="btn colourful-btn">
+                                <fa-icon icon="search"></fa-icon>
+                            </button>
                         </div>
-                        <div class="form-input mobile-hidden">
-                            <label for="toDate" class="form-label">To</label>
-                            <input type="date" class="form-control" id="toDate">
-                        </div>
-                
-                        <button class="btn icon-btn large-hidden">
-                            <fa-icon icon="filter"></fa-icon>
-                            Filter by date
-                        </button>
                     </div>
                 </div>
 

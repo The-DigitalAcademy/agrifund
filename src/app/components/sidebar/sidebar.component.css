@@ -31,7 +31,7 @@ a fa-icon {
     padding: var(--normal-s);
     background-color: var(--primary-colour);
     height: 100%;
-        z-index: 1;
+    z-index: 1;
 }
 
 
