@@ -24,18 +24,35 @@ img{
    .carousel-inner{
     display: block;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 1px;
     width: 650px;
     height: 500px;
     padding: 24px;
     gap: 24px;
     background-color: var(--light);
-    align-items: left;
+    align-items: center;
     justify-items: center;
     border-radius: var(--primary-colour 3px);
     border: var(--container-border 3px solid) 
   } 
+  .btn, button{
+    font-family: var(--normal-font);
+    font-size: var(--font-medium);
+    justify-content: center;
+    align-items: center;
 
+    border-radius: var(--border-radius);
+
+    height: var(--x-larger-s);
+    
+    padding: var(--small-s);
+    background-color: var(--primary-colour);
+  }
+  .colourful-btn{
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
+}
 
   .container{
     margin-bottom: 100%;
@@ -68,16 +85,4 @@ h2{
   padding: 50px;
 }
 
-.controls{
-  background-color: var(--primary-colour);
-}
 
-
-.carousel-control-prev,
-.carousel-control-next{
-  bottom: 200px;
-}
-
-.button{
-  margin: 450px;
-}
