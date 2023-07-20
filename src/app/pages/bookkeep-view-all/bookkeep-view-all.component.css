@@ -41,10 +41,7 @@
 }
 
 .date-filter .form-input {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
+    flex-direction: row;
     margin: 0px 0px 0px var(--small-s);
 }
 
@@ -128,6 +125,10 @@ h2 {
 
     .record-table {
         padding: var(--small-s);
+    }
+
+    .input-group .btn{
+        border-radius:var(--border-radius);
     }
 
 }
