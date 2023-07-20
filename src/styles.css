@@ -64,7 +64,7 @@ body {
 
     background-color: var(--light);
 
-    margin-top: 60px;
+    /* margin-top: 60px; */
 }
 
 /* DISPLAY */
@@ -312,6 +312,7 @@ hr {
     }
 
     /* HIDE ITEMS*/
+    /* hide items on large screens */
     .large-hidden {
         display: none !important;
     }
@@ -321,7 +322,8 @@ hr {
 @media only screen and (max-width: 768px) and (max-width: 1200px) {
 
     /* HIDE ITEMS*/
-    .mobile-hidden {
+    /* hide items on small screens */
+    .mobile-hidden { 
         display: none !important;
     }
 

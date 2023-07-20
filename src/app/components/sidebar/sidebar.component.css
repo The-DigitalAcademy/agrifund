@@ -31,3 +31,7 @@ a fa-icon {
 a{
     text-decoration: none;
 }
+
+.navbar-nav{
+    background-color: var(--primary-colour);
+}
