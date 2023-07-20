@@ -1,37 +1,69 @@
 <app-navbar></app-navbar>
 
 <div class="row page-body g-0">
-
-    <div class="col-lg-3 g-0 sidebar mobile-hidden">
+    <div class="col-lg-2 g-0 sidebar mobile-hidden">
         <hr>
         <app-sidebar></app-sidebar>
     </div>
-    <div class="col-md-12 col-lg-9 g-0 page-content">
+    <div class="col-md-12 col-lg-10 g-0 page-content">
         <div class="page-heading">
             <h1>Bookkeep</h1>
         </div>
         <div class="container bookkeep-activities">
-            <div class="report-generate">
+            <div class="overall-actions">
                 <div class="report-btn">
                     <button class="btn colourful-btn">
-                        <fa-icon icon="file-download"></fa-icon>
-                        Generate Report
+                        <span>
+                            <fa-icon icon="file-download"></fa-icon>
+                            Generate Report
+                        </span>
+
                     </button>
                 </div>
                 <div class="date-filter">
+                    <div class="form-input">
+                        <label for="fromDate" class="form-label">From</label>
+                        <input type="date" class="form-control" id="fromDate">
+                    </div>
+                    <div class="form-input">
+                        <label for="toDate" class="form-label">To</label>
+                        <input type="date" class="form-control" id="toDate">
+                    </div>
+
+
+
+
 
                 </div>
             </div>
-            <div class="card-summary">
+            <div class="row card-summary">
+                <div class="col-sm-6 col-md-4">
+                    <div class="card money-in-card">
+                        <label class="card-title"> Total Money In</label>
+                        <h2 class="amount">R 1,200.00</h2>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="card profit-card">
+                        <label class="card-title">Profit</label>
+                        <h2 class="amount">R 300.00</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card money-out-card">
+                        <label class="card-title">Total Money Out</label>
+                        <h2 class="amount">R 800.00</h2>
+                    </div>
+                </div>
 
             </div>
 
             <div class="container bookkeep-actions">
-            
+
             </div>
 
         </div>
-        
+
     </div>
 
 </div>

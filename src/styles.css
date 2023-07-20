@@ -103,6 +103,21 @@ body {
 
 }
 
+.card {
+    align-items: center;
+    background-color: var(--light-grey);
+    border-radius: var(--border-radius);
+    border: none;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: var(--font-normal);
+}
+
+.colourful-card{
+    
+}
+
 .row>* {
     padding: 0px;
 }
@@ -184,6 +199,12 @@ fa-icon {
     height: var(--font-normal);
 }
 
+.card-title {
+    color: var(--grey);
+    font-size: var(--font-normal);
+    font-weight: var(--bold);
+}
+
 /* FORMS */
 label,
 .form-label {
@@ -236,11 +257,11 @@ input[type=number]:focus,
 .btn,
 button {
     font-family: var(--normal-font);
-    font-size: var(--font-medium);
+    font-size: var(--font-normal);
     text-align: center;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 
@@ -328,7 +349,7 @@ hr {
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
 
     /* TEXT */
     h1 {

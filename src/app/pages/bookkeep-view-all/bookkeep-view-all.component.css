@@ -8,11 +8,89 @@
     /* opacity: 0.7; */
 }
 
-.page-heading{
-    margin-bottom: var(--normal-s);
-}
-
 .sidebar {
     background-color: var(--primary-colour);
     height: 100%;
+}
+
+.bookkeep-activities{
+   
+}
+
+.overall-actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    margin-bottom: var(--normal-s);
+}
+
+.report-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%
+}
+
+.report-btn .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-filter {
+    width: 100%
+}
+
+.date-filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.date-filter .form-input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 0px 0px 0px var(--small-s);
+}
+
+.form-control {
+    margin: 0px 0px 0px var(--small-s);
+}
+
+.form-label {
+    margin: 0px;
+}
+
+fa-icon{
+    margin: 0px var(--small-s) 0px 0px ;
+}
+
+h2{
+    font-family: var(--normal-font);
+    font-size: var(--font-large);
+}
+
+.row{
+    padding: inherit;
+}
+
+.profit-card{
+    background-color: var(--primary-colour);
+    margin: 0px var(--small-s);
+}
+
+.profit-card h2, .profit-card label{
+    color: var(--light);
+}
+
+.money-in-card{
+    margin: 0px var(--small-s) 0px 0px;
+}
+
+.money-out-card {
+    margin: 0px 0px 0px var(--small-s);
 }
