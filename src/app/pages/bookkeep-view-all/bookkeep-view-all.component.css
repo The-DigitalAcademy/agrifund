@@ -97,3 +97,23 @@ h2{
 .money-out-card {
     margin: 0px 0px 0px var(--small-s);
 }
+
+@media only screen and (max-width: 576px) {
+    .card-summary{
+        display: flex;
+        justify-content: column;
+    }
+
+        .profit-card {
+            margin: var(--small-s) 0px;
+        }
+    
+        .money-in-card {
+            margin: var(--small-s) 0px;
+        }
+    
+        .money-out-card {
+            margin: var(--small-s) 0px;
+        }
+    
+}

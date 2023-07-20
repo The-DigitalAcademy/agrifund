@@ -88,7 +88,7 @@ body {
 }
 
 .container {
-    margin:0px !important;
+    margin: 0px !important;
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
@@ -110,9 +110,7 @@ body {
     padding: var(--font-normal);
 }
 
-.colourful-card{
-    
-}
+.colourful-card {}
 
 .row>* {
     padding: 0px;
@@ -289,8 +287,10 @@ button {
     color: var(--grey) !important;
 }
 
-.icon-btn fa-icon{
+.icon-btn fa-icon {
     color: var(--grey) !important;
+    margin: var(--x-small-s) 0px;
+
 }
 
 .icon-btn-dark {
@@ -349,7 +349,7 @@ hr {
 }
 
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 576px) {
 
     /* TEXT */
     h1 {
@@ -365,18 +365,20 @@ hr {
     }
 
     /* HIDE ITEMS*/
-    /* hide items on large screens */
-    .large-hidden {
+    /* hide items on small screens */
+    .mobile-hidden {
         display: none !important;
     }
 
+
+
 }
 
-@media only screen and (max-width: 768px) and (max-width: 1200px) {
+@media only screen and (min-width: 576px) and (max-width: 1200px) {
 
     /* HIDE ITEMS*/
-    /* hide items on small screens */
-    .mobile-hidden {
+    /* hide items on large screens */
+    .large-hidden {
         display: none !important;
     }
 
