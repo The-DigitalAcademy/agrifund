@@ -1,21 +1,11 @@
 .page-body {
-
-
-    background-size: cover;
     width: 100%;
     height: 100%;
 
-    background-color: var(--primary-colour);
     background-image: url("src/assets/images/background/orange-trees.webp");
-    background-repeat: fill no-repeat;
-    background-attachment: fixed;
-    overflow: scroll;
-
-
 }
 
 .sidebar {
     background-color: var(--primary-colour);
     height: 100%;
-    ;
 }

@@ -58,8 +58,7 @@
     --x-larger-s: 36px;
 }
 
-html,
-body {
+html body {
     height: 100vh;
     width: 100vw;
 }
@@ -73,7 +72,17 @@ body {
     /* margin-top: 60px; */
 }
 
-/* DISPLAY */
+.page-body {
+    background-size: cover;
+    background-color: var(--primary-light);
+    background-repeat: fill no-repeat;
+    background-attachment: fixed;
+    overflow: scroll;
+}
+
+.page-content {
+    padding: var(--large-s) !important;
+}
 
 /* CONTAINERS */
 .container {
