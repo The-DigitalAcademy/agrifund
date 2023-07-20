@@ -77,6 +77,10 @@ body {
     background-color: var(--light);
 }
 
+.row>* {
+    padding: 0px;
+}
+
 /* TEXT */
 h1 {
     font-family: var(--fancy-font);
