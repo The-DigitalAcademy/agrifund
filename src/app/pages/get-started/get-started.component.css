@@ -20,7 +20,7 @@ img{
     border-radius: 100%;
     background-color: var(--grey) !important;
 }
- 
+
    .carousel-inner{
     display: block;
     margin: auto;
@@ -48,13 +48,13 @@ h2{
   font-size: var(--normal-s 14px);
   margin-top: 10%;
   }
-/* .carousel-inner{
+/* /* .carousel-inner{
   align-items: center;
   gap: 12px;
   position: relative;
   width: fit-content;
   background-color: var(--primary-color);
-}
+} 
 
 .container {
   color: var(--light-grey)!important;
@@ -67,4 +67,6 @@ h2{
   width: fit-content;
   padding: 50px;
 }
+
+
 
