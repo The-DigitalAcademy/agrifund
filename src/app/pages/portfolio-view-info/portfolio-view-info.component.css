@@ -13,4 +13,7 @@
     background-color: var(--primary-colour);
     height: 100%;
 }
+.page-heading {
+    margin-bottom: var(--normal-s);
+}
 

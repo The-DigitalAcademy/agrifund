@@ -27,9 +27,12 @@
 
 
 <div class="container">
-  <div class="divider"></div>
-  <div class="container-form">
-  <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
+  <div class="profile-heading">
+    <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
+  </div>
+  <hr>
+  <div class="container">
+
   <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
     <div class="form-input">
       <label for="exampleInputEmail1" class="form-label">First Name</label>
@@ -58,4 +61,5 @@
   </form>
 </div>
 </div>
+
 

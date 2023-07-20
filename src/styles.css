@@ -51,8 +51,8 @@
 
     /* BORDERS */
     --border-radius: 3px;
-    --thick-border: 2px solid;
-    --thin-border: 1px solid;
+    --thick-border: 2px solid;/*buttons  */
+    --thin-border: 1px solid;/*containers  */
 
     /* SPACING & SIZING*/
     --x-small-s: 4px;
@@ -76,6 +76,8 @@ body {
     /* margin-top: 60px; */
 }
 
+/* CONTAINERS */
+
 .page-body {
     background-size: cover;
     background-color: var(--primary-light);
@@ -88,7 +90,6 @@ body {
     padding: var(--large-s) !important;
 }
 
-/* CONTAINERS */
 .container {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -102,6 +103,10 @@ body {
 
 .row>* {
     padding: 0px;
+}
+
+.page-heading {
+    margin-bottom: var(--normal-s);
 }
 
 /* TEXT */

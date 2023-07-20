@@ -30,6 +30,7 @@ a fa-icon {
     position: absolute;
     padding: var(--normal-s);
     background-color: var(--primary-colour);
+    z-index: 100;
 }
 
 
