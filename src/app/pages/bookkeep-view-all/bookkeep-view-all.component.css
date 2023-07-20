@@ -6,11 +6,48 @@
     /* opacity: 0.7; */
 }
 
-.page-heading{
-    margin-bottom: var(--normal-s);
-}
-
 .sidebar {
     background-color: var(--primary-colour);
     height: 100%;
 }
+
+.overall-actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.report-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%
+}
+
+.date-filter{
+    width: 100%
+}
+
+.date-filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.date-filter .form-input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 0px 0px 0px var(--small-s);
+}
+
+.form-control{
+    margin: 0px 0px 0px var(--small-s);
+}
+
+.form-label{
+    margin: 0px;
+}
+
