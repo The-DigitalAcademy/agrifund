@@ -74,6 +74,8 @@ body {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
+    padding: var(--normal-s);
+
     background-color: var(--light);
 }
 
