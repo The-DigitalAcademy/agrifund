@@ -1,8 +1,8 @@
-button {
+/* button {
 
     background: var(--primary-colour);
     
-}
+} */
 img{
     height: 100px;
     width: 100px;
@@ -18,7 +18,7 @@ img{
     background-color: var(--grey) !important;
 }
 
-  .carousel-inner{
+   .carousel-inner{
     display: block;
     margin: auto;
     margin-top: 50px;
@@ -26,7 +26,7 @@ img{
     height: 600px;
     padding: 24px;
     gap: 24px;
-    background-color: var(--light-grey);
+    background-color: var(--light);
     align-items: left;
     justify-items: center;
     border-radius: var(--primary-colour 3px);
@@ -34,27 +34,40 @@ img{
   }
 
 
-  .carousel-inner{
+  /* .carousel-inner{
    
     border-width: thin thin;
     border-color: var(--primary-colour);
     border-style: solid;
-    }
+    } */
 
   .container{
     margin-bottom: 100%;
     text-align: center;
-    /* border-radius: none;
-    border: none;
-    background-color:none; */
-  
   }
 h2{
   font-size: var(--normal-s 14px);
   }
 p {
   margin-bottom: 100%;
-} 
+}  */
 
 
-  
+.carousel-inner{
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  width: fit-content;
+}
+
+.container {
+  color: #2d2d2d !important;
+  width: auto;
+}
+
+p{
+  align-items: center;
+  gap: 25px;
+  width: fit-content;
+}
+
