@@ -11,7 +11,8 @@ import { AboutCompanyComponent } from './components/about-company/about-company.
 import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
 import {
     FontAwesomeModule,
-    FaIconLibrary} from '@fortawesome/angular-fontawesome';
+    FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
 import {
     faAddressCard,
     faAngleDown,

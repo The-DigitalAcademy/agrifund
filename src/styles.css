@@ -407,7 +407,7 @@ hr {
 }
 
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
 
     /* TEXT */
     h1 {
@@ -439,7 +439,7 @@ hr {
 
 }
 
-@media only screen and (min-width: 576px) and (max-width: 1200px) {
+@media only screen and (min-width: 577px){
 
     /* HIDE ITEMS*/
     /* hide items on large screens */
