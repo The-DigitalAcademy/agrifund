@@ -17,15 +17,14 @@ img {
     justify-content: center;
     align-items: center;
     width: 60%;
+    padding: var(--large-s);
   
 }
 
    
 
-h1 {
-    margin: auto;
-    display: flex;
-}
+
+
 .page-body {
     background-color: var(--primary-light) !important;
     width: 100%;
@@ -63,4 +62,29 @@ align-items: flex-start;
 }
 .icon-btn{
     background-color: var(--light);
+}
+@media only screen and (max-width: 575px) {
+    .loginform {
+        padding: 0px;
+        width: 100%;
+       height: 100%;
+       
+    }
+    form{
+        width: 100%;
+        height: 100%;
+        padding: auto;
+    }
+
+    .page-body, .container{
+        /* padding: var(--small-s); */
+        width: 100%;
+        height: 100%;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+    
 }
