@@ -35,6 +35,13 @@
   justify-content: flex-start;
   width: 100%;
 }
+.left {
+    padding-right: 20px;
+  }
+  
+  .right {
+    padding-left: 20px;
+  }
 
 
 
