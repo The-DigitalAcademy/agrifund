@@ -1,19 +1,23 @@
+<div class="mobile-header">
+    <img src="assets/images/background/orange-trees.webp" alt="Avatar" />
+</div>
 <div class="page-body">
     <div class="container">
+        
         <form [formGroup]="RegisterForm">
             <div class="row">
                 <div class="col-md-6 col-sm-12 registerform">
-                <div class="container-header">
-                    <div class="heading">
-                        <h1>Register</h1>
+                    <div class="container-header">
+                        <div class="heading">
+                            <h1>Register</h1>
+                        </div>
+                        <div class="action">
+                            <button class="icon-btn" [routerLink]="['']">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
                     </div>
-                    <div class="action">
-                        <button class="icon-btn btn-icon" [routerLink]="['']">
-                            <fa-icon icon="times"></fa-icon>
-                        </button>
-                    </div>
-                </div>
-                
+
                     <div class="form-input">
                         <label for="name">Name:</label><br />
                         <input
@@ -57,7 +61,10 @@
                             id="CpasswordInput" />
                     </div>
                     <div class="form-group pt-1">
-                        <button type="submit" class="btn colourful-btn pt-6" [routerLink]="['/bookkeep']">
+                        <button
+                            type="submit"
+                            class="btn colourful-btn pt-6"
+                            [routerLink]="['/bookkeep']">
                             Register
                         </button>
                     </div>
@@ -72,7 +79,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 mobile-hidden">
-                    <img 
+                    <img
                         src="assets/images/background/orange-trees.webp"
                         alt="Avatar" />
                 </div>
