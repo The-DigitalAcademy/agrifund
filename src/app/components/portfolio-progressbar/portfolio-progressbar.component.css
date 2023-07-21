@@ -1,18 +1,17 @@
-.progress-bar {
-    background: linear-gradient(180deg, rgb(155, 166, 111) 0%, rgb(125, 137, 83) 50%, rgb(96, 108, 56) 100%);
-    border-radius: 3px;
+.container{
     
-   
-    height: 29px;
-    min-width: 406px;
 
-
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
-.progress-bar-fill {
-    height: 100%;
-    width: 100%;
+.form-check {
+    display: flex;
     align-items: center;
-
-}
+  }
+  
+  .form-check-input {
+    margin-right: 8px;
+  }
   

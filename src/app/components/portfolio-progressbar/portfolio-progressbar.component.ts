@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-portfolio-progressbar',
@@ -7,5 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class PortfolioProgressbarComponent {
 
-  @Input() progress: number = 0;
+  
+  checklistForm!: FormGroup;
 }

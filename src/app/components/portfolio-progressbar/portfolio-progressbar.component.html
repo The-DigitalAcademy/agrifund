@@ -1,11 +1,25 @@
 <div class="container">
     <div class="progress-bar">
         <div class="charts"></div>
-        <div class="checklist">
-            <div class="personal-info"></div>
-            <div class="farm-info"></div>
-            <div class="crop-info"></div>
-        </div>
+        
+            <form class="checklist-form" [formGroup]="checklistForm">
+                <div class="checklist">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="personalInfo">
+                    <label class="form-check-label">Personal Info</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="farmInfo">
+                    <label class="form-check-label">Farm Info</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="cropInfo">
+                    <label class="form-check-label">Crop Info</label>
+                  </div>
+                </div>
+              </form>
+              
+        
         <div class="check-dash">
             <div class="headings"></div>
             <div class="paragraph"></div>
@@ -15,3 +29,4 @@
       </div>
       
 </div>
+ 
