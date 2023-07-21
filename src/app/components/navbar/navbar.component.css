@@ -83,6 +83,10 @@ span {
 
 }
 
+.icon-btn fa-icon {
+    color: var(--light) !important;
+}
+
 .name-greeting {
     display: flex;
     justify-content: flex-end;
@@ -132,6 +136,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index:2;
 }
 
 .offcanvas-footer .btn {
