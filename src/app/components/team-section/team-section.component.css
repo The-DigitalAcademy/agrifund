@@ -1,25 +1,25 @@
-.card {
+/* .card { */
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
    
     margin-top: 20px;
     border: none;
     background-color: var(--light-grey);
     align-items: center;
-    
-  }
+     */
+  
   
   /* On mouse-over, add a deeper shadow */
-  .card:hover {
+  /* .card:hover {
     box-shadow: 0 1px 10px 0 rgba(0,0,0,0.2);
-  }
+  } */
   
   /* Add some padding inside the card container */
-  .container {
+  /* .container {
     padding: 28px 45px;
-  }
+  } */
   
-  
+/*   
   img {
     
     border-radius: 70%;
@@ -34,4 +34,4 @@
     border-radius: none;
     border: none;
     background-color:none;
-  }
+  } */
