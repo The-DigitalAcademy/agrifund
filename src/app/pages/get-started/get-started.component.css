@@ -1,8 +1,14 @@
-/* button {
-
-    background: var(--primary-colour);
-    
-} */
+.page-body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-image: url("src/assets/images/background/orange-trees.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* opacity: 0.7; */
+}
 h1{
   text-align: center;
   padding: 30px;
@@ -25,16 +31,16 @@ img{
    .carousel-inner{
     display: block;
     margin: auto;
-    margin-top: 1px;
-    width: 650px;
-    height: 500px;
+    width: auto;
+    height: auto;
     padding: 24px;
     gap: 24px;
     background-color: var(--light);
     align-items: center;
     justify-items: center;
     border-radius: var(--primary-colour 3px);
-    border: var(--container-border 3px solid) 
+    border: var(--container-border 3px solid)
+    
   } 
   .btn, button{
     font-family: var(--normal-font);
@@ -54,37 +60,39 @@ img{
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
-
+.carousel-control-next{
+  display: flex;
+  position: relative;
+}
+.carousel-control-prev{
+  display: flex;
+  position: relative; 
+}
+.justify-start{
+width: 100%;
+}
+.justify-end{
+  width: 100%;
+}
   .container{
    
     margin-bottom: 100%;
     padding: 25px;
     width: 750px;
-    height: 600px;
+    height: auto;
     text-align: center;
+    justify-content: center;
   }
 h2{
-  font-size: var(--normal-s 14px);
-  margin-top: 10%;
+text-align: center;
   }
-/* /* .carousel-inner{
-  align-items: center;
-  gap: 12px;
-  position: relative;
-  width: fit-content;
-  background-color: var(--primary-color);
-} 
 
-.container {
-  color: var(--light-grey)!important;
-  width: auto;
-  margin-top: 50%;
-} */
 .carousel-inner{
   align-items: center;
   gap: 25px;
   width: fit-content;
   padding: 50px;
 }
+
 
 
