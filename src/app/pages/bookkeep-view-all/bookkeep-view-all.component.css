@@ -81,7 +81,7 @@ h2 {
 }
 
 .record-tr:hover,
-.info:hover {
+.info:hover, .record-tr:focus, .info:focus{
     background-color: var(--light-grey);
 }
 
