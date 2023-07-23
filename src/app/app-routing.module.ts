@@ -9,6 +9,7 @@ import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-vie
 import { GetStartedComponent } from './pages/get-started/get-started.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
+import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
+    { path: 'bookkeep/view-record', component: BookkeepViewRecordComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
 ];
 
