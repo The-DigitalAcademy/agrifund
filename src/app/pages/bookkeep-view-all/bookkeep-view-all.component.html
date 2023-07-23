@@ -119,7 +119,7 @@
                             </tr>
                         </thead>
                         <tbody *ngFor="let record of counter(10)">
-                            <tr (click)="viewRecordDetails()">
+                            <tr class="record-tr" (click)="viewRecordDetails()">
                                 <td scope="row">Bought Seeds</td>
                                 <td>Money Out</td>
                                 <td>22/12/2022</td>
@@ -132,7 +132,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr (click)="viewRecordDetails()">
+                            <tr class="record-tr"(click)="viewRecordDetails()">
                                 <td scope="row">Sold Produce</td>
                                 <td>Money In</td>
                                 <td>13/12/2022</td>

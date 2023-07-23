@@ -21,14 +21,6 @@
     --light: #F8F9FA;
     /*default background colour and colour of text on colour backgrounds*/
 
-    --grey: #6C757D;
-    /* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #ADB5BD;
-    /* borders, strokes, input field-outlines*/
-    --light-grey: #DEE2E6;
-    /* borders and strokes */
-
-
     /* FONTS */
     --fancy-font: 'Arvo';
     --normal-font: 'Lato';
