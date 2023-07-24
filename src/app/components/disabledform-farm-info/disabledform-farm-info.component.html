@@ -1,1 +1,46 @@
-<p>disabledform-farm-info works!</p>
+<div class="container">
+    <div class="profile-heading">
+      <div class="heading">
+        <h3>Your Personal Info</h3>
+      </div>
+      <div class="action">
+        <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+      <form [formGroup]="myForm">
+        <div class="form-input">
+          <label for="exampleInputEmail1" class="form-label">Location of my farm</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                 formControlName="firstName" [disabled]="isDisabled">
+        </div>
+        <div class="form-input">
+          <label for="exampleInputPassword1" class="form-label">Size of farm (ha)</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="lastName"
+                 [disabled]="isDisabled">
+        </div>
+        <div class="form-input">
+          <label for="exampleInputPassword1" class="form-label">Years using this farm</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
+                 [disabled]="isDisabled">
+        </div>
+       
+        <div class="form-input">
+          <label for="exampleInputPassword1" class="form-label">Number of people that help you farm</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="email"
+                 [disabled]="isDisabled">
+        </div>
+
+        <div class="form-input">
+            <label for="exampleInputPassword1" class="form-label">Reason for needing funding: </label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="email"
+                   [disabled]="isDisabled">
+          </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  
+  

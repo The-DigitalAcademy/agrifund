@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-enabledform-farm-info',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class EnabledformFarmInfoComponent {
 
+
+  @Output() enableFields = new EventEmitter<void>();
+
+  onEditClicked() {
+    this.enableFields.emit();
+  }
 }
