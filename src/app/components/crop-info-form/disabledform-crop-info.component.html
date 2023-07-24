@@ -23,9 +23,7 @@
       </div>
       <div class="form-input">
         <label for="crops" class="form-label">I farm with these crops:</label>
-        <select id="crops" class="form-control" formControlName="selectedCrops" multiple>
-          <option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</option>
-        </select>
+        <input type="text" class="form-control" formControlName="cropsInfo" [attr.disabled]="isDisabled ? 'disabled' : null">
       </div>
       <div class="form-input">
         <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
@@ -34,12 +32,7 @@
       <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
 
-      <!-- Show the edited data when the form is disabled and data is available -->
-      <div *ngIf="isDisabled && editedData">
-        <p>Season: {{ editedData.seasonFarm }}</p>
-        <p>Selected Crops: {{ getSelectedCropsAsString() }}</p>
-        <p>Seeds Amount: {{ editedData.seedsAmount }}</p>
-      </div>
+     
   </form>
 </div>
     </div>

@@ -9,6 +9,11 @@
   background-image: blur(10px);
   
 }
+.first-body{
+  display: flex;
+  
+ 
+  }
 
 .sidebar {
     background-color: var(--primary-colour);
@@ -21,11 +26,14 @@
 }
 
 .crop-info{
-    margin-top:20px;
+    margin-top:var(--normal-s);
+}
+.farm-info{
+    margin-top:var(--normal-s);
 }
 
 .page-heading{
-    display: flex;
+  display: flex;
   align-items: center;
   width:100%;
 }
@@ -35,6 +43,16 @@
   justify-content: flex-start;
   width: 100%;
 }
+.bottom{
+    margin-top:var(--large-s);
+    width: 100%;
+}
+.right{
+    padding-left:var(--normal-s) ;
+}
+
+  
+  
 
 
 

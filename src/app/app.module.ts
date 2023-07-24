@@ -41,10 +41,9 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { DisabledformPersonalInfoComponent } from './components/feature-disabledform-personal-info/feature-disabledform-personal-info.component';
-import { EnableformPersonalInfoComponent } from './components/enableform-personal-info/enableform-personal-info.component';
-import { PersonalInfoFormComponent } from './components/personal-info-form/personal-info-form.component';
-import { DisabledformCropInfoComponent } from './components/disabledform-crop-info/disabledform-crop-info.component';
+import { DisabledformPersonalInfoComponent } from './components/personal-info-form/feature-disabledform-personal-info.component';
+
+import { DisabledformCropInfoComponent } from './components/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/enableform-crop-info/enableform-crop-info.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { OffcanvasComponent } from './components/offcanvas/offcanvas.component';
@@ -53,13 +52,17 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
-import { CropInfoFormComponent } from './components/crop-info-form/crop-info-form.component';
+
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
+import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
+
+
+import { EquipmentInfoComponent } from './components/equipment-info/equipment-info.component';
 
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent,  GetStartedPageComponent, DisabledformFarmInfoComponent, EquipmentInfoComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

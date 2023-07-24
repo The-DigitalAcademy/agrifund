@@ -1,10 +1,10 @@
 
 <app-navbar></app-navbar>
 <div class="row page-body g-0">
-<div class="col-lg-2 g-0 sidebar mobile-hidden">
-    <hr>
-    <app-sidebar></app-sidebar>
-</div>
+    <div class="col-lg-2 g-0 sidebar mobile-hidden">
+        <hr>
+        <app-sidebar></app-sidebar>
+    </div>
 
 
 
@@ -17,38 +17,41 @@
             </div>
         </div>
         
-            <div class="portfolio-view-info">
-                <div class="main-content">
-
-                    <!-- <app-heading-page></app-heading-page> -->
-                    <div class="portfolio">
-                        <div class="page-body row ">
+            
+                <div class="portfolio">
+                        <div class="first-body row ">
+                          
                             <div class="left col-lg-6">
-                                <!-- <app-progress></app-progress> -->
-                                <!-- <app-farm-info></app-farm-info> -->
+                                <app-portfolio-progressbar></app-portfolio-progressbar>
+                                <div class="farm-info">
+                                    <app-disabledform-farm-info></app-disabledform-farm-info>     
+                            </div>
+
+                          
+                                
 
                             </div>
 
                             <div class="right col-lg-6">
                                 <div class=" personal-info">
-                                    <app-personal-info-form></app-personal-info-form>
+                                    <app-feature-disabledform-personal-info></app-feature-disabledform-personal-info>
+                                  
                                 </div>
                                 <div class="crop-info">
-                                    <app-crop-info-form></app-crop-info-form>
+                                    <app-disabledform-crop-info></app-disabledform-crop-info>
                                 </div>
                                 
                             </div>
                         </div>
 
                         <div class="bottom col-12">
-                            <!-- <app-equipment-tool-info></app-equipment-tool-info> -->
+                             <app-equipment-info></app-equipment-info>
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
-        </div>
-
+        
 
     
 
