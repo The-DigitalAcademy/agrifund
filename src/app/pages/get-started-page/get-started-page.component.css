@@ -10,7 +10,7 @@
     /* opacity: 0.7; */
 }
 
-h1 {
+.h1 {
     text-align: center;
 }
 
@@ -32,7 +32,7 @@ h1 {
     display: block;
     margin: auto;
     width: auto;
-    height: 600px;
+    height: 450px;
     padding: var(--large);
     gap: 24px;
     background-color: var(--light);
@@ -43,20 +43,21 @@ h1 {
 }
 
 .carousel-control-next {
-    display: flex;
+  
     position: relative;
-    background-color: var(--light) !important;
     color: var(--dark);
+   
 }
 
 .carousel-control-prev {
-    display: flex;
+
     position: relative;
-    background-color: var(--light) !important;
-   color: var(--dark);
+    color: var(--dark);
+
+ 
 }
 
-.fa-icon .icon{
+fa-icon{
     color: var(--dark);
 }
 
@@ -70,15 +71,15 @@ h1 {
 
 .container {
 
-    margin-bottom: 20%;
+    margin-bottom: 100%;
     padding: 25px;
     width: 750px;
-    height: 700px;
+    height: auto;
     text-align: center;
     justify-content: center;
 }
 
-h2 {
+.h2 {
     text-align: center;
 }
 
