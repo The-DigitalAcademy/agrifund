@@ -479,7 +479,7 @@ hr {
     }
     .mobile-header{
         display: inline-flex;
-        width: 393px;
+        width: 100%;
         height: 100px;
         align-items: flex-start;
         flex-shrink: 0;
