@@ -93,6 +93,7 @@ fa-icon{
 .carousel-indicators {
     width: auto !important;
     height: auto !important;
+    padding: 0px;
 }
 
 
