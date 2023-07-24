@@ -58,11 +58,12 @@ import { GetStartedPageComponent } from './pages/get-started-page/get-started-pa
 import { DisabledformFarmInfoComponent } from './components/disabledform-farm-info/disabledform-farm-info.component';
 import { EnabledformFarmInfoComponent } from './components/enabledform-farm-info/enabledform-farm-info.component';
 import { FarmInfoFormComponent } from './components/farm-info-form/farm-info-form.component';
+import { EquipmentInfoComponent } from './components/equipment-info/equipment-info.component';
 
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent, DisabledformFarmInfoComponent, EnabledformFarmInfoComponent, FarmInfoFormComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent, DisabledformFarmInfoComponent, EnabledformFarmInfoComponent, FarmInfoFormComponent, EquipmentInfoComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

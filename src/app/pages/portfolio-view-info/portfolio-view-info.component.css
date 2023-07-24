@@ -43,7 +43,10 @@
   justify-content: flex-start;
   width: 100%;
 }
-
+.bottom{
+    margin-top:var(--large-s);
+    width: 100%;
+}
 
   
   

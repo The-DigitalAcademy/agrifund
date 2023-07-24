@@ -11,6 +11,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
   isDisabled: boolean = true; // Set to true to disable the form by default
+  editedData: any;
+  farmerData: any;
 
   constructor(private fb: FormBuilder) { }
 
@@ -39,4 +41,14 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     this.isDisabled = false; // Enable the fields by setting isDisabled to false
     this.myForm.enable(); // Enable the formGroup
   }
+  saveFields() {
+    this.editedData = this.myForm.value; 
+    this.isDisabled = true; 
+    }
+
+    onSaveClicked(formData: any) {
+      this.farmerData = formData;
+      this.isDisabled = true;
+      this.myForm.disable();
+    }
 }

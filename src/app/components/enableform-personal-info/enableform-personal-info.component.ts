@@ -7,9 +7,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class EnableformPersonalInfoComponent {
 
-  @Output() enableFields = new EventEmitter<void>();
 
-  onEditClicked() {
-    this.enableFields.emit();
-  }
 }
