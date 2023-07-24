@@ -18,7 +18,7 @@ export class DisabledformCropInfoComponent implements OnInit {
     this.farmerData = { // Replace this with the actual farmer data
       seasonFarm: 'Spring',
       selectedCrops: 'Potatoes', // Selected crops as an array
-      seedsAmount: '60'
+      seedsAmount: '70'
     };
 
     this.myForm = this.fb.group({
