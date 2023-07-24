@@ -10,6 +10,7 @@ import { GetStartedComponent } from './pages/get-started/get-started.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
+import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
-    {path: 'progressbar',component: PortfolioProgressbarComponent}
+    {path: 'progressbar',component: PortfolioProgressbarComponent},
+    {path:'farm',component: DisabledformFarmInfoComponent}
   
 ];
 

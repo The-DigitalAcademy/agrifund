@@ -47,6 +47,9 @@
     margin-top:var(--large-s);
     width: 100%;
 }
+.right{
+    padding-left:var(--normal-s) ;
+}
 
   
   

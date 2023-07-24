@@ -20,18 +20,9 @@
   
   
   
-    .file-container {
-      border: 1px solid #ccc; /* Add grey borders */
-      padding: 10px; /* Add padding to create some space around the content */
-      width: 360px; /* Set the desired width for the container */
-      background-color: #f9f9f9; 
-      border-radius: 3px;
+  
     
-    }
-    
-    .file-container label {
-      font-weight: bold; /* Make the label text bold */
-    }
+   
     
     .file-container input[type="file"] {
       margin-top: 5px;
