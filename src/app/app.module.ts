@@ -42,7 +42,7 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { DisabledformPersonalInfoComponent } from './components/feature-disabledform-personal-info/feature-disabledform-personal-info.component';
-import { EnableformPersonalInfoComponent } from './components/enableform-personal-info/enableform-personal-info.component';
+
 import { PersonalInfoFormComponent } from './components/personal-info-form/personal-info-form.component';
 import { DisabledformCropInfoComponent } from './components/disabledform-crop-info/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/enableform-crop-info/enableform-crop-info.component';
@@ -63,7 +63,7 @@ import { EquipmentInfoComponent } from './components/equipment-info/equipment-in
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent, DisabledformFarmInfoComponent, EnabledformFarmInfoComponent, FarmInfoFormComponent, EquipmentInfoComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent, DisabledformFarmInfoComponent, EnabledformFarmInfoComponent, FarmInfoFormComponent, EquipmentInfoComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
