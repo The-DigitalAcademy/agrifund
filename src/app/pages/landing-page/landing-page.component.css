@@ -42,16 +42,39 @@
   }
 
 
-    .button {
+    /* .button {
         border: none;
         padding: 15% 32%;
-        text-align: center;
+        text-align: left;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 34px 23px;
+        margin: 56px 23px;
         cursor: pointer;
-} 
+        width: auto;
+}  */
+.btn, button{
+  font-family: var(--normal);
+  font-size: var(--font-medium);
+  font-weight: var(--regular);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--border-radius);
+
+  height: var(--x-larger-s);
+  
+  padding: var(--small-s);
+}
+
+.colourful-btn{
+  width: auto;
+  text-align: left;
+  
+}
 
 
 /* .card-img-overlay {
