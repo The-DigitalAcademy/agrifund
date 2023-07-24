@@ -21,7 +21,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
       firstName: 'John',
       lastName: 'Doe',
       email: 'john@example.com',
-      phoneNumber: '123-456-7890'
+      phoneNumber: '0607566762'
     };
   
     this.myForm = this.fb.group({
