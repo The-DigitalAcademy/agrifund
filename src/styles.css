@@ -4,123 +4,55 @@
 :root {
 
     /* COLOUR PALETTE */
-    --primary-darker: #5A6537;
-    --primary-colour: #606C38;
-    /*primary green colour */
+
+    --primary-colour: #606C38;/*primary green colour */
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
     --secondary-colour: #D15F20;
-
     
+    --dark: #2E2E2E;/*default colour for text*/
+    --dark-grey: #4C5359;/* colour of paragraphs*/
+    --light: #F8F9FA;/*default background colour and colour of text on colour backgrounds*/
+
     --grey: #6C757D;/* grey-text, fine prints, placeholder colour */
     --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
     --light-grey: #DEE2E6;/* borders and strokes */
-    --grey-white:#E9ECEF/* background colour for fields*/
-    --dark-grey: #4C5359;/*default colour for text*/
-    --dark: #2E2E2E;/* colour of paragraphs*/
-    --light: #F8F9FA;
-    /*default background colour and colour of text on colour backgrounds*/
-
-    --grey: #6C757D;
-    /* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #ADB5BD;
-    /* borders, strokes, input field-outlines*/
-    --light-grey: #DEE2E6;
-    /* borders and strokes */
 
 
     /* FONTS */
-    --fancy-font: 'Arvo';
-    --normal-font: 'Lato';
+    --fancy-font:'Arvo';
+    --normal-font:'Lato';
 
     /* FONT SIZES */
     --font-x-large: 24px;
     --font-large: 22px;
     --font-medium: 18px;
     --font-normal: 16px;
-    --font-small: 14px;
+    --font-small: 14px; 
     --font-x-small: 12px;
 
     /* FONT WEIGHTS */
-    --thin: 100;
+    --thin:100;
     --light-font: 300;
-    --regular: 400;
-
-    --bold: 700;
-
+    --regular:400;
+    --bold:700;
+    
 
     /* BORDERS */
     --border-radius: 3px;
-    --thick-border: 2px solid;/*buttons  */
-    --thin-border: 1px solid;/*containers  */
+    --btn-border: 2px solid;
+    --container-border: 1px solid;
 
     /* SPACING & SIZING*/
-    --x-small-s: 4px;
+    --x-small-s:4px;
     --small-s: 8px;
     --normal-s: 14px;
-    --medium-s: 20px;
-    --large-s: 24px;
+    --large-s:24px;
     --x-larger-s: 36px;
 }
 
-html body {
-    height: 100vh;
-    width: 100vw;
-}
-
-body {
-    font-family: var(--normal-font);
-    color: var(--dark);
-
-    background-color: var(--light);
-
-    /* margin-top: 60px; */
-}
-
-/* CONTAINERS */
-
-.page-body {
-    background-size: cover;
-    background-color: var(--primary-light);
-    background-repeat: fill no-repeat;
-    background-attachment: fixed;
-    overflow: scroll;
-}
-
-.page-content {
-    padding: var(--large-s) !important;
-}
-
-.container {
-    margin: 0px !important;
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-
-    padding: var(--normal-s);
-
-    background-color: var(--light);
-    background-size: 100%;
-    max-width: 100% !important;
-}
-
-.card {
-    align-items: center;
-    background-color: var(--light-grey);
-    border-radius: var(--border-radius);
-    border: none;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: var(--font-normal);
-}
-
-
-.row>* {
-    padding: 0px;
-}
-
-.page-heading {
-    margin-bottom: var(--normal-s);
+body{
+    font-family: var();
 }
 
 .actions {
@@ -157,212 +89,115 @@ body {
 }
 
 /* TEXT */
-h1 {
+h1{
     font-family: var(--fancy-font);
     font-size: var(--font-x-large);
     font-weight: var(--bold);
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px 0px var(--normal-s) 0px;
 
-    color: var(--dark);
+    color:var(--dark);
 }
 
-h2 {
+h2{
     font-family: var(--fancy-font);
     font-size: var(--font-normal);
     font-weight: var(--bold);
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px 0px var(--normal-s) 0px;
 
-    color: var(--dark);
+    color:var(--dark);
 }
 
-h3 {
-    font-family: var(--normal-font);
+h3{
+    font-family: var(--normal);
     font-size: var(--font-medium);
     font-weight: var(--bold);
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px 0px var(--normal-s) 0px;
 
-    color: var(--dark);
+    color:var(--dark);
 }
 
-p {
-    font-family: var(--normal-font);
+p{
+    font-family: var(--normal);
     font-size: var(--font-medium);
     font-weight: var(--regular);
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px 0px var(--normal-s) 0px;
 
-    color: var(--dark);
+    color:var(--dark);
 }
 
-a {
-    font-family: var(--normal-font);
-    font-size: var(--font-medium);
-    font-weight: var(--regular);
-
-    color: var(--primary-colour) !important;
+a{
+    color:var(--primary-colour) !important;
+    
 }
 
-a:hover,
-a:active {
-    color: var(--primary-lighter) !important;
+a:hover, a:active{
     text-decoration: underline !important;
-
-}
-
-fa-icon {
-    font-size: var(--font-normal);
-    line-height: var(--font-normal);
-    text-align: center;
-
-    height: var(--font-normal);
-    width: var(--font-normal);
-
-    padding: 0px;
-
-    color: var(--light);
-}
-
-.svg-inline--fa {
-    height: var(--font-normal);
-}
-
-.card-title {
-    color: var(--grey);
-    font-size: var(--font-normal);
-    font-weight: var(--bold);
-}
-
-.bold{
-    font-weight: var(--bold);
-}
-
-.greyed {
-    color: var(--grey);
 }
 
 /* FORMS */
-label,
-.form-label {
+label, .form-label{
     font-family: var(--normal);
     font-size: var(--font-regular);
     font-weight: var(--bold);
 
-    margin: 0px 0px var(--x-small-s) 0px;
+    margin: 0px 0px var(--small-s) 0px;
 
-    color: var(--dark);
+    color:var(--dark);
 }
 
-input,
-.form-control {
-
+input, .form-control{
     border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-
-    background-color: var(--light);
-    height: var(--x-larger-s);
+    border: var(--container-border) var(--lighter-grey);
 
 }
 
 
-.form-group {}
+.form-group{
 
-.form-input {
+
+}
+
+.form-input{
     padding: var(--x-small-s);
-    margin: var(--small-s) 0px;
+    margin: var(--normal-s) 0px;
 }
 
-.form-text {
+.form-text{
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
 }
-
-textarea:focus,
-textarea.form-control:focus,
-input.form-control:focus,
-input[type=text]:focus,
-input[type=password]:focus,
-input[type=email]:focus,
-input[type=number]:focus,
-[type=text].form-control:focus,
-[type=password].form-control:focus,
-[type=email].form-control:focus,
-[type=tel].form-control:focus,
-[contenteditable].form-control:focus {
-    box-shadow: none;
-    border: var(--thin-border) var(--dark);
-}
-
-
 
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-    background-color: var(--light);
+    border: var(--container-border);
 }
 
 
 /* BUTTONS */
-.btn,
-button {
-    font-family: var(--normal-font);
-    font-size: var(--font-normal);
-    text-align: center;
+.btn, button{
+    font-family: var(--normal);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     border-radius: var(--border-radius);
-    border: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
 
     height: var(--x-larger-s);
-
+    
     padding: var(--small-s);
 }
 
 
-
-.colourful-btn {
-    border: var(--thick-border) var(--primary-colour) !important;
-    background-color: var(--primary-colour) !important;
-    color: var(--light) !important;
-}
-
-.white-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.icon-btn {
-    font-weight: var(--bold);
-    color: var(--grey) !important;
-}
-
-.icon-btn fa-icon {
-    color: var(--grey) !important;
-    margin: var(--x-small-s) 0px;
-}
-
-.icon-btn-dark {
-    font-weight: var(--bold);
-    color: var(--dark) !important;
-}
-
-.outline-btn {
-    border: var(--thick-border) var(--primary-colour) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.white-outline-btn {
-    border: var(--thick-border) var(--light) !important;
+.colourful-btn{
+    border: var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
@@ -441,7 +276,7 @@ hr {
 }
 
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 576px) {
 
     /* TEXT */
     h1 {
@@ -481,6 +316,7 @@ hr {
 
 
 }
+
 
 @media only screen and (min-width: 577px){ 
 
@@ -543,3 +379,4 @@ hr {
         background-color: white;
     }
 } */
+
