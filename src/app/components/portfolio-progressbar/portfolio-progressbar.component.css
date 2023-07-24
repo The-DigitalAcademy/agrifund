@@ -1,12 +1,14 @@
 .container{
     
-
+   
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
 }
-
+.form-check-label {
+    color: var(--primary-colour);
+  }
 .form-check {
     display: flex;
     align-items: center;
@@ -16,17 +18,7 @@
     margin-right: var(--small-s);
     margin-bottom: var(--small-s)
   }
-  .check-dash{
-    
-    flex-wrap: wrap;
-    align-content: center;
-    /* justify-content: ; */
-    border-color: var(--lighter-grey);
-    border: 1px solid var(--lighter-grey);
-    border-radius: 3px;
-    
-    
-  }
+
  
 
 h1{
@@ -45,6 +37,11 @@ h1{
     margin-top:var(--medium-s) ;
   }
 
+  .form-check-input[type="checkbox"] {
+    appearance: none;
+    border: 1px solid var(--lighter-grey); 
+    border-radius: 2px;
+  }
   
- 
+
   

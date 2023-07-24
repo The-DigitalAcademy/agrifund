@@ -32,39 +32,42 @@
       <h3>Your Personal Info</h3>
     </div>
     <div class="action">
-    <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
+      <app-enableform-personal-info (enableFields)="enableFields()"></app-enableform-personal-info>
     </div>
   </div>
   <hr>
   <div class="container">
-
-  <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
-    <div class="form-input">
-      <label for="exampleInputEmail1" class="form-label">First Name</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-             formControlName="firstName">
-    </div>
-    <div class="form-input">
-      <label for="exampleInputPassword1" class="form-label">Last Name</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="lastName">
-    </div>
-    <div class="form-input">
-      <label for="exampleInputPassword1" class="form-label">Cell Number</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber">
-    </div>
-    <div class="form-input">
-      <label class="form-label" for="document">Proof of ID</label>
-      <div class="file-container">
-        <label for="farm-label" >Upload Document</label> 
-      <input type="file" id="document" (change)="onFileSelected($event)">
+    <form [formGroup]="myForm">
+      <div class="form-input">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+               formControlName="firstName" [disabled]="isDisabled">
       </div>
-    </div>
-    <div class="form-input">
-      <label for="exampleInputPassword1" class="form-label">Email</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="email">
-    </div>
-  </form>
+      <div class="form-input">
+        <label for="exampleInputPassword1" class="form-label">Last Name</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="lastName"
+               [disabled]="isDisabled">
+      </div>
+      <div class="form-input">
+        <label for="exampleInputPassword1" class="form-label">Cell Number</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
+               [disabled]="isDisabled">
+      </div>
+      <div class="form-input">
+        <label class="form-label" for="document">Proof of ID</label>
+        <div class="file-container">
+          <label for="farm-label">Upload Document</label>
+          <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
+        </div>
+      </div>
+      <div class="form-input">
+        <label for="exampleInputPassword1" class="form-label">Email</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="email"
+               [disabled]="isDisabled">
+      </div>
+    </form>
+  </div>
 </div>
-</div>
+
 
 
