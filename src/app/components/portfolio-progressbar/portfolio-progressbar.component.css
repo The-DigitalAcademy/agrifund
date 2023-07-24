@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+    width: 100%;
 }
 .form-check-label {
     color: var(--primary-colour);
@@ -41,6 +42,19 @@ h1{
     appearance: none;
     border: 1px solid var(--lighter-grey); 
     border-radius: 2px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #f0f0f0; /* Set the background color for the progress bar container */
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #9BA66F 
   }
   
 
