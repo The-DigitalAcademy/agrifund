@@ -15,8 +15,8 @@ h1 {
 }
 
 .carousel-images {
-    height: 100px !important;
-    width: 100px !important;
+    height: 20% !important;
+    width: 20% !important;
     border-radius: 100%;
 }
 
@@ -32,8 +32,8 @@ h1 {
     display: block;
     margin: auto;
     width: auto;
-    height: auto;
-    padding: 24px;
+    height: 600px;
+    padding: var(--large);
     gap: 24px;
     background-color: var(--light);
     align-items: center;
@@ -45,11 +45,19 @@ h1 {
 .carousel-control-next {
     display: flex;
     position: relative;
+    background-color: var(--light) !important;
+    color: var(--dark);
 }
 
 .carousel-control-prev {
     display: flex;
     position: relative;
+    background-color: var(--light) !important;
+   color: var(--dark);
+}
+
+.fa-icon .icon{
+    color: var(--dark);
 }
 
 .justify-start {
@@ -62,10 +70,10 @@ h1 {
 
 .container {
 
-    margin-bottom: 100%;
+    margin-bottom: 20%;
     padding: 25px;
     width: 750px;
-    height: auto;
+    height: 700px;
     text-align: center;
     justify-content: center;
 }
