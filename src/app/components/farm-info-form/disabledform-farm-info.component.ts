@@ -19,7 +19,7 @@ export class DisabledformFarmInfoComponent {
     const farmerData = {
       locationOfFarm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
       sizeOfFarm: '9', // Update with default values
-      yearsUsingFarm: '9', // Update with default values
+      yearsUsingFarm: '10', // Update with default values
       numberOfPeople: '2', // Update with default values
       reasonForFunding: 'I want to improve my land of farming and equipments' // Update with default values
     };
