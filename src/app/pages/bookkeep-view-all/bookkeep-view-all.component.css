@@ -80,6 +80,8 @@ h2 {
 @media only screen and (max-width: 576px) {
     .card-summary {
         display: flex;
+        justify-content: center;
+        align-items: center;
         justify-content: column;
 
         margin-bottom: var(--normal-s);
@@ -98,6 +100,10 @@ h2 {
     .money-out-card {
         margin: var(--small-s) 0px 0px var(--small-s);
         padding: var(--small-s);
+    }
+
+    .row{
+        padding: 0px var(--small-s) ;
     }
 
 }
