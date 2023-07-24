@@ -1,0 +1,165 @@
+nav {
+    display: flex;
+    vertical-align: center !important;
+
+    width: 100%;
+    height: 55px !important;
+
+    margin: 0px;
+    padding: 0px;
+
+    overflow: hidden;
+    background-color: var(--light);
+}
+
+.navbar {
+    display: flex;
+
+}
+
+.navbar-toggler,
+.navbar-collapse {
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    padding: 0px;
+}
+
+.nav-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 100%;
+
+    padding: var(--small-s) var(--normal-s);
+
+    background-color: var(--primary-colour);
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    height: 100%;
+
+    padding: var(--small-s) var(--normal-s);
+}
+
+.nav-brand {
+    display: flex;
+    vertical-align: center !important;
+}
+
+.offcanvas .nav-brand {
+    padding: 0px var(--normal-s);
+}
+
+img {
+    color: var(--secondary-colour) !important;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+p,
+h1 {
+    margin: 0px !important;
+}
+
+h1 {
+    color: var(--light) !important;
+}
+
+span {
+    display: flex !important;
+    vertical-align: middle;
+    justify-content: center;
+
+}
+
+.icon-btn fa-icon {
+    color: var(--light) !important;
+}
+
+.name-greeting {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin: 0px var(--small-s);
+}
+
+.username {
+    text-decoration: underline;
+}
+
+/* BUTTONS */
+.nav-right .btn {
+    width: 100px !important;
+
+    margin: 0px var(--small-s);
+}
+
+.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0px var(--small-s);
+}
+
+/* OFFCANVAS */
+.offcanvas {
+    background-color: var(--primary-colour);
+}
+
+.offcanvas-header {
+    padding: var(--small-s) !important;
+    background-color: var(--primary-colour);
+}
+
+.offcanvas-body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: top;
+
+    padding:0px !important;
+}
+
+.offcanvas-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:2;
+}
+
+.offcanvas-footer .btn {
+    width: 100%;
+}
+
+.white-btn {
+    margin: var(--small-s) var(--small-s) var(--normal-s) var(--normal-s) !important;
+}
+
+.white-outline-btn {
+    margin: var(--small-s) var(--normal-s) var(--normal-s) var(--small-s) !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+    nav {
+        height: 45px !important;
+        background-color: var(--primary-colour);
+    }
+
+    .offcanvas {
+        width: 100%;
+    }
+
+}

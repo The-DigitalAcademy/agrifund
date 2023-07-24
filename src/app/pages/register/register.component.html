@@ -1,0 +1,89 @@
+<div class="mobile-header">
+    <img src="assets/images/background/orange-trees.webp" alt="Avatar" />
+</div>
+<div class="page-body">
+    <div class="container">
+        
+        <form [formGroup]="RegisterForm">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 registerform">
+                    <div class="container-header">
+                        <div class="heading">
+                            <h1>Register</h1>
+                        </div>
+                        <div class="action">
+                            <button class="icon-btn" [routerLink]="['']">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="name">Name:</label><br />
+                        <input
+                            formControlName="name"
+                            class="form-control"
+                            id="NameInput" />
+                    </div>
+                    <div class="form-input">
+                        <label for="surname">Surname:</label><br />
+                        <input
+                            formControlName="surname"
+                            class="form-control"
+                            id="surnameInput" />
+                    </div>
+                    <div class="form-input">
+                        <label for="surname">ID Number:</label><br />
+                        <input
+                            formControlName="id"
+                            class="form-control"
+                            id="idnumInput" />
+                    </div>
+                    <div class="form-input">
+                        <label for="name">Cell Number:</label><br />
+                        <input
+                            formControlName="cellNo"
+                            class="form-control"
+                            id="cellNoInput" />
+                    </div>
+                    <div class="form-input">
+                        <label for="password">Password:</label><br />
+                        <input
+                            formControlName="password"
+                            class="form-control"
+                            id="passwordInput" />
+                    </div>
+                    <div class="form-input">
+                        <label for="password">Confirm Password:</label><br />
+                        <input
+                            formControlName="Cpassword"
+                            class="form-control"
+                            id="CpasswordInput" />
+                    </div>
+                    <div class="form-group pt-1">
+                        <button
+                            type="submit"
+                            class="btn colourful-btn pt-6"
+                            [routerLink]="['/bookkeep']">
+                            Register
+                        </button>
+                    </div>
+                    <div class="pt-4 text muted">
+                        Have an account?
+                        <a
+                            id="forget"
+                            class="font-weight-lighter"
+                            routerLink="/login"
+                            >Login</a
+                        >
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mobile-hidden">
+                    <img
+                        src="assets/images/background/orange-trees.webp"
+                        alt="Avatar" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

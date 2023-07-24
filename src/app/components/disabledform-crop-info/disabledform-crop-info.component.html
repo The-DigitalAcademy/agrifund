@@ -1,0 +1,46 @@
+
+
+<div class="container">
+    <div class="profile-heading">
+      <div class="heading">
+        <h3>Your Crop Info</h3>
+      </div>
+      <div class="action">
+<app-enableform-crop-info (enableFields)="enableFields()" (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+   </div>
+    </div>
+   <hr>
+   <div class="container">
+  <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
+    <div class="form-input">
+        <label for="seasonFarm" class="form-label">I usually farm during:</label>
+        <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
+          <option value="Spring">Spring</option>
+          <option value="Summer">Summer</option>
+          <option value="Fall">Fall</option>
+          <option value="Winter">Winter</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="crops" class="form-label">I farm with these crops:</label>
+        <select id="crops" class="form-control" formControlName="selectedCrops" multiple>
+          <option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
+        <input type="text" class="form-control" formControlName="seedsAmount" [attr.disabled]="isDisabled ? 'disabled' : null">
+      </div>
+      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
+      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
+
+      <!-- Show the edited data when the form is disabled and data is available -->
+      <div *ngIf="isDisabled && editedData">
+        <p>Season: {{ editedData.seasonFarm }}</p>
+        <p>Selected Crops: {{ getSelectedCropsAsString() }}</p>
+        <p>Seeds Amount: {{ editedData.seedsAmount }}</p>
+      </div>
+  </form>
+</div>
+    </div>
+    

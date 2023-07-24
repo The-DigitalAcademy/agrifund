@@ -1,0 +1,76 @@
+.btn {
+    width: 100%;
+    
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    padding: var(--large-s);
+  
+    
+}
+.registerform {
+    padding: var(--large-s);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    padding:var( --large-s) ;
+}
+
+.page-body {
+    background-color: var(--primary-light) !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+}
+.action {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    border: none;
+
+}
+.container-header {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+.icon-btn{
+    background-color: var(--light);
+}
+
+@media only screen and (max-width: 575px) {
+    .registerform {
+        /* padding: 0px; */
+        width: 100%;
+       height: 100%;
+    }
+    form{
+        width: 100%;
+        height: 100%;
+    }
+
+    .page-body, .container{
+        /* padding: var(--small-s); */
+        width: 100%;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+    
+}
