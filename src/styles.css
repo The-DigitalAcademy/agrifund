@@ -274,6 +274,7 @@ input,
 
 }
 
+
 .form-group {}
 
 .form-input {
@@ -476,6 +477,15 @@ hr {
     .page-heading {
         padding: var(--normal-s) 0px 0px var(--normal-s);
     }
+    .mobile-header{
+        display: inline-flex;
+        width: 393px;
+        height: 100px;
+        align-items: flex-start;
+        flex-shrink: 0;
+        
+        }
+        
 
     .sidebar {
         display: none !important;
@@ -490,4 +500,9 @@ hr {
     .large-hidden {
         display: none !important;
     }
+
+    .mobile-header{
+        display: none;
+        
+        }
 }
