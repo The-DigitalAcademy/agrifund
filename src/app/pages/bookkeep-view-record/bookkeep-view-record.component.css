@@ -1,8 +1,10 @@
-h3{
-    margin: 0px;
-    height: 100%;
+.page-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.justify-start{
-    height: 100%;
+h3{
+    padding: var(--small-s);
+    margin: 0px;
 }

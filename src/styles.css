@@ -88,6 +88,9 @@ body {
 /* CONTAINERS */
 
 .page-body {
+    width: 100%;
+    height: 100%;
+
     background-size: cover;
     background-color: var(--primary-light);
     background-repeat: fill no-repeat;
@@ -174,6 +177,7 @@ h1 {
     font-family: var(--fancy-font);
     font-size: var(--font-x-large);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
 
@@ -184,6 +188,7 @@ h2 {
     font-family: var(--fancy-font);
     font-size: var(--font-normal);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
 
@@ -194,6 +199,7 @@ h3 {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
 
@@ -204,6 +210,7 @@ p {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
 
@@ -214,6 +221,7 @@ a {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
+    line-height: auto !important;
 
     color: var(--primary-colour) !important;
 }
@@ -307,13 +315,15 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
-
-
 /* CONTAINERS */
 .container {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
     background-color: var(--light);
+}
+
+.form-container {
+    width: 60%;
 }
 
 
@@ -483,18 +493,23 @@ hr {
     .page-heading {
         padding: var(--normal-s) 0px 0px var(--normal-s);
     }
-    .mobile-header{
+
+    .mobile-header {
         display: inline-flex;
         width: 100%;
         height: 100px;
         align-items: flex-start;
         flex-shrink: 0;
-        
-        }
-        
+
+    }
 
     .sidebar {
         display: none !important;
+    }
+
+    .container, .form-container{
+        width: 100%;
+        height: 100%;
     }
 
 }
@@ -507,8 +522,8 @@ hr {
         display: none !important;
     }
 
-    .mobile-header{
+    .mobile-header {
         display: none;
-        
-        }
+
+    }
 }
