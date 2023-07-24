@@ -111,6 +111,12 @@ body {
     max-width: 100% !important;
 }
 
+.container-header {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
 .card {
     align-items: center;
     background-color: var(--light-grey);
@@ -146,7 +152,6 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     width: 100%
 }
 
@@ -361,6 +366,7 @@ button {
 .icon-btn-dark {
     font-weight: var(--bold);
     color: var(--dark) !important;
+    background-color: transparent !important;
 }
 
 .outline-btn {
