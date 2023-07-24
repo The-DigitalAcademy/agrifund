@@ -7,6 +7,9 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./equipment-info.component.css']
 })
 export class EquipmentInfoComponent {
+  counter(i: number) {
+    return new Array(i);
+}
   isDisabled!: boolean;
   myForm!: FormGroup;
   farmerData: any;

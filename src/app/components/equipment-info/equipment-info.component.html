@@ -20,12 +20,15 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <td scope="row">Hand Tools</td>
-                                <td>No Brand</td>
-                                <td>22/12/2022</td>
-                                <td>R 800</td>
+            <tbody *ngFor="let record of counter(3)">
+                <tr>
+                  <td scope="row">Hand Tools</td>
+                  <td>No Brand</td>
+                  <td>22/12/2022</td>
+                  <td>R 800</td>
+                </tr>
                                 
             </tbody>
         </table>
+    </div>
     </div>
