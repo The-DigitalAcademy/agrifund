@@ -4,8 +4,11 @@
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    justify-content: space-between;
+   
+
 }
 .form-check-label {
     color: var(--primary-colour);
@@ -13,6 +16,7 @@
 .form-check {
     display: flex;
     align-items: center;
+    margin-top:var(--small-s);
   }
   
   .form-check-input {
@@ -23,16 +27,15 @@
  
 
 h1{
-    /* font-size: var( --font-x-large);
+     font-size: var( --font-x-large);
     font-family: var(--fancy-font);
-    font-weight:var(--bold) ;
+    font-weight:var(--regular) ;
     width: 100%;
-    margin-top:var( --x-larger-s) ;   */
+    margin-top:var( --medium-s) ; 
+    color: var(--primary-colour);  
     
   }
-  p{
-    width: 100%;
-  }
+  
   .actions{
     justify-content: center;
     margin-top:var(--medium-s) ;
@@ -50,11 +53,22 @@ h1{
     background-color: #f0f0f0; /* Set the background color for the progress bar container */
     border-radius: 3px;
     overflow: hidden;
+
   }
   
   .progress {
     height: 100%;
     background-color: #9BA66F 
+  }
+  .container-feedback{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:var(--normal-s) ;
+    width: 100%;
+    border: 1px solid var(--lighter-grey);
+    
+
   }
   
 
