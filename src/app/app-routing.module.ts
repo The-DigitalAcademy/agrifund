@@ -10,6 +10,7 @@ import { GetStartedComponent } from './pages/get-started/get-started.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
+import { FarmInfoFormComponent } from './components/farm-info-form/farm-info-form.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'bookkeep', component: BookkeepViewAllComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
     {path: 'progressbar',component: PortfolioProgressbarComponent},
+    {path: 'farm', component: FarmInfoFormComponent}
 ];
 
 @NgModule({

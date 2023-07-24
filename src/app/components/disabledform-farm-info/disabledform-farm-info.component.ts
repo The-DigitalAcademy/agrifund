@@ -16,18 +16,19 @@ export class DisabledformFarmInfoComponent {
 
   ngOnInit() {
     const userData = {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@example.com',
-      phoneNumber: '123-456-7890'
+      locationOfFarm: 'John',
+      sizeOfFarm: 'Doe',
+      yearsUsingFarm: 'john@example.com',
+      numberOfPeople: '123-456-7890',
+      reasonForFunding:'To help me improve my farming business'
     };
   
     this.myForm = this.fb.group({
-      locationOfFarm: new FormControl({ value: '', disabled: true }),
-      sizeOfFarm: new FormControl({ value: '', disabled: true }),
-      yearsUsingFarm: new FormControl({ value: '', disabled: true }),
-      numberOfPeople: new FormControl({ value: '', disabled: true }),
-      reasonForFunding: new FormControl({ value: '', disabled: true })
+      locationOfFarm: new FormControl({ value: userData.locationOfFarm, disabled: true }),
+      sizeOfFarm: new FormControl({ value: userData.sizeOfFarm, disabled: true }),
+      yearsUsingFarm: new FormControl({ value: userData.yearsUsingFarm, disabled: true }),
+      numberOfPeople: new FormControl({ value: userData.numberOfPeople, disabled: true }),
+      reasonForFunding: new FormControl({ value: userData.reasonForFunding, disabled: true })
     });
   }
   
