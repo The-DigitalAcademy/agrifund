@@ -11,13 +11,19 @@
     --primary-light: #9BA66F;
     --secondary-colour: #D15F20;
 
-    
-    --grey: #6C757D;/* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
-    --light-grey: #DEE2E6;/* borders and strokes */
-    --grey-white:#E9ECEF/* background colour for fields*/
-    --dark-grey: #4C5359;/*default colour for text*/
-    --dark: #2E2E2E;/* colour of paragraphs*/
+
+    --grey: #6C757D;
+    /* grey-text, fine prints, placeholder colour */
+    --lighter-grey: #ADB5BD;
+    /* borders, strokes, input field-outlines*/
+    --light-grey: #DEE2E6;
+    /* borders and strokes */
+    --grey-white: #E9ECEF
+        /* background colour for fields*/
+        --dark-grey: #4C5359;
+    /*default colour for text*/
+    --dark: #2E2E2E;
+    /* colour of paragraphs*/
     --light: #F8F9FA;
     /*default background colour and colour of text on colour backgrounds*/
 
@@ -51,8 +57,10 @@
 
     /* BORDERS */
     --border-radius: 3px;
-    --thick-border: 2px solid;/*buttons  */
-    --thin-border: 1px solid;/*containers  */
+    --thick-border: 2px solid;
+    /*buttons  */
+    --thin-border: 1px solid;
+    /*containers  */
 
     /* SPACING & SIZING*/
     --x-small-s: 4px;
@@ -130,7 +138,7 @@ body {
 
     margin-bottom: var(--normal-s);
 
-    width:100%
+    width: 100%
 }
 
 /* DISPLAY RESPONSIVENESS */
@@ -151,7 +159,7 @@ body {
 
 .justify-center {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     width: 100%
 }
@@ -235,7 +243,7 @@ fa-icon {
     font-weight: var(--bold);
 }
 
-.bold{
+.bold {
     font-weight: var(--bold);
 }
 
@@ -296,7 +304,7 @@ input[type=number]:focus,
 
 
 /* CONTAINERS */
-.container{
+.container {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
     background-color: var(--light);
@@ -406,7 +414,7 @@ button[disabled] {
 }
 
 thead {
-    
+
     border-bottom: var(--thin-border) var(--lighter-grey);
 }
 
@@ -469,10 +477,13 @@ hr {
         padding: var(--normal-s) 0px 0px var(--normal-s);
     }
 
+    .sidebar {
+        display: none !important;
+    }
 
 }
 
-@media only screen and (min-width: 577px){
+@media only screen and (min-width: 577px) {
 
     /* HIDE ITEMS*/
     /* hide items on large screens */
