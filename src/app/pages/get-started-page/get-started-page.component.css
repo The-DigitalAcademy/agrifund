@@ -97,22 +97,6 @@ fa-icon{
 }
 
 
-/* @media only screen and (max-width: 576px) {
-    .page-body{
-       
-        background-image: none;
-        width: 100%;
-        height: 100%;
-        /* opacity: 0.7; */
-    /* } */
-
-
-    /* .carousel-images {
-        width: 40% !important; */
-        /* height: 40% !important; */
-    /* } */
-/* } */ 
-
 @media only screen and (max-width: 575px) {
    .page-body, .container{
   font-size: var(--font-small);
@@ -132,7 +116,6 @@ fa-icon{
    }
    .carousel-images {
     margin-top: -40px;
-   
     width: 40% !important;
     height: 40% !important;
  } 
