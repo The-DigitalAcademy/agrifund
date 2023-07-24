@@ -17,11 +17,11 @@ export class DisabledformFarmInfoComponent {
 
   ngOnInit() {
     const userData = {
-      locationOfFarm: 'Farm Location', // Update with default values
-      sizeOfFarm: 'Farm Size', // Update with default values
-      yearsUsingFarm: 'Years Using Farm', // Update with default values
-      numberOfPeople: 'Number of People', // Update with default values
-      reasonForFunding: 'Reason for Funding' // Update with default values
+      locationOfFarm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
+      sizeOfFarm: '9', // Update with default values
+      yearsUsingFarm: '9', // Update with default values
+      numberOfPeople: '2', // Update with default values
+      reasonForFunding: 'I want to improve my land of farming and equipments' // Update with default values
     };
   
     this.myForm = this.fb.group({
