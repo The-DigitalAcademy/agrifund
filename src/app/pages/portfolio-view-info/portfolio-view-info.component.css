@@ -10,9 +10,10 @@
   
 }
 .first-body{
-    justify-content: space-around;
-    
-}
+  display: flex;
+  
+ 
+  }
 
 .sidebar {
     background-color: var(--primary-colour);
@@ -25,10 +26,10 @@
 }
 
 .crop-info{
-    margin-top:20px;
+    margin-top:var(--normal-s);
 }
 .farm-info{
-    margin-top:20px;
+    margin-top:var(--normal-s);
 }
 
 .page-heading{
@@ -43,10 +44,9 @@
   width: 100%;
 }
 
+
   
-  .right {
-    padding-left: 20px;
-  }
+  
 
 
 
