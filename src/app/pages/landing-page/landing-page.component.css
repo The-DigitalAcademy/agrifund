@@ -17,10 +17,10 @@
   } */
 
   .container-fluid {
-    margin-top: 60px;
+    margin-top: 169px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10%;
+    margin-bottom: 15%;
   }
 
   .page-body {
@@ -156,8 +156,4 @@
   .large-hidden {
       display: none !important;
   }
-}
-.page-body{
-  width: 100%;
-  
 }
