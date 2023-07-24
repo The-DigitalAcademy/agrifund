@@ -40,17 +40,17 @@
     <form [formGroup]="myForm">
       <div class="form-input">
         <label for="exampleInputEmail1" class="form-label">First Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input type="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                formControlName="firstName" [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Last Name</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="lastName"
+        <input type="lastName" class="form-control" id="exampleInputPassword1" formControlName="lastName"
                [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Cell Number</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
                [disabled]="isDisabled">
       </div>
       <div class="form-input">
@@ -62,7 +62,7 @@
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="email"
+        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email"
                [disabled]="isDisabled">
       </div>
     </form>

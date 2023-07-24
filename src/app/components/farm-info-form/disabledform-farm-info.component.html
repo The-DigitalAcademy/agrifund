@@ -40,29 +40,29 @@
     <form [formGroup]="myForm">
       <div class="form-input">
         <label for="exampleInputEmail1" class="form-label">Location of my farm</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                formControlName="locationOfFarm" [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Size of farm (ha)</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="sizeOfFarm"
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="sizeOfFarm"
                [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Years using this farm</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="yearsUsingFarm"
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="yearsUsingFarm"
                [disabled]="isDisabled">
       </div>
    
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Number of people that help you farm</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="numberOfPeople"
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="numberOfPeople"
                [disabled]="isDisabled">
       </div>
 
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Reason for needing funding:</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="reasonForFunding"
+        <input type="" class="form-control" id="exampleInputPassword1" formControlName="reasonForFunding"
                [disabled]="isDisabled">
       </div>
     </form>
