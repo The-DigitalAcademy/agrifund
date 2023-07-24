@@ -4,7 +4,8 @@
         <h3>Your Farm Info</h3>
       </div>
       <div class="action">
-        <app-enabledform-farm-info (enableFields)="enableFields()"></app-enabledform-farm-info>
+        <app-enableform-crop-info (enableFields)="enableFields()" (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+   </div>
       </div>
     </div>
     <hr>
@@ -39,7 +40,9 @@
           </div>
       </form>
     </div>
-  </div>
+    
+
+  
   
   
   
