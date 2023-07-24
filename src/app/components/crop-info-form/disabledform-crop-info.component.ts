@@ -17,7 +17,7 @@ export class DisabledformCropInfoComponent implements OnInit {
   ngOnInit() {
     this.farmerData = { // Replace this with the actual farmer data
       seasonFarm: 'Spring',
-      selectedCrops: 'Maize', // Selected crops as an array
+      selectedCrops: 'Potatoes', // Selected crops as an array
       seedsAmount: '60'
     };
 
