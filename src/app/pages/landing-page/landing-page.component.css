@@ -1,21 +1,45 @@
 .container {
     display: flex;
     height:100%;
-   
+    /* background-image:url('src/assets/images/background/barn.webp'); */
+    background-size: cover;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
     border-radius: none;
     border: none;
     flex-wrap: wrap;
   }
+  /* .background-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+  } */
 
   .container-fluid {
-    margin-top: auto;
-    margin-left: auto;
+    margin-top: 120px;
+    margin-left: 100px;
     margin-right: auto;
     margin-bottom: 10%;
+;
   }
-  
+
+  .page-body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-image: url("src/assets/images/background/barn.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* opacity: 0.7; */
+}
+  .h1 {
+    text-align: center;
+
+  }
 
 
     .button {
@@ -25,7 +49,7 @@
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 1px 2px;
+        margin: 34px 23px;
         cursor: pointer;
 } 
 
@@ -36,7 +60,7 @@
   justify-content: center;
   align-items: flex-start;
   padding-left: 5%;
-  padding-right: 0%;
+  padding-right: 21px;
   padding-top: 0%;
   padding-bottom: 22%;
 } */
@@ -61,8 +85,9 @@
   width: 100%;
 } */
 
-p{
+.p{
   text-align: left;
+  margin-left: 100px;
 }
 
 

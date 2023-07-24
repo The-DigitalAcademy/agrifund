@@ -8,10 +8,11 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
 import { GetStartedComponent } from './pages/get-started/get-started.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
+import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
-    { path: 'get-started', component: GetStartedComponent },
+    { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },

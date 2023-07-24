@@ -55,6 +55,39 @@ body{
     font-family: var();
 }
 
+.actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-bottom: var(--normal-s);
+
+    width:100%
+}
+
+/* DISPLAY RESPONSIVENESS */
+.justify-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%
+}
+
+.justify-center {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%
+}
+
 /* TEXT */
 h1{
     font-family: var(--fancy-font);
