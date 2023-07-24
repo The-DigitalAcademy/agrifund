@@ -16,7 +16,7 @@ export class DisabledformFarmInfoComponent {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    const userData = {
+    const farmerData = {
       locationOfFarm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
       sizeOfFarm: '9', // Update with default values
       yearsUsingFarm: '9', // Update with default values
@@ -25,11 +25,11 @@ export class DisabledformFarmInfoComponent {
     };
   
     this.myForm = this.fb.group({
-      locationOfFarm: new FormControl({ value: userData.locationOfFarm, disabled: true }),
-      sizeOfFarm: new FormControl({ value: userData.sizeOfFarm, disabled: true }),
-      yearsUsingFarm: new FormControl({ value: userData.yearsUsingFarm, disabled: true }),
-      numberOfPeople: new FormControl({ value: userData.numberOfPeople, disabled: true }),
-      reasonForFunding: new FormControl({ value: userData.reasonForFunding, disabled: true })
+      locationOfFarm: new FormControl({ value: farmerData.locationOfFarm, disabled: true }),
+      sizeOfFarm: new FormControl({ value: farmerData.sizeOfFarm, disabled: true }),
+      yearsUsingFarm: new FormControl({ value: farmerData.yearsUsingFarm, disabled: true }),
+      numberOfPeople: new FormControl({ value: farmerData.numberOfPeople, disabled: true }),
+      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true })
     });
   }
   

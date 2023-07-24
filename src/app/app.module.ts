@@ -41,7 +41,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { DisabledformPersonalInfoComponent } from './components/personal-info-form/feature-disabledform-personal-info.component';
+import { DisabledformPersonalInfoComponent } from './components/feature-disabledform-personal-info/feature-disabledform-personal-info.component';
 
 import { DisabledformCropInfoComponent } from './components/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/enableform-crop-info/enableform-crop-info.component';
