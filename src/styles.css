@@ -87,7 +87,7 @@ body {
 
 /* CONTAINERS */
 
-.page-body {
+.page-body { /*container for the entire page*/
     width: 100%;
     height: 100%;
 
@@ -98,7 +98,7 @@ body {
     overflow: scroll;
 }
 
-.page-content {
+.page-content { /*child to page-body*/
     padding: var(--large-s) !important;
 }
 
@@ -209,7 +209,7 @@ h3 {
 
 p {
     font-family: var(--normal-font);
-    font-size: var(--font-medium);
+    font-size: var(--font-normal);
     font-weight: var(--regular);
     line-height: auto !important;
 
@@ -268,8 +268,8 @@ fa-icon {
 /* FORMS */
 label,
 .form-label {
-    font-family: var(--normal);
-    font-size: var(--font-regular);
+    font-family: var(--normal-font);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     margin: 0px 0px var(--x-small-s) 0px;
