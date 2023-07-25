@@ -121,6 +121,12 @@ body {
     margin-bottom: var(--small-s);
 }
 
+.form-container {
+    width: 60%;
+    
+}
+
+
 .card {
     align-items: center;
     background-color: var(--light-grey);
@@ -316,16 +322,6 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
-/* CONTAINERS */
-.container {
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-    background-color: var(--light);
-}
-
-.form-container {
-    width: 60%;
-}
 
 
 /* BUTTONS */
