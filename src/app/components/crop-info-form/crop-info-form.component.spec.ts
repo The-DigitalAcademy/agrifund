@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EquipmentInfoComponent } from './equipment-info.component';
+import { CropInfoFormComponent } from './crop-info-form.component';
 
-describe('EquipmentInfoComponent', () => {
-  let component: EquipmentInfoComponent;
-  let fixture: ComponentFixture<EquipmentInfoComponent>;
+describe('CropInfoFormComponent', () => {
+  let component: CropInfoFormComponent;
+  let fixture: ComponentFixture<CropInfoFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EquipmentInfoComponent ]
+      declarations: [ CropInfoFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EquipmentInfoComponent);
+    fixture = TestBed.createComponent(CropInfoFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

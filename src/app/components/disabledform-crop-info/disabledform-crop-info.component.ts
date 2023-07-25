@@ -7,25 +7,29 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./disabledform-crop-info.component.css']
 })
 export class DisabledformCropInfoComponent implements OnInit {
-  farmerData: any;
+onCancelClicked() {
+throw new Error('Method not implemented.');
+}
+
+
   myForm!: FormGroup;
   isDisabled: boolean = true;
   editedData: any = null;
 
+  cropOptions: string[] = ['Corn', 'Tomatoes', 'Potatoes', 'Carrots', 'Lettuce'];
+  farmerData = { // Replace this with the actual farmer data
+    seasonFarm: 'Spring',
+    selectedCrops: ['Corn', 'Tomatoes'], // Selected crops as an array
+    seedsAmount: '50'
+  };
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.farmerData = { // Replace this with the actual farmer data
-      seasonFarm: 'Spring',
-      selectedCrops: 'Maize', // Selected crops as an array
-      seedsAmount: '50'
-    };
-
     this.myForm = this.fb.group({
       seasonFarm: new FormControl({ value: this.farmerData.seasonFarm, disabled: true }),
       selectedCrops: new FormControl({ value: this.farmerData.selectedCrops, disabled: true }),
-      seedsAmount: new FormControl({ value: this.farmerData.seedsAmount, disabled: true }),
-      cropsInfo: new FormControl({ value: this.farmerData.selectedCrops, disabled: true }) // Include the cropsInfo field
+      seedsAmount: new FormControl({ value: this.farmerData.seedsAmount, disabled: true })
     });
   }
 
@@ -34,18 +38,21 @@ export class DisabledformCropInfoComponent implements OnInit {
     this.myForm.enable();
   }
 
+  getSelectedCropsAsString() {
+    const selectedCrops = this.myForm.get('selectedCrops')?.value as string[];
+    return selectedCrops.join(', ');
+  }
+
   saveFields() {
-    this.editedData = this.myForm.value;
-    this.isDisabled = true;
-  }
+    this.editedData = this.myForm.value; 
+    this.isDisabled = true; 
+    }
 
-  onSaveClicked(formData: any) {
-    this.farmerData = formData;
-    this.isDisabled = true;
-    this.myForm.disable();
-  }
+    onSaveClicked(formData: any) {
+      this.farmerData = formData;
+      this.isDisabled = true;
+      this.myForm.disable();
+    }
 
-  onCancelClicked() {
-    // Implement your cancel logic here
-  }
+    
 }

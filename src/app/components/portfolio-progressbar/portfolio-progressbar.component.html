@@ -1,40 +1,6 @@
 <div class="container">
     <div class="progress-bar">
-        <div class="progress" [style.width]="progressValue + '%'">
-       </div>
-        </div>
-        <h1>45% complete!</h1>
-        
-        <div class="checklist-container">
-        <form [formGroup]="checklistForm">
-            <div class="checklist">
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" formControlName="personalInfo">
-                <label class="form-check-label">Personal Info</label>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" formControlName="farmInfo">
-                <label class="form-check-label">Farm Info</label>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" formControlName="cropInfo">
-                <label class="form-check-label">Crop Info</label>
-              </div>
-            </div>
-          </form>
-        </div>
-          
-              
-        
-        <div class="container-feedback">
-            <h2>You can qualify for business funding.</h2>
-            <p>Click the  button below to go to  the ABSA website to apply for business funding.</p>
-            <div class="actions">
-                <button class="btn colourful-btn " type="button">Go to ABSA</button>
-            </div>
-
-        </div>
-      
+        <div class="progress-bar-fill" [style.width.%]="progress"></div>
+      </div>
       
 </div>
- 

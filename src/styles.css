@@ -163,7 +163,7 @@ h1 {
 
 h2 {
     font-family: var(--fancy-font);
-    font-size: var(--font-large);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     margin: 0px 0px var(--small-s) 0px;
