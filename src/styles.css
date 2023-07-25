@@ -272,7 +272,7 @@ fa-icon {
     height: var(--font-normal);
     width: var(--font-normal);
 
-    padding: 0px;    
+    padding: 0px;
 }
 
 .svg-inline--fa {
@@ -507,6 +507,7 @@ hr {
 
 
 @media (max-width: 575px) {
+
     /* HIDE ITEMS*/
     /* hide items on small screens */
     .mobile-hidden {
@@ -529,9 +530,6 @@ hr {
         flex-shrink: 0;
     }
 
-    .sidebar {
-        display: none !important;
-    }
 
     .container,
     .form-container {
@@ -556,6 +554,10 @@ hr {
 
     h3 {
         font-size: var(--font-normal);
+    }
+
+    .sidebar {
+        display: none !important;
     }
 
     /* HIDE ITEMS*/
@@ -584,7 +586,10 @@ hr {
         font-size: var(--font-normal);
     }
 
-    /* HIDE ITEMS*/
+    .sidebar {
+        display: none !important;
+    }
+
     /* hide items on small screens */
     .mobile-hidden {
         display: none !important;
@@ -613,9 +618,12 @@ hr {
         display: none;
     }
 
-    /* HIDE ITEMS*/
-    /* hide items on large screens */
-    .large-hidden {
+    .sidebar {
+        display: none !important;
+    }
+
+    /* hide items on small screens */
+    .mobile-hidden {
         display: none !important;
     }
 }
