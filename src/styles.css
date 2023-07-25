@@ -3,43 +3,45 @@
 
 :root {
 
-    /* COLOUR PALETTE */
+    /*------------------
+        COLOUR PALETTE
+    --------------------*/
     --primary-darker: #5A6537;
-    --primary-colour: #606C38;
     /*primary green colour */
+    --primary-colour: #606C38;
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
     --secondary-colour: #D15F20;
-
-
-    --grey: #6C757D;
     /* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #ADB5BD;
+    --grey: #6C757D;
     /* borders, strokes, input field-outlines*/
-    --light-grey: #DEE2E6;
+    --lighter-grey: #ADB5BD;
     /* borders and strokes */
-    --grey-white: #E9ECEF
-        /* background colour for fields*/
-        --dark-grey: #4C5359;
+    --light-grey: #DEE2E6;
+    /* background colour for fields*/
+    --grey-white: #E9ECEF;
     /*default colour for text*/
     --dark: #2E2E2E;
     /* colour of paragraphs*/
-    --light: #F8F9FA;
+    --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
-
-    --grey: #6C757D;
+    --light: #F8F9FA;
     /* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #ADB5BD;
+    --grey: #6C757D;
     /* borders, strokes, input field-outlines*/
-    --light-grey: #DEE2E6;
+    --lighter-grey: #ADB5BD;
     /* borders and strokes */
+    --light-grey: #DEE2E6;
 
-
-    /* FONTS */
+    /*------------------
+        FONTS
+    --------------------*/
     --fancy-font: 'Arvo';
     --normal-font: 'Lato';
 
-    /* FONT SIZES */
+    /*------------------
+        FONT SIZES
+    --------------------*/
     --font-x-large: 24px;
     --font-large: 22px;
     --font-medium: 18px;
@@ -47,22 +49,26 @@
     --font-small: 14px;
     --font-x-small: 12px;
 
-    /* FONT WEIGHTS */
+    /*------------------
+        FONT Weights
+    --------------------*/
     --thin: 100;
     --light-font: 300;
     --regular: 400;
-
     --bold: 700;
 
-
-    /* BORDERS */
+    /*------------------
+        BORDERS
+    --------------------*/
     --border-radius: 3px;
+    /*button borders  */
     --thick-border: 2px solid;
-    /*buttons  */
+    /*container borders */
     --thin-border: 1px solid;
-    /*containers  */
 
-    /* SPACING & SIZING*/
+    /*------------------
+        SPACING & SIZING
+    --------------------*/
     --x-small-s: 4px;
     --small-s: 8px;
     --normal-s: 14px;
@@ -77,18 +83,16 @@ html body {
 }
 
 body {
-    font-family: var(--normal-font);
-    color: var(--dark);
-
     background-color: var(--light);
-
-    /* margin-top: 60px; */
+    color: var(--dark);
+    font-family: var(--normal-font);
 }
 
-/* CONTAINERS */
-
+/*------------------
+    CONTAINERS 
+--------------------*/
+/*container for the entire page*/
 .page-body {
-    /*container for the entire page*/
     width: 100%;
     height: 100%;
 
@@ -96,14 +100,21 @@ body {
     background-color: var(--primary-light);
     background-repeat: fill no-repeat;
     background-attachment: fixed;
+    /* overflow: scroll; */
+}
+
+/*child to page-body - all page items headings and containers go in here */
+.page-content {
+    padding: var(--large-s) !important;
     overflow: scroll;
 }
 
-.page-content {
-    /*child to page-body*/
-    padding: var(--large-s) !important;
+/* container for page headings */
+.page-heading {
+    margin-bottom: var(--normal-s);
 }
 
+/*any div that needs a border around it  */
 .container {
     margin: 0px !important;
     border-radius: var(--border-radius);
@@ -116,6 +127,12 @@ body {
     max-width: 100% !important;
 }
 
+/* styling for containers for containers that shouldn't fill the entire page */
+.form-container {
+    width: 60%;
+}
+
+/* container for container headings */
 .container-header {
     display: flex;
     width: 100%;
@@ -123,6 +140,7 @@ body {
     margin-bottom: var(--small-s);
 }
 
+/* styling for cards */
 .card {
     align-items: center;
     background-color: var(--light-grey);
@@ -134,14 +152,15 @@ body {
     padding: var(--font-normal);
 }
 
-
+/* override bootstrap row styles */
 .row>* {
     padding: 0px !important;
     margin: 0px !important;
 }
 
-.page-heading {
-    margin-bottom: var(--normal-s);
+/* override bootstrap row styles */
+.row {
+    padding: inherit !important;
 }
 
 .actions {
@@ -154,7 +173,10 @@ body {
     width: 100%
 }
 
-/* DISPLAY RESPONSIVENESS */
+/*----------------------
+    JUSTIFY CONTENT
+----------------------*/
+/* justify content to the left */
 .justify-start {
     display: flex;
     justify-content: flex-start;
@@ -162,6 +184,7 @@ body {
     width: 100%
 }
 
+/* justify content to the right */
 .justify-end {
     display: flex;
     justify-content: flex-end;
@@ -169,6 +192,7 @@ body {
     width: 100%
 }
 
+/* justify content to the center */
 .justify-center {
     display: flex;
     justify-content: center;
@@ -176,7 +200,9 @@ body {
     width: 100%
 }
 
-/* TEXT */
+/*----------------------
+    TEXT
+----------------------*/
 h1 {
     font-family: var(--fancy-font);
     font-size: var(--font-x-large);
@@ -190,7 +216,7 @@ h1 {
 
 h2 {
     font-family: var(--fancy-font);
-    font-size: var(--font-normal);
+    font-size: var(--font-medium);
     font-weight: var(--bold);
     line-height: auto !important;
 
@@ -200,34 +226,33 @@ h2 {
 }
 
 h3 {
+    color: var(--dark);
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--bold);
     line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
-
-    color: var(--dark);
 }
 
 p {
+    color: var(--dark);
+
     font-family: var(--normal-font);
     font-size: var(--font-normal);
     font-weight: var(--regular);
     line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
-
-    color: var(--dark);
 }
 
 a {
+    color: var(--primary-colour) !important;
+
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
     line-height: auto !important;
-
-    color: var(--primary-colour) !important;
 }
 
 a:hover,
@@ -238,6 +263,8 @@ a:active {
 }
 
 fa-icon {
+    color: var(--light);
+
     font-size: var(--font-normal);
     line-height: var(--font-normal);
     text-align: center;
@@ -245,9 +272,7 @@ fa-icon {
     height: var(--font-normal);
     width: var(--font-normal);
 
-    padding: 0px;
-
-    color: var(--light);
+    padding: 0px;    
 }
 
 .svg-inline--fa {
@@ -268,18 +293,22 @@ fa-icon {
     color: var(--grey);
 }
 
-/* FORMS */
+/*----------------------
+    FORMS
+----------------------*/
+/* styling for all labels used and labels for form inputs */
 label,
 .form-label {
+    color: var(--dark);
+
     font-family: var(--normal-font);
     font-size: var(--font-normal);
     font-weight: var(--bold);
 
     margin: 0px 0px var(--x-small-s) 0px;
-
-    color: var(--dark);
 }
 
+/* styling for form input fields */
 input,
 .form-control {
 
@@ -288,21 +317,20 @@ input,
 
     background-color: var(--light);
     height: var(--x-larger-s);
-
 }
 
-
-.form-group {}
-
+/* styling for form input fields */
 .form-input {
     padding: var(--x-small-s);
     margin: var(--small-s) 0px;
 }
 
+/* styling for form input fields */
 .form-text {
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
 }
 
+/* styling for input fields for focus */
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,
@@ -319,19 +347,10 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
-/* CONTAINERS */
-.container {
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-    background-color: var(--light);
-}
-
-.form-container {
-    width: 60%;
-}
-
-
-/* BUTTONS */
+/*----------------------
+    BUTTONS
+----------------------*/
+/* default button styles without coloring */
 .btn,
 button {
     font-family: var(--normal-font);
@@ -353,48 +372,14 @@ button {
     padding: var(--small-s);
 }
 
-
-
+/* style for buttons on white backgrounds */
 .colourful-btn {
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
 
-.white-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.icon-btn {
-    font-weight: var(--bold);
-    color: var(--grey) !important;
-}
-
-.icon-btn fa-icon {
-    color: var(--grey) !important;
-    margin: var(--x-small-s) 0px;
-}
-
-.icon-btn-dark {
-    font-weight: var(--bold);
-    color: var(--dark) !important;
-    background-color: transparent !important;
-}
-
-.outline-btn {
-    border: var(--thick-border) var(--primary-colour) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.white-outline-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--primary-colour) !important;
-    color: var(--light) !important;
-}
-
+/* hover and focus style for buttons on white backgrounds */
 .colourful-btn:hover,
 .colourful-btn:focus {
     border: var(--thick-border) var(--primary-lighter) !important;
@@ -402,6 +387,52 @@ button {
     color: var(--light) !important;
 }
 
+/* style for on colourful backgrounds*/
+.white-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+/* style for buttons where it has an icon */
+.icon-btn {
+    font-weight: var(--bold);
+    color: var(--grey) !important;
+}
+
+/* style of an icon within an icon button */
+.icon-btn fa-icon {
+    color: var(--grey) !important;
+    margin: var(--x-small-s) 0px;
+}
+
+/* style of an icon when hovering or focusing */
+.icon-btn:hover,
+.icon-btn:focus {
+    color: var(--dark) !important;
+}
+
+/* style of a dark icon button */
+.icon-btn-dark {
+    font-weight: var(--bold);
+    color: var(--dark) !important;
+    background-color: transparent !important;
+}
+
+/* style of a dark icon button on hover or focus*/
+.icon-btn-dark:hover,
+.icon-btn-dark:focus {
+    color: var(--primary-colour) !important;
+}
+
+/* style of a neutral button on a white background */
+.outline-btn {
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+/* style of a neutral button when hovering or focusing*/
 .outline-btn:hover,
 .outline-btn:focus {
     border: var(--thick-border) var(--primary-lighter) !important;
@@ -409,24 +440,25 @@ button {
     color: var(--primary-lighter) !important;
 }
 
-.icon-btn:hover,
-.icon-btn:focus {
-    color: var(--dark) !important;
+/* style of a neutral button on a colourful background */
+.white-outline-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
 }
 
-.icon-btn-dark:hover,
-.icon-btn-dark:focus {
-    color: var(--primary-colour) !important;
-}
-
+/* style of a button when it is disabled*/
 button[disabled] {
     background-color: var(--light) !important;
     border-color: var(--grey) !important;
     color: var(--grey) !important;
 }
 
-/* TABLES */
+/*----------------------
+    TABLES
+----------------------*/
 
+/* overwriting bootstrap styles for table */
 .table> :not(caption)>*>* {
     background-color: transparent !important;
     border: none !important;
@@ -434,11 +466,12 @@ button[disabled] {
     padding: 0px;
 }
 
+/* style for table header content */
 thead {
-
     border-bottom: var(--thin-border) var(--lighter-grey);
 }
 
+/* setting styles for table headers  */
 .table th {
     font-family: var(--normal-font);
     font-size: var(--font-regular);
@@ -448,6 +481,7 @@ thead {
     color: var(--grey);
 }
 
+/* style for table data cells  */
 td {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
@@ -458,7 +492,10 @@ td {
     color: var(--dark-grey) !important;
 }
 
-
+/*----------------------
+    OTHER
+----------------------*/
+/* style for horizontal rule */
 hr {
     background-color: var(--lighter-grey);
     height: 1.5px;
@@ -470,20 +507,6 @@ hr {
 
 
 @media (max-width: 575px) {
-
-    /* TEXT */
-    h1 {
-        font-size: var(--font-medium);
-    }
-
-    h2 {
-        font-size: var(--font-normal);
-    }
-
-    h3 {
-        font-size: var(--font-small);
-    }
-
     /* HIDE ITEMS*/
     /* hide items on small screens */
     .mobile-hidden {
@@ -504,7 +527,6 @@ hr {
         height: 100px;
         align-items: flex-start;
         flex-shrink: 0;
-
     }
 
     .sidebar {
@@ -516,34 +538,114 @@ hr {
         width: 100%;
         height: 100%;
     }
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    /* HIDE ITEMS*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
 
 }
 
-@media (min-width: 577px) {
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    /* HIDE ITEMS*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    .mobile-header {
+        display: none;
+    }
 
     /* HIDE ITEMS*/
     /* hide items on large screens */
     .large-hidden {
         display: none !important;
     }
+}
 
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
     .mobile-header {
         display: none;
+    }
 
+    /* HIDE ITEMS*/
+    /* hide items on large screens */
+    .large-hidden {
+        display: none !important;
     }
 }
 
-/* Media Query for Mobile Devices */
-@media (max-width: 390px) {}
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+    .mobile-header {
+        display: none;
+    }
 
-/* Media Query for low resolution  Tablets, Ipads */
-@media (min-width: 481px) and (max-width: 767px) {}
-
-/* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px) {}
-
-/* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {}
-
-/* Media Query for Large screens */
-@media (min-width: 1281px) {}
+    /* HIDE ITEMS*/
+    /* hide items on large screens */
+    .large-hidden {
+        display: none !important;
+    }
+}
