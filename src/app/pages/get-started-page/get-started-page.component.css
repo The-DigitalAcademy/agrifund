@@ -46,6 +46,7 @@
   
     position: relative;
     color: var(--dark);
+    gap: 4px;
    
 }
 
@@ -53,7 +54,7 @@
 
     position: relative;
     color: var(--dark);
-
+    gap: 4px;
  
 }
 
@@ -135,11 +136,16 @@ fa-icon{
      height: 40% !important;
   } 
   .carousel-control-next {
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
       
    }
    .carousel-control-prev {
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
    }
    .form-container{
     padding: 25px;
@@ -147,7 +153,14 @@ fa-icon{
     text-align: center;
     justify-content: center;
     border-radius: var(--border-radius);
-    border: 0px 
+    border: 0px;
     
+}
+.carousel-indicators{
+    display: flex;
+justify-content: center;
+align-items: center;
+gap: 2px;
+flex: 2 0 0;
 }
  }
