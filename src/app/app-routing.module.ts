@@ -11,6 +11,7 @@ import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfoli
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
+import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
     { path: 'bookkeep', component: BookkeepViewAllComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
     {path: 'progressbar',component: PortfolioProgressbarComponent},
-    {path:'farm',component: DisabledformFarmInfoComponent}
+    {path:'farm',component: DisabledformFarmInfoComponent},
+    {path: 'equipment-table',component: EquipmentTableComponent}
   
 ];
 
