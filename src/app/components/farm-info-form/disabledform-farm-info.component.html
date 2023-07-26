@@ -65,6 +65,9 @@
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="reasonForFunding"
                [disabled]="isDisabled">
       </div>
+      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
+      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
+
     </form>
   </div>
 </div>

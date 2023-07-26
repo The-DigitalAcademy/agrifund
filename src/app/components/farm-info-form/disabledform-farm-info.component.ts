@@ -7,6 +7,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./disabledform-farm-info.component.css']
 })
 export class DisabledformFarmInfoComponent {
+onCancelClicked() {
+throw new Error('Method not implemented.');
+}
 
   myForm!: FormGroup;
   isDisabled: boolean = true; 
