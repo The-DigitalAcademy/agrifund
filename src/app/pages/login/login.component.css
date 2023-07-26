@@ -4,7 +4,7 @@
     align-items: center;
     display: flex;
     /* Make sure the background image covers the entire container */
-    background-image: url("src/assets/images/background/barn.webp");
+    background-image: url("src/assets/images/background/orange-trees.webp");
     background-size: cover;
     background-repeat: no-repeat;
   }
