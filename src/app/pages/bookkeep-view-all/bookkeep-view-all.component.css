@@ -35,9 +35,6 @@ h2 {
     font-size: var(--font-large);
 }
 
-.row {
-    padding: inherit;
-}
 
 .card-summary {
     margin-bottom: var(--large-s);
@@ -151,8 +148,8 @@ tr,
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
     .stacked {
-            display: none !important;
-        }
+        display: none !important;
+    }
 }
 
 /*--------------------------------
@@ -160,7 +157,7 @@ tr,
 ----------------------------------*/
 @media (min-width: 1281px) {
     .stacked {
-            display: none !important;
-        }
+        display: none !important;
+    }
 
 }
