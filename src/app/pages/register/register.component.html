@@ -1,17 +1,14 @@
-<div class="mobile-header">
-    <img src="assets/images/background/orange-trees.webp" alt="Avatar" />
-</div>
+
 <div class="page-body">
-    <div class="container">
-        
+    <div class="container form-container">
         <form [formGroup]="RegisterForm">
             <div class="row">
-                <div class="col-md-6 col-sm-12 registerform">
+                <div class="col-sm-12 registerform">
                     <div class="container-header">
                         <div class="heading">
                             <h1>Register</h1>
                         </div>
-                        <div class="action">
+                        <div class="justify-end">
                             <button class="icon-btn" [routerLink]="['']">
                                 <fa-icon icon="times"></fa-icon>
                             </button>
@@ -60,15 +57,15 @@
                             class="form-control"
                             id="CpasswordInput" />
                     </div>
-                    <div class="form-group pt-1">
+                    <div class="form-group ">
                         <button
                             type="submit"
-                            class="btn colourful-btn pt-6"
+                            class="btn actions colourful-btn"
                             [routerLink]="['/bookkeep']">
                             Register
                         </button>
                     </div>
-                    <div class="pt-4 text muted">
+                    <div class="text muted">
                         Have an account?
                         <a
                             id="forget"
@@ -78,11 +75,12 @@
                         >
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 mobile-hidden">
+
+                <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
                     <img
                         src="assets/images/background/orange-trees.webp"
                         alt="Avatar" />
-                </div>
+                </div> -->
             </div>
         </form>
     </div>

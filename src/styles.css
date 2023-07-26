@@ -88,11 +88,13 @@ body {
 --------------------*/
 /*container for the entire page*/
 .page-body {
+    
     width: 100%;
     height: 100%;
 
     background-size: cover;
-    background-color: var(--primary-light);
+    background-image: url("src/assets/images/background/orange-trees.webp");
+    
     background-repeat: fill no-repeat;
     background-attachment: fixed;
     /* overflow: scroll; */
@@ -125,6 +127,8 @@ body {
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
     width: 60%;
+  
+    
 }
 
 /* container for container headings */
