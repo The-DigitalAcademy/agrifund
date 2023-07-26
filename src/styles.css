@@ -560,7 +560,7 @@ hr {
 
     .btn,
     button {
-        padding: var(--x-small-s);
+        padding: var(--small-s);
     }
 
     /*----------------------
