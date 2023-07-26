@@ -42,7 +42,7 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { DisabledformPersonalInfoComponent } from './components/personal-info-form/feature-disabledform-personal-info.component';
-
+import { EquipmentInfoComponent } from './components/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/enableform-crop-info/enableform-crop-info.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -52,17 +52,14 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
-
-import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
-
-
-import { EquipmentInfoComponent } from './components/equipment-info/equipment-info.component';
+import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
+import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
 
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent,  GetStartedPageComponent, DisabledformFarmInfoComponent, EquipmentInfoComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent,DisabledformFarmInfoComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, GetStartedPageComponent, BookkeepViewRecordComponent,EquipmentInfoComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

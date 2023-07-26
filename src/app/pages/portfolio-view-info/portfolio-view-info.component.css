@@ -6,7 +6,7 @@
   background-attachment: fixed;
   width: 100%;
   height: 100%;
-  background-image: blur(10px);
+
   
 }
 .first-body{
@@ -17,6 +17,7 @@
   
  
   }
+  
 
 .sidebar {
     background-color: var(--primary-colour);
@@ -74,10 +75,12 @@
 
 #left{
 padding-right:var(--small-s) ;
+
 }
 #right{
 
   padding-left:var(--small-s) ;
+  
 }
 
 #bottom{
