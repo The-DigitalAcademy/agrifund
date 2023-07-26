@@ -549,7 +549,7 @@ hr {
     }
 
     .page-heading {
-        padding: var(--normal-s) 0px 0px var(--normal-s);
+        padding: var(--normal-s) 0px 0px 0px;
     }
 
     /*----------------------
