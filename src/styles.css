@@ -26,12 +26,6 @@
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-    /* grey-text, fine prints, placeholder colour */
-    --grey: #6C757D;
-    /* borders, strokes, input field-outlines*/
-    --lighter-grey: #ADB5BD;
-    /* borders and strokes */
-    --light-grey: #DEE2E6;
 
     /*------------------
         FONTS
@@ -105,7 +99,7 @@ body {
 
 /*child to page-body - all page items headings and containers go in here */
 .page-content {
-    padding: var(--large-s) !important;
+    margin: var(--large-s) !important;
     overflow: scroll;
 }
 
@@ -160,7 +154,8 @@ body {
 
 /* override bootstrap row styles */
 .row {
-    padding: inherit !important;
+    margin: 0px !important;
+    /* padding: inherit !important; */
 }
 
 .actions {
@@ -457,7 +452,6 @@ button[disabled] {
 /*----------------------
     TABLES
 ----------------------*/
-
 /* overwriting bootstrap styles for table */
 .table> :not(caption)>*>* {
     background-color: transparent !important;
@@ -514,10 +508,6 @@ hr {
         display: none !important;
     }
 
-    .page-content {
-        padding: 0px !important;
-    }
-
     .page-heading {
         padding: var(--normal-s) 0px 0px var(--normal-s);
     }
@@ -528,13 +518,6 @@ hr {
         height: 100px;
         align-items: flex-start;
         flex-shrink: 0;
-    }
-
-
-    .container,
-    .form-container {
-        width: 100%;
-        height: 100%;
     }
 }
 
@@ -558,6 +541,24 @@ hr {
 
     .sidebar {
         display: none !important;
+    }
+
+    .mobile-header {
+        display: inline-flex;
+        width: 100%;
+        height: 100px;
+        align-items: flex-start;
+        flex-shrink: 0;
+    }
+
+        .page-content {
+            margin: var(--large-s);
+        }
+
+    .container,
+    .form-container {
+        width: 100%;
+        height: 100%;
     }
 
     /* HIDE ITEMS*/
@@ -590,6 +591,8 @@ hr {
         display: none !important;
     }
 
+     
+
     /* hide items on small screens */
     .mobile-hidden {
         display: none !important;
@@ -614,12 +617,18 @@ hr {
         font-size: var(--font-normal);
     }
 
+    .sidebar {
+        display: none !important;
+    }
+
     .mobile-header {
         display: none;
     }
 
-    .sidebar {
-        display: none !important;
+    .container,
+    .form-container {
+        width: 80%;
+        height: 80%;
     }
 
     /* hide items on small screens */
