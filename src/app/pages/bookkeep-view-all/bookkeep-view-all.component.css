@@ -42,7 +42,6 @@ h2 {
 
 .profit-card {
     background-color: var(--primary-colour);
-    margin: 0px var(--small-s);
 }
 
 .profit-card h2,
@@ -51,11 +50,11 @@ h2 {
 }
 
 .money-in-card {
-    margin: 0px var(--small-s) 0px 0px;
+    /* margin: 0px var(--small-s) 0px 0px; */
 }
 
 .money-out-card {
-    margin: 0px 0px 0px var(--small-s);
+    /* margin: 0px 0px 0px var(--small-s); */
 }
 
 .info {
@@ -75,19 +74,69 @@ tr,
     cursor: pointer;
 }
 
-.search-btn fa-icon{
+.search-btn fa-icon {
     margin: 0px;
 }
 
+.input-group .btn {
+    border-radius: var(--border-radius);
+}
 
-@media only screen and (max-width: 576px) {
-    .card-summary {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-content: column;
 
-        margin-bottom: var(--normal-s);
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+    .card-summary>* {
+        margin-bottom: var(--small-s) !important;
+    }
+
+    .bookkeep-actions {
+        padding: var(--small-s);
+    }
+
+    .profit-card {
+        padding: var(--small-s);
+        width: 100%;
+    }
+
+    .money-in-card {
+        margin-right: var(--x-small-s) !important;
+        padding: var(--small-s);
+        width: 100%;
+    }
+
+    .money-out-card {
+        margin-left: var(--x-small-s) !important;
+        padding: var(--small-s);
+        width: 100%;
+    }
+
+    .record-table {
+        padding: var(--small-s);
+    }
+
+    fa-icon {
+        margin: var(--x-small-s) 0px 0px 0px !important;
+    }
+
+    .container,
+    .form-container {
+        height: auto !important;
+    }
+
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .card-summary>* {
+        margin: var(--normal-s) !important;
+    }
+
+    .bookkeep-actions {
+        padding: var(--small-s);
     }
 
     .profit-card {
@@ -96,20 +145,31 @@ tr,
     }
 
     .money-in-card {
-        margin: var(--small-s) var(--small-s) 0px 0px;
         padding: var(--small-s);
     }
 
     .money-out-card {
-        margin: var(--small-s) 0px 0px var(--small-s);
         padding: var(--small-s);
     }
 
-    
+    .record-table {
+        padding: var(--small-s);
+    }
+
+    .single-row {
+        display: none !important;
+    }
 
 }
 
-@media only screen and (max-width: 576px) {
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .card-summary>* {
+        margin: var(--normal-s) !important;
+    }
 
     .bookkeep-actions {
         padding: var(--small-s);
@@ -123,22 +183,6 @@ tr,
         border-radius: var(--border-radius);
     }
 
-}
-
-/*---------------------------------
-    Media Query for tablets/IPad
-----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {
-    .single-row {
-        display: none !important;
-    }
-
-}
-
-/*-------------------------------------------------
-    Media Query for tablets/IPad in landscape mode
---------------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1024px) {
     .single-row {
         display: none !important;
     }

@@ -143,6 +143,7 @@ body {
     justify-content: center;
 
     padding: var(--font-normal);
+    width: 100%;
 }
 
 /* override bootstrap row styles */
@@ -539,7 +540,12 @@ hr {
     }
 
     .page-content {
-        padding: var(--small-s) !important;
+        /* padding: var(--small-s) !important; */
+    }
+
+    /* set styles for all contenet within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
     }
 
     .container,
@@ -550,6 +556,11 @@ hr {
 
     .page-heading {
         padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .btn,
+    button {
+        padding: var(--x-small-s);
     }
 
     /*----------------------
@@ -585,7 +596,16 @@ hr {
     }
 
     .page-content {
-        padding: var(--small-s) !important;
+        padding: var(--normal-s) !important;
+    }
+
+    /* set styles for all contnet within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+
+    .page-heading {
+        padding: var(--normal-s) 0px 0px 0px;
     }
 
     .sidebar {
