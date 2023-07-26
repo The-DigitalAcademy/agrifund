@@ -1,16 +1,14 @@
-<div class="mobile-header">
-    <img src="assets/images/background/barn.webp" alt="Avatar" />
-</div>
+
 <div class="page-body">
-    <div class="container">
+    <div class="container form-container">
         <form [formGroup]="LoginForm">
             <div class="row">
-                <div class="col-md-6 col-sm-12 loginform">
+                <div class="col-sm-12 loginform">
                 <div class="container-header">
                     <div class="heading">
                     <h1>Login </h1>
                 </div>
-                <div class="action">
+                <div class="justify-end">
                         <button class="icon-btn btn-icon" [routerLink]="['']">
                             <fa-icon icon="times"></fa-icon>
                         </button>
@@ -31,22 +29,22 @@
                             class="form-control"
                             id="passwordinput" />
                     </div>
-                    <div class="form-group pt-1">
-                        <button type="submit" class="btn colourful-btn pt-6" [routerLink]="['/bookkeep']">
+                    <div class="form-group">
+                        <button type="submit" class="btn actions colourful-btn" [routerLink]="['/bookkeep']">
                             Login
                         </button>
                     </div>
                     <a id="forget" class="font-weight-lighter" routerLink="/reset-password">Forgot your password?</a
                     >
-                    <div class="pt-4 text muted">
+                    <div class="text muted">
                         Don't have an account?
                         <a id="forget" class="font-weight-lighter" routerLink="/register">Register</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 mobile-hidden">
+                <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
                     <img src="assets/images/background/barn.webp"
                     alt="Avatar">
-                </div>
+                </div> -->
             </div>
         </form>
     </div>
