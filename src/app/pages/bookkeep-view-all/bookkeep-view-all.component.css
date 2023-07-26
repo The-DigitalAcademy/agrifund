@@ -50,11 +50,11 @@ h2 {
 }
 
 .money-in-card {
-    /* margin: 0px var(--small-s) 0px 0px; */
+    margin: 0px var(--small-s) 0px 0px;
 }
 
 .money-out-card {
-    /* margin: 0px 0px 0px var(--small-s); */
+    margin: 0px 0px 0px var(--small-s);
 }
 
 .info {
@@ -82,7 +82,6 @@ tr,
     border-radius: var(--border-radius);
 }
 
-
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
@@ -101,23 +100,19 @@ tr,
     }
 
     .money-in-card {
-        margin-right: var(--x-small-s) !important;
+        margin-right: var(--small-s) !important;
         padding: var(--small-s);
         width: 100%;
     }
 
     .money-out-card {
-        margin-left: var(--x-small-s) !important;
+        margin-left: var(--small-s) !important;
         padding: var(--small-s);
         width: 100%;
     }
 
     .record-table {
         padding: var(--small-s);
-    }
-
-    fa-icon {
-        margin: var(--x-small-s) 0px 0px 0px !important;
     }
 
     .container,

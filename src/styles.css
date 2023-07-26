@@ -122,7 +122,7 @@ body {
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
-    width: 60%;
+    width: 45%;
 }
 
 /* container for container headings */
@@ -540,7 +540,7 @@ hr {
     }
 
     .page-content {
-        /* padding: var(--small-s) !important; */
+        padding: var(--small-s) !important;
     }
 
     /* set styles for all contenet within page-content div */
@@ -646,11 +646,9 @@ hr {
     .mobile-header {
         display: none;
     }
-
-    .container,
+    
     .form-container {
-        width: 80%;
-        height: 80%;
+        width: 80% !important;
     }
 
     /*----------------------
@@ -670,6 +668,10 @@ hr {
     /*child to page-body - all page items headings and containers go in here */
     .page-content {
         margin: var(--normal-s) !important;
+    }
+
+    .form-container {
+        width: 60% !important;
     }
 
     /*----------------------
