@@ -7,6 +7,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./feature-disabledform-personal-info.component.css']
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
+onCancelClicked() {
+throw new Error('Method not implemented.');
+}
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
