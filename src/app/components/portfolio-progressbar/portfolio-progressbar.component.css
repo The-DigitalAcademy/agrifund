@@ -63,13 +63,14 @@ h1{
   .container-feedback{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     margin-top:var(--normal-s) ;
     width: 100%;
     border: 1px solid var(--lighter-grey);
-    
-
   }
+  
+
   
 
   

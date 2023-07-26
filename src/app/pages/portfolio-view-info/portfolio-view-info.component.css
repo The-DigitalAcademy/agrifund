@@ -81,7 +81,9 @@ padding-right:var(--small-s) ;
 
   padding-left:var(--small-s) ;
   
+  
 }
+
 
 #bottom{
 
@@ -92,7 +94,7 @@ padding-right:var(--small-s) ;
 
 @media (max-width: 767px) {
 
-  #left{
+#left{
 padding: var(--small-s)  ;
 
 }
