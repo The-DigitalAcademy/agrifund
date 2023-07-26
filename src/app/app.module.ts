@@ -55,11 +55,12 @@ import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfoli
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
 import { CropInfoFormComponent } from './components/crop-info-form/crop-info-form.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
+import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
 
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent,EnableformPersonalInfoComponent,PersonalInfoFormComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, CropInfoFormComponent, GetStartedPageComponent, BookkeepViewRecordComponent],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

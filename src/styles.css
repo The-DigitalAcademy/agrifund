@@ -2,34 +2,44 @@
 @import 'src/assets/fonts/_fonts.css';
 
 :root {
-    /* COLOUR PALETTE */
-    --primary-darker: #5a6537;
-    --primary-colour: #606c38;
-    /*primary green colour */
-    --primary-lighter: #7d8953;
-    --primary-light: #9ba66f;
-    --secondary-colour: #d15f20;
 
-    --grey: #6c757d; /* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #adb5bd; /* borders, strokes, input field-outlines*/
-    --light-grey: #dee2e6; /* borders and strokes */
-    --grey-white: #e9ecef /* background colour for fields*/ --dark-grey: #4c5359; /*default colour for text*/
-    --dark: #2e2e2e; /* colour of paragraphs*/
-    --light: #f8f9fa;
+    /* COLOUR PALETTE */
+    --primary-darker: #5A6537;
+    --primary-colour: #606C38;
+    /*primary green colour */
+    --primary-lighter: #7D8953;
+    --primary-light: #9BA66F;
+    --secondary-colour: #D15F20;
+
+    
+    --grey: #6C757D;/* grey-text, fine prints, placeholder colour */
+    --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
+    --light-grey: #DEE2E6;/* borders and strokes */
+    --grey-white:#E9ECEF/* background colour for fields*/
+    --dark-grey: #4C5359;/*default colour for text*/
+    --dark: #2E2E2E;/* colour of paragraphs*/
+    --light: #F8F9FA;
     /*default background colour and colour of text on colour backgrounds*/
+    --light: #F8F9FA;
 
     --grey: #6c757d;
     /* grey-text, fine prints, placeholder colour */
+    --grey: #6C757D;
     --lighter-grey: #adb5bd;
     /* borders, strokes, input field-outlines*/
+    --lighter-grey: #ADB5BD;
     --light-grey: #dee2e6;
     /* borders and strokes */
-
-    /* FONTS */
+    --light-grey: #DEE2E6;
+    /*------------------
+        FONTS
+    --------------------*/
     --fancy-font: 'Arvo';
     --normal-font: 'Lato';
 
-    /* FONT SIZES */
+    /*------------------
+        FONT SIZES
+    --------------------*/
     --font-x-large: 24px;
     --font-large: 22px;
     --font-medium: 18px;
@@ -37,19 +47,23 @@
     --font-small: 14px;
     --font-x-small: 12px;
 
-    /* FONT WEIGHTS */
+    /*------------------
+        FONT Weights
+    --------------------*/
     --thin: 100;
     --light-font: 300;
     --regular: 400;
-
     --bold: 700;
+
 
     /* BORDERS */
     --border-radius: 3px;
-    --thick-border: 2px solid; /*buttons  */
-    --thin-border: 1px solid; /*containers  */
+    --thick-border: 2px solid;/*buttons  */
+    --thin-border: 1px solid;/*containers  */
 
-    /* SPACING & SIZING*/
+    /*------------------
+        SPACING & SIZING
+    --------------------*/
     --x-small-s: 4px;
     --small-s: 8px;
     --normal-s: 14px;
@@ -64,28 +78,38 @@ html body {
 }
 
 body {
-    font-family: var(--normal-font);
-    color: var(--dark);
-
     background-color: var(--light);
-
-    /* margin-top: 60px; */
+    color: var(--dark);
+    font-family: var(--normal-font);
 }
 
-/* CONTAINERS */
-
+/*------------------
+    CONTAINERS 
+--------------------*/
+/*container for the entire page*/
 .page-body {
+    width: 100%;
+    height: 100%;
+
     background-size: cover;
     background-color: var(--primary-light);
     background-repeat: fill no-repeat;
     background-attachment: fixed;
+    /* overflow: scroll; */
+}
+
+/*child to page-body - all page items headings and containers go in here */
+.page-content {
+    padding: var(--large-s) !important;
     overflow: scroll;
 }
 
-.page-content {
-    padding: var(--large-s) !important;
+/* container for page headings */
+.page-heading {
+    margin-bottom: var(--normal-s);
 }
 
+/*any div that needs a border around it  */
 .container {
     margin: 0px !important;
     border-radius: var(--border-radius);
@@ -98,6 +122,20 @@ body {
     max-width: 100% !important;
 }
 
+/* styling for containers for containers that shouldn't fill the entire page */
+.form-container {
+    width: 60%;
+}
+
+/* container for container headings */
+.container-header {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: var(--small-s);
+}
+
+/* styling for cards */
 .card {
     align-items: center;
     background-color: var(--light-grey);
@@ -109,12 +147,14 @@ body {
     padding: var(--font-normal);
 }
 
-.row > * {
-    padding: 0px;
+/* override bootstrap row styles */.row > * {
+    padding: 0px !important;
+    margin: 0px !important;
 }
 
-.page-heading {
-    margin-bottom: var(--normal-s);
+/* override bootstrap row styles */
+.row {
+    padding: inherit !important;
 }
 
 .actions {
@@ -124,18 +164,21 @@ body {
 
     margin-bottom: var(--normal-s);
 
-    width: 100%;
+    width:  100%;
 }
 
-/* DISPLAY RESPONSIVENESS */
+/*----------------------
+    JUSTIFY CONTENT
+----------------------*/
+/* justify content to the left */
 .justify-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     width: 100%;
 }
 
+/* justify content to the right */
 .justify-end {
     display: flex;
     justify-content: flex-end;
@@ -143,6 +186,7 @@ body {
     width: 100%;
 }
 
+/* justify content to the center */
 .justify-center {
     display: flex;
     justify-content: center;
@@ -150,11 +194,14 @@ body {
     width: 100%;
 }
 
-/* TEXT */
+/*----------------------
+    TEXT
+----------------------*/
 h1 {
     font-family: var(--fancy-font);
     font-size: var(--font-x-large);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
 
@@ -163,8 +210,9 @@ h1 {
 
 h2 {
     font-family: var(--fancy-font);
-    font-size: var(--font-normal);
+    font-size: var(--font-medium);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
 
@@ -172,31 +220,33 @@ h2 {
 }
 
 h3 {
+    color: var(--dark);
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
-
-    color: var(--dark);
 }
 
 p {
+    color: var(--dark);
+
     font-family: var(--normal-font);
-    font-size: var(--font-medium);
+    font-size: var(--font-normal);
     font-weight: var(--regular);
+    line-height: auto !important;
 
     margin: 0px 0px var(--small-s) 0px;
-
-    color: var(--dark);
 }
 
 a {
+    color: var(--primary-colour) !important;
+
     font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--regular);
-
-    color: var(--primary-colour) !important;
+    line-height: auto !important;
 }
 
 a:hover,
@@ -206,6 +256,8 @@ a:active {
 }
 
 fa-icon {
+    color: var(--light);
+
     font-size: var(--font-normal);
     line-height: var(--font-normal);
     text-align: center;
@@ -213,9 +265,7 @@ fa-icon {
     height: var(--font-normal);
     width: var(--font-normal);
 
-    padding: 0px;
-
-    color: var(--light);
+    padding: 0px;    
 }
 
 .svg-inline--fa {
@@ -236,18 +286,22 @@ fa-icon {
     color: var(--grey);
 }
 
-/* FORMS */
+/*----------------------
+    FORMS
+----------------------*/
+/* styling for all labels used and labels for form inputs */
 label,
 .form-label {
-    font-family: var(--normal);
-    font-size: var(--font-regular);
+    color: var(--dark);
+
+    font-family: var(--normal-font);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     margin: 0px 0px var(--x-small-s) 0px;
-
-    color: var(--dark);
 }
 
+/* styling for form input fields */
 input,
 .form-control {
     border-radius: var(--border-radius);
@@ -257,18 +311,19 @@ input,
     height: var(--x-larger-s);
 }
 
-.form-group {
-}
+.form-group {}
 
 .form-input {
     padding: var(--x-small-s);
     margin: var(--small-s) 0px;
 }
 
+/* styling for form input fields */
 .form-text {
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
 }
 
+/* styling for input fields for focus */
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,
@@ -285,12 +340,15 @@ input[type='number']:focus,
     border: var(--thin-border) var(--dark);
 }
 
+
+
 /* CONTAINERS */
-.container {
+.container{
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
     background-color: var(--light);
 }
+
 
 /* BUTTONS */
 .btn,
@@ -314,45 +372,15 @@ button {
     padding: var(--small-s);
 }
 
+/* style for buttons on white backgrounds */
+
 .colourful-btn {
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
 
-.white-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.icon-btn {
-    font-weight: var(--bold);
-    color: var(--grey) !important;
-}
-
-.icon-btn fa-icon {
-    color: var(--grey) !important;
-    margin: var(--x-small-s) 0px;
-}
-
-.icon-btn-dark {
-    font-weight: var(--bold);
-    color: var(--dark) !important;
-}
-
-.outline-btn {
-    border: var(--thick-border) var(--primary-colour) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.white-outline-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--primary-colour) !important;
-    color: var(--light) !important;
-}
-
+/* hover and focus style for buttons on white backgrounds */
 .colourful-btn:hover,
 .colourful-btn:focus {
     border: var(--thick-border) var(--primary-lighter) !important;
@@ -360,6 +388,52 @@ button {
     color: var(--light) !important;
 }
 
+/* style for on colourful backgrounds*/
+.white-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+/* style for buttons where it has an icon */
+.icon-btn {
+    font-weight: var(--bold);
+    color: var(--grey) !important;
+}
+
+/* style of an icon within an icon button */
+.icon-btn fa-icon {
+    color: var(--grey) !important;
+    margin: var(--x-small-s) 0px;
+}
+
+/* style of an icon when hovering or focusing */
+.icon-btn:hover,
+.icon-btn:focus {
+    color: var(--dark) !important;
+}
+
+/* style of a dark icon button */
+.icon-btn-dark {
+    font-weight: var(--bold);
+    color: var(--dark) !important;
+    background-color: transparent !important;
+}
+
+/* style of a dark icon button on hover or focus*/
+.icon-btn-dark:hover,
+.icon-btn-dark:focus {
+    color: var(--primary-colour) !important;
+}
+
+/* style of a neutral button on a white background */
+.outline-btn {
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+/* style of a neutral button when hovering or focusing*/
 .outline-btn:hover,
 .outline-btn:focus {
     border: var(--thick-border) var(--primary-lighter) !important;
@@ -367,24 +441,25 @@ button {
     color: var(--primary-lighter) !important;
 }
 
-.icon-btn:hover,
-.icon-btn:focus {
-    color: var(--dark) !important;
+/* style of a neutral button on a colourful background */
+.white-outline-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
 }
 
-.icon-btn-dark:hover,
-.icon-btn-dark:focus {
-    color: var(--primary-colour) !important;
-}
-
+/* style of a button when it is disabled*/
 button[disabled] {
     background-color: var(--light) !important;
     border-color: var(--grey) !important;
     color: var(--grey) !important;
 }
 
-/* TABLES */
+/*----------------------
+    TABLES
+----------------------*/
 
+/* overwriting bootstrap styles for table */
 .table > :not(caption) > * > * {
     background-color: transparent !important;
     border: none !important;
@@ -392,10 +467,12 @@ button[disabled] {
     padding: 0px;
 }
 
+/* style for table header content */
 thead {
     border-bottom: var(--thin-border) var(--lighter-grey);
 }
 
+/* setting styles for table headers  */
 .table th {
     font-family: var(--normal-font);
     font-size: var(--font-regular);
@@ -405,6 +482,7 @@ thead {
     color: var(--grey);
 }
 
+/* style for table data cells  */
 td {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
@@ -414,6 +492,7 @@ td {
 
     color: var(--dark-grey) !important;
 }
+
 
 hr {
     background-color: var(--lighter-grey);
@@ -425,6 +504,7 @@ hr {
 }
 
 @media only screen and (max-width: 575px) {
+
     /* TEXT */
     h1 {
         font-size: var(--font-medium);
@@ -451,16 +531,12 @@ hr {
     .page-heading {
         padding: var(--normal-s) 0px 0px var(--normal-s);
     }
-    .mobile-header {
-        display: flex;
-        width: 393px;
-        height: 100px;
-        align-items: flex-start;
-        flex-shrink: 0;
-    }
+
+
 }
 
-@media only screen and (min-width: 577px) {
+@media only screen and (min-width: 577px){
+
     /* HIDE ITEMS*/
     /* hide items on large screens */
     .large-hidden {
