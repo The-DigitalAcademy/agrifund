@@ -5,10 +5,6 @@
     /* opacity: 0.7; */
 }
 
-.container {
-    width: 100%;
-}
-
 .sidebar {
     background-color: var(--primary-colour);
 }
@@ -40,6 +36,10 @@ h2 {
     margin-bottom: var(--large-s);
 }
 
+.card{
+    margin: var(--small-s);
+}
+
 .profit-card {
     background-color: var(--primary-colour);
 }
@@ -50,7 +50,7 @@ h2 {
 }
 
 .money-in-card {
-    margin: 0px var(--small-s) 0px 0px;
+    margin-bottom: 0px var(--small-s) 0px 0px;
 }
 
 .money-out-card {

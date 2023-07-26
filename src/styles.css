@@ -85,6 +85,18 @@ body {
 /*------------------
     CONTAINERS 
 --------------------*/
+/* override bootstrap row styles */
+.row>* {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+/* override bootstrap row styles */
+.row {
+    margin: 0px !important;
+    /* padding: inherit !important; */
+}
+
 /*container for the entire page*/
 .page-body {
     width: 100%;
@@ -98,8 +110,9 @@ body {
 
 /*child to page-body - all page items headings and containers go in here */
 .page-content {
-    width: 100%;
-    /* overflow: scroll; */
+    padding: var(--x-large-s) !important;
+    /* width: 100% !important; */
+    overflow: scroll;
 }
 
 /* container for page headings */
@@ -122,6 +135,7 @@ body {
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
+    padding: var(--x-large-s);
     width: 45%;
 }
 
@@ -144,18 +158,6 @@ body {
 
     padding: var(--font-normal);
     width: 100%;
-}
-
-/* override bootstrap row styles */
-.row>* {
-    padding: 0px !important;
-    margin: 0px !important;
-}
-
-/* override bootstrap row styles */
-.row {
-    margin: 0px !important;
-    /* padding: inherit !important; */
 }
 
 /* image cards on mobile devices */
@@ -337,8 +339,8 @@ input,
 
 /* styling for form input fields */
 .form-input {
-    padding: var(--x-small-s);
-    margin: var(--small-s) 0px;
+    padding: var(--small-s) !important;
+    margin: var(--small-s) 0px !important;
 }
 
 /* styling for form input fields */
@@ -646,7 +648,7 @@ hr {
     .mobile-header {
         display: none;
     }
-    
+
     .form-container {
         width: 80% !important;
     }
@@ -667,7 +669,7 @@ hr {
 
     /*child to page-body - all page items headings and containers go in here */
     .page-content {
-        margin: var(--normal-s) !important;
+        padding: var(--large-s) !important;
     }
 
     .form-container {
@@ -695,7 +697,7 @@ hr {
 
     /*child to page-body - all page items headings and containers go in here */
     .page-content {
-        margin: var(--large-s) !important;
+        padding: var(--x-large-s) !important;
     }
 
     /*----------------------
