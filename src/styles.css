@@ -98,7 +98,8 @@ body {
 
 /*child to page-body - all page items headings and containers go in here */
 .page-content {
-    overflow: scroll;
+    width: 100%;
+    /* overflow: scroll; */
 }
 
 /* container for page headings */
@@ -538,7 +539,7 @@ hr {
     }
 
     .page-content {
-        margin: var(--small-s);
+        padding: var(--small-s) !important;
     }
 
     .container,
@@ -583,10 +584,13 @@ hr {
         font-size: var(--font-normal);
     }
 
+    .page-content {
+        padding: var(--small-s) !important;
+    }
+
     .sidebar {
         display: none !important;
     }
-
 
     /*----------------------
         HIDE ITEMS
@@ -645,9 +649,8 @@ hr {
 
     /*child to page-body - all page items headings and containers go in here */
     .page-content {
-        margin: var(--large-s) !important;
+        margin: var(--normal-s) !important;
     }
-
 
     /*----------------------
         HIDE ITEMS
@@ -661,8 +664,6 @@ hr {
     .mobile-header {
         display: none;
     }
-
-
 }
 
 /*--------------------------------
@@ -672,7 +673,7 @@ hr {
 
     /*child to page-body - all page items headings and containers go in here */
     .page-content {
-        margin: var(--x-large-s) !important;
+        margin: var(--large-s) !important;
     }
 
     /*----------------------

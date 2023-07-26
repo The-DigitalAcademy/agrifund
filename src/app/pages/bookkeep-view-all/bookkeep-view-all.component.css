@@ -101,9 +101,7 @@ tr,
         padding: var(--small-s);
     }
 
-    .row {
-        padding: 0px var(--small-s);
-    }
+    
 
 }
 
