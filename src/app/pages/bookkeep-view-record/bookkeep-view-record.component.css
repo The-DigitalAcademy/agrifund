@@ -1,0 +1,10 @@
+.page-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3{
+    padding: var(--small-s);
+    margin: 0px;
+}

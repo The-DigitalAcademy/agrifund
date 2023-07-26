@@ -120,7 +120,7 @@
                             </tr>
                         </thead>
                         <tbody *ngFor="let record of counter(10)">
-                            <tr>
+                            <tr (click)="viewRecordDetails()">
                                 <td scope="row">Bought Seeds</td>
                                 <td>Money Out</td>
                                 <td>22/12/2022</td>
@@ -133,7 +133,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr (click)="viewRecordDetails()">
                                 <td scope="row">Sold Produce</td>
                                 <td>Money In</td>
                                 <td>13/12/2022</td>
@@ -148,7 +148,7 @@
                     </table>
 
                     <div class="large-hidden" *ngFor="let record of counter(10); last as isLast">
-                        <div class="info">
+                        <div class="info" (click)="viewRecordDetails()">
                             <div class="left justify-start">
                                 <p class="bold">Bought Seeds</p>
                                 <p class="greyed">22/12/2022</p>
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="info">
+                        <div class="info" (click)="viewRecordDetails()">
                             <div class="left justify-start">
                                 <p class="bold">Sold Produce</p>
                                 <p class="greyed">22/12/2022</p>
