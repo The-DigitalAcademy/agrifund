@@ -75,6 +75,10 @@ tr,
     cursor: pointer;
 }
 
+.search-btn fa-icon{
+    margin: 0px;
+}
+
 
 @media only screen and (max-width: 576px) {
     .card-summary {
