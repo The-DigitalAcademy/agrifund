@@ -1,116 +1,75 @@
 .page-body {
   /* align-items: flex-start; */
   background-image: url(src/assets/images/background/orange-trees.webp);
-  display: flex;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  width: 100%;
-  height: 100%;
-
-  
 }
-.first-body{
+
+.first-body {
   display: flex;
   width: 100%;
   height: 100%;
-  
-  
- 
-  }
-  
+}
+
 
 .sidebar {
-    background-color: var(--primary-colour);
-    height:100%;
-    
+  background-color: var(--primary-colour);
+  height: 100%;
 
 }
-.page-heading {
-    margin-bottom: var(--normal-s);
+
+.crop-info {
+  margin-top: var(--normal-s);
 }
 
-.crop-info{
-    margin-top:var(--normal-s);
-}
-.farm-info{
-    margin-top:var(--normal-s);
+.farm-info {
+  margin-top: var(--normal-s);
 }
 
-.page-heading{
+.headings {
   display: flex;
-  align-items: center;
-  width:100%;
-}
-.headings{
-  display:flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
 }
-.bottom{
-    margin-top:var(--large-s);
-    width: 100%;
+
+.sidebar {
+  background-color: var(--primary-colour);
 }
 
-
-@media only screen and (max-width: 576px) {
-  .page-body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: column;
-      width: 100%;
-      margin-bottom: var(--normal-s);
-  }
-
-  
-  
-.row{
-      padding: 0px var(--small-s) ;
-  }
-}
-
-  
-  
-
-#left{
-padding-right:var(--small-s) ;
+#left {
+  padding-right: var(--small-s) !important;
 
 }
-#right{
 
-  padding-left:var(--small-s) ;
-  
-  
+#right {
+
+  padding-left: var(--small-s) !important;
 }
 
+#bottom {
 
-#bottom{
-
-  padding-top:var(--normal-s) ;
+  padding-top: var(--normal-s) !important;
 }
 
 
 
 @media (max-width: 767px) {
 
-#left{
-padding: var(--small-s)  ;
+  #left {
+    padding: var(--small-s) !important;
 
-}
-#right{
+  }
 
-  padding: var(--small-s) ;
-}
+  #right {
 
-#info{
- padding: var(--x-small-s) var(--x-small-s);
-}
-#bottom{
+    padding: var(--small-s) !important;
+  }
 
-  padding:var(--x-small-s) var(--small-s);
-  padding-bottom:var(--x-small-s) ;
+  #info {
+    padding: var(--x-small-s) var(--x-small-s);
+  }
+
+  #bottom {
+
+    padding: var(--x-small-s) var(--x-small-s) !important;
+  }
 }
-}
- 
-  
