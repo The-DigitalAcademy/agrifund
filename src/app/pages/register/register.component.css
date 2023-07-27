@@ -2,12 +2,12 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    background-image: url('src/assets/images/background/barn.webp');
+    background-image: url('src/assets/images/background/barn.webp')!important;
 }
 
 .form-container {
     padding: var(--x-larger-s);
-    width: 35%;
+    width: 35%!important;
     position: relative;
 }
 
