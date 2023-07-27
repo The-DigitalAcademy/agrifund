@@ -15,7 +15,7 @@ hr {
   height: 2px;
   border-color: var(--grey);
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: var(--medium-s);
   }
 
 
@@ -23,12 +23,15 @@ hr {
   .file-container {
     border: 1px solid #ccc; /* Add grey borders */
     padding: 10px; /* Add padding to create some space around the content */
-    width: 360px; /* Set the desired width for the container */
+    width: 100%; /* Set the desired width for the container */
     background-color: #f9f9f9; 
     border-radius: 3px;
   
   }
-  
+  #document{
+    width: 75%;
+    height: 10%;
+  }
   .file-container label {
     font-weight: bold; /* Make the label text bold */
   }

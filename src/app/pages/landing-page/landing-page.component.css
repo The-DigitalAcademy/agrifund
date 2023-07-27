@@ -1,40 +1,159 @@
 .container {
     display: flex;
     height:100%;
-    width:100%;
+    /* background-image:url('src/assets/images/background/barn.webp'); */
+    background-size: cover;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
     border-radius: none;
     border: none;
+    flex-wrap: wrap;
   }
+  /* .background-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+  } */
 
   .container-fluid {
-    margin-top: 60px;
+    margin-top: 169px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 11%;
   }
-  
+
+  .page-body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-image: url("src/assets/images/background/barn.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* opacity: 0.7; */
+}
+  .h1 {
+    text-align: center;
+
+  }
 
 
-    .button {
+    /* .button {
         border: none;
-        padding: 15px 32px;
-        text-align: center;
+        padding: 15% 32%;
+        text-align: left;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 1px 2px;
+        margin: 56px 23px;
         cursor: pointer;
-} 
+        width: auto;
+}  */
+.btn, button{
+  font-family: var(--normal);
+  font-size: var(--font-medium);
+  font-weight: var(--regular);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--border-radius);
+
+  height: var(--x-larger-s);
+  
+  padding: var(--small-s);
+}
+
+.colourful-btn{
+  width: auto;
+  text-align: left;
+  
+}
 
 
-.card-img-overlay {
+/* .card-img-overlay {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 12px 12px;
-  padding-top: 4px;
+  padding-left: 5%;
+  padding-right: 21px;
+  padding-top: 0%;
+  padding-bottom: 22%;
+} */
+
+/* html
+{
+ margin:0px;
+ height:100%;
+ width:100%;
+ background:url('../assets/images/background/barn.webp')no-repeat center center fixed; 
+ -webkit-background-size:cover;
+ -o-background-size:cover;
+ -moz-background-size:cover;
+ background-size:cover;
+} */
+
+
+/* body {
+  
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+} */
+
+.p{
+  text-align: left;
+  margin-left: 100px;
 }
-.card-img-overlay h1,
-.card-img-overlay a {
-  padding-left: 15px;
+
+
+
+@media only screen and (max-width: 576px) {
+
+  /* TEXT */
+  h1 {
+    display: flex;
+      font-size: var(--font-medium);
+      padding-top: 10px;
+      
+  }
+
+  h2 {
+      font-size: var(--font-normal);
+  }
+
+  h3 {
+      font-size: var(--font-small);
+  }
+
+  /* HIDE ITEMS*/
+  /* hide items on small screens */
+  .mobile-hidden {
+      display: none !important;
+  }
+
+  .page-content {
+      padding: 0px !important;
+  }
+
+  .page-heading {
+      padding: var(--normal-s) 0px 0px var(--normal-s);
+  }
+
+
+}
+
+@media only screen and (min-width: 576px) and (max-width: 1200px) {
+
+  /* HIDE ITEMS*/
+  /* hide items on large screens */
+  .large-hidden {
+      display: none !important;
+  }
 }
