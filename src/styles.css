@@ -106,6 +106,8 @@ body {
     background-color: var(--primary-light);
     background-repeat: fill no-repeat;
     background-attachment: fixed;
+
+    overflow: scroll;
 }
 
 /*child to page-body - all page items headings and containers go in here */
