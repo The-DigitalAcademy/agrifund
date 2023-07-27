@@ -60,14 +60,21 @@ h1{
     height: 100%;
     background-color: #9BA66F 
   }
-  .container-feedback{
+  .container-feedback {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top:var(--normal-s) ;
+    margin-top: var(--normal-s);
     width: 100%;
     border: 1px solid var(--lighter-grey);
+  }
+  
+  .container-feedback h2,
+  .container-feedback p,
+  .container-feedback .actions {
+    text-align: center;
+    margin-top: var(--normal-s);
   }
   
 
