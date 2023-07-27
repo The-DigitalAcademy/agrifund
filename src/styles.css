@@ -149,6 +149,12 @@ body {
     margin-bottom: var(--small-s);
 }
 
+.form-container {
+    width: 60%;
+    
+}
+
+
 /* styling for cards */
 .card {
     align-items: center;
