@@ -17,9 +17,17 @@
     background-color: var(--light);
 }
 @media only screen and (max-width: 575px) {
-    .page-body, .container{
-        /* padding: var(--small-s); */
+    .page-body,
+    .form-container {
         width: 100%;
+        height: 100%;
+     justify-content: center;
+        align-items: center;
+        display: flex;
+        background-image: none;
     }
+img{
+    width: 100%;
     
+}
 }
