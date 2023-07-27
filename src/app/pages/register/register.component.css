@@ -6,9 +6,9 @@
 }
 
 .form-container {
-    padding: var(--x-larger-s);
-    width: 35%!important;
-    position: relative;
+    
+    width: 35% !important;
+    
 }
 
 .icon-btn {

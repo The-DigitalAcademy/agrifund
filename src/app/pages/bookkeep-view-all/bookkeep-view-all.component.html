@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 
-<div class="row page-body g-0">
-    <div class="col-lg-2 g-0 sidebar mobile-hidden">
+<div class="row page-body">
+    <div class="col-lg-2 sidebar mobile-hidden">
         <hr>
         <app-sidebar></app-sidebar>
     </div>
-    <div class="col-md-12 col-lg-10 g-0 page-content">
+    <div class="col-lg-10 page-content">
         <div class="page-heading">
             <h1>Bookkeep</h1>
         </div>
@@ -13,9 +13,9 @@
             <div class="actions">
                 <div class="justify-start">
                     <button class="btn colourful-btn">
-                        <span>
+                        <span class="justify-center">
                             <fa-icon icon="file-download"></fa-icon>
-                            Generate Report
+                            Get Report
                         </span>
                     </button>
                 </div>
@@ -36,7 +36,7 @@
                 </div>
 
             </div>
-            <div class="row card-summary mobile-hidden">
+            <div class="row card-summary single-row mobile-hidden">
                 <div class="col-4">
                     <div class="card money-in-card">
                         <label class="card-title"> Total Money In</label>
@@ -58,7 +58,7 @@
 
 
             </div>
-            <div class="row card-summary large-hidden">
+            <div class="row card-summary stacked large-hidden">
                 <div class="row">
                     <div class="col-12">
                         <div class="card profit-card">
@@ -68,13 +68,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 money-in-col">
                         <div class="card money-in-card">
                             <label class="card-title"> Total Money In</label>
                             <h2 class="amount">R 1,200.00</h2>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 money-out-col">
                         <div class="card money-out-card">
                             <label class="card-title">Total Money Out</label>
                             <h2 class="amount">R 800.00</h2>
@@ -100,7 +100,7 @@
                         <div class="input-group justify-end">
                             <input class="form-control searchbar mobile-hidden" type="text" name="search"
                                 autocomplete="off">
-                            <button type="button" class="btn colourful-btn">
+                            <button type="button" class="btn colourful-btn search-btn">
                                 <fa-icon icon="search"></fa-icon>
                             </button>
                         </div>
@@ -196,4 +196,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 

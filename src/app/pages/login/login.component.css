@@ -7,9 +7,9 @@
   }
 
 .form-container{
-    padding: var(--x-larger-s);
+    
     width: 35%!important;
-    position: relative;
+  
 
 }
 
@@ -21,7 +21,7 @@
     .form-container {
         width: 100%;
         height: 100%;
-     justify-content: center;
+      justify-content: center;
         align-items: center;
         display: flex;
         background-image: none;

@@ -69,7 +69,7 @@
     --normal-s: 14px;
     --medium-s: 20px;
     --large-s: 24px;
-    --x-larger-s: 36px;
+    --x-large-s: 36px;
 }
 
 html body {
@@ -86,6 +86,18 @@ body {
 /*------------------
     CONTAINERS 
 --------------------*/
+/* override bootstrap row styles */
+.row>* {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+/* override bootstrap row styles */
+.row {
+    margin: 0px !important;
+    /* padding: inherit !important; */
+}
+
 /*container for the entire page*/
 .page-body {
     
@@ -98,7 +110,8 @@ body {
     
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* overflow: scroll; */
+
+    overflow: scroll;
 }
   /* Create a pseudo-element for the background */
   .page-body::before {
@@ -115,7 +128,8 @@ body {
 
 /*child to page-body - all page items headings and containers go in here */
 .page-content {
-    padding: var(--large-s) !important;
+    padding: var(--x-large-s) !important;
+    /* width: 100% !important; */
     overflow: scroll;
 }
 
@@ -140,10 +154,8 @@ body {
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
-    width: 60%;
-    position: relative;
-  
-    
+    padding: var(--x-large-s);
+    width: 45%;
 }
 
 /* container for container headings */
@@ -153,6 +165,12 @@ body {
     align-items: flex-start;
     margin-bottom: var(--small-s);
 }
+
+.form-container {
+    width: 60%;
+    
+}
+
 
 /* styling for cards */
 .card {
@@ -164,18 +182,19 @@ body {
     justify-content: center;
 
     padding: var(--font-normal);
+    width: 100%;
 }
 
-/* override bootstrap row styles */.row > * {
-    padding: 0px !important;
-    margin: 0px !important;
+/* image cards on mobile devices */
+.mobile-header {
+    display: inline-flex;
+    width: 100%;
+    height: 100px;
+    align-items: flex-start;
+    flex-shrink: 0;
 }
 
-/* override bootstrap row styles */
-.row {
-    padding: inherit !important;
-}
-
+/* container for groups of buttons are inputs for single row */
 .actions {
     display: flex;
     justify-content: flex-start;
@@ -216,6 +235,7 @@ body {
 /*----------------------
     TEXT
 ----------------------*/
+/* styling for heading 1*/
 h1 {
     font-family: var(--fancy-font);
     font-size: var(--font-x-large);
@@ -227,6 +247,7 @@ h1 {
     color: var(--dark);
 }
 
+/* styling for heading 2*/
 h2 {
     font-family: var(--fancy-font);
     font-size: var(--font-medium);
@@ -238,6 +259,7 @@ h2 {
     color: var(--dark);
 }
 
+/* styling for headings that don't use fancy font*/
 h3 {
     color: var(--dark);
     font-family: var(--normal-font);
@@ -248,6 +270,7 @@ h3 {
     margin: 0px 0px var(--small-s) 0px;
 }
 
+/* styling for paragraphs */
 p {
     color: var(--dark);
 
@@ -259,6 +282,7 @@ p {
     margin: 0px 0px var(--small-s) 0px;
 }
 
+/* styling for anchors/links */
 a {
     color: var(--primary-colour) !important;
 
@@ -268,12 +292,14 @@ a {
     line-height: auto !important;
 }
 
+/* styling for anchors/links when hovering or when active*/
 a:hover,
 a:active {
     color: var(--primary-lighter) !important;
     text-decoration: underline !important;
 }
 
+/* styling for icons */
 fa-icon {
     color: var(--light);
 
@@ -284,23 +310,27 @@ fa-icon {
     height: var(--font-normal);
     width: var(--font-normal);
 
-    padding: 0px;    
+    padding: 0px;
 }
 
+/* used to override fontawesome css*/
 .svg-inline--fa {
     height: var(--font-normal);
 }
 
+/* used to style heading/title within a card*/
 .card-title {
     color: var(--grey);
     font-size: var(--font-normal);
     font-weight: var(--bold);
 }
 
+/* used to make text bold */
 .bold {
     font-weight: var(--bold);
 }
 
+/* used to make text grey */
 .greyed {
     color: var(--grey);
 }
@@ -333,8 +363,8 @@ input,
 .form-group {}
 
 .form-input {
-    padding: var(--x-small-s);
-    margin: var(--small-s) 0px;
+    padding: var(--small-s) !important;
+    margin: var(--small-s) 0px !important;
 }
 
 /* styling for form input fields */
@@ -477,7 +507,6 @@ button[disabled] {
 /*----------------------
     TABLES
 ----------------------*/
-
 /* overwriting bootstrap styles for table */
 .table > :not(caption) > * > * {
     background-color: transparent !important;
@@ -522,45 +551,216 @@ hr {
     width: 100% !important;
 }
 
-@media only screen and (max-width: 575px) {
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
 
     /* TEXT */
     h1 {
-        font-size: var(--font-medium);
+        font-size: var(--font-large);
     }
 
     h2 {
-        font-size: var(--font-normal);
+        font-size: var(--font-medium);
     }
 
     h3 {
-        font-size: var(--font-small);
+        font-size: var(--font-normal);
     }
 
-    /* HIDE ITEMS*/
+    .page-content {
+        padding: var(--small-s) !important;
+    }
+
+    /* set styles for all contenet within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+
+    .container,
+    .form-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container{
+        padding: var(--medium-s);
+    }
+
+    .page-heading {
+        padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .btn,
+    button {
+        padding: var(--small-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
     /* hide items on small screens */
     .mobile-hidden {
         display: none !important;
     }
 
-    .page-content {
-        padding: 0px !important;
+    .sidebar {
+        display: none !important;
     }
-
-    .page-heading {
-        padding: var(--normal-s) 0px 0px var(--normal-s);
-    }
-
 
 }
 
-@media only screen and (min-width: 577px){
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
 
-    /* HIDE ITEMS*/
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    .page-content {
+        padding: var(--normal-s) !important;
+    }
+
+    /* set styles for all contnet within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+
+    .page-heading {
+        padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .container {
+        padding: var(--medium-s);
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+
+    .form-container {
+        width: 80% !important;
+    }
+
+    .page-content {
+        padding: var(--normal-s) !important;
+    }
+
+    .container {
+        padding: var(--normal-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    /*child to page-body - all page items headings and containers go in here */
+    .page-content {
+        padding: var(--large-s) !important;
+    }
+
+    .form-container {
+        width: 60% !important;
+    }
+
+    .container {
+        padding: var(--large-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
     /* hide items on large screens */
     .large-hidden {
         display: none !important;
     }
+
+    /* hide the header on large screens */
+    .mobile-header {
+        display: none;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+
+    .page-content {
+        padding: var(--x-large-s) !important;
+    }
+
+    .container {
+        padding: var(--x-large-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on large screens */
+    .large-hidden {
+        display: none !important;
+    }
+
+    /* hide the header on large screens */
     .mobile-header {
         display: none;
     }

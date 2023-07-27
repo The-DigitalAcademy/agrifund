@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
+<!-- <body style="background-image: url(../assets/images/background/barn.web); background-size: cover;"> -->
+    
+<div class="page-body">
 <div class="container-fluid">
 
     <div class=" card">
@@ -29,14 +32,16 @@
             <br />
             <br />
 
-
-
-
-            <button class="btn colourful-btn" [routerLink]="['get-started']">Lets's get started</button>
+            <button class="colourful-btn" [routerLink]="['get-started']">
+                Lets's get started  
+                 <fa-icon icon="arrow-right">
+                </fa-icon>
+            </button>
         </div>
     </div>
-</div>
-
+<!-- </div>
+</div> -->
+<!-- </body> -->
 <app-about-company></app-about-company>
 <app-team-section></app-team-section>
 
