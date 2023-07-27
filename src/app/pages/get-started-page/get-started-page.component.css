@@ -86,8 +86,6 @@ fa-icon{
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
-    /* padding: var(--normal-s); */
-
     background-color: var(--light);
     background-size: 100%;
     max-width: 100% !important;
