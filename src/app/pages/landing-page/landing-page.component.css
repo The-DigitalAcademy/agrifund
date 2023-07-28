@@ -91,6 +91,10 @@ h1 {
     font-size: var(--font-medium) !important;
   }
 
+  .header {
+    height: 50%;
+  }
+
 
 
 
@@ -103,6 +107,10 @@ h1 {
   .header-content>* {
     margin-bottom: var(--medium-s);
   }
+
+  .header {
+    height: 50%;
+  }
 }
 
 /*-------------------------------------------------
@@ -111,6 +119,10 @@ h1 {
 @media (min-width: 768px) and (max-width: 1024px) {
   .header-content>* {
     margin-bottom: var(--large-s);
+  }
+
+  .header {
+    height: 45%;
   }
 }
 
