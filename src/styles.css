@@ -107,7 +107,7 @@ body {
     background-repeat: fill no-repeat;
     background-attachment: fixed;
 
-    overflow: scroll;
+    overflow: auto;
 }
 
 /*child to page-body - all page items headings and containers go in here */
@@ -560,7 +560,7 @@ hr {
 
     .container,
     .form-container {
-        width: 100%;
+        width: 100% !important;
         height: 100%;
     }
 
