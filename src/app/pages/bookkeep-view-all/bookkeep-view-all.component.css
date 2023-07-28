@@ -37,21 +37,12 @@ h2 {
 }
 
 .profit-card {
-    margin: 0px var(--small-s);
     background-color: var(--primary-colour);
 }
 
 .profit-card h2,
 .profit-card label {
     color: var(--light);
-}
-
-.money-in-card {
-    width: 100%;
-}
-
-.money-out-card {
-    width: 100%;
 }
 
 .info {
@@ -83,15 +74,21 @@ tr,
     border-radius: var(--border-radius);
 }
 
+/* take away spacing on the left for money-in card */
+.money-in-card {
+    margin: 0px 0px 0px 0px;
+}
+
+/* take away spacing on the right for money-out card */
+.money-out-card {
+    margin-right: 0px;
+}
+
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (max-width: 390px) {
-    /* .card-summary>* {
-        margin-bottom: var(--small-s) !important;
-    } */
-
-    .row{
+    .row {
         padding-bottom: var(--small-s) !important;
     }
 
@@ -99,19 +96,6 @@ tr,
         padding: var(--small-s);
     }
 
-    .profit-card {
-        margin: 0px !important;
-        padding: var(--small-s);
-        width: 100%;
-    }
-
-    .money-in-col {
-        padding: 0px var(--s-small-s) 0px 0px !important;
-    }
-
-    .money-out-col{
-        padding: 0px 0px 0px var(--s-small-s) !important;
-    }
 
     .record-table {
         padding: var(--small-s);
@@ -120,6 +104,18 @@ tr,
     .container,
     .form-container {
         height: auto !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }
@@ -136,25 +132,24 @@ tr,
         padding: var(--small-s);
     }
 
-    .profit-card {
-        margin: var(--small-s) 0px;
-        padding: var(--small-s);
-    }
-
-    .money-in-card {
-        padding: var(--small-s);
-    }
-
-    .money-out-card {
-        padding: var(--small-s);
-    }
-
     .record-table {
         padding: var(--small-s);
     }
 
     .single-row {
         display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }
@@ -182,6 +177,18 @@ tr,
 
     .single-row {
         display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }

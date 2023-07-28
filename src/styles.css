@@ -87,6 +87,7 @@ body {
 .row>* {
     padding: 0px !important;
     margin: 0px !important;
+    flex-shrink: 1;
 }
 
 /* override bootstrap row styles */
@@ -161,8 +162,8 @@ body {
     flex-direction: column;
     justify-content: center;
 
-    padding: var(--font-normal);
-    width: 100%;
+    padding: var(--normal-s);
+    margin: var(--normal-s);
 }
 
 /* image cards on mobile devices */
@@ -180,7 +181,7 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    margin-bottom: var(--normal-s);
+    margin: var(--normal-s) 0px;
 
     width: 100%
 }
@@ -488,7 +489,7 @@ thead {
 /* setting styles for table headers  */
 .table th {
     font-family: var(--normal-font);
-    font-size: var(--font-regular);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     padding: var(--normal-s) 0px;
@@ -539,7 +540,7 @@ hr {
         padding: var(--small-s) !important;
     }
 
-    /* set styles for all contenet within page-content div */
+    /* set styles for all content within page-content div */
     .page-content>* {
         padding: var(--normal-s) !important;
     }
@@ -550,12 +551,17 @@ hr {
         height: 100%;
     }
 
-    .container{
+    .container {
         padding: var(--medium-s);
     }
 
     .page-heading {
         padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .card {
+        padding: var(--small-s);
+        margin-bottom: var(--small-s);
     }
 
     .btn,
