@@ -19,7 +19,7 @@
 
   margin: var(--x-large-s);
 
-  background: var(--dark) url("src/assets/images/background/orange-trees.webp") no-repeat center;
+  background: var(--dark) url("src/assets/images/background/barn.webp") no-repeat center;
   background-size: cover !important;
 }
 
@@ -38,16 +38,21 @@ img {
   width: 100%
 }
 
-.form-container{
+.form-container {
   width: 100% !important;
 }
 
-.about-company>*{
-  padding: 0px var(--large-s) 0px 0px  !important;
+.about-company>* {
+  padding: 0px var(--large-s) 0px 0px !important;
 }
 
-.about-company-img{
+.about-company-img {
   background: var(--dark) url("src/assets/images/background/agri-finance-image.png") no-repeat center;
+}
+
+.content span {
+  display: flex;
+  padding-bottom: var(--medium-s);
 }
 
 
@@ -56,23 +61,25 @@ img {
 ----------------------------------*/
 @media (max-width: 390px) {
 
-  .about-company{
+  .about-company {
     flex-direction: column-reverse;
   }
+
+
 }
 
 /*---------------------------------
     Media Query for tablets/IPad
 ----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {
-
-}
+@media (min-width: 481px) and (max-width: 767px) {}
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
-
+  .header-content>* {
+      margin-bottom: var(--large-s);
+    }
 }
 
 /*--------------------------------------
@@ -80,12 +87,18 @@ img {
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
 
-
+  .header-content>* {
+      margin-bottom: var(--x-large-s);
+    }
 }
 
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {
+
+  .header-content>* {
+    margin-bottom: var(--x-large-s);
+  }
 
 }
