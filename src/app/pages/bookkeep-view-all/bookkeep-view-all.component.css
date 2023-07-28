@@ -37,21 +37,12 @@ h2 {
 }
 
 .profit-card {
-    margin: 0px var(--small-s);
     background-color: var(--primary-colour);
 }
 
 .profit-card h2,
 .profit-card label {
     color: var(--light);
-}
-
-.money-in-card {
-    width: 100%;
-}
-
-.money-out-card {
-    width: 100%;
 }
 
 .info {
@@ -79,6 +70,8 @@ tr,
     border-radius: var(--border-radius);
 }
 
+.card-summary
+
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
@@ -95,19 +88,6 @@ tr,
         padding: var(--small-s);
     }
 
-    .profit-card {
-        margin: 0px !important;
-        padding: var(--small-s);
-        width: 100%;
-    }
-
-    .money-in-col {
-        padding: 0px var(--s-small-s) 0px 0px !important;
-    }
-
-    .money-out-col{
-        padding: 0px 0px 0px var(--s-small-s) !important;
-    }
 
     .record-table {
         padding: var(--small-s);
@@ -129,19 +109,6 @@ tr,
     }
 
     .bookkeep-actions {
-        padding: var(--small-s);
-    }
-
-    .profit-card {
-        margin: var(--small-s) 0px;
-        padding: var(--small-s);
-    }
-
-    .money-in-card {
-        padding: var(--small-s);
-    }
-
-    .money-out-card {
         padding: var(--small-s);
     }
 

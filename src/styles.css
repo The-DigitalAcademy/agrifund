@@ -159,7 +159,7 @@ body {
     justify-content: center;
 
     padding: var(--normal-s);
-    width: 100%;
+    margin: var(--normal-s);
 }
 
 /* image cards on mobile devices */
@@ -568,6 +568,7 @@ hr {
 
     .card {
         padding: var(--small-s);
+        margin-bottom: var(--small-s);
     }
 
     .btn,
