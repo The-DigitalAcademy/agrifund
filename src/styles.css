@@ -178,7 +178,7 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    margin-bottom: var(--normal-s);
+    margin: var(--normal-s) 0px;
 
     width: 100%
 }
