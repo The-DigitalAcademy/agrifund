@@ -27,6 +27,8 @@
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
 
+    --white-2: #FDFDFD;
+
     /*------------------
         FONTS
     --------------------*/
@@ -40,10 +42,12 @@
     --font-large: 22px;
     --font-medium: 18px;
     --font-normal: 16px;
-    --font-small: 14px; 
+    --font-small: 14px;
     --font-x-small: 12px;
 
-    /* FONT WEIGHTS */
+    /*------------------
+        FONT Weights
+    --------------------*/
     --thin: 100;
     --light-font: 300;
     --regular: 400;
@@ -102,10 +106,11 @@ body {
     height: 100%;
 
     background-size: cover;
+    background-color: var(--light);
     background-repeat: fill no-repeat;
     background-attachment: fixed;
 
-    overflow: auto;
+    overflow: scroll;
 }
 
 /*child to page-body - all page items headings and containers go in here */
@@ -128,7 +133,7 @@ body {
 
     padding: var(--normal-s);
 
-    background-color: var(--light);
+    background-color: var(--white-2);
     background-size: 100%;
     max-width: 100% !important;
 }
@@ -146,12 +151,6 @@ body {
     align-items: flex-start;
     margin-bottom: var(--small-s);
 }
-
-.form-container {
-    width: 60%;
-    
-}
-
 
 /* styling for cards */
 .card {
@@ -223,9 +222,9 @@ h1 {
     font-weight: var(--bold);
     line-height: auto !important;
 
-    margin: 0px 0px var(--normal-s) 0px;
+    margin: 0px 0px var(--small-s) 0px;
 
-    color:var(--dark);
+    color: var(--dark);
 }
 
 /* styling for heading 2*/
@@ -235,9 +234,9 @@ h2 {
     font-weight: var(--bold);
     line-height: auto !important;
 
-    margin: 0px 0px var(--normal-s) 0px;
+    margin: 0px 0px var(--small-s) 0px;
 
-    color:var(--dark);
+    color: var(--dark);
 }
 
 /* styling for headings that don't use fancy font*/
@@ -330,32 +329,31 @@ label,
     font-weight: var(--bold);
 
     margin: 0px 0px var(--x-small-s) 0px;
-
-    color: var(--dark);
 }
 
+/* styling for form input fields */
 input,
 .form-control {
 
     border-radius: var(--border-radius);
-    border: var(--container-border) var(--lighter-grey);
+    border: var(--thin-border) var(--lighter-grey);
 
     background-color: var(--light);
     height: var(--x-larger-s);
-
 }
 
-.form-group {}
-
+/* styling for form input fields */
 .form-input {
-    padding: var(--x-small-s);
-    margin: var(--small-s) 0px;
+    padding: var(--small-s) !important;
+    margin: var(--small-s) 0px !important;
 }
 
+/* styling for form input fields */
 .form-text {
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
 }
 
+/* styling for input fields for focus */
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,
@@ -372,17 +370,10 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
-
-
-/* CONTAINERS */
-.container{
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-    background-color: var(--light);
-}
-
-
-/* BUTTONS */
+/*----------------------
+    BUTTONS
+----------------------*/
+/* default button styles without coloring */
 .btn,
 button {
     font-family: var(--normal-font);
@@ -390,58 +381,28 @@ button {
     text-align: center;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 
     border-radius: var(--border-radius);
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 
     height: var(--x-larger-s);
-    
-    padding: var(--normal-s);
+
+    padding: var(--small-s);
 }
 
-
-
+/* style for buttons on white backgrounds */
 .colourful-btn {
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
 
-.white-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.icon-btn {
-    font-weight: var(--bold);
-    color: var(--grey) !important;
-}
-
-.icon-btn fa-icon {
-    color: var(--grey) !important;
-    margin: var(--x-small-s) 0px;
-}
-
-.icon-btn-dark {
-    font-weight: var(--bold);
-    color: var(--dark) !important;
-}
-
-.outline-btn {
-    border: var(--thick-border) var(--primary-colour) !important;
-    background-color: var(--light) !important;
-    color: var(--primary-colour) !important;
-}
-
-.white-outline-btn {
-    border: var(--thick-border) var(--light) !important;
-    background-color: var(--primary-colour) !important;
-    color: var(--light) !important;
-}
-
+/* hover and focus style for buttons on white backgrounds */
 .colourful-btn:hover,
 .colourful-btn:focus {
     border: var(--thick-border) var(--primary-lighter) !important;
@@ -449,6 +410,52 @@ button {
     color: var(--light) !important;
 }
 
+/* style for on colourful backgrounds*/
+.white-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+/* style for buttons where it has an icon */
+.icon-btn {
+    font-weight: var(--bold);
+    color: var(--grey) !important;
+}
+
+/* style of an icon within an icon button */
+.icon-btn fa-icon {
+    color: var(--grey) !important;
+    margin: var(--x-small-s) 0px;
+}
+
+/* style of an icon when hovering or focusing */
+.icon-btn:hover,
+.icon-btn:focus {
+    color: var(--dark) !important;
+}
+
+/* style of a dark icon button */
+.icon-btn-dark {
+    font-weight: var(--bold);
+    color: var(--dark) !important;
+    background-color: transparent !important;
+}
+
+/* style of a dark icon button on hover or focus*/
+.icon-btn-dark:hover,
+.icon-btn-dark:focus {
+    color: var(--primary-colour) !important;
+}
+
+/* style of a neutral button on a white background */
+.outline-btn {
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+/* style of a neutral button when hovering or focusing*/
 .outline-btn:hover,
 .outline-btn:focus {
     border: var(--thick-border) var(--primary-lighter) !important;
@@ -521,7 +528,10 @@ hr {
 }
 
 
-@media only screen and (max-width: 575px) {
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
 
     /* TEXT */
     h1 {
@@ -547,8 +557,9 @@ hr {
 
     .container,
     .form-container {
-        width: 100% !important;
+        width: 100%;
         height: 100%;
+        border: none !important;
     }
 
     .container {
