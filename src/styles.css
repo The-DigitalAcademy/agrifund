@@ -89,6 +89,7 @@ body {
 .row>* {
     padding: 0px !important;
     margin: 0px !important;
+    flex-shrink: 1;
 }
 
 /* override bootstrap row styles */
@@ -493,7 +494,7 @@ thead {
 /* setting styles for table headers  */
 .table th {
     font-family: var(--normal-font);
-    font-size: var(--font-regular);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     padding: var(--normal-s) 0px;

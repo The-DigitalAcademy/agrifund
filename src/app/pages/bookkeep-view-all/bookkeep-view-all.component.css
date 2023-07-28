@@ -70,17 +70,21 @@ tr,
     border-radius: var(--border-radius);
 }
 
-.card-summary
+/* take away spacing on the left for money-in card */
+.money-in-card {
+    margin: 0px 0px 0px 0px;
+}
+
+/* take away spacing on the right for money-out card */
+.money-out-card {
+    margin-right: 0px;
+}
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (max-width: 390px) {
-    /* .card-summary>* {
-        margin-bottom: var(--small-s) !important;
-    } */
-
-    .row{
+    .row {
         padding-bottom: var(--small-s) !important;
     }
 
@@ -96,6 +100,18 @@ tr,
     .container,
     .form-container {
         height: auto !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }
@@ -118,6 +134,18 @@ tr,
 
     .single-row {
         display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }
@@ -145,6 +173,18 @@ tr,
 
     .single-row {
         display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }
