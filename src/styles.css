@@ -103,7 +103,6 @@ body {
     height: 100%;
 
     background-size: cover;
-    background-color: var(--primary-light);
     background-repeat: fill no-repeat;
     background-attachment: fixed;
 
