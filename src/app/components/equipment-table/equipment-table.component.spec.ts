@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GetStartedComponent } from './get-started.component';
+import { EquipmentTableComponent } from './equipment-table.component';
 
-describe('GetStartedComponent', () => {
-  let component: GetStartedComponent;
-  let fixture: ComponentFixture<GetStartedComponent>;
+describe('EquipmentTableComponent', () => {
+  let component: EquipmentTableComponent;
+  let fixture: ComponentFixture<EquipmentTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetStartedComponent ]
+      declarations: [ EquipmentTableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GetStartedComponent);
+    fixture = TestBed.createComponent(EquipmentTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

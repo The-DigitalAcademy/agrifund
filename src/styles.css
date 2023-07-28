@@ -3,27 +3,39 @@
 
 :root {
 
-    /* COLOUR PALETTE */
-
-    --primary-colour: #606C38;/*primary green colour */
+    /*------------------
+        COLOUR PALETTE
+    --------------------*/
+    --primary-darker: #5A6537;
+    /*primary green colour */
+    --primary-colour: #606C38;
     --primary-lighter: #7D8953;
     --primary-light: #9BA66F;
     --secondary-colour: #D15F20;
-    
-    --dark: #2E2E2E;/*default colour for text*/
-    --dark-grey: #4C5359;/* colour of paragraphs*/
-    --light: #F8F9FA;/*default background colour and colour of text on colour backgrounds*/
+    /* grey-text, fine prints, placeholder colour */
+    --grey: #6C757D;
+    /* borders, strokes, input field-outlines*/
+    --lighter-grey: #ADB5BD;
+    /* borders and strokes */
+    --light-grey: #DEE2E6;
+    /* background colour for fields*/
+    --grey-white: #E9ECEF;
+    /*default colour for text*/
+    --dark: #2E2E2E;
+    /* colour of paragraphs*/
+    --dark-grey: #4C5359;
+    /*default background colour and colour of text on colour backgrounds*/
+    --light: #F8F9FA;
 
-    --grey: #6C757D;/* grey-text, fine prints, placeholder colour */
-    --lighter-grey: #ADB5BD;/* borders, strokes, input field-outlines*/
-    --light-grey: #DEE2E6;/* borders and strokes */
+    /*------------------
+        FONTS
+    --------------------*/
+    --fancy-font: 'Arvo';
+    --normal-font: 'Lato';
 
-
-    /* FONTS */
-    --fancy-font:'Arvo';
-    --normal-font:'Lato';
-
-    /* FONT SIZES */
+    /*------------------
+        FONT SIZES
+    --------------------*/
     --font-x-large: 24px;
     --font-large: 22px;
     --font-medium: 18px;
@@ -32,29 +44,138 @@
     --font-x-small: 12px;
 
     /* FONT WEIGHTS */
-    --thin:100;
+    --thin: 100;
     --light-font: 300;
-    --regular:400;
-    --bold:700;
-    
+    --regular: 400;
+    --bold: 700;
 
-    /* BORDERS */
+    /*------------------
+        BORDERS
+    --------------------*/
     --border-radius: 3px;
-    --btn-border: 2px solid;
-    --container-border: 1px solid;
+    /*button borders  */
+    --thick-border: 2px solid;
+    /*container borders */
+    --thin-border: 1px solid;
 
-    /* SPACING & SIZING*/
-    --x-small-s:4px;
+    /*------------------
+        SPACING & SIZING
+    --------------------*/
+    --x-small-s: 4px;
     --small-s: 8px;
     --normal-s: 14px;
-    --large-s:24px;
-    --x-larger-s: 36px;
+    --medium-s: 20px;
+    --large-s: 24px;
+    --x-large-s: 36px;
 }
 
-body{
-    font-family: var();
+html body {
+    height: 100vh;
+    width: 100vw;
 }
 
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    font-family: var(--normal-font);
+}
+
+/*------------------
+    CONTAINERS 
+--------------------*/
+/* override bootstrap row styles */
+.row>* {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+/* override bootstrap row styles */
+.row {
+    margin: 0px !important;
+    /* padding: inherit !important; */
+}
+
+/*container for the entire page*/
+.page-body {
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-color: var(--primary-light);
+    background-repeat: fill no-repeat;
+    background-attachment: fixed;
+
+    overflow: auto;
+}
+
+/*child to page-body - all page items headings and containers go in here */
+.page-content {
+    padding: var(--x-large-s) !important;
+    /* width: 100% !important; */
+    overflow: scroll;
+}
+
+/* container for page headings */
+.page-heading {
+    margin-bottom: var(--normal-s);
+}
+
+/*any div that needs a border around it  */
+.container {
+    margin: 0px !important;
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+
+    padding: var(--normal-s);
+
+    background-color: var(--light);
+    background-size: 100%;
+    max-width: 100% !important;
+}
+
+/* styling for containers for containers that shouldn't fill the entire page */
+.form-container {
+    padding: var(--x-large-s);
+    width: 45%;
+}
+
+/* container for container headings */
+.container-header {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: var(--small-s);
+}
+
+.form-container {
+    width: 60%;
+    
+}
+
+
+/* styling for cards */
+.card {
+    align-items: center;
+    background-color: var(--light-grey);
+    border-radius: var(--border-radius);
+    border: none;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: var(--font-normal);
+    width: 100%;
+}
+
+/* image cards on mobile devices */
+.mobile-header {
+    display: inline-flex;
+    width: 100%;
+    height: 100px;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+/* container for groups of buttons are inputs for single row */
 .actions {
     display: flex;
     justify-content: flex-start;
@@ -62,18 +183,21 @@ body{
 
     margin-bottom: var(--normal-s);
 
-    width:100%
+    width: 100%
 }
 
-/* DISPLAY RESPONSIVENESS */
+/*----------------------
+    JUSTIFY CONTENT
+----------------------*/
+/* justify content to the left */
 .justify-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     width: 100%
 }
 
+/* justify content to the right */
 .justify-end {
     display: flex;
     justify-content: flex-end;
@@ -81,105 +205,189 @@ body{
     width: 100%
 }
 
+/* justify content to the center */
 .justify-center {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     width: 100%
 }
 
-/* TEXT */
-h1{
+/*----------------------
+    TEXT
+----------------------*/
+/* styling for heading 1*/
+h1 {
     font-family: var(--fancy-font);
     font-size: var(--font-x-large);
     font-weight: var(--bold);
+    line-height: auto !important;
 
     margin: 0px 0px var(--normal-s) 0px;
 
     color:var(--dark);
 }
 
-h2{
+/* styling for heading 2*/
+h2 {
     font-family: var(--fancy-font);
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
+    line-height: auto !important;
+
+    margin: 0px 0px var(--normal-s) 0px;
+
+    color:var(--dark);
+}
+
+/* styling for headings that don't use fancy font*/
+h3 {
+    color: var(--dark);
+    font-family: var(--normal-font);
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
+    line-height: auto !important;
+
+    margin: 0px 0px var(--small-s) 0px;
+}
+
+/* styling for paragraphs */
+p {
+    color: var(--dark);
+
+    font-family: var(--normal-font);
+    font-size: var(--font-normal);
+    font-weight: var(--regular);
+    line-height: auto !important;
+
+    margin: 0px 0px var(--small-s) 0px;
+}
+
+/* styling for anchors/links */
+a {
+    color: var(--primary-colour) !important;
+
+    font-family: var(--normal-font);
+    font-size: var(--font-medium);
+    font-weight: var(--regular);
+    line-height: auto !important;
+}
+
+/* styling for anchors/links when hovering or when active*/
+a:hover,
+a:active {
+    color: var(--primary-lighter) !important;
+    text-decoration: underline !important;
+
+}
+
+/* styling for icons */
+fa-icon {
+    color: var(--light);
+
+    font-size: var(--font-normal);
+    line-height: var(--font-normal);
+    text-align: center;
+
+    height: var(--font-normal);
+    width: var(--font-normal);
+
+    padding: 0px;
+}
+
+/* used to override fontawesome css*/
+.svg-inline--fa {
+    height: var(--font-normal);
+}
+
+/* used to style heading/title within a card*/
+.card-title {
+    color: var(--grey);
+    font-size: var(--font-normal);
+    font-weight: var(--bold);
+}
+
+/* used to make text bold */
+.bold {
+    font-weight: var(--bold);
+}
+
+/* used to make text grey */
+.greyed {
+    color: var(--grey);
+}
+
+/*----------------------
+    FORMS
+----------------------*/
+/* styling for all labels used and labels for form inputs */
+label,
+.form-label {
+    color: var(--dark);
+
+    font-family: var(--normal-font);
     font-size: var(--font-normal);
     font-weight: var(--bold);
 
-    margin: 0px 0px var(--normal-s) 0px;
+    margin: 0px 0px var(--x-small-s) 0px;
 
-    color:var(--dark);
+    color: var(--dark);
 }
 
-h3{
-    font-family: var(--normal);
-    font-size: var(--font-medium);
-    font-weight: var(--bold);
+input,
+.form-control {
 
-    margin: 0px 0px var(--normal-s) 0px;
-
-    color:var(--dark);
-}
-
-p{
-    font-family: var(--normal);
-    font-size: var(--font-medium);
-    font-weight: var(--regular);
-
-    margin: 0px 0px var(--normal-s) 0px;
-
-    color:var(--dark);
-}
-
-a{
-    color:var(--primary-colour) !important;
-    
-}
-
-a:hover, a:active{
-    text-decoration: underline !important;
-}
-
-/* FORMS */
-label, .form-label{
-    font-family: var(--normal);
-    font-size: var(--font-regular);
-    font-weight: var(--bold);
-
-    margin: 0px 0px var(--small-s) 0px;
-
-    color:var(--dark);
-}
-
-input, .form-control{
     border-radius: var(--border-radius);
     border: var(--container-border) var(--lighter-grey);
 
+    background-color: var(--light);
+    height: var(--x-larger-s);
+
 }
 
-.form-group{
+.form-group {}
 
-}
-
-.form-input{
+.form-input {
     padding: var(--x-small-s);
-    margin: var(--normal-s) 0px;
+    margin: var(--small-s) 0px;
 }
 
-.form-text{
+.form-text {
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
 }
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+    box-shadow: none;
+    border: var(--thin-border) var(--dark);
+}
+
+
 
 /* CONTAINERS */
 .container{
     border-radius: var(--border-radius);
-    border: var(--container-border);
+    border: var(--thin-border) var(--lighter-grey);
+    background-color: var(--light);
 }
 
 
 /* BUTTONS */
-.btn, button{
-    font-family: var(--normal);
-    font-size: var(--font-medium);
-    font-weight: var(--regular);
+.btn,
+button {
+    font-family: var(--normal-font);
+    font-size: var(--font-normal);
+    text-align: center;
 
     display: flex;
     flex-direction: column;
@@ -194,8 +402,42 @@ input, .form-control{
 }
 
 
-.colourful-btn{
-    border: var(--primary-colour) !important;
+
+.colourful-btn {
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
+}
+
+.white-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+.icon-btn {
+    font-weight: var(--bold);
+    color: var(--grey) !important;
+}
+
+.icon-btn fa-icon {
+    color: var(--grey) !important;
+    margin: var(--x-small-s) 0px;
+}
+
+.icon-btn-dark {
+    font-weight: var(--bold);
+    color: var(--dark) !important;
+}
+
+.outline-btn {
+    border: var(--thick-border) var(--primary-colour) !important;
+    background-color: var(--light) !important;
+    color: var(--primary-colour) !important;
+}
+
+.white-outline-btn {
+    border: var(--thick-border) var(--light) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
 }
@@ -214,24 +456,24 @@ input, .form-control{
     color: var(--primary-lighter) !important;
 }
 
-.icon-btn:hover,
-.icon-btn:focus {
-    color: var(--dark) !important;
+/* style of a neutral button on a colourful background */
+.white-outline-btn {
+    border: var(--thick-border) var(--light) !important;
+    background-color: var(--primary-colour) !important;
+    color: var(--light) !important;
 }
 
-.icon-btn-dark:hover,
-.icon-btn-dark:focus {
-    color: var(--primary-colour) !important;
-}
-
+/* style of a button when it is disabled*/
 button[disabled] {
     background-color: var(--light) !important;
     border-color: var(--grey) !important;
     color: var(--grey) !important;
 }
 
-/* TABLES */
-
+/*----------------------
+    TABLES
+----------------------*/
+/* overwriting bootstrap styles for table */
 .table> :not(caption)>*>* {
     background-color: transparent !important;
     border: none !important;
@@ -239,11 +481,12 @@ button[disabled] {
     padding: 0px;
 }
 
+/* style for table header content */
 thead {
-    
     border-bottom: var(--thin-border) var(--lighter-grey);
 }
 
+/* setting styles for table headers  */
 .table th {
     font-family: var(--normal-font);
     font-size: var(--font-regular);
@@ -253,6 +496,7 @@ thead {
     color: var(--grey);
 }
 
+/* style for table data cells  */
 td {
     font-family: var(--normal-font);
     font-size: var(--font-medium);
@@ -263,7 +507,10 @@ td {
     color: var(--dark-grey) !important;
 }
 
-
+/*----------------------
+    OTHER
+----------------------*/
+/* style for horizontal rule */
 hr {
     background-color: var(--lighter-grey);
     height: 1.5px;
@@ -274,35 +521,213 @@ hr {
 }
 
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
 
     /* TEXT */
     h1 {
-        font-size: var(--font-medium);
+        font-size: var(--font-large);
     }
 
     h2 {
-        font-size: var(--font-normal);
+        font-size: var(--font-medium);
     }
 
     h3 {
-        font-size: var(--font-small);
+        font-size: var(--font-normal);
     }
 
-    /* HIDE ITEMS*/
+    .page-content {
+        padding: var(--small-s) !important;
+    }
+
+    /* set styles for all contenet within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+
+    .container,
+    .form-container {
+        width: 100% !important;
+        height: 100%;
+    }
+
+    .container{
+        padding: var(--medium-s);
+    }
+
+    .page-heading {
+        padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .btn,
+    button {
+        padding: var(--small-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
     /* hide items on small screens */
     .mobile-hidden {
         display: none !important;
     }
 
-    .page-content {
-        padding: 0px !important;
+    .sidebar {
+        display: none !important;
     }
-
-    .page-heading {
-        padding: var(--normal-s) 0px 0px var(--normal-s);
-    }
-
 
 }
 
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    .page-content {
+        padding: var(--normal-s) !important;
+    }
+
+    /* set styles for all contnet within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+
+    .page-heading {
+        padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .container {
+        padding: var(--medium-s);
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* TEXT */
+    h1 {
+        font-size: var(--font-large);
+    }
+
+    h2 {
+        font-size: var(--font-medium);
+    }
+
+    h3 {
+        font-size: var(--font-normal);
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+
+    .form-container {
+        width: 80% !important;
+    }
+
+    .page-content {
+        padding: var(--normal-s) !important;
+    }
+
+    .container {
+        padding: var(--normal-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    /*child to page-body - all page items headings and containers go in here */
+    .page-content {
+        padding: var(--large-s) !important;
+    }
+
+    .form-container {
+        width: 60% !important;
+    }
+
+    .container {
+        padding: var(--large-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on large screens */
+    .large-hidden {
+        display: none !important;
+    }
+
+    /* hide the header on large screens */
+    .mobile-header {
+        display: none;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+
+    .page-content {
+        padding: var(--x-large-s) !important;
+    }
+
+    .container {
+        padding: var(--x-large-s);
+    }
+
+    /*----------------------
+        HIDE ITEMS
+    ----------------------*/
+    /* hide items on large screens */
+    .large-hidden {
+        display: none !important;
+    }
+
+    /* hide the header on large screens */
+    .mobile-header {
+        display: none;
+    }
+}
