@@ -158,7 +158,7 @@ body {
     flex-direction: column;
     justify-content: center;
 
-    padding: var(--font-normal);
+    padding: var(--normal-s);
     width: 100%;
 }
 
@@ -547,7 +547,7 @@ hr {
         padding: var(--small-s) !important;
     }
 
-    /* set styles for all contenet within page-content div */
+    /* set styles for all content within page-content div */
     .page-content>* {
         padding: var(--normal-s) !important;
     }
@@ -558,12 +558,16 @@ hr {
         height: 100%;
     }
 
-    .container{
+    .container {
         padding: var(--medium-s);
     }
 
     .page-heading {
         padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .card {
+        padding: var(--small-s);
     }
 
     .btn,
