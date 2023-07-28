@@ -73,6 +73,8 @@ h1 {
     margin-bottom: var(--medium-s);
   }
 
+
+
   .about-company {
     flex-direction: column-reverse;
   }
@@ -82,7 +84,7 @@ h1 {
   }
 
   .about-company>* {
-    padding: var(--large-s) 0px !important;
+    padding: var(--medium-s) 0px !important;
   }
 
   .btn,
@@ -95,8 +97,15 @@ h1 {
     height: 50%;
   }
 
+  .content span {
+    display: flex;
+    padding-bottom: var(--medium-s);
+  }
 
-
+  h1,
+  span {
+    text-align: center;
+  }
 
 }
 
@@ -108,9 +117,14 @@ h1 {
     margin-bottom: var(--medium-s);
   }
 
+  .about-company>* {
+    padding: 0px var(--medium-s) 0px 0px !important;
+  }
+
   .header {
     height: 50%;
   }
+
 }
 
 /*-------------------------------------------------
