@@ -1,56 +1,70 @@
-<!-- <body style="background-image: url(../assets/images/background/barn.web); background-size: cover;"> -->
-
-
-
 <div class="row page-body">
     <div class="row">
-        <div class="col-12">
-            <app-navbar></app-navbar>
-        </div>
+        <app-navbar></app-navbar>
     </div>
-
-</div>
-
-<div class="page-body">
-    <div class="container-fluid">
-
-        <!-- <div class=" card">
-        <img src="assets/images/background/barn.webp" alt="No image">
-        <div class="card-img-overlay"> -->
-
-        <h1>Build Stronger Finances <br>
-            One Field At A Time
-        </h1>
-
-        <br />
-        <br />
-
-        <div>
-
-            <article>
-                <p style='text-align: left'>We understand the challenges farmers face, and our app is designed to
+    <div class="col-12 header">
+        <div class="header-content">
+            <div class="slogan">
+                <h1>
+                    Build Stronger Finances,
+                    <br>
+                    One Field At A Time
+                </h1>
+            </div>
+            <div class="description justify-start">
+                <p class="bold">
+                    We understand the challenges farmers face, and our app is designed to
                     simplify financial complexities.
-                    <br /> We want to empower farmers to make informed decisions and succeed in their farming
-                    journey.
-                    <br /> Take Control of Your Farm's Financial Future with AgriFund.
+                    <br/>
+                    <span class="mobile-hidden">
+                        We want to empower farmers to make informed decisions and succeed in their farming
+                        journey. 
+                    </span>
+                    <span>
+                        Take Control of Your Farm's Financial Future with AgriFund.
+                    </span>
+                    
                 </p>
-            </article>
 
-
-
+            </div>
+            <div class="actions">
+                <button class="btn colourful-btn" [routerLink]="['get-started']">
+                    <span class="justify-center">
+                        <fa-icon icon="external-link-alt"></fa-icon>
+                        Get Started
+                    </span>
+                </button>
+            </div>
         </div>
-        <br />
-        <br />
 
-        <button class="colourful-btn" [routerLink]="['get-started']">
-            Lets's get started
-            <fa-icon icon="arrow-right">
-            </fa-icon>
-        </button>
+
+
+    </div>
+
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6">
+                <h1>About AgriFund</h1>
+                <p>In South Africa, there are approximately two million small-scale farmers compared to 35 000
+                    commercial
+                    growers. Small-scale farmers rely on their land to feed their families while selling and trading any
+                    extra produce they have left.
+                    <br>
+                    If provided with the opportunity to acquire business funding, they will
+                    be able to grow their farming activities to produce a greater crop yield that can be sold to the
+                    community. However, most small-scale farmers don’t have bookkeeping records which automatically
+                    disqualifies them from business funding.
+                    <br>
+                    AgriFund’s purpose is to create a platform that will allow
+                    small-scale farmers to bookkeep data that can be used to build a financial portfolio needed in
+                    applying
+                    for business funding.
+                </p>
+            </div>
+            <div class="col-6">
+                <img src="https://cdn.dribbble.com/userupload/2901757/file/original-edf26ef32309871add22fb8244590e53.jpeg?resize=1600x1200"
+                    alt="No image">
+            </div>
+        </div>
     </div>
 </div>
-<!-- </div>
-</div> -->
-<!-- </body> -->
-<app-about-company></app-about-company>
-<app-team-section></app-team-section>

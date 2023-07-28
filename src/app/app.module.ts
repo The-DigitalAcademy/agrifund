@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { TeamSectionComponent } from './components/team-section/team-section.component';
-import { AboutCompanyComponent } from './components/about-company/about-company.component';
+import { TeamSectionComponent } from './team-section/team-section.component';
+import { AboutCompanyComponent } from './about-company/about-company.component';
 import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
 import {
     FontAwesomeModule,
@@ -56,6 +56,7 @@ import { DisabledformFarmInfoComponent } from './components/farm-info-form/disab
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
+
 
 
  
