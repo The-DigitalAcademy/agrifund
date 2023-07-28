@@ -55,15 +55,43 @@ img {
   padding-bottom: var(--medium-s);
 }
 
+.slogan span {
+  display: flex;
+}
+
+h1 {
+  margin-bottom: var(--large-s);
+}
+
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (max-width: 390px) {
 
+  .header-content>* {
+    margin-bottom: var(--medium-s);
+  }
+
   .about-company {
     flex-direction: column-reverse;
   }
+
+  .form-container {
+    padding: 0px !important;
+  }
+
+  .about-company>* {
+    padding: var(--large-s) 0px !important;
+  }
+
+  .btn,
+  button {
+    height: 50px !important;
+    font-size: var(--font-medium) !important;
+  }
+
+
 
 
 }
@@ -71,15 +99,19 @@ img {
 /*---------------------------------
     Media Query for tablets/IPad
 ----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {}
+@media (min-width: 481px) and (max-width: 767px) {
+  .header-content>* {
+    margin-bottom: var(--medium-s);
+  }
+}
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
   .header-content>* {
-      margin-bottom: var(--large-s);
-    }
+    margin-bottom: var(--large-s);
+  }
 }
 
 /*--------------------------------------
@@ -88,8 +120,8 @@ img {
 @media (min-width: 1025px) and (max-width: 1280px) {
 
   .header-content>* {
-      margin-bottom: var(--x-large-s);
-    }
+    margin-bottom: var(--x-large-s);
+  }
 }
 
 /*--------------------------------
