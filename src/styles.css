@@ -379,7 +379,7 @@ input[type=number]:focus,
 /* default button styles without coloring */
 .btn,
 button {
-    font-family: var(--normal-font);
+    font-family: var(--normal-font) !important;
     font-size: var(--font-normal);
     text-align: center;
 
@@ -458,6 +458,10 @@ button {
     color: var(--primary-colour) !important;
 }
 
+.outline-btn fa-icon {
+    color: var(--primary-colour) !important;
+}
+
 /* style of a neutral button when hovering or focusing*/
 .outline-btn:hover,
 .outline-btn:focus {
@@ -465,6 +469,8 @@ button {
     background-color: var(--light) !important;
     color: var(--primary-lighter) !important;
 }
+
+
 
 /* style of a neutral button on a colourful background */
 .white-outline-btn {
@@ -481,7 +487,7 @@ button[disabled] {
 }
 
 /* add margins to icons within buttons */
-span fa-icon {
+.btn fa-icon, button fa-icon {
     margin: 0px var(--small-s) 0px 0px;
 }
 
