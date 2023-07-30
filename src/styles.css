@@ -480,6 +480,11 @@ button[disabled] {
     color: var(--grey) !important;
 }
 
+/* add margins to icons within buttons */
+span fa-icon {
+    margin: 0px var(--small-s) 0px 0px;
+}
+
 /*----------------------
     TABLES
 ----------------------*/

@@ -26,10 +26,6 @@
     margin: 0px;
 }
 
-fa-icon {
-    margin: 0px var(--small-s) 0px 0px;
-}
-
 h2 {
     font-family: var(--normal-font);
     font-size: var(--font-large);
