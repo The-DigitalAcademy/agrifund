@@ -165,7 +165,12 @@ body {
 
 /* image cards on mobile devices */
 .mobile-header {
+    /* background-size: fill; */
+    background-color: var(--light);
+    background-attachment: fixed;
     display: inline-flex;
+
+
     width: 100%;
     height: 100px;
     align-items: flex-start;

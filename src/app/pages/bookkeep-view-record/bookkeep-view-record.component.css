@@ -1,5 +1,5 @@
 .page-body{
-    background-image: url("src/assets/images/background/orange-trees.webp");
+    background-image: url("src/assets/images/background/barn.webp");
 }
 
 h2 {
@@ -17,6 +17,10 @@ h2 {
 
 .content>* {
     margin-bottom: var(--normal-s) !important;
+}
+
+.mobile-header{
+    background-image: url("src/assets/images/background/barn.webp");
 }
 
 /*---------------------------------
