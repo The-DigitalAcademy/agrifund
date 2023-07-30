@@ -1,16 +1,8 @@
 .page-body {
-    display: flex;
-    width: 100%;
-    height: 100%;
-
     background-image: url("src/assets/images/background/orange-trees.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* opacity: 0.7; */
-}
-
-.container {
-    width: 100%;
 }
 
 .sidebar {
@@ -39,9 +31,6 @@ h2 {
     font-size: var(--font-large);
 }
 
-.row {
-    padding: inherit;
-}
 
 .card-summary {
     margin-bottom: var(--large-s);
@@ -49,7 +38,6 @@ h2 {
 
 .profit-card {
     background-color: var(--primary-colour);
-    margin: 0px var(--small-s);
 }
 
 .profit-card h2,
@@ -57,63 +45,83 @@ h2 {
     color: var(--light);
 }
 
-.money-in-card {
-    margin: 0px var(--small-s) 0px 0px;
-}
-
-.money-out-card {
-    margin: 0px 0px 0px var(--small-s);
-}
-
-.info{
+.info {
     display: flex;
     width: 100%;
 }
 
-.left, .right{
+.left,
+.right {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.record-tr, .info{
+tr,
+.info {
     cursor: pointer;
 }
 
-.record-tr:hover,
-.info:hover, .record-tr:focus, .info:focus{
-    background-color: var(--light-grey);
+.search-btn fa-icon {
+    margin: 0px;
 }
 
-@media only screen and (max-width: 576px) {
-    .card-summary {
-        display: flex;
-        justify-content: column;
+.input-group .btn {
+    border-radius: var(--border-radius);
+}
 
-        margin-bottom: var(--normal-s);
+/* take away spacing on the left for money-in card */
+/* .money-in-card {
+    margin: 0px 0px 0px 0px;
+} */
+
+/* take away spacing on the right for money-out card */
+/* .money-out-card {
+    margin: 0px 0px 0px 0px;
+} */
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+    .row {
+        padding-bottom: var(--small-s) !important;
+    }
+
+    .bookkeep-actions {
+        padding: var(--small-s);
+    }
+
+
+    .record-table {
+        padding: var(--small-s);
+    }
+
+    .container,
+    .form-container {
+        height: auto !important;
     }
 
     .profit-card {
-        margin: var(--small-s) 0px;
-        padding: var(--small-s);
+        margin: var(--small-s) 0px !important;
     }
 
     .money-in-card {
-        margin: var(--small-s) var(--small-s) 0px 0px;
-        padding: var(--small-s);
+        margin: 0px var(--small-s) 0px 0px;
     }
 
     .money-out-card {
-        margin: var(--small-s) 0px 0px var(--small-s);
-        padding: var(--small-s);
+        margin: 0px 0px 0px var(--small-s);
     }
 
 }
 
-@media only screen and (max-width: 576px) {
-
-    .sidebar {
-        display: none !important;
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .card-summary>* {
+        margin: var(--normal-s) !important;
     }
 
     .bookkeep-actions {
@@ -124,8 +132,78 @@ h2 {
         padding: var(--small-s);
     }
 
-    .input-group .btn{
-        border-radius:var(--border-radius);
+    .single-row {
+        display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
+    }
+
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .card-summary>* {
+        margin: var(--normal-s) !important;
+    }
+
+    .bookkeep-actions {
+        padding: var(--small-s);
+    }
+
+    .record-table {
+        padding: var(--small-s);
+    }
+
+    .input-group .btn {
+        border-radius: var(--border-radius);
+    }
+
+    .single-row {
+        display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
+    }
+
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .stacked {
+        display: none !important;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+    .stacked {
+        display: none !important;
     }
 
 }
