@@ -9,6 +9,10 @@
     background-color: var(--primary-colour);
 }
 
+.container{
+    width: 100% !important;
+}
+
 .date-filter .form-input {
     flex-direction: row;
     margin: 0px 0px 0px var(--small-s);
