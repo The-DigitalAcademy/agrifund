@@ -27,6 +27,7 @@ h2 {
     .page-body {
         display: flex;
         flex-direction: column;
+        background-image: none;
     }
 
     .content .btn {
