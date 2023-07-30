@@ -459,7 +459,7 @@ button {
 }
 
 .outline-btn fa-icon {
-    color: var(--primary-colour) !important;
+    color: var(--primary-colour);
 }
 
 /* style of a neutral button when hovering or focusing*/
@@ -489,6 +489,10 @@ button[disabled] {
 /* add margins to icons within buttons */
 .btn fa-icon, button fa-icon {
     margin: 0px var(--small-s) 0px 0px;
+}
+
+.close-btn fa-icon{
+    margin: 0px !important;
 }
 
 /*----------------------
