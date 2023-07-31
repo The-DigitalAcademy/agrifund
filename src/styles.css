@@ -370,8 +370,10 @@ input,
 
 /* styling for form input fields */
 .form-input {
-    padding: var(--small-s) !important;
+    padding-top: var(--small-s) !important;
+    padding-bottom: var(--small-s) !important;
     margin: var(--small-s) 0px !important;
+
 }
 
 /* styling for form input fields */
