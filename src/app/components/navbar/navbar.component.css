@@ -10,10 +10,12 @@ nav {
 
     overflow: hidden;
     background-color: var(--light);
+    position: relative !important;
 }
 
 .navbar {
     display: flex;
+    position: relative !important;
 
 }
 

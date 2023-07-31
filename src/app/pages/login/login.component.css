@@ -2,8 +2,7 @@
    
     background-image: url("src/assets/images/background/orange-trees.webp");
   }
-  
- 
+
 .icon-btn{
     background-color: var(--light);
 }
@@ -24,4 +23,18 @@
     
     }
 
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+
+    .page-content {
+        padding: var(--x-large-s) !important;
+    }
+
+    .container {
+        width: 35% !important;
+    }
 }
