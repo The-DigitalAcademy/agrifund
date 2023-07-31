@@ -9,6 +9,10 @@
     background-color: var(--primary-colour);
 }
 
+.container{
+    width: 100% !important;
+}
+
 .date-filter .form-input {
     flex-direction: row;
     margin: 0px 0px 0px var(--small-s);
@@ -20,10 +24,6 @@
 
 .form-label {
     margin: 0px;
-}
-
-fa-icon {
-    margin: 0px var(--small-s) 0px 0px;
 }
 
 h2 {
@@ -75,14 +75,14 @@ tr,
 }
 
 /* take away spacing on the left for money-in card */
-.money-in-card {
+/* .money-in-card {
     margin: 0px 0px 0px 0px;
-}
+} */
 
 /* take away spacing on the right for money-out card */
-.money-out-card {
-    margin-right: 0px;
-}
+/* .money-out-card {
+    margin: 0px 0px 0px 0px;
+} */
 
 /*---------------------------------
     Media Query for Mobile Devices
