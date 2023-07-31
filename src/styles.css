@@ -97,6 +97,7 @@ body {
 /* override bootstrap row styles */
 .row {
     margin: 0px !important;
+    position: relative;
     /* padding: inherit !important; */
 }
 
@@ -113,11 +114,25 @@ body {
     overflow: scroll;
 }
 
-/*child to page-body - all page items headings and containers go in here */
+.page-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); /* 40% opacity white background */
+  }
+
+/*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding: var(--x-large-s) !important;
+    padding:var(--x-large-s) !important;
     /* width: 100% !important; */
-    overflow: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+
 }
 
 /* container for page headings */
@@ -188,6 +203,12 @@ body {
     margin: var(--normal-s) 0px;
 
     width: 100%
+}
+
+
+.sidebar{
+    height: 100vh;
+    position: relative;
 }
 
 /*----------------------

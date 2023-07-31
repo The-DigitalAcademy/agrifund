@@ -13,8 +13,10 @@
 .sidebar {
   background-color: var(--primary-colour);
   height: 100%;
+  
 
 }
+
 
 .crop-info {
   margin-top: var(--normal-s);
@@ -50,6 +52,9 @@
 #bottom {
 
   padding-top: var(--normal-s) !important;
+}
+h1{
+  position: relative;
 }
 
 
