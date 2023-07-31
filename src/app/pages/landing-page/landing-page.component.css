@@ -143,11 +143,10 @@ h1 {
 
 }
 }
-
 .slogan {
   /* color: var(--light) !important; */
 }
 
 .bold {
-  /* color: var(--light) !important; */
+  /* color: var(--light); */
 }

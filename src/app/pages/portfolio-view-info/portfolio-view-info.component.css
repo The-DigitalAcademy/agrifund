@@ -1,20 +1,22 @@
 .page-body {
   /* align-items: flex-start; */
   background-image: url(src/assets/images/background/orange-trees.webp);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
 }
 
-.first-body {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
+
+
 
 
 .sidebar {
   background-color: var(--primary-colour);
   height: 100%;
+  
 
 }
+
 
 .crop-info {
   margin-top: var(--normal-s);
@@ -37,17 +39,22 @@
 
 #left {
   padding-right: var(--small-s) !important;
+ 
 
 }
 
 #right {
 
   padding-left: var(--small-s) !important;
+  
 }
 
 #bottom {
 
   padding-top: var(--normal-s) !important;
+}
+h1{
+  position: relative;
 }
 
 
@@ -56,6 +63,7 @@
 
   #left {
     padding: var(--small-s) !important;
+    
 
   }
 
@@ -65,11 +73,14 @@
   }
 
   #info {
-    padding: var(--x-small-s) var(--x-small-s);
+    padding: var(--x-small-s);
+   
   }
 
   #bottom {
 
-    padding: var(--x-small-s) var(--x-small-s) !important;
+    padding: var(--x-small-s) !important;
   }
+
+  
 }

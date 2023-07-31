@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SplashPageComponent } from './splash-page.component';
+import { AboutCompanyComponent } from './about-company.component';
 
-describe('SplashPageComponent', () => {
-  let component: SplashPageComponent;
-  let fixture: ComponentFixture<SplashPageComponent>;
+describe('AboutCompanyComponent', () => {
+  let component: AboutCompanyComponent;
+  let fixture: ComponentFixture<AboutCompanyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SplashPageComponent ]
+      declarations: [ AboutCompanyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SplashPageComponent);
+    fixture = TestBed.createComponent(AboutCompanyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
