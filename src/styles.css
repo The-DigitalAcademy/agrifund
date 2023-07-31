@@ -752,7 +752,7 @@ hr {
 
     .container {
         padding: var(--x-large-s);
-        width: 35% !important;
+        /* width: 35% !important; */
     }
 
     /*----------------------
