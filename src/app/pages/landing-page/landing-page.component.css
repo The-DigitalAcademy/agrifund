@@ -24,7 +24,7 @@
 }
 
 fa-icon {
-  margin: 0px var(--small-s) 0px 0px;
+  margin: 0px var(--small-s) -1px 7px;
 }
 
 .btn,
