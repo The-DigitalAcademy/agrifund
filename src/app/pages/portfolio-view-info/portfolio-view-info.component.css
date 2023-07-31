@@ -3,11 +3,11 @@
   background-image: url(src/assets/images/background/orange-trees.webp);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  
 }
 
-.container{
-  margin-right: 0px !important;
-}
+
+
 
 
 .sidebar {
@@ -58,6 +58,7 @@
 
   #left {
     padding: var(--small-s) !important;
+    
 
   }
 
@@ -67,11 +68,14 @@
   }
 
   #info {
-    padding: var(--x-small-s) var(--x-small-s);
+    padding: var(--x-small-s);
+   
   }
 
   #bottom {
 
-    padding: var(--x-small-s) var(--x-small-s) !important;
+    padding: var(--x-small-s) !important;
   }
+
+  
 }
