@@ -35,7 +35,7 @@
     height: 450px;
     padding: var(--large);
     gap: 24px;
-    background-color: var(--light);
+    background-color: var(--white-2);
     align-items: center;
     justify-items: center;
     border-radius: var(--primary-colour 3px);
@@ -78,6 +78,7 @@ fa-icon{
     height: auto;
     text-align: center;
     justify-content: center;
+    width: 100% !important;
 }
 .form-container{
     text-align: center;
@@ -86,9 +87,9 @@ fa-icon{
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
-    background-color: var(--light);
+    background-color: var(--white-2);
     background-size: 100%;
-    max-width: 100% !important;
+
 }
 
 
