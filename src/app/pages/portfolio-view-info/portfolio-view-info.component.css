@@ -1,6 +1,8 @@
 .page-body {
   /* align-items: flex-start; */
   background-image: url(src/assets/images/background/orange-trees.webp);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .first-body {

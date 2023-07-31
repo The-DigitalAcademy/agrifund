@@ -24,7 +24,7 @@
 }
 
 fa-icon {
-  margin: 0px var(--small-s) 0px 0px;
+  margin: 0px var(--small-s) -1px 7px;
 }
 
 .btn,
@@ -80,78 +80,47 @@ h1 {
 
 
 
-  .about-company {
-    flex-direction: column-reverse;
-  }
+@media only screen and (max-width: 576px) {
 
-  .form-container {
-    padding: 0px !important;
-  }
-
-  .about-company>* {
-    padding: var(--medium-s) 0px !important;
-  }
-
-  .btn,
-  button {
-    height: 50px !important;
-    font-size: var(--font-medium) !important;
-  }
-
-  .header {
-    height: 50%;
-  }
-
-  .content span {
+  /* TEXT */
+  h1 {
     display: flex;
-    padding-bottom: var(--medium-s);
+      font-size: var(--font-medium);
+      padding-top: 10px;
+      
   }
 
-  h1,
-  span {
-    text-align: center;
+  h2 {
+      font-size: var(--font-normal);
   }
+
+  h3 {
+      font-size: var(--font-small);
+  }
+
+  /* HIDE ITEMS*/
+  /* hide items on small screens */
+  .mobile-hidden {
+      display: none !important;
+  }
+
+  .page-content {
+      padding: 0px !important;
+  }
+
+  .page-heading {
+      padding: var(--normal-s) 0px 0px var(--normal-s);
+  }
+
 
 }
 
-/*---------------------------------
-    Media Query for tablets/IPad
-----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {
-  .header-content>* {
-    margin-bottom: var(--medium-s);
-  }
+@media only screen and (min-width: 576px) and (max-width: 1200px) {
 
-  .about-company>* {
-    padding: 0px var(--medium-s) 0px 0px !important;
-  }
-
-  .header {
-    height: 50%;
-  }
-
-}
-
-/*-------------------------------------------------
-    Media Query for tablets/IPad in landscape mode
---------------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1024px) {
-  .header-content>* {
-    margin-bottom: var(--large-s);
-  }
-
-  .header {
-    height: 45%;
-  }
-}
-
-/*--------------------------------------
-    Media Query for laptops & desktops
-----------------------------------------*/
-@media (min-width: 1025px) and (max-width: 1280px) {
-
-  .header-content>* {
-    margin-bottom: var(--x-large-s);
+  /* HIDE ITEMS*/
+  /* hide items on large screens */
+  .large-hidden {
+      display: none !important;
   }
 }
 
@@ -164,4 +133,12 @@ h1 {
     margin-bottom: var(--x-large-s);
   }
 
+}
+}
+.slogan {
+  /* color: var(--light); */
+}
+
+.bold {
+  /* color: var(--light); */
 }
