@@ -33,7 +33,7 @@ nav {
 
     height: 100%;
 
-    padding: var(--small-s) var(--normal-s);
+    padding: var(--small-s) var(--normal-s) !important;
 
     background-color: var(--primary-colour);
 }
@@ -45,7 +45,7 @@ nav {
 
     height: 100%;
 
-    padding: var(--small-s) var(--normal-s);
+    padding: var(--small-s) var(--normal-s) !important;
 }
 
 .nav-brand {
@@ -104,6 +104,7 @@ span {
     width: 100px !important;
 
     margin: 0px var(--small-s);
+    padding: var(--x-small-s);
 }
 
 .icon-btn {
