@@ -1,7 +1,7 @@
 <div class="mobile-header">
     <img src="assets/images/background/orange-trees.webp" alt="...">
 </div>
-<div class="page-body">
+<div class="page-body justify-center">
     <div class="container form-container">
         <form [formGroup]="LoginForm">
             <div class="row">
@@ -38,6 +38,7 @@
                             type="submit"
                             class="btn actions colourful-btn"
                             [routerLink]="['/bookkeep']">
+                            <fa-icon icon="user"></fa-icon>
                             Login
                         </button>
                     </div>
