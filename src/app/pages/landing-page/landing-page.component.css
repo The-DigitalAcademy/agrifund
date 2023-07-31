@@ -3,7 +3,7 @@
 }
 
 .header-content>* {
-  margin-bottom: var(--x-large-s);
+  margin-bottom: var(--x-large-s) !important;
 }
 
 .header-content {
@@ -78,7 +78,7 @@ h1 {
 @media (max-width: 390px) {
 
   .header-content>* {
-    margin-bottom: var(--medium-s);
+    margin-bottom: var(--medium-s) !important;
   }
 
 
@@ -140,9 +140,9 @@ h1 {
 }
 
 .slogan {
-  /* color: var(--light); */
+  /* color: var(--light) !important; */
 }
 
 .bold {
-  /* color: var(--light); */
+  /* color: var(--light) !important; */
 }
