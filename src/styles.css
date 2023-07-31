@@ -27,6 +27,8 @@
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
 
+    --white-2: #FDFDFD;
+
     /*------------------
         FONTS
     --------------------*/
@@ -89,6 +91,7 @@ body {
 .row>* {
     padding: 0px !important;
     margin: 0px !important;
+    flex-shrink: 1;
 }
 
 /* override bootstrap row styles */
@@ -103,11 +106,11 @@ body {
     height: 100%;
 
     background-size: cover;
-    background-color: var(--primary-light);
+    background-color: var(--light);
     background-repeat: fill no-repeat;
     background-attachment: fixed;
 
-    overflow: auto;
+    overflow: scroll;
 }
 
 /*child to page-body - all page items headings and containers go in here */
@@ -128,9 +131,9 @@ body {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
-    padding: var(--normal-s);
+    /* padding: var(--normal-s); */
 
-    background-color: var(--light);
+    background-color: var(--white-2);
     background-size: 100%;
     max-width: 100% !important;
 }
@@ -149,12 +152,6 @@ body {
     margin-bottom: var(--small-s);
 }
 
-.form-container {
-    width: 60%;
-    
-}
-
-
 /* styling for cards */
 .card {
     align-items: center;
@@ -164,13 +161,18 @@ body {
     flex-direction: column;
     justify-content: center;
 
-    padding: var(--font-normal);
-    width: 100%;
+    padding: var(--normal-s);
+    margin: var(--normal-s);
 }
 
 /* image cards on mobile devices */
 .mobile-header {
+    /* background-size: fill; */
+    background-color: var(--light);
+    background-attachment: fixed;
     display: inline-flex;
+
+
     width: 100%;
     height: 100px;
     align-items: flex-start;
@@ -183,7 +185,7 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    margin-bottom: var(--normal-s);
+    margin: var(--normal-s) 0px;
 
     width: 100%
 }
@@ -379,7 +381,7 @@ input[type=number]:focus,
 /* default button styles without coloring */
 .btn,
 button {
-    font-family: var(--normal-font);
+    font-family: var(--normal-font) !important;
     font-size: var(--font-normal);
     text-align: center;
 
@@ -458,6 +460,10 @@ button {
     color: var(--primary-colour) !important;
 }
 
+.outline-btn fa-icon {
+    color: var(--primary-colour);
+}
+
 /* style of a neutral button when hovering or focusing*/
 .outline-btn:hover,
 .outline-btn:focus {
@@ -465,6 +471,8 @@ button {
     background-color: var(--light) !important;
     color: var(--primary-lighter) !important;
 }
+
+
 
 /* style of a neutral button on a colourful background */
 .white-outline-btn {
@@ -478,6 +486,15 @@ button[disabled] {
     background-color: var(--light) !important;
     border-color: var(--grey) !important;
     color: var(--grey) !important;
+}
+
+/* add margins to icons within buttons */
+.btn fa-icon, button fa-icon {
+    margin: 0px var(--small-s) 0px 0px;
+}
+
+.close-btn fa-icon{
+    margin: 0px !important;
 }
 
 /*----------------------
@@ -499,7 +516,7 @@ thead {
 /* setting styles for table headers  */
 .table th {
     font-family: var(--normal-font);
-    font-size: var(--font-regular);
+    font-size: var(--font-normal);
     font-weight: var(--bold);
 
     padding: var(--normal-s) 0px;
@@ -553,23 +570,29 @@ hr {
         padding: var(--small-s) !important;
     }
 
-    /* set styles for all contenet within page-content div */
+    /* set styles for all content within page-content div */
     .page-content>* {
         padding: var(--normal-s) !important;
     }
 
     .container,
     .form-container {
-        width: 100% !important;
+        width: 100%;
         height: 100%;
+        border: none !important;
     }
 
-    .container{
+    .container {
         padding: var(--medium-s);
     }
 
     .page-heading {
         padding: var(--normal-s) 0px 0px 0px;
+    }
+
+    .card {
+        padding: var(--small-s);
+        margin-bottom: var(--small-s);
     }
 
     .btn,
@@ -729,6 +752,7 @@ hr {
 
     .container {
         padding: var(--x-large-s);
+        width: 35% !important;
     }
 
     /*----------------------
