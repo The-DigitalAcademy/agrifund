@@ -14,7 +14,7 @@
 .header {
   height: 65%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 
   margin: var(--x-large-s);
@@ -48,6 +48,7 @@ img {
 
 .about-company-img {
   background: var(--dark) url("src/assets/images/background/agri-finance-image.png") no-repeat center;
+  padding: 0px !important;
 }
 
 .content span {
