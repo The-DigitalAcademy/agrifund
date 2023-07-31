@@ -12,19 +12,19 @@
 }
 
 .header {
-  height: 65%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  height: 65% !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
 
   margin: var(--x-large-s);
 
-  background: var(--dark) url("src/assets/images/background/barn.webp") no-repeat center;
+  background: var(--dark) url("src/assets/images/background/barn.webp") no-repeat center !important;
   background-size: cover !important;
 }
 
 fa-icon {
-  margin: 0px var(--small-s) -1px 7px;
+  margin: 0px var(--small-s) -1px 7px !important;
 }
 
 .btn,
@@ -34,8 +34,8 @@ button {
 }
 
 img {
-  height: 100%;
-  width: 100%
+  height: 100% !important;
+  width: 100% !important;
 }
 
 .form-container {
@@ -52,20 +52,22 @@ img {
 }
 
 .content span {
-  display: flex;
-  padding-bottom: var(--medium-s);
+  display: flex !important;
+  padding-bottom: var(--medium-s) !important;
 }
 
 .slogan span {
-  display: flex;
+  display: flex !important;
 }
 
 h1 {
-  margin-bottom: var(--large-s);
+  margin-bottom: var(--large-s) !important;
 }
 
 .container{
   width: 100% !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
 }
 
 
@@ -91,7 +93,7 @@ h1 {
   }
 
   h2 {
-      font-size: var(--font-normal);
+      font-size: var(--font-normal) !important;
   }
 
   h3 {
