@@ -8,3 +8,17 @@ fa-icon{
     
    
   }
+
+.container{
+    display: flex;
+}
+p{
+    font-weight: var(--bold);
+    color:var(--grey) ;
+    padding-left: var(--normal-s);
+}
+.year-bought{
+    padding-left: var(--normal-s);
+    padding-right: var(--normal-s);
+}
+

@@ -59,6 +59,7 @@ import { EquipmentTableComponent } from './components/equipment-table/equipment-
 
 
 
+
  
     @NgModule({
     declarations: [AppComponent, NavbarComponent, SidebarComponent,DisabledformFarmInfoComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, GetStartedPageComponent, BookkeepViewRecordComponent,EquipmentInfoComponent, EquipmentTableComponent],

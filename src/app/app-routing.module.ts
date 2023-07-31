@@ -14,6 +14,7 @@ import { DisabledformFarmInfoComponent } from './components/farm-info-form/disab
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
 
+
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
     { path: 'portfolio', component: PortfolioViewInfoComponent },
     {path: 'progressbar',component: PortfolioProgressbarComponent},
     {path:'farm',component: DisabledformFarmInfoComponent},
-    {path: 'equipment-table',component: EquipmentTableComponent}
+    {path: 'equipment-table',component: EquipmentTableComponent},
+  
   
 ];
 
