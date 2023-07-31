@@ -7,6 +7,7 @@
     /* background-image:url('src/assets/images/background/barn.webp'); */
     border-radius: none;
     border: none;
+  
     
    
   }
@@ -48,7 +49,7 @@
     margin-top: 169px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 11%;
+    margin-bottom: 13%;
   }
 
   .page-body {
