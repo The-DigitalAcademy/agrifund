@@ -1,10 +1,9 @@
 .page-body {
-    
    
     background-image: url("src/assets/images/background/orange-trees.webp");
-  
   }
-
+  
+ 
 .icon-btn{
     background-color: var(--light);
 }

@@ -1,11 +1,8 @@
-
 .page-body {
-    
    
     background-image: url("src/assets/images/background/barn.webp");
-  
   }
-
+  
 .icon-btn{
     background-color: var(--light);
 }

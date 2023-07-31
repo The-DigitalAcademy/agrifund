@@ -142,6 +142,7 @@ body {
 .form-container {
     padding: var(--x-large-s);
     width: 45%;
+    
 }
 
 /* container for container headings */
