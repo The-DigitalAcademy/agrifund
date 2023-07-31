@@ -2,15 +2,7 @@
   background-image: none !important;
   
 }
-.page-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.25); /* 40% opacity white background */
-}
+
 
 .header-content>* {
   margin-bottom: var(--x-large-s) !important;
@@ -19,7 +11,7 @@
 .header-content {
   margin-left: var(--x-large-s) !important;
   width: 55% !important;
-  position: relative;
+  position: relative !important;
 }
 
 .header {
@@ -42,7 +34,7 @@ fa-icon {
 button {
   height: 55px !important;
   font-size: var(--font-large) !important;
-  position: relative;
+  position: relative !important;
 }
 
 img {
@@ -53,7 +45,7 @@ img {
 
 .form-container {
   width: 100% !important;
-  position: relative;
+  
 }
 
 .about-company>* {
