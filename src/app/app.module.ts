@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { TeamSectionComponent } from './team-section/team-section.component';
-import { AboutCompanyComponent } from './about-company/about-company.component';
 import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
 import {
     FontAwesomeModule,
@@ -58,13 +56,38 @@ import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookke
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
 
-
-
-
- 
-    @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent,DisabledformFarmInfoComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, GetStartedPageComponent, BookkeepViewRecordComponent,EquipmentInfoComponent, EquipmentTableComponent, BookkeepCreateComponent],
-    imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
+@NgModule({
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        SidebarComponent,
+        DisabledformFarmInfoComponent,
+        OffcanvasComponent,
+        RegisterComponent,
+        LoginComponent,
+        ForgotPasswordComponent,
+        ResetPasswordComponent,
+        LandingPageComponent,
+        DisabledformPersonalInfoComponent,
+        DisabledformCropInfoComponent,
+        EnableformCropInfoComponent,
+        PortfolioViewInfoComponent,
+        PortfolioProgressbarComponent,
+        BookkeepViewAllComponent,
+        GetStartedPageComponent,
+        BookkeepViewRecordComponent,
+        EquipmentInfoComponent,
+        EquipmentTableComponent,
+        BookkeepCreateComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })
