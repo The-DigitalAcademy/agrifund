@@ -1,19 +1,16 @@
 .page-body {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+ 
     background-image: url("src/assets/images/background/orange-trees.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* opacity: 0.7; */
 }
 
-.h1 {
-    text-align: center;
+.carousel-inner {
+    width: auto !important;
+    height: 450px !important;
+    background-color: var(--white-2);
+    align-items: center;
+    justify-content: center;
+  
 }
-
 .carousel-images {
     height: 20% !important;
     width: 20% !important;
@@ -27,23 +24,8 @@
     border-radius: 100%;
     background-color: var(--primary-colour) !important;
 }
-
-.carousel-inner {
-    display: block;
-    margin: auto;
-    width: auto;
-    height: 450px;
-    padding: var(--large);
-    gap: 24px;
-    background-color: var(--white-2);
-    align-items: center;
-    justify-items: center;
-    border-radius: var(--primary-colour 3px);
-    border: var(--container-border 3px solid); 
-}
-
 .carousel-control-next {
-  
+    display: flex;
     position: relative;
     color: var(--dark);
     gap: 4px;
@@ -51,110 +33,94 @@
 }
 
 .carousel-control-prev {
-
+    display: flex;
     position: relative;
     color: var(--dark);
     gap: 4px;
  
+}
+.carousel-indicators {
+    width: auto !important;
+    height: auto !important;
+    padding: 0px !important;
 }
 
 fa-icon{
     color: var(--dark);
 }
 
-.justify-start {
-    width: 100%;
-}
-
-.justify-end {
-    width: 100%;
-}
-
 .container {
+    padding: 2% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    width: 50% !important;
+} 
 
-    margin-bottom: 100%;
-    padding: 25px;
-    width: auto;
-    height: auto;
-    text-align: center;
-    justify-content: center;
-    width: 100% !important;
-}
 .form-container{
-    text-align: center;
-    padding: 50px;
-    margin: 0px !important;
+
+    padding: 2% !important;
+    width: 100% !important;
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
-
-    background-color: var(--white-2);
-    background-size: 100%;
-
 }
 
-
-.h2 {
-    text-align: center;
-}
-
-.carousel-inner {
-    align-items: center;
-    gap: 25px;
-    width: fit-content;
-    padding: 50px;
-}
-
-.carousel-indicators {
-    width: auto !important;
-    height: auto !important;
-    padding: 0px;
-}
 
 @media only screen and (max-width: 575px) {
     .page-body{
-        /* display: block; */
-     padding-bottom: 10%;
+       /* margin-top: 100%;
+     background-image: none; 
+     text-align: center;
+     justify-content: center; */
      background-image: none; 
      width: 100%;
      height: 100%;
      text-align: center;
      justify-content: center;
-     background-attachment: flex;
     }
-    p{
-     font-size: var(--font-small);
+
+
+    .container{
+        /* padding: 2% !important; */
+        text-align: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+       
     }
-    img{
-     width: 100%;
-     height: 150%;
-     padding: 0px;
+
+    .mobile-header{
+        background-image: url("src/assets/images/background/orange-trees.webp");
+background-size:contain;
+background-repeat: no-repeat;
+height: 30%;
+
     }
-    .carousel-images {
-     margin-top: -55px;
-     width: 40% !important;
-     height: 40% !important;
-  } 
+
   .carousel-control-next {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px !important;
+    padding-right: 30;
+
       
    }
    .carousel-control-prev {
+
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px !important;
     
    }
-   .form-container{
-    padding: 25px;
-    width: auto;
-    text-align: center;
-    justify-content: center;
-    border-radius: var(--border-radius);
-    border: 0px;
+   
+.carousel-inner{
     
+    /* margin-bottom: -5%; */
+    justify-content: center;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);   
 }
+
 .carousel-indicators{
     display: flex;
 justify-content: center;
@@ -162,4 +128,16 @@ align-items: center;
 gap: 2px;
 flex: 2 0 0;
 }
+.page-heading{
+    justify-content: center;
+    color: var(--dark);
+}
+ }
+
+ .justify-start{
+    padding-left: 25px !important;
+ }
+
+ .justify-end{
+    padding-right: 25px !important;
  }
