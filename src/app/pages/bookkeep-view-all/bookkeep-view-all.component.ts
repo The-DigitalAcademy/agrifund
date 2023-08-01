@@ -15,6 +15,6 @@ export class BookkeepViewAllComponent{
     }
 
     viewRecordDetails(){
-        this.router.navigate(['/bookkeep/view-record']);
+        this.router.navigate(['bookkeep/view-record']);
     }
 }

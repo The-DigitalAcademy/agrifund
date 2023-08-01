@@ -97,6 +97,7 @@ body {
 /* override bootstrap row styles */
 .row {
     margin: 0px !important;
+    position: relative;
     /* padding: inherit !important; */
 }
 
@@ -113,12 +114,27 @@ body {
     overflow: scroll;
 }
 
-/*child to page-body - all page items headings and containers go in here */
+.page-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); /* 40% opacity white background */
+  }
+
+/*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding: var(--x-large-s) !important;
+    padding:var(--x-large-s) !important;
     /* width: 100% !important; */
-    overflow: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+
 }
+
 
 /* container for page headings */
 .page-heading {
@@ -137,11 +153,17 @@ body {
     background-size: 100%;
     max-width: 100% !important;
 }
+.document-upload{
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+    padding: var(--small-s);
+}
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
     padding: var(--x-large-s);
     width: 45%;
+    position: relative;
 }
 
 /* container for container headings */
@@ -188,6 +210,12 @@ body {
     margin: var(--normal-s) 0px;
 
     width: 100%
+}
+
+
+.sidebar{
+    height: 100vh;
+    position: relative;
 }
 
 /*----------------------
@@ -338,30 +366,38 @@ label,
 
 /* styling for form input fields */
 input,
-.form-control {
+.form-control, .form-select, .input-group{
 
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 
     background-color: var(--light);
-    height: var(--x-larger-s);
+    height: var(--x-large-s);
+}
+
+/* remove the border for input in input group */
+.input-group-text, .input-group input{
+    border: none;
 }
 
 /* styling for form input fields */
 .form-input {
-    padding: var(--small-s) !important;
+    padding: var(--small-s) 0px !important ;
     margin: var(--small-s) 0px !important;
+
 }
 
 /* styling for form input fields */
 .form-text {
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
+    font-size: var(--font-x-small) !important;
 }
 
 /* styling for input fields for focus */
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,
+select.form-select:focus,
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
@@ -370,7 +406,7 @@ input[type=number]:focus,
 [type=password].form-control:focus,
 [type=email].form-control:focus,
 [type=tel].form-control:focus,
-[contenteditable].form-control:focus {
+[contenteditable].form-control:focus{
     box-shadow: none;
     border: var(--thin-border) var(--dark);
 }
@@ -395,9 +431,13 @@ button {
     -webkit-box-shadow: none;
     box-shadow: none;
 
-    height: var(--x-larger-s);
+    height: var(--x-large-s);
 
     padding: var(--small-s);
+}
+
+.btn-width{
+    width: 150px;
 }
 
 /* style for buttons on white backgrounds */
@@ -541,7 +581,7 @@ td {
 hr {
     background-color: var(--lighter-grey);
     height: 1.5px;
-    margin: var(--x-small-s) 0px;
+    margin: var(--small-s) 0px;
 
     border: none !important;
     width: 100% !important;
@@ -583,7 +623,7 @@ hr {
     }
 
     .container {
-        padding: var(--medium-s);
+        padding: var(--normal-s);
     }
 
     .page-heading {
@@ -599,6 +639,10 @@ hr {
     button {
         padding: var(--small-s);
     }
+
+    /* .btn-width {
+        width: 80px;
+    } */
 
     /*----------------------
         HIDE ITEMS
@@ -752,7 +796,7 @@ hr {
 
     .container {
         padding: var(--x-large-s);
-        width: 35% !important;
+        /* width: 35% !important; */
     }
 
     /*----------------------

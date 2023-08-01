@@ -14,6 +14,7 @@ import { PortfolioProgressbarComponent } from './components/portfolio-progressba
 import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
+import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
 
 
 const routes: Routes = [
@@ -25,11 +26,11 @@ const routes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
     { path: 'bookkeep/view-record', component: BookkeepViewRecordComponent },
+    { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
     {path: 'progressbar',component: PortfolioProgressbarComponent},
     {path:'farm',component: DisabledformFarmInfoComponent},
     {path: 'equipment-table',component: EquipmentTableComponent},
-    
     
   
 ];

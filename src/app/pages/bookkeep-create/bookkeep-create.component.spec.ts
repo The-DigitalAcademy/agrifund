@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboutCompanyComponent } from './about-company.component';
+import { BookkeepCreateComponent } from './bookkeep-create.component';
 
-describe('AboutCompanyComponent', () => {
-  let component: AboutCompanyComponent;
-  let fixture: ComponentFixture<AboutCompanyComponent>;
+describe('BookkeepCreateComponent', () => {
+  let component: BookkeepCreateComponent;
+  let fixture: ComponentFixture<BookkeepCreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutCompanyComponent ]
+      declarations: [ BookkeepCreateComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AboutCompanyComponent);
+    fixture = TestBed.createComponent(BookkeepCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

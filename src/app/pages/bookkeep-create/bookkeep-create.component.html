@@ -1,0 +1,108 @@
+<div class="page-body justify-center">
+    <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
+        <img src="assets/images/background/barn.webp" alt="Avatar">
+    </div> -->
+    <div class="mobile-header"></div>
+    <div class="container form-container">
+        <div class="container-header">
+            <div class="justify-start">
+                <h2>Create Record</h2>
+            </div>
+            <div class="justify-end">
+                <button
+                    class="btn icon-btn close-btn"
+                    [routerLink]="['/bookkeep']">
+                    <fa-icon icon="times"></fa-icon>
+                </button>
+            </div>
+        </div>
+        <hr />
+        <div class="content">
+            <form>
+                <div class="form-input" id="label">
+                    <label for="recordName" class="form-label">
+                        Name of Record
+                    </label>
+                    <div class="form-text">
+                        Give 2-3 words to describe the record. Example: Bought
+                        Seeds
+                    </div>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="recordName"
+                        placeholder="" />
+                </div>
+                <div class="form-input" id="form-label">
+                    <label for="recordType">Type of Record</label>
+                    <select class="form-select" id="recordType">
+                        <option selected>Select a record type...</option>
+                        <option value="income">Money In</option>
+                        <option value="expense">Money Out</option>
+                    </select>
+                </div>
+                <div class="form-input" id="label">
+                    <label for="recordAmount" class="form-label">
+                        Amount of Record
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text">R</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="recordAmount"/>
+                    </div>
+                </div>
+                <div class="form-input" id="label">
+                    <label for="recordDescription" class="form-label">
+                        Description
+                    </label>
+                    <div class="form-text">
+                        Give a short description of the record. Example: Paid
+                        money for seeds.
+                    </div>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="recordDescription"
+                        placeholder="" />
+                </div>
+                <div class="form-input" id="label">
+                    <label for="recordProof" class="form-label">
+                        Proof of Record
+                    </label>
+                    <div class="form-text">
+                        Please upload a receipt or proof of payment.
+                    </div>
+                    <div class="document-upload">
+                        <div class="doc-header justify-start">
+                            <label for="recordProof">Upload Document </label>
+                            <div class="form-text">PDF, PNG, JPG</div>
+                        </div>
+                        <hr />
+
+                        <input
+                            class="form-control"
+                            type="file"
+                            id="recordProof" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr />
+        <div class="actions">
+            <div class="justify-start">
+                <button class="btn colourful-btn btn-width">
+                    <!-- <fa-icon icon="pen"></fa-icon> -->
+                    Save
+                </button>
+            </div>
+            <div class="justify-end">
+                <button class="btn outline-btn btn-width">
+                    <!-- <fa-icon icon="trash"></fa-icon> -->
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.page-body {
+    background-image: url("src/assets/images/background/orange-trees.webp");
+    flex-direction: column;
+}
+
+.mobile-header {
+    background-image: url("src/assets/images/background/orange-trees.webp");
+}
+
+h2 {
+    margin: 0px !important;
+    padding: var(--small-s) 0px;
+    font-family: var(--normal-font);
+}
+
+.form-input {
+    margin: 0px !important;
+}
+
+.justify-start{
+    margin: 0px !important;
+    align-items: center;
+}
+
+.doc-header>*{
+    margin-bottom: 0px !important;
+    align-items: center;
+}
+
+.actions{
+    margin-bottom: var(--normal-s) !important;
+}

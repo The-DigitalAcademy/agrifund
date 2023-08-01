@@ -13,8 +13,6 @@ h2 {
     margin: 0px var(--normal-s);
 }
 
-
-
 .content>* {
     margin-bottom: var(--normal-s) !important;
 }
