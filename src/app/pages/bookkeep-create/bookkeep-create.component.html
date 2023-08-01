@@ -41,6 +41,30 @@
                         <option value="expense">Money Out</option>
                     </select>
                 </div>
+                <div class="form-input" id="label">
+                    <label for="recordAmount" class="form-label">
+                        Amount of Record
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="recordAmount"
+                        placeholder="R" />
+                </div>
+                <div class="form-input" id="label">
+                    <label for="recordDescription" class="form-label">
+                        Description
+                    </label>
+                    <div class="form-text">
+                        Give a short description of the record. Example: Paid
+                        money for seeds.
+                    </div>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="recordDescription"
+                        placeholder="" />
+                </div>
             </form>
 
             <!-- <div class="row" id="record-amount">
@@ -78,13 +102,13 @@
         <hr />
         <div class="actions">
             <div class="justify-start">
-                <button class="btn colourful-btn">
+                <button class="btn colourful-btn btn-width">
                     <!-- <fa-icon icon="pen"></fa-icon> -->
                     Save
                 </button>
             </div>
             <div class="justify-end">
-                <button class="btn outline-btn">
+                <button class="btn outline-btn btn-width">
                     <!-- <fa-icon icon="trash"></fa-icon> -->
                     Cancel
                 </button>

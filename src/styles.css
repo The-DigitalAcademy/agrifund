@@ -381,6 +381,7 @@ input,
 /* styling for form input fields */
 .form-text {
     margin: calc(var(--x-small-s) * -1) 0px var(--x-small-s) 0px;
+    font-size: var(--font-x-small) !important;
 }
 
 /* styling for input fields for focus */
@@ -424,6 +425,10 @@ button {
     height: var(--x-large-s);
 
     padding: var(--small-s);
+}
+
+.btn-width{
+    width: 150px;
 }
 
 /* style for buttons on white backgrounds */
@@ -592,10 +597,6 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .page-body {
-        background-image: none !important;
-    }
-
     .page-content {
         padding: var(--small-s) !important;
     }
@@ -629,6 +630,10 @@ hr {
     button {
         padding: var(--small-s);
     }
+
+    /* .btn-width {
+        width: 80px;
+    } */
 
     /*----------------------
         HIDE ITEMS
