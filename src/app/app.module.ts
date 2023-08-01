@@ -60,6 +60,7 @@ import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create
 
 
 
+
  
     @NgModule({
     declarations: [AppComponent, NavbarComponent, SidebarComponent,DisabledformFarmInfoComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent, AboutCompanyComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, GetStartedPageComponent, BookkeepViewRecordComponent,EquipmentInfoComponent, EquipmentTableComponent, BookkeepCreateComponent],

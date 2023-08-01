@@ -1,28 +1,41 @@
 <nav class="navbar row g-0">
+    <!--before login-->
+    <div class="nav-left col-lg-2 g-0">
+        <button
+            class="btn icon-btn navbar-toggler navbar-toggler-start d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvas">
+            <fa-icon icon="bars"></fa-icon>
+        </button>
 
-  <!--before login-->
-  <div class="nav-left col-lg-2 g-0">
-    <button class="btn icon-btn navbar-toggler navbar-toggler-start d-lg-none " type="button" data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvas">
-      <fa-icon icon="bars"></fa-icon>
-    </button>
+        <h1 class="nav-brand">
+            <span>Agri</span>
+            <img
+                src="agrifund/src/assets/images/logo/f_carrot.png"
+                class="icon-img"
+                alt="F" />
+            <span>und</span>
+        </h1>
+    </div>
 
-    <h1 class="nav-brand">
-      <span>Agri</span>
-      <img src="agrifund/src/assets/images/logo/f_carrot.png" class="icon-img" alt="F">
-      <span>und</span>
-    </h1>
-  </div>
+    <div class="nav-right col-lg-10 g-0 mobile-hidden">
+        <button
+            type="button"
+            class="btn colourful-btn"
+            [routerLink]="['/login']">
+            Login
+        </button>
+        <button
+            type="button"
+            class="btn outline-btn"
+            [routerLink]="['/register']">
+            Register
+        </button>
+    </div>
 
-
-  <div class="nav-right col-lg-10 g-0 mobile-hidden">
-    <button type="button" class="btn colourful-btn" [routerLink]="['/login']">Login</button>
-    <button type="button" class="btn outline-btn" [routerLink]="['/register']">Register</button>
-  </div>
-
-
-  <!--after login-->
-  <!-- <div class="nav-right col-lg-9 g-0">
+    <!--after login-->
+    <!-- <div class="nav-right col-lg-9 g-0">
     <span class="name-greeting">
       <p>Hello,</p>
       <pre>&#x20;</pre>
@@ -32,35 +45,46 @@
   </div> -->
 </nav>
 
+<div
+    class="offcanvas offcanvas-start"
+    data-bs-scroll="false"
+    data-bs-backdrop="true"
+    id="offcanvas"
+    tabindex="-1">
+    <div class="offcanvas-header">
+        <h1 class="nav-brand offcanvas-title">
+            <span>Agri</span>
+            <img
+                src="agrifund/src/assets/images/logo/f_carrot.png"
+                class="icon-img"
+                alt="F" />
+            <span>und</span>
+        </h1>
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="true" id="offcanvas" tabindex="-1">
+        <button class="btn icon-btn" type="button" data-bs-dismiss="offcanvas">
+            <fa-icon icon="times"></fa-icon>
+        </button>
+    </div>
+    <hr />
+    <div class="offcanvas-body">
+        <app-sidebar></app-sidebar>
+    </div>
 
-  <div class="offcanvas-header">
-    <h1 class="nav-brand offcanvas-title">
-      <span>Agri</span>
-      <img src="agrifund/src/assets/images/logo/f_carrot.png" class="icon-img" alt="F">
-      <span>und</span>
-    </h1>
+    <!-- before login -->
+    <div class="offcanvas-footer">
+        <button
+            class="btn white-btn"
+            [routerLink]="['/login']"
+            data-bs-dismiss="offcanvas">
+            Login
+        </button>
+        <button
+            class="btn white-outline-btn"
+            [routerLink]="['/register']"
+            data-bs-dismiss="offcanvas">
+            Register
+        </button>
+    </div>
 
-    <button class="btn  icon-btn" type="button" data-bs-dismiss="offcanvas">
-      <fa-icon icon="times"></fa-icon>
-    </button>
-  </div>
-  <hr>
-  <div class="offcanvas-body">
-    <app-sidebar></app-sidebar>
-  </div>
-
-  <!-- before login -->
-  <div class="offcanvas-footer">
-    <button class="btn white-btn" [routerLink]="['/login']" data-bs-dismiss="offcanvas">
-      Login
-    </button>
-    <button class="btn white-outline-btn" [routerLink]="['/register']" data-bs-dismiss="offcanvas">
-      Register
-    </button>
-  </div>
-
-  <!-- after login -->
-
+    <!-- after login -->
 </div>

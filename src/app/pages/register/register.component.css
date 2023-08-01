@@ -1,49 +1,33 @@
-.btn {
+.page-body {
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-image: url("src/assets/images/background/barn.webp");
+  
+  }
+
+.form-container{
+    
+    width: 35%!important;
+  
+
+}
+.icon-btn{
+    background-color: var(--light);
+}
+@media only screen and (max-width: 575px) {
+    .page-body,
+    .form-container {
+        width: 100%;
+        height: 100%;
+      justify-content: center;
+        align-items: center;
+        display: flex;
+        background-image: none;
+    }
+img{
     width: 100%;
     
 }
-
-img {
-    width: 100%;
-    height: 100%;
 }
-.registerform {
-    padding: var(--large-s);
-}
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-}
-
-.page-body {
-    background-color: var(--primary-light) !important;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.heading {
-    width: 100%;
-    align-items: flex-start;
-    justify-content: center;
-}
-.action {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: right;
-    border: none;
-}
-.container-header {
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-}
-/* .icon-btn {
-    margin: auto;
-    border: none;
-} */
