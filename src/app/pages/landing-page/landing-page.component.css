@@ -49,6 +49,7 @@ img {
 .about-company-img {
   background: var(--dark) url("src/assets/images/background/agri-finance-image.png") no-repeat center !important;
   padding: 0px !important;
+  
 }
 
 .content span {
@@ -121,7 +122,7 @@ h1 {
 
   /* HIDE ITEMS*/
   /* hide items on large screens */
-  .large-hidden {
+  .large-hidden .about-company {
       display: none !important;
   }
 }

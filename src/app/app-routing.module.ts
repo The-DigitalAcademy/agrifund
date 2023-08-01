@@ -1,3 +1,4 @@
+import { FunctionalityPdfComponent } from './functionality-pdf/functionality-pdf.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
     {path: 'progressbar',component: PortfolioProgressbarComponent},
     {path:'farm',component: DisabledformFarmInfoComponent},
     {path: 'equipment-table',component: EquipmentTableComponent},
-  
+    {path: 'app-functionality-pdf',component:FunctionalityPdfComponent}
+    
   
 ];
 
