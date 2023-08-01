@@ -367,7 +367,7 @@ input,
     border: var(--thin-border) var(--lighter-grey);
 
     background-color: var(--light);
-    height: var(--x-larger-s);
+    height: var(--x-large-s);
 }
 
 /* styling for form input fields */
@@ -421,7 +421,7 @@ button {
     -webkit-box-shadow: none;
     box-shadow: none;
 
-    height: var(--x-larger-s);
+    height: var(--x-large-s);
 
     padding: var(--small-s);
 }
@@ -590,6 +590,10 @@ hr {
 
     h3 {
         font-size: var(--font-normal);
+    }
+
+    .page-body {
+        background-image: none !important;
     }
 
     .page-content {

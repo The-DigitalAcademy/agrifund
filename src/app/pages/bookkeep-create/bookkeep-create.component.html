@@ -2,19 +2,21 @@
     <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
         <img src="assets/images/background/barn.webp" alt="Avatar">
     </div> -->
-    <div class="mobile-header "></div>
+    <div class="mobile-header"></div>
     <div class="container form-container">
         <div class="container-header">
-            <div class="justify-start ">
+            <div class="justify-start">
                 <h2>Create Record</h2>
             </div>
             <div class="justify-end">
-                <button class="btn icon-btn close-btn" [routerLink]="['/bookkeep']">
+                <button
+                    class="btn icon-btn close-btn"
+                    [routerLink]="['/bookkeep']">
                     <fa-icon icon="times"></fa-icon>
                 </button>
             </div>
         </div>
-        <hr>
+        <hr />
         <div class="content">
             <form>
                 <div class="form-input" id="label">
@@ -22,9 +24,14 @@
                         Name of Record
                     </label>
                     <div class="form-text">
-                        Give 2-3 words to describe the record. Example: Bought Seeds
+                        Give 2-3 words to describe the record. Example: Bought
+                        Seeds
                     </div>
-                    <input type="text" class="form-control" id="recordName" placeholder="">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="recordName"
+                        placeholder="" />
                 </div>
                 <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
@@ -34,9 +41,6 @@
                         <option value="expense">Money Out</option>
                     </select>
                 </div>
-
-
-
             </form>
 
             <!-- <div class="row" id="record-amount">
@@ -71,14 +75,13 @@
                 </div>
             </div> -->
         </div>
-        <hr>
+        <hr />
         <div class="actions">
             <div class="justify-start">
                 <button class="btn colourful-btn">
                     <!-- <fa-icon icon="pen"></fa-icon> -->
                     Save
                 </button>
-
             </div>
             <div class="justify-end">
                 <button class="btn outline-btn">
@@ -87,6 +90,5 @@
                 </button>
             </div>
         </div>
-
     </div>
 </div>
