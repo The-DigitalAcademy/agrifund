@@ -153,6 +153,11 @@ body {
     background-size: 100%;
     max-width: 100% !important;
 }
+.document-upload{
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+    padding: var(--small-s);
+}
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
@@ -361,7 +366,7 @@ label,
 
 /* styling for form input fields */
 input,
-.form-control, .form-select {
+.form-control, .form-select, .input-group{
 
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -370,10 +375,14 @@ input,
     height: var(--x-large-s);
 }
 
+/* remove the border for input in input group */
+.input-group-text, .input-group input{
+    border: none;
+}
+
 /* styling for form input fields */
 .form-input {
-    padding-top: var(--small-s) !important;
-    padding-bottom: var(--small-s) !important;
+    padding: var(--small-s) 0px !important ;
     margin: var(--small-s) 0px !important;
 
 }
@@ -397,7 +406,7 @@ input[type=number]:focus,
 [type=password].form-control:focus,
 [type=email].form-control:focus,
 [type=tel].form-control:focus,
-[contenteditable].form-control:focus {
+[contenteditable].form-control:focus{
     box-shadow: none;
     border: var(--thin-border) var(--dark);
 }
@@ -572,7 +581,7 @@ td {
 hr {
     background-color: var(--lighter-grey);
     height: 1.5px;
-    margin: var(--x-small-s) 0px;
+    margin: var(--small-s) 0px;
 
     border: none !important;
     width: 100% !important;
@@ -614,7 +623,7 @@ hr {
     }
 
     .container {
-        padding: var(--medium-s);
+        padding: var(--normal-s);
     }
 
     .page-heading {

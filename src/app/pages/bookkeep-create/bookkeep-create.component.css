@@ -16,3 +16,17 @@ h2 {
 .form-input {
     margin: 0px !important;
 }
+
+.justify-start{
+    margin: 0px !important;
+    align-items: center;
+}
+
+.doc-header>*{
+    margin-bottom: 0px !important;
+    align-items: center;
+}
+
+.actions{
+    margin-bottom: var(--normal-s) !important;
+}
