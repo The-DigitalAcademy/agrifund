@@ -13,15 +13,20 @@
       "type": "http",
       "documentation": "",
       "method": "get",
-      "endpoint": "getAllIncomeStatementItems",
+      "endpoint": "getIncomeStatementItems",
       "responses": [
         {
           "uuid": "26baa429-ac3b-43b4-9765-2a4ff9bd00bb",
-          "body": "{}",
+          "body": "[\n  {{#repeat 50}}\n  {\n    \"id\": \"{{urlParam 'id'}}\",\n    \"statement_id\": \"{{urlParam 'id'}}\",\n    \"category\": \"{{oneOf (array 'money in' 'money out')}}\", \n    \"amount\": \"{{faker 'datatype.number' min=100.00 max=50000.00}}\",\n    \"description\": \"{{faker 'lorem.paragraph'}}\"\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
