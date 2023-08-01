@@ -1,8 +1,8 @@
-import { IncomeStatement } from './income-statement';
+// import { IncomeStatement } from './income-statement';
 
 export interface IncomeStatementItem {
     id: number;
-    incomeStament: IncomeStatement;
+    stament_id: number;
     category: string;
     amount: number;
     proof: string;
