@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
   LoginForm = new FormGroup({
-  id: new FormControl(''),
+  email: new FormControl(''),
   password:new FormControl('')
 
   })

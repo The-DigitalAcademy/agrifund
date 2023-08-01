@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ResetPasswordComponent {
   ResetPasswordForm = new FormGroup({
-   cellNo: new FormControl('') 
+   email: new FormControl('') 
   })
 
 }
