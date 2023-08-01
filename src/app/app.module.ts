@@ -56,14 +56,14 @@ import { DisabledformFarmInfoComponent } from './components/farm-info-form/disab
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
-import { FunctionalityPdfComponent } from './functionality-pdf/functionality-pdf.component';
+
 
 
 
 
  
     @NgModule({
-    declarations: [AppComponent, NavbarComponent, SidebarComponent,DisabledformFarmInfoComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, GetStartedPageComponent, BookkeepViewRecordComponent,EquipmentInfoComponent, EquipmentTableComponent, FunctionalityPdfComponent],
+    declarations: [AppComponent, NavbarComponent, SidebarComponent,DisabledformFarmInfoComponent, OffcanvasComponent,RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent,LandingPageComponent, LandingPageComponent, TeamSectionComponent,DisabledformPersonalInfoComponent, DisabledformCropInfoComponent, EnableformCropInfoComponent, PortfolioViewInfoComponent, PortfolioProgressbarComponent, BookkeepViewAllComponent, GetStartedPageComponent, BookkeepViewRecordComponent,EquipmentInfoComponent, EquipmentTableComponent,],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,ReactiveFormsModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
@@ -97,6 +97,7 @@ export class AppModule {
             faFileDownload,
             faTimes,
             faCheck
+        
         );
     }
 }
