@@ -50,7 +50,7 @@
                         <input
                             type="text"
                             class="form-control"
-                            id="recordAmount"/>
+                            id="recordAmount" />
                     </div>
                 </div>
                 <div class="form-input" id="label">
@@ -92,14 +92,16 @@
         <hr />
         <div class="actions">
             <div class="justify-start">
-                <button class="btn colourful-btn btn-width">
-                    <!-- <fa-icon icon="pen"></fa-icon> -->
+                <button
+                    class="btn colourful-btn btn-width"
+                    (click)="saveRecord()">
                     Save
                 </button>
             </div>
             <div class="justify-end">
-                <button class="btn outline-btn btn-width">
-                    <!-- <fa-icon icon="trash"></fa-icon> -->
+                <button
+                    class="btn outline-btn btn-width"
+                    [routerLink]="['/bookkeep']">
                     Cancel
                 </button>
             </div>
