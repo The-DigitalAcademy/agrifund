@@ -143,26 +143,21 @@
 
                     <div
                         class="large-hidden"
-                        *ngFor="let record of counter(10); last as isLast">
+                        *ngFor="let record of bookkeepRecords; last as isLast">
                         <div class="info" (click)="viewRecordDetails()">
                             <div class="left justify-start">
-                                <p class="bold">Bought Seeds</p>
-                                <p class="greyed">22/12/2022</p>
+                                <p class="bold justify-start">
+                                    {{ record.description }}
+                                </p>
+                                <p class="greyed justify-start">22/12/2022</p>
                             </div>
                             <div class="right justify-end">
-                                <p class="bold">R 1,200.00</p>
-                                <p class="greyed">Money Out</p>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="info" (click)="viewRecordDetails()">
-                            <div class="left justify-start">
-                                <p class="bold">Sold Produce</p>
-                                <p class="greyed">22/12/2022</p>
-                            </div>
-                            <div class="right justify-end">
-                                <p class="bold">R 1,200.00</p>
-                                <p class="greyed">Money In</p>
+                                <p class="bold justify-end">
+                                    {{ record.amount }}
+                                </p>
+                                <p class="greyed justify-end">
+                                    {{ record.category }}
+                                </p>
                             </div>
                         </div>
                         <hr *ngIf="!isLast" />
