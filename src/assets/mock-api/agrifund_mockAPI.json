@@ -13,11 +13,11 @@
       "type": "http",
       "documentation": "",
       "method": "get",
-      "endpoint": "getIncomeStatementItems",
+      "endpoint": "income-statement{id}",
       "responses": [
         {
           "uuid": "26baa429-ac3b-43b4-9765-2a4ff9bd00bb",
-          "body": "[\n  {{#repeat 50}}\n  {\n    \"id\": \"{{urlParam 'id'}}\",\n    \"statement_id\": \"{{urlParam 'id'}}\",\n    \"category\": \"{{oneOf (array 'money in' 'money out')}}\", \n    \"amount\": \"{{faker 'datatype.number' min=100.00 max=50000.00}}\",\n    \"description\": \"{{faker 'lorem.paragraph'}}\"\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{#repeat 50}}\n  {\n    \"id\": \"{{faker 'datatype.number' min=0 max=50}}\",\n    \"statement_id\": \"{{faker 'datatype.number' min=0 max=10}}\",\n    \"category\": \"{{oneOf (array 'money in' 'money out')}}\", \n    \"amount\": \"{{faker 'datatype.number' min=100.00 max=50000.00}}\",\n    \"description\": \"{{faker 'lorem.paragraph'}}\"\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
