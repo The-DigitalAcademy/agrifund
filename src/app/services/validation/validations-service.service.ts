@@ -56,11 +56,11 @@ export class ValidationsServiceService {
     return idRegex.test(id);
   }
  
-  // Method to validate phone number with specific pattern for South Africa (+27 or 0 followed by 9 digits)
   validatePhoneNumber(phoneNumber: string): boolean {
-    const phoneRegex = /^(+27|0)\d{9}$/;
+    const phoneRegex = /^(\+27|0)\d{9}$/;
     return phoneRegex.test(phoneNumber);
   }
+  
 
 
     // Method to validate a dropdown selection (not empty)
