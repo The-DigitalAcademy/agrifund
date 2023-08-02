@@ -21,7 +21,7 @@
   </div>
 </div>
    -->
-   <!-- personal-info-form.component.html -->
+<!-- personal-info-form.component.html -->
 <!-- disabledform-personal-info.component.html -->
 
 
@@ -32,7 +32,8 @@
       <h3>Your Personal Info</h3>
     </div>
     <div class="action">
-      <app-enableform-crop-info (enableFields)="enableFields()" (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+      <app-enableform-crop-info (enableFields)="enableFields()"
+        (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
     </div>
   </div>
   <hr>
@@ -41,30 +42,34 @@
       <div class="form-input">
         <label for="exampleInputEmail1" class="form-label">First Name</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               formControlName="firstName" [disabled]="isDisabled">
+          formControlName="firstName" [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="lastName"
-               [disabled]="isDisabled">
+          [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Cell Number</label>
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
-               [disabled]="isDisabled">
+          [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label class="form-label" for="document">Proof of ID</label>
         <div class="file-container">
-          <label for="farm-label">Upload Document</label><hr>
+          <label for="farm-label">Upload Document</label>
+          <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
         </div>
       </div>
+
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email"
-               [disabled]="isDisabled">
+        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email" (blur)="validateEmail(myForm.controls['email'].value)">
+        <small *ngIf="myForm.controls['email'].dirty && myForm.hasError('required', 'email')" class="text-danger">*email required</small>
       </div>
+      
+
 
       <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
@@ -73,6 +78,3 @@
 </div>
 
 <app-portfolio-progressbar [progressPercentage]="personalInfoProgress"></app-portfolio-progressbar>
-
-
-

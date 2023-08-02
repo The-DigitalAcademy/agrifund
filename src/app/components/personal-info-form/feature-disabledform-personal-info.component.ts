@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 
 @Component({
   selector: 'app-feature-disabledform-personal-info',
@@ -20,7 +21,7 @@ throw new Error('Method not implemented.');
   farmerData: any;
   
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService) { }
 
   ngOnInit() {
     const userData = {
@@ -73,5 +74,18 @@ throw new Error('Method not implemented.');
     }
 
     this.personalInfoProgress = (filledFields / totalFields) * 100;
+  }
+
+
+
+  //validations
+
+  validateEmail(email: string): void {
+    const isValidEmail = this.validationsService.validateEmail(email);
+    if (isValidEmail) {
+      console.log('Valid email address.');
+    } else {
+      console.log('Invalid email address.');
+    }
   }
 }

@@ -39,6 +39,9 @@ hr {
   .file-container input[type="file"] {
     margin-top: 5px;
   }
+  .input-field.error input {
+    border-color: red;
+  }
   
 
 .profile-heading{
