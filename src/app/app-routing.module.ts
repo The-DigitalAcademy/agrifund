@@ -15,7 +15,6 @@ import { EquipmentTableComponent } from './components/equipment-table/equipment-
 
 import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
 
-
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },
@@ -27,11 +26,9 @@ const routes: Routes = [
     { path: 'bookkeep/view-record', component: BookkeepViewRecordComponent },
     { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
-    {path: 'progressbar',component: PortfolioProgressbarComponent},
-    {path:'farm',component: DisabledformFarmInfoComponent},
-    {path: 'equipment-table',component: EquipmentTableComponent},
-    
-  
+    { path: 'progressbar', component: PortfolioProgressbarComponent },
+    { path: 'farm', component: DisabledformFarmInfoComponent },
+    { path: 'equipment-table', component: EquipmentTableComponent },
 ];
 
 @NgModule({

@@ -6,15 +6,14 @@ import { Router } from '@angular/router';
     templateUrl: './bookkeep-view-all.component.html',
     styleUrls: ['./bookkeep-view-all.component.css'],
 })
-export class BookkeepViewAllComponent{
+export class BookkeepViewAllComponent {
+    constructor(private router: Router) {}
 
-    constructor( private router: Router){}
-  
     counter(i: number) {
         return new Array(i);
     }
 
-    viewRecordDetails(){
+    viewRecordDetails() {
         this.router.navigate(['bookkeep/view-record']);
     }
 }

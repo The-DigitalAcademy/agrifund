@@ -1,0 +1,462 @@
+{
+  "uuid": "8f5c5d3b-dcde-4ab2-829e-7e8dc275b6dc",
+  "lastMigration": 27,
+  "name": "Agrifund_Mock_API",
+  "endpointPrefix": "agrifund",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "64991e69-57b4-462b-9e38-a9b1d82d3af2",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "getAllIncomeStatementItems",
+      "responses": [
+        {
+          "uuid": "26baa429-ac3b-43b4-9765-2a4ff9bd00bb",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "229a839b-a9a9-4f92-bc04-09c1dab27e38",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "getRecordDetails",
+      "responses": [
+        {
+          "uuid": "65ef6b3a-7c9a-4ce8-8d96-c667c73bb695",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "30b9c432-c1ed-46aa-a85b-36dd322ecb61",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "saveRecord",
+      "responses": [
+        {
+          "uuid": "65600ad7-9483-4316-8bdc-10225c5b6480",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ab7ce02f-eed8-4344-b35d-a5d64641069d",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updateRecord",
+      "responses": [
+        {
+          "uuid": "6da12d56-9692-4ca2-a99a-c5248f4afe06",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "30822f0a-0b6c-4ab5-83e7-042c10f8c044",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "deleteRecord",
+      "responses": [
+        {
+          "uuid": "3af258c9-0ad1-45c5-98f6-05802c723e4c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f75b0c82-7a66-4b62-aea6-61206a97089c",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "confirmLoginValues",
+      "responses": [
+        {
+          "uuid": "782ab3e7-308f-4a3f-b618-d6a16bacc4af",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d60e819d-1a7e-4f6e-9b09-3b30a8814382",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "registerUser",
+      "responses": [
+        {
+          "uuid": "e6f83fbc-d696-4a02-b957-001ab1401e66",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aa22e10b-b63a-4a6a-af03-105d49a0d7d1",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updatePassword",
+      "responses": [
+        {
+          "uuid": "5feb6d37-7b03-41f0-9c0b-3d9e23998c9a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "43fcf710-ad1b-4d7a-9fa7-5f1f53d37aeb",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updateFarmer",
+      "responses": [
+        {
+          "uuid": "68533a6b-7740-455b-af00-d92055f4c83c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "69d1d8c1-4666-40ec-9b00-5cad0feafa8f",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updateFarmInfo",
+      "responses": [
+        {
+          "uuid": "c511863b-00d6-4593-bcd0-6aa2f9606361",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b468ff21-d580-45cb-a77e-8daf3d89557c",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updateCropInfo",
+      "responses": [
+        {
+          "uuid": "0aec31bc-01f8-4f5d-b140-5747aa1543ea",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "945f0873-8fcc-48cb-8c32-6a471e31aa89",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updatePlotInfo",
+      "responses": [
+        {
+          "uuid": "439e5476-5e59-4f58-8594-9be290e52dae",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "34982b29-36dd-4fb1-8173-604525fc5863",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "updateAssetInfo",
+      "responses": [
+        {
+          "uuid": "77b01caa-38c0-4d42-8004-e052fe328624",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "64991e69-57b4-462b-9e38-a9b1d82d3af2"
+    },
+    {
+      "type": "route",
+      "uuid": "229a839b-a9a9-4f92-bc04-09c1dab27e38"
+    },
+    {
+      "type": "route",
+      "uuid": "30b9c432-c1ed-46aa-a85b-36dd322ecb61"
+    },
+    {
+      "type": "route",
+      "uuid": "ab7ce02f-eed8-4344-b35d-a5d64641069d"
+    },
+    {
+      "type": "route",
+      "uuid": "30822f0a-0b6c-4ab5-83e7-042c10f8c044"
+    },
+    {
+      "type": "route",
+      "uuid": "f75b0c82-7a66-4b62-aea6-61206a97089c"
+    },
+    {
+      "type": "route",
+      "uuid": "d60e819d-1a7e-4f6e-9b09-3b30a8814382"
+    },
+    {
+      "type": "route",
+      "uuid": "aa22e10b-b63a-4a6a-af03-105d49a0d7d1"
+    },
+    {
+      "type": "route",
+      "uuid": "43fcf710-ad1b-4d7a-9fa7-5f1f53d37aeb"
+    },
+    {
+      "type": "route",
+      "uuid": "69d1d8c1-4666-40ec-9b00-5cad0feafa8f"
+    },
+    {
+      "type": "route",
+      "uuid": "b468ff21-d580-45cb-a77e-8daf3d89557c"
+    },
+    {
+      "type": "route",
+      "uuid": "945f0873-8fcc-48cb-8c32-6a471e31aa89"
+    },
+    {
+      "type": "route",
+      "uuid": "34982b29-36dd-4fb1-8173-604525fc5863"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
