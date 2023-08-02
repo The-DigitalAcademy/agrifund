@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxPrintModule } from 'ngx-print';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -89,6 +90,7 @@ import { TopdfComponent } from './convert/html/topdf/topdf.component';
         ReactiveFormsModule,
         FormsModule,
         ReactiveFormsModule,
+        NgxPrintModule
     ],
     providers: [],
     bootstrap: [AppComponent],

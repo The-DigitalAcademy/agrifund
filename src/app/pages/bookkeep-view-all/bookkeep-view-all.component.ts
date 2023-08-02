@@ -18,6 +18,9 @@ makePdf() {
           // save this pdf doc
   
           pdf.save("sample.pdf")
+        //   </style></head><body><p>hi there</p></body></html>";
+        // var pageWidth = 500;
+        // var pageHeight = 295;
         }
     })
 }
