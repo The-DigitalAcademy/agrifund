@@ -1,24 +1,10 @@
+
 fa-icon{
     color: var(--grey);
     
-}
-.form-input input.form-control {
     
-border-color: white
+}
+.add-icon-container{
     
-   
-  }
-
-.container{
-    display: flex;
+    margin-bottom: 2%;
 }
-p{
-    font-weight: var(--bold);
-    color:var(--grey) ;
-    padding-left: var(--normal-s);
-}
-.year-bought{
-    padding-left: var(--normal-s);
-    padding-right: var(--normal-s);
-}
-

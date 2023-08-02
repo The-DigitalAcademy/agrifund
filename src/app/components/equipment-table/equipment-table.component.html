@@ -1,47 +1,37 @@
-<div class="container">
-    <div class="col-lg-3 col-sm-2 equipment-field">
-           <p>Name</p>
-            <div class="form-input input-group">
-                <label for="equipment" class="form-label"></label>
-                <input type="text" class="form-control" id="equipment" placeholder="Wooden Rake">
-                
-              </div>
-             
-           
-    </div>
-    <div class="col-lg-3 col-sm-2 year-bought">
-        <p>Type</p>
-        <div class="form-input input-group">
-            <label for="year" class="form-label"></label>
-            <input type="text" class="form-control" id="year" placeholder="Hand Tool">
-            <span class="input-group-text"><fa-icon icon="angle-down"></fa-icon></span>
-          </div>
-         
-    </div>
 
 
-    <div class="col-lg-2 col-sm-2 quantity-info">
-        <p>Quantity</p>
-        <div class="form-input input-group">
-            <label for="quantity" class="form-label"></label>
-            <input type="text" class="form-control" id="quatity" placeholder="5">
-        </div>
-    </div>
+<div class="container record-table">
+    <div class="add-icon-container">
+        <button class="btn icon-btn btn" type="button">
+          <fa-icon icon="plus" (click)="onAddClicked()"></fa-icon>Add another
+        </button>
+      </div>
+    <table class="table mobile-hidden">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Age(years)</th>
+                <th scope="col">Purchase Amount</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr class="record-tr">
+                <td scope="row">Wooden Rake</td>
+                <td>Hand Tool</td>
+                <td>3</td>
+                <td>3</td>
+                <td>R500</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn colourful-btn btn-width" (click)="onEditClicked()">Edit</button>
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
 
-    <div class="col-lg-2 col-sm-2 year-bought">
-        <p>Age(years)</p>
-        <div class="form-input input-group">
-            <label for="age" class="form-label"></label>
-            <input type="text" class="form-control" id="age" placeholder="5">
-        </div>
-    </div>
 
-    <div class="col-lg-2 col-sm-2 amount">
-        <p>Purchase Amount</p>
-        <div class="form-input input-group">
-            <label for="amount" class="form-label"></label>
-            <input type="text" class="form-control" id="amount" placeholder="5">
-        </div>
-    </div>
-
-</div>

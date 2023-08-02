@@ -26,7 +26,8 @@
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-
+    --white:F7F7F7;
+    /* backgrounf colour for asset table */
     --white-2: #FDFDFD;
 
     /*------------------
