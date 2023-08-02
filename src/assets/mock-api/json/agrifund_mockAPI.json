@@ -412,7 +412,7 @@
       "type": "crud",
       "documentation": "",
       "method": "",
-      "endpoint": "incomeStatement",
+      "endpoint": "incomeStatementItems",
       "responses": [
         {
           "uuid": "54f22433-d17f-4061-8e17-be477eb2abbc",
@@ -423,7 +423,7 @@
           "headers": [],
           "bodyType": "DATABUCKET",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "v9qc",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
