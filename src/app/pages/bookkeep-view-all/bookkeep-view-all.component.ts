@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import jsPDF from 'jspdf';
 
 @Component({
     selector: 'app-bookkeep-view-all',
@@ -7,6 +8,19 @@ import { Router } from '@angular/router';
     styleUrls: ['./bookkeep-view-all.component.css'],
 })
 export class BookkeepViewAllComponent{
+    @ViewChild('content',{static:false}) el!: ElementRef
+
+    title = 'angularpdfgenerator';
+makePdf() {
+    let pdf = new jsPDF()
+    pdf.html(this.el.nativeElement, {
+        callback: (pdf) => {
+          // save this pdf doc
+  
+          pdf.save("sample.pdf")
+        }
+    })
+}
 
     constructor( private router: Router){}
   
@@ -18,3 +32,4 @@ export class BookkeepViewAllComponent{
         this.router.navigate(['bookkeep/view-record']);
     }
 }
+
