@@ -8,8 +8,8 @@ export class ValidationsServiceService {
   constructor() { }
 
   //Method to validates password
+  // We are checking if the password meets minimum requirements such as length, uppercase, lowercase, digits, special characters)
   validatePassword(password: string): boolean {
-    // We are checking if the password meets minimum requirements such as length, uppercase, lowercase, digits, special characters)
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordRegex.test(password);
   }
