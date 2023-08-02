@@ -367,7 +367,7 @@ label,
 
 /* styling for form input fields */
 input,
-.form-control, .form-select, .input-group{
+.form-control, .form-select{
 
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -377,9 +377,9 @@ input,
 }
 
 /* remove the border for input in input group */
-.input-group-text, .input-group input{
+/* .input-group-text, .input-group input{
     border: none;
-}
+} */
 
 /* styling for form input fields */
 .form-input {
