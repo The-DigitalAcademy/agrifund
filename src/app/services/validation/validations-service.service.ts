@@ -29,8 +29,15 @@ export class ValidationsServiceService {
       return emailRegex.test(email);
     }
   
+   // Custom date validator function
+   dateValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidDate = this.validateDateFormat(control.value);
+      return isValidDate ? null : { invalidDate: true };
+    };
+  }
+
   //Method to validate date
-  //It checks if the date is in the format of 'YYYY/MM/DD'.
   validateDateFormat(date: string): boolean {
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     return dateRegex.test(date);
