@@ -34,7 +34,7 @@ export class ValidationsServiceService {
   }
 
     //This method below only accepts numbers
-   isNumber(value: any): boolean {
+   isNumeric(value: any): boolean {
     if (typeof value === 'number') {
       // Check if the value is a valid number (not NaN)
       return !isNaN(value);
@@ -47,4 +47,13 @@ export class ValidationsServiceService {
       return false;
     }
   }
+ 
+  //Method to validate ID number
+  //South African ID contains 13 digits
+  validateIDno(id: string): boolean {
+    const idRegex = /^\d{13}$/;
+    return idRegex.test(id);
+  }
+ 
+
 }
