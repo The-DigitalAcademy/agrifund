@@ -1,21 +1,31 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
-RegisterForm = new FormGroup({
-name: new FormControl(''),
-surname: new FormControl(''),
-id: new FormControl(''),
-cellNo: new FormControl(''),
-password:new FormControl(''),
-Cpassword: new FormControl('')
-})
+export class RegisterComponent implements OnInit{ 
+
+constructor(private fb:FormBuilder, private validationsService: ValidationsServiceService) {}
+
+ngOnInit(): void {
+
+  RegisterForm = new FormGroup({
+
+    name: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+    surname: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+    id: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.idNumberValidator()]),
+    cellNo: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.phoneNumberValidator()]),
+    password:new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.passwordValidator()]),
+    Cpassword: new FormControl({value: '', disabled:true },)
+    })
+    }
+    
 }
+
 // import { Component, OnInit } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
