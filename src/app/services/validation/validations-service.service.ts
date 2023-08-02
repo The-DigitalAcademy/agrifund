@@ -49,11 +49,21 @@ export class ValidationsServiceService {
   }
  
   //Method to validate ID number
+  //It contains only digits
   //South African ID contains 13 digits
   validateIDno(id: string): boolean {
     const idRegex = /^\d{13}$/;
     return idRegex.test(id);
   }
  
+   // Method to validate a phone number (10 digits)
+   validatePhoneNumber(phoneNumber: string): boolean {
+    // Remove any non-numeric characters (e.g., whitespace, dashes, parentheses)
+    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+    // Checks if the cleaned phone number is exactly 10 digits long
+    return cleanedPhoneNumber.length === 10;
+  }
+
+  
 
 }
