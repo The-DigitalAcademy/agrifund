@@ -139,7 +139,13 @@ textWithoutNumbersValidator(): ValidatorFn {
       return !containsNumbers;
     }
 
-
+// Custom validator function for validating a non-empty address
+addressNotEmptyValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const isValidAddress = this.isAddressNotEmpty(control.value);
+    return isValidAddress ? null : { addressEmpty: true };
+  };
+}
     //Method to validate address to ensure the it's not an empty field
     isAddressNotEmpty(address: any): boolean {
       // Check if all address fields (street, city, state, and zip) are not empty
