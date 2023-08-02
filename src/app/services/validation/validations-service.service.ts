@@ -69,9 +69,14 @@ export class ValidationsServiceService {
     }
   }
  
+  //Custom ID number validators function
+  idNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidID = this.validateIDno(control.value);
+      return isValidID ? null : { invalidID: true };
+    };
+  }
   //Method to validate ID number
-  //It contains only digits
-  //South African ID contains 13 digits
   validateIDno(id: string): boolean {
     const idRegex = /^\d{13}$/;
     return idRegex.test(id);
