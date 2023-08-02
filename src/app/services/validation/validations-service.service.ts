@@ -56,7 +56,7 @@ export class ValidationsServiceService {
       return isValidPositiveNumber ? null : { invalidPositiveNumber: true };
     };
   }
-  
+
   //Method to validate numbers
    // The method below to checks if a number is positive.
    validatePositiveNumber(value: number): boolean {
@@ -99,23 +99,46 @@ export class ValidationsServiceService {
     return idRegex.test(id);
   }
  
+
+// Custom phone number validator function
+  phoneNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidPhoneNumber = this.validatePhoneNumber(control.value);
+      return isValidPhoneNumber ? null : { invalidPhoneNumber: true };
+    };
+  }
   validatePhoneNumber(phoneNumber: string): boolean {
     const phoneRegex = /^(\+27|0)\d{9}$/;
     return phoneRegex.test(phoneNumber);
   }
   
-
+  //Custom dropdown selection validator function
+  dropdownSelectionValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidSelection = this.validateDropdownSelection(control.value);
+      return isValidSelection ? null : { invalidDropdownSelection: true };
+    };
+  }
 
     // Method to validate a dropdown selection (not empty)
     validateDropdownSelection(value: any): boolean {
       return value !== null && value !== undefined && value !== '';
     }  
 
+// Custom validator function for validating text without numbers
+textWithoutNumbersValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const isValidText = this.validateTextWithoutNumbers(control.value);
+    return isValidText ? null : { containsNumbers: true };
+  };
+}
+
     // Method to validate text and not accept numbers
     validateTextWithoutNumbers(text: string): boolean {
       const containsNumbers = /\d/.test(text); // Check if the text contains any numeric character
       return !containsNumbers;
     }
+
 
     //Method to validate address to ensure the it's not an empty field
     isAddressNotEmpty(address: any): boolean {
