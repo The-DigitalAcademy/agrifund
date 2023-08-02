@@ -64,6 +64,15 @@ export class ValidationsServiceService {
     return cleanedPhoneNumber.length === 10;
   }
 
-  
+    // Method to validate a dropdown selection (not empty)
+    validateDropdownSelection(value: any): boolean {
+      return value !== null && value !== undefined && value !== '';
+    }  
+
+    // Method to validate text and not accept numbers
+    validateTextWithoutNumbers(text: string): boolean {
+      const containsNumbers = /\d/.test(text); // Check if the text contains any numeric character
+      return !containsNumbers;
+    }
 
 }
