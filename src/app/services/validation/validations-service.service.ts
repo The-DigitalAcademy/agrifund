@@ -8,13 +8,20 @@ export class ValidationsServiceService {
 
   constructor() { }
 
+// Custom password validator function
+  passwordValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidPassword = this.validatePassword(control.value);
+      return isValidPassword ? null : { invalidPassword: true };
+    };
+  }
   //Method to validates password
   // We are checking if the password meets minimum requirements such as length, uppercase, lowercase, digits, special characters)
   validatePassword(password: string): boolean {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordRegex.test(password);
   }
-  
+
 // Custom email validator function
    emailValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -27,7 +34,7 @@ export class ValidationsServiceService {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-  
+  //Custom date validator function
   dateValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const isValidDate = this.validateDateFormat(control.value);
