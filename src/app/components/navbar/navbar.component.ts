@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+userDisplayName: any;
   // userState: String = 'notLoggedIn';
-
 }

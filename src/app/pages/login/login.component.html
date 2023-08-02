@@ -3,7 +3,7 @@
 </div>
 <div class="page-body justify-center">
     <div class="container form-container">
-        <form [formGroup]="LoginForm">
+        <form [formGroup]="LoginForm" method="post" action="target.html">
             <div class="row">
                 <div class="col-sm-12 loginform">
                     <div class="container-header">
@@ -20,11 +20,11 @@
                     </div>
 
                     <div class="form-input">
-                        <label for="id">ID:</label><br />
+                        <label for="id">username:</label><br />
                         <input
                             formControlName="id"
                             class="form-control"
-                            id="idinput" />
+                            id="username" />
                     </div>
                     <div class="form-input">
                         <label for="id">Password</label><br />
@@ -36,6 +36,7 @@
                     <div class="form-group">
                         <button
                             type="submit"
+                            onclick="login(LoginForm)"
                             class="btn actions colourful-btn"
                             [routerLink]="['/bookkeep']">
                             <fa-icon icon="user"></fa-icon>
@@ -64,5 +65,22 @@
                 </div> -->
             </div>
         </form>
+        <script>
+            function login(LoginForm)
+            {
+                if(LoginForm.username.value && LoginForm.password.value)
+            {
+            var username=document.getElementById("username").value;
+            document.write('<html><body><h1><center>')
+            document.write("Welcome" + " ");
+            document.write(username);
+            document.write('</center></h1></body></html')
+            }
+            else
+            alert("Please enter your username and Password");
+            }
+
+        </script>
     </div>
 </div>
+

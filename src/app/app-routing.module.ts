@@ -15,6 +15,7 @@ import { DisabledformFarmInfoComponent } from './components/farm-info-form/disab
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
 import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
+import { TopdfComponent } from './convert/html/topdf/topdf.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
     {path: 'progressbar',component: PortfolioProgressbarComponent},
     {path:'farm',component: DisabledformFarmInfoComponent},
     {path: 'equipment-table',component: EquipmentTableComponent},
+    {path:'app-topdf', component:TopdfComponent}
     
   
 ];

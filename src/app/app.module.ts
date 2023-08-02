@@ -55,6 +55,7 @@ import { GetStartedPageComponent } from './pages/get-started-page/get-started-pa
 import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
+import { TopdfComponent } from './convert/html/topdf/topdf.component';
 
 @NgModule({
     declarations: [
@@ -79,6 +80,7 @@ import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create
         EquipmentInfoComponent,
         EquipmentTableComponent,
         BookkeepCreateComponent,
+        TopdfComponent,
     ],
     imports: [
         BrowserModule,
