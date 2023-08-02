@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
     providedIn: 'root',
@@ -8,7 +9,7 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     // base string for api connection
-    private baseUrl = 'localhost:3001/agrifund/api/v1';
+    private baseUrl = 'http://localhost:3001/agrifund/api/v1';
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -46,15 +47,12 @@ export class ApiService {
 
     // add a new income statement record
     addRecord(body: any) {
-        return this.http.post(`${this.baseUrl}/incomeStatementItems`, body);
+        return this.http.post(`${this.statementItemsUrl}`, body);
     }
 
     // update data for a single income statement record
     updateRecord(recordId: number, body: any) {
-        return this.http.put(
-            `${this.baseUrl}/incomeStatementItems/${recordId}`,
-            body
-        );
+        return this.http.put(`${this.statementItemsUrl}${recordId}`, body);
     }
 
     // get income statement records between two dates
