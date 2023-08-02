@@ -56,13 +56,12 @@ export class ValidationsServiceService {
     return idRegex.test(id);
   }
  
-   // Method to validate a phone number (10 digits)
-   validatePhoneNumber(phoneNumber: string): boolean {
-    // Remove any non-numeric characters (e.g., whitespace, dashes, parentheses)
-    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
-    // Checks if the cleaned phone number is exactly 10 digits long
-    return cleanedPhoneNumber.length === 10;
+  // Method to validate phone number with specific pattern for South Africa (+27 or 0 followed by 9 digits)
+  validatePhoneNumber(phoneNumber: string): boolean {
+    const phoneRegex = /^(+27|0)\d{9}$/;
+    return phoneRegex.test(phoneNumber);
   }
+
 
     // Method to validate a dropdown selection (not empty)
     validateDropdownSelection(value: any): boolean {
@@ -75,4 +74,11 @@ export class ValidationsServiceService {
       return !containsNumbers;
     }
 
+    //Method to validate address to ensure the it's not an empty field
+    isAddressNotEmpty(address: any): boolean {
+      // Check if all address fields (street, city, state, and zip) are not empty
+      return !!address?.street && !!address?.city && !!address?.state && !!address?.zip;
+    }
+  
+  
 }
