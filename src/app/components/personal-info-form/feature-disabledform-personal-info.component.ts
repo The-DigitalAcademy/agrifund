@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 
 @Component({
@@ -34,7 +34,7 @@ throw new Error('Method not implemented.');
     this.myForm = this.fb.group({
       firstName: new FormControl({ value: userData.firstName, disabled: true }), // Set disabled to true to disable the field by default
       lastName: new FormControl({ value: userData.lastName, disabled: true }), // Set disabled to true to disable the field by default
-      email: new FormControl({ value: userData.email, disabled: true }), // Set disabled to true to disable the field by default
+      email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
       phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }), // Set disabled to true to disable the field by default
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
     });
@@ -80,12 +80,4 @@ throw new Error('Method not implemented.');
 
   //validations
 
-  validateEmail(email: string): void {
-    const isValidEmail = this.validationsService.validateEmail(email);
-    if (isValidEmail) {
-      console.log('Valid email address.');
-    } else {
-      console.log('Invalid email address.');
-    }
-  }
 }

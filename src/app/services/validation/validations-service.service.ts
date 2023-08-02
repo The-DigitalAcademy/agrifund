@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,19 @@ export class ValidationsServiceService {
     return passwordRegex.test(password);
   }
 
-  //Method to validates email address
-  validateEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
+    // Custom email validator function
+    emailValidator(): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } | null => {
+        const isValidEmail = this.validateEmail(control.value);
+        return isValidEmail ? null : { invalidEmail: true };
+      };
+    }
+  
+    //Method to validates email address
+    validateEmail(email: string): boolean {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
   
   //Method to validate date
   //It checks if the date is in the format of 'YYYY/MM/DD'.

@@ -65,8 +65,9 @@
 
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email" (blur)="validateEmail(myForm.controls['email'].value)">
-        <small *ngIf="myForm.controls['email'].dirty && myForm.hasError('required', 'email')" class="text-danger">*email required</small>
+        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email" >
+        <small *ngIf="myForm.controls['email'].hasError('invalidEmail') && myForm.controls['email'].dirty" class="text-danger">Invalid email address.</small>
+
       </div>
       
 
