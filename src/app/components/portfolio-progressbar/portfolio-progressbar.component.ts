@@ -8,8 +8,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class PortfolioProgressbarComponent {
 
-  @Input() progressValue: number = 50;
+  @Input() progressPercentage: number = 0;
   checklistForm!: FormGroup;
+
+
 
   constructor(private fb: FormBuilder) { }
 
