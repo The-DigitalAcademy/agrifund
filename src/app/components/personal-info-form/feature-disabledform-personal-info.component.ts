@@ -7,6 +7,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./feature-disabledform-personal-info.component.css']
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
+personalInfoProgress: number=0;
+
 onCancelClicked() {
 throw new Error('Method not implemented.');
 }
@@ -16,6 +18,7 @@ throw new Error('Method not implemented.');
   isDisabled: boolean = true; // Set to true to disable the form by default
   editedData: any;
   farmerData: any;
+  
 
   constructor(private fb: FormBuilder) { }
 
@@ -38,6 +41,8 @@ throw new Error('Method not implemented.');
   
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File; // Store the selected file
+    this.myForm.get('proofOfID')?.setValue(File);
+   
   }
 
   enableFields() {
@@ -53,5 +58,20 @@ throw new Error('Method not implemented.');
       this.farmerData = formData;
       this.isDisabled = true;
       this.myForm.disable();
+      this.calculateProgress();
     }
+  // Method to calculate the progress percentage for the form
+  calculateProgress() {
+    const formControls = this.myForm.controls;
+    const totalFields = Object.keys(formControls).length;
+    let filledFields = 0;
+
+    for (const control in formControls) {
+      if (formControls[control].value) {
+        filledFields++;
+      }
+    }
+
+    this.personalInfoProgress = (filledFields / totalFields) * 100;
+  }
 }

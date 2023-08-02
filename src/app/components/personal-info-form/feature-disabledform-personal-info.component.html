@@ -40,12 +40,12 @@
     <form [formGroup]="myForm">
       <div class="form-input">
         <label for="exampleInputEmail1" class="form-label">First Name</label>
-        <input type="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                formControlName="firstName" [disabled]="isDisabled">
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Last Name</label>
-        <input type="lastName" class="form-control" id="exampleInputPassword1" formControlName="lastName"
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="lastName"
                [disabled]="isDisabled">
       </div>
       <div class="form-input">
@@ -68,10 +68,11 @@
 
       <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
-
     </form>
   </div>
 </div>
+
+<app-portfolio-progressbar [progressPercentage]="personalInfoProgress"></app-portfolio-progressbar>
 
 
 
