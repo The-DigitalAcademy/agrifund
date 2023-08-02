@@ -34,6 +34,7 @@ export class ValidationsServiceService {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
+
   //Custom date validator function
   dateValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -48,10 +49,26 @@ export class ValidationsServiceService {
     return dateRegex.test(date);
   }
   
+  //Custom positive number validator function
+  positiveNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidPositiveNumber = this.validatePositiveNumber(control.value);
+      return isValidPositiveNumber ? null : { invalidPositiveNumber: true };
+    };
+  }
+  
   //Method to validate numbers
    // The method below to checks if a number is positive.
    validatePositiveNumber(value: number): boolean {
     return value > 0;
+  }
+
+  // Custom isNumeric validator function
+  isNumericValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isValidNumeric = this.isNumeric(control.value);
+      return isValidNumeric ? null : { invalidNumeric: true };
+    };
   }
 
     //This method below only accepts numbers
