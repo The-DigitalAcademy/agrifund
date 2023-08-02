@@ -8,42 +8,48 @@ export class ApiServiceService {
     constructor(private http: HttpClient) {}
 
     // base string for api connection
-    private baseUrl = 'localhost:3001/agrifund';
-    private bookkeep = 'income-statement';
+    private baseUrl = 'localhost:3001/agrifund/api/v1';
+
+    private statementsUrl = this.baseUrl + '/incomeStatements';
+    private statementItemsUrl = this.baseUrl + '/incomeStatementItems';
 
     /* --------------------------------
         BOOKKEEP / INCOME STATEMENT
     ---------------------------------*/
 
-    // get income statement data based on the farm id
-    getIncomeStatements(farmId: number) {
-        return this.http.get(`${this.baseUrl}/${this.bookkeep}/${farmId}`);
+    // get an income statement data based on the farm id
+    getIncomeStatementsByFarm(farmId: number) {
+        return this.http.get(`${this.statementsUrl}/${farmId}`);
     }
 
-    // getIncomeStement by their id
-    getIncomeStament(statmentId: number) {
-        return this.http.get(`${this.baseUrl}/${this.bookkeep}/${statmentId}`);
+    // get an income statement by their id
+    getIncomeStatementById(statementId: number) {
+        return this.http.get(`${this.statementsUrl}/${statementId}`);
+    }
+
+    getAllStatementItems() {
+        return this.http.get(`${this.statementItemsUrl}`);
     }
 
     // get all bookkeep records based on the statement id
-    getStatementItems(statementId: number) {
-        return this.http.get(`${this.baseUrl}/${this.bookkeep}/${statementId}`);
+    getrecordsByStatementId(statementId: number) {
+        return this.http.get(`${this.statementItemsUrl}/${statementId}`);
     }
 
     // get a single income statement item
-    getStamentItem(recordId: number) {
-        return this.http.get(`${this.baseUrl}/${this.bookkeep}/${recordId}`);
+    getStatementItemById(recordId: number) {
+        return this.http.get(`${this.statementItemsUrl}/${recordId}`);
     }
 
     // add a new income statement record
     addRecord(body: any) {
-        return this.http.post(`${this.baseUrl}/${this.bookkeep}`, body);
+        return this.http.post(`${this.baseUrl}/incomeStatementItems`, body);
     }
 
     // update data for a single income statement record
     updateRecord(recordId: number, body: any) {
         return this.http.put(
-            `${this.baseUrl}/${this.bookkeep}/${recordId}`,
+            `${this.baseUrl}/incomeStatementItems/${recordId}`,
             body
         );
     }
