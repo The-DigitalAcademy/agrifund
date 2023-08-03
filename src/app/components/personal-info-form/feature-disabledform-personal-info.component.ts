@@ -1,3 +1,4 @@
+import { ProgressService } from 'src/app/services/progress.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
@@ -22,7 +23,7 @@ throw new Error('Method not implemented.');
   farmerData: any;
   
 
-  constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService) { }
+  constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService, private progressService: ProgressService) { }
 
   ngOnInit() {
     const userData = {
@@ -60,6 +61,8 @@ throw new Error('Method not implemented.');
       this.farmerData = formData;
       this.isDisabled = true;
       this.myForm.disable();
+      // Set personal info completion status to true
+    this.progressService.setPersonalInfoCompleted(true);
       
     }
  

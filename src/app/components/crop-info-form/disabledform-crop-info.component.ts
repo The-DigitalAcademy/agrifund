@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
   selector: 'app-disabledform-crop-info',
@@ -16,7 +17,7 @@ export class DisabledformCropInfoComponent implements OnInit {
   editedData: any = null;
  
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private progressService: ProgressService) { }
 
   ngOnInit() {
     this.farmerData = { // Replace this with the actual farmer data
@@ -47,6 +48,8 @@ export class DisabledformCropInfoComponent implements OnInit {
     this.farmerData = formData;
     this.isDisabled = true;
     this.myForm.disable();
+     // Set crop info completion status to true
+     this.progressService.setCropInfoCompleted(true);
    
   }
 
