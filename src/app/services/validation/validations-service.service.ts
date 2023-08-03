@@ -115,19 +115,17 @@ export class ValidationsServiceService {
     };
   }
  
-  
-  //Custom dropdown selection validator function
   dropdownSelectionValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidSelection = this.validateDropdownSelection(control.value);
-      return isValidSelection ? null : { invalidDropdownSelection: true };
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value !== null && value !== undefined) {
+        return null; // Return null if the dropdown selection is not empty
+      }
+
+      return { dropdownSelection: true }; // Return validation error
     };
   }
-
-    // Method to validate a dropdown selection (not empty)
-    validateDropdownSelection(value: any): boolean {
-      return value !== null && value !== undefined && value !== '';
-    }  
 
 // Custom validator function for validating text without numbers
 textWithoutNumbersValidator(): ValidatorFn {
