@@ -65,7 +65,7 @@ export class ValidationsServiceService {
 
       return { invalidPositiveNumber: true }; // Return validation error
     };
-  }
+  } 
 
   isNumericValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
