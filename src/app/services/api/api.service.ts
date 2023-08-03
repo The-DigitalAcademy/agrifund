@@ -54,6 +54,8 @@ export class ApiService {
 
     // add a new income statement record
     addRecord(body: any) {
+        // body.shift();
+        // console.log(body);
         return this.http.post(`${this.statementItemsUrl}`, body);
     }
 
