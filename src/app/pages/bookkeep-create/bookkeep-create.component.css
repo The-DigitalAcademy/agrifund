@@ -23,8 +23,9 @@ h2 {
 }
 
 .doc-header>*{
+    font-size: var(--font-small);
+    padding-right: var(--small-s);
     margin-bottom: 0px !important;
-    align-items: center;
 }
 
 .actions{
