@@ -49,19 +49,24 @@ export class ValidationsServiceService {
     };
   }
   
-  //Custom positive number validator function
   positiveNumberValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidPositiveNumber = this.validatePositiveNumber(control.value);
-      return isValidPositiveNumber ? null : { invalidPositiveNumber: true };
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value === undefined || value === '') {
+        return null; // Return null for optional fields
+      }
+
+      // Convert value to a number and check if it is a positive number
+      const numValue = parseFloat(value);
+      if (!isNaN(numValue) && numValue >= 0) {
+        return null; // Return null if it's a positive number
+      }
+
+      return { invalidPositiveNumber: true }; // Return validation error
     };
   }
 
-  //Method to validate numbers
-   // The method below to checks if a number is positive.
-   validatePositiveNumber(value: number): boolean {
-    return value > 0;
-  }
 
   // Custom isNumeric validator function
   isNumericValidator(): ValidatorFn {
