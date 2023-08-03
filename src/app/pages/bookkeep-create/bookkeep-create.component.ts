@@ -39,7 +39,7 @@ export class BookkeepCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createRecordForm.valid) {
             this.record = {
-                id: 0,
+                id: '0',
                 statement_id: 0,
                 description: this.createRecordForm.get('recordName')?.value,
                 category: this.createRecordForm.get('recordType')?.value,

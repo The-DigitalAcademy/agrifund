@@ -1,7 +1,7 @@
 // import { IncomeStatement } from './income-statement';
 
 export interface IncomeStatementItem {
-    id: number;
+    id: any;
     statement_id: number;
     category: string;
     amount: number;

@@ -17,7 +17,7 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
         private _apiService: ApiService
     ) {}
 
-    viewRecordDetails(recordId: number) {
+    viewRecordDetails(recordId: any) {
         // console.log(recordId);
         this.router.navigate(['bookkeep/view-record', recordId]);
     }
