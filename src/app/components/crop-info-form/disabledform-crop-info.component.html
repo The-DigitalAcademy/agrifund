@@ -20,10 +20,13 @@
           <option value="Fall">Fall</option>
           <option value="Winter">Winter</option>
         </select>
+
       </div>
       <div class="form-input">
-        <label for="crops" class="form-label">I farm with these crops:</label>
-        <input type="text" class="form-control" formControlName="cropsInfo" [attr.disabled]="isDisabled ? 'disabled' : null">
+        <label for="name" class="form-label">I farm with these crops:</label>
+        <input type="name" class="form-control" formControlName="name" [attr.disabled]="isDisabled ? 'disabled' : null">
+        <small *ngIf="myForm.controls['name'].hasError('invalidName') && myForm.controls['name'].dirty" class="text-danger">Invalid format.</small>
+        <small *ngIf="myForm.controls['name'].hasError('required') && myForm.controls['name'].dirty" class="text-danger">Field is required.</small>
       </div>
       <div class="form-input">
         <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
