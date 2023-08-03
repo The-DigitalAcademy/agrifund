@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -22,30 +22,25 @@ export class ValidationsServiceService {
     return passwordRegex.test(password);
   }
 
-// Custom email validator function
-   emailValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const isValidEmail = this.validateEmail(control.value);
-    return isValidEmail ? null : { invalidEmail: true };
-  };
-}
-  //Method to validates email address
-  validateEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  emailValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(control.value)) {
+        return { invalidEmail: true };
+      }
+      return null;
+    };
   }
 
   //Custom date validator function
   dateValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidDate = this.validateDateFormat(control.value);
-      return isValidDate ? null : { invalidDate: true };
+    return (control: AbstractControl): ValidationErrors | null => {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dateRegex.test(control.value)) {
+        return { invalidDate: true };
+      }
+      return null;
     };
-  }
-  //Method to validate date
-  validateDateFormat(date: string): boolean {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    return dateRegex.test(date);
   }
   
   //Custom positive number validator function
@@ -99,17 +94,16 @@ export class ValidationsServiceService {
   }
  
 
-// Custom phone number validator function
   phoneNumberValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidPhoneNumber = this.validatePhoneNumber(control.value);
-      return isValidPhoneNumber ? null : { invalidPhoneNumber: true };
+    return (control: AbstractControl): ValidationErrors | null => {
+      const phoneNumberRegex = /^\d{10}$/;
+      if (!phoneNumberRegex.test(control.value)) {
+        return { invalidPhoneNumber: true };
+      }
+      return null;
     };
   }
-  validatePhoneNumber(phoneNumber: string): boolean {
-    const phoneRegex = /^(\+27|0)\d{9}$/;
-    return phoneRegex.test(phoneNumber);
-  }
+ 
   
   //Custom dropdown selection validator function
   dropdownSelectionValidator(): ValidatorFn {

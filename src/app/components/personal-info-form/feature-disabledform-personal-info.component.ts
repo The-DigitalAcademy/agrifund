@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 
@@ -8,15 +8,16 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
   styleUrls: ['./feature-disabledform-personal-info.component.css']
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
-  @Input()personalInfoProgress: number=0;
+  
 
+isDisabled: boolean = true;
 onCancelClicked() {
 throw new Error('Method not implemented.');
 }
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
-  isDisabled: boolean = true; // Set to true to disable the form by default
+  
   editedData: any;
   farmerData: any;
   
@@ -35,7 +36,7 @@ throw new Error('Method not implemented.');
       firstName: new FormControl({ value: userData.firstName, disabled: true }), // Set disabled to true to disable the field by default
       lastName: new FormControl({ value: userData.lastName, disabled: true }), // Set disabled to true to disable the field by default
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
-      phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }), // Set disabled to true to disable the field by default
+      phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
     });
   }
@@ -59,23 +60,11 @@ throw new Error('Method not implemented.');
       this.farmerData = formData;
       this.isDisabled = true;
       this.myForm.disable();
-      this.calculateProgress();
+      
     }
-  // Method to calculate the progress percentage for the form
  
-  calculateProgress() {
-    const formControls = this.myForm.controls;
-    const totalFields = Object.keys(formControls).length;
-    let filledFields = 0;
-
-    for (const control in formControls) {
-      if (formControls[control].value) {
-        filledFields++;
-      }
-    }
-
-    this.personalInfoProgress = (filledFields / totalFields) * 50;
-  }
+ 
+  
 
 
   //validations

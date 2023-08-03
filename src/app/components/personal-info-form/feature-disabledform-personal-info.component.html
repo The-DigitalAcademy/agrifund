@@ -53,6 +53,7 @@
         <label for="exampleInputPassword1" class="form-label">Cell Number</label>
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
           [disabled]="isDisabled">
+          <small *ngIf="myForm.controls['phoneNumber'].hasError('invalidPhoneNumber') && myForm.controls['phoneNumber'].dirty" class="text-danger">Invalid phoneNumber.</small>
       </div>
       <div class="form-input">
         <label class="form-label" for="document">Proof of ID</label>
@@ -78,4 +79,3 @@
   </div>
 </div>
 
-<app-portfolio-progressbar [personalInfoProgress]="personalInfoProgress"></app-portfolio-progressbar>

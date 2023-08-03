@@ -8,12 +8,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class PortfolioProgressbarComponent {
 
-  @Input() personalInfoProgress: number = 0;
-  @Input() cropInfoProgress: number = 0;
-
-  get totalProgress(): number {
-    return this.personalInfoProgress + this.cropInfoProgress;
-  }
+  @Input() progressPercentage: number = 0;
   checklistForm!: FormGroup;
 
 

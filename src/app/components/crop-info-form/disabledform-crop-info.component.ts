@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,11 +7,14 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./disabledform-crop-info.component.css']
 })
 export class DisabledformCropInfoComponent implements OnInit {
+  
+ // Input to receive crop info progress
+  
   farmerData: any;
   myForm!: FormGroup;
   isDisabled: boolean = true;
   editedData: any = null;
- cropInfoProgress: number = 0;
+ 
 
   constructor(private fb: FormBuilder) { }
 
@@ -44,24 +47,12 @@ export class DisabledformCropInfoComponent implements OnInit {
     this.farmerData = formData;
     this.isDisabled = true;
     this.myForm.disable();
-    this.calculateProgress();
+   
   }
 
   onCancelClicked() {
     // Implement your cancel logic here
   }
 
-  calculateProgress() {
-    const formControls = this.myForm.controls;
-    const totalFields = Object.keys(formControls).length;
-    let filledFields = 0;
-
-    for (const control in formControls) {
-      if (formControls[control].value) {
-        filledFields++;
-      }
-    }
-
-    this.cropInfoProgress = (filledFields / totalFields) * 50;
-  }
+  
 }
