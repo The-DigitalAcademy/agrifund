@@ -40,14 +40,19 @@
   <div class="sub-container">
     <form [formGroup]="myForm">
       <div class="form-input">
+        
         <label for="exampleInputEmail1" class="form-label">First Name</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
           formControlName="firstName" [disabled]="isDisabled">
+          <small *ngIf="myForm.controls['firstName'].hasError('invalidName') && myForm.controls['firstName'].dirty" class="text-danger">Invalid format.</small>
+          <small *ngIf="myForm.controls['firstName'].hasError('textWithoutNumbers') && myForm.controls['firstName'].dirty" class="text-danger">First name should contain only text characters.</small>
+          <small *ngIf="myForm.controls['firstName'].hasError('required') && myForm.controls['firstName'].dirty" class="text-danger">Field is required.</small>
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="lastName"
           [disabled]="isDisabled">
+          <small *ngIf="myForm.controls['lastName'].hasError('invalidLast') && myForm.controls['lastName'].dirty" class="text-danger">Invalid format.</small>
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Cell Number</label>

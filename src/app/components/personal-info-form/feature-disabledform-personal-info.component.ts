@@ -33,8 +33,8 @@ throw new Error('Method not implemented.');
     };
   
     this.myForm = this.fb.group({
-      firstName: new FormControl({ value: userData.firstName, disabled: true }), // Set disabled to true to disable the field by default
-      lastName: new FormControl({ value: userData.lastName, disabled: true }), // Set disabled to true to disable the field by default
+      firstName: new FormControl({ value: userData.firstName, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
+      lastName: new FormControl({ value: userData.lastName, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
       phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null

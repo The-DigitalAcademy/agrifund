@@ -107,7 +107,7 @@ export class ValidationsServiceService {
 
   phoneNumberValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const phoneNumberRegex = /^\d{10}$/;
+      const phoneNumberRegex = /^(\+27|0)\d{9}$/;
       if (!phoneNumberRegex.test(control.value)) {
         return { invalidPhoneNumber: true };
       }
