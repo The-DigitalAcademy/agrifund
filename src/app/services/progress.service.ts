@@ -29,11 +29,5 @@ export class ProgressService {
     this.farmInfoCompleted.next(status);
   };
 
-  isPersonalInfoCompleted() {
-    return this.personalInfoCompleted.getValue();
-  }
-
-  isCropInfoCompleted() {
-    return this.cropInfoCompleted.getValue();
-  }
+  
 }

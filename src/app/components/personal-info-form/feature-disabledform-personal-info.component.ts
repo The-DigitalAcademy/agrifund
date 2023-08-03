@@ -18,7 +18,7 @@ throw new Error('Method not implemented.');
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
-  personalInfoCompleted: boolean = false;
+  
   editedData: any;
   farmerData: any;
   
@@ -41,16 +41,12 @@ throw new Error('Method not implemented.');
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
     });
 
-     // Subscribe to valueChanges of the form to update the personalInfoCompleted status
-     this.myForm.valueChanges.subscribe(() => {
-      this.personalInfoCompleted = this.myForm.valid;
-      this.progressService.setPersonalInfoCompleted(this.personalInfoCompleted);
-    });
+    
   }
   
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File; // Store the selected file
-    this.myForm.get('proofOfID')?.setValue(File);
+    
    
   }
 
