@@ -52,13 +52,17 @@
         <label for="exampleInputPassword1" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="lastName"
           [disabled]="isDisabled">
-          <small *ngIf="myForm.controls['lastName'].hasError('invalidLast') && myForm.controls['lastName'].dirty" class="text-danger">Invalid format.</small>
+          <small *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Invalid format.</small>
+          <small *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
+          <small *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Field is required.</small>
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Cell Number</label>
         <input type="text" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
           [disabled]="isDisabled">
-          <small *ngIf="myForm.controls['phoneNumber'].hasError('invalidPhoneNumber') && myForm.controls['phoneNumber'].dirty" class="text-danger">Invalid phoneNumber.</small>
+          <small *ngIf="myForm.controls['cell_number'].hasError('invalidPhoneNumber') && myForm.controls['cell_number'].dirty" class="text-danger">Invalid phoneNumber.</small>
+          <small *ngIf="myForm.controls['cell_number'].hasError('required') && myForm.controls['cell_number'].dirty" class="text-danger">Field is required.</small>
+
       </div>
       <div class="form-input">
         <label class="form-label" for="document">Proof of ID</label>
@@ -73,7 +77,7 @@
         <label for="exampleInputPassword1" class="form-label">Email</label>
         <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email" >
         <small *ngIf="myForm.controls['email'].hasError('invalidEmail') && myForm.controls['email'].dirty" class="text-danger">Invalid email address.</small>
-
+        <small *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Field is required.</small>
       </div>
       
 

@@ -174,35 +174,5 @@ export class ValidationsServiceService {
       return null; // Return null if the input is not empty
     };
   }
-
-  
-  static fileTypeValidator(allowedTypes: string[]) {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const file = control.value as File;
-      if (file instanceof File) {
-        const fileExtension = file.name.split('.').pop()?.toLowerCase();
-        if (fileExtension && !allowedTypes.includes(fileExtension)) {
-          return { fileType: true };
-        }
-      }
-      return null;
-    };
-  }
-
-  // Custom file size validator (no larger than 1MB)
-  static fileSizeValidator(maxSizeInMB: number) {
-    const maxSizeInBytes = maxSizeInMB * 1024 * 1024; // Convert maxSizeInMB to bytes
-
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (control.value) {
-        const file = control.value as File;
-        const fileSize = file.size;
-        if (fileSize > maxSizeInBytes) {
-          return { fileSizeExceeded: true };
-        }
-      }
-      return null;
-    };
-  }
   
 }
