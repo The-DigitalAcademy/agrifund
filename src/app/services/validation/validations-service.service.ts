@@ -127,20 +127,25 @@ export class ValidationsServiceService {
     };
   }
 
-// Custom validator function for validating text without numbers
-textWithoutNumbersValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const isValidText = this.validateTextWithoutNumbers(control.value);
-    return isValidText ? null : { containsNumbers: true };
-  };
-}
+  textWithoutNumbersValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
 
-    // Method to validate text and not accept numbers
-    validateTextWithoutNumbers(text: string): boolean {
-      const containsNumbers = /\d/.test(text); // Check if the text contains any numeric character
-      return !containsNumbers;
-    }
+      if (value === null || value === '') {
+        return null; // Return null if the input is empty
+      }
 
+      // Use regular expression to check if the input contains any digits (numbers)
+      const containsNumbers = /\d/.test(value);
+
+      if (containsNumbers) {
+        return { textWithoutNumbers: true }; // Return validation error if the input contains numbers
+      }
+
+      return null; // Return null if the input does not contain numbers
+    };
+  }
+  
 // Custom validator function for validating a non-empty address
 addressNotEmptyValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
