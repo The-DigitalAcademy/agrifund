@@ -1,0 +1,244 @@
+{
+  "uuid": "0ab74536-3e35-4cdd-864b-2d202991e610",
+  "lastMigration": 28,
+  "name": "Ntokozo",
+  "endpointPrefix": "NtokozoRegister",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "4ac17c1f-5e8f-4c69-8c09-be07bdff8ced",
+      "type": "http",
+      "documentation": "get all users",
+      "method": "post",
+      "endpoint": "RegisterUser",
+      "responses": [
+        {
+          "uuid": "87323165-06be-45c9-9a0a-68bcab9053ff",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41a7f636-b990-42c0-8ac7-f8014f52fa08",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "a242fc66-3db6-4b00-8f49-a695d64a0b4e",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "custom_id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "af1f36c7-f1c3-4f34-b4bc-70a89d7337f4",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "6e3f7e89-cace-4bd5-a436-5eec45b5c218",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "66we",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c7072bdf-8af1-4d36-a668-383bcfadd479",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "addresses",
+      "responses": [
+        {
+          "uuid": "7f27996d-cb7c-4827-a603-f0b3fb0aed85",
+          "body": "[\n  {{#repeat 10}}\n    {\n      \"id\": {{faker 'datatype.number'}},\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"zip\": {{faker 'address.zipCode'}},\n      \"country\": \"{{faker 'address.country'}}\",\n      \"latitude\": {{faker 'address.latitude'}},\n      \"longitude\": {{faker 'address.longitude'}},\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n    {{#unless @last}},{{/unless}}\n  {{/repeat}}\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "db47e8f2-e59f-4305-af4f-cbe888009e5b",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "d9cf703b-1239-48d5-9a50-07022151d7a9",
+          "body": "{\"response\":{{urlParam 'var'}}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "0ff8ad9e-f707-4e9e-965e-8c26537f3ad0",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "4ac17c1f-5e8f-4c69-8c09-be07bdff8ced"
+    },
+    {
+      "type": "route",
+      "uuid": "41a7f636-b990-42c0-8ac7-f8014f52fa08"
+    },
+    {
+      "type": "route",
+      "uuid": "af1f36c7-f1c3-4f34-b4bc-70a89d7337f4"
+    },
+    {
+      "type": "route",
+      "uuid": "c7072bdf-8af1-4d36-a668-383bcfadd479"
+    },
+    {
+      "type": "route",
+      "uuid": "db47e8f2-e59f-4305-af4f-cbe888009e5b"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "92c179d3-08de-4471-ada0-0334daee7278",
+      "id": "66we",
+      "name": "Users",
+      "documentation": "",
+      "value": ""
+    },
+    {
+      "uuid": "2accb789-a556-40e0-ab58-c5e5f391e849",
+      "id": "9j9r",
+      "name": "New data",
+      "documentation": "",
+      "value": ""
+    }
+  ]
+}

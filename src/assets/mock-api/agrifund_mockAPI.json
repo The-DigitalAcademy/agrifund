@@ -1,6 +1,6 @@
 {
   "uuid": "8f5c5d3b-dcde-4ab2-829e-7e8dc275b6dc",
-  "lastMigration": 27,
+  "lastMigration": 28,
   "name": "Agrifund_Mock_API",
   "endpointPrefix": "agrifund",
   "latency": 0,
@@ -30,7 +30,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -58,7 +59,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -86,7 +88,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -114,7 +117,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -142,7 +146,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -170,7 +175,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -185,7 +191,7 @@
       "responses": [
         {
           "uuid": "e6f83fbc-d696-4a02-b957-001ab1401e66",
-          "body": "{}",
+          "body": "[\n  {{#repeat 10}}\n    {\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"address\": \"{{faker 'address.streetAddress'}}, {{faker 'address.city'}}, {{faker 'address.stateAbbr'}} {{faker 'address.zipCode'}}\",\n      \"birthdate\": \"{{faker 'date.past'}}\",\n      \"isActive\": {{faker 'datatype.boolean'}}\n    }\n    {{#unless @last}},{{/unless}}\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -198,7 +204,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -226,7 +233,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -254,7 +262,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -282,7 +291,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -310,7 +320,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -338,7 +349,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -366,7 +378,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
