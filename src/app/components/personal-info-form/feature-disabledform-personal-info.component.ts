@@ -11,16 +11,14 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
 export class DisabledformPersonalInfoComponent implements OnInit {
   
 
-isDisabled: boolean = true;
-onCancelClicked() {
 
-}
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
   
   editedData: any;
   farmerData: any;
+  isDisabled: boolean = true;
   
 
   constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService, private progressService: ProgressService) { }
@@ -69,7 +67,10 @@ onCancelClicked() {
     }
  
  
-  
+    onCancelClicked() {
+      this.myForm.reset(); // Reset the form to its initial state
+      this.isDisabled = true; // Disable the form fields again
+    }
 
 
   //validations
