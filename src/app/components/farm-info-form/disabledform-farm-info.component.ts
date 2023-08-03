@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 
 @Component({
   selector: 'app-disabledform-farm-info',
@@ -16,23 +17,23 @@ throw new Error('Method not implemented.');
   editedData: any;
   farmerData: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService) { }
 
   ngOnInit() {
     const farmerData = {
-      locationOfFarm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
-      sizeOfFarm: '9', // Update with default values
-      yearsUsingFarm: '10', // Update with default values
-      numberOfPeople: '2', // Update with default values
+      farm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
+      size: '9', // Update with default values
+      years: '10', // Update with default values
+      num_employee: '2', // Update with default values
       reasonForFunding: 'I want to improve my land of farming and equipments' // Update with default values
     };
   
     this.myForm = this.fb.group({
-      locationOfFarm: new FormControl({ value: farmerData.locationOfFarm, disabled: true }),
-      sizeOfFarm: new FormControl({ value: farmerData.sizeOfFarm, disabled: true }),
-      yearsUsingFarm: new FormControl({ value: farmerData.yearsUsingFarm, disabled: true }),
-      numberOfPeople: new FormControl({ value: farmerData.numberOfPeople, disabled: true }),
-      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true })
+      farm: new FormControl({ value: farmerData.farm, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+      size: new FormControl({ value: farmerData.size, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+      years: new FormControl({ value: farmerData.years, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+      num_employee: new FormControl({ value: farmerData.num_employee, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()])
     });
   }
   
