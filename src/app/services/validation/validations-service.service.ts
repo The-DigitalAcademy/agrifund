@@ -158,5 +158,42 @@ export class ValidationsServiceService {
     };
   }
   
+  // File type validator
+  fileTypeValidator(allowedTypes: string[]): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const file = control.value as File;
+
+      if (!file) {
+        return null; // Return null if no file is selected (optional validation)
+      }
+
+      const fileType = file.type;
+
+      if (!allowedTypes.includes(fileType)) {
+        return { invalidFileType: true };
+      }
+
+      return null;
+    };
+  }
+
+  // File size validator (in bytes)
+  fileSizeValidator(maxSize: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const file = control.value as File;
+
+      if (!file) {
+        return null; // Return null if no file is selected (optional validation)
+      }
+
+      const fileSize = file.size;
+
+      if (fileSize > maxSize) {
+        return { invalidFileSize: true };
+      }
+
+      return null;
+    };
+  }
   
 }

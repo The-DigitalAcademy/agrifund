@@ -71,7 +71,13 @@
           <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
         </div>
+
+        <div *ngIf="myForm.get('proofOfID')?.invalid && myForm.get('proofOfID')?.dirty">
+          <div *ngIf="myForm.get('proofOfID')?.hasError('invalidFileType')">Invalid file type. Allowed types: jpeg, png.</div>
+          <div *ngIf="myForm.get('proofOfID')?.hasError('invalidFileSize')">File size exceeds the limit (5MB).</div>
+        </div>
       </div>
+        
 
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Email</label>
@@ -85,6 +91,7 @@
       <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn btn-width">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
     </div>
+      
     </form>
   </div>
 </div>

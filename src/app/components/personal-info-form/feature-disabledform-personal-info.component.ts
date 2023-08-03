@@ -38,8 +38,12 @@ throw new Error('Method not implemented.');
       lastName: new FormControl({ value: userData.lastName, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
       phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
-      proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
+      proofOfID: new FormControl(null, [
+        this.validationsService.fileTypeValidator(['image/jpeg', 'image/png']), // Add allowed file types
+        this.validationsService.fileSizeValidator(5242880) // Add maximum file size (in bytes)
+      ])
     });
+    
 
     
   }
