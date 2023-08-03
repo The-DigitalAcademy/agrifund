@@ -76,34 +76,6 @@
       "responseMode": null
     },
     {
-      "uuid": "6ce8e7eb-f12e-48ff-a229-46ef9654c69f",
-      "type": "http",
-      "documentation": "",
-      "method": "get",
-      "endpoint": "getRecordDetails",
-      "responses": [
-        {
-          "uuid": "301c16e4-5235-4246-9896-9301123c5225",
-          "body": "{}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
       "uuid": "baac0c85-d3ed-415b-8420-ece488925e5c",
       "type": "http",
       "documentation": "",
@@ -135,7 +107,7 @@
       "uuid": "42856beb-af4b-4d3d-8dd5-b410bfb06e8a",
       "type": "http",
       "documentation": "",
-      "method": "put",
+      "method": "post",
       "endpoint": "updateRecord",
       "responses": [
         {
@@ -224,14 +196,19 @@
       "responses": [
         {
           "uuid": "086f7d47-dab2-40c3-873a-6d2dbcb28d70",
-          "body": "{}",
+          "body": "{{data 'user'}}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
           "bodyType": "INLINE",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "3i64",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -424,7 +401,12 @@
           "latency": 0,
           "statusCode": 200,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
           "bodyType": "DATABUCKET",
           "filePath": "",
           "databucketID": "v9qc",
@@ -471,34 +453,6 @@
       ],
       "enabled": true,
       "responseMode": null
-    },
-    {
-      "uuid": "0ec5da99-5e37-4dcc-9e18-510f7d40ae60",
-      "type": "http",
-      "documentation": "",
-      "method": "get",
-      "endpoint": "incomeStatementItems/:id",
-      "responses": [
-        {
-          "uuid": "8011fdfa-2353-444c-9dc2-2e8d46a702d3",
-          "body": "{{data 'incomeStatementItems'}}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "v9qc",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -513,10 +467,6 @@
     {
       "type": "route",
       "uuid": "973c8a86-cb9c-4874-96dd-8abe4734269f"
-    },
-    {
-      "type": "route",
-      "uuid": "6ce8e7eb-f12e-48ff-a229-46ef9654c69f"
     },
     {
       "type": "route",
@@ -561,10 +511,6 @@
     {
       "type": "route",
       "uuid": "dd00db88-61e5-4386-a9e3-cfab891ddeaa"
-    },
-    {
-      "type": "route",
-      "uuid": "0ec5da99-5e37-4dcc-9e18-510f7d40ae60"
     }
   ],
   "proxyMode": false,
@@ -620,7 +566,7 @@
       "id": "v9qc",
       "name": "incomeStatementItems",
       "documentation": "",
-      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \n    {{#switch (urlParam 'id')}}\n      {{#case '1'}}\"Equipment Rented\"{{/case}}\n      {{#case '2'}}\"Produce Sold\"{{/case}}\n      {{#default}}\"Seeds Bought\"{{/default}}\n    {{/switch}}\n  }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \n    {{#switch (urlParam 'id')}}\n      {{#case 'Money In'}}\"Equipment Rented\"{{/case}}\n      {{#case 'Money Out'}}\"Produce Sold\"{{/case}}\n      {{#default}}\"Seeds Bought\"{{/default}}\n    {{/switch}}\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "492500c8-d2ef-4a77-8c7e-b8fa36feacb5",
@@ -628,6 +574,13 @@
       "name": "incomeStatements",
       "documentation": "",
       "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"statementDate\": \"{{dateFormat (faker 'date.recent') 'yyyy-MM-dd'}}\", \n  \"totalIncome\": \"{{toFixed (float 0 5000) 2}}\",\n  \"totalExpenses\": \"{{toFixed (float 0 5000) 2}}\", \n  \"netIncome\": \"{{toFixed (float 0 5000) 2}}\"\n  }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "fc9e6866-f09a-4919-8c04-1192b2101f05",
+      "id": "3i64",
+      "name": "user",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
     }
   ]
 }
