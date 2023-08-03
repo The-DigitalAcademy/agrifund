@@ -1,5 +1,6 @@
 .page-body{
     background-image: url("src/assets/images/background/barn.webp");
+    flex-direction: column;
 }
 
 h2 {
@@ -10,7 +11,7 @@ h2 {
 
 .content .btn, .actions .btn{
     width: 150px;
-    margin: 0px var(--normal-s);
+    /* margin: 0px var(--normal-s); */
 }
 
 .content>* {

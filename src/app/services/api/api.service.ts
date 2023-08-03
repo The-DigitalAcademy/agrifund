@@ -12,6 +12,11 @@ export class ApiService {
     private baseUrl = 'http://localhost:3001/agrifund/api/v1';
 
     /* --------------------------------
+        USER CONNECTION STRINGS
+    ---------------------------------*/
+    private userURL = this.baseUrl + '/users';
+
+    /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
     ---------------------------------*/
     private statementsUrl = this.baseUrl + '/incomeStatements';

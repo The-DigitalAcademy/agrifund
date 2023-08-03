@@ -209,7 +209,7 @@
       "id": "v9qc",
       "name": "incomeStatementItems",
       "documentation": "",
-      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \n    {{#switch (urlParam 'id')}}\n      {{#case 'Money In'}}\"Equipment Rented\"{{/case}}\n      {{#case 'Money Out'}}\"Produce Sold\"{{/case}}\n      {{#default}}\"Seeds Bought\"{{/default}}\n    {{/switch}}\n  }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \"{{oneOf (array 'Seeds Bought' 'Equipment Rented' 'Produce Sold')}}\"\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "492500c8-d2ef-4a77-8c7e-b8fa36feacb5",
