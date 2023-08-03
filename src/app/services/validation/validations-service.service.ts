@@ -110,7 +110,7 @@ export class ValidationsServiceService {
       }
 
       // Define the ID number pattern that you want to enforce (e.g., 12 digits)
-      const idNumberPattern = /^\d{12}$/;
+      const idNumberPattern = /^\d{13}$/;
 
       if (idNumberPattern.test(value)) {
         return null; // Return null if the ID number matches the pattern

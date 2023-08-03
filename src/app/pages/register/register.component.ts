@@ -16,11 +16,11 @@ ngOnInit(): void {
 
   this.RegisterForm = this.fb.group({
 
-    name: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]),
-    surname: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]),
-    id: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.idNumberValidator()]),
-    cellNo: new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.phoneNumberValidator()]),
-    password:new FormControl({value: '', disabled:true }, [Validators.required, this.validationsService.passwordValidator()]),
+    first_name: new FormControl("",[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+    last_name: new FormControl( "",[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+    id_number: new FormControl("",[Validators.required, this.validationsService.idNumberValidator()]),
+    cell_number: new FormControl( "",[Validators.required, this.validationsService.phoneNumberValidator()]),
+    password:new FormControl("", [Validators.required, this.validationsService.passwordValidator()]),
     Cpassword: new FormControl({value: '', disabled:true },)
     },{
             validators: [this.validationsService.passwordsMatchValidator] // Add custom password matching validation method from your validation service
