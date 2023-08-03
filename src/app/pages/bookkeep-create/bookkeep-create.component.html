@@ -33,6 +33,17 @@
                         class="form-control"
                         id="recordName"
                         placeholder="" />
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordName'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordName'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please give your record a description.
+                    </div>
                 </div>
                 <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
@@ -58,7 +69,7 @@
                                 'required'
                             ]
                         ">
-                        Please select a record type.
+                        Please select a type for your record.
                     </div>
                 </div>
                 <div class="form-input" id="label">
@@ -73,8 +84,17 @@
                             class="form-control"
                             id="recordAmount" />
                     </div>
-                    <div class="form-text text-danger">
-                        <!-- *ngIf="isSubmitted && recordProof?.invalid"> -->
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordAmount']
+                                .touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordAmount'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please provide an amount for your record.
                     </div>
                 </div>
                 <div class="form-input" id="label">
@@ -96,9 +116,17 @@
                             class="form-control"
                             type="file"
                             id="recordProof" />
-                        <div class="form-text text-danger">
-                            <!-- *ngIf="isSubmitted && recordProof?.invalid"> -->
-                        </div>
+                    </div>
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordProof'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordProof'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please upload proof of your record.
                     </div>
                 </div>
                 <div class="actions">
