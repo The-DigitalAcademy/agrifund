@@ -29,11 +29,13 @@ throw new Error('Method not implemented.');
     };
   
     this.myForm = this.fb.group({
-      farm: new FormControl({ value: farmerData.farm, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
-      size: new FormControl({ value: farmerData.size, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
-      years: new FormControl({ value: farmerData.years, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
-      num_employee: new FormControl({ value: farmerData.num_employee, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
-      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true },[Validators.required, this.validationsService.textWithoutNumbersValidator()])
+      farm: new FormControl({ value: farmerData.farm, disabled: true },[Validators.required]),
+      size: new FormControl({ value: farmerData.size, disabled: true },[Validators.required, this.validationsService.positiveNumberValidator()]),
+      years: new FormControl({ value: farmerData.years, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),
+      num_employee: new FormControl({ value: farmerData.num_employee, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),
+      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true },[Validators.required])
+
+      
     });
   }
   
