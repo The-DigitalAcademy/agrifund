@@ -174,5 +174,19 @@ export class ValidationsServiceService {
       return null; // Return null if the input is not empty
     };
   }
+
+  static fileTypeValidator(allowedTypes: string[]) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const file = control.value as File;
+      if (file instanceof File) {
+        const fileExtension = file.name.split('.').pop()?.toLowerCase();
+        if (fileExtension && !allowedTypes.includes(fileExtension)) {
+          return { fileType: true };
+        }
+      }
+      return null;
+    };
+  }
+  
   
 }

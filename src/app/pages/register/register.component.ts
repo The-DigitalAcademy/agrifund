@@ -21,8 +21,8 @@ ngOnInit(): void {
     id_number: new FormControl("",[Validators.required, this.validationsService.idNumberValidator()]),
     cell_number: new FormControl( "",[Validators.required, this.validationsService.phoneNumberValidator()]),
     password:new FormControl("", [Validators.required, this.validationsService.passwordValidator()]),
-    cpassword: new FormControl("",[Validators.required]
-  )},{
+    cpassword: ['', [Validators.required]]
+  },{
             validators: [this.validationsService.passwordsMatchValidator] // Add custom password matching validation method from your validation service
           });
     }
