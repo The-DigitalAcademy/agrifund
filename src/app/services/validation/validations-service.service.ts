@@ -175,6 +175,7 @@ export class ValidationsServiceService {
     };
   }
 
+  
   static fileTypeValidator(allowedTypes: string[]) {
     return (control: AbstractControl): ValidationErrors | null => {
       const file = control.value as File;
@@ -187,6 +188,21 @@ export class ValidationsServiceService {
       return null;
     };
   }
-  
+
+  // Custom file size validator (no larger than 1MB)
+  static fileSizeValidator(maxSizeInMB: number) {
+    const maxSizeInBytes = maxSizeInMB * 1024 * 1024; // Convert maxSizeInMB to bytes
+
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value) {
+        const file = control.value as File;
+        const fileSize = file.size;
+        if (fileSize > maxSizeInBytes) {
+          return { fileSizeExceeded: true };
+        }
+      }
+      return null;
+    };
+  }
   
 }
