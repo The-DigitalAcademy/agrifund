@@ -6,7 +6,20 @@ import { ApiService } from '../api/api.service';
     providedIn: 'root',
 })
 export class BookkeepService {
-    constructor() {}
+    private bookkeepRecords: IncomeStatementItem[] = [];
+
+    constructor(private _apiService: ApiService) {
+        this._apiService.getAllStatementItems().subscribe((records: any) => {
+            // console.table(products);
+            this.bookkeepRecords = records; //populate bookkeepRecords array with records from api
+        });
+    }
+
+    generateId() {
+        const id: number = this.bookkeepRecords.length;
+
+        return id;
+    }
 
     // TODO
     // update income statement total income

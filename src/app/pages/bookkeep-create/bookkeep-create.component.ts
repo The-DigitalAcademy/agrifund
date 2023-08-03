@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/models/income-statement-item';
 import { ApiService } from 'src/app/services/api/api.service';
+import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 
 @Component({
     selector: 'app-bookkeep-create',
@@ -19,7 +20,8 @@ export class BookkeepCreateComponent implements OnInit {
     constructor(
         private router: Router,
         private fb: FormBuilder,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _bookkeepService: BookkeepService
     ) {}
 
     ngOnInit() {
@@ -39,7 +41,7 @@ export class BookkeepCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createRecordForm.valid) {
             this.record = {
-                id: '0',
+                id: this._bookkeepService.generateId(),
                 statement_id: 0,
                 description: this.createRecordForm.get('recordName')?.value,
                 category: this.createRecordForm.get('recordType')?.value,
