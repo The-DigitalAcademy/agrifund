@@ -77,6 +77,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -99,6 +100,7 @@ import {
         EquipmentInfoComponent,
         EquipmentTableComponent,
         BookkeepCreateComponent,
+        DashboardComponent,
     ],
     imports: [
         BrowserModule,
