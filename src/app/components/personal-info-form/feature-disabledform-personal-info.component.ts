@@ -18,7 +18,7 @@ throw new Error('Method not implemented.');
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
-  
+  personalInfoCompleted: boolean = false;
   editedData: any;
   farmerData: any;
   
@@ -39,6 +39,12 @@ throw new Error('Method not implemented.');
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
       phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
+    });
+
+     // Subscribe to valueChanges of the form to update the personalInfoCompleted status
+     this.myForm.valueChanges.subscribe(() => {
+      this.personalInfoCompleted = this.myForm.valid;
+      this.progressService.setPersonalInfoCompleted(this.personalInfoCompleted);
     });
   }
   
