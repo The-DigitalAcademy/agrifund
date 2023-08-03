@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
   selector: 'app-disabledform-farm-info',
@@ -16,7 +17,7 @@ throw new Error('Method not implemented.');
   editedData: any;
   farmerData: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private progressService: ProgressService) { }
 
   ngOnInit() {
     const farmerData = {
@@ -50,6 +51,7 @@ throw new Error('Method not implemented.');
     this.farmerData = formData;
     this.isDisabled = true;
     this.myForm.disable();
+    this.progressService.setFarmInfoCompleted(true);
   }
 
 }

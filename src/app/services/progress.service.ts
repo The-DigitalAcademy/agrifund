@@ -6,14 +6,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProgressService {
   
+  
 
   constructor() { }
 
   private personalInfoCompleted = new BehaviorSubject<boolean>(false);
   private cropInfoCompleted = new BehaviorSubject<boolean>(false);
+  private farmInfoCompleted = new BehaviorSubject<boolean>(false);
 
   personalInfoCompleted$ = this.personalInfoCompleted.asObservable();
   cropInfoCompleted$ = this.cropInfoCompleted.asObservable();
+  farmInfoCompleted$ = this.farmInfoCompleted.asObservable(); //
 
   setPersonalInfoCompleted(status: boolean) {
     this.personalInfoCompleted.next(status);
@@ -22,4 +25,7 @@ export class ProgressService {
   setCropInfoCompleted(status: boolean) {
     this.cropInfoCompleted.next(status);
   }
+  setFarmInfoCompleted(status: boolean) {
+    this.farmInfoCompleted.next(status);
+  };
 }

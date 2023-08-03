@@ -20,13 +20,19 @@ export class PortfolioProgressbarComponent {
     
     this.progressService.personalInfoCompleted$.subscribe((personalInfoCompleted) => {
       if (personalInfoCompleted) {
-        this.progressPercentage += 50;
+        this.progressPercentage += 35;
       }
     });
 
     this.progressService.cropInfoCompleted$.subscribe((cropInfoCompleted) => {
       if (cropInfoCompleted) {
-        this.progressPercentage += 50;
+        this.progressPercentage += 30;
+      }
+    });
+
+    this.progressService.farmInfoCompleted$.subscribe((farmInfoCompleted) => {
+      if (farmInfoCompleted) {
+        this.progressPercentage += 35;
       }
     });
 
