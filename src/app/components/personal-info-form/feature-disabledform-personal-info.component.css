@@ -28,6 +28,14 @@ hr {
     border-radius: 3px;
   
   }
+  .button-container{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .btn{
+    margin: 30px;
+  }
   #document{
     width: 75%;
     height: 10%;

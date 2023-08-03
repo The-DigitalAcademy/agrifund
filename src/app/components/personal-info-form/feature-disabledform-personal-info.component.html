@@ -62,8 +62,12 @@
       </div>
       <div class="form-input">
         <label class="form-label" for="document">Proof of ID</label>
+        <div class="form-text">
+          Please upload proof of ID.
+      </div>
         <div class="file-container">
           <label for="farm-label">Upload Document</label>
+          <div class="form-text">PDF, PNG, JPG</div>
           <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
         </div>
@@ -77,9 +81,10 @@
       </div>
       
 
-
-      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
-      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
+      <div class="button-container">
+      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn btn-width">Save</button>
+      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
+    </div>
     </form>
   </div>
 </div>

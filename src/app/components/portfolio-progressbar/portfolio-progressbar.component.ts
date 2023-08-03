@@ -18,9 +18,9 @@ export class PortfolioProgressbarComponent {
   ngOnInit() {
     // Create the form controls and form group for the checklistForm
     this.checklistForm = this.fb.group({
-      personalInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-      farmInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-      cropInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
+      personalInfo: new FormControl({ value: true, disabled: true }), // Set disabled to true to disable the checkbox by default
+      farmInfo: new FormControl({ value: true, disabled: true }), // Set disabled to true to disable the checkbox by default
+      cropInfo: new FormControl({ value: true, disabled: true }), // Set disabled to true to disable the checkbox by default
     });
   }
 

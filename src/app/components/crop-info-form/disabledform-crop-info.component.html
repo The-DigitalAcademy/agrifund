@@ -29,8 +29,11 @@
         <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
         <input type="text" class="form-control" formControlName="seedsAmount" [attr.disabled]="isDisabled ? 'disabled' : null">
       </div>
-      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
-      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
+     
+      <div class="button-container">
+        <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn btn-width">Save</button>
+        <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
+      </div>
 
      
   </form>
