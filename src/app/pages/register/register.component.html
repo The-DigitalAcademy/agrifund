@@ -42,12 +42,13 @@
                         <label for="phoneNumber" class="form-label">Cell Number:</label>
                         <input formControlName="phoneNumber" class="form-control" id="phoneNumberInput">
                           <small *ngIf="RegisterForm.controls['phoneNumber'].hasError('invalidPhoneNumber') && RegisterForm.controls['phoneNumber'].dirty" class="text-danger">Invalid phoneNumber.</small>
-                          <small *ngIf="RegisterForm.controls['idNum'].hasError('required') && RegisterForm.controls['idNum'].dirty" class="text-danger">Field is required.</small>
+                          <small *ngIf="RegisterForm.controls['phoneNumber'].hasError('required') && RegisterForm.controls['phoneNumber'].dirty" class="text-danger">Field is required.</small>
                       </div>
                     <div class="form-input">
                         <label for="password">Password:</label><br /><input formControlName="password" class="form-control" id="passwordInput" />
-                        <small *ngIf="RegisterForm.controls['idNum'].hasError('idNumber') && RegisterForm.controls['idNum'].dirty" class="text-danger">Invalid format.</small>
-                        <small *ngIf="RegisterForm.controls['idNum'].hasError('required') && RegisterForm.controls['idNum'].dirty" class="text-danger">Field is required.</small>
+                        <small *ngIf="RegisterForm.controls['password'].hasError('invalidPassword') && RegisterForm.controls['password'].dirty" class="text-danger">Invalid format.</small>
+                        <small *ngIf="RegisterForm.controls['password'].hasError('passwordValidator') && RegisterForm.controls['idNum'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers</small>
+                        <small *ngIf="RegisterForm.controls['password'].hasError('required') && RegisterForm.controls['password'].dirty" class="text-danger">Field is required.</small>
 
                     </div>
                     <div class="form-input">
