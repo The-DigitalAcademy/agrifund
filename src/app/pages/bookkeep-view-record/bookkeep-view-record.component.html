@@ -2,26 +2,28 @@
     <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
         <img src="assets/images/background/barn.webp" alt="Avatar">
     </div> -->
-    <div class="mobile-header "></div>
+    <div class="mobile-header"></div>
     <div class="container form-container">
         <div class="container-header">
-            <div class="justify-start ">
+            <div class="justify-start">
                 <h2>Record Details</h2>
             </div>
             <div class="justify-end">
-                <button class="btn icon-btn close-btn" [routerLink]="['/bookkeep']">
+                <button
+                    class="btn icon-btn close-btn"
+                    [routerLink]="['/bookkeep']">
                     <fa-icon icon="times"></fa-icon>
                 </button>
             </div>
         </div>
-        <hr>
+        <hr />
         <div class="content">
             <div class="row" id="record-name">
                 <div class="col-sm-12" id="label">
-                    <label>Name of Record</label>
+                    <label>Record Description</label>
                 </div>
                 <div class="col-12" id="value">
-                    <p class="greyed">Bought Seeds</p>
+                    <p class="greyed">{{ record.description }}</p>
                 </div>
             </div>
             <div class="row" id="date-added">
@@ -37,7 +39,7 @@
                     <label>Type of Record</label>
                 </div>
                 <div class="col-12" id="value">
-                    <p class="greyed">Money Out</p>
+                    <p class="greyed">{{ record.category }}</p>
                 </div>
             </div>
             <div class="row" id="record-amount">
@@ -45,15 +47,7 @@
                     <label>Amount of Record</label>
                 </div>
                 <div class="col-12" id="value">
-                    <p class="greyed">R 1,200.00</p>
-                </div>
-            </div>
-            <div class="row" id="record-description">
-                <div class="col-12" id="label">
-                    <label>Record Description</label>
-                </div>
-                <div class="col-12" id="value">
-                    <p class="greyed">Money paid for seeds</p>
+                    <p class="greyed">{{ record.amount }}</p>
                 </div>
             </div>
             <div class="row" id="record-proof">
@@ -62,32 +56,32 @@
                 </div>
                 <div class="col-sm-12 col-md-6 justify-center" id="value">
                     <div class="document-name justify-start">
-                        <p class="greyed">Seed_Purchase.png</p>
+                        <p class="greyed">pop.png</p>
                     </div>
                     <div class="view-btn justify-end">
-                        <button class="btn colourful-btn">
+                        <button
+                            class="btn colourful-btn"
+                            (click)="viewProof(record.proof)">
                             View
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <hr>
+        <hr />
         <div class="actions">
-            <div class="justify-start">
+            <div class="justify-start left-btn">
                 <button class="btn colourful-btn">
-                    <fa-icon icon="pen"></fa-icon>
+                    <!-- <fa-icon icon="pen"></fa-icon> -->
                     Edit
                 </button>
-
             </div>
-            <div class="justify-end">
+            <div class="justify-end right-btn">
                 <button class="btn outline-btn">
-                    <fa-icon icon="trash"></fa-icon>
+                    <!-- <fa-icon icon="trash"></fa-icon> -->
                     Delete
                 </button>
             </div>
         </div>
-
     </div>
 </div>

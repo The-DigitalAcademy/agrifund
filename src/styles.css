@@ -122,12 +122,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.4); /* 40% opacity white background */
-  }
+    background-color: rgba(255, 255, 255, 0.4);
+    /* 40% opacity white background */
+}
 
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding:var(--x-large-s) !important;
+    padding: var(--x-large-s) !important;
     /* width: 100% !important; */
     height: 100vh;
     overflow-x: hidden;
@@ -154,7 +155,8 @@ body {
     background-size: 100%;
     max-width: 100% !important;
 }
-.document-upload{
+
+.document-upload {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
     padding: var(--small-s);
@@ -165,7 +167,7 @@ body {
     padding: var(--x-large-s);
     width: 45%;
     position: relative;
-    
+
 }
 
 /* container for container headings */
@@ -215,7 +217,7 @@ body {
 }
 
 
-.sidebar{
+.sidebar {
     height: 100vh;
     position: relative;
 }
@@ -368,7 +370,8 @@ label,
 
 /* styling for form input fields */
 input,
-.form-control, .form-select, .input-group{
+.form-control,
+.form-select {
 
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -378,13 +381,13 @@ input,
 }
 
 /* remove the border for input in input group */
-.input-group-text, .input-group input{
+/* .input-group-text, .input-group input{
     border: none;
-}
+} */
 
 /* styling for form input fields */
 .form-input {
-    padding: var(--small-s) 0px !important ;
+    padding: var(--small-s) 0px !important;
     margin: var(--small-s) 0px !important;
 
 }
@@ -408,7 +411,7 @@ input[type=number]:focus,
 [type=password].form-control:focus,
 [type=email].form-control:focus,
 [type=tel].form-control:focus,
-[contenteditable].form-control:focus{
+[contenteditable].form-control:focus {
     box-shadow: none;
     border: var(--thin-border) var(--dark);
 }
@@ -438,7 +441,7 @@ button {
     padding: var(--small-s);
 }
 
-.btn-width{
+.btn-width {
     width: 150px;
 }
 
@@ -531,11 +534,12 @@ button[disabled] {
 }
 
 /* add margins to icons within buttons */
-.btn fa-icon, button fa-icon {
+.btn fa-icon,
+button fa-icon {
     margin: 0px var(--small-s) 0px 0px;
 }
 
-.close-btn fa-icon{
+.close-btn fa-icon {
     margin: 0px !important;
 }
 
@@ -609,7 +613,8 @@ hr {
     }
 
     .page-content {
-        padding: var(--small-s) !important;
+        padding: 0px !important;
+        /*var(--small-s)*/
     }
 
     /* set styles for all content within page-content div */
@@ -621,11 +626,11 @@ hr {
     .form-container {
         width: 100%;
         height: 100%;
-        border: none !important;
+        /* border: none !important; */
     }
 
     .container {
-        padding: var(--normal-s);
+        padding: var(--medium-s);
     }
 
     .page-heading {
@@ -692,6 +697,7 @@ hr {
     }
 
     .container {
+        width: 75%;
         padding: var(--medium-s);
     }
 
@@ -743,7 +749,7 @@ hr {
     }
 
     .container {
-        padding: var(--normal-s);
+        padding: var(--large-s);
     }
 
     /*----------------------

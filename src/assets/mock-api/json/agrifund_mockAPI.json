@@ -1,0 +1,229 @@
+{
+  "uuid": "330ca689-ae88-41c2-b1f8-86ae709e47f1",
+  "lastMigration": 27,
+  "name": "Agrifund_Mock_API",
+  "endpointPrefix": "agrifund/api/v1",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "ffbeaead-b3ca-432c-b066-99259ab9a8ae",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "incomeStatements",
+      "responses": [
+        {
+          "uuid": "f55f7856-fb48-48cb-9852-a485815c5574",
+          "body": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"statementDate\": \"{{dateFormat (faker 'date.recent') 'yyyy-MM-dd'}}\", \n  \"totalIncome\": \"{{toFixed (float 0 5000) 2}}\",\n  \"totalExpenses\": \"{{toFixed (float 0 5000) 2}}\", \n  \"netIncome\": \"{{toFixed (float 0 5000) 2}}\"\n  }\n  {{/repeat}}\n]\n\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "statementId",
+              "value": "null",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9ea37855-b2cf-4508-8362-dfc39e174eda",
+          "body": "{\n  \"id\": \"{{urlParam 'id'}}\",\n  \"statementDate\": \"{{faker 'date.' abbr=false}}\", \n  \"totalIncome\": \"{{oneOf (array 'Seeds Bought' 'Produce Sold')}}\", \n  \"totalExpenses\": \"{{oneOf (array 'Seeds Bought' 'Produce Sold')}}\", \n  \"netIncome\": \"{{oneOf (array 'Seeds Bought' 'Produce Sold')}}\",\n}\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": " (copy)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "973c8a86-cb9c-4874-96dd-8abe4734269f",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "incomeStatementItems",
+      "responses": [
+        {
+          "uuid": "54f22433-d17f-4061-8e17-be477eb2abbc",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "v9qc",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d904fa2b-9dea-4f5f-827a-74bfc74dbd95",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "incomeStatementItems",
+      "responses": [
+        {
+          "uuid": "a6d58cba-57b4-4d2b-9108-7fcf2b30a441",
+          "body": "{{data 'incomeStatementItems'}}\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "v9qc",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "ffbeaead-b3ca-432c-b066-99259ab9a8ae"
+    },
+    {
+      "type": "route",
+      "uuid": "d904fa2b-9dea-4f5f-827a-74bfc74dbd95"
+    },
+    {
+      "type": "route",
+      "uuid": "973c8a86-cb9c-4874-96dd-8abe4734269f"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    },
+    {
+      "key": "Access-Control-Allow-Credentials",
+      "value": "true"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "e4d63ba5-2379-4317-aac7-a55a802f6cde",
+      "id": "v9qc",
+      "name": "incomeStatementItems",
+      "documentation": "",
+      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \"{{oneOf (array 'Seeds Bought' 'Equipment Rented' 'Produce Sold')}}\",\n  \"proof\": \"src/assets/mock-api/bookkeep-record-proof/pop.png\"\n  }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "492500c8-d2ef-4a77-8c7e-b8fa36feacb5",
+      "id": "kp8f",
+      "name": "incomeStatements",
+      "documentation": "",
+      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"statementDate\": \"{{dateFormat (faker 'date.recent') 'yyyy-MM-dd'}}\", \n  \"totalIncome\": \"{{toFixed (float 0 5000) 2}}\",\n  \"totalExpenses\": \"{{toFixed (float 0 5000) 2}}\", \n  \"netIncome\": \"{{toFixed (float 0 5000) 2}}\"\n  }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "fc9e6866-f09a-4919-8c04-1192b2101f05",
+      "id": "3i64",
+      "name": "user",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
+    }
+  ]
+}
