@@ -1,15 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
+import { IncomeStatementItem } from 'src/app/models/income-statement-item';
 
 @Component({
     selector: 'app-bookkeep-create',
     templateUrl: './bookkeep-create.component.html',
     styleUrls: ['./bookkeep-create.component.css'],
 })
-export class BookkeepCreateComponent {
-    constructor(private router: Router) {}
+export class BookkeepCreateComponent implements OnInit {
+    createRecord!: FormGroup;
+    submitted = false;
+    recordType: any = ['Money In', 'Money Out'];
+
+    record!: IncomeStatementItem;
+
+    constructor(
+        private router: Router,
+        private fb: FormBuilder
+    ) {}
+
+    ngOnInit() {
+        this.createRecord = this.fb.group({
+            recordName: ['', [Validators.required]],
+            recordType: ['', [Validators.required]],
+            recordAmount: ['', [Validators.required]],
+            recordProof: ['', [Validators.required]],
+        });
+    }
 
     saveRecord() {
-        this.router.navigate(['bookkeep']);
+        this.submitted = true;
+        if (this.createRecord.valid) {
+
+
+            console.table(this.createRecord.value);
+        }
     }
 }

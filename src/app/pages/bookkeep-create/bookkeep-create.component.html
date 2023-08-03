@@ -18,7 +18,7 @@
         </div>
         <hr />
         <div class="content">
-            <form>
+            <form [formGroup]="createRecord" (ngSubmit)="saveRecord()">
                 <div class="form-input" id="label">
                     <label for="recordName" class="form-label">
                         Name of Record
@@ -28,6 +28,7 @@
                         Seeds
                     </div>
                     <input
+                        formControlName="recordName"
                         type="text"
                         class="form-control"
                         id="recordName"
@@ -35,11 +36,21 @@
                 </div>
                 <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
-                    <select class="form-select" id="recordType">
-                        <option selected>Select a record type...</option>
-                        <option value="income">Money In</option>
-                        <option value="expense">Money Out</option>
+                    <select
+                        class="form-select"
+                        id="recordType"
+                        formControlName="recordType">
+                        <option value="" disabled selected>
+                            Select a record type...
+                        </option>
+                        <option
+                            *ngFor="let type of recordType"
+                            [ngValue]="type">
+                            {{ type }}
+                        </option>
                     </select>
+                    <!-- (change)="changeRecordType($event)" -->
+                    <div class="form-text feedback"></div>
                 </div>
                 <div class="form-input" id="label">
                     <label for="recordAmount" class="form-label">
@@ -48,24 +59,12 @@
                     <div class="input-group">
                         <span class="input-group-text">R</span>
                         <input
+                            formControlName="recordAmount"
                             type="text"
                             class="form-control"
                             id="recordAmount" />
                     </div>
-                </div>
-                <div class="form-input" id="label">
-                    <label for="recordDescription" class="form-label">
-                        Description
-                    </label>
-                    <div class="form-text">
-                        Give a short description of the record. Example: Paid
-                        money for seeds.
-                    </div>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="recordDescription"
-                        placeholder="" />
+                    <div class="form-text feedback"></div>
                 </div>
                 <div class="form-input" id="label">
                     <label for="recordProof" class="form-label">
@@ -82,28 +81,32 @@
                         <hr />
 
                         <input
+                            formControlName="recordProof"
                             class="form-control"
                             type="file"
                             id="recordProof" />
+                        <div class="form-text feedback">
+                            <!-- *ngIf="isSubmitted && recordProof?.invalid"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="justify-start">
+                        <button
+                            class="btn colourful-btn btn-width"
+                            type="submit">
+                            Save
+                        </button>
+                    </div>
+                    <div class="justify-end">
+                        <button
+                            class="btn outline-btn btn-width"
+                            [routerLink]="['/bookkeep']">
+                            Cancel
+                        </button>
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="actions">
-            <div class="justify-start">
-                <button
-                    class="btn colourful-btn btn-width"
-                    (click)="saveRecord()">
-                    Save
-                </button>
-            </div>
-            <div class="justify-end">
-                <button
-                    class="btn outline-btn btn-width"
-                    [routerLink]="['/bookkeep']">
-                    Cancel
-                </button>
-            </div>
         </div>
     </div>
 </div>
