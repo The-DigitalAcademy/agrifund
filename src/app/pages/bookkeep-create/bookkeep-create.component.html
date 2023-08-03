@@ -21,7 +21,7 @@
             <form [formGroup]="createRecordForm" (ngSubmit)="saveRecord()">
                 <div class="form-input" id="label">
                     <label for="recordName" class="form-label">
-                        Name of Record
+                        Record Description
                     </label>
                     <div class="form-text">
                         Give 2-3 words to describe the record. Example: Bought
@@ -48,9 +48,9 @@
                 <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
                     <select
+                        formControlName="recordType"
                         class="form-select"
-                        id="recordType"
-                        formControlName="recordType">
+                        id="recordType">
                         <option value="" disabled selected>
                             Select a record type...
                         </option>
@@ -110,7 +110,6 @@
                             <div class="form-text">PDF, PNG, JPG</div>
                         </div>
                         <hr />
-
                         <input
                             formControlName="recordProof"
                             class="form-control"

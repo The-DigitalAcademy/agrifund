@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/models/income-statement-item';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
     selector: 'app-bookkeep-create',
@@ -22,7 +18,8 @@ export class BookkeepCreateComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private _apiService: ApiService
     ) {}
 
     ngOnInit() {
@@ -34,12 +31,32 @@ export class BookkeepCreateComponent implements OnInit {
         });
     }
 
+    get createRecordControl() {
+        return this.createRecordForm.controls;
+    }
+
     saveRecord() {
         this.submitted = true;
         if (this.createRecordForm.valid) {
+            this.record = {
+                id: 0,
+                statement_id: 0,
+                description: this.createRecordForm.get('recordName')?.value,
+                category: this.createRecordForm.get('recordType')?.value,
+                amount: this.createRecordForm.get('recordAmount')?.value,
+                proof:
+                    'src/assets/mock-api/bookkeep-record-proof/' +
+                    this.createRecordForm.get('recordProof')?.value,
+            };
 
+            console.table(this.record);
 
-            console.table(this.createRecordForm.value);
+            // this._apiService.addRecord(this.record).subscribe(data => {
+            //     console.log(data);
+            //     console.table(this.createRecordForm.value);
+            // });
+
+            // this.router.navigate(['/bookkeep']);
         }
     }
 }
