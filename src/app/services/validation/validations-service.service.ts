@@ -145,19 +145,17 @@ export class ValidationsServiceService {
       return null; // Return null if the input does not contain numbers
     };
   }
-  
-// Custom validator function for validating a non-empty address
-addressNotEmptyValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const isValidAddress = this.isAddressNotEmpty(control.value);
-    return isValidAddress ? null : { addressEmpty: true };
-  };
-}
-    //Method to validate address to ensure the it's not an empty field
-    isAddressNotEmpty(address: any): boolean {
-      // Check if all address fields (street, city, state, and zip) are not empty
-      return !!address?.street && !!address?.city && !!address?.state && !!address?.zip;
-    }
-  
+
+  addressNotEmptyValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value.trim() === '') {
+        return { addressNotEmpty: true }; // Return validation error if the input is empty or contains only whitespaces
+      }
+
+      return null; // Return null if the input is not empty
+    };
+  }
   
 }
