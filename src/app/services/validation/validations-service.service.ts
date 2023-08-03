@@ -84,18 +84,25 @@ export class ValidationsServiceService {
     };
   }
  
-  //Custom ID number validators function
   idNumberValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidID = this.validateIDno(control.value);
-      return isValidID ? null : { invalidID: true };
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value === undefined || value === '') {
+        return null; // Return null for optional fields
+      }
+
+      // Define the ID number pattern that you want to enforce (e.g., 12 digits)
+      const idNumberPattern = /^\d{12}$/;
+
+      if (idNumberPattern.test(value)) {
+        return null; // Return null if the ID number matches the pattern
+      }
+
+      return { idNumber: true }; // Return validation error
     };
   }
-  //Method to validate ID number
-  validateIDno(id: string): boolean {
-    const idRegex = /^\d{13}$/;
-    return idRegex.test(id);
-  }
+
  
 
   phoneNumberValidator(): ValidatorFn {
