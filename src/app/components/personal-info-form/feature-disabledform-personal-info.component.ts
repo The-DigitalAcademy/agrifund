@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 
@@ -8,7 +8,7 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
   styleUrls: ['./feature-disabledform-personal-info.component.css']
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
-personalInfoProgress: number=0;
+  @Input()personalInfoProgress: number=0;
 
 onCancelClicked() {
 throw new Error('Method not implemented.');
@@ -62,6 +62,7 @@ throw new Error('Method not implemented.');
       this.calculateProgress();
     }
   // Method to calculate the progress percentage for the form
+ 
   calculateProgress() {
     const formControls = this.myForm.controls;
     const totalFields = Object.keys(formControls).length;
@@ -73,9 +74,8 @@ throw new Error('Method not implemented.');
       }
     }
 
-    this.personalInfoProgress = (filledFields / totalFields) * 100;
+    this.personalInfoProgress = (filledFields / totalFields) * 50;
   }
-
 
 
   //validations
