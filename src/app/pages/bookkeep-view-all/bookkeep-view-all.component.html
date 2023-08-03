@@ -14,7 +14,7 @@
 
             <div class="actions">
                 <div class="justify-start">
-                    <button printSectionId="print-section" ngxPrint class="btn colourful-btn" (click)="makePdf">
+                    <button printSectionId="print-section" printTitle="Farmer Bookkeep Records" ngxPrint class="btn colourful-btn" (click)="makePdf">
                         <span class="justify-center">
                             <fa-icon icon="file-download"></fa-icon>
                             Get Report
@@ -111,10 +111,10 @@
                     </div>
                 </div>
                 <div id="print-section" #content>
-
-                    <div class="container record-table">
-                        <table class="table mobile-hidden">
-                            <thead>
+                    <div id="watermark">AGRIFUND</div>
+                        <div class="container record-table">
+                            <table class="table mobile-hidden">
+                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Type</th>

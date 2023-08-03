@@ -214,12 +214,4 @@ tr,
 
 /* hiding components to be printed  */
 
-@media print {
-    .printable {
-      visibility: visible;
-      top: 0;
-      left:0;
-      position:absolute;
-    }
-    
-}
+

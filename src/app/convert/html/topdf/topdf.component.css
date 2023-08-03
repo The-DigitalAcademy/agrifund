@@ -1,0 +1,12 @@
+@media print {
+    .printable {
+      visibility: visible;
+      top: 23%;
+      right:123%;
+      position:absolute;
+    }
+    
+}
+.watermark {
+    color: var(--primary-color)
+}

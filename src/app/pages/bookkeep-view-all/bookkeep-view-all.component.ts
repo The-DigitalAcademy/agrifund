@@ -8,23 +8,8 @@ import jsPDF from 'jspdf';
     styleUrls: ['./bookkeep-view-all.component.css'],
 })
 export class BookkeepViewAllComponent{
-    @ViewChild('content',{static:false}) el!: ElementRef
-
-    title = 'angularpdfgenerator';
-makePdf() {
-    let pdf = new jsPDF()
-    pdf.html(this.el.nativeElement, {
-        callback: (pdf) => {
-          // save this pdf doc
-  
-          pdf.save("sample.pdf")
-        //   </style></head><body><p>hi there</p></body></html>";
-        // var pageWidth = 500;
-        // var pageHeight = 295;
-        }
-    })
-}
-
+makePdf: any;
+   
     constructor( private router: Router){}
   
     counter(i: number) {
