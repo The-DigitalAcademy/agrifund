@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class BookkeepServiceService {
+    constructor() {}
 
-  constructor() { }
+    // TODO
+    // update income statement total income
+
+    // TODO
+    // update income statement total expense
+
+    // TODO
+    // update income statement total net income (profit)
 }

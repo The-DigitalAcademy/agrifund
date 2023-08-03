@@ -3,7 +3,7 @@
         <app-navbar></app-navbar>
     </div>
     <div class="col-lg-2 sidebar mobile-hidden">
-        <hr>
+        <hr />
         <app-sidebar></app-sidebar>
     </div>
     <div class="col-lg-10 page-content">
@@ -21,13 +21,13 @@
                     </button>
                 </div>
                 <div class="date-filter justify-end">
-                    <div class="form-input mobile-hidden">
+                    <div class="date-input form-input mobile-hidden">
                         <label for="fromDate" class="form-label">From</label>
-                        <input type="date" class="form-control" id="fromDate">
+                        <input type="date" class="form-control" id="fromDate" />
                     </div>
-                    <div class="form-input mobile-hidden">
+                    <div class="date-input form-input mobile-hidden">
                         <label for="toDate" class="form-label">To</label>
-                        <input type="date" class="form-control" id="toDate">
+                        <input type="date" class="form-control" id="toDate" />
                     </div>
 
                     <button class="btn icon-btn large-hidden">
@@ -37,7 +37,6 @@
                         </span>
                     </button>
                 </div>
-
             </div>
             <div class="row card-summary single-row mobile-hidden">
                 <div class="col-4">
@@ -58,8 +57,6 @@
                         <h2 class="amount">R 800.00</h2>
                     </div>
                 </div>
-
-
             </div>
             <div class="row card-summary stacked large-hidden">
                 <div class="row">
@@ -87,10 +84,11 @@
             </div>
 
             <div class="container bookkeep-actions">
-
                 <div class="actions">
                     <div class="justify-start">
-                        <button class="btn colourful-btn" [routerLink]="['/bookkeep/create-record']">
+                        <button
+                            class="btn colourful-btn"
+                            [routerLink]="['/bookkeep/create-record']">
                             <span>
                                 <fa-icon icon="plus"></fa-icon>
                                 Create Record
@@ -99,11 +97,15 @@
                     </div>
 
                     <div class="search justify-end">
-
                         <div class="input-group justify-end">
-                            <input class="form-control searchbar mobile-hidden" type="text" name="search"
-                                autocomplete="off">
-                            <button type="button" class="btn colourful-btn search-btn">
+                            <input
+                                class="form-control searchbar mobile-hidden"
+                                type="text"
+                                name="search"
+                                autocomplete="off" />
+                            <button
+                                type="button"
+                                class="btn colourful-btn search-btn">
                                 <fa-icon icon="search"></fa-icon>
                             </button>
                         </div>
@@ -114,7 +116,7 @@
                     <table class="table mobile-hidden">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Date Added</th>
                                 <th scope="col">Amount</th>
@@ -122,12 +124,12 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody *ngFor="let record of counter(10)">
+                        <tbody *ngFor="let record of bookkeepRecords">
                             <tr class="record-tr" (click)="viewRecordDetails()">
-                                <td scope="row">Bought Seeds</td>
-                                <td>Money Out</td>
+                                <td scope="row">{{ record.description }}</td>
+                                <td>{{ record.category }}</td>
                                 <td>22/12/2022</td>
-                                <td>R 1,200.00</td>
+                                <td>{{ record.amount }}</td>
                                 <td>No</td>
                                 <td>
                                     <div class="action-buttons">
@@ -136,57 +138,48 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="record-tr" (click)="viewRecordDetails()">
-                                <td scope="row">Sold Produce</td>
-                                <td>Money In</td>
-                                <td>13/12/2022</td>
-                                <td>R 1,200.00</td>
-                                <td>Yes</td>
-                                <div class="action-buttons">
-                                    <div class="delete-btn"></div>
-                                    <div class="view-btn"></div>
-                                </div>
-                            </tr>
                         </tbody>
                     </table>
 
-                    <div class="large-hidden" *ngFor="let record of counter(10); last as isLast">
+                    <div
+                        class="large-hidden"
+                        *ngFor="let record of bookkeepRecords; last as isLast">
                         <div class="info" (click)="viewRecordDetails()">
                             <div class="left justify-start">
-                                <p class="bold">Bought Seeds</p>
-                                <p class="greyed">22/12/2022</p>
+                                <p class="bold justify-start">
+                                    {{ record.description }}
+                                </p>
+                                <p class="greyed justify-start">22/12/2022</p>
                             </div>
                             <div class="right justify-end">
-                                <p class="bold">R 1,200.00</p>
-                                <p class="greyed">Money Out</p>
+                                <p class="bold justify-end">
+                                    {{ record.amount }}
+                                </p>
+                                <p class="greyed justify-end">
+                                    {{ record.category }}
+                                </p>
                             </div>
                         </div>
-                        <hr>
-                        <div class="info" (click)="viewRecordDetails()">
-                            <div class="left justify-start">
-                                <p class="bold">Sold Produce</p>
-                                <p class="greyed">22/12/2022</p>
-                            </div>
-                            <div class="right justify-end">
-                                <p class="bold">R 1,200.00</p>
-                                <p class="greyed">Money In</p>
-                            </div>
-                        </div>
-                        <hr *ngIf="!isLast ">
+                        <hr *ngIf="!isLast" />
                     </div>
 
-
-                    <hr>
-                    <nav class=" actions justify-center">
+                    <hr />
+                    <nav class="actions justify-center">
                         <ul class="pagination">
                             <li class="page-item">
                                 <a class="page-link" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link">1</a></li>
-                            <li class="page-item"><a class="page-link">2</a></li>
-                            <li class="page-item"><a class="page-link">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link">3</a>
+                            </li>
                             <li class="page-item">
                                 <a class="page-link" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
@@ -194,7 +187,6 @@
                             </li>
                         </ul>
                     </nav>
-
                 </div>
             </div>
         </div>
