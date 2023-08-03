@@ -46,16 +46,16 @@ h1{
   .form-check-input[type="checkbox"] {
     appearance: none;
     border: var( --thin-border) solid var(--lighter-grey); 
-    border-radius: var(--thick-border);
+    border-radius: 2px;
   }
   
   .progress-bar {
     width: 100%;
-    height: var( --large-s);
+    height: var( --x-large-s);
     background-color: #f0f0f0; /* Set the background color for the progress bar container */
-    border-radius: var(-border-radius);
+    border-radius: 3px;
     overflow: hidden;
-    margin-bottom: var( --large-s);
+    margin-bottom: var( --x-large-s);
 
   }
   
@@ -70,7 +70,8 @@ h1{
     justify-content: center;
     margin-top: var(--normal-s);
     width: 100%;
-    border: var( --thin-border) solid var(--lighter-grey);
+    border-radius: var(--thin-border);
+    border: 2px solid var(--lighter-grey);
   }
   
   .container-feedback h2,
@@ -78,6 +79,9 @@ h1{
   .container-feedback .actions {
     text-align: center;
     margin-top: var(--normal-s);
+  }
+  .checklist{
+    margin-bottom: 30px;
   }
   
 
