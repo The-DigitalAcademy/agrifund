@@ -30,3 +30,7 @@ h2 {
 .actions{
     margin-bottom: var(--normal-s) !important;
 }
+
+.text-danger{
+    margin-top: var(--s-small-s) !important;
+}

@@ -14,7 +14,7 @@ import { IncomeStatementItem } from 'src/app/models/income-statement-item';
     styleUrls: ['./bookkeep-create.component.css'],
 })
 export class BookkeepCreateComponent implements OnInit {
-    createRecord!: FormGroup;
+    createRecordForm!: FormGroup;
     submitted = false;
     recordType: any = ['Money In', 'Money Out'];
 
@@ -26,7 +26,7 @@ export class BookkeepCreateComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.createRecord = this.fb.group({
+        this.createRecordForm = this.fb.group({
             recordName: ['', [Validators.required]],
             recordType: ['', [Validators.required]],
             recordAmount: ['', [Validators.required]],
@@ -36,10 +36,10 @@ export class BookkeepCreateComponent implements OnInit {
 
     saveRecord() {
         this.submitted = true;
-        if (this.createRecord.valid) {
+        if (this.createRecordForm.valid) {
 
 
-            console.table(this.createRecord.value);
+            console.table(this.createRecordForm.value);
         }
     }
 }

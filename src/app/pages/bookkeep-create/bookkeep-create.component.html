@@ -18,7 +18,7 @@
         </div>
         <hr />
         <div class="content">
-            <form [formGroup]="createRecord" (ngSubmit)="saveRecord()">
+            <form [formGroup]="createRecordForm" (ngSubmit)="saveRecord()">
                 <div class="form-input" id="label">
                     <label for="recordName" class="form-label">
                         Name of Record
@@ -49,8 +49,17 @@
                             {{ type }}
                         </option>
                     </select>
-                    <!-- (change)="changeRecordType($event)" -->
-                    <div class="form-text feedback"></div>
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordType'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordType'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please select a record type.
+                    </div>
                 </div>
                 <div class="form-input" id="label">
                     <label for="recordAmount" class="form-label">
@@ -64,7 +73,9 @@
                             class="form-control"
                             id="recordAmount" />
                     </div>
-                    <div class="form-text feedback"></div>
+                    <div class="form-text text-danger">
+                        <!-- *ngIf="isSubmitted && recordProof?.invalid"> -->
+                    </div>
                 </div>
                 <div class="form-input" id="label">
                     <label for="recordProof" class="form-label">
@@ -85,7 +96,7 @@
                             class="form-control"
                             type="file"
                             id="recordProof" />
-                        <div class="form-text feedback">
+                        <div class="form-text text-danger">
                             <!-- *ngIf="isSubmitted && recordProof?.invalid"> -->
                         </div>
                     </div>
