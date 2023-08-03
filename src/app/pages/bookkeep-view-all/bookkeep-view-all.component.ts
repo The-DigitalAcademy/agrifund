@@ -17,19 +17,16 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
         private _apiService: ApiService
     ) {}
 
-    counter(i: number) {
-        return new Array(i);
-    }
-
-    viewRecordDetails() {
-        this.router.navigate(['bookkeep/view-record']);
+    viewRecordDetails(recordId: number) {
+        // console.log(recordId);
+        this.router.navigate(['bookkeep/view-record', recordId]);
     }
 
     ngOnInit() {
         this._apiService.getAllStatementItems().subscribe((records: any) => {
             // console.table(products);
             this.bookkeepRecords = records; //populate bookkeepRecords array with records from api
-            console.log(this.bookkeepRecords);
+            // console.log(this.bookkeepRecords);
         });
     }
 
