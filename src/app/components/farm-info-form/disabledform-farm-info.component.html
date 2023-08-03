@@ -70,10 +70,10 @@
       </div>
 
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Reason for needing funding:</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="reasonForFunding"
+        <label for="reasonForFunding" class="form-label">Reason for needing funding:</label>
+        <input type="text" class="form-control" id="reasonForFunding" formControlName="reasonForFunding"
                [disabled]="isDisabled">
-               
+               <small *ngIf="myForm.controls['reasonForFunding'].hasError('required') && myForm.controls['reasonForFunding'].dirty" class="text-danger">Field is required.</small> 
       </div>
       <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
