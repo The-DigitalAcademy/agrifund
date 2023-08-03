@@ -13,33 +13,20 @@
       "type": "http",
       "documentation": "",
       "method": "get",
-      "endpoint": "income-statement{statementId}",
+      "endpoint": "getAllIncomeStatementItems",
       "responses": [
         {
           "uuid": "26baa429-ac3b-43b4-9765-2a4ff9bd00bb",
-          "body": "[\n  {{#repeat 2}}\n  {\n  \"userId\": \"{{urlParam 'id'}}\",\n  \"name\": \"{{queryParam 'name' 'John'}}\",\n  \"lang\": \"{{{header 'Accept-Language' 'en'}}}\",\n  \"elementTitle\": \"{{body 'elements.0.title' 'default'}}\",\n  \"friends\": [\n  ], \n  \"oneItem\": \"{{oneOf (array 'item1' 'item2' 'item3')}}\", \n  \"someItemsAsString\": \"{{someOf (array 'item1' 'item2' 'item3') 1 2}}\", \n  \"someItemsAsArray\": {{{someOf (array 'item1' 'item2' 'item3') 1 2 true}}}, \n  \"userName\": \n    {{#switch (urlParam 'id')}}\n      {{#case '1'}}\"John\"{{/case}}\n      {{#case '2'}}\"Jack\"{{/case}}\n      {{#default}}\"Peter\"{{/default}}\n    {{/switch}}\n}\n{{/repeat}}\n]",
+          "body": "{}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
+          "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "params",
-              "modifier": "statementId",
-              "value": "",
-              "invert": false,
-              "operator": "null"
-            }
-          ],
+          "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
@@ -209,7 +196,7 @@
           "statusCode": 200,
           "label": "",
           "headers": [],
-          "bodyType": "INLINE",
+          "bodyType": "DATABUCKET",
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,

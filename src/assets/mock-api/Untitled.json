@@ -1,0 +1,126 @@
+{
+  "uuid": "077d85ba-98a8-4ead-ad0e-156a57666fa1",
+  "lastMigration": 28,
+  "name": "Authentication",
+  "endpointPrefix": "v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "routes": [
+    {
+      "uuid": "2628db83-877c-4fe9-af1e-d76c65245ae7",
+      "documentation": "Request Authentication Token",
+      "method": "post",
+      "endpoint": "auth",
+      "responses": [
+        {
+          "uuid": "2285d4c0-492f-41ce-85ac-b06a4d56b52d",
+          "body": "{\n  \"data\": {},\n  \"success\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "f89beb3c-e106-4b11-a004-400608cadaaf",
+          "body": "{\n\"response\" :\"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "17465a1b-c7bd-4999-ace9-6a2673481077",
+          "body": "$ curl http://localhost:3000/ -i\nHTTP/1.1 401 Unauthorized\nContent-Type: application/json; charset=utf-8\nContent-Length: 25\nDate: Tue, 07 Feb 2023 15:07:59 GMT\nConnection: keep-alive\nKeep-Alive: timeout=5\n\n{\n  \"response\": \"error\"\n}\n$ curl http://localhost:3000/ -i -H \"Authorization:abcd\"\nHTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nContent-Length: 27\nDate: Tue, 07 Feb 2023 15:04:58 GMT\nConnection: keep-alive\nKeep-Alive: timeout=5\n\n{\n  \"response\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "folders": [],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "2628db83-877c-4fe9-af1e-d76c65245ae7"
+    }
+  ]
+}

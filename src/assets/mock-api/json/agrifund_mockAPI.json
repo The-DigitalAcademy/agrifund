@@ -1,6 +1,6 @@
 {
   "uuid": "330ca689-ae88-41c2-b1f8-86ae709e47f1",
-  "lastMigration": 27,
+  "lastMigration": 28,
   "name": "Agrifund_Mock_API",
   "endpointPrefix": "agrifund/api/v1",
   "latency": 0,
@@ -47,7 +47,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         },
         {
           "uuid": "9ea37855-b2cf-4508-8362-dfc39e174eda",
@@ -69,7 +70,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false
+          "default": false,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -97,7 +99,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -125,7 +128,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -153,7 +157,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -181,7 +186,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -209,7 +215,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -229,15 +236,16 @@
           "statusCode": 200,
           "label": "",
           "headers": [],
-          "bodyType": "INLINE",
+          "bodyType": "DATABUCKET",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "2pyr",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -265,7 +273,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -293,7 +302,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -321,7 +331,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -349,7 +360,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -377,7 +389,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -405,7 +418,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -433,7 +447,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -466,7 +481,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -494,7 +510,42 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b2c8a699-5702-42e1-bef2-cfe509742b65",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "Users",
+      "responses": [
+        {
+          "uuid": "8c111d6e-cbb8-4bff-abd9-c80a63530b58",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "2pyr",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -565,6 +616,10 @@
     {
       "type": "route",
       "uuid": "0ec5da99-5e37-4dcc-9e18-510f7d40ae60"
+    },
+    {
+      "type": "route",
+      "uuid": "b2c8a699-5702-42e1-bef2-cfe509742b65"
     }
   ],
   "proxyMode": false,
@@ -628,6 +683,13 @@
       "name": "incomeStatements",
       "documentation": "",
       "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"statementDate\": \"{{dateFormat (faker 'date.recent') 'yyyy-MM-dd'}}\", \n  \"totalIncome\": \"{{toFixed (float 0 5000) 2}}\",\n  \"totalExpenses\": \"{{toFixed (float 0 5000) 2}}\", \n  \"netIncome\": \"{{toFixed (float 0 5000) 2}}\"\n  }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "58784b95-1e7a-47b7-a0b8-41c5688e3f8e",
+      "id": "2pyr",
+      "name": "users",
+      "documentation": "",
+      "value": "\n[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
     }
   ]
 }
