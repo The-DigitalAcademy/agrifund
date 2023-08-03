@@ -8,20 +8,26 @@ export class ValidationsServiceService {
 
   constructor() { }
 
-// Custom password validator function
   passwordValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidPassword = this.validatePassword(control.value);
-      return isValidPassword ? null : { invalidPassword: true };
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null; // Return null if the field is empty (optional validation)
+      }
+
+      // Check for password requirements here (e.g., minimum length, uppercase, lowercase, and numbers)
+      const minLength = 8;
+      const hasUppercase = /[A-Z]/.test(value);
+      const hasLowercase = /[a-z]/.test(value);
+      const hasNumbers = /\d/.test(value);
+
+      if (value.length < minLength || !hasUppercase || !hasLowercase || !hasNumbers) {
+        return { invalidPassword: true };
+      }
+
+      return null;
     };
   }
-  //Method to validates password
-  // We are checking if the password meets minimum requirements such as length, uppercase, lowercase, digits, special characters)
-  validatePassword(password: string): boolean {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordRegex.test(password);
-  }
-
   emailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
