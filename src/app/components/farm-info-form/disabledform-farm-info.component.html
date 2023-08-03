@@ -39,34 +39,44 @@
   <div class="sub-container">
     <form [formGroup]="myForm">
       <div class="form-input">
-        <label for="exampleInputEmail1" class="form-label">Location of my farm</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               formControlName="locationOfFarm" [disabled]="isDisabled">
+        <label for="farm" class="form-label">Location of my farm</label>
+        <input type="text" class="form-control" id="farm" aria-describedby="farm"
+               formControlName="farm" [disabled]="isDisabled">
+               <!-- <small *ngIf="myForm.controls['farm'].hasError('addressLength') && myForm.controls['farm'].dirty" class="text-danger">Invalid format.</small> -->
+               <small *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty" class="text-danger">Field is required.</small>
       </div>
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Size of farm (ha)</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="sizeOfFarm"
+        <label for="size" class="form-label">Size of farm (ha)</label>
+        <input type="text" class="form-control" id="size" formControlName="size"
                [disabled]="isDisabled">
+               <small *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</small>
+
       </div>
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Years using this farm</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="yearsUsingFarm"
+        <label for="years" class="form-label">Years using this farm</label>
+        <input type="text" class="form-control" id="years" formControlName="years"
                [disabled]="isDisabled">
+               <small *ngIf="myForm.controls['years'].hasError('isNumeric') && myForm.controls['years'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['years'].hasError('required') && myForm.controls['years'].dirty" class="text-danger">Field is required.</small>
       </div>
    
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Number of people that help you farm</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="numberOfPeople"
+        <label for="num_employee" class="form-label">Number of people that help you farm</label>
+        <input type="text" class="form-control" id="num_employee" formControlName="num_employee"
                [disabled]="isDisabled">
+               <small *ngIf="myForm.controls['num_employee'].hasError('isNumeric') && myForm.controls['num_employee'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['num_employee'].hasError('required') && myForm.controls['num_employee'].dirty" class="text-danger">Field is required.</small>       
       </div>
 
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Reason for needing funding:</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="reasonForFunding"
+        <label for="reasonForFunding" class="form-label">Reason for needing funding:</label>
+        <input type="text" class="form-control" id="reasonForFunding" formControlName="reasonForFunding"
                [disabled]="isDisabled">
+               <small *ngIf="myForm.controls['reasonForFunding'].hasError('required') && myForm.controls['reasonForFunding'].dirty" class="text-danger">Field is required.</small> 
       </div>
       <div class="button-container">
-        <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn btn-width">Save</button>
+        <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid" class="btn colourful-btn btn-width">Save</button>
         <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
       </div>
 

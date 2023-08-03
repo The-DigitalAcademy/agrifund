@@ -16,48 +16,46 @@
                             </button>
                         </div>
                     </div>
+                    <div class="form-input">
+                        <label for="first_name">First Name:</label><br />
+                        <input formControlName="first_name" class="form-control" id="firstNameInput" />
+                            <small *ngIf="RegisterForm.controls['first_name'].hasError('invalidName') && RegisterForm.controls['first_name'].dirty" class="text-danger">Invalid format.</small>
+                            <small *ngIf="RegisterForm.controls['first_name'].hasError('textWithoutNumbers') && RegisterForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</small>
+                            <small *ngIf="RegisterForm.controls['first_name'].hasError('required') && RegisterForm.controls['first_name'].dirty" class="text-danger">Field is required.</small>
+                    </div>
+                    <div class="form-input">
+                        <label for="last_name">Last Name:</label><br />
+                        <input formControlName="last_name" class="form-control" id="lastNameInput" />
+                        <small *ngIf="RegisterForm.controls['last_name'].hasError('invalidName') && RegisterForm.controls['last_name'].dirty" class="text-danger">Invalid format.</small>
+                        <small *ngIf="RegisterForm.controls['last_name'].hasError('textWithoutNumbers') && RegisterForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
+                        <small *ngIf="RegisterForm.controls['last_name'].hasError('required') && RegisterForm.controls['last_name'].dirty" class="text-danger">Field is required.</small>
+                    </div>
+                    <div class="form-input"> 
+                        <label for="id_number">ID Number:</label><br />
+                        <input formControlName="id_number" class="form-control" id="idnumInput" />
+                        <small *ngIf="RegisterForm.controls['id_number'].hasError('idNumber') && RegisterForm.controls['id_number'].dirty" class="text-danger">Invalid format.</small>
+                        <small *ngIf="RegisterForm.controls['id_number'].hasError('idNumberValidator') && RegisterForm.controls['id_number'].dirty" class="text-danger">The ID number should contain 13 digits.</small>
+                        <small *ngIf="RegisterForm.controls['id_number'].hasError('required') && RegisterForm.controls['id_number'].dirty" class="text-danger">Field is required.</small>
 
-                    <div class="form-input">
-                        <label for="name">Name:</label><br />
-                        <input
-                            formControlName="name"
-                            class="form-control"
-                            id="NameInput" />
                     </div>
                     <div class="form-input">
-                        <label for="surname">Surname:</label><br />
-                        <input
-                            formControlName="surname"
-                            class="form-control"
-                            id="surnameInput" />
+                        <label for="cell_number" class="form-label">Cell Number:</label>
+                        <input formControlName="cell_number" class="form-control" id="phoneNumberInput">
+                          <small *ngIf="RegisterForm.controls['cell_number'].hasError('invalidPhoneNumber') && RegisterForm.controls['cell_number'].dirty" class="text-danger">Invalid phoneNumber.</small>
+                          <small *ngIf="RegisterForm.controls['cell_number'].hasError('required') && RegisterForm.controls['cell_number'].dirty" class="text-danger">Field is required.</small>
+                      </div>
+                    <div class="form-input">
+                        <label for="password">Password:</label><br /><input formControlName="password" class="form-control" id="passwordInput" />
+                        <small *ngIf="RegisterForm.controls['password'].hasError('invalidPassword') && RegisterForm.controls['password'].dirty" class="text-danger">Invalid format.</small>
+                        <small *ngIf="RegisterForm.controls['password'].hasError('passwordValidator') && RegisterForm.controls['password'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers</small>
+                        <small *ngIf="RegisterForm.controls['password'].hasError('required') && RegisterForm.controls['password'].dirty" class="text-danger">Field is required.</small>
+
                     </div>
                     <div class="form-input">
-                        <label for="surname">ID Number:</label><br />
-                        <input
-                            formControlName="id"
-                            class="form-control"
-                            id="idnumInput" />
-                    </div>
-                    <div class="form-input">
-                        <label for="name">Cell Number:</label><br />
-                        <input
-                            formControlName="cellNo"
-                            class="form-control"
-                            id="cellNoInput" />
-                    </div>
-                    <div class="form-input">
-                        <label for="password">Password:</label><br />
-                        <input
-                            formControlName="password"
-                            class="form-control"
-                            id="passwordInput" />
-                    </div>
-                    <div class="form-input">
-                        <label for="password">Confirm Password:</label><br />
-                        <input
-                            formControlName="Cpassword"
-                            class="form-control"
-                            id="CpasswordInput" />
+                        <label for="cpassword">Confirm Password:</label><br /><input formControlName="cpassword" class="form-control" id="cpassword" />
+                        <small *ngIf="RegisterForm.controls['cpassword'].hasError('passwordsNotMatch') && RegisterForm.controls['cpassword'].dirty" class="text-danger">Invalid format.</small>
+                        <small *ngIf="RegisterForm.controls['cpassword'].hasError('passwordsMatchValidator') && RegisterForm.controls['cpassword'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers</small>
+                        <small *ngIf="RegisterForm.controls['cpassword'].hasError('required') && RegisterForm.controls['cpassword'].dirty" class="text-danger">Field is required.</small>
                     </div>
                     <div class="form-group ">
                         <button

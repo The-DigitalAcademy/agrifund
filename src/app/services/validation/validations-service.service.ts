@@ -8,6 +8,23 @@ export class ValidationsServiceService {
 
   constructor() { }
 
+  passwordsMatchValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const password = control.get('password');
+      const confirmPassword = control.get('confirmPassword');
+
+      if (!password || !confirmPassword) {
+        return null; // Return null if either field is not available (optional validation)
+      }
+
+      if (password.value !== confirmPassword.value) {
+        return { passwordsNotMatch: true }; // Return error if passwords do not match
+      }
+
+      return null; // Return null if passwords match
+    };
+  }
+
   passwordValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
@@ -65,7 +82,7 @@ export class ValidationsServiceService {
 
       return { invalidPositiveNumber: true }; // Return validation error
     };
-  }
+  } 
 
   isNumericValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -93,7 +110,7 @@ export class ValidationsServiceService {
       }
 
       // Define the ID number pattern that you want to enforce (e.g., 12 digits)
-      const idNumberPattern = /^\d{12}$/;
+      const idNumberPattern = /^\d{13}$/;
 
       if (idNumberPattern.test(value)) {
         return null; // Return null if the ID number matches the pattern
@@ -145,19 +162,15 @@ export class ValidationsServiceService {
       return null; // Return null if the input does not contain numbers
     };
   }
-
-  addressNotEmptyValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-
-      if (value === null || value.trim() === '') {
-        return { addressNotEmpty: true }; // Return validation error if the input is empty or contains only whitespaces
-      }
-
-      return null; // Return null if the input is not empty
-    };
+  
+  // Custom address length validator (between 20 to 100 words)
+   addressLengthValidator(control: AbstractControl): ValidationErrors | null {
+    const address = control.value as string;
+    const wordCount = address.trim().split(/\s+/).length;
+    if (wordCount < 20 || wordCount > 100) {
+      return { addressLength: true };
+    }
+    return null;
   }
-  
-  
-  
 }
+

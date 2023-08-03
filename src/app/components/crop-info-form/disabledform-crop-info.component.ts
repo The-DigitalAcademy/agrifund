@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
@@ -15,24 +16,28 @@ export class DisabledformCropInfoComponent implements OnInit {
   myForm!: FormGroup;
   isDisabled: boolean = true;
   editedData: any = null;
+  originalFormValues: any;
   
  
 
-  constructor(private fb: FormBuilder, private progressService: ProgressService) { }
+  constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService, private progressService: ProgressService) { }
 
   ngOnInit() {
     this.farmerData = { // Replace this with the actual farmer data
       seasonFarm: 'Spring',
-      selectedCrops: 'Potatoes', // Selected crops as an array
+      crop_name: 'Potatoes', // Selected crops as an array
       seedsAmount: '70'
     };
 
     this.myForm = this.fb.group({
       seasonFarm: new FormControl({ value: this.farmerData.seasonFarm, disabled: true }),
-      selectedCrops: new FormControl({ value: this.farmerData.selectedCrops, disabled: true }),
-      seedsAmount: new FormControl({ value: this.farmerData.seedsAmount, disabled: true }),
+      crop_name: new FormControl({ value: this.farmerData.crop_name, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]),
+      seedsAmount: new FormControl({ value: this.farmerData.seedsAmount, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),
       cropsInfo: new FormControl({ value: this.farmerData.selectedCrops, disabled: true }) // Include the cropsInfo field
     });
+
+    // Save the initial form values
+    this.originalFormValues = this.farmerData;
   }
 
   enableFields() {
@@ -56,8 +61,13 @@ export class DisabledformCropInfoComponent implements OnInit {
   }
 
   onCancelClicked() {
-    // Implement your cancel logic here
-  }
+    // Reset the form values to the original values
+ this.myForm.patchValue(this.originalFormValues);
+ 
+ // Disable the form fields again
+ this.isDisabled = true;
+ this.myForm.disable();
+   }
 
   
 }

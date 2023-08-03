@@ -27,17 +27,17 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
   ngOnInit() {
     const userData = {
-      firstName: 'John',
-      lastName: 'Doe',
+      first_name: 'John',
+      last_name: 'Doe',
       email: 'john@example.com',
       phoneNumber: '0607566762'
     };
   
     this.myForm = this.fb.group({
-      firstName: new FormControl({ value: userData.firstName, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
-      lastName: new FormControl({ value: userData.lastName, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
+      first_name: new FormControl({ value: userData.first_name, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
+      last_name: new FormControl({ value: userData.last_name, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
-      phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
+      cell_number: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
     });
     
