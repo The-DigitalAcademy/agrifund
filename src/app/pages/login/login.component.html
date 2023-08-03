@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <button
-                            type="submit"
+                            type="submit" [disabled]="!LoginForm.valid"
                             class="btn actions colourful-btn"
                             [routerLink]="['/bookkeep']">
                             <fa-icon icon="user"></fa-icon>
