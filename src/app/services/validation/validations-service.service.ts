@@ -162,17 +162,15 @@ export class ValidationsServiceService {
       return null; // Return null if the input does not contain numbers
     };
   }
-
-  addressNotEmptyValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-
-      if (value === null || value.trim() === '') {
-        return { addressNotEmpty: true }; // Return validation error if the input is empty or contains only whitespaces
-      }
-
-      return null; // Return null if the input is not empty
-    };
-  }
   
+  // Custom address length validator (between 20 to 100 words)
+   addressLengthValidator(control: AbstractControl): ValidationErrors | null {
+    const address = control.value as string;
+    const wordCount = address.trim().split(/\s+/).length;
+    if (wordCount < 20 || wordCount > 100) {
+      return { addressLength: true };
+    }
+    return null;
+  }
 }
+

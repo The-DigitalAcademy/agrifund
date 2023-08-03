@@ -39,9 +39,11 @@
   <div class="sub-container">
     <form [formGroup]="myForm">
       <div class="form-input">
-        <label for="exampleInputEmail1" class="form-label">Location of my farm</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <label for="farm" class="form-label">Location of my farm</label>
+        <input type="text" class="form-control" id="farm" aria-describedby="farm"
                formControlName="locationOfFarm" [disabled]="isDisabled">
+               <small *ngIf="myForm.controls['farm'].hasError('addressLength') && myForm.controls['farm'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty" class="text-danger">Field is required.</small>
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Size of farm (ha)</label>
