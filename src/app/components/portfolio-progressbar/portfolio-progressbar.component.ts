@@ -10,6 +10,7 @@ import { ProgressService } from 'src/app/services/progress.service';
 export class PortfolioProgressbarComponent {
 
   @Input() progressPercentage: number = 0;
+  
   checklistForm!: FormGroup;
 
 

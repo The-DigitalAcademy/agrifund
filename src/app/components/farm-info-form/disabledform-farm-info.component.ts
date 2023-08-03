@@ -8,6 +8,7 @@ import { ProgressService } from 'src/app/services/progress.service';
   styleUrls: ['./disabledform-farm-info.component.css']
 })
 export class DisabledformFarmInfoComponent {
+ 
 onCancelClicked() {
 throw new Error('Method not implemented.');
 }
@@ -52,6 +53,7 @@ throw new Error('Method not implemented.');
     this.isDisabled = true;
     this.myForm.disable();
     this.progressService.setFarmInfoCompleted(true);
+    
   }
 
 }

@@ -19,6 +19,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
   editedData: any;
   farmerData: any;
   isDisabled: boolean = true;
+  originalFormValues: any;
+ 
   
 
   constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService, private progressService: ProgressService) { }
@@ -38,7 +40,10 @@ export class DisabledformPersonalInfoComponent implements OnInit {
       phoneNumber: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
       proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
     });
-
+    
+    // Save the initial form values
+  this.originalFormValues = userData;
+  
     
   }
   
@@ -63,13 +68,19 @@ export class DisabledformPersonalInfoComponent implements OnInit {
       this.myForm.disable();
       // Set personal info completion status to true
     this.progressService.setPersonalInfoCompleted(true);
+     
       
     }
  
  
     onCancelClicked() {
-      this.myForm.reset(); // Reset the form to its initial state
-      this.isDisabled = true; // Disable the form fields again
+
+    // Reset the form values to the original values
+  this.myForm.patchValue(this.originalFormValues);
+  
+  // Disable the form fields again
+  this.isDisabled = true;
+  this.myForm.disable();
     }
 
 

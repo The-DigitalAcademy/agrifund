@@ -15,6 +15,7 @@ export class DisabledformCropInfoComponent implements OnInit {
   myForm!: FormGroup;
   isDisabled: boolean = true;
   editedData: any = null;
+  
  
 
   constructor(private fb: FormBuilder, private progressService: ProgressService) { }
@@ -50,6 +51,7 @@ export class DisabledformCropInfoComponent implements OnInit {
     this.myForm.disable();
      // Set crop info completion status to true
      this.progressService.setCropInfoCompleted(true);
+     
    
   }
 
