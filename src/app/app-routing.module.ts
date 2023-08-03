@@ -23,8 +23,11 @@ const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
-    { path: 'bookkeep/view-record', component: BookkeepViewRecordComponent },
-    { path: 'bookkeep/create-record/:id', component: BookkeepCreateComponent },
+    {
+        path: 'bookkeep/view-record/:id',
+        component: BookkeepViewRecordComponent,
+    },
+    { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },

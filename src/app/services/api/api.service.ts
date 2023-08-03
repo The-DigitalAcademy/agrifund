@@ -31,6 +31,7 @@ export class ApiService {
         return this.http.get(`${this.statementsUrl}/${statementId}`);
     }
 
+    // get all bookkeeping records
     getAllStatementItems() {
         return this.http.get(`${this.statementItemsUrl}`);
     }
@@ -42,6 +43,7 @@ export class ApiService {
 
     // get a single income statement item
     getStatementItemById(recordId: number) {
+        console.log(`${this.statementItemsUrl}/${recordId}`);
         return this.http.get(`${this.statementItemsUrl}/${recordId}`);
     }
 
