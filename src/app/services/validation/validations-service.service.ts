@@ -67,28 +67,21 @@ export class ValidationsServiceService {
     };
   }
 
-
-  // Custom isNumeric validator function
   isNumericValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const isValidNumeric = this.isNumeric(control.value);
-      return isValidNumeric ? null : { invalidNumeric: true };
-    };
-  }
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
 
-    //This method below only accepts numbers
-   isNumeric(value: any): boolean {
-    if (typeof value === 'number') {
-      // Check if the value is a valid number (not NaN)
-      return !isNaN(value);
-    } else if (typeof value === 'string') {
-      // Convert the string to a number and check if it's a valid number (not NaN)
-      const numericValue = Number(value);
-      return !isNaN(numericValue);
-    } else {
-      // Not a number or a string, so it's not valid
-      return false;
-    }
+      if (value === null || value === undefined || value === '') {
+        return null; // Return null for optional fields
+      }
+
+      // Use a regular expression to check if the value contains only numeric characters
+      if (/^\d+$/.test(value)) {
+        return null; // Return null if it contains only numeric characters
+      }
+
+      return { isNumeric: true }; // Return validation error
+    };
   }
  
   //Custom ID number validators function
