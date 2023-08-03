@@ -24,7 +24,7 @@
     margin-bottom: var(--small-s)
   }
 
- 
+
 
 h1{
      font-size: var( --font-x-large);
@@ -61,8 +61,11 @@ h1{
   
   .progress {
     height: 100%;
-    background-color: #9BA66F 
-  }
+    background-color: #9BA66F ;
+    justify-content: center;
+    color: var(--white-2);
+    font-size: var( --font-large);}
+
   .container-feedback {
     display: flex;
     flex-direction: column;
@@ -72,6 +75,7 @@ h1{
     width: 100%;
     border-radius: var(--thin-border);
     border: 2px solid var(--lighter-grey);
+   
   }
   
   .container-feedback h2,
