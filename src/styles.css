@@ -696,6 +696,7 @@ hr {
     }
 
     .container {
+        width: 75%;
         padding: var(--medium-s);
     }
 
