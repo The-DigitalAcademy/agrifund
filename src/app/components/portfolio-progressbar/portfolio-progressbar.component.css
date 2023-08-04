@@ -44,8 +44,8 @@ h1{
   }
 
   .form-check-input[type="checkbox"] {
-    appearance: none;
-    border: var( --thin-border) solid var(--lighter-grey); 
+    
+    border: 2px solid var(--lighter-grey); 
     border-radius: 2px;
   }
   
