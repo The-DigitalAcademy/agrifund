@@ -78,6 +78,7 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BookkeepEditComponent } from './pages/bookkeep-edit/bookkeep-edit.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -101,6 +102,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
         EquipmentTableComponent,
         BookkeepCreateComponent,
         DashboardComponent,
+        BookkeepEditComponent,
     ],
     imports: [
         BrowserModule,
