@@ -15,8 +15,8 @@ import {
     OVERALL
 ---------------------------------*/
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
