@@ -5,15 +5,15 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
+import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
-import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
+import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
-import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
+import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [

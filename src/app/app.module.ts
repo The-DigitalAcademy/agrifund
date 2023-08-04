@@ -30,9 +30,9 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 /* --------------------------------
     BOOKKEEP 
 ---------------------------------*/
-import { BookkeepViewAllComponent } from './pages/bookkeep-view-all/bookkeep-view-all.component';
-import { BookkeepViewRecordComponent } from './pages/bookkeep-view-record/bookkeep-view-record.component';
-import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
+import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
+import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
+import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 
 /* --------------------------------
     PORTFOLIO
@@ -78,7 +78,7 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BookkeepEditComponent } from './pages/bookkeep-edit/bookkeep-edit.component';
+import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 @NgModule({
     declarations: [
         AppComponent,
