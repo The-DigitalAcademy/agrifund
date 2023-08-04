@@ -6,3 +6,31 @@
 .mobile-header {
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
+
+.content .btn,
+.actions .btn {
+    width: 150px;
+    /* margin: 0px var(--normal-s); */
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+
+    .page-body {
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+    }
+
+    .content .btn {
+        width: 80px;
+        margin: 0px var(--normal-s);
+    }
+
+    .actions .btn {
+        width: 100%;
+        margin: 0px var(--small-s);
+    }
+}

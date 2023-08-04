@@ -29,9 +29,9 @@ export class BookkeepEditComponent implements OnInit {
         this.getRecordDetails((this.id = this.route.snapshot.params['id']));
 
         this.editRecordForm = this.fb.group({
-            recordName: ['', [Validators.required]],
-            recordType: ['', [Validators.required]],
-            recordAmount: ['', [Validators.required]],
+            recordName: [this.record.description, [Validators.required]],
+            recordType: [this.record.category, [Validators.required]],
+            recordAmount: [this.record.amount, [Validators.required]],
             recordProof: ['', [Validators.required]],
         });
     }
