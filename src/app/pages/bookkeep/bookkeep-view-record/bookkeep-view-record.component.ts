@@ -37,4 +37,8 @@ export class BookkeepViewRecordComponent implements OnInit {
 
 
     }
+
+    editRecordDetails(recordId: any) {
+        this.router.navigate(['bookkeep/edit-record', recordId]);
+    }
 }

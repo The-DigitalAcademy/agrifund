@@ -15,6 +15,7 @@ import { EquipmentTableComponent } from './components/equipment-table/equipment-
 
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -25,11 +26,12 @@ const routes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
+    { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     {
         path: 'bookkeep/view-record/:id',
         component: BookkeepViewRecordComponent,
     },
-    { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
+    { path: 'bookkeep/edit-record/:id', component: BookkeepEditComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
