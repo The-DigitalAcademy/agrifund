@@ -20,6 +20,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
   farmerData: any;
   isDisabled: boolean = true;
   originalFormValues: any;
+submitted: boolean = false;
  
   
 

@@ -87,8 +87,7 @@
                         class="form-text text-danger"
                         *ngIf="
                             (createRecordForm.controls['recordAmount']
-                                .touched ||
-                                submitted) &&
+                                .touched) &&
                             createRecordForm.controls['recordAmount'].errors?.[
                                 'required'
                             ]
