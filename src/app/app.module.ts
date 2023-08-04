@@ -19,6 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 /* --------------------------------
     USER
 ---------------------------------*/
@@ -33,7 +34,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
 import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
-
+import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
@@ -77,32 +78,31 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         SidebarComponent,
-        DisabledformFarmInfoComponent,
+        LandingPageComponent,
+        GetStartedPageComponent,
+        DashboardComponent,
         RegisterComponent,
         LoginComponent,
         ForgotPasswordComponent,
         ResetPasswordComponent,
-        LandingPageComponent,
+        BookkeepViewAllComponent,
+        BookkeepViewRecordComponent,
+        BookkeepCreateComponent,
+        BookkeepEditComponent,
+        PortfolioViewInfoComponent,
+        PortfolioProgressbarComponent,
+        DisabledformFarmInfoComponent,
         DisabledformPersonalInfoComponent,
         DisabledformCropInfoComponent,
         EnableformCropInfoComponent,
-        PortfolioViewInfoComponent,
-        PortfolioProgressbarComponent,
-        BookkeepViewAllComponent,
-        GetStartedPageComponent,
-        BookkeepViewRecordComponent,
         EquipmentInfoComponent,
         EquipmentTableComponent,
-        BookkeepCreateComponent,
-        DashboardComponent,
-        BookkeepEditComponent,
     ],
     imports: [
         BrowserModule,
