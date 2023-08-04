@@ -38,14 +38,14 @@ import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-e
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
-import { DisabledformPersonalInfoComponent } from './components/personal-info-form/feature-disabledform-personal-info.component';
-import { EquipmentInfoComponent } from './components/equipment-info/equipment-info.component';
-import { DisabledformCropInfoComponent } from './components/crop-info-form/disabledform-crop-info.component';
-import { EnableformCropInfoComponent } from './components/enableform-crop-info/enableform-crop-info.component';
+import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
+import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
+import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
+import { EnableformCropInfoComponent } from './components/farmer/enableform-crop-info/enableform-crop-info.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
-import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
-import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
+import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
+import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 
 /* --------------------------------
     ICONS
