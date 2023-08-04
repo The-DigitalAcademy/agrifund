@@ -61,7 +61,7 @@ export class ApiService {
 
     // update data for a single income statement record
     updateRecord(recordId: number, body: any) {
-        return this.http.put(`${this.statementItemsUrl}${recordId}`, body);
+        return this.http.put(`${this.statementItemsUrl}/${recordId}`, body);
     }
 
     // get income statement records between two dates

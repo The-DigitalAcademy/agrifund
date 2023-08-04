@@ -26,7 +26,7 @@
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-    --white:F7F7F7;
+    --white: F7F7F7;
     /* backgrounf colour for asset table */
     --white-2: #FDFDFD;
 
@@ -259,7 +259,7 @@ h1 {
     font-weight: var(--bold);
     line-height: auto !important;
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px;
 
     color: var(--dark);
 }
@@ -622,6 +622,11 @@ hr {
         padding: var(--normal-s) !important;
     }
 
+    .outer-container{
+        border: none !important;
+        border-radius: 0px !important;
+    }
+
     .container,
     .form-container {
         width: 100%;
@@ -645,6 +650,14 @@ hr {
     .btn,
     button {
         padding: var(--small-s);
+    }
+
+    .left-btn {
+        margin-left: 0px !important;
+    }
+
+    .right-btn {
+        margin-right: 0px !important;
     }
 
     /* .btn-width {
