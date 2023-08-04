@@ -15,7 +15,7 @@ import { DisabledformFarmInfoComponent } from './components/farm-info-form/disab
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
 import { BookkeepCreateComponent } from './pages/bookkeep-create/bookkeep-create.component';
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -24,15 +24,17 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
-    { path: 'bookkeep/view-record', component: BookkeepViewRecordComponent },
+    {
+        path: 'bookkeep/view-record/:id',
+        component: BookkeepViewRecordComponent,
+    },
     { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     { path: 'portfolio', component: PortfolioViewInfoComponent },
-    {path: 'progressbar',component: PortfolioProgressbarComponent},
-    {path:'farm',component: DisabledformFarmInfoComponent},
-    {path: 'equipment-table',component: EquipmentTableComponent},
-    
-  
+    { path: 'progressbar', component: PortfolioProgressbarComponent },
+    { path: 'farm', component: DisabledformFarmInfoComponent },
+    { path: 'equipment-table', component: EquipmentTableComponent },
 ];
 
 @NgModule({

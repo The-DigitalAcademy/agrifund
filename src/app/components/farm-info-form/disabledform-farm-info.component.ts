@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
   selector: 'app-disabledform-farm-info',
@@ -7,33 +9,36 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./disabledform-farm-info.component.css']
 })
 export class DisabledformFarmInfoComponent {
-onCancelClicked() {
-throw new Error('Method not implemented.');
-}
+ 
 
+originalFormValues: any;
   myForm!: FormGroup;
   isDisabled: boolean = true; 
   editedData: any;
   farmerData: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService, private progressService: ProgressService) { }
 
   ngOnInit() {
     const farmerData = {
-      locationOfFarm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
-      sizeOfFarm: '9', // Update with default values
-      yearsUsingFarm: '10', // Update with default values
-      numberOfPeople: '2', // Update with default values
+      farm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
+      size: '9', // Update with default values
+      years: '10', // Update with default values
+      num_employee: '2', // Update with default values
       reasonForFunding: 'I want to improve my land of farming and equipments' // Update with default values
     };
   
     this.myForm = this.fb.group({
-      locationOfFarm: new FormControl({ value: farmerData.locationOfFarm, disabled: true }),
-      sizeOfFarm: new FormControl({ value: farmerData.sizeOfFarm, disabled: true }),
-      yearsUsingFarm: new FormControl({ value: farmerData.yearsUsingFarm, disabled: true }),
-      numberOfPeople: new FormControl({ value: farmerData.numberOfPeople, disabled: true }),
-      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true })
+      farm: new FormControl({ value: farmerData.farm, disabled: true },[Validators.required]),
+      size: new FormControl({ value: farmerData.size, disabled: true },[Validators.required, this.validationsService.positiveNumberValidator()]),
+      years: new FormControl({ value: farmerData.years, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),
+      num_employee: new FormControl({ value: farmerData.num_employee, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),
+      reasonForFunding: new FormControl({ value: farmerData.reasonForFunding, disabled: true },[Validators.required])
+
+      
     });
+
+    this.originalFormValues = farmerData;
   }
   
   enableFields() {
@@ -50,6 +55,17 @@ throw new Error('Method not implemented.');
     this.farmerData = formData;
     this.isDisabled = true;
     this.myForm.disable();
+    this.progressService.setFarmInfoCompleted(true);
+    
   }
+
+  onCancelClicked() {
+     // Reset the form values to the original values
+  this.myForm.patchValue(this.originalFormValues);
+  
+  // Disable the form fields again
+  this.isDisabled = true;
+  this.myForm.disable();
+    }
 
 }

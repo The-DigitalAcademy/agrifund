@@ -11,12 +11,7 @@
     width: 100%;
   }
   
-  .action{
-    display:flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-  }
+ 
   .container{
     width: 100%;
   }

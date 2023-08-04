@@ -9,15 +9,20 @@
   }
   
   
- .btn{
-    width: 100px;
- }
+  .button-container{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .btn{
+    margin: 30px;
+  }
  hr {
    
     height: 2px;
     border-color: var(--grey);
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+    margin-bottom: 19px;
     }
 
     .profile-heading{
