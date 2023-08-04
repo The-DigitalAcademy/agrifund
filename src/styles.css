@@ -259,7 +259,7 @@ h1 {
     font-weight: var(--bold);
     line-height: auto !important;
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px;
 
     color: var(--dark);
 }
@@ -620,6 +620,11 @@ hr {
     /* set styles for all content within page-content div */
     .page-content>* {
         padding: var(--normal-s) !important;
+    }
+
+    .outer-container{
+        border: none !important;
+        border-radius: 0px !important;
     }
 
     .container,
