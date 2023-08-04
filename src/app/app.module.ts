@@ -23,10 +23,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 /* --------------------------------
     USER
 ---------------------------------*/
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { LoginComponent } from './pages/user/login/login.component';
+import { RegisterComponent } from './pages/user/register/register.component';
+import { ForgotPasswordComponent } from './pages/user/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/user/reset-password/reset-password.component';
 
 /* --------------------------------
     BOOKKEEP 
@@ -43,7 +43,7 @@ import { EquipmentInfoComponent } from './components/farmer/equipment-info/equip
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/farmer/enableform-crop-info/enableform-crop-info.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
-import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
+import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 
