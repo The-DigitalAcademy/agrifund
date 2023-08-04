@@ -72,17 +72,6 @@
           <div class="form-text">PDF, PNG, JPG</div>
           <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
-          <div
-          class="form-text text-danger"
-          *ngIf="
-              (myForm.controls['proofOfID'].touched ||
-                  submitted) &&
-              myForm.controls['proofOfID'].errors?.[
-                  'required'
-              ]
-          ">
-          Please upload proof of your record.
-      </div>
         </div>
 
       </div>
