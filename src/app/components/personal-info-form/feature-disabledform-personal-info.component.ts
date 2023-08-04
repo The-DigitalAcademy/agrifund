@@ -38,7 +38,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
       last_name: new FormControl({ value: userData.last_name, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
       cell_number: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
-      proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
+      proofOfID: new FormControl(null, [Validators.required]) // Initialize the "proofOfID" control with null
     });
     
     // Save the initial form values
