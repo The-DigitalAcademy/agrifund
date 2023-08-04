@@ -1,9 +1,11 @@
 <div class="container">
-    <div class="progress-bar">
-        <div class="progress" [style.width]="progressValue + '%'">
-       </div>
-        </div>
-        <h1>45% complete!</h1>
+  <div class="progress-bar">
+    <div class="progress" [style.width]="progressPercentage + '%'">{{ progressPercentage }}%</div>
+  </div>
+
+
+
+   
         
         <div class="checklist-container">
         <form [formGroup]="checklistForm">
@@ -30,11 +32,9 @@
             <h2>You can qualify for business funding.</h2>
             <p>Click the  button below to go to  the ABSA website to apply for business funding.</p>
             <div class="actions">
-                <button class="btn colourful-btn " type="button">Go to ABSA</button>
+              <a class="btn colourful-btn btn-width" href="https://www.absa.co.za/business/starting-my-business/access-to-finance/sme-contract-financing/" target="_blank">Go to ABSA</a>
             </div>
 
         </div>
+      </div>
       
-      
-</div>
- 

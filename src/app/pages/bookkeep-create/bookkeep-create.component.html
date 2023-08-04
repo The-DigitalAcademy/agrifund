@@ -18,28 +18,59 @@
         </div>
         <hr />
         <div class="content">
-            <form>
+            <form [formGroup]="createRecordForm" (ngSubmit)="saveRecord()">
                 <div class="form-input" id="label">
                     <label for="recordName" class="form-label">
-                        Name of Record
+                        Record Description
                     </label>
                     <div class="form-text">
                         Give 2-3 words to describe the record. Example: Bought
                         Seeds
                     </div>
                     <input
+                        formControlName="recordName"
                         type="text"
                         class="form-control"
                         id="recordName"
                         placeholder="" />
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordName'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordName'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please give your record a description.
+                    </div>
                 </div>
                 <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
-                    <select class="form-select" id="recordType">
-                        <option selected>Select a record type...</option>
-                        <option value="income">Money In</option>
-                        <option value="expense">Money Out</option>
+                    <select
+                        formControlName="recordType"
+                        class="form-select"
+                        id="recordType">
+                        <option value="" disabled selected>
+                            Select a record type...
+                        </option>
+                        <option
+                            *ngFor="let type of recordType"
+                            [ngValue]="type">
+                            {{ type }}
+                        </option>
                     </select>
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordType'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordType'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please select a type for your record.
+                    </div>
                 </div>
                 <div class="form-input" id="label">
                     <label for="recordAmount" class="form-label">
@@ -48,24 +79,23 @@
                     <div class="input-group">
                         <span class="input-group-text">R</span>
                         <input
+                            formControlName="recordAmount"
                             type="text"
                             class="form-control"
-                            id="recordAmount"/>
+                            id="recordAmount" />
                     </div>
-                </div>
-                <div class="form-input" id="label">
-                    <label for="recordDescription" class="form-label">
-                        Description
-                    </label>
-                    <div class="form-text">
-                        Give a short description of the record. Example: Paid
-                        money for seeds.
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordAmount']
+                                .touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordAmount'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please provide an amount for your record.
                     </div>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="recordDescription"
-                        placeholder="" />
                 </div>
                 <div class="form-input" id="label">
                     <label for="recordProof" class="form-label">
@@ -80,29 +110,41 @@
                             <div class="form-text">PDF, PNG, JPG</div>
                         </div>
                         <hr />
-
                         <input
+                            formControlName="recordProof"
                             class="form-control"
                             type="file"
                             id="recordProof" />
                     </div>
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordProof'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordProof'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please upload proof of your record.
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="justify-start">
+                        <button
+                            class="btn colourful-btn btn-width"
+                            type="submit">
+                            Save
+                        </button>
+                    </div>
+                    <div class="justify-end">
+                        <button
+                            class="btn outline-btn btn-width"
+                            [routerLink]="['/bookkeep']">
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             </form>
-        </div>
-        <hr />
-        <div class="actions">
-            <div class="justify-start">
-                <button class="btn colourful-btn btn-width">
-                    <!-- <fa-icon icon="pen"></fa-icon> -->
-                    Save
-                </button>
-            </div>
-            <div class="justify-end">
-                <button class="btn outline-btn btn-width">
-                    <!-- <fa-icon icon="trash"></fa-icon> -->
-                    Cancel
-                </button>
-            </div>
         </div>
     </div>
 </div>

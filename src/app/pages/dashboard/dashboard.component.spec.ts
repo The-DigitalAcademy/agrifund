@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OffcanvasComponent } from './offcanvas.component';
+import { TopdfComponent } from './topdf.component';
 
-describe('OffcanvasComponent', () => {
-  let component: OffcanvasComponent;
-  let fixture: ComponentFixture<OffcanvasComponent>;
+describe('TopdfComponent', () => {
+  let component: TopdfComponent;
+  let fixture: ComponentFixture<TopdfComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OffcanvasComponent ]
+      declarations: [ TopdfComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OffcanvasComponent);
+    fixture = TestBed.createComponent(TopdfComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

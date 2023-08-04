@@ -14,8 +14,14 @@
 }
 
 .date-filter .form-input {
+    display: flex;
     flex-direction: row;
-    margin: 0px 0px 0px var(--small-s);
+    align-items: center;
+    margin: 0px 0px 0px var(--small-s) !important;
+}
+
+.date-input{
+    margin: var(--small-s);
 }
 
 .form-control {

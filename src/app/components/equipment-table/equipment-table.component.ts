@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./equipment-table.component.css']
 })
 export class EquipmentTableComponent {
+onAddClicked() {
+throw new Error('Method not implemented.');
+}
+onSaveClicked() {
+throw new Error('Method not implemented.');
+}
+onEditClicked() {
+throw new Error('Method not implemented.');
+}
+
+  
 
 }
