@@ -9,7 +9,7 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     // base string for api connection
-    private baseUrl = 'http://localhost:3001/agrifund/api/v1';
+    private baseUrl = environment.apiURL;
 
     /* --------------------------------
         USER CONNECTION STRINGS

@@ -1,3 +1,14 @@
+/* ------------------------------------------------------------------------------------------------
+    DESCRIPTION:
+        The following functions ate peformed within this component:
+            Get record details fetches the record details from the api service and displays them in \
+            the input fields
+
+    AUTHOR: Monique
+    CREATE DATE: 04 Aug 2023 
+    UPDATED DATE: 
+-------------------------------------------------------------------------------------------------*/
+
 import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
@@ -41,17 +52,6 @@ export class BookkeepEditComponent implements OnInit {
             recordProof: ['', [Validators.required]],
         });
     }
-
-    /* ------------------------------------------------------------------------------------------------
-        DESCRIPTION:
-            Get record details fetches the record details from the api service and displays them in the
-            input fields
-        PARAMETER: 
-            id - refers to the id of the record
-
-        AUTHOR: Monique
-        CREATE DATE: 04 Aug 2023
-    -------------------------------------------------------------------------------------------------*/
 
     getRecordDetails(id: any) {
         this._apiService
