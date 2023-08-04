@@ -1,0 +1,8 @@
+.page-body {
+    background-image: url("src/assets/images/background/orange-trees.webp");
+    flex-direction: column;
+}
+
+.mobile-header {
+    background-image: url("src/assets/images/background/orange-trees.webp");
+}
