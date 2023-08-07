@@ -79,6 +79,8 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
+import { BookkeepDeleteComponent } from './pages/bookkeep/bookkeep-delete/bookkeep-delete.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
     declarations: [
@@ -105,6 +107,8 @@ import { MoneyCardSummaryComponent } from './components/data-summary/money-card-
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
+        BookkeepDeleteComponent,
+        ModalComponent,
     ],
     imports: [
         BrowserModule,
