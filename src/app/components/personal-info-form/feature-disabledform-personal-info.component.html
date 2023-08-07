@@ -21,7 +21,7 @@
   </div>
 </div>
    -->
-   <!-- personal-info-form.component.html -->
+<!-- personal-info-form.component.html -->
 <!-- disabledform-personal-info.component.html -->
 
 
@@ -32,46 +32,63 @@
       <h3>Your Personal Info</h3>
     </div>
     <div class="action">
-      <app-enableform-crop-info (enableFields)="enableFields()" (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+      <app-enableform-crop-info (enableFields)="enableFields()"
+        (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
     </div>
   </div>
   <hr>
   <div class="sub-container">
     <form [formGroup]="myForm">
       <div class="form-input">
-        <label for="exampleInputEmail1" class="form-label">First Name</label>
-        <input type="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               formControlName="firstName" [disabled]="isDisabled">
+        
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" 
+          formControlName="first_name" [disabled]="isDisabled">
+          <small *ngIf="myForm.controls['first_name'].hasError('invalidName') && myForm.controls['first_name'].dirty" class="text-danger">Invalid format.</small>
+          <small *ngIf="myForm.controls['first_name'].hasError('textWithoutNumbers') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</small>
+          <small *ngIf="myForm.controls['first_name'].hasError('required') && myForm.controls['first_name'].dirty" class="text-danger">First name required.</small>
       </div>
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Last Name</label>
-        <input type="lastName" class="form-control" id="exampleInputPassword1" formControlName="lastName"
-               [disabled]="isDisabled">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" formControlName="last_name"
+          [disabled]="isDisabled">
+          <small *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Invalid format.</small>
+          <small *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
+          <small *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</small>
       </div>
       <div class="form-input">
-        <label for="exampleInputPassword1" class="form-label">Cell Number</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="phoneNumber"
-               [disabled]="isDisabled">
+        <label for="cell_number" class="form-label">Cell Number</label>
+        <input type="text" class="form-control" id="cell_number" formControlName="cell_number" [disabled]="isDisabled">
+        <small *ngIf="myForm.controls['cell_number'].hasError('invalidPhoneNumber') && myForm.controls['cell_number'].dirty" class="text-danger">Invalid phoneNumber.</small>
+        <small *ngIf="myForm.controls['cell_number'].hasError('required') && !myForm.controls['cell_number'].value && myForm.controls['cell_number'].dirty" class="text-danger">Cell number required.</small>
       </div>
       <div class="form-input">
         <label class="form-label" for="document">Proof of ID</label>
+        <div class="form-text">
+          Please upload proof of ID.
+      </div>
         <div class="file-container">
-          <label for="farm-label">Upload Document</label><hr>
+          <label for="farm-label">Upload Document</label>
+          <div class="form-text">PDF, PNG, JPG</div>
+          <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
         </div>
+
       </div>
       <div class="form-input">
         <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email"
-               [disabled]="isDisabled">
+        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email">
+        <small *ngIf="myForm.controls['email'].hasError('invalidEmail') && myForm.controls['email'].dirty" class="text-danger">Invalid email address.</small>
+        <small *ngIf="myForm.controls['email'].hasError('required') && !myForm.controls['email'].value && myForm.controls['email'].dirty" class="text-danger">email required</small>
       </div>
+      
 
-      <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" class="btn colourful-btn">Save</button>
-      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn colourful-btn">Cancel</button>
-
+      <div class="button-container">
+        <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid" class="btn colourful-btn btn-width">Save</button>
+      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
+    </div>
+      
     </form>
   </div>
 </div>
-
-
 

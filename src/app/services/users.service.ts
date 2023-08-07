@@ -7,20 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  storeAuthToken(token: any) {
-    throw new Error('Method not implemented.');
-  }
+ 
   private baseUrl = 'http://localhost:3001/agrifund/api/v1';
+    /* --------------------------------
+        USER CONNECTION STRINGS
+    ---------------------------------*/
+    private userURL = this.baseUrl + '/users';
 
   constructor(private http: HttpClient) {}
 
-  register(userInfo: Users): Observable<any> {
-    const url = `${this.baseUrl}/register`;
-    return this.http.post(url, userInfo);
+  RegisterUser(inputdata:any){
+    return this.http.post(`${this.userURL}`, inputdata);
+
   }
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-    const url = `${this.baseUrl}/login`;
-    return this.http.post(url, credentials);
-  }
 }

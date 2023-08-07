@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -7,72 +8,169 @@ export class ValidationsServiceService {
 
   constructor() { }
 
-  //Method to validates password
-  // We are checking if the password meets minimum requirements such as length, uppercase, lowercase, digits, special characters)
-  validatePassword(password: string): boolean {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordRegex.test(password);
+  passwordsMatchValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const password = control.get('password');
+      const confirmPassword = control.get('confirmPassword');
+
+      if (!password || !confirmPassword) {
+        return null; // Return null if either field is not available (optional validation)
+      }
+
+      if (password.value !== confirmPassword.value) {
+        return { passwordsNotMatch: true }; // Return error if passwords do not match
+      }
+
+      return null; // Return null if passwords match
+    };
   }
 
-  //Method to validates email address
-  validateEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  passwordValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null; // Return null if the field is empty (optional validation)
+      }
+
+      // Check for password requirements here (e.g., minimum length, uppercase, lowercase, and numbers)
+      const minLength = 8;
+      const hasUppercase = /[A-Z]/.test(value);
+      const hasLowercase = /[a-z]/.test(value);
+      const hasNumbers = /\d/.test(value);
+
+      if (value.length < minLength || !hasUppercase || !hasLowercase || !hasNumbers) {
+        return { invalidPassword: true };
+      }
+
+      return null;
+    };
+  }
+  emailValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(control.value)) {
+        return { invalidEmail: true };
+      }
+      return null;
+    };
+  }
+
+  //Custom date validator function
+  dateValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dateRegex.test(control.value)) {
+        return { invalidDate: true };
+      }
+      return null;
+    };
   }
   
-  //Method to validate date
-  //It checks if the date is in the format of 'YYYY/MM/DD'.
-  validateDateFormat(date: string): boolean {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    return dateRegex.test(date);
+  positiveNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value === undefined || value === '') {
+        return null; // Return null for optional fields
+      }
+
+      // Convert value to a number and check if it is a positive number
+      const numValue = parseFloat(value);
+      if (!isNaN(numValue) && numValue >= 0) {
+        return null; // Return null if it's a positive number
+      }
+
+      return { invalidPositiveNumber: true }; // Return validation error
+    };
+  } 
+
+  isNumericValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value === undefined || value === '') {
+        return null; // Return null for optional fields
+      }
+
+      // Use a regular expression to check if the value contains only numeric characters
+      if (/^\d+$/.test(value)) {
+        return null; // Return null if it contains only numeric characters
+      }
+
+      return { isNumeric: true }; // Return validation error
+    };
+  }
+ 
+  idNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value === undefined || value === '') {
+        return null; // Return null for optional fields
+      }
+
+      // Define the ID number pattern that you want to enforce (e.g., 12 digits)
+      const idNumberPattern = /^\d{13}$/;
+
+      if (idNumberPattern.test(value)) {
+        return null; // Return null if the ID number matches the pattern
+      }
+
+      return { idNumber: true }; // Return validation error
+    };
+  }
+
+ 
+
+  phoneNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const phoneNumberRegex = /^(\+27|0)\d{9}$/;
+      if (!phoneNumberRegex.test(control.value)) {
+        return { invalidPhoneNumber: true };
+      }
+      return null;
+    };
+  }
+ 
+  dropdownSelectionValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value !== null && value !== undefined) {
+        return null; // Return null if the dropdown selection is not empty
+      }
+
+      return { dropdownSelection: true }; // Return validation error
+    };
+  }
+
+  textWithoutNumbersValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value === null || value === '') {
+        return null; // Return null if the input is empty
+      }
+
+      // Use regular expression to check if the input contains any digits (numbers)
+      const containsNumbers = /\d/.test(value);
+
+      if (containsNumbers) {
+        return { textWithoutNumbers: true }; // Return validation error if the input contains numbers
+      }
+
+      return null; // Return null if the input does not contain numbers
+    };
   }
   
-  //Method to validate numbers
-   // The method below to checks if a number is positive.
-   validatePositiveNumber(value: number): boolean {
-    return value > 0;
-  }
-
-    //This method below only accepts numbers
-   isNumeric(value: any): boolean {
-    if (typeof value === 'number') {
-      // Check if the value is a valid number (not NaN)
-      return !isNaN(value);
-    } else if (typeof value === 'string') {
-      // Convert the string to a number and check if it's a valid number (not NaN)
-      const numericValue = Number(value);
-      return !isNaN(numericValue);
-    } else {
-      // Not a number or a string, so it's not valid
-      return false;
+  // Custom address length validator (between 20 to 100 words)
+   addressLengthValidator(control: AbstractControl): ValidationErrors | null {
+    const address = control.value as string;
+    const wordCount = address.trim().split(/\s+/).length;
+    if (wordCount < 20 || wordCount > 100) {
+      return { addressLength: true };
     }
+    return null;
   }
- 
-  //Method to validate ID number
-  //It contains only digits
-  //South African ID contains 13 digits
-  validateIDno(id: string): boolean {
-    const idRegex = /^\d{13}$/;
-    return idRegex.test(id);
-  }
- 
-   // Method to validate a phone number (10 digits)
-   validatePhoneNumber(phoneNumber: string): boolean {
-    // Remove any non-numeric characters (e.g., whitespace, dashes, parentheses)
-    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
-    // Checks if the cleaned phone number is exactly 10 digits long
-    return cleanedPhoneNumber.length === 10;
-  }
-
-    // Method to validate a dropdown selection (not empty)
-    validateDropdownSelection(value: any): boolean {
-      return value !== null && value !== undefined && value !== '';
-    }  
-
-    // Method to validate text and not accept numbers
-    validateTextWithoutNumbers(text: string): boolean {
-      const containsNumbers = /\d/.test(text); // Check if the text contains any numeric character
-      return !containsNumbers;
-    }
-
 }
+

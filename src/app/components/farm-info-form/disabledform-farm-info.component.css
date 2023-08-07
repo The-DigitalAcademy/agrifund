@@ -18,13 +18,16 @@
     margin-bottom: 20px;
     }
   
+    .button-container{
+      display: flex;
+      justify-content: center;
+      
+    }
+    .btn{
+      margin: 30px;
+    }
   
-  
-  
-    
-   
-    
-    .file-container input[type="file"] {
+  .file-container input[type="file"] {
       margin-top: 5px;
     }
     

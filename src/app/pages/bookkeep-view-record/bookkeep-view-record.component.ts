@@ -11,7 +11,7 @@ import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
     styleUrls: ['./bookkeep-view-record.component.css'],
 })
 export class BookkeepViewRecordComponent implements OnInit {
-    id!: number;
+    id!: any;
     record!: IncomeStatementItem;
 
     constructor(
@@ -25,11 +25,16 @@ export class BookkeepViewRecordComponent implements OnInit {
         this.getRecordDetails((this.id = this.route.snapshot.params['id']));
     }
 
-    getRecordDetails(id: number) {
+    getRecordDetails(id: any) {
         this._apiService
             .getStatementItemById(this.id)
             .subscribe((data: any) => {
                 this.record = data;
             });
+    }
+
+    viewProof(documentUrl: string) {
+
+
     }
 }

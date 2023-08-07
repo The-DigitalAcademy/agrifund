@@ -1,10 +1,10 @@
 export interface Users {
     
-    first_name: any;
-    last_name: any;
-    cell_phone: any;
-    email: any;
-    password: any;
-    confirm_password:any;
+    first_name: string;
+    last_name: string;
+    cell_phone: number;
+    email: string;
+    password: string;
+    role:"farmer";
   }
   
