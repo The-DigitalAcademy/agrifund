@@ -29,7 +29,7 @@ originalFormValues: any;
     };
   
     this.myForm = this.fb.group({
-      farm: new FormControl({ value: farmerData.farm, disabled: true },[Validators.required, this.validationsService.addressLengthValidator()]),
+      farm: new FormControl({ value: farmerData.farm, disabled: true },[Validators.required, this.validationsService.addressContainsStreetValidator]),
       size: new FormControl({ value: farmerData.size, disabled: true },[Validators.required, this.validationsService.positiveNumberValidator()]),
       years: new FormControl({ value: farmerData.years, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),
       num_employee: new FormControl({ value: farmerData.num_employee, disabled: true },[Validators.required, this.validationsService.isNumericValidator()]),

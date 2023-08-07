@@ -169,17 +169,14 @@ export class ValidationsServiceService {
     };
   }
   
-   addressLengthValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const address = control.value as string;
-      const wordCount = address.trim().split(/\s+/).length;
+  addressContainsStreetValidator(control: AbstractControl): ValidationErrors | null {
+    const address = control.value as string;
+
+    if (!address.includes("Street")) {
+      return { addressContainsStreet: true };
+    }
+
+    return null;
+  }
   
-      if (wordCount < 20 || wordCount > 200) {
-        return { addressLength: true };
-      }
-  
-      return null;
-    };
-  
-}
 }

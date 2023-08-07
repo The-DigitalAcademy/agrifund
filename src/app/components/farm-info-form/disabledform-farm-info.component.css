@@ -58,6 +58,8 @@
 
 .has-error .form-control {
   border-color: red;
+  display: block;
+    margin-top: 5px;
 }
   
   
