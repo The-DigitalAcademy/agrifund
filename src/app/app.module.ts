@@ -78,6 +78,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 
 @NgModule({
     declarations: [
@@ -103,6 +104,7 @@ import {
         EnableformCropInfoComponent,
         EquipmentInfoComponent,
         EquipmentTableComponent,
+        MoneyCardSummaryComponent,
     ],
     imports: [
         BrowserModule,
