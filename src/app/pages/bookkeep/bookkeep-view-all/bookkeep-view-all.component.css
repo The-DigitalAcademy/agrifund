@@ -24,6 +24,10 @@
     margin: var(--small-s);
 }
 
+.search {
+    width: 60%;
+}
+
 .form-control {
     margin: 0px 0px 0px var(--small-s);
 }
@@ -91,6 +95,10 @@ tr,
         height: auto !important;
     }
 
+    .search {
+        width: 100%;
+    }
+
 }
 
 /*---------------------------------
@@ -104,6 +112,10 @@ tr,
 
     .record-table {
         padding: var(--small-s);
+    }
+
+    .search {
+        width: 100%;
     }
 
 }
@@ -124,6 +136,10 @@ tr,
     .input-group .btn {
         border-radius: var(--border-radius);
     }
+
+    .search {
+        width: 100%;
+    }
 }
 
 /*--------------------------------------
@@ -140,7 +156,7 @@ tr,
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {
-    
+
     .money-card-summary {
         margin: var(--large-s) 0px !important;
     }
