@@ -15,7 +15,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
   myForm!: FormGroup;
   selectedFile: File | null = null; // Initialize as null
-  
+  allowedFileTypes: string[] = ['image/png', 'image/jpeg','image/jpg', 'application/pdf'];
   editedData: any;
   farmerData: any;
   isDisabled: boolean = true;
@@ -27,19 +27,21 @@ submitted: boolean = false;
   constructor(private fb: FormBuilder, private validationsService: ValidationsServiceService, private progressService: ProgressService) { }
 
   ngOnInit() {
+    
     const userData = {
       first_name: 'John',
       last_name: 'Doe',
       email: 'john@example.com',
-      phoneNumber: '0607566762'
+      cell_number: '0607566762'
+  
     };
   
     this.myForm = this.fb.group({
       first_name: new FormControl({ value: userData.first_name, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
       last_name: new FormControl({ value: userData.last_name, disabled: true }, [Validators.required, this.validationsService.textWithoutNumbersValidator()]), // Set disabled to true to disable the field by default
       email: new FormControl({ value: userData.email, disabled: true }, [Validators.required, this.validationsService.emailValidator()]),
-      cell_number: new FormControl({ value: userData.phoneNumber, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
-      proofOfID: new FormControl(null) // Initialize the "proofOfID" control with null
+      cell_number: new FormControl({ value: userData.cell_number, disabled: true }, [Validators.required, this.validationsService.phoneNumberValidator()]), // Set disabled to true to disable the field by default
+      file: new FormControl(null, [FileTypeValidator(this.allowedFileTypes)]) 
     });
     
     // Save the initial form values
@@ -88,3 +90,7 @@ submitted: boolean = false;
   //validations
 
 }
+function FileTypeValidator(allowedFileTypes: string[]): import("@angular/forms").ValidatorFn {
+  throw new Error('Function not implemented.');
+}
+

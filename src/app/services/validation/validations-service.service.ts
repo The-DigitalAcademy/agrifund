@@ -168,7 +168,7 @@ export class ValidationsServiceService {
       return null; // Return null if the input does not contain numbers
     };
   }
-  
+
   addressContainsStreetValidator(control: AbstractControl): ValidationErrors | null {
     const address = control.value as string;
 
@@ -178,5 +178,20 @@ export class ValidationsServiceService {
 
     return null;
   }
+    // Custom file type validator
+    fileTypeValidator(allowedTypes: string[]) {
+      return (control: AbstractControl): ValidationErrors | null => {
+        const file = control.value as File;
+  
+        if (file) {
+          const fileType = file.type;
+          if (!allowedTypes.includes(fileType)) {
+            return { invalidFileType: true };
+          }
+        }
+  
+        return null;
+      };
+    }
   
 }
