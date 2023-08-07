@@ -27,7 +27,11 @@ h2 {
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
+@media (min-width: 300px) and (max-width:428px) {
+
+    .single-row{
+        display: none !important;
+    }
 
     .profit-card {
         margin: var(--normal-s) 0px !important;
@@ -47,9 +51,6 @@ h2 {
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
-    .card-summary>* {
-        margin: var(--normal-s) !important;
-    }
 
     /* card summary styles and layout when on a la */
     .single-row {
@@ -57,16 +58,15 @@ h2 {
     }
 
     .profit-card {
-        margin: var(--small-s) 0px !important;
+        margin: var(--normal-s) 0px !important;
     }
 
     .money-in-card {
-        /* adds p */
-        margin: 0px var(--small-s) 0px 0px;
+        margin: 0px var(--x-small-s) var(--normal-s) 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
+        margin: 0px 0px var(--normal-s) var(--x-small-s);
     }
 
 }
@@ -75,18 +75,6 @@ h2 {
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
-
-    .bookkeep-actions {
-        padding: var(--small-s);
-    }
-
-    .record-table {
-        padding: var(--small-s);
-    }
-
-    .input-group .btn {
-        border-radius: var(--border-radius);
-    }
 
     .stacked {
         display: none !important;
