@@ -20,6 +20,8 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ModalComponent } from './components/modal/modal.component';
+
 /* --------------------------------
     USER
 ---------------------------------*/
@@ -35,6 +37,8 @@ import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/boo
 import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+import { BookkeepDeleteComponent } from './pages/bookkeep/bookkeep-delete/bookkeep-delete.component';
+import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
@@ -78,9 +82,6 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
-import { BookkeepDeleteComponent } from './pages/bookkeep/bookkeep-delete/bookkeep-delete.component';
-import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
     declarations: [
