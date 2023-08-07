@@ -19,6 +19,7 @@ ngOnInit(): void {
     first_name: new FormControl("",[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
     last_name: new FormControl( "",[Validators.required, this.validationsService.textWithoutNumbersValidator()]),
     id_number: new FormControl("",[Validators.required, this.validationsService.idNumberValidator()]),
+    email: new FormControl("",[Validators.required, this.validationsService.emailValidator()]),
     cell_number: new FormControl("",[Validators.required, this.validationsService.phoneNumberValidator()]),
     password:new FormControl("", [Validators.required, this.validationsService.passwordValidator()]),
     cpassword: ["", [Validators.required]]
