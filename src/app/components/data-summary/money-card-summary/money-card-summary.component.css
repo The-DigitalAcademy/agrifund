@@ -28,7 +28,7 @@ h2 {
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (max-width: 390px) {
-    
+
     .profit-card {
         margin: var(--normal-s) 0px !important;
     }
@@ -62,7 +62,7 @@ h2 {
 
     .money-in-card {
         /* adds p */
-        margin: 0px var(--small-s) 0px 0px ;
+        margin: 0px var(--small-s) 0px 0px;
     }
 
     .money-out-card {
@@ -76,10 +76,6 @@ h2 {
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
 
-    .card-summary>* {
-        margin: var(--normal-s) !important;
-    }
-
     .bookkeep-actions {
         padding: var(--small-s);
     }
@@ -92,20 +88,23 @@ h2 {
         border-radius: var(--border-radius);
     }
 
-    .single-row {
+    .stacked {
         display: none !important;
     }
 
-    .profit-card {
-        margin: var(--small-s) 0px !important;
-    }
-
     .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
+        /* removes the space on the left side of the money in card */
+        margin-left: 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
+        /* removes the space on the left for the money out card */
+        margin-right: 0px;
+    }
+
+    .profit-card {
+        margin-left: inherit;
+        margin-right: inherit;
     }
 
 }
