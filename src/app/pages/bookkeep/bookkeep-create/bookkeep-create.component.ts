@@ -51,11 +51,11 @@ export class BookkeepCreateComponent implements OnInit {
                     this.createRecordForm.get('recordProof')?.value,
             };
 
-            console.table(this.record);
+            // console.table(this.record);
 
             this._apiService.addRecord(this.record).subscribe(data => {
-                console.log(data);
-                console.table(this.createRecordForm.value);
+                // console.log(data);
+                // console.table(this.createRecordForm.value);
             });
 
             this.router.navigate(['/bookkeep']);
