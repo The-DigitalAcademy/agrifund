@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IncomeStatement } from 'src/app/models/income-statement';
-import { IncomeStatementItem } from 'src/app/models/income-statement-item';
+import { IncomeStatement } from 'src/app/models/IncomeStatement';
+import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 
@@ -33,10 +33,7 @@ export class BookkeepViewRecordComponent implements OnInit {
             });
     }
 
-    viewProof(documentUrl: string) {
-
-
-    }
+    viewProof(documentUrl: string) {}
 
     editRecordDetails(recordId: any) {
         this.router.navigate(['bookkeep/edit-record', recordId]);

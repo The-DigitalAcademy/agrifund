@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IncomeStatement } from 'src/app/models/income-statement';
-import { IncomeStatementItem } from 'src/app/models/income-statement-item';
+import { IncomeStatement } from 'src/app/models/IncomeStatement';
+import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -30,7 +30,5 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
-        
-    }
+    ngOnDestroy() {}
 }
