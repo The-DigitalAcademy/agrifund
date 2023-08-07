@@ -66,11 +66,15 @@
     /*------------------
         SPACING & SIZING
     --------------------*/
-    --x-small-s: 4px;
-    --small-s: 8px;
+    --xx-small-s: 4px;
+    --x-small-s: 8px;
+    --small-s: 10px;
     --normal-s: 14px;
-    --medium-s: 20px;
+    --normal-medium-s: 16px;
+    --medium-s: 18px;
+    --medium-large-s: 20px;
     --large-s: 24px;
+    --larger-s: 28px;
     --x-large-s: 36px;
 }
 

@@ -20,21 +20,25 @@ h2 {
     color: var(--light);
 }
 
+.card-summary>* {
+    margin: inherit;
+}
+
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (max-width: 390px) {
     
     .profit-card {
-        margin: var(--small-s) 0px !important;
+        margin: var(--normal-s) 0px !important;
     }
 
     .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
+        margin: 0px var(--x-small-s) var(--normal-s) 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
+        margin: 0px 0px var(--normal-s) var(--x-small-s);
     }
 
 }
@@ -125,8 +129,8 @@ h2 {
     }
 
     .profit-card {
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-left: inherit;
+        margin-right: inherit;
     }
 }
 
@@ -136,6 +140,11 @@ h2 {
 @media (min-width: 1281px) {
     .stacked {
         display: none !important;
+    }
+
+    .profit-card {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .money-in-card {
