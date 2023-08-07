@@ -17,6 +17,11 @@ export class ApiService {
     private userURL = this.baseUrl + '/users';
 
     /* --------------------------------
+        FARMER CONNECTION STRINGS
+    ---------------------------------*/
+    private farmerAssetURL = this.baseUrl + '/assets';
+
+    /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
     ---------------------------------*/
     private statementsUrl = this.baseUrl + '/incomeStatements';
@@ -67,4 +72,13 @@ export class ApiService {
     // get income statement records between two dates
 
     //get an income statement record from a search text
+
+
+
+    /* --------------------------------
+        FARMER
+    ---------------------------------*/
+    addEquipment(body: any){
+        return this.http.post(`${this.farmerAssetURL}`, body)
+    }
 }
