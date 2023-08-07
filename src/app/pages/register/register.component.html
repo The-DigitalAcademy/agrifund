@@ -33,20 +33,22 @@
                     <div class="form-input"> 
                         <label for="id_number">ID Number:</label>
                         <input formControlName="id_number" class="form-control" id="idnumInput" />
-                        <small *ngIf="RegisterForm.controls['id_number'].hasError('idNumber') && RegisterForm.controls['id_number'].dirty" class="text-danger">The ID number should contain 13 digits.</small>
+                        <small *ngIf="RegisterForm.controls['id_number'].hasError('idNumber') && RegisterForm.controls['id_number'].dirty" class="text-danger error">The ID number should contain 13 digits.</small>
                         <small *ngIf="RegisterForm.controls['id_number'].hasError('idNumberValidator') && RegisterForm.controls['id_number'].dirty" class="text-danger">The ID number should contain 13 digits.</small>
                         <small *ngIf="RegisterForm.controls['id_number'].hasError('required') && RegisterForm.controls['id_number'].dirty" class="text-danger">Field is required.</small>
 
                     </div>
                     <div class="form-input">
-                        <label for="cell_number" class="form-label">Cell Number:</label>
-                        <input formControlName="cell_number" class="form-control" id="phoneNumberInput">
-                        <small *ngIf="RegisterForm.controls['cell_number'].hasError('invalidPhoneNumber') && RegisterForm.controls['cell_number'].dirty" class="text-danger">The cell number should contain 10 digits.</small>
-                        <small *ngIf="RegisterForm.controls['cell_number'].hasError('required') && RegisterForm.controls['cell_number'].dirty" class="text-danger">Field is required.</small>
+                        <label for="cell_number">Cell Number:</label>
+                        <input formControlName="cell_number" class="form-control" id="phoneNumberInput"/>
+                        <small *ngIf="RegisterForm.controls['cell_number'].hasError('invalidPhoneNumber') && RegisterForm.controls['cell_number'].dirty" class="text-danger error-message">The cell number should contain 10 digits.</small>
+                        <small *ngIf="RegisterForm.controls['cell_number'].hasError('required') && RegisterForm.controls['cell_number'].dirty" class="text-danger error-message">Field is required.</small>
                       </div>
-                      <div class="form-input"><label for="password">Password</label>
+                      
+                      <div class="form-input">
+                        <label for="password">Password:</label>
                         <input formControlName="password" class="form-control" id="passwordinput" />
-                        <small *ngIf="RegisterForm.controls['password'].hasError('invalidPassword') && RegisterForm.controls['password'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers</small>
+                        <small *ngIf="RegisterForm.controls['password'].hasError('invalidPassword') && RegisterForm.controls['password'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers.</small>
                         <small *ngIf="RegisterForm.controls['password'].hasError('required') && RegisterForm.controls['password'].dirty" class="text-danger">Field is required.</small>
                     </div>
                     <div class="form-input">

@@ -39,6 +39,8 @@
     }
 }
 
-.input-field.error input{
+.error-message {
+    display: block;
+    margin-top: 5px;
     border-color: red;
 }
