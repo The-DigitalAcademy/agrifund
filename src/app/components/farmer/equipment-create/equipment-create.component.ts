@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-equipment-create',
@@ -9,6 +10,6 @@ export class EquipmentCreateComponent {
 saveEquipment() {
 throw new Error('Method not implemented.');
 }
-createEquipmentForm: FormGroup<any>;
+createEquipmentForm!: FormGroup;
 
 }
