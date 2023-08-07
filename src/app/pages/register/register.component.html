@@ -16,21 +16,21 @@
                             </button>
                         </div>
                     </div>
-                    <div class="form-input">
+                    <div class="form-input" [ngClass]="{'has-success': RegisterForm.controls['first_name'].valid && RegisterForm.controls['first_name'].dirty, 'has-error': RegisterForm.controls['first_name'].invalid && RegisterForm.controls['first_name'].dirty}">
                         <label for="first_name">First Name:</label>
                         <input formControlName="first_name" class="form-control" id="firstNameInput" />
                             <small *ngIf="RegisterForm.controls['first_name'].hasError('invalidName') && RegisterForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</small>
                             <small *ngIf="RegisterForm.controls['first_name'].hasError('textWithoutNumbers') && RegisterForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</small>
                             <small *ngIf="RegisterForm.controls['first_name'].hasError('required') && RegisterForm.controls['first_name'].dirty" class="text-danger">Field is required.</small>
                     </div>
-                    <div class="form-input">
+                    <div class="form-input" [ngClass]="{'has-success': RegisterForm.controls['last_name'].valid && RegisterForm.controls['last_name'].dirty, 'has-error': RegisterForm.controls['last_name'].invalid && RegisterForm.controls['last_name'].dirty}">
                         <label for="last_name">Last Name:</label>
                         <input formControlName="last_name" class="form-control" id="lastNameInput" />
                         <small *ngIf="RegisterForm.controls['last_name'].hasError('invalidName') && RegisterForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
                         <small *ngIf="RegisterForm.controls['last_name'].hasError('textWithoutNumbers') && RegisterForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
                         <small *ngIf="RegisterForm.controls['last_name'].hasError('required') && RegisterForm.controls['last_name'].dirty" class="text-danger">Field is required.</small>
                     </div>
-                    <div class="form-input"> 
+                    <div class="form-input" [ngClass]="{'has-success': RegisterForm.controls['id_number'].valid && RegisterForm.controls['id_number'].dirty, 'has-error': RegisterForm.controls['id_number'].invalid && RegisterForm.controls['id_number'].dirty}">
                         <label for="id_number">ID Number:</label>
                         <input formControlName="id_number" class="form-control" id="idnumInput" />
                         <small *ngIf="RegisterForm.controls['id_number'].hasError('idNumber') && RegisterForm.controls['id_number'].dirty" class="text-danger error">The ID number should contain 13 digits.</small>
@@ -38,7 +38,7 @@
                         <small *ngIf="RegisterForm.controls['id_number'].hasError('required') && RegisterForm.controls['id_number'].dirty" class="text-danger">Field is required.</small>
 
                     </div>
-                    <div class="form-input">
+                    <div class="form-input" [ngClass]="{'has-success': RegisterForm.controls['cell_number'].valid && RegisterForm.controls['cell_number'].dirty, 'has-error': RegisterForm.controls['cell_number'].invalid && RegisterForm.controls['cell_number'].dirty}">
                         <label for="cell_number">Cell Number:</label>
                         <input formControlName="cell_number" class="form-control" id="phoneNumberInput"/>
                         <small *ngIf="RegisterForm.controls['cell_number'].hasError('invalidPhoneNumber') && RegisterForm.controls['cell_number'].dirty" class="text-danger error-message">The cell number should contain 10 digits.</small>
