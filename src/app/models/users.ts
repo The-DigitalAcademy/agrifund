@@ -1,9 +1,10 @@
 export interface Users {
-    id: 1,
-    first_name: string,
-    last_name: string, 
-    cell_phone: number, 
-    email: string,
-    password: string,
-    role: string
-}
+    
+    first_name: any;
+    last_name: any;
+    cell_phone: any;
+    email: any;
+    password: any;
+    confirm_password:any;
+  }
+  

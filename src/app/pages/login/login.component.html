@@ -3,7 +3,7 @@
 </div>
 <div class="page-body justify-center">
     <div class="container form-container">
-        <form [formGroup]="LoginForm">
+        <form [formGroup]="loginForm" (submit)="onLoginSubmit()">
             <div class="row">
                 <div class="col-sm-12 loginform">
                     <div class="container-header">

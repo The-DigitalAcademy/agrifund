@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { UserService } from 'src/app/services/users.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-RegisterForm = new FormGroup({
-name: new FormControl(''),
-surname: new FormControl(''),
-id: new FormControl(''),
-cellNo: new FormControl(''),
-password:new FormControl(''),
-Cpassword: new FormControl('')
-})
+  registerForm = new FormGroup({
+    first_name: new FormControl(''),
+    last_name: new FormControl(''),
+    cell_phone: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+    role: new FormControl(''),
+  });
+
 }
