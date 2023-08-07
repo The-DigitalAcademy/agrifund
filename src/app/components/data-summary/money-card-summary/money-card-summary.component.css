@@ -34,15 +34,15 @@ h2 {
     }
 
     .profit-card {
-        margin: var(--normal-s) 0px !important;
+        margin: 0px 0px var(--normal-s) 0px !important;
     }
 
     .money-in-card {
-        margin: 0px var(--x-small-s) var(--normal-s) 0px;
+        margin: 0px var(--x-small-s) 0px 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px var(--normal-s) var(--x-small-s);
+        margin: 0px 0px 0px var(--x-small-s);
     }
 
 }
@@ -58,15 +58,15 @@ h2 {
     }
 
     .profit-card {
-        margin: var(--normal-s) 0px !important;
+        margin: 0px 0px var(--normal-s) 0px !important;
     }
 
     .money-in-card {
-        margin: 0px var(--x-small-s) var(--normal-s) 0px;
+        margin: 0px var(--x-small-s) 0px 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px var(--normal-s) var(--x-small-s);
+        margin: 0px 0px 0px var(--x-small-s);
     }
 
 }
@@ -82,17 +82,16 @@ h2 {
 
     .money-in-card {
         /* removes the space on the left side of the money in card */
-        margin-left: 0px;
+        margin: 0px var(--small-normal-s) 0px 0px;
     }
 
     .money-out-card {
         /* removes the space on the left for the money out card */
-        margin-right: 0px;
+        margin: 0px 0px 0px var(--small-normal-s);
     }
 
     .profit-card {
-        margin-left: inherit;
-        margin-right: inherit;
+        margin: 0px var(--small-normal-s) 0px var(--small-normal-s);
     }
 
 }
@@ -107,17 +106,16 @@ h2 {
 
     .money-in-card {
         /* removes the space on the left side of the money in card */
-        margin-left: 0px;
+        margin: 0px var(--small-normal-s) 0px 0px;
     }
 
     .money-out-card {
         /* removes the space on the left for the money out card */
-        margin-right: 0px;
+        margin: 0px 0px 0px var(--small-normal-s);
     }
 
     .profit-card {
-        margin-left: inherit;
-        margin-right: inherit;
+        margin: 0px var(--normal-s) 0px var(--small-normal-s);
     }
 }
 
@@ -128,19 +126,18 @@ h2 {
     .stacked {
         display: none !important;
     }
-
+    
     .profit-card {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 0px var(--medium-s) 0px var(--medium-s) ;
     }
 
     .money-in-card {
         /* removes the space on the left side of the money in card */
-        margin-left: 0px;
+        margin: 0px var(--medium-s) 0px 0px;
     }
 
     .money-out-card {
         /* removes the space on the left for the money out card */
-        margin-right: 0px;
+        margin: 0px 0px 0px var(--medium-s);
     }
 }

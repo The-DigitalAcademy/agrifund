@@ -69,13 +69,14 @@
     --xx-small-s: 4px;
     --x-small-s: 8px;
     --small-s: 10px;
+    --small-normal-s: 12px;
     --normal-s: 14px;
     --normal-medium-s: 16px;
     --medium-s: 18px;
     --medium-large-s: 20px;
     --large-s: 24px;
-    --larger-s: 28px;
-    --x-large-s: 36px;
+    --x-large-s: 28px;
+    --xx-large-s: 36px;
 }
 
 html body {
@@ -132,7 +133,7 @@ body {
 
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding: var(--x-large-s) !important;
+    padding: var(--xx-large-s) !important;
     /* width: 100% !important; */
     height: 100vh;
     overflow-x: hidden;
@@ -168,7 +169,7 @@ body {
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
-    padding: var(--x-large-s);
+    padding: var(--xx-large-s);
     width: 45%;
     position: relative;
 
@@ -381,7 +382,7 @@ input,
     border: var(--thin-border) var(--lighter-grey);
 
     background-color: var(--light);
-    height: var(--x-large-s);
+    height: var(--xx-large-s);
 }
 
 /* remove the border for input in input group */
@@ -440,7 +441,7 @@ button {
     -webkit-box-shadow: none;
     box-shadow: none;
 
-    height: var(--x-large-s);
+    height: var(--xx-large-s);
 
     padding: var(--small-s);
 }
@@ -821,11 +822,11 @@ hr {
 @media (min-width: 1281px) {
 
     .page-content {
-        padding: var(--x-large-s) !important;
+        padding: var(--xx-large-s) !important;
     }
 
     .container {
-        padding: var(--x-large-s);
+        padding: var(--xx-large-s);
         /* width: 35% !important; */
     }
 

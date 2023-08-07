@@ -9,7 +9,7 @@
     background-color: var(--primary-colour);
 }
 
-.container{
+.container {
     width: 100% !important;
 }
 
@@ -20,7 +20,7 @@
     margin: 0px 0px 0px var(--small-s) !important;
 }
 
-.date-input{
+.date-input {
     margin: var(--small-s);
 }
 
@@ -44,7 +44,8 @@
     flex-direction: column;
 }
 
-tr, .info{
+tr,
+.info {
     cursor: pointer;
 }
 
@@ -74,13 +75,10 @@ tr,
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
-    .row {
-        padding-bottom: var(--small-s) !important;
-    }
+@media (min-width: 300px) and (max-width:428px) {
 
-    .bookkeep-actions {
-        padding: var(--small-s);
+    .money-card-summary {
+        margin: var(--normal-s) 0px;
     }
 
 
@@ -99,8 +97,9 @@ tr,
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
-    .bookkeep-actions {
-        padding: var(--small-s);
+
+    .money-card-summary {
+        margin: var(--normal-s) 0px;
     }
 
     .record-table {
@@ -114,8 +113,8 @@ tr,
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
 
-    .bookkeep-actions {
-        padding: var(--small-s);
+    .money-card-summary {
+        margin: var(--normal-s) 0px !important;
     }
 
     .record-table {
@@ -131,10 +130,18 @@ tr,
     Media Query for laptops & desktops
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
+
+    .money-card-summary {
+        margin: var(--large-s) 0px !important;
+    }
 }
 
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {
+    
+    .money-card-summary {
+        margin: var(--large-s) 0px !important;
+    }
 }
