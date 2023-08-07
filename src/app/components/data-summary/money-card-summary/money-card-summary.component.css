@@ -113,6 +113,21 @@ h2 {
     .stacked {
         display: none !important;
     }
+
+    .money-in-card {
+        /* removes the space on the left side of the money in card */
+        margin-left: 0px;
+    }
+
+    .money-out-card {
+        /* removes the space on the left for the money out card */
+        margin-right: 0px;
+    }
+
+    .profit-card {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
 
 /*--------------------------------
@@ -123,4 +138,13 @@ h2 {
         display: none !important;
     }
 
+    .money-in-card {
+        /* removes the space on the left side of the money in card */
+        margin-left: 0px;
+    }
+
+    .money-out-card {
+        /* removes the space on the left for the money out card */
+        margin-right: 0px;
+    }
 }
