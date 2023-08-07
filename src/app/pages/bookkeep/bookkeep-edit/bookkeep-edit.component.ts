@@ -77,6 +77,7 @@ export class BookkeepEditComponent implements OnInit {
             });
     }
 
+    // routes back to view record page
     goBackToDetails(recordId: any) {
         // console.log(recordId);
         this.router.navigate(['bookkeep/view-record', recordId]);

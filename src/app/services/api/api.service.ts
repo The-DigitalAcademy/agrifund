@@ -8,7 +8,7 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for api connection
+    // base string for mock-api connection
     private baseUrl = environment.apiURL;
 
     /* --------------------------------

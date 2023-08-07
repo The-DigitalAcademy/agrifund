@@ -25,6 +25,7 @@ export class BookkeepViewRecordComponent implements OnInit {
         this.getRecordDetails((this.id = this.route.snapshot.params['id']));
     }
 
+    // fetches the record based on its ID
     getRecordDetails(id: any) {
         this._apiService
             .getStatementItemById(this.id)
@@ -33,9 +34,16 @@ export class BookkeepViewRecordComponent implements OnInit {
             });
     }
 
+    // displays the uploaded proof of a record in a new browser window
     viewProof(documentUrl: string) {}
 
+    // routes to the edit details page by passing the record id
     editRecordDetails(recordId: any) {
         this.router.navigate(['bookkeep/edit-record', recordId]);
+    }
+
+    // routes to delete page with the record id
+    deleteRecord(recordId: any) {
+        this.router.navigate(['bookkeep/delete-record', recordId]);
     }
 }
