@@ -169,14 +169,17 @@ export class ValidationsServiceService {
     };
   }
   
-  // Custom address length validator (between 20 to 100 words)
-   addressLengthValidator(control: AbstractControl): ValidationErrors | null {
-    const address = control.value as string;
-    const wordCount = address.trim().split(/\s+/).length;
-    if (wordCount < 20 || wordCount > 100) {
-      return { addressLength: true };
-    }
-    return null;
-  }
+   addressLengthValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const address = control.value as string;
+      const wordCount = address.trim().split(/\s+/).length;
+  
+      if (wordCount < 20 || wordCount > 200) {
+        return { addressLength: true };
+      }
+  
+      return null;
+    };
+  
 }
-
+}
