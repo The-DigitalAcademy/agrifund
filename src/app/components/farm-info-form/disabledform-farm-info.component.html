@@ -49,7 +49,7 @@
         <label for="size" class="form-label">Size of farm (ha)</label>
         <input type="text" class="form-control" id="size" formControlName="size"
                [disabled]="isDisabled">
-               <small *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty" class="text-danger">The text field should contain a positive number.</small>
                <small *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</small>
 
       </div>
@@ -57,7 +57,7 @@
         <label for="years" class="form-label">Years using this farm</label>
         <input type="text" class="form-control" id="years" formControlName="years"
                [disabled]="isDisabled">
-               <small *ngIf="myForm.controls['years'].hasError('isNumeric') && myForm.controls['years'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['years'].hasError('isNumeric') && myForm.controls['years'].dirty" class="text-danger">The number of years should contain numbers only.</small>
                <small *ngIf="myForm.controls['years'].hasError('required') && myForm.controls['years'].dirty" class="text-danger">Field is required.</small>
       </div>
    
@@ -65,7 +65,7 @@
         <label for="num_employee" class="form-label">Number of people that help you farm</label>
         <input type="text" class="form-control" id="num_employee" formControlName="num_employee"
                [disabled]="isDisabled">
-               <small *ngIf="myForm.controls['num_employee'].hasError('isNumeric') && myForm.controls['num_employee'].dirty" class="text-danger">Invalid format.</small>
+               <small *ngIf="myForm.controls['num_employee'].hasError('isNumeric') && myForm.controls['num_employee'].dirty" class="text-danger">The number of employees should contain numbers only.</small>
                <small *ngIf="myForm.controls['num_employee'].hasError('required') && myForm.controls['num_employee'].dirty" class="text-danger">Field is required.</small>       
       </div>
 
