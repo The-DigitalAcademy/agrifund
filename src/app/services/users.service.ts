@@ -20,5 +20,8 @@ export class UserService {
     return this.http.post(`${this.userURL}`, inputdata);
 
   }
+  GetUser(){
+    
+  }
 
 }
