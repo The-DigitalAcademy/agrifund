@@ -38,14 +38,14 @@
   <hr>
   <div class="sub-container">
     <form [formGroup]="myForm">
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['farm'].valid && myForm.controls['farm'].dirty, 'has-error': myForm.controls['farm'].invalid && myForm.controls['farm'].dirty}">
         <label for="farm" class="form-label">Location of my farm</label>
         <input type="text" class="form-control" id="farm" aria-describedby="farm"
                formControlName="farm" [disabled]="isDisabled">
                <!-- <small *ngIf="myForm.controls['farm'].hasError('addressLength') && myForm.controls['farm'].dirty" class="text-danger">Invalid format.</small> -->
                <small *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty" class="text-danger">Field is required.</small>
       </div>
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['size'].valid && myForm.controls['size'].dirty, 'has-error': myForm.controls['size'].invalid && myForm.controls['size'].dirty}">
         <label for="size" class="form-label">Size of farm (ha)</label>
         <input type="text" class="form-control" id="size" formControlName="size"
                [disabled]="isDisabled">
@@ -53,7 +53,7 @@
                <small *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</small>
 
       </div>
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls[''].valid && myForm.controls['crop_name'].dirty, 'has-error': myForm.controls['crop_name'].invalid && myForm.controls['crop_name'].dirty}">
         <label for="years" class="form-label">Years using this farm</label>
         <input type="text" class="form-control" id="years" formControlName="years"
                [disabled]="isDisabled">
