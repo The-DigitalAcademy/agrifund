@@ -17,3 +17,14 @@
 .container>*{
     margin: var(--normal-s);
 }
+
+.container h1{
+    text-align: center;
+}
+
+@media (max-width: 390px) {
+
+    .container{
+        width: 100%;
+    }
+}

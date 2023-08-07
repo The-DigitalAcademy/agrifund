@@ -9,7 +9,7 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     // base string for api connection
-    private baseUrl = 'http://localhost:3001/agrifund/api/v1';
+    private baseUrl = environment.apiURL;
 
     /* --------------------------------
         USER CONNECTION STRINGS
@@ -61,7 +61,7 @@ export class ApiService {
 
     // update data for a single income statement record
     updateRecord(recordId: number, body: any) {
-        return this.http.put(`${this.statementItemsUrl}${recordId}`, body);
+        return this.http.put(`${this.statementItemsUrl}/${recordId}`, body);
     }
 
     // get income statement records between two dates
