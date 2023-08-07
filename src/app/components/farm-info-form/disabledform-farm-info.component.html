@@ -53,7 +53,7 @@
                <small *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</small>
 
       </div>
-      <div class="form-input" [ngClass]="{'has-success': myForm.controls[''].valid && myForm.controls['crop_name'].dirty, 'has-error': myForm.controls['crop_name'].invalid && myForm.controls['crop_name'].dirty}">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls[''].valid && myForm.controls['years'].dirty, 'has-error': myForm.controls['years'].invalid && myForm.controls['years'].dirty}">
         <label for="years" class="form-label">Years using this farm</label>
         <input type="text" class="form-control" id="years" formControlName="years"
                [disabled]="isDisabled">
@@ -61,7 +61,7 @@
                <small *ngIf="myForm.controls['years'].hasError('required') && myForm.controls['years'].dirty" class="text-danger">Field is required.</small>
       </div>
    
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['crop_name'].valid && myForm.controls['crop_name'].dirty, 'has-error': myForm.controls['crop_name'].invalid && myForm.controls['crop_name'].dirty}">
         <label for="num_employee" class="form-label">Number of people that help you farm</label>
         <input type="text" class="form-control" id="num_employee" formControlName="num_employee"
                [disabled]="isDisabled">
@@ -69,7 +69,7 @@
                <small *ngIf="myForm.controls['num_employee'].hasError('required') && myForm.controls['num_employee'].dirty" class="text-danger">Field is required.</small>       
       </div>
 
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['reasonForFunding'].valid && myForm.controls['reasonForFunding'].dirty, 'has-error': myForm.controls['reasonForFunding'].invalid && myForm.controls['reasonForFunding'].dirty}">
         <label for="reasonForFunding" class="form-label">Reason for needing funding:</label>
         <input type="text" class="form-control" id="reasonForFunding" formControlName="reasonForFunding"
                [disabled]="isDisabled">
