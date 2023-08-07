@@ -81,6 +81,7 @@ import {
 import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -107,6 +108,7 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         EquipmentCreateComponent,
+        
     ],
     imports: [
         BrowserModule,
