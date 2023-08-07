@@ -32,25 +32,6 @@
     margin: 0px;
 }
 
-h2 {
-    font-family: var(--normal-font);
-    font-size: var(--font-large);
-}
-
-
-.card-summary {
-    margin-bottom: var(--large-s);
-}
-
-.profit-card {
-    background-color: var(--primary-colour);
-}
-
-.profit-card h2,
-.profit-card label {
-    color: var(--light);
-}
-
 .info {
     display: flex;
     width: 100%;
@@ -112,28 +93,12 @@ tr,
         height: auto !important;
     }
 
-    .profit-card {
-        margin: var(--small-s) 0px !important;
-    }
-
-    .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
-    }
-
-    .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
-    }
-
 }
 
 /*---------------------------------
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
-    .card-summary>* {
-        margin: var(--normal-s) !important;
-    }
-
     .bookkeep-actions {
         padding: var(--small-s);
     }
@@ -142,32 +107,12 @@ tr,
         padding: var(--small-s);
     }
 
-    .single-row {
-        display: none !important;
-    }
-
-    .profit-card {
-        margin: var(--small-s) 0px !important;
-    }
-
-    .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
-    }
-
-    .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
-    }
-
 }
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
-
-    .card-summary>* {
-        margin: var(--normal-s) !important;
-    }
 
     .bookkeep-actions {
         padding: var(--small-s);
@@ -180,40 +125,16 @@ tr,
     .input-group .btn {
         border-radius: var(--border-radius);
     }
-
-    .single-row {
-        display: none !important;
-    }
-
-    .profit-card {
-        margin: var(--small-s) 0px !important;
-    }
-
-    .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
-    }
-
-    .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
-    }
-
 }
 
 /*--------------------------------------
     Media Query for laptops & desktops
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
-    .stacked {
-        display: none !important;
-    }
 }
 
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {
-    .stacked {
-        display: none !important;
-    }
-
 }

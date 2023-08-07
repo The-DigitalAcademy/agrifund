@@ -1,17 +1,17 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { LoginComponent } from './pages/user/login/login.component';
+import { RegisterComponent } from './pages/user/register/register.component';
+import { ForgotPasswordComponent } from './pages/user/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/user/reset-password/reset-password.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
-import { PortfolioProgressbarComponent } from './components/portfolio-progressbar/portfolio-progressbar.component';
-import { DisabledformFarmInfoComponent } from './components/farm-info-form/disabledform-farm-info.component';
-import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
+import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
+import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
+import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';

@@ -1,3 +1,19 @@
+/* ------------------------------------------------------------------------------------------------
+    DESCRIPTION:
+        Within this component record details data is fetched to be edited within the reactive from
+        and then sent to the api to be saved if a user chooses to save their changes.
+
+    PARAMETERS:
+        _apiService - used to subscribe and call methods related to the api connection
+        _bookkeepService -> used to subscribe and call methods within the bookkeep service
+        $bookkeepRecord -> stores the bookkeeping record as an observable.
+        editRecordForm -> name of the form group used for the reactive form
+
+    AUTHOR: Monique
+    CREATE DATE: 04 Aug 2023 
+    UPDATED DATE: 07 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
@@ -16,12 +32,16 @@ import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
     styleUrls: ['./bookkeep-edit.component.css'],
 })
 export class BookkeepEditComponent implements OnInit {
+    // used to store the id of the bookkeeping record
     id!: any;
+    // used to store the bookkeeping record's data retrieved from the api
     record!: IncomeStatementItem;
+    // reactive form used
     editRecordForm!: FormGroup;
+    // boolean value to check if the save button was clicked
     submitted = false;
+    // array to store the types of categories a record can have
     recordType: any = ['Money In', 'Money Out'];
-    createRecordForm: any;
 
     constructor(
         private route: ActivatedRoute,
@@ -41,17 +61,6 @@ export class BookkeepEditComponent implements OnInit {
             recordProof: ['', [Validators.required]],
         });
     }
-
-    /* ------------------------------------------------------------------------------------------------
-        DESCRIPTION:
-            Get record details fetches the record details from the api service and displays them in the
-            input fields
-        PARAMETER: 
-            id - refers to the id of the record
-
-        AUTHOR: Monique
-        CREATE DATE: 04 Aug 2023
-    -------------------------------------------------------------------------------------------------*/
 
     getRecordDetails(id: any) {
         this._apiService
