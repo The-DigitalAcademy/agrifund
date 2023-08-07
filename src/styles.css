@@ -597,7 +597,7 @@ hr {
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
+@media (min-width: 300px) and (max-width:428px){
 
     /* TEXT */
     h1 {
@@ -771,6 +771,11 @@ hr {
     /* hide items on small screens */
     .mobile-hidden {
         display: none !important;
+    }
+
+    /* hide the header on large screens */
+    .mobile-header {
+        display: none;
     }
 }
 

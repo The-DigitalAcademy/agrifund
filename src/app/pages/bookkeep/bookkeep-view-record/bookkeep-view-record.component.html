@@ -47,7 +47,9 @@
                     <label>Amount of Record</label>
                 </div>
                 <div class="col-12" id="value">
-                    <p class="greyed">{{ record.amount }}</p>
+                    <p class="greyed">
+                        {{ record.amount | currency: ' R ' : 'symbol' : '.2' }}
+                    </p>
                 </div>
             </div>
             <div class="row" id="record-proof">

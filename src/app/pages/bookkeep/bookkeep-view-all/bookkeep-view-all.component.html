@@ -131,7 +131,12 @@
                                 <td scope="row">{{ record.description }}</td>
                                 <td>{{ record.category }}</td>
                                 <td>22/12/2022</td>
-                                <td>{{ record.amount }}</td>
+                                <td>
+                                    {{
+                                        record.amount
+                                            | currency: ' R ' : 'symbol' : '.2'
+                                    }}
+                                </td>
                                 <!-- <td>No</td> -->
                                 <td>
                                     <div class="action-buttons">
