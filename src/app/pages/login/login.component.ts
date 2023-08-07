@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
   LoginForm!: FormGroup; 
 
   constructor(private fb:FormBuilder, private validationsService: ValidationsServiceService, private service:UserService, private router:Router ) {}
+userdata:any;
 
 ngOnInit(): void {
 
@@ -28,14 +29,11 @@ ngOnInit(): void {
 }
 onSubmit() {
   if (this.LoginForm.valid) {
-    this.service.RegisterUser(this.LoginForm.value).subscribe();{
-      this.router.navigate(['login'])
-    }
-    // Process the form data here (e.g., call a service to register the user)
-  } else {
-    // Display an error message or handle invalid form submission
-  }
-}
+    this.service.GetUser(this.LoginForm.value.id_number).subscribe(res =>{
+      this.userdata = res;
+    })
+   
 }
 
-
+}
+}
