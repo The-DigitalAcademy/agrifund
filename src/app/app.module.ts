@@ -80,6 +80,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 
 
 @NgModule({
@@ -108,6 +109,7 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         EquipmentCreateComponent,
+        TellMeAboutComponent,
         
     ],
     imports: [
