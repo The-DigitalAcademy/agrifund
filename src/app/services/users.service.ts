@@ -20,8 +20,11 @@ export class UserService {
     return this.http.post(`${this.userURL}`, inputdata);
 
   }
-  GetUser(){
-    
+  GetUser(data:any){
+    return this.http.get(`${this.userURL}`, data);
+
   }
 
-}
+  }
+
+
