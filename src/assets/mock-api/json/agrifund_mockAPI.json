@@ -140,6 +140,67 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "1b086aa1-fc1c-421c-b549-dd1171cbeca9",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "crop",
+      "responses": [
+        {
+          "uuid": "5552eeb5-b804-42a0-b8bf-48af135521b4",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "b7iv",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "plot",
+      "responses": [
+        {
+          "uuid": "e25de18e-6f5a-42c6-bb13-24c5316b6eec",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -154,6 +215,14 @@
     {
       "type": "route",
       "uuid": "973c8a86-cb9c-4874-96dd-8abe4734269f"
+    },
+    {
+      "type": "route",
+      "uuid": "1b086aa1-fc1c-421c-b549-dd1171cbeca9"
+    },
+    {
+      "type": "route",
+      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc"
     }
   ],
   "proxyMode": false,
@@ -224,6 +293,13 @@
       "name": "user",
       "documentation": "",
       "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "aa6aeb07-e3b8-48cc-a17a-be507a4e1d79",
+      "id": "b7iv",
+      "name": "cropInfo",
+      "documentation": "",
+      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"name\": \"{{oneOf (array 'Corn' 'Grapes' 'Potatoes')}}\", \n  \"season\": \"{{oneOf (array 'Summer' 'Autumn' 'Spring' 'Winter')}}\",\n  \"price\": \"{{toFixed (float 0 5000) 2}}\", \n  \"market_value\": \"{{toFixed (float 0 5000) 2}}\",\n  \"type\": \"{{oneOf (array 'Fruit' 'Vegatable')}}\",\n  }\n  {{/repeat}}\n]"
     }
   ]
 }

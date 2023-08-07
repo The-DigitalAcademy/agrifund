@@ -1,0 +1,126 @@
+/* used to change the style of the card summary money values */
+h2 {
+    font-family: var(--normal-font);
+    font-size: var(--font-large);
+}
+
+/* default styling for the card summary div */
+.card-summary {
+    margin-bottom: var(--large-s);
+}
+
+.profit-card {
+    /* changes the profit card to be the same as the primary colour */
+    background-color: var(--primary-colour);
+}
+
+.profit-card h2,
+.profit-card label {
+    /* changes the profit card text colour to white */
+    color: var(--light);
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+    
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
+    }
+
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .card-summary>* {
+        margin: var(--normal-s) !important;
+    }
+
+    /* card summary styles and layout when on a la */
+    .single-row {
+        display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        /* adds p */
+        margin: 0px var(--small-s) 0px 0px ;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
+    }
+
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .card-summary>* {
+        margin: var(--normal-s) !important;
+    }
+
+    .bookkeep-actions {
+        padding: var(--small-s);
+    }
+
+    .record-table {
+        padding: var(--small-s);
+    }
+
+    .input-group .btn {
+        border-radius: var(--border-radius);
+    }
+
+    .single-row {
+        display: none !important;
+    }
+
+    .profit-card {
+        margin: var(--small-s) 0px !important;
+    }
+
+    .money-in-card {
+        margin: 0px var(--small-s) 0px 0px;
+    }
+
+    .money-out-card {
+        margin: 0px 0px 0px var(--small-s);
+    }
+
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .stacked {
+        display: none !important;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+    .stacked {
+        display: none !important;
+    }
+
+}

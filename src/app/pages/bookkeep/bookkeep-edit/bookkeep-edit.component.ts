@@ -32,12 +32,16 @@ import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
     styleUrls: ['./bookkeep-edit.component.css'],
 })
 export class BookkeepEditComponent implements OnInit {
+    // used to store the id of the bookkeeping record
     id!: any;
+    // used to store the bookkeeping record's data retrieved from the api
     record!: IncomeStatementItem;
+    // reactive form used
     editRecordForm!: FormGroup;
+    // boolean value to check if the save button was clicked
     submitted = false;
+    // array to store the types of categories a record can have
     recordType: any = ['Money In', 'Money Out'];
-    createRecordForm: any;
 
     constructor(
         private route: ActivatedRoute,
