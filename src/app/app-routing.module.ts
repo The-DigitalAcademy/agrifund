@@ -16,7 +16,7 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
-import { BookkeepDeleteComponent } from './pages/bookkeep/bookkeep-delete/bookkeep-delete.component';
+import { BookkeepDeleteComponent } from './components/bookkeep/bookkeep-delete/bookkeep-delete.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },

@@ -37,7 +37,7 @@ import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/boo
 import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
-import { BookkeepDeleteComponent } from './pages/bookkeep/bookkeep-delete/bookkeep-delete.component';
+import { BookkeepDeleteComponent } from './components/bookkeep/bookkeep-delete/bookkeep-delete.component';
 import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 /* --------------------------------
     PORTFOLIO
