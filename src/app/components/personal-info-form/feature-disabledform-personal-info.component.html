@@ -55,7 +55,7 @@
           <small *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
           <small *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</small>
       </div>
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['cell_number'].valid && myForm.controls['cell_number'].dirty, 'has-error': myForm.controls['cell_number'].invalid && myForm.controls['cell_number'].dirty}">
         <label for="cell_number" class="form-label">Cell Number</label>
         <input type="text" class="form-control" id="cell_number" formControlName="cell_number" [disabled]="isDisabled">
         <small *ngIf="myForm.controls['cell_number'].hasError('invalidPhoneNumber') && myForm.controls['cell_number'].dirty" class="text-danger">Invalid phoneNumber.</small>
