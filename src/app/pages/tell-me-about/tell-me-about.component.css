@@ -11,6 +11,12 @@
     justify-content: center;
   
 }
+.carousel-images {
+    height: 50% !important;
+    width: 50% !important;
+    border-radius: 100%;
+    margin-bottom: -10%;
+}
 .carousel-indicators button {
     height: 10px !important;
     width: 10px !important;
@@ -59,9 +65,11 @@ fa-icon{
 }
 
 .card{
+    display: flex;
     width: auto !important;
-    height: 100% !important;
-}
-.card-image{
-    height: 30%;
+    height: 420px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
 }
