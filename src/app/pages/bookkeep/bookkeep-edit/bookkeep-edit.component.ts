@@ -100,7 +100,7 @@ export class BookkeepEditComponent implements OnInit {
                     'src/assets/mock-api/bookkeep-record-proof/' +
                     this.editRecordForm.get('recordProof')?.value,
             };
-            console.table(this.record);
+            // console.table(this.record);
             this._apiService
                 .updateRecord(this.record.id, this.record)
                 .subscribe(data => {
