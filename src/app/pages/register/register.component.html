@@ -51,7 +51,7 @@
                         <small *ngIf="RegisterForm.controls['password'].hasError('invalidPassword') && RegisterForm.controls['password'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers.</small>
                         <small *ngIf="RegisterForm.controls['password'].hasError('required') && RegisterForm.controls['password'].dirty" class="text-danger">Field is required.</small>
                     </div>
-                    <div class="form-input">
+                    <div class="form-input" [ngClass]="{'has-success': RegisterForm.controls['cpassword'].valid && RegisterForm.controls['cpassword'].dirty, 'has-error': RegisterForm.controls['cpassword'].invalid && RegisterForm.controls['cpassword'].dirty}">
                         <label for="cpassword">Confirm Password:</label><input formControlName="cpassword" class="form-control" id="cpassword" />
                         <small *ngIf="RegisterForm.hasError('passwordsMatch') && RegisterForm.controls['cpassword'].dirty" class="text-danger">Passwords do not match.</small>
                         <small *ngIf="RegisterForm.controls['cpassword'].hasError('required') && RegisterForm.controls['cpassword'].dirty" class="text-danger">Field is required.</small>
