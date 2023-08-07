@@ -19,13 +19,14 @@
                         </div>
                     </div>
 
-                    <div class="form-input">
+                    <div class="form-input" [ngClass]="{'has-success': LoginForm.controls['id_number'].valid && LoginForm.controls['id_number'].dirty, 'has-error': LoginForm.controls['id_number'].invalid && LoginForm.controls['id_number'].dirty}">
                         <label for="id_number">ID:</label>
                          <input formControlName="id_number" class="form-control" id="id_numberInput" />
                         <small *ngIf="LoginForm.controls['id_number'].hasError('idNumber') && LoginForm.controls['id_number'].dirty" class="text-danger">The ID number should contain 13 digits.</small>
                         <small *ngIf="LoginForm.controls['id_number'].hasError('required') && LoginForm.controls['id_number'].dirty" class="text-danger">Field is required.</small>
                     </div>
-                    <div class="form-input"><label for="password">Password:</label>
+                    <div class="form-input" [ngClass]="{'has-success': LoginForm.controls['password'].valid && LoginForm.controls['password'].dirty, 'has-error': LoginForm.controls['password'].invalid && LoginForm.controls['password'].dirty}">
+                        <label for="password">Password:</label>
                         <input formControlName="password" class="form-control" id="passwordinput" />
                         <small *ngIf="LoginForm.controls['password'].hasError('invalidPassword') && LoginForm.controls['password'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers</small>
                         <small *ngIf="LoginForm.controls['password'].hasError('required') && LoginForm.controls['password'].dirty" class="text-danger">Field is required.</small>
