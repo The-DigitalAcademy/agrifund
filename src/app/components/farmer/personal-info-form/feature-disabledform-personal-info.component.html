@@ -54,7 +54,7 @@ d<!-- <div class="outer">
           [disabled]="isDisabled">
           <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Invalid format.</div>
           <div class="form-text text-danger" *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
-          <small *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</small>
+          <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</div>
       </div>
       <div class="form-input">
         <label for="cell_number" class="form-label">Cell Number</label>
