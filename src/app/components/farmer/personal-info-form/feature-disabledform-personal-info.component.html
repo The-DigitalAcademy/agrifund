@@ -78,8 +78,8 @@
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['email'].valid && myForm.controls['email'].dirty, 'has-error': myForm.controls['email'].invalid && myForm.controls['email'].dirty}">
         <label for="exampleInputPassword1" class="form-label">Email</label>
         <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email">
-        <small *ngIf="myForm.controls['email'].hasError('invalidEmail') && myForm.controls['email'].dirty" class="text-danger">Invalid email address.</small>
-        <small *ngIf="myForm.controls['email'].hasError('required') && !myForm.controls['email'].value && myForm.controls['email'].dirty" class="text-danger">email required</small>
+        <div class="form-text text-danger" *ngIf="myForm.controls['email'].hasError('invalidEmail') && myForm.controls['email'].dirty" class="text-danger">Invalid email address.</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['email'].hasError('required') && !myForm.controls['email'].value && myForm.controls['email'].dirty" class="text-danger">email required</div>
       </div>
       
 
