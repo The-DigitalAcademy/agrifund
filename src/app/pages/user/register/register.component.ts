@@ -55,7 +55,7 @@ ngOnInit(): void {
            
                 // Handle success or error response from the API
                 this.router.navigate(['/login']);
-               
+               alert('Successfully Registered')
           });
          
              
