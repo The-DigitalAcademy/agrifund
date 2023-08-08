@@ -35,5 +35,10 @@ export class DonutGraphComponent {
       }
 
     });
+    
   }
+  ngOnInit(): void {
+    this.createChart();
+  }
+  
 }
