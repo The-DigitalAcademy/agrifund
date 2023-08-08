@@ -10,6 +10,8 @@
     background-color: var(--white-2);
     align-items: center;
     justify-content: center;
+    border-color: var(--primary-colour) !important;
+    
   
 }
 .carousel-images {
