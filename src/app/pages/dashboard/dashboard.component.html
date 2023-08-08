@@ -10,7 +10,7 @@
         <div class="page-heading">
             <h1>Dashboard</h1>
         </div>
-        <div class="justify-center">
+        <!-- <div class="justify-center">
             <div class="container justify-center">
                 <h1>Your Dashboard Is Looking A Bit Empty...</h1>
                 <h3>Add bookkeeping records to fill it up!</h3>
@@ -23,6 +23,31 @@
                     </button>
                 </div>
             </div>
+        </div> -->
+        <div class="container">
+            <div class="container-header">
+                <div class="justify-start">
+                    <h2>Bookkeep Overview</h2>
+                </div>
+                <div class="justify-end">
+                    <button class="btn colourful-btn">
+                        <p>Month</p>
+                    </button>
+                    <button class="white-btn">
+                        <p>Year</p>
+                    </button>
+                </div>
+
+            </div>
+            
+            
+
+            <app-money-card-summary></app-money-card-summary>
         </div>
+
+        <div class="container">
+            <app-portfolio-progressbar></app-portfolio-progressbar>
+        </div>
+
     </div>
 </div>

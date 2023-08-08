@@ -110,6 +110,7 @@ import { ModalBaseComponent } from './components/modals/modal-base/modal-base.co
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         ModalBaseComponent,
+ 
     ],
     imports: [
         BrowserModule,
