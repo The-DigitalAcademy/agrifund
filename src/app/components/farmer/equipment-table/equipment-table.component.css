@@ -8,3 +8,20 @@ fa-icon{
     
     margin-bottom: 2%;
 }
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+
+    .record-table {
+        padding: var(--small-s);
+    }
+
+    .container,
+    .form-container {
+        height: auto !important;
+    }
+
+
+}
