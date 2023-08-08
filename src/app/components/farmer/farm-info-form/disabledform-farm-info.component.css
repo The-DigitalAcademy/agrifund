@@ -51,7 +51,14 @@
     justify-content: flex-end;
     width: 100%;
   }
-  
+  /* CSS Styles for Success and Error States */
+.has-success .form-control {
+  border-color: green;
+}
+
+.has-error .form-control {
+  border-color: red;
+}
   
   
   
