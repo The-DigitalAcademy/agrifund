@@ -15,7 +15,21 @@ fa-icon{
 
 
     .record-table {
-        padding: var(--small-s);
+        padding: var( --large-s);
+    }
+
+    .container,
+    .form-container {
+        height: auto !important;
+    }
+}
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .record-table {
+        padding: var( --large-s);
     }
 
     .container,
@@ -23,5 +37,39 @@ fa-icon{
         height: auto !important;
     }
 
+}
 
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .record-table {
+        padding: var( --large-s);
+    }
+
+    .container,
+    .form-container {
+        height: auto !important;
+    }
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    .money-card-summary {
+        margin: var(--large-s) 0px !important;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+
+    .money-card-summary {
+        margin: var(--large-s) 0px !important;
+    }
 }

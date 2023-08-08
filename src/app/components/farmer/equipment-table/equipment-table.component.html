@@ -21,7 +21,7 @@
                 <td scope="row">{{asset.name}}</td> 
                 <td>{{asset.type}}</td>
                 <td>{{asset.age}}</td>
-                <td>{{asset.purchase_price}}</td>
+                <td>{{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}</td>
                <td>
                     <div class="action-buttons">
                         <button class="btn colourful-btn btn-width" (click)="onEditClicked()">Edit</button>
@@ -37,21 +37,17 @@
         <div class="info">
             <div class="left justify-start">
                 <p class="justify-start">
+                    {{asset.type}}
+                </p>
+                <p class="greyed justify-end">
                     {{ asset.name}}
                 </p>
-                <p class="greyed justify-start">
-                    {{asset.type}}
+                <p class="greyed justify-center">
+                    {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
                 </p>
             </div>
 
-            <div class="right justify-end">
-                <p class=" justify-end">
-                    {{asset.age}}
-                </p>
-                <p class="greyed justify-end">
-                    {{asset.purchase_price}}
-                </p>
-            </div>
+            
         </div>
         <hr *ngIf="!isLast" />
     </div>
