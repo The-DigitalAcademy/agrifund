@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
+import { ModalBaseComponent } from 'src/app/components/modals/modal-base/modal-base.component';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ModalService {
+    constructor() {}
 
-  constructor() { }
+    add(modal: ModalBaseComponent) {}
+
+    close() {}
+
+    remove(modal: ModalBaseComponent) {}
 }
