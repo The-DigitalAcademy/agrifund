@@ -83,6 +83,9 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { ModalBaseComponent } from './components/modals/modal-base/modal-base.component';
+import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
+
 
 @NgModule({
     declarations: [
@@ -109,7 +112,9 @@ import { ModalBaseComponent } from './components/modals/modal-base/modal-base.co
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-        ModalBaseComponent,
+        EquipmentCreateComponent,
+        TellMeAboutComponent,
+        
     ],
     imports: [
         BrowserModule,
