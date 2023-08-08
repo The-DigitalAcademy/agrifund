@@ -11,19 +11,18 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Type</th>
-                <th scope="col">Quantity</th>
                 <th scope="col">Age(years)</th>
                 <th scope="col">Purchase Amount</th>
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody >
+        <tbody *ngFor="let asset of equipmentRecords" >
             <tr class="record-tr">
-                <td scope="row">Wooden Rake</td>
-                <td>Hand Tool</td>
-                <td>3</td>
-                <td>3</td>
-                <td>R500</td>
+                <td scope="row">{{asset.name}}</td>
+                <td>{{asset.type}}</td>
+                <td>{{asset.age}}</td>
+                <td>{{asset.purchase_price}}</td>
+               
                 <td>
                     <div class="action-buttons">
                         <button class="btn colourful-btn btn-width" (click)="onEditClicked()">Edit</button>

@@ -81,4 +81,8 @@ export class ApiService {
     addEquipment(body: any){
         return this.http.post(`${this.farmerAssetURL}`, body)
     }
+
+    getAllEquipment(){
+        return this.http.get(`${this.farmerAssetURL}`)
+    }
 }

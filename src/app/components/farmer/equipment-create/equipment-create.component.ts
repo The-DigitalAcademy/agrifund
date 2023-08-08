@@ -23,7 +23,6 @@ constructor(private router: Router, private _fb: FormBuilder, private _portfolio
     this.createEquipmentForm = this._fb.group({
       equipmentName: ['', [Validators.required]],
       equipmentType:['', [Validators.required]],
-      equipmentQuantity:['', [Validators.required]],
       equipmentAge:['', [Validators.required]],
       equipmentAmount:['', [Validators.required]],
     });
@@ -48,11 +47,10 @@ saveEquipment() {
     this._apiService.addEquipment(this.asset).subscribe(data => {
       console.log(data);
       console.table(this.createEquipmentForm.value)
-      alert()
 
     });
 
-    this.router.navigate(['/portfolio-view-info'])
+    this.router.navigate(['/portfolio']);
   }
 }
 }
