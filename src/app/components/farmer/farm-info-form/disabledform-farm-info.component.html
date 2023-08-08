@@ -43,22 +43,22 @@
         <input type="text" class="form-control" id="farm" aria-describedby="farm"
                formControlName="farm" [disabled]="isDisabled">
                <!-- <small *ngIf="myForm.controls['farm'].hasError('addressLength') && myForm.controls['farm'].dirty" class="text-danger">Invalid format.</small> -->
-               <small *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty" class="text-danger">Field is required.</small>
+               <div class="form-text text-danger" *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty" class="text-danger">Field is required.</div>
       </div>
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['size'].valid && myForm.controls['size'].dirty, 'has-error': myForm.controls['size'].invalid && myForm.controls['size'].dirty}">
         <label for="size" class="form-label">Size of farm (ha)</label>
         <input type="text" class="form-control" id="size" formControlName="size"
                [disabled]="isDisabled">
-               <small *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty" class="text-danger">Invalid format.</small>
-               <small *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</small>
+               <div class="form-text text-danger" *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty" class="text-danger">Invalid format.</div>
+               <div class="form-text text-danger" *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</div>
 
       </div>
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['years'].valid && myForm.controls['years'].dirty, 'has-error': myForm.controls['years'].invalid && myForm.controls['years'].dirty}">
         <label for="years" class="form-label">Years using this farm</label>
         <input type="text" class="form-control" id="years" formControlName="years"
                [disabled]="isDisabled">
-               <small *ngIf="myForm.controls['years'].hasError('isNumeric') && myForm.controls['years'].dirty" class="text-danger">Invalid format.</small>
-               <small *ngIf="myForm.controls['years'].hasError('required') && myForm.controls['years'].dirty" class="text-danger">Field is required.</small>
+               <div class="form-text text-danger" *ngIf="myForm.controls['years'].hasError('isNumeric') && myForm.controls['years'].dirty" class="text-danger">Invalid format.</div>
+               <div class="form-text text-danger" *ngIf="myForm.controls['years'].hasError('required') && myForm.controls['years'].dirty" class="text-danger">Field is required.</div>
       </div>
    
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['num_employee'].valid && myForm.controls['num_employee'].dirty, 'has-error': myForm.controls['num_employee'].invalid && myForm.controls['num_employee'].dirty}">
