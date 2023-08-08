@@ -19,7 +19,7 @@
                         </div>
                     </div>
 
-                    <div class="form-input" [ngClass]="{'has-success': Login.controls['email'].valid && LoginForm.controls['email'].dirty, 'has-error': LoginForm.controls['email'].invalid && LoginForm.controls['email'].dirty}">
+                    <div class="form-input" [ngClass]="{'has-success': LoginForm.controls['email'].valid && LoginForm.controls['email'].dirty, 'has-error': LoginForm.controls['email'].invalid && LoginForm.controls['email'].dirty}">
                         <label for="email">Email:</label>
                         <input formControlName="email" class="form-control" id="emailInput" />
                         <small *ngIf="LoginForm.controls['email'].hasError('invalidEmail') && LoginForm.controls['email'].dirty" class="text-danger error">Invalid email format</small>

@@ -16,7 +16,7 @@ constructor(private fb:FormBuilder, private validationsService: ValidationsServi
 ngOnInit(): void {
 
   this.LoginForm = new FormGroup({
-    id_number: new FormControl("",[Validators.required, this.validationsService.idNumberValidator()]),
+    email: new FormControl("",[Validators.required, this.validationsService.emailValidator()]),
     password:new FormControl("", [Validators.required, this.validationsService.passwordValidator()]),
 
   })
