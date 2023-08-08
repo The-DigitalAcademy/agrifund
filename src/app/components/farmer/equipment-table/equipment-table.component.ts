@@ -11,12 +11,14 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class EquipmentTableComponent {
 
   equipmentRecords: Asset[] = [];
+isLast: any;
   constructor(private _apiService: ApiService, private router: Router){
     }
 
   ngOnInit() {
     this._apiService.getAllEquipment().subscribe(
       (assets: any) => {
+        // console.table(assets)
          this.equipmentRecords = assets;
       });
   }

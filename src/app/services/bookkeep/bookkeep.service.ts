@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IncomeStatementItem } from 'src/app/models/income-statement-item';
+import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class BookkeepService {
     constructor(private _apiService: ApiService) {
         this._apiService.getAllStatementItems().subscribe((records: any) => {
             // console.table(products);
-            this.bookkeepRecords = records; //populate bookkeepRecords array with records from api
+            this.bookkeepRecords = records; //populate bookkeep records array with records from api
         });
     }
 
@@ -23,10 +23,21 @@ export class BookkeepService {
 
     // TODO
     // update income statement total income
+    calculateTotalIncome() {}
 
     // TODO
     // update income statement total expense
+    calculateTotalExpense() {}
 
     // TODO
     // update income statement total net income (profit)
+    calculateTotalNetIncome() {}
+
+    // TODO
+    // set the income statement date
+
+    //TODO
+    //get income statement items by date
+
+    //
 }

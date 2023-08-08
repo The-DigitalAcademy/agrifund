@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IncomeStatementItem } from 'src/app/models/income-statement-item';
+import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 
@@ -51,11 +51,11 @@ export class BookkeepCreateComponent implements OnInit {
                     this.createRecordForm.get('recordProof')?.value,
             };
 
-            console.table(this.record);
+            // console.table(this.record);
 
             this._apiService.addRecord(this.record).subscribe(data => {
-                console.log(data);
-                console.table(this.createRecordForm.value);
+                // console.log(data);
+                // console.table(this.createRecordForm.value);
             });
 
             this.router.navigate(['/bookkeep']);

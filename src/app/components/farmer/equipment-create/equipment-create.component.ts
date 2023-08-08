@@ -45,8 +45,7 @@ saveEquipment() {
 
     console.table(this.asset);
     this._apiService.addEquipment(this.asset).subscribe(data => {
-      console.log(data);
-      console.table(this.createEquipmentForm.value)
+      console.table(data);
 
     });
 

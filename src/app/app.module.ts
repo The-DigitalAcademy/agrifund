@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+// import { OverlayModule } from '@angular/cdk/overlay';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -20,6 +21,7 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 /* --------------------------------
     USER
 ---------------------------------*/
@@ -35,6 +37,8 @@ import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/boo
 import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+
+import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
@@ -78,7 +82,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
+import { ModalBaseComponent } from './components/modals/modal-base/modal-base.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
 
@@ -107,6 +111,7 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
+        ModalBaseComponent,
         EquipmentCreateComponent,
         
     ],
@@ -118,6 +123,7 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        // OverlayModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

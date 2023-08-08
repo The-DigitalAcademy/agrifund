@@ -22,7 +22,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IncomeStatementItem } from 'src/app/models/income-statement-item';
+import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 
@@ -77,6 +77,7 @@ export class BookkeepEditComponent implements OnInit {
             });
     }
 
+    // routes back to view record page
     goBackToDetails(recordId: any) {
         // console.log(recordId);
         this.router.navigate(['bookkeep/view-record', recordId]);
@@ -99,7 +100,7 @@ export class BookkeepEditComponent implements OnInit {
                     'src/assets/mock-api/bookkeep-record-proof/' +
                     this.editRecordForm.get('recordProof')?.value,
             };
-            console.table(this.record);
+            // console.table(this.record);
             this._apiService
                 .updateRecord(this.record.id, this.record)
                 .subscribe(data => {

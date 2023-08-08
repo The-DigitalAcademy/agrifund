@@ -20,21 +20,29 @@ h2 {
     color: var(--light);
 }
 
+.card-summary>* {
+    margin: inherit;
+}
+
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
-    
+@media (min-width: 300px) and (max-width:428px) {
+
+    .single-row{
+        display: none !important;
+    }
+
     .profit-card {
-        margin: var(--small-s) 0px !important;
+        margin: 0px 0px var(--normal-s) 0px !important;
     }
 
     .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
+        margin: 0px var(--x-small-s) 0px 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
+        margin: 0px 0px 0px var(--x-small-s);
     }
 
 }
@@ -43,9 +51,6 @@ h2 {
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
-    .card-summary>* {
-        margin: var(--normal-s) !important;
-    }
 
     /* card summary styles and layout when on a la */
     .single-row {
@@ -53,16 +58,15 @@ h2 {
     }
 
     .profit-card {
-        margin: var(--small-s) 0px !important;
+        margin: 0px 0px var(--normal-s) 0px !important;
     }
 
     .money-in-card {
-        /* adds p */
-        margin: 0px var(--small-s) 0px 0px ;
+        margin: 0px var(--x-small-s) 0px 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
+        margin: 0px 0px 0px var(--x-small-s);
     }
 
 }
@@ -72,36 +76,22 @@ h2 {
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
 
-    .card-summary>* {
-        margin: var(--normal-s) !important;
-    }
-
-    .bookkeep-actions {
-        padding: var(--small-s);
-    }
-
-    .record-table {
-        padding: var(--small-s);
-    }
-
-    .input-group .btn {
-        border-radius: var(--border-radius);
-    }
-
-    .single-row {
+    .stacked {
         display: none !important;
     }
 
-    .profit-card {
-        margin: var(--small-s) 0px !important;
-    }
-
     .money-in-card {
-        margin: 0px var(--small-s) 0px 0px;
+        /* removes the space on the left side of the money in card */
+        margin: 0px var(--small-normal-s) 0px 0px;
     }
 
     .money-out-card {
-        margin: 0px 0px 0px var(--small-s);
+        /* removes the space on the left for the money out card */
+        margin: 0px 0px 0px var(--small-normal-s);
+    }
+
+    .profit-card {
+        margin: 0px var(--small-normal-s) 0px var(--small-normal-s);
     }
 
 }
@@ -116,17 +106,16 @@ h2 {
 
     .money-in-card {
         /* removes the space on the left side of the money in card */
-        margin-left: 0px;
+        margin: 0px var(--small-normal-s) 0px 0px;
     }
 
     .money-out-card {
         /* removes the space on the left for the money out card */
-        margin-right: 0px;
+        margin: 0px 0px 0px var(--small-normal-s);
     }
 
     .profit-card {
-        margin-left: 0px;
-        margin-right: 0px;
+        margin: 0px var(--normal-s) 0px var(--small-normal-s);
     }
 }
 
@@ -137,14 +126,18 @@ h2 {
     .stacked {
         display: none !important;
     }
+    
+    .profit-card {
+        margin: 0px var(--medium-s) 0px var(--medium-s) ;
+    }
 
     .money-in-card {
         /* removes the space on the left side of the money in card */
-        margin-left: 0px;
+        margin: 0px var(--medium-s) 0px 0px;
     }
 
     .money-out-card {
         /* removes the space on the left for the money out card */
-        margin-right: 0px;
+        margin: 0px 0px 0px var(--medium-s);
     }
 }

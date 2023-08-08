@@ -16,14 +16,13 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody *ngFor="let asset of equipmentRecords" >
+        <tbody *ngFor="let asset of equipmentRecords">
             <tr class="record-tr">
-                <td scope="row">{{asset.name}}</td>
+                <td scope="row">{{asset.name}}</td> 
                 <td>{{asset.type}}</td>
                 <td>{{asset.age}}</td>
                 <td>{{asset.purchase_price}}</td>
-               
-                <td>
+               <td>
                     <div class="action-buttons">
                         <button class="btn colourful-btn btn-width" (click)="onEditClicked()">Edit</button>
                     </div>
@@ -32,5 +31,31 @@
             
         </tbody>
     </table>
+
+    <div class="large-hidden" *ngFor="let asset of equipmentRecords">
+       
+        <div class="info">
+            <div class="left justify-start">
+                <p class="bold justify-start">
+                    {{ asset.name}}
+                </p>
+                <p class="greyed justify-start">
+                    {{asset.type}}
+                </p>
+            </div>
+
+            <div class="right justify-end">
+                <p class="bold justify-end">
+                    {{asset.age}}
+                </p>
+                <p class="greyed justify-end">
+                    {{asset.purchase_price}}
+                </p>
+            </div>
+        </div>
+        <hr *ngIf="!isLast" />
+    </div>
+</div>
+
 
 
