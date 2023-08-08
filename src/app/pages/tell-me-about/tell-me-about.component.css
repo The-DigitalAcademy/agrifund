@@ -83,3 +83,6 @@ align-items: center;
 border-radius: var(--border-radius);
 border: var(--thin-border) var(--lighter-grey);
 }
+.description{
+    height: 55px;
+}
