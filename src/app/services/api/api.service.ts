@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Users } from 'src/app/models/users';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -74,10 +76,9 @@ export class ApiService {
     //get an income statement record from a search text
 
     // register user
-    RegisterUser(body: any) {
-        // body.shift();
-        console.log(body);
-        return this.http.post(`${this.userURL}`, body);
-    }
+    RegisterUser(user: any): Observable<any> {
+        return this.http.post(this.userURL, user);
+      }
+      
 
 }
