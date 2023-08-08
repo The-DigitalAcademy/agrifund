@@ -15,12 +15,13 @@ export class BarChartComponent {
     this.chart = new Chart("MyChart", {
       type: 'bar', //this denotes tha type of chart
       
+      
 
       // values on X-Axis
 
       data: {
         labels: ['Water', 'Seed', 'Equipment','Fertilizer',
-								 'Tool'], 
+								 'Tools'], 
 	       datasets: [
         
           {
