@@ -1,3 +1,15 @@
+/* ------------------------------------------------------------------------------------------------
+    DESCRIPTION:
+        This component is used to control the display and state of a modal when a user clicks a
+        button on a page that makes use of the modal. A modal body is passed to this component to
+        display content related to the page where the modal button was clicked.
+    PARAMETERS:
+        _modalService -> calls the service that controls the state of the modal
+    AUTHOR: Monique
+    CREATE DATE: 08 Aug 2023 
+    UPDATE DATE: 
+-------------------------------------------------------------------------------------------------*/
+
 import {
     Component,
     ViewEncapsulation,
@@ -42,7 +54,7 @@ export class ModalBaseComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        // remove self from modal service
+        // remove modal instance from modal service
         this._modalService.remove(this);
 
         // remove modal element from html
@@ -50,12 +62,14 @@ export class ModalBaseComponent implements OnInit, OnDestroy {
     }
 
     open() {
+        // modal will display in block format when modal is called
         this.element.style.display = 'block';
         document.body.classList.add('modal-open');
         this.isOpen = true;
     }
 
     close() {
+        // makes the modal not displayed when closed
         this.element.style.display = 'none';
         document.body.classList.remove('modal-open');
         this.isOpen = false;
