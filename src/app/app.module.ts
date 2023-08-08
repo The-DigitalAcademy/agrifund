@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+// import { OverlayModule } from '@angular/cdk/overlay';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -20,7 +21,6 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ModalComponent } from './components/modal/modal.component';
 
 /* --------------------------------
     USER
@@ -82,6 +82,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { ModalBaseComponent } from './components/modals/modal-base/modal-base.component';
 
 @NgModule({
     declarations: [
@@ -109,7 +110,7 @@ import {
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         BookkeepDeleteComponent,
-        ModalComponent,
+        ModalBaseComponent,
     ],
     imports: [
         BrowserModule,
@@ -119,6 +120,7 @@ import {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        // OverlayModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

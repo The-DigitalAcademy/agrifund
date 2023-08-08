@@ -487,7 +487,7 @@ button {
 
 /* style of an icon when hovering or focusing */
 .icon-btn:hover,
-.icon-btn:focus {
+.icon-btn:focus{
     color: var(--dark) !important;
 }
 

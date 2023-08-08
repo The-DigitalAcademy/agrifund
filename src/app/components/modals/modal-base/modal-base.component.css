@@ -1,7 +1,7 @@
 /*------------------
     MODAL STYLES
 --------------------*/
-.modal {
+modal {
     /* modals are hidden by default */
     display: none;
 }

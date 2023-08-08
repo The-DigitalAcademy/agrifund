@@ -9,11 +9,6 @@ h2 {
     font-family: var(--normal-font);
 }
 
-.content .btn, .actions .btn{
-    width: 150px;
-    /* margin: 0px var(--normal-s); */
-}
-
 .content>* {
     margin-bottom: var(--normal-s) !important;
 }
