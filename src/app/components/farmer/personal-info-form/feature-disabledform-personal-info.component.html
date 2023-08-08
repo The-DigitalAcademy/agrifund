@@ -1,4 +1,4 @@
-<!-- <div class="outer">
+d<!-- <div class="outer">
 <div class="container">
     <form class="form-input" [formGroup]="myForm" disabled>
       <div class="form-group">
@@ -52,8 +52,8 @@
         <label for="last_name" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="last_name" formControlName="last_name"
           [disabled]="isDisabled">
-          <small *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Invalid format.</small>
-          <small *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</small>
+          <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Invalid format.</div>
+          <div class="form-text text-danger" *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
           <small *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</small>
       </div>
       <div class="form-input">
