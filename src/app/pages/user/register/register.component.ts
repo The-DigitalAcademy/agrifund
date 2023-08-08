@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
 export class RegisterComponent implements OnInit{ 
   RegisterForm!: FormGroup; 
 
-constructor(private fb:FormBuilder, private validationsService: ValidationsServiceService) {}
+constructor(private fb:FormBuilder, private validationsService: ValidationsServiceService, private router: Router , private _apiservice:ApiService) {}
 
 ngOnInit(): void {
 
@@ -26,7 +28,9 @@ ngOnInit(): void {
   },{
             validators: [this.validationsService.passwordsMatchValidator] // Add custom password matching validation method from your validation service
           });
+
     }
+
     onSubmit() {
           if (this.RegisterForm.valid) {
             // Process the form data here (e.g., call a service to register the user)
