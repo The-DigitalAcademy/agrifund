@@ -48,7 +48,7 @@ d<!-- <div class="outer">
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('textWithoutNumbers') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('required') && myForm.controls['first_name'].dirty" class="text-danger">First name required.</div>
       </div>
-      <div class="form-input" [ngClass]="{'has-success': myForm.controls['first_name'].valid && myForm.controls['first_name'].dirty, 'has-error': myForm.controls['first_name'].invalid && myForm.controls['first_name'].dirty}">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['last_name'].valid && myForm.controls['last_name'].dirty, 'has-error': myForm.controls['last_name'].invalid && myForm.controls['last_name'].dirty}">
         <label for="last_name" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="last_name" formControlName="last_name"
           [disabled]="isDisabled">
