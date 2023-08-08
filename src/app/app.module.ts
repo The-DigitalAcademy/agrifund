@@ -51,6 +51,13 @@ import { PortfolioProgressbarComponent } from './components/data-summary/portfol
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 
+
+/* --------------------------------
+    GRAPHS
+---------------------------------*/
+import { BarChartComponent } from './graph/bar-chart/bar-chart.component';
+import { DonutGraphComponent } from './graph/donut-graph/donut-graph.component';
+
 /* --------------------------------
     ICONS
 ---------------------------------*/
@@ -84,6 +91,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ModalBaseComponent } from './components/modals/modal-base/modal-base.component';
 
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -110,6 +119,8 @@ import { ModalBaseComponent } from './components/modals/modal-base/modal-base.co
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         ModalBaseComponent,
+        BarChartComponent,
+        DonutGraphComponent
  
     ],
     imports: [
