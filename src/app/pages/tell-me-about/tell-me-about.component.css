@@ -74,7 +74,10 @@ fa-icon{
     padding: 10px;
     flex-direction: column;
     background-color: var(--white-2);
+    
 }
 .card-plot{
-
+    
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
 }
