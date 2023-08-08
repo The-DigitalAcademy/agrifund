@@ -37,6 +37,7 @@ const routes: Routes = [
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
+    { path: 'app-dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
