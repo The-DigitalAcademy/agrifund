@@ -45,7 +45,7 @@
                <!-- <small *ngIf="myForm.controls['farm'].hasError('addressLength') && myForm.controls['farm'].dirty" class="text-danger">Invalid format.</small> -->
                <small *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty" class="text-danger">Field is required.</small>
       </div>
-      <div class="form-input" [ngClass]="{'has-success': myForm.controls['first_name'].valid && myForm.controls['first_name'].dirty, 'has-error': myForm.controls['first_name'].invalid && myForm.controls['first_name'].dirty}">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['size'].valid && myForm.controls['first_name'].dirty, 'has-error': myForm.controls['first_name'].invalid && myForm.controls['first_name'].dirty}">
         <label for="size" class="form-label">Size of farm (ha)</label>
         <input type="text" class="form-control" id="size" formControlName="size"
                [disabled]="isDisabled">
