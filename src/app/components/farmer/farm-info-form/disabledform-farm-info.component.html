@@ -53,7 +53,7 @@
                <small *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty" class="text-danger">Field is required.</small>
 
       </div>
-      <div class="form-input">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['years'].valid && myForm.controls['years'].dirty, 'has-error': myForm.controls['years'].invalid && myForm.controls['years'].dirty}">
         <label for="years" class="form-label">Years using this farm</label>
         <input type="text" class="form-control" id="years" formControlName="years"
                [disabled]="isDisabled">
