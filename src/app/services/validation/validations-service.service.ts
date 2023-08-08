@@ -8,21 +8,15 @@ export class ValidationsServiceService {
 
   constructor() { }
 
-  passwordsMatchValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const password = control.get('password');
-      const confirmPassword = control.get('confirmPassword');
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const cpassword = control.get('cpassword')?.value;
 
-      if (!password || !confirmPassword) {
-        return null; // Return null if either field is not available (optional validation)
-      }
+    if (password !== cpassword) {
+      return { passwordsMatch: true };
+    }
 
-      if (password.value !== confirmPassword.value) {
-        return { passwordsNotMatch: true }; // Return error if passwords do not match
-      }
-
-      return null; // Return null if passwords match
-    };
+    return null;
   }
 
   passwordValidator(): ValidatorFn {
