@@ -17,15 +17,11 @@ export class BarChartComponent {
         labels: ['Water', 'Seed', 'Equipment','Fertilizer',
 								 'Tool'], 
 	       datasets: [
+        
           {
-            label: "Expense",
-            data: [2422],
-            backgroundColor: 'darkgreen'
-          },
-          {
-            label: "",
-            data: [234, 323],
-            backgroundColor: '#5A6537)'
+            label: "Money",
+            data: [700, 900,320,550, 1200],
+            backgroundColor: 'olive'
           }  
         ]
       },
