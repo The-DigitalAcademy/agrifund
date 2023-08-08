@@ -38,7 +38,7 @@
   <hr>
   <div class="sub-container">
     <form [formGroup]="myForm">
-      <div class="form-input" [ngClass]="{'has-success': myForm.controls['size'].valid && myForm.controls['size'].dirty, 'has-error': myForm.controls['size'].invalid && myForm.controls['size'].dirty}">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['farm'].valid && myForm.controls['size'].dirty, 'has-error': myForm.controls['size'].invalid && myForm.controls['size'].dirty}">
         <label for="farm" class="form-label">Location of my farm</label>
         <input type="text" class="form-control" id="farm" aria-describedby="farm"
                formControlName="farm" [disabled]="isDisabled">
