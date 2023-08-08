@@ -77,7 +77,12 @@ fa-icon{
     
 }
 .card-plot{
-    
+    display: flex;
+padding: 14px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
 }
