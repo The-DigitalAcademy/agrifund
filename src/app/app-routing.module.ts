@@ -16,6 +16,7 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
+    {path: 'equipment-create', component: EquipmentCreateComponent },
 ];
 
 @NgModule({

@@ -72,4 +72,12 @@ export class ApiService {
     // get income statement records between two dates
 
     //get an income statement record from a search text
+
+    // register user
+    RegisterUser(body: any) {
+        // body.shift();
+        console.log(body);
+        return this.http.post(`${this.userURL}`, body);
+    }
+
 }
