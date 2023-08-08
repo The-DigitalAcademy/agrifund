@@ -19,11 +19,11 @@
                         </div>
                     </div>
 
-                    <div class="form-input" [ngClass]="{'has-success': LoginForm.controls['id_number'].valid && LoginForm.controls['id_number'].dirty, 'has-error': LoginForm.controls['id_number'].invalid && LoginForm.controls['id_number'].dirty}">
-                        <label for="id_number">ID:</label>
-                         <input formControlName="id_number" class="form-control" id="id_numberInput" />
-                        <small *ngIf="LoginForm.controls['id_number'].hasError('idNumber') && LoginForm.controls['id_number'].dirty" class="text-danger">The ID number should contain 13 digits.</small>
-                        <small *ngIf="LoginForm.controls['id_number'].hasError('required') && LoginForm.controls['id_number'].dirty" class="text-danger">Field is required.</small>
+                    <div class="form-input" [ngClass]="{'has-success': Login.controls['email'].valid && RegisterForm.controls['email'].dirty, 'has-error': RegisterForm.controls['email'].invalid && RegisterForm.controls['email'].dirty}">
+                        <label for="email">Email:</label>
+                        <input formControlName="email" class="form-control" id="emailInput" />
+                        <small *ngIf="RegisterForm.controls['email'].hasError('invalidEmail') && RegisterForm.controls['email'].dirty" class="text-danger error">Invalid email format</small>
+                        <small *ngIf="RegisterForm.controls['email'].hasError('required') && RegisterForm.controls['email'].dirty" class="text-danger">Field is required.</small>
                     </div>
                     <div class="form-input" [ngClass]="{'has-success': LoginForm.controls['password'].valid && LoginForm.controls['password'].dirty, 'has-error': LoginForm.controls['password'].invalid && LoginForm.controls['password'].dirty}">
                         <label for="password">Password:</label>
