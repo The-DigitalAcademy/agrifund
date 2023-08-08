@@ -8,13 +8,40 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for mock-api connection
-    private baseUrl = environment.apiURL;
+    // base string for api connection with current version of api
+    private baseUrl = `${environment.apiURL}`;
 
     /* --------------------------------
-        USER CONNECTION STRINGS
+        ADMIN USER CONNECTION STRINGS
     ---------------------------------*/
+    // TODO admin
+
+    // TODO farmer
+    // used by admin to get farmer related data
+
+    // TODO user
     private userURL = this.baseUrl + '/users';
+
+    /* --------------------------------
+        FARMER USER CONNECTION STRINGS
+    ---------------------------------*/
+    // url used to register a farmer user
+    private registerFarmerURL = this.baseUrl + '/auth/register/farmer';
+    // url used to login a farmer user
+    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
+    // TODO find farmer by email
+
+    // TODO reset password
+
+    // TODO send OTP
+
+
+
+    // TODO farmer
+    // TODO assets
+    // TODO plot
+    // TODO farm
+    // TODO crop
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS

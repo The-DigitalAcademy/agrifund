@@ -1,4 +1,3 @@
-import { Overlay } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
@@ -15,7 +14,6 @@ export class BookkeepDeleteComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         _bookkeepService: BookkeepService,
-        private overlay: Overlay,
         private viewContainerRef: ViewContainerRef
     ) {}
 
