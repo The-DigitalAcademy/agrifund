@@ -6,7 +6,7 @@
 
 .carousel-inner {
     width: auto !important;
-    height: 450px !important;
+    height: 500px !important;
     background-color: var(--white-2);
     align-items: center;
     justify-content: center;
@@ -72,4 +72,7 @@ fa-icon{
     padding: 10px;
     flex-direction: column;
     background-color: var(--white-2);
+}
+.card-plot{
+
 }
