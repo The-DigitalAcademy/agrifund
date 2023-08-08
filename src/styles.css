@@ -26,7 +26,7 @@
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-    --white:F7F7F7;
+    --white: F7F7F7;
     /* backgrounf colour for asset table */
     --white-2: #FDFDFD;
 
@@ -66,12 +66,17 @@
     /*------------------
         SPACING & SIZING
     --------------------*/
-    --x-small-s: 4px;
-    --small-s: 8px;
+    --xx-small-s: 4px;
+    --x-small-s: 8px;
+    --small-s: 10px;
+    --small-normal-s: 12px;
     --normal-s: 14px;
-    --medium-s: 20px;
+    --normal-medium-s: 16px;
+    --medium-s: 18px;
+    --medium-large-s: 20px;
     --large-s: 24px;
-    --x-large-s: 36px;
+    --x-large-s: 28px;
+    --xx-large-s: 36px;
 }
 
 html body {
@@ -128,7 +133,7 @@ body {
 
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding: var(--x-large-s) !important;
+    padding: var(--xx-large-s) !important;
     /* width: 100% !important; */
     height: 100vh;
     overflow-x: hidden;
@@ -164,7 +169,7 @@ body {
 
 /* styling for containers for containers that shouldn't fill the entire page */
 .form-container {
-    padding: var(--x-large-s);
+    padding: var(--xx-large-s);
     width: 45%;
     position: relative;
 
@@ -259,7 +264,7 @@ h1 {
     font-weight: var(--bold);
     line-height: auto !important;
 
-    margin: 0px 0px var(--small-s) 0px;
+    margin: 0px;
 
     color: var(--dark);
 }
@@ -377,7 +382,7 @@ input,
     border: var(--thin-border) var(--lighter-grey);
 
     background-color: var(--light);
-    height: var(--x-large-s);
+    height: var(--xx-large-s);
 }
 
 /* remove the border for input in input group */
@@ -436,11 +441,12 @@ button {
     -webkit-box-shadow: none;
     box-shadow: none;
 
-    height: var(--x-large-s);
+    height: var(--xx-large-s);
 
     padding: var(--small-s);
 }
 
+/* fixed button width */
 .btn-width {
     width: 150px;
 }
@@ -481,7 +487,7 @@ button {
 
 /* style of an icon when hovering or focusing */
 .icon-btn:hover,
-.icon-btn:focus {
+.icon-btn:focus{
     color: var(--dark) !important;
 }
 
@@ -597,7 +603,7 @@ hr {
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
+@media (min-width: 300px) and (max-width:428px){
 
     /* TEXT */
     h1 {
@@ -620,6 +626,11 @@ hr {
     /* set styles for all content within page-content div */
     .page-content>* {
         padding: var(--normal-s) !important;
+    }
+
+    .outer-container{
+        border: none !important;
+        border-radius: 0px !important;
     }
 
     .container,
@@ -645,6 +656,14 @@ hr {
     .btn,
     button {
         padding: var(--small-s);
+    }
+
+    .left-btn {
+        margin-left: 0px !important;
+    }
+
+    .right-btn {
+        margin-right: 0px !important;
     }
 
     /* .btn-width {
@@ -759,6 +778,11 @@ hr {
     .mobile-hidden {
         display: none !important;
     }
+
+    /* hide the header on large screens */
+    .mobile-header {
+        display: none;
+    }
 }
 
 /*--------------------------------------
@@ -799,11 +823,11 @@ hr {
 @media (min-width: 1281px) {
 
     .page-content {
-        padding: var(--x-large-s) !important;
+        padding: var(--xx-large-s) !important;
     }
 
     .container {
-        padding: var(--x-large-s);
+        padding: var(--xx-large-s);
         /* width: 35% !important; */
     }
 

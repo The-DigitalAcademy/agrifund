@@ -1,0 +1,60 @@
+.page-body{
+    background-image: url("src/assets/images/background/barn.webp");
+    flex-direction: column;
+}
+
+h2 {
+    margin: 0px !important;
+    padding: var(--small-s) 0px;
+    font-family: var(--normal-font);
+}
+
+.content>* {
+    margin-bottom: var(--normal-s) !important;
+}
+
+.mobile-header{
+    background-image: url("src/assets/images/background/barn.webp");
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+
+    .page-body {
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+    }
+
+    .content .btn {
+        width: 80px;
+        margin: 0px var(--normal-s);
+    }
+
+    .actions .btn {
+        width: 100%;
+        margin: 0px var(--small-s);
+    }
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {}

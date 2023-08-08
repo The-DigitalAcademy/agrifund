@@ -8,8 +8,8 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for api connection
-    private baseUrl = 'http://localhost:3001/agrifund/api/v1';
+    // base string for mock-api connection
+    private baseUrl = environment.apiURL;
 
     /* --------------------------------
         USER CONNECTION STRINGS
@@ -48,7 +48,7 @@ export class ApiService {
 
     // get a single income statement item
     getStatementItemById(recordId: number) {
-        console.log(`${this.statementItemsUrl}/${recordId}`);
+        // console.log(`${this.statementItemsUrl}/${recordId}`);
         return this.http.get(`${this.statementItemsUrl}/${recordId}`);
     }
 
@@ -61,7 +61,12 @@ export class ApiService {
 
     // update data for a single income statement record
     updateRecord(recordId: number, body: any) {
-        return this.http.put(`${this.statementItemsUrl}${recordId}`, body);
+        return this.http.put(`${this.statementItemsUrl}/${recordId}`, body);
+    }
+
+    // delete a bookkeeping record
+    deleteRecord(recordId: number) {
+        return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
 
     // get income statement records between two dates

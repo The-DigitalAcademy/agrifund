@@ -1,6 +1,6 @@
 export const environment = {
-    production: true,
+    production: false,
     REG_URL: 'http://localhost:8080/api/users/register',
     LOGIN_URL: 'http://localhost:8080/api/users/login',
-    // apiURL: '',
+    apiURL: 'http://localhost:3001/agrifund/api/v1', //mock api url for testing purposes
 };
