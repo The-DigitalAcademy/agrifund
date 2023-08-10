@@ -78,9 +78,9 @@ h1{
   }
 
   #bottom {
-
-    padding: var(--x-small-s) !important;
-  }
+  
+    padding: 0 var(--x-small-s) !important;
+    }
   .crop-info {
     margin-top: var(--normal-s);
   }
