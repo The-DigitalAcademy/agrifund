@@ -47,10 +47,7 @@ hr {
   .file-container input[type="file"] {
     margin-top: 5px;
   }
-  .input-field.error input {
-    border-color: red;
-  }
-  
+
 
 .profile-heading{
   display: flex;
@@ -74,5 +71,11 @@ hr {
 @media (max-width: 767px) {
   
 }
+/* CSS Styles for Success and Error States */
+.has-success .form-control {
+  border-color: green;
+}
 
-
+.has-error .form-control {
+  border-color: red;
+}

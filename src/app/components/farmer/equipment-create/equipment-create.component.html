@@ -1,0 +1,71 @@
+<div class="page-body justify-center">
+    <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
+        <img src="assets/images/background/barn.webp" alt="Avatar">
+    </div> -->
+    <div class="mobile-header"></div>
+    <div class="container form-container">
+        <div class="container-header">
+            <div class="justify-start">
+                <h2>Add Equipment</h2>
+            </div>
+            <div class="justify-end">
+                <button class="btn icon-btn close-btn" [routerLink]="['/portfolio-view-info']">
+                    <fa-icon icon="times"></fa-icon>
+                </button>
+            </div>
+        </div>
+        <hr />
+        <div class="content">
+            <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
+                <div class="form-input" id="label">
+                    <label for="equipmentName" class="form-label">
+                        Name
+                    </label>
+
+                    <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
+
+                </div>
+                <div class="form-input" id="form-label">
+                    <label for="equipmentType">Type</label>
+                    <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
+
+                </div>
+                <div class="form-input" id="label">
+                    <label for="equipmentQuantity" class="form-label">
+                        Quantity
+                    </label>
+
+
+                    <input formControlName="equipmentQuantity" type="text" class="form-control"
+                        id="equipmentQuantity" />
+                </div>
+
+                <div class="form-input" id="label">
+                    <label for="equipmentAge" class="form-label">
+                        Age(years)
+                    </label>
+                    <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
+                </div>
+
+                <div class="form-input" id="label">
+                    <label for="equipmentAmount" class="form-label">
+                        Purchase Amount
+                    </label>
+                    <input formControlName="equipmentAmount" type="text" class="form-control" id="equipmentAmount" />
+                </div>
+                <div class="actions">
+                    <div class="justify-start">
+                        <button class="btn colourful-btn btn-width left-btn" type="submit">
+                            Save
+                        </button>
+                    </div>
+                    <div class="justify-end">
+                        <button class="btn outline-btn btn-width right-btn" [routerLink]="['/portfolio-view-info']">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -27,59 +27,20 @@
                     <option value="Fall">Fall</option>
                     <option value="Winter">Winter</option>
                 </select>
+                <div class="form-text text-danger" *ngIf="myForm.controls['seasonFarm'].hasError('required') && myForm.controls['seasonFarm'].dirty" class="text-danger">Field is required.</div>
             </div>
-            <div class="form-input">
-                <label for="crop_name" class="form-label"
-                    >I farm with these crops:</label
-                >
-                <input
-                    type="crop_name"
-                    class="form-control"
-                    formControlName="crop_name"
+            <div class="form-input" [ngClass]="{'has-success': myForm.controls['crop_name'].valid && myForm.controls['crop_name'].dirty, 'has-error': myForm.controls['crop_name'].invalid && myForm.controls['crop_name'].dirty}">
+                <label for="crop_name" class="form-label">I farm with these crops:</label>
+                <input type="crop_name" class="form-control" formControlName="crop_name"
                     [attr.disabled]="isDisabled ? 'disabled' : null" />
-                <small
-                    *ngIf="
-                        myForm.controls['crop_name'].hasError(
-                            'textWithoutNumbers'
-                        ) && myForm.controls['crop_name'].dirty
-                    "
-                    class="text-danger"
-                    >Invalid format.</small
-                >
-                <small
-                    *ngIf="
-                        myForm.controls['crop_name'].hasError('required') &&
-                        myForm.controls['crop_name'].dirty
-                    "
-                    class="text-danger"
-                    >Field is required.</small
-                >
+                <div class="form-text text-danger" *ngIf="myForm.controls['crop_name'].hasError('textWithoutNumbers') && myForm.controls['crop_name'].dirty" class="text-danger">This field contains text only.</div>
+                <div class="form-text text-danger" *ngIf="myForm.controls['crop_name'].hasError('required') && myForm.controls['crop_name'].dirty" class="text-danger">Field is required.</div>
             </div>
-            <div class="form-input">
-                <label for="seedsAmount" class="form-label"
-                    >I usually spend this amount on seeds per kg:</label
-                >
-                <input
-                    type="text"
-                    class="form-control"
-                    formControlName="seedsAmount"
-                    [attr.disabled]="isDisabled ? 'disabled' : null" />
-                <small
-                    *ngIf="
-                        myForm.controls['seedsAmount'].hasError('isNumeric') &&
-                        myForm.controls['seedsAmount'].dirty
-                    "
-                    class="text-danger"
-                    >Invalid format.</small
-                >
-                <small
-                    *ngIf="
-                        myForm.controls['seedsAmount'].hasError('required') &&
-                        myForm.controls['seedsAmount'].dirty
-                    "
-                    class="text-danger"
-                    >Field is required.</small
-                >
+            <div class="form-input" [ngClass]="{'has-success': myForm.controls['seedsAmount'].valid && myForm.controls['seedsAmount'].dirty, 'has-error': myForm.controls['seedsAmount'].invalid && myForm.controls['seedsAmount'].dirty}">
+                <label for="seedsAmount" class="form-label">I usually spend this amount on seeds per kg:</label>
+                <input type="text" class="form-control" formControlName="seedsAmount"[attr.disabled]="isDisabled ? 'disabled' : null" />
+                <div class="form-text text-danger" *ngIf="myForm.controls['seedsAmount'].hasError('isNumeric') && myForm.controls['seedsAmount'].dirty" class="text-danger">This field contains text only.</div>
+                <div class="form-text text-danger"  *ngIf="myForm.controls['seedsAmount'].hasError('required') && myForm.controls['seedsAmount'].dirty" class="text-danger">Field is required.</div>
             </div>
 
             <div class="button-container">
