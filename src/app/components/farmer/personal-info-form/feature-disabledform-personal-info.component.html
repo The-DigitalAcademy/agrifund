@@ -44,7 +44,7 @@
         <label for="first_name" class="form-label">First Name</label>
         <input type="text" class="form-control" id="first_name" 
           formControlName="first_name" [disabled]="isDisabled">
-          <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('invalidName') && myForm.controls['first_name'].dirty" class="text-danger">Invalid format.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('invalidName') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('textWithoutNumbers') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('required') && myForm.controls['first_name'].dirty" class="text-danger">First name required.</div>
       </div>
@@ -52,28 +52,27 @@
         <label for="last_name" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="last_name" formControlName="last_name"
           [disabled]="isDisabled">
-          <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Invalid format.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</div>
       </div>
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['cell_number'].valid && myForm.controls['cell_number'].dirty, 'has-error': myForm.controls['cell_number'].invalid && myForm.controls['cell_number'].dirty}">
         <label for="cell_number" class="form-label">Cell Number</label>
         <input type="text" class="form-control" id="cell_number" formControlName="cell_number" [disabled]="isDisabled">
-        <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('invalidPhoneNumber') && myForm.controls['cell_number'].dirty" class="text-danger">Invalid phoneNumber.</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('invalidPhoneNumber') && myForm.controls['cell_number'].dirty" class="text-danger">Cell number should start with +27</div>
         <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('required') && !myForm.controls['cell_number'].value && myForm.controls['cell_number'].dirty" class="text-danger">Cell number required.</div>
       </div>
       <div class="form-input">
-        <label class="form-label" for="document">Proof of ID</label>
-        <div class="form-text">
-          Please upload proof of ID.
-      </div>
+        <label for="file" class="form-label">Proof of ID</label>
+        <div class="form-text">Please upload proof of ID.</div>
         <div class="file-container">
-          <label for="farm-label">Upload Document</label>
+          <label for="file">Upload Document</label>
           <div class="form-text">PDF, PNG, JPG</div>
           <hr>
-          <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
+          <input type="file" id="file" (change)="onFileSelected($event)" [disabled]="isDisabled">
+          <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('invalidFileType') && myForm.controls['file'].dirty" class="text-danger"> Invalid file type. Allowed types are JPEG, PNG, and PDF.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('required') && !myForm.controls['file'].value && myForm.controls['file'].dirty" class="text-danger">please upload file.</div>
         </div>
-
       </div>
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['email'].valid && myForm.controls['email'].dirty, 'has-error': myForm.controls['email'].invalid && myForm.controls['email'].dirty}">
         <label for="exampleInputPassword1" class="form-label">Email</label>
@@ -86,8 +85,7 @@
       <div class="button-container">
         <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid" class="btn colourful-btn btn-width">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
-    </div>
-      
+    </div> 
     </form>
   </div>
 </div>
