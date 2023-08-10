@@ -63,15 +63,16 @@
         <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('required') && !myForm.controls['cell_number'].value && myForm.controls['cell_number'].dirty" class="text-danger">Cell number required.</div>
       </div>
       <div class="form-input">
-        <label class="form-label" for="document">Proof of ID</label>
+        <label class="form-label" for="file">Proof of ID</label>
         <div class="form-text">
           Please upload proof of ID.
       </div>
         <div class="file-container">
-          <label for="farm-label">Upload Document</label>
+          <label for="file">Upload Document</label>
           <div class="form-text">PDF, PNG, JPG</div>
           <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
+          <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('invalidFileType') && myForm.controls['file'].dirty" class="text-danger">Please enter a valid file type.</div>
         </div>
 
       </div>
@@ -86,8 +87,7 @@
       <div class="button-container">
         <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid" class="btn colourful-btn btn-width">Save</button>
       <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
-    </div>
-      
+    </div> 
     </form>
   </div>
 </div>
