@@ -63,14 +63,15 @@
         <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('required') && !myForm.controls['cell_number'].value && myForm.controls['cell_number'].dirty" class="text-danger">Cell number required.</div>
       </div>
       <div class="form-input">
-        <label class="form-label" for="file">Proof of ID</label>
+        <label for="file" class="form-label">Proof of ID</label>
         <div class="form-text">Please upload proof of ID.</div>
         <div class="file-container">
           <label for="file">Upload Document</label>
           <div class="form-text">PDF, PNG, JPG</div>
           <hr>
-          <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
+          <input type="file" id="file" (change)="onFileSelected($event)" [disabled]="isDisabled">
           <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('invalidFileType') && myForm.controls['file'].dirty" class="text-danger"> Invalid file type. Allowed types are JPEG, PNG, and PDF.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('required') && !myForm.controls['file'].value && myForm.controls['file'].dirty" class="text-danger">please upload file.</div>
         </div>
       </div>
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['email'].valid && myForm.controls['email'].dirty, 'has-error': myForm.controls['email'].invalid && myForm.controls['email'].dirty}">

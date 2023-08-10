@@ -166,17 +166,29 @@ export class ValidationsServiceService {
 
     return null;
   }
-  fileTypeValidator(allowedTypes: string[]): ValidatorFn {
+    fileTypeValidator(allowedTypes: string[]): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const file = control.value as File;
-      if (file) {
-        if (!allowedTypes.includes(file.type)) {
-          return { invalidFileType: true };
-        }
+  
+      if (!file) {
+        // If no file is selected, consider it valid
+        return null;
       }
+  
+      // Get the file extension from the file name
+      const fileNameParts = file.name.split('.');
+      const fileExtension = fileNameParts[fileNameParts.length - 1];
+  
+      // Convert the allowed MIME types to extensions for broader compatibility
+      const allowedExtensions = allowedTypes.map(type => type.split('/')[1]);
+  
+      if (!allowedExtensions.includes(fileExtension)) {
+        return { invalidFileType: true };
+      }
+  
       return null;
     };
   }
-
 }
+
 
