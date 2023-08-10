@@ -690,7 +690,7 @@ hr {
 @media (min-width: 481px) and (max-width: 767px) {
 
     /* TEXT */
-    h1 {
+    h1{
         font-size: var(--font-large);
     }
 

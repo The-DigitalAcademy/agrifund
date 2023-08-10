@@ -60,7 +60,9 @@ nav {
 }
 
 img {
+    /* change the colour of the alternative f if the image doesn't load */
     color: var(--secondary-colour) !important;
+    height: var(--x-large-s) !important;
 }
 
 .sticky {
@@ -167,6 +169,8 @@ span {
         height: 45px !important;
         background-color: var(--primary-colour);
     }
+
+    
 }
 
 /*---------------------------------
