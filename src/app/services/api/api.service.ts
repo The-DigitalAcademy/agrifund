@@ -78,7 +78,5 @@ export class ApiService {
     // register user
     RegisterUser(user: any): Observable<any> {
         return this.http.post(this.userURL, user);
-      }
-      
-
+    }
 }
