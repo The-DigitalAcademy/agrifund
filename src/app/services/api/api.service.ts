@@ -9,7 +9,9 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     // base string for api connection with current version of api
-    private baseUrl = `${environment.apiURL}`;
+    // private baseUrl = `${environment.apiURL}`;
+    // base string for mock api connection
+    private baseUrl = `${environment.mockApiUrl}`;
 
     /* --------------------------------
         ADMIN USER CONNECTION STRINGS
@@ -34,8 +36,6 @@ export class ApiService {
     // TODO reset password
 
     // TODO send OTP
-
-
 
     // TODO farmer
     // TODO assets
