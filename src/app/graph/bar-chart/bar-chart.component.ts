@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { ChartService } from 'src/app/services/chart/chart.service';
 
 
 const apiUrl = 'http://localhost:3001/agrifund/api/v1';
@@ -9,6 +10,7 @@ const apiUrl = 'http://localhost:3001/agrifund/api/v1';
   styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent {
+  constructor(private service: ChartService) {}
   public chart: any;
   createChart(){
   

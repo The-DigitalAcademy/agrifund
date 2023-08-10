@@ -1,5 +1,6 @@
 import { Chart } from 'chart.js/auto';
 import { Component } from '@angular/core';
+import { ChartService } from 'src/app/services/chart/chart.service';
 
 @Component({
   selector: 'app-donut-graph',
@@ -8,24 +9,27 @@ import { Component } from '@angular/core';
 })
 export class DonutGraphComponent {
   public chart: any;
+  moneyIn: any;
+  moneyOut: any;
+
+  
+  constructor(private service: ChartService) {}
 
   createChart(){
-
+    
     this.chart = new Chart("MyChart", {
-      type: 'pie', //this denotes tha type of chart
+      type: 'doughnut', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['Red', 'Pink','Green','Yellow','Orange','Blue', ],
+        labels: ['Money In', 'Money Out' ],
 	       datasets: [{
-    label: 'My First Dataset',
-    data: [300, 240, 100, 432, 253, 34],
+    label: 'Money In Money Out',
+    data: [70, 30],
     backgroundColor: [
-      'red',
-      'pink',
-      'green',
-			'yellow',
-      'orange',
-      'blue',			
+    
+      'olive',
+			'grey',
+      		
     ],
     hoverOffset: 4
   }],
@@ -35,10 +39,10 @@ export class DonutGraphComponent {
       }
 
     });
-    
+  
   }
   ngOnInit(): void {
-    this.createChart();
+    this.createChart(); 
   }
-  
+
 }
