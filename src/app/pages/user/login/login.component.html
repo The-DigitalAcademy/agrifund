@@ -1,7 +1,5 @@
-<div class="mobile-header">
-    <img src="assets/images/background/orange-trees.webp" alt="...">
-</div>
 <div class="page-body justify-center">
+    <div class="mobile-header"></div>
     <div class="container form-container">
         <form [formGroup]="LoginForm">
             <div class="row">
@@ -27,7 +25,7 @@
                     </div>
                     <div class="form-input" [ngClass]="{'has-success': LoginForm.controls['password'].valid && LoginForm.controls['password'].dirty, 'has-error': LoginForm.controls['password'].invalid && LoginForm.controls['password'].dirty}">
                         <label for="password">Password:</label>
-                        <input formControlName="password" class="form-control" id="passwordinput" />
+                        <input formControlName="password" class="form-control between-button" id="passwordinput" />
                         <small *ngIf="LoginForm.controls['password'].hasError('invalidPassword') && LoginForm.controls['password'].dirty" class="text-danger">The password should meet minimum length, uppercase, lowercase, and numbers</small>
                         <small *ngIf="LoginForm.controls['password'].hasError('required') && LoginForm.controls['password'].dirty" class="text-danger">Field is required.</small>
                     </div>
