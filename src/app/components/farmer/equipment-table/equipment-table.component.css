@@ -15,14 +15,15 @@ fa-icon{
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
+ button{
+    margin-bottom: 10%;
+    
+ }
 
-
-    .record-table {
-        padding: var( --large-s);
-    }
-
-    .container,
-    .form-container {
+  .info{
+    display: flex;
+  }
+    .container{
         height: auto !important;
     }
 }

@@ -95,6 +95,9 @@ h1{
   .page-content > * {
     padding: 0px !important;
 }
-
+h1{
+  padding: 4% 2% !important;
+ 
+}
   
 }

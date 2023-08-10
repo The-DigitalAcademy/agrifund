@@ -36,19 +36,24 @@
        
         <div class="info">
             <div class="left justify-start">
-                <p class="justify-start">
+                <!-- <p class="justify-start">
                     {{asset.type}}
-                </p>
-                <p class="greyed justify-end">
+                </p> -->
+                <p class="greyed ">
                     {{ asset.name}}
                 </p>
-                <p class="greyed justify-center">
+            </div>
+                <div class="center justify-center">
+                <p class="greyed ">
                     {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
                 </p>
             </div>
-
-            
-        </div>
+            <div class="right justify-end">
+                <div class="action-buttons ">
+                    <button class="btn colourful-btn" (click)="onEditClicked()">Edit</button>
+                </div>
+            </div>
+       </div>
         <hr *ngIf="!isLast" />
     </div>
 </div>
