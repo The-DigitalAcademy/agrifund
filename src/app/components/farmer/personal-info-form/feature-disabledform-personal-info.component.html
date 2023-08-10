@@ -64,17 +64,14 @@
       </div>
       <div class="form-input">
         <label class="form-label" for="file">Proof of ID</label>
-        <div class="form-text">
-          Please upload proof of ID.
-      </div>
+        <div class="form-text">Please upload proof of ID.</div>
         <div class="file-container">
           <label for="file">Upload Document</label>
           <div class="form-text">PDF, PNG, JPG</div>
           <hr>
           <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
-          <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('invalidFileType') && myForm.controls['file'].dirty" class="text-danger">Please enter a valid file type.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['file'].hasError('invalidFileType') && myForm.controls['file'].dirty" class="text-danger"> Invalid file type. Allowed types are JPEG, PNG, and PDF.</div>
         </div>
-
       </div>
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['email'].valid && myForm.controls['email'].dirty, 'has-error': myForm.controls['email'].invalid && myForm.controls['email'].dirty}">
         <label for="exampleInputPassword1" class="form-label">Email</label>
