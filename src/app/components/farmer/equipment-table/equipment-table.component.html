@@ -24,7 +24,7 @@
                 <td>{{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}</td>
                <td>
                     <div class="action-buttons">
-                        <button class="btn colourful-btn btn-width" (click)="onEditClicked()">Edit</button>
+                        <button class="btn colourful-btn btn-width" (click)="onEditClicked()" [routerLink]="['/equipment-edit']">Edit</button>
                     </div>
                 </td>
             </tr>

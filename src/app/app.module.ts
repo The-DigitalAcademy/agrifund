@@ -84,6 +84,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 
 @NgModule({
     declarations: [
@@ -113,6 +114,7 @@ import {
         
         EquipmentCreateComponent,
         TellMeAboutComponent,
+        EquipmentEditComponent,
     ],
     imports: [
         BrowserModule,

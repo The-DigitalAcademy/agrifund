@@ -18,6 +18,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
     {path: 'equipment-create', component: EquipmentCreateComponent },
+    {path: 'equipment-edit', component: EquipmentEditComponent },
 ];
 
 @NgModule({
