@@ -15,11 +15,4 @@ export class DashboardComponent {
 
   constructor(private service: ChartService) {}
 
-  ngOnInit() {
-    this.service.cryptoData().then((res) => {
-      this.result = res
-      console.log(this.result)
-  })
-}
-
 }

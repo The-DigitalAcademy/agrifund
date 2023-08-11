@@ -24,10 +24,10 @@
                 </div>
             </div>
         </div> -->
-        <div class="container">
+        <!-- <div class="container">
             <div class="container-header">
                 <div class="justify-start">
-   
+
                 </div>
                 <div class="justify-end">
                     <button class="btn colourful-btn">
@@ -37,22 +37,19 @@
                         <p>Year</p>
                     </button>
                 </div>
-
-            </div>
-            
+            </div>  -->
+       <div class="container">
             <app-money-card-summary></app-money-card-summary>
-            <app-bar-chart></app-bar-chart>
-            <!-- <app-donut-graph></app-donut-graph> -->
-           
-         
+            <div class="row">
+                <div class="col-6" >
+                    <app-donut-graph></app-donut-graph>
+                </div>
+                <div class="col-6">
+                    <app-bar-chart></app-bar-chart>
+                </div>
+            </div>
         </div>
-      
-
-        <div class="container">
-            
+        
+        <div class="outer-container">
             <app-portfolio-progressbar></app-portfolio-progressbar>
         </div>
-   
-
-    </div>
-</div>

@@ -1,50 +1,40 @@
-import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
+import { Component,OnInit } from '@angular/core';
+import {Chart, registerables} from 'chart.js/auto';
 import { ChartService } from 'src/app/services/chart/chart.service';
 
 
-const apiUrl = 'http://localhost:3001/agrifund/api/v1';
+Chart.register(...registerables);
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent {
-  constructor(private service: ChartService) {}
-  public chart: any;
-  createChart(){
-  
-    this.chart = new Chart("MyChart", {
-      type: 'bar', //this denotes tha type of chart
-      
-      
+ 
+  constructor() { }
 
-      // values on X-Axis
-
+  ngOnInit(): void {
+    this.RenderChart();
+  }
+  RenderChart() {
+    new Chart("barchart", {
+      type: 'bar',
       data: {
-        labels: ['Water', 'Seed', 'Equipment','Fertilizer',
-								 'Tools'], 
-	       datasets: [
-        
-          {
-            label: "Money Out Summary",
-            data: [700, 900,320,550, 1200],
-            backgroundColor: 'olive',
-            
-            
-            
-          }  
-        ]
+        labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
+        datasets: [{
+          label: 'Money Out Summary',
+          data: [1200, 590, 350, 825, 900],
+          backgroundColor: ['#5A6537'], 
+        }]
       },
       options: {
-        aspectRatio:2.9
+        aspectRatio:1.9
       }
-      
     });
   }
-  ngOnInit(): void {
-    this.createChart();
-  }
-
 }
 
+
+ 
+
+  

@@ -8,41 +8,28 @@ import { ChartService } from 'src/app/services/chart/chart.service';
   styleUrls: ['./donut-graph.component.css']
 })
 export class DonutGraphComponent {
-  public chart: any;
-  moneyIn: any;
-  moneyOut: any;
+  constructor() { }
 
-  
-  constructor(private service: ChartService) {}
-
-  createChart(){
-    
-    this.chart = new Chart("MyChart", {
-      type: 'doughnut', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: ['Money In', 'Money Out' ],
-	       datasets: [{
-    label: 'Money In Money Out',
-    data: [70, 30],
-    backgroundColor: [
-    
-      'olive',
-			'grey',
-      		
-    ],
-    hoverOffset: 4
-  }],
+  ngOnInit(): void {
+    this.RenderChart();
+  }
+  RenderChart() {
+    new Chart("Piechart", {
+      type: 'doughnut',
+      data: {
+        labels: ['Money Out', 'Money In'],
+        datasets: [{
+          label: 'Money Out Summary',
+          data: [1200, 590],
+          backgroundColor: ['#5A6537',
+          '#9BA66F'],
+          hoverOffset: 10
+        }]
+        
       },
       options: {
-        aspectRatio:2.5
+        aspectRatio:2.0
       }
-
     });
-  
   }
-  ngOnInit(): void {
-    this.createChart(); 
-  }
-
 }

@@ -55,8 +55,10 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 /* --------------------------------
     GRAPHS
 ---------------------------------*/
+
 import { BarChartComponent } from './graph/bar-chart/bar-chart.component';
 import { DonutGraphComponent } from './graph/donut-graph/donut-graph.component';
+
 
 /* --------------------------------
     ICONS
