@@ -113,11 +113,12 @@ padding: 20%;
    
 .carousel-inner{
     
-    margin-top: 30% !important;
+    margin-top: 20% !important;
     align-items: center;
     justify-content: center;
     height: 400px !important;
     width: 100% !important;
+    padding: 12%;
     /* border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);    */
 }
