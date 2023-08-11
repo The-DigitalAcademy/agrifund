@@ -1,19 +1,19 @@
 .chart-container{
-    height: 40vh;
-    width: 100%;
-    position: relative;
-    padding-top: 2%;
-    padding-left: 2%;
-    background-color: #F7F7F7;
+    height: 40vh !important;
+    width: 100% !important;
+    position: relative !important;
+    padding-top: 2% !important;
+    padding-left: 2% !important;
+    background-color: #F7F7F7 !important;
   
   
     
     
 }
 .chart-header{
-    justify-content: center;
-    padding-left: 37%;
-    color:#6C757D;
+    justify-content: center !important;
+    padding-left: 37% !important;
+    color:#6C757D !important;
 }
 
   .container{
