@@ -16,3 +16,156 @@
     color:#6C757D;
 }
 
+.page-body {
+    background-image: none !important;
+    
+  }
+  
+  
+  .header-content>* {
+    margin-bottom: var(--x-large-s) !important;
+  }
+  
+  .header-content {
+    margin-left: var(--x-large-s) !important;
+    width: 55% !important;
+    position: relative !important;
+  }
+  
+  .header {
+    height: 65% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  
+    margin: var(--x-large-s);
+  
+    background: var(--dark) url("src/assets/images/background/barn.webp") no-repeat center !important;
+    background-size: cover !important;
+  }
+  
+  fa-icon {
+    margin: 0px var(--small-s) -1px 7px !important;
+  }
+  
+  .btn,
+  button {
+    height: 55px !important;
+    font-size: var(--font-large) !important;
+    position: relative !important;
+  }
+  
+  img {
+    height: 100% !important;
+    width: 100% !important;
+    
+  }
+  
+  .form-container {
+    width: 100% !important;
+    
+  }
+  
+  .about-company>* {
+    padding: 0px var(--large-s) 0px 0px !important;
+  }
+  
+  .about-company-img {
+    background: var(--dark) url("src/assets/images/background/agri-finance-image.png") no-repeat center !important;
+    padding: 0px !important;
+    
+  }
+  
+  .content span {
+    display: flex !important;
+    padding-bottom: var(--medium-s) !important;
+  }
+  
+  .slogan span {
+    display: flex !important;
+  }
+  
+  h1 {
+    margin-bottom: var(--large-s) !important;
+  }
+  
+  .container{
+    width: 100% !important;
+    display:flex !important;
+    flex-wrap:wrap !important;
+  }
+  
+  
+  /*---------------------------------
+      Media Query for Mobile Devices
+  ----------------------------------*/
+  @media (max-width: 390px) {
+  
+    .header-content>* {
+      margin-bottom: var(--medium-s) !important;
+    }
+  
+  
+  
+  @media only screen and (max-width: 576px) {
+  
+    /* TEXT */
+    h1 {
+      display: flex;
+        font-size: var(--font-medium) !important;
+        padding-top: 10px !important;
+        
+    }
+  
+    h2 {
+        font-size: var(--font-normal) !important;
+    }
+  
+    h3 {
+        font-size: var(--font-small) !important;
+    }
+  
+    /* HIDE ITEMS*/
+    /* hide items on small screens */
+    .mobile-hidden {
+        display: none !important;
+    }
+  
+    .page-content {
+        padding: 0px !important;
+    }
+  
+    .page-heading {
+        padding: var(--normal-s) 0px 0px var(--normal-s) !important;
+    }
+  
+  
+  }
+  
+  @media only screen and (min-width: 576px) and (max-width: 1200px) {
+  
+    /* HIDE ITEMS*/
+    /* hide items on large screens */
+    .large-hidden .about-company {
+        display: none !important;
+    }
+  }
+  
+  /*--------------------------------
+      Media Query for large screens
+  ----------------------------------*/
+  @media (min-width: 1281px) {
+  
+    .header-content>* {
+      margin-bottom: var(--x-large-s) !important;
+    }
+  
+  }
+  }
+  .slogan {
+    /* color: var(--light) !important; */
+  }
+  
+  .bold {
+    /* color: var(--light) !important; */
+  }
