@@ -4,12 +4,13 @@
 }
 
 .carousel-inner {
-     margin-top: 2% !important;
+     margin-top: 3% !important;
     width: auto !important;
     height: 350px !important;
     background-color: var(--white-2);
     align-items: center;
     justify-content: center;
+    padding: 5%;
   
 }
 .carousel-images {
@@ -113,11 +114,12 @@ padding: 20%;
    
 .carousel-inner{
     
-    margin-top: 30% !important;
+    margin-top: 20% !important;
     align-items: center;
     justify-content: center;
-    height: 400px !important;
+    height: 500px !important;
     width: 100% !important;
+    padding: 12%;
     /* border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);    */
 }
