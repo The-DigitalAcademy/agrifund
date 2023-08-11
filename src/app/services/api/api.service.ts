@@ -8,12 +8,20 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for mock-api connection
-    private baseUrl = environment.apiURL;
+    // base string for api connection with current version of api
+    // private baseUrl = `${environment.apiURL}`;
+    // base string for mock api connection
+    private baseUrl = `${environment.mockApiUrl}`;
 
     /* --------------------------------
-        USER CONNECTION STRINGS
+        ADMIN USER CONNECTION STRINGS
     ---------------------------------*/
+    // TODO admin
+
+    // TODO farmer
+    // used by admin to get farmer related data
+
+    // TODO user
     private userURL = this.baseUrl + '/users';
 
     /* --------------------------------

@@ -42,6 +42,7 @@ import { MoneyCardSummaryComponent } from './components/data-summary/money-card-
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
+import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
 import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
@@ -50,6 +51,7 @@ import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfoli
 import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
+import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
 /* --------------------------------
     ICONS
@@ -82,10 +84,6 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { ModalBaseComponent } from './components/modals/modal-base/modal-base.component';
-import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
-
 
 @NgModule({
     declarations: [
@@ -112,10 +110,9 @@ import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.compon
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-        ModalBaseComponent,
+        
         EquipmentCreateComponent,
         TellMeAboutComponent,
-        
     ],
     imports: [
         BrowserModule,
@@ -125,7 +122,6 @@ import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.compon
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        // OverlayModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
