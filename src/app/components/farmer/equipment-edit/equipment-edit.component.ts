@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-equipment-edit',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./equipment-edit.component.css']
 })
 export class EquipmentEditComponent {
-editEquipmentForm: FormGroup<any>;
+  editEquipmentForm!: FormGroup;
 saveEquipment() {
 throw new Error('Method not implemented.');
 }
