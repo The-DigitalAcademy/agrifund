@@ -9,9 +9,10 @@ export class BookkeepService {
     private bookkeepRecords: IncomeStatementItem[] = [];
 
     constructor(private _apiService: ApiService) {
-        this._apiService.getAllStatementItems().subscribe((records: any) => {
+        this._apiService.getAllStatementItems().subscribe((data: any) => {
             // console.table(products);
-            this.bookkeepRecords = records; //populate bookkeep records array with records from api
+            //populate bookkeep records array with records from api
+            this.bookkeepRecords = data;
         });
     }
 

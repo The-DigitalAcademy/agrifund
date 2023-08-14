@@ -228,6 +228,56 @@ body {
 }
 
 /*----------------------
+    MODALS
+----------------------*/
+.modal-dialog {
+    /* vertically centers the modal dialog on the page */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal,
+.modal-content {
+    /* changes border of the modal */
+    border-radius: var(--border-radius);
+    border: var(--thin-border) none;
+    padding: var(--normal-s);
+}
+
+.modal-header, .modal-body{
+    /* set padding */
+    padding: 0px ;
+    
+}
+
+/* set styles for a modal body */
+.modal-body{
+    /* set margin for the top and bottom of modal body */
+    margin: var(--normal-s) 0px;
+}
+
+.modal-footer, .modal-header{
+    /* removes the border lines on for the modal header and footer */
+    border: none !important;
+    /* set padding */
+    padding: 0px !important;
+    /* sets margin */
+    margin: var(--normal-s) 0px;
+}
+
+.modal-footer, .modal-header{
+    /* prevents modal footer from flexing int container */
+    display: block;
+    /* removes margins */
+    margin: 0px !important;
+    /* removes padding */
+    padding: 0px !important;
+}
+
+
+/*----------------------
     JUSTIFY CONTENT
 ----------------------*/
 /* justify content to the left */
@@ -358,9 +408,16 @@ fa-icon {
     color: var(--grey);
 }
 
+/* sets any font to normal font */
 .normal-font{
-    font-family: (var(--normal-font));
+    font-family: var(--normal-font);
 }
+
+/* align text to center */
+.align-center{
+    text-align: center;
+}
+
 
 /*----------------------
     FORMS
@@ -669,6 +726,12 @@ hr {
         margin-right: 0px !important;
     }
 
+    .modal,
+    .modal-content {
+        /* changes padding for a modal */
+        padding: var(--normal-s);
+    }
+
     /* .btn-width {
         width: 80px;
     } */
@@ -829,7 +892,7 @@ hr {
         padding: var(--xx-large-s) !important;
     }
 
-    .container {
+    .container{
         padding: var(--xx-large-s);
         /* width: 35% !important; */
     }

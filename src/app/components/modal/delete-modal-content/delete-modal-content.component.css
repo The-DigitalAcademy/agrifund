@@ -1,8 +1,6 @@
-.modal, .modal-content {
-    /* change border */
-    border-radius: var(--border-radius);
-    /* border: var(--thin-border) var(--lighter-grey); */
-    /* change background */
-    background-color: var(--light) !important;
+.btn{
+    width: 100%;
 }
+
+
 
