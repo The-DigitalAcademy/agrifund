@@ -1,7 +1,4 @@
 <div class="page-body justify-center">
-    <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
-        <img src="assets/images/background/barn.webp" alt="Avatar">
-    </div> -->
     <div class="mobile-header"></div>
     <div class="container form-container">
         <div class="container-header">
@@ -31,7 +28,7 @@
                     <label>Date Added</label>
                 </div>
                 <div class="col-12" id="value">
-                    <p class="greyed">12 September 2023</p>
+                    <p class="greyed">{{ record.date }}</p>
                 </div>
             </div>
             <div class="row" id="record-type">
@@ -58,11 +55,11 @@
                 </div>
                 <div class="col-sm-12 col-md-6 justify-center" id="value">
                     <div class="document-name justify-start">
-                        <p class="greyed">pop.png</p>
+                        <p class="greyed">{{ record.proof }}</p>
                     </div>
                     <div class="view-btn justify-end">
                         <button
-                            class="btn colourful-btn btn-width"
+                            class="btn colourful-btn btn-width right-btn"
                             (click)="viewProof(record.proof)">
                             View
                         </button>

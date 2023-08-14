@@ -78,7 +78,7 @@
                             <tr>
                                 <th scope="col">Description</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Date Added</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Amount</th>
                                 <!-- <th scope="col">Uploaded Proof</th> -->
                                 <th scope="col"></th>
@@ -90,7 +90,7 @@
                                 (click)="viewRecordDetails(record.id)">
                                 <td scope="row">{{ record.description }}</td>
                                 <td>{{ record.category }}</td>
-                                <td>22/12/2022</td>
+                                <td>{{ record.date }}</td>
                                 <td>
                                     {{
                                         record.amount
@@ -118,7 +118,9 @@
                                 <p class="bold justify-start">
                                     {{ record.description }}
                                 </p>
-                                <p class="greyed justify-start">22/12/2022</p>
+                                <p class="greyed justify-start">
+                                    {{ record.date }}
+                                </p>
                             </div>
                             <div class="right justify-end">
                                 <p class="bold justify-end">

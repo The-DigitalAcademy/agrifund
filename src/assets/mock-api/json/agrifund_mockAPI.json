@@ -142,14 +142,14 @@
       "responseMode": null
     },
     {
-      "uuid": "b39dfa7e-4c0b-4f4c-af7f-4fbbb3767241",
+      "uuid": "1b086aa1-fc1c-421c-b549-dd1171cbeca9",
       "type": "crud",
       "documentation": "",
       "method": "",
-      "endpoint": "assets",
+      "endpoint": "crop",
       "responses": [
         {
-          "uuid": "19d27c5f-b497-4135-bb5e-565e4841bb17",
+          "uuid": "5552eeb5-b804-42a0-b8bf-48af135521b4",
           "body": "{}",
           "latency": 0,
           "statusCode": 200,
@@ -162,13 +162,58 @@
           ],
           "bodyType": "DATABUCKET",
           "filePath": "",
-          "databucketID": "evee",
+          "databucketID": "b7iv",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "plot",
+      "responses": [
+        {
+          "uuid": "e25de18e-6f5a-42c6-bb13-24c5316b6eec",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "962a020f-34af-47d2-a626-d37f6da8d061",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
         }
       ],
       "enabled": true,
@@ -190,7 +235,11 @@
     },
     {
       "type": "route",
-      "uuid": "b39dfa7e-4c0b-4f4c-af7f-4fbbb3767241"
+      "uuid": "1b086aa1-fc1c-421c-b549-dd1171cbeca9"
+    },
+    {
+      "type": "route",
+      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc"
     }
   ],
   "proxyMode": false,
@@ -246,7 +295,7 @@
       "id": "v9qc",
       "name": "incomeStatementItems",
       "documentation": "",
-      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \"{{oneOf (array 'Seeds Bought' 'Equipment Rented' 'Produce Sold')}}\",\n  \"proof\": \"src/assets/mock-api/bookkeep-record-proof/pop.png\"\n  }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \"{{oneOf (array 'Seeds Bought' 'Equipment Rented' 'Produce Sold')}}\",\n  \"proof\": \"src/assets/mock-api/bookkeep-record-proof/pop.png\",\n  \"date\": \"{{date '2023-05-20' '2023-08-25' \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\"}}\"\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "492500c8-d2ef-4a77-8c7e-b8fa36feacb5",
@@ -263,11 +312,11 @@
       "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
     },
     {
-      "uuid": "4ffdb66f-5e92-4fec-973f-7ece75b988e5",
-      "id": "evee",
-      "name": "equipment ",
+      "uuid": "aa6aeb07-e3b8-48cc-a17a-be507a4e1d79",
+      "id": "b7iv",
+      "name": "cropInfo",
       "documentation": "",
-      "value": "[\n  {{#repeat 1}}\n  {\n  \"farm_id\": \"{{@index}}\",\n  \"name\": \"{{oneOf (array 'Plow' 'Wooden Rake' 'Tractor')}}\",\n  \"type\": \"{{oneOf (array 'Hand Tool' 'Vehicle' 'Farm Tool')}}\",\n  \"age\": \"{{toFixed (float 0 100) 0}}\",\n  \"purchase_price\": \"{{toFixed (float 0 5000) 0}}\",\n }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"name\": \"{{oneOf (array 'Corn' 'Grapes' 'Potatoes')}}\", \n  \"season\": \"{{oneOf (array 'Summer' 'Autumn' 'Spring' 'Winter')}}\",\n  \"price\": \"{{toFixed (float 0 5000) 2}}\", \n  \"market_value\": \"{{toFixed (float 0 5000) 2}}\",\n  \"type\": \"{{oneOf (array 'Fruit' 'Vegatable')}}\",\n  }\n  {{/repeat}}\n]"
     }
   ]
 }

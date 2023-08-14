@@ -43,7 +43,7 @@ export class BookkeepViewRecordComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // passes and assigns the id in the url path to the id varable
+        // passes and assigns the id in the url path to the id variable
         this.getRecordDetails((this.id = this.route.snapshot.params['id']));
     }
 

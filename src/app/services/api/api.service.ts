@@ -78,15 +78,13 @@ export class ApiService {
     }
 
     // delete a bookkeeping record
-    deleteRecord(recordId: number) {
+    deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
 
     // get income statement records between two dates
 
     //get an income statement record from a search text
-
-
 
     /* --------------------------------
         FARMER

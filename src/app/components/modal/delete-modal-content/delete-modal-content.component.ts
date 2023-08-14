@@ -14,20 +14,41 @@
 
 -------------------------------------------------------------------------------------------------*/
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/services/api/api.service';
+import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 
 @Component({
     selector: 'app-delete-modal-content',
     templateUrl: './delete-modal-content.component.html',
     styleUrls: ['./delete-modal-content.component.css'],
 })
-export class DeleteModalContentComponent implements OnInit {
+export class DeleteModalContentComponent {
     // receives the bookkeep record id from the parent modal component
     @Input() recordId!: number;
-    constructor(private _apiService: ApiService) {}
 
-    ngOnInit() {
-        // console.log(this.recordId);
+    constructor(
+        private _apiService: ApiService,
+        private _bookkeepService: BookkeepService,
+        private activeModal: NgbActiveModal,
+        private router: Router
+    ) {}
+
+    closeModal() {
+        this.activeModal.close();
+    }
+
+    confirmedDelete() {
+        console.log(this.recordId);
+
+        this._apiService
+            .deleteIncomeStatementItem(this.recordId)
+            .subscribe((data: any) => {
+                console.log(data);
+                this.activeModal.close();
+                this.router.navigate(['bookkeep']);
+            });
     }
 }

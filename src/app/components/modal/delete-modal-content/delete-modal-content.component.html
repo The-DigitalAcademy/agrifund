@@ -8,13 +8,21 @@
     <div class="actions">
         <div class="justify-start">
             <button
-                type="button ngbAutofocus"
-                class="btn colourful-btn left-btn btn-width">
+                type="button"
+                ngbAutofocus
+                class="btn colourful-btn left-btn btn-width close"
+                (click)="closeModal()">
                 No
             </button>
         </div>
         <div class="justify-end">
-            <button type="button" class="btn outline-btn right-btn btn-width">Yes</button>
+            <button
+                type="button"
+                class="btn outline-btn right-btn btn-width"
+                (click)="confirmedDelete()"
+                type="submit">
+                Yes
+            </button>
         </div>
     </div>
 </div>

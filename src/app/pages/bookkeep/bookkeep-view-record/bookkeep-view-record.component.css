@@ -29,14 +29,10 @@ h2 {
     }
 
     .content .btn {
-        width: 80px;
+        width: auto;
         margin: 0px var(--normal-s);
     }
 
-    .actions .btn {
-        width: 100%;
-        margin: 0px var(--small-s);
-    }
 }
 
 /*---------------------------------
