@@ -30,6 +30,10 @@ export class RegisterComponent implements OnInit {
                     Validators.required,
                     this.validationsService.idNumberValidator(),
                 ]),
+               email: new FormControl('', [
+                    Validators.required,
+                    this.validationsService.emailValidator(),
+                ]),
                 cell_number: new FormControl('', [
                     Validators.required,
                     this.validationsService.phoneNumberValidator(),

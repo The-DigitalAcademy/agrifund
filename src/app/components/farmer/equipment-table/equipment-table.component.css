@@ -4,7 +4,26 @@ fa-icon{
     
     
 }
+.container{
+    width: 100%;
+}
 .add-icon-container{
     
     margin-bottom: 2%;
+}
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+ button{
+    margin-bottom: 10%;
+    
+ }
+
+  .info{
+    display: flex;
+  }
+    .container{
+        height: auto !important;
+    }
 }

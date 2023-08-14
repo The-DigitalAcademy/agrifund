@@ -25,23 +25,9 @@ export class ApiService {
     private userURL = this.baseUrl + '/users';
 
     /* --------------------------------
-        FARMER USER CONNECTION STRINGS
+        FARMER CONNECTION STRINGS
     ---------------------------------*/
-    // url used to register a farmer user
-    private registerFarmerURL = this.baseUrl + '/auth/register/farmer';
-    // url used to login a farmer user
-    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
-    // TODO find farmer by email
-
-    // TODO reset password
-
-    // TODO send OTP
-
-    // TODO farmer
-    // TODO assets
-    // TODO plot
-    // TODO farm
-    // TODO crop
+    private farmerAssetURL = this.baseUrl + '/assets';
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -99,4 +85,18 @@ export class ApiService {
     // get income statement records between two dates
 
     //get an income statement record from a search text
+
+
+
+    /* --------------------------------
+        FARMER
+    ---------------------------------*/
+    addEquipment(body: any){
+        return this.http.post(`${this.farmerAssetURL}`, body);
+    }
+
+    getAllEquipment(){
+        console.log(this.farmerAssetURL);
+        return this.http.get(`${this.farmerAssetURL}`);
+    }
 }

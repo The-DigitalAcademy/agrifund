@@ -8,21 +8,15 @@ export class ValidationsServiceService {
 
   constructor() { }
 
-  passwordsMatchValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const password = control.get('password');
-      const confirmPassword = control.get('confirmPassword');
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const cpassword = control.get('cpassword')?.value;
 
-      if (!password || !confirmPassword) {
-        return null; // Return null if either field is not available (optional validation)
-      }
+    if (password !== cpassword) {
+      return { passwordsMatch: true };
+    }
 
-      if (password.value !== confirmPassword.value) {
-        return { passwordsNotMatch: true }; // Return error if passwords do not match
-      }
-
-      return null; // Return null if passwords match
-    };
+    return null;
   }
 
   passwordValidator(): ValidatorFn {
@@ -163,14 +157,38 @@ export class ValidationsServiceService {
     };
   }
   
-  // Custom address length validator (between 20 to 100 words)
-   addressLengthValidator(control: AbstractControl): ValidationErrors | null {
+  addressContainsStreetValidator(control: AbstractControl): ValidationErrors | null {
     const address = control.value as string;
-    const wordCount = address.trim().split(/\s+/).length;
-    if (wordCount < 20 || wordCount > 100) {
-      return { addressLength: true };
+
+    if (!address.includes("Street")) {
+      return { addressContainsStreet: true };
     }
+
     return null;
   }
+    fileTypeValidator(allowedTypes: string[]): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const file = control.value as File;
+  
+      if (!file) {
+        // If no file is selected, consider it valid
+        return null;
+      }
+  
+      // Get the file extension from the file name
+      const fileNameParts = file.name.split('.');
+      const fileExtension = fileNameParts[fileNameParts.length - 1];
+  
+      // Convert the allowed MIME types to extensions for broader compatibility
+      const allowedExtensions = allowedTypes.map(type => type.split('/')[1]);
+  
+      if (!allowedExtensions.includes(fileExtension)) {
+        return { invalidFileType: true };
+      }
+  
+      return null;
+    };
+  }
 }
+
 

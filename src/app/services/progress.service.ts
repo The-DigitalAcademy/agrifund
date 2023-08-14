@@ -2,32 +2,27 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ProgressService {
-  
-  
+    constructor() {}
 
-  constructor() { }
+    private personalInfoCompleted = new BehaviorSubject<boolean>(false);
+    private cropInfoCompleted = new BehaviorSubject<boolean>(false);
+    private farmInfoCompleted = new BehaviorSubject<boolean>(false);
 
-  private personalInfoCompleted = new BehaviorSubject<boolean>(false);
-  private cropInfoCompleted = new BehaviorSubject<boolean>(false);
-  private farmInfoCompleted = new BehaviorSubject<boolean>(false);
+    personalInfoCompleted$ = this.personalInfoCompleted.asObservable();
+    cropInfoCompleted$ = this.cropInfoCompleted.asObservable();
+    farmInfoCompleted$ = this.farmInfoCompleted.asObservable(); //
 
-  personalInfoCompleted$ = this.personalInfoCompleted.asObservable();
-  cropInfoCompleted$ = this.cropInfoCompleted.asObservable();
-  farmInfoCompleted$ = this.farmInfoCompleted.asObservable(); //
+    setPersonalInfoCompleted(status: boolean) {
+        this.personalInfoCompleted.next(status);
+    }
 
-  setPersonalInfoCompleted(status: boolean) {
-    this.personalInfoCompleted.next(status);
-  }
-
-  setCropInfoCompleted(status: boolean) {
-    this.cropInfoCompleted.next(status);
-  }
-  setFarmInfoCompleted(status: boolean) {
-    this.farmInfoCompleted.next(status);
-  };
-
-  
+    setCropInfoCompleted(status: boolean) {
+        this.cropInfoCompleted.next(status);
+    }
+    setFarmInfoCompleted(status: boolean) {
+        this.farmInfoCompleted.next(status);
+    }
 }
