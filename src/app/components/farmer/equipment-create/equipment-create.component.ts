@@ -1,3 +1,6 @@
+ /* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
 import { Asset } from './../../../models/asset';
 import { PortfolioServiceService } from './../../../services/portfolio/portfolio-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -36,6 +39,7 @@ saveEquipment() {
   this.submitted = true;
   if(this.createEquipmentForm.valid) {
     this.asset = {
+      id: Math.floor(Math.random()),
       farm_id: this._portfolioServiceService.generateId(),
       name: this.createEquipmentForm.get('equipmentName')?.value,
       type: this.createEquipmentForm.get('equipmentType')?.value,

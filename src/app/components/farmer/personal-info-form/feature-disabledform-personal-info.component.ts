@@ -1,3 +1,6 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
 import { ProgressService } from 'src/app/services/progress.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {

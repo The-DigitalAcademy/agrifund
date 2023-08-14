@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Asset } from 'src/app/models/asset';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -91,12 +92,26 @@ export class ApiService {
     /* --------------------------------
         FARMER
     ---------------------------------*/
+    //add an equipment record
     addEquipment(body: any){
         return this.http.post(`${this.farmerAssetURL}`, body);
     }
 
+    //get all equipment records
     getAllEquipment(){
         console.log(this.farmerAssetURL);
         return this.http.get(`${this.farmerAssetURL}`);
     }
+
+     // get a single equipment item
+     getEquipmentById(equipmentId: number) {
+        return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
+    }
+    // update data for a single equipment record
+    editEquipment(equipmentId: number, body : any) {
+        return this.http.put(`${this.farmerAssetURL}/${equipmentId}`,body);
+    }
+
+   
+
 }

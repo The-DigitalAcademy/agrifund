@@ -1,3 +1,6 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Asset } from 'src/app/models/asset';
@@ -10,23 +13,24 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class EquipmentTableComponent {
 
-  equipmentRecords: Asset[] = [];
+  assets: Asset[] = [];
 isLast: any;
   constructor(private _apiService: ApiService, private router: Router){
     }
 
   ngOnInit() {
     this._apiService.getAllEquipment().subscribe(
-      (assets: any) => {
+      (data: any) => {
         // console.table(assets)
-         this.equipmentRecords = assets;
+         this.assets = data;
       });
   }
 
 ngOnDestroy() {};
 
   
-  onEditClicked() {
-    throw new Error('Method not implemented.');
+  onEditClicked(id: number) {
+    this.router.navigate(['equipment-edit/', id]);
+   
     }
 }

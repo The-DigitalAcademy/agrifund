@@ -1,3 +1,6 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
 import { Component } from '@angular/core';
 import {
     FormBuilder,
@@ -14,6 +17,9 @@ import { ProgressService } from 'src/app/services/progress.service';
     styleUrls: ['./disabledform-farm-info.component.css'],
 })
 export class DisabledformFarmInfoComponent {
+onFileSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
     originalFormValues: any;
     myForm!: FormGroup;
     isDisabled = true;
