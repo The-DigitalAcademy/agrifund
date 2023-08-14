@@ -86,6 +86,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
 import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -126,6 +127,7 @@ import { DeleteModalContentComponent } from './components/modal/delete-modal-con
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgbModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
