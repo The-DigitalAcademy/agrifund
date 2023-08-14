@@ -4,11 +4,13 @@
 }
 
 .carousel-inner {
+     margin-top: 3% !important;
     width: auto !important;
-    height: 450px !important;
+    height: 350px !important;
     background-color: var(--white-2);
     align-items: center;
     justify-content: center;
+    padding: 5%;
   
 }
 .carousel-images {
@@ -52,6 +54,7 @@ fa-icon{
 .container {
     padding: 2% !important;
     text-align: center !important;
+    align-items: center !important;
     justify-content: center !important;
     width: 50% !important;
 } 
@@ -67,10 +70,7 @@ fa-icon{
 
 @media only screen and (max-width: 575px) {
     .page-body{
-       /* margin-top: 100%;
-     background-image: none; 
-     text-align: center;
-     justify-content: center; */
+    
      background-image: none; 
      width: 100%;
      height: 100%;
@@ -80,7 +80,6 @@ fa-icon{
 
 
     .container{
-        /* padding: 2% !important; */
         text-align: center !important;
         justify-content: center !important;
         width: 100% !important;
@@ -89,10 +88,11 @@ fa-icon{
     }
 
     .mobile-header{
-        background-image: url("src/assets/images/background/orange-trees.webp");
+background-image: url("src/assets/images/background/orange-trees.webp");
 background-size:contain;
 background-repeat: no-repeat;
-height: 30%;
+height: 20%;
+padding: 20%;
 
     }
 
@@ -114,16 +114,19 @@ height: 30%;
    
 .carousel-inner{
     
-    /* margin-bottom: -5%; */
+    margin-top: 20% !important;
+    align-items: center;
     justify-content: center;
-    height: auto;
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);   
+    height: 500px !important;
+    width: 100% !important;
+    padding: 12%;
+    /* border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);    */
 }
 
 .carousel-indicators{
-    display: flex;
-justify-content: center;
+display: flex;
+justify-content: center; 
 align-items: center;
 gap: 2px;
 flex: 2 0 0;

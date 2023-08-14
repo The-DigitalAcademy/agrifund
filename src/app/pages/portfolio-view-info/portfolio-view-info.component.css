@@ -62,25 +62,42 @@ h1{
 @media (max-width: 767px) {
 
   #left {
-    padding: var(--small-s) !important;
+    padding-left: var(--small-s) !important;
     
 
   }
 
   #right {
 
-    padding: var(--small-s) !important;
+    padding-right: var(--small-s) !important;
   }
 
   #info {
-    padding: var(--x-small-s);
+    
    
   }
 
   #bottom {
-
-    padding: var(--x-small-s) !important;
+  
+    padding: 0 var(--x-small-s) !important;
+    }
+  .crop-info {
+    margin-top: var(--normal-s);
+  }
+  
+  .farm-info {
+    margin-bottom: var(--normal-s);
+  }
+  .equipment-info{
+    margin-top: var(--normal-s);
   }
 
+  .page-content > * {
+    padding: 0px !important;
+}
+h1{
+  padding: 4% 2% !important;
+ 
+}
   
 }

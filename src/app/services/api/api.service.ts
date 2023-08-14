@@ -8,13 +8,26 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for mock-api connection
-    private baseUrl = environment.apiURL;
+    // base string for api connection with current version of api
+    // private baseUrl = `${environment.apiURL}`;
+    // base string for mock api connection
+    private baseUrl = `${environment.mockApiUrl}`;
 
     /* --------------------------------
-        USER CONNECTION STRINGS
+        ADMIN USER CONNECTION STRINGS
     ---------------------------------*/
+    // TODO admin
+
+    // TODO farmer
+    // used by admin to get farmer related data
+
+    // TODO user
     private userURL = this.baseUrl + '/users';
+
+    /* --------------------------------
+        FARMER CONNECTION STRINGS
+    ---------------------------------*/
+    private farmerAssetURL = this.baseUrl + '/assets';
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -72,4 +85,18 @@ export class ApiService {
     // get income statement records between two dates
 
     //get an income statement record from a search text
+
+
+
+    /* --------------------------------
+        FARMER
+    ---------------------------------*/
+    addEquipment(body: any){
+        return this.http.post(`${this.farmerAssetURL}`, body);
+    }
+
+    getAllEquipment(){
+        console.log(this.farmerAssetURL);
+        return this.http.get(`${this.farmerAssetURL}`);
+    }
 }

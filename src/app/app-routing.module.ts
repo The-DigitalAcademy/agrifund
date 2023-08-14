@@ -17,15 +17,17 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    {path: 'about-farm', component:TellMeAboutComponent},
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
-    { path: 'dashboard', component: DashboardComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
     { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     {
@@ -37,7 +39,8 @@ const routes: Routes = [
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
-    { path: 'app-dashboard', component: DashboardComponent}
+    { path: 'app-dashboard', component: DashboardComponent},
+    { path: 'equipment-create', component: EquipmentCreateComponent },
 ];
 
 @NgModule({

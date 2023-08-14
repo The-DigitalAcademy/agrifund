@@ -2,8 +2,8 @@
 
 <div class="container record-table">
     <div class="add-icon-container">
-        <button class="btn icon-btn btn" type="button">
-          <fa-icon icon="plus" (click)="onAddClicked()"></fa-icon>Add another
+        <button class="btn icon-btn btn" type="button" [routerLink]="['/equipment-create']">
+          <fa-icon icon="plus"></fa-icon>Add another
         </button>
       </div>
     <table class="table mobile-hidden">
@@ -11,20 +11,18 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Type</th>
-                <th scope="col">Quantity</th>
                 <th scope="col">Age(years)</th>
                 <th scope="col">Purchase Amount</th>
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody >
+        <tbody *ngFor="let asset of equipmentRecords">
             <tr class="record-tr">
-                <td scope="row">Wooden Rake</td>
-                <td>Hand Tool</td>
-                <td>3</td>
-                <td>3</td>
-                <td>R500</td>
-                <td>
+                <td scope="row">{{asset.name}}</td> 
+                <td>{{asset.type}}</td>
+                <td>{{asset.age}}</td>
+                <td>{{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}</td>
+               <td>
                     <div class="action-buttons">
                         <button class="btn colourful-btn btn-width" (click)="onEditClicked()">Edit</button>
                     </div>
@@ -33,5 +31,32 @@
             
         </tbody>
     </table>
+
+    <div class="large-hidden outer-container" *ngFor="let asset of equipmentRecords">
+       
+        <div class="info">
+            <div class="left justify-start">
+                <!-- <p class="justify-start">
+                    {{asset.type}}
+                </p> -->
+                <p class="greyed ">
+                    {{ asset.name}}
+                </p>
+            </div>
+                <div class="center justify-center">
+                <p class="greyed ">
+                    {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
+                </p>
+            </div>
+            <div class="right justify-end">
+                <div class="action-buttons ">
+                    <button class="btn colourful-btn" (click)="onEditClicked()">Edit</button>
+                </div>
+            </div>
+       </div>
+        <hr *ngIf="!isLast" />
+    </div>
+</div>
+
 
 

@@ -60,7 +60,10 @@ nav {
 }
 
 img {
+    /* change the colour of the alternative f if the image doesn't load */
     color: var(--secondary-colour) !important;
+    /* change the size of the agrifund logo */
+    height: var(--x-large-s) !important;
 }
 
 .sticky {
@@ -167,6 +170,12 @@ span {
         height: 45px !important;
         background-color: var(--primary-colour);
     }
+
+    img {
+        /* change the size of the agrifund logo */
+        height: var(--large-s) !important;
+    }
+
 }
 
 /*---------------------------------
@@ -181,12 +190,23 @@ span {
         height: 45px !important;
         background-color: var(--primary-colour);
     }
+
+    img {
+        /* change the size of the agrifund logo */
+        height: var(--large-s) !important;
+    }
 }
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+    img {
+        /* change the size of the agrifund logo */
+        height: var(--large-s) !important;
+    }
+}
 
 /*--------------------------------------
     Media Query for laptops & desktops

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalBaseComponent } from './modal-base.component';
+import { TellMeAboutComponent } from './tell-me-about.component';
 
-describe('ModalBaseComponent', () => {
-  let component: ModalBaseComponent;
-  let fixture: ComponentFixture<ModalBaseComponent>;
+describe('TellMeAboutComponent', () => {
+  let component: TellMeAboutComponent;
+  let fixture: ComponentFixture<TellMeAboutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalBaseComponent ]
+      declarations: [ TellMeAboutComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModalBaseComponent);
+    fixture = TestBed.createComponent(TellMeAboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
