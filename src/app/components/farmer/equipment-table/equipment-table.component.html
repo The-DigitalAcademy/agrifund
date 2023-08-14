@@ -32,23 +32,26 @@
         </tbody>
     </table>
 
-    <div class="large-hidden outer-container" *ngFor="let asset of assets">
+    <div class="large-hidden" *ngFor="let asset of assets">
        
         <div class="info">
             <div class="left justify-start">
-                <!-- <p class="justify-start">
+                <p class="bold justify-start">
                     {{asset.type}}
-                </p> -->
-                <p class="greyed ">
+                </p>
+                <p class=" inline-content greyed  justify-end">
                     {{ asset.name}}
                 </p>
             </div>
-                <div class="center justify-center">
-                <p class="greyed ">
+            <div class="right justify-end">
+                <p class="bold justify-end">
                     {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
                 </p>
+                <p class=" greyed justify-end">
+                        {{asset.age}}
+                </p>
             </div>
-            <div class="right justify-end">
+            <div class=" justify-end">
                 <div class="action-buttons ">
                     <button class="btn colourful-btn" (click)="onEditClicked(asset.id)">Edit</button>
                 </div>

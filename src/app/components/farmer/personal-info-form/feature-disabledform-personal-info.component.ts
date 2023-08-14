@@ -18,7 +18,7 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
-    selectedFile: File | null = null; // Initialize as null
+
 
     editedData: any;
     farmerData: any;
@@ -37,6 +37,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
             first_name: 'John',
             last_name: 'Doe',
             email: 'john@example.com',
+            id_number: '0978456789043',
             phoneNumber: '0607566762',
         };
 
@@ -59,6 +60,10 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 Validators.required,
                 this.validationsService.emailValidator(),
             ]),
+            id_number: new FormControl({value: userData.id_number, disabled: true}, [
+                Validators.required,
+                this.validationsService.idNumberValidator(),
+            ]),
             cell_number: new FormControl(
                 { value: userData.phoneNumber, disabled: true },
                 [
@@ -66,10 +71,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                     this.validationsService.phoneNumberValidator(),
                 ]
             ), // Set disabled to true to disable the field by default
-            file: new FormControl(null, [
-                // Apply file type validator here
-                this.validationsService.fileTypeValidator(['image/jpeg','image/jpg' ,'image/png', 'application/pdf'])
-            ]),
+           
         });
       
 
@@ -77,9 +79,6 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.originalFormValues = userData;
     }
 
-    onFileSelected(event: any) {
-        this.selectedFile = event.target.files[0] as File; // Store the selected file
-    }
 
     enableFields() {
         this.isDisabled = false; // Enable the fields by setting isDisabled to false

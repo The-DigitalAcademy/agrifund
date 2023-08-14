@@ -19,6 +19,8 @@ isLast: any;
     }
 
   ngOnInit() {
+
+    //use the method to get the all the data 
     this._apiService.getAllEquipment().subscribe(
       (data: any) => {
         // console.table(assets)
@@ -30,7 +32,7 @@ ngOnDestroy() {};
 
   
   onEditClicked(id: number) {
-    this.router.navigate(['equipment-edit/', id]);
+    this.router.navigate(['/equipment-edit', id]);
    
     }
 }

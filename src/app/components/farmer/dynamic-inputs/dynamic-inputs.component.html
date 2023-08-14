@@ -1,0 +1,16 @@
+<div>
+    <button (click)="addInputRow()">Add Input Field</button>
+  </div>
+  <table>
+    <tbody>
+      <tr *ngFor="let row of inputFields; let i = index;">
+        <td><input type="text" [(ngModel)]="row.field1" /></td>
+        <td><input type="text" [(ngModel)]="row.field2" /></td>
+        <td><input type="text" [(ngModel)]="row.field3" /></td>
+        <td><input type="text" [(ngModel)]="row.field4" /></td>
+        <td><input type="text" [(ngModel)]="row.field5" /></td>
+        <td><button (click)="removeInputRow(i)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
