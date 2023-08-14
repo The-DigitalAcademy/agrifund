@@ -85,6 +85,7 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
+import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
 
 @NgModule({
     declarations: [
@@ -115,6 +116,7 @@ import { ModalContainerComponent } from './components/modal/modal-container/moda
         EquipmentCreateComponent,
         TellMeAboutComponent,
         ModalContainerComponent,
+        DeleteModalContentComponent,
     ],
     imports: [
         BrowserModule,
