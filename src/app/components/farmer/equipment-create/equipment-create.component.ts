@@ -39,8 +39,8 @@ saveEquipment() {
   this.submitted = true;
   if(this.createEquipmentForm.valid) {
     this.asset = {
-      id: Math.floor(Math.random()),
-      farm_id: this._portfolioServiceService.generateId(),
+      id: this._portfolioServiceService.generateId(),
+      farm_id: this._portfolioServiceService.generateFarmId(),
       name: this.createEquipmentForm.get('equipmentName')?.value,
       type: this.createEquipmentForm.get('equipmentType')?.value,
       age: this.createEquipmentForm.get('equipmentAge')?.value,

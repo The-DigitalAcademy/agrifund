@@ -29,6 +29,9 @@ export class EquipmentEditComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+     // Fetch equipment details using the id
+    // Example: this.getEquipmentDetails(id);
     this.getEquipmentDetails((this.id = this.route.snapshot.params['id']));
     console.log(this.id);
 
@@ -69,12 +72,12 @@ export class EquipmentEditComponent implements OnInit {
         purchase_price: this.editEquipmentForm.get('equipmentAmount')?.value
       };
      console.table(this.asset);
-      this._apiService.editEquipment(this.asset.farm_id, this.asset).subscribe(data => {
+      this._apiService.editEquipment(this.asset.id, this.asset).subscribe(data => {
         // Handle success (e.g., show a success message)
         
        
       });
-      this.router.navigate(['/portfolio', this.asset.farm_id]);
+      this.router.navigate(['/equipment-table', this.asset.id]);
     }
   }
 }
