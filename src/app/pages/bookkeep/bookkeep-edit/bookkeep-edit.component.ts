@@ -1,4 +1,8 @@
 /* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 04 Aug 2023 
+    UPDATED DATE: 07 Aug 2023 
+
     DESCRIPTION:
         Within this component record details data is fetched to be edited within the reactive from
         and then sent to the api to be saved if a user chooses to save their changes.
@@ -9,9 +13,7 @@
         $bookkeepRecord -> stores the bookkeeping record as an observable.
         editRecordForm -> name of the form group used for the reactive form
 
-    AUTHOR: Monique
-    CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 07 Aug 2023 
+    
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnInit } from '@angular/core';
@@ -52,6 +54,7 @@ export class BookkeepEditComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        // gets the id passed throught the routing url
         this.getRecordDetails((this.id = this.route.snapshot.params['id']));
 
         this.editRecordForm = this.fb.group({
@@ -62,7 +65,10 @@ export class BookkeepEditComponent implements OnInit {
         });
     }
 
+    ngOnDestroy() {}
+
     getRecordDetails(id: any) {
+        // subscribes to api connection to get a bookkeeping record by the id passed through the page url
         this._apiService
             .getStatementItemById(this.id)
             .subscribe((data: any) => {
@@ -87,10 +93,14 @@ export class BookkeepEditComponent implements OnInit {
         return this.editRecordForm.controls;
     }
 
+    // when the save changes button is clicked
     saveRecord() {
         this.submitted = true;
+
         if (this.editRecordForm.valid) {
+            // when save button is clicked on form it will save the values in the input fields to the record object
             this.record = {
+                // takes the existing record id and saves it to the object being passed
                 id: this.record.id,
                 statement_id: 0,
                 description: this.editRecordForm.get('recordName')?.value,
@@ -101,6 +111,7 @@ export class BookkeepEditComponent implements OnInit {
                     this.editRecordForm.get('recordProof')?.value,
             };
             // console.table(this.record);
+            // passes body and record id to the api connection
             this._apiService
                 .updateRecord(this.record.id, this.record)
                 .subscribe(data => {
