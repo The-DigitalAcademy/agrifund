@@ -1,98 +1,126 @@
-.chart-container{
+.chart-container {
     height: 40vh !important;
     width: 100% !important;
     position: relative !important;
     padding-top: 2% !important;
     padding-left: 2% !important;
     background-color: #F7F7F7 !important;
-  
-  
-    
-    
-}
-.chart-header{
-    justify-content: center !important;
-    padding-left: 37% !important;
-    color:#6C757D !important;
+
 }
 
-  .container{
+.chart-header {
+    justify-content: center !important;
+    padding-left: 37% !important;
+    color: #6C757D !important;
+}
+
+.container {
     width: 100% !important;
-    display:flex !important;
-    flex-wrap:wrap !important;
-  }
-  
-  
-  /*---------------------------------
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+
+/*---------------------------------
       Media Query for Mobile Devices
   ----------------------------------*/
-  @media (max-width: 390px) {
-  
+@media (max-width: 390px) {
+
     .header-content>* {
-      margin-bottom: var(--medium-s) !important;
+        margin-bottom: var(--medium-s) !important;
     }
-  
-  
-  
-  @media only screen and (max-width: 576px) {
-  
-    /* TEXT */
-    h1 {
-      display: flex;
-        font-size: var(--font-medium) !important;
-        padding-top: 10px !important;
-        
+
+    .chart-header {
+        justify-content: center !important;
+        padding-left: 37% !important;
+        color: #6C757D !important;
     }
-  
-    h2 {
-        font-size: var(--font-normal) !important;
+
+    .chart-container {
+        height: 40vh !important;
+        width: 100% !important;
+        position: relative !important;
+        padding-top: 2% !important;
+        padding-left: 2% !important;
+        background-color: #F7F7F7 !important;
     }
-  
-    h3 {
-        font-size: var(--font-small) !important;
+
+
+
+    @media only screen and (max-width: 576px) {
+
+        /* TEXT */
+
+        .chart-container {
+            height: 40vh !important;
+            width: 100% !important;
+            position: relative !important;
+            padding-top: 2% !important;
+            padding-left: 2% !important;
+            background-color: #F7F7F7 !important;
+            display: flex;
+
+        }
+
+        .chart-header {
+            justify-content: center !important;
+            padding-left: 37% !important;
+            color: #6C757D !important;
+        }
+
+        /* HIDE ITEMS*/
+        /* hide items on small screens */
+
+
     }
-  
-    /* HIDE ITEMS*/
-    /* hide items on small screens */
-    .mobile-hidden {
-        display: none !important;
+
+    @media only screen and (min-width: 576px) and (max-width: 1200px) {
+
+        /* HIDE ITEMS*/
+        /* hide items on large screens */
+        .large-hidden .about-company {
+            display: none !important;
+        }
+
+        .chart-container {
+            height: 40vh !important;
+            width: 100% !important;
+            position: relative !important;
+            padding-top: 2% !important;
+            padding-left: 2% !important;
+            background-color: #F7F7F7 !important;
+        }
+
+        .chart-header {
+            justify-content: center !important;
+            padding-left: 37% !important;
+            color: #6C757D !important;
+        }
     }
-  
-    .page-content {
-        padding: 0px !important;
-    }
-  
-    .page-heading {
-        padding: var(--normal-s) 0px 0px var(--normal-s) !important;
-    }
-  
-  
-  }
-  
-  @media only screen and (min-width: 576px) and (max-width: 1200px) {
-  
-    /* HIDE ITEMS*/
-    /* hide items on large screens */
-    .large-hidden .about-company {
-        display: none !important;
-    }
-  }
-  
-  /*--------------------------------
+
+    /*--------------------------------
       Media Query for large screens
   ----------------------------------*/
-  @media (min-width: 1281px) {
-  
-    .header-content>* {
-      margin-bottom: var(--x-large-s) !important;
+    @media (min-width: 1281px) {
+
+        .header-content>* {
+            margin-bottom: var(--x-large-s) !important;
+        }
+
+        .chart-container {
+            height: 40vh !important;
+            width: 100% !important;
+            position: relative !important;
+            padding-top: 2% !important;
+            padding-left: 2% !important;
+            background-color: #F7F7F7 !important;
+        }
+
+        .chart-header {
+            justify-content: center !important;
+            padding-left: 37% !important;
+            color: #6C757D !important;
+        }
+
     }
-  
-  }
-  }
-  .slogan {
-    /* color: var(--light) !important; */
-  }
-  
-  .bold {
-    /* color: var(--light) !important; */
-  }
+}
