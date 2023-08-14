@@ -12,8 +12,6 @@
         _bookkeepService -> used to subscribe and call methods within the bookkeep service
         $bookkeepRecord -> stores the bookkeeping record as an observable.
         editRecordForm -> name of the form group used for the reactive form
-
-    
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnInit } from '@angular/core';

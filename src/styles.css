@@ -271,7 +271,7 @@ h1 {
 
 /* styling for heading 2*/
 h2 {
-    font-family: var(--fancy-font);
+    font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--bold);
     line-height: auto !important;
@@ -356,6 +356,10 @@ fa-icon {
 /* used to make text grey */
 .greyed {
     color: var(--grey);
+}
+
+.normal-font{
+    font-family: (var(--normal-font));
 }
 
 /*----------------------
