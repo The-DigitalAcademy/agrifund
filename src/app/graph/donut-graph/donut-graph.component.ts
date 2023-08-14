@@ -12,9 +12,9 @@ export class DonutGraphComponent {
   constructor(private service:ApiService) { }
 
   chartdata: any;
-  total_expenses: any;
-  total_income: any;
-  net_income: any;
+  total_expense: any = [];
+  total_income: any = [];
+  net_income: any = [];
 
   // result: any;
   // realdata: any[] =[];

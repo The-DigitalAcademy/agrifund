@@ -23,15 +23,33 @@ export class BookkeepService {
 
     // TODO
     // update income statement total income
-    calculateTotalIncome() {}
+    // calculateTotalIncome(): number {
+    //     let total_income = 0;
+    //     for (let income of this.income) {
+    //         total_incomes += income.amount;
+    //     }
+    //     return total_income;
+    // }
 
     // TODO
     // update income statement total expense
-    calculateTotalExpense() {}
+
+    // calculateTotalExpense(): number {
+    //     let total_expenses = 0;
+    //     for (let expense of this.expenses) {
+    //         total_expenses += expense.amount;
+    //     }
+    //     return total_expenses;
+    //   }
+    // }
 
     // TODO
     // update income statement total net income (profit)
-    calculateTotalNetIncome() {}
+
+    // calculateTotalNetIncome() {
+    //     calculateTotalRevenue() - this.calculateTotalExpense();
+
+    // }
 
     // TODO
     // set the income statement date
@@ -39,5 +57,20 @@ export class BookkeepService {
     //TODO
     //get income statement items by date
 
+    
+
     //
+// }
+// get income statement items by date
+// fetchIncomeStatement(date: string) {
+//     this.incomeStatementService.getIncomeStatementByDate(date)
+//       .subscribe(
+//         response => {
+//           this.incomeStatement = response; // Store the fetched data
+//         },
+//         error => {
+//           console.error('Error fetching income statement:', error);
+//         }
+//       );
+//   }
 }
