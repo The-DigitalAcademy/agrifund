@@ -179,7 +179,7 @@ body {
 .container-header {
     display: flex;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: var(--small-s);
 }
 
