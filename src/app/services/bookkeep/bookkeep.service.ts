@@ -40,5 +40,11 @@ export class BookkeepService {
     //TODO
     //get income statement items by date
 
-    //
+    // TODO
+    // filter by date receives two parameters: startDate and endDate
+
+    // TODO
+    // get records by search text
+
+
 }

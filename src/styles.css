@@ -727,7 +727,6 @@ hr {
     .btn,
     button {
         padding: var(--small-s);
-        width: 100%;
     }
 
     .left-btn {
@@ -744,9 +743,9 @@ hr {
         padding: var(--normal-s);
     }
 
-    /* .btn-width {
-        width: 80px;
-    } */
+    .btn-width {
+        width: 100%;
+    }
 
     /*----------------------
         HIDE ITEMS
