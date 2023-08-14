@@ -12,7 +12,7 @@
 }
 .chart-header{
     justify-content: center !important;
-    padding-left: 10% !important;
+    padding-left: 37% !important;
     color:#6C757D !important;
 }
 
@@ -30,7 +30,7 @@
   
    
     .chart-container{
-        height: 10vh !important;
+        height: 40vh !important;
         width: 100% !important;
         position: relative !important;
         padding-top: 2% !important;
@@ -41,8 +41,8 @@
         align-items: start;
       }
       .chart-header{
-        justify-content: left !important;
-        padding-left: 30% !important;
+        justify-content: center !important;
+        padding-left: 0% !important;
         color:#6C757D !important;
         flex-wrap: wrap;
         padding-right: 86%
@@ -110,7 +110,6 @@
     .header-content>* {
       margin-bottom: var(--x-large-s) !important;
     }
-    
     .chart-container{
         height: 40vh !important;
         width: 100% !important;

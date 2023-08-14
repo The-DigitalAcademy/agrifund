@@ -4,124 +4,132 @@
     padding-top: 2%;
     padding-left: 2%;
     background-color: #F7F7F7;
-    position: relative;
+    position: flex;
     display: block;
    
     
 }
 
 .chart-header{
-    justify-content: center;
-    padding-left: 10%;
-    color:#6C757D;
+    justify-content: center !important;
+    padding-left: 30% !important; 
+    color:#6C757D !important;
 }
+
+
+
+.container{
+  width: 100% !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+}
+
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+
  
-  /*---------------------------------
-      Media Query for Mobile Devices
-  ----------------------------------*/
-  @media (max-width: 390px) {
-  
-   
-    .chart-container{
-        height: 10vh !important;
-        width: 100% !important;
-        position: relative !important;
-        padding-top: 2% !important;
-        padding-left: 2% !important;
-        background-color: #F7F7F7 !important;
-        flex-wrap: wrap;
-        display: row;
-        align-items: start;
-      }
-      .chart-header{
-        justify-content: left !important;
-        padding-left: 30% !important;
-        color:#6C757D !important;
-        flex-wrap: wrap;
-        padding-right: 86%
-        
-        
-    }
-  
-  
-  
-  @media only screen and (max-width: 576px) {
-  
-    /* TEXT */
-    .mobile-hidden {
-        display: none !important;
+  .chart-container{
+      height: 40vh !important;
+      width: 95% !important;
+      position: relative !important;
+      padding-top: 2% !important;
+      padding-left: 2% !important;
+      background-color: #F7F7F7 !important;
+      flex-wrap: wrap;
+      display: row;
+      align-items: start;
     }
     .chart-header{
-        justify-content: center !important;
-        padding-left: 37% !important;
-        color:#6C757D !important;
-    }
-  
-   
-    .chart-container{
-        height: 40vh !important;
-        width: 100% !important;
-        position: relative !important;
-        padding-top: 2% !important;
-        padding-left: 2% !important;
-        background-color: #F7F7F7 !important;
-        display: flex;
+      justify-content: left !important;
+      padding-left: 30% !important;
+      color:#6C757D !important;
+      flex-wrap: wrap;
+      padding-right: 86%
       
-    }
-     /* HIDE ITEMS*/
-    /* hide items on small screens */
-    .mobile-hidden {
-        display: none !important;
-    }
-  
-  
-  
+      
   }
-  
-  @media only screen and (min-width: 576px) and (max-width: 1200px) {
-  
-    /* HIDE ITEMS*/
-    /* hide items on large screens */
-    .large-hidden .about-company {
-        display: none !important;
-    }
-    .chart-container{
-        height: 40vh !important;
-        width: 100% !important;
-        position: relative !important;
-        padding-top: 2% !important;
-        padding-left: 2% !important;
-        background-color: #F7F7F7 !important;
-      }
+
+
+
+@media only screen and (max-width: 576px) {
+
+  /* TEXT */
+  .mobile-hidden {
+      display: none !important;
   }
-  
-  /*--------------------------------
-      Media Query for large screens
-  ----------------------------------*/
-  @media (min-width: 1281px) {
-  
-    .header-content>* {
-      margin-bottom: var(--x-large-s) !important;
-    }
+  .chart-header{
+      justify-content: center !important;
+      padding-left: 37% !important;
+      color:#6C757D !important;
+  }
+
+ 
+  .chart-container{
+      height: 40vh !important;
+      width: 95% !important;
+      position: relative !important;
+      padding-top: 2% !important;
+      padding-left: 2% !important;
+      background-color: #F7F7F7 !important;
+      display: flex;
     
-    .chart-container{
-        height: 40vh !important;
-        width: 100% !important;
-        position: relative !important;
-        padding-top: 2% !important;
-        padding-left: 2% !important;
-        background-color: #F7F7F7 !important;
-      
+  }
+   /* HIDE ITEMS*/
+  /* hide items on small screens */
+  .mobile-hidden {
+      display: none !important;
+  }
+
+
+
 }
-  
+
+@media only screen and (min-width: 576px) and (max-width: 1200px) {
+
+  /* HIDE ITEMS*/
+  /* hide items on large screens */
+  .large-hidden .about-company {
+      display: none !important;
   }
+  .chart-container{
+      height: 40vh !important;
+      width: 100% !important;
+      position: relative !important;
+      padding-top: 2% !important;
+      padding-left: 2% !important;
+      background-color: #F7F7F7 !important;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+
+  .header-content>* {
+    margin-bottom: var(--x-large-s) !important;
   }
-  .slogan {
-    /* color: var(--light) !important; */
-  }
-  
-  .bold {
-    /* color: var(--light) !important; */
-  }
+  .chart-container{
+      height: 40vh !important;
+      width: 100% !important;
+      position: relative !important;
+      padding-top: 2% !important;
+      padding-left: 2% !important;
+      background-color: #F7F7F7 !important;
+    
+}
+
+}
+}
+.slogan {
+  /* color: var(--light) !important; */
+}
+
+.bold {
+  /* color: var(--light) !important; */
+}
 
 
