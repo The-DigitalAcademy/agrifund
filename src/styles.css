@@ -606,8 +606,19 @@ button fa-icon {
     margin: 0px var(--small-s) 0px 0px;
 }
 
+/* removes margins for close buttons using font awesome icons */
 .close-btn fa-icon {
     margin: 0px !important;
+}
+
+/* adds margins to on right for buttons on the left */
+.left-btn{
+    margin-right: var(--small-s);
+}
+
+/* adds margin on left for buttons on right */
+.right-btn {
+    margin-left: var(--small-s);
 }
 
 /*----------------------
@@ -716,6 +727,7 @@ hr {
     .btn,
     button {
         padding: var(--small-s);
+        width: 100%;
     }
 
     .left-btn {
