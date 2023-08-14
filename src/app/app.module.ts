@@ -6,7 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-// import { OverlayModule } from '@angular/cdk/overlay';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -54,6 +55,12 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
 /* --------------------------------
+    MODALS
+---------------------------------*/
+import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
+import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
+
+/* --------------------------------
     ICONS
 ---------------------------------*/
 import {
@@ -84,9 +91,6 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
-import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -113,7 +117,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-        
+
         EquipmentCreateComponent,
         TellMeAboutComponent,
         ModalContainerComponent,
@@ -131,6 +135,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ],
     providers: [],
     bootstrap: [AppComponent],
+    entryComponents: [DeleteModalContentComponent],
 })
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {
