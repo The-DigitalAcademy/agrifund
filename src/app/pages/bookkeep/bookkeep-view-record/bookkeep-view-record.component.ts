@@ -66,7 +66,7 @@ export class BookkeepViewRecordComponent implements OnInit {
 
     // routes to delete page with the record id
     deleteRecord(recordId: any) {
-        this.router.navigate(['bookkeep/delete-record', recordId]);
+        // this.router.navigate(['bookkeep/delete-record', recordId]);
 
         // sets that the main modal component should open and instance of the delete modal
         const modalRef = this._modalService.open(DeleteModalContentComponent);

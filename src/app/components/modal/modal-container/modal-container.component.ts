@@ -11,7 +11,7 @@
 
 -------------------------------------------------------------------------------------------------*/
 
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DeleteModalContentComponent } from '../delete-modal-content/delete-modal-content.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -24,4 +24,5 @@ export class ModalContainerComponent {
     recordId!: number; // bookkeep record id
 
     constructor(private _modalService: NgbModal) {}
+
 }
