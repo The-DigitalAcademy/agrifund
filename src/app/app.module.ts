@@ -84,6 +84,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
 
 @NgModule({
     declarations: [
@@ -113,6 +114,7 @@ import {
         
         EquipmentCreateComponent,
         TellMeAboutComponent,
+        ModalContainerComponent,
     ],
     imports: [
         BrowserModule,
