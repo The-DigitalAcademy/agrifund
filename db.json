@@ -1,0 +1,19 @@
+{
+  "total_expense": [
+    {
+      "id": 1,
+      "amount": "R496"
+    }
+  ],
+  "total_income": [
+    {
+      "id": 2,
+      "amount": "R3672"
+    }
+  ],
+  "net_income": {
+    "id": 3,
+    "amount": "R3672"
+
+  }
+}

@@ -22,6 +22,7 @@ export class BookkeepService {
     }
 
     // TODO
+    
     // update income statement total income
     // calculateTotalIncome(): number {
     //     let total_income = 0;

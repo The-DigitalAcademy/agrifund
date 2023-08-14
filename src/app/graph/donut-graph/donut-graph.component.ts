@@ -21,6 +21,7 @@ export class DonutGraphComponent {
   // labeldata: any[] =[];
 
   ngOnInit(): void {
+    
     this.RenderChart();
     
   }
