@@ -22,13 +22,17 @@
     --grey-white: #E9ECEF;
     /*default colour for text*/
     --dark: #2E2E2E;
+    --darkRGB: 46 ,46 ,46;
     /* colour of paragraphs*/
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-    --white: F7F7F7;
+    --white: #F7F7F7;
     /* backgrounf colour for asset table */
     --white-2: #FDFDFD;
+
+    /* colour alpha setting */
+    --alpha: 0.4;
 
     /*------------------
         FONTS
@@ -117,7 +121,7 @@ body {
 }
 
 /*container for the entire page*/
-.page-body {
+.page-body, .page-background {
     width: 100%;
     height: 100%;
 
@@ -129,16 +133,28 @@ body {
     overflow: scroll;
 }
 
-.page-body::before {
+/* puts filter on page-background */
+.page-background::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
-    /* 40% opacity white background */
+    background-color: rgba(var(--darkRGB), var(--alpha));
 }
+
+/* puts filter on background images */
+img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--darkRGB), var(--alpha));
+}
+
 
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
