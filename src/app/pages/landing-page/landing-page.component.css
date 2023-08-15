@@ -2,7 +2,7 @@
   background-image: none !important;
 }
 
-.page-body::before{
+.page-body::before {
   background-color: none !important;
 }
 
@@ -10,32 +10,37 @@
   margin-bottom: var(--x-large-s) !important;
 }
 
+
 .header-content {
   margin-left: var(--x-large-s) !important;
   width: 55% !important;
   position: relative !important;
 }
 
+/* sets style for the header with image */
 .header {
-  height: 65% !important;
+  width: 100%;
+  height: 80% !important;
   display: flex !important;
   justify-content: flex-start !important;
   align-items: center !important;
 
   margin: var(--x-large-s);
 
-  background: var(--dark) url("src/assets/images/background/barn.webp") no-repeat center !important;
+  background: url("src/assets/images/background/barn.webp") no-repeat center !important;
   background-size: cover !important;
 }
 
-.header::before{
+/* puts a dark overlay over header image */
+.header::before {
   content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 65%;
-    background-color: rgba(var(--darkRGB), var(--alpha));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height needs to be te same as the header size */
+  height: 80%;
+  background-color: rgba(var(--darkRGB), var(--alpha));
 }
 
 fa-icon {
@@ -83,7 +88,10 @@ button fa-icon {
   padding-bottom: var(--medium-s) !important;
 }
 
-.slogan span {
+/* sets the colour of the header's text and the layout of the text*/
+.slogan span,
+.description span {
+  color: var(--light);
   display: flex !important;
 }
 
@@ -92,12 +100,17 @@ button fa-icon {
   margin-bottom: var(--large-s) !important;
 }
 
+/* sets the width and layout for containers*/
 .container {
   width: 100% !important;
   display: flex !important;
   flex-wrap: wrap !important;
 }
 
+.page-heading h1 {
+  /* changes the page headings to dark colour */
+  color: var(--dark);
+}
 
 /*---------------------------------
     Media Query for Mobile Devices
@@ -185,7 +198,7 @@ button fa-icon {
 
   p {
     /* changes size of text  */
-    font-size: var(--font-large);
+    font-size: var(--font-medium);
   }
 
   .content {

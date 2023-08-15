@@ -22,7 +22,7 @@
     --grey-white: #E9ECEF;
     /*default colour for text*/
     --dark: #2E2E2E;
-    --darkRGB: 46 ,46 ,46;
+    --darkRGB: 46, 46, 46;
     /* colour of paragraphs*/
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
@@ -121,7 +121,8 @@ body {
 }
 
 /*container for the entire page*/
-.page-body, .page-background {
+.page-body,
+.page-background {
     width: 100%;
     height: 100%;
 
@@ -171,6 +172,11 @@ img::before {
 /* container for page headings */
 .page-heading {
     margin-bottom: var(--normal-s);
+}
+
+.page-heading h1 {
+    /* changes the page headings to white */
+    color: var(--light);
 }
 
 /*any div that needs a border around it  */
@@ -745,8 +751,8 @@ hr {
     }
 
     .page-content {
-        padding: 0px !important;
-        /*var(--small-s)*/
+        /* add space at the top to take the navbar size into consideration */
+        padding: 55px var(--normal-s) var(--normal-s) !important;
     }
 
     /* set styles for all content within page-content div */
@@ -756,7 +762,6 @@ hr {
 
     .outer-container {
         border: none !important;
-        border-radius: 0px !important;
     }
 
     .container,
@@ -837,8 +842,9 @@ hr {
 
     .page-content {
         /* add space at the top to take the navbar size into consideration */
-        padding: var(--normal-s) !important;
+        padding: 55px var(--xx-large-s) var(--normal-s) !important;
     }
+
 
     /* set styles for all contnet within page-content div */
     .page-content>* {
@@ -886,14 +892,13 @@ hr {
         font-size: var(--font-normal);
     }
 
-
-
     .form-container {
         width: 80% !important;
     }
 
     .page-content {
-        padding: var(--normal-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 75px var(--xx-large-s) var(--normal-s) !important;
     }
 
     .container {
@@ -925,10 +930,9 @@ hr {
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
 
-    /*child to page-body - all page items headings and containers go in here */
     .page-content {
         /* add space at the top to take the navbar size into consideration */
-        padding: 70px var(--xx-large-s) var(--xx-large-s) !important;
+        padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
     .form-container {
@@ -960,7 +964,7 @@ hr {
 
     .page-content {
         /* add space at the top to take the navbar size into consideration */
-        padding: 55px var(--xx-large-s) var(--xx-large-s) !important;
+        padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
     .container {
