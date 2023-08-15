@@ -13,7 +13,7 @@ export class ApiService {
     // base string for api connection with current version of api
     // private baseUrl = `${environment.apiURL}`;
     // base string for mock api connection
-    private baseUrl = `${environment.mockApiUrl}`;
+    private baseUrl = `${environment.REG_URL}`;
 
     /* --------------------------------
         ADMIN USER CONNECTION STRINGS
@@ -105,6 +105,6 @@ export class ApiService {
     // register user
     RegisterUser(user: any): Observable<any> {
         // const url = '/api/v1/auth/register/farmer';
-        return this.http.post(this.userURL, user);
+        return this.http.post(this.baseUrl, user);
     }
 }
