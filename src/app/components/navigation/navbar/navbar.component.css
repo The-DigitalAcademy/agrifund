@@ -10,11 +10,11 @@ nav {
 
     overflow: hidden;
     background-color: var(--light);
-    position: relative !important;
 }
 
 .navbar {
     display: flex;
+    /* fixes navbar to the top of the page on scroll */
     position: relative !important;
 
 }
@@ -36,8 +36,6 @@ nav {
     height: 100%;
 
     padding: var(--small-s) var(--normal-s) !important;
-
-    background-color: var(--primary-colour);
 }
 
 .nav-right {
@@ -78,7 +76,8 @@ h1 {
 }
 
 h1 {
-    color: var(--light) !important;
+    /* changes the navbar brand heading color to dark */
+    color: var(--dark) !important;
 }
 
 span {
