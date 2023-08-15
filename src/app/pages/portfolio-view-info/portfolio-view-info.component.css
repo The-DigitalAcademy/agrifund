@@ -6,18 +6,6 @@
   
 }
 
-
-
-
-
-.sidebar {
-  background-color: var(--primary-colour);
-  height: 100%;
-  
-
-}
-
-
 .crop-info {
   margin-top: var(--normal-s);
 }
@@ -31,10 +19,6 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-}
-
-.sidebar {
-  background-color: var(--primary-colour);
 }
 
 #left {
