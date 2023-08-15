@@ -133,7 +133,7 @@ body {
 
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding: var(--xx-large-s) !important;
+    /* padding: 55px var(--xx-large-s) var(--xx-large-s)  !important; */
     /* width: 100% !important; */
     height: 100vh;
     overflow-x: hidden;
@@ -811,6 +811,7 @@ hr {
     }
 
     .page-content {
+        /* add space at the top to take the navbar size into consideration */
         padding: var(--normal-s) !important;
     }
 
@@ -900,7 +901,8 @@ hr {
 
     /*child to page-body - all page items headings and containers go in here */
     .page-content {
-        padding: var(--large-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 70px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
     .form-container {
@@ -931,7 +933,8 @@ hr {
 @media (min-width: 1281px) {
 
     .page-content {
-        padding: var(--xx-large-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 55px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
     .container{
