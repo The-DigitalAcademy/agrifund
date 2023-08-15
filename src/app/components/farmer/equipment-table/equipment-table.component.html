@@ -41,6 +41,7 @@
                 </p>
                 <p class=" inline-content greyed  justify-end">
                     {{ asset.name}}
+                    
                 </p>
             </div>
             <div class="right justify-end">
@@ -48,7 +49,7 @@
                     {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
                 </p>
                 <p class=" greyed justify-end">
-                        {{asset.age}}
+                    {{ asset.age }} {{ asset.age === 1 || asset.age === 0 ? 'year' : 'years' }}
                 </p>
             </div>
             <div class=" justify-end">
