@@ -66,15 +66,9 @@ tr,
     border-radius: var(--border-radius);
 }
 
-/* take away spacing on the left for money-in card */
-/* .money-in-card {
-    margin: 0px 0px 0px 0px;
-} */
-
-/* take away spacing on the right for money-out card */
-/* .money-out-card {
-    margin: 0px 0px 0px 0px;
-} */
+.actions{
+    margin-top: 0px !important;
+}
 
 /*---------------------------------
     Media Query for Mobile Devices

@@ -29,7 +29,7 @@ h2 {
 }
 
 .actions {
-    margin: none;
+    margin: var(--normal-s) 0px 0px 0px !important;
 }
 
 .text-danger {
