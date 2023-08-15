@@ -8,7 +8,6 @@ export class ValidationsServiceService {
 
   constructor() { }
 
-
   passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const cpassword = control.get('cpassword')?.value;
@@ -168,7 +167,7 @@ export class ValidationsServiceService {
       return null; // Return null if the input does not contain numbers
     };
   }
-
+  
   addressContainsStreetValidator(control: AbstractControl): ValidationErrors | null {
     const address = control.value as string;
 
@@ -178,20 +177,29 @@ export class ValidationsServiceService {
 
     return null;
   }
-    // Custom file type validator
-    fileTypeValidator(allowedTypes: string[]) {
-      return (control: AbstractControl): ValidationErrors | null => {
-        const file = control.value as File;
+    fileTypeValidator(allowedTypes: string[]): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const file = control.value as File;
   
-        if (file) {
-          const fileType = file.type;
-          if (!allowedTypes.includes(fileType)) {
-            return { invalidFileType: true };
-          }
-        }
-  
+      if (!file) {
+        // If no file is selected, consider it valid
         return null;
-      };
-    }
+      }
   
+      // Get the file extension from the file name
+      const fileNameParts = file.name.split('.');
+      const fileExtension = fileNameParts[fileNameParts.length - 1];
+  
+      // Convert the allowed MIME types to extensions for broader compatibility
+      const allowedExtensions = allowedTypes.map(type => type.split('/')[1]);
+  
+      if (!allowedExtensions.includes(fileExtension)) {
+        return { invalidFileType: true };
+      }
+  
+      return null;
+    };
+  }
 }
+
+

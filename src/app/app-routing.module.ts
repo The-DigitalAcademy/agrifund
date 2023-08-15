@@ -17,12 +17,14 @@ import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookke
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    {path: 'about-farm', component:TellMeAboutComponent},
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent },

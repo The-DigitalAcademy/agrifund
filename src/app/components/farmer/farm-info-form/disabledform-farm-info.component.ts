@@ -39,6 +39,7 @@ export class DisabledformFarmInfoComponent {
         this.myForm = this.fb.group({
             farm: new FormControl({ value: farmerData.farm, disabled: true }, [
                 Validators.required,
+                this.validationsService.addressContainsStreetValidator,
             ]),
             size: new FormControl({ value: farmerData.size, disabled: true }, [
                 Validators.required,

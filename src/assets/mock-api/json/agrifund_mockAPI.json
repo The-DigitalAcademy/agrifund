@@ -550,125 +550,6 @@
       ],
       "enabled": true,
       "responseMode": null
-    },
-    {
-      "uuid": "b7d8780a-7b6d-4ec3-b44e-6456669c34cd",
-      "type": "http",
-      "documentation": "",
-      "method": "post",
-      "endpoint": "register",
-      "responses": [
-        {
-          "uuid": "09017e00-1284-487e-ba85-775a442d40f7",
-          "body": "{\n  \"message\": \"User registered successfully!\",\n  \"user\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"cell_phone\": \"1234567890\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"1234567890\"\n    \"confirm_password\":\"1234567890\"\n  }\n}\n",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id"
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
-      "uuid": "413f27f6-e0a7-4443-8ece-235ba32ac038",
-      "type": "http",
-      "documentation": "",
-      "method": "post",
-      "endpoint": "login",
-      "responses": [
-        {
-          "uuid": "613d1cb3-a7a7-4cc1-b3c7-9330ecb219a5",
-          "body": "{\n  \"message\": \"Login successful!\",\n  \"user\": {\n   \n    \"email\": \"john.doe@example.com\",\n    \"password\": \"1234567890\"\n  },\n  \"token\": \"YOUR_AUTH_TOKEN_HERE\"\n}\n",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id"
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
-      "uuid": "1b086aa1-fc1c-421c-b549-dd1171cbeca9",
-      "type": "crud",
-      "documentation": "",
-      "method": "",
-      "endpoint": "crop",
-      "responses": [
-        {
-          "uuid": "5552eeb5-b804-42a0-b8bf-48af135521b4",
-          "body": "{}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "b7iv",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
-      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc",
-      "type": "crud",
-      "documentation": "",
-      "method": "",
-      "endpoint": "plot",
-      "responses": [
-        {
-          "uuid": "e25de18e-6f5a-42c6-bb13-24c5316b6eec",
-          "body": "{}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -686,11 +567,59 @@
     },
     {
       "type": "route",
-      "uuid": "1b086aa1-fc1c-421c-b549-dd1171cbeca9"
+      "uuid": "6ce8e7eb-f12e-48ff-a229-46ef9654c69f"
     },
     {
       "type": "route",
-      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc"
+      "uuid": "baac0c85-d3ed-415b-8420-ece488925e5c"
+    },
+    {
+      "type": "route",
+      "uuid": "42856beb-af4b-4d3d-8dd5-b410bfb06e8a"
+    },
+    {
+      "type": "route",
+      "uuid": "9f3454d1-1375-4d97-ac93-175759c42090"
+    },
+    {
+      "type": "route",
+      "uuid": "9fd7e286-98dd-4791-b15e-93256c9aa105"
+    },
+    {
+      "type": "route",
+      "uuid": "420a59a3-69a2-481a-8e81-ca88abc45c40"
+    },
+    {
+      "type": "route",
+      "uuid": "11ace05c-cba5-4826-9c4e-a7e064552519"
+    },
+    {
+      "type": "route",
+      "uuid": "9a511adc-016a-49ec-96d0-d425a67461a9"
+    },
+    {
+      "type": "route",
+      "uuid": "aa387ff1-4d64-4da2-9436-f200f09cb771"
+    },
+    {
+      "type": "route",
+      "uuid": "3307c2f9-11cf-4bc3-9cca-4d38d182d02d"
+    },
+    {
+      "type": "route",
+      "uuid": "6e35de5e-587c-4ea7-9dab-b08e3a79c7ba"
+    },
+    {
+      "type": "route",
+      "uuid": "dd00db88-61e5-4386-a9e3-cfab891ddeaa"
+    },
+    {
+      "type": "route",
+      "uuid": "0ec5da99-5e37-4dcc-9e18-510f7d40ae60"
+    },
+    {
+      "type": "route",
+      "uuid": "b2c8a699-5702-42e1-bef2-cfe509742b65"
     }
   ],
   "proxyMode": false,
@@ -746,7 +675,7 @@
       "id": "v9qc",
       "name": "incomeStatementItems",
       "documentation": "",
-      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \"{{oneOf (array 'Seeds Bought' 'Equipment Rented' 'Produce Sold')}}\",\n  \"proof\": \"src/assets/mock-api/bookkeep-record-proof/pop.png\"\n  }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"statement_id\": \"{{faker 'datatype.number' min=0 max=1}}\",\n  \"category\": \"{{oneOf (array 'Money In' 'Money Out')}}\", \n  \"amount\": \"{{toFixed (float 0 500) 2}}\",\n  \"description\": \n    {{#switch (urlParam 'id')}}\n      {{#case '1'}}\"Equipment Rented\"{{/case}}\n      {{#case '2'}}\"Produce Sold\"{{/case}}\n      {{#default}}\"Seeds Bought\"{{/default}}\n    {{/switch}}\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "492500c8-d2ef-4a77-8c7e-b8fa36feacb5",
@@ -760,14 +689,7 @@
       "id": "2pyr",
       "name": "users",
       "documentation": "",
-      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
-    },
-    {
-      "uuid": "aa6aeb07-e3b8-48cc-a17a-be507a4e1d79",
-      "id": "b7iv",
-      "name": "cropInfo",
-      "documentation": "",
-      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"name\": \"{{oneOf (array 'Corn' 'Grapes' 'Potatoes')}}\", \n  \"season\": \"{{oneOf (array 'Summer' 'Autumn' 'Spring' 'Winter')}}\",\n  \"price\": \"{{toFixed (float 0 5000) 2}}\", \n  \"market_value\": \"{{toFixed (float 0 5000) 2}}\",\n  \"type\": \"{{oneOf (array 'Fruit' 'Vegatable')}}\",\n  }\n  {{/repeat}}\n]"
+      "value": "\n[\n  {{#repeat 3}}\n  {\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  {{/repeat}}\n]"
     }
   ]
 }

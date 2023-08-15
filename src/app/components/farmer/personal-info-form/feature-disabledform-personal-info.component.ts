@@ -63,8 +63,12 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                     this.validationsService.phoneNumberValidator(),
                 ]
             ), // Set disabled to true to disable the field by default
-            proofOfID: new FormControl(null), // Initialize the "proofOfID" control with null
+            file: new FormControl(null, [
+                // Apply file type validator here
+                this.validationsService.fileTypeValidator(['image/jpeg','image/jpg' ,'image/png', 'application/pdf'])
+            ]),
         });
+      
 
         // Save the initial form values
         this.originalFormValues = userData;

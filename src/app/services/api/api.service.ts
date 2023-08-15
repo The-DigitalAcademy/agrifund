@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { Users } from 'src/app/models/users';
 import { environment } from 'src/environment/environment';
 
@@ -10,13 +10,40 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for mock-api connection
-    private baseUrl = environment.apiURL;
+    // base string for api connection with current version of api
+    // private baseUrl = `${environment.apiURL}`;
+    // base string for mock api connection
+    private baseUrl = `${environment.mockApiUrl}`;
 
     /* --------------------------------
-        USER CONNECTION STRINGS
+        ADMIN USER CONNECTION STRINGS
     ---------------------------------*/
+    // TODO admin
+
+    // TODO farmer
+    // used by admin to get farmer related data
+
+    // TODO user
     private userURL = this.baseUrl + '/users';
+
+    /* --------------------------------
+        FARMER USER CONNECTION STRINGS
+    ---------------------------------*/
+    // url used to register a farmer user
+    private registerFarmerURL = this.baseUrl;
+    // url used to login a farmer user
+    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
+    // TODO find farmer by email
+
+    // TODO reset password
+
+    // TODO send OTP
+
+    // TODO farmer
+    // TODO assets
+    // TODO plot
+    // TODO farm
+    // TODO crop
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -77,6 +104,7 @@ export class ApiService {
 
     // register user
     RegisterUser(user: any): Observable<any> {
+        // const url = '/api/v1/auth/register/farmer';
         return this.http.post(this.userURL, user);
     }
 }
