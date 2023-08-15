@@ -482,6 +482,37 @@ input[type=number]:focus,
     border: var(--thin-border) var(--dark);
 }
 
+/* styles the input group text match the style for the input group */
+.input-group-text {
+
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+    /* removes the right border to make the input group look like a single field */
+    border-right: none !important;
+
+    background-color: var(--light);
+    height: var(--xx-large-s);
+
+}
+
+.input-group input {
+    /* remove the left border for input groups with input group text */
+    border-left: none !important;
+}
+
+/* changes the style of the input group text when the input field is in focus */
+.input-group:focus-within .input-group-text{
+    border-radius: var(--border-radius);
+    box-shadow: none;
+    border: var(--thin-border) var(--dark);
+    background-color: white;
+}
+
+.input-group:focus-within *:focus {
+    /* removes the outline of input group */
+    outline: 0;
+}
+
 /*----------------------
     BUTTONS
 ----------------------*/
