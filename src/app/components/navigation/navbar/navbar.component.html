@@ -58,7 +58,10 @@
             <span>und</span>
         </h1>
 
-        <button class="btn icon-btn" type="button" data-bs-dismiss="offcanvas">
+        <button
+            class="btn icon-btn"
+            type="button"
+            (click)="offcanvas.dismiss('Cross click')">
             <fa-icon icon="times"></fa-icon>
         </button>
     </div>
