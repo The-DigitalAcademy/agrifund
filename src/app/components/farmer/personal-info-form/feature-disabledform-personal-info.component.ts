@@ -35,13 +35,6 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // const userData = {
-        //     first_name: 'John',
-        //     last_name: 'Doe',
-        //     email: 'john@example.com',
-        //     id_number: '0978456789043',
-        //     phoneNumber: '0607566762',
-        // };
 
          // Assuming you have a method in your ApiService to get registered user details
          this._apiService. getRegisterUser().subscribe(
@@ -54,6 +47,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                     id_number: user.idNumber,
                     cell_number: user.cellNumber,
                 });
+                 // Disable the form fields
+                 this.myForm.disable();
             },
             (error) => {
                 console.error('Error fetching user details:', error);
