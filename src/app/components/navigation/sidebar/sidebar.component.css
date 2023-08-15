@@ -28,13 +28,12 @@ a fa-icon {
 }
 
 .sidebar-content{
+    /* make  position of sidebar fixed on the page*/
     position: fixed;
     padding: var(--normal-s);
-    background-color: var(--primary-colour);
+    background-color: var(--light);
     height: 100%;
     z-index: 1;
-    
-    
 }
 
 /*---------------------------------
