@@ -67,8 +67,8 @@
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['id_number'].valid && myForm.controls['id_number'].dirty, 'has-error': myForm.controls['id_number'].invalid && myForm.controls['id_number'].dirty}">
         <label for="id_number" class="form-label">ID Number</label>
         <input type="text" class="form-control" id="id_number" formControlName="id_number" [disabled]="isDisabled">
-        <div class="form-text text-danger" *ngIf="myForm.controls['id_number'].hasError('idNumberValidator') && myForm.controls['id_number'].dirty" class="text-danger">The ID number should contain 13 digits.</div>
-        <div class="form-text text-danger" *ngIf="myForm.controls['id_number'].hasError('required') && !myForm.controls['id_number'].value && myForm.controls['id_number'].dirty" class="text-danger">ID number required.</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['id_number'].hasError('invalidIdNumber') && myForm.controls['id_number'].dirty" class="text-danger">Cell number should start with +27</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['id_number'].hasError('required') && !myForm.controls['id_number'].value && myForm.controls['id_number'].dirty" class="text-danger">Cell number required.</div>
       </div>
 
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['cell_number'].valid && myForm.controls['cell_number'].dirty, 'has-error': myForm.controls['cell_number'].invalid && myForm.controls['cell_number'].dirty}">

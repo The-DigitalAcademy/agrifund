@@ -10,6 +10,8 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { Users } from 'src/app/models/users';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -19,7 +21,7 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
 export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
 
-
+    
     editedData: any;
     farmerData: any;
     isDisabled = true;
@@ -29,54 +31,64 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
-        private progressService: ProgressService
+        private progressService: ProgressService, private _apiService: ApiService
     ) {}
 
     ngOnInit() {
-        const userData = {
-            first_name: 'John',
-            last_name: 'Doe',
-            email: 'john@example.com',
-            id_number: '0978456789043',
-            phoneNumber: '0607566762',
-        };
+        // const userData = {
+        //     first_name: 'John',
+        //     last_name: 'Doe',
+        //     email: 'john@example.com',
+        //     id_number: '0978456789043',
+        //     phoneNumber: '0607566762',
+        // };
+
+         // Assuming you have a method in your ApiService to get registered user details
+         this._apiService. getRegisterUser().subscribe(
+            (user: Users) => {
+                // Populate the form with user details
+                this.myForm.patchValue({
+                    first_name: user.firstName,
+                    last_name: user.lastName,
+                    email: user.email,
+                    id_number: user.idNumber,
+                    cell_number: user.cellNumber,
+                });
+            },
+            (error) => {
+                console.error('Error fetching user details:', error);
+            }
+        );
 
         this.myForm = this.fb.group({
-            first_name: new FormControl(
-                { value: userData.first_name, disabled: true },
-                [
-                    Validators.required,
-                    this.validationsService.textWithoutNumbersValidator(),
-                ]
-            ), // Set disabled to true to disable the field by default
-            last_name: new FormControl(
-                { value: userData.last_name, disabled: true },
-                [
-                    Validators.required,
-                    this.validationsService.textWithoutNumbersValidator(),
-                ]
-            ), // Set disabled to true to disable the field by default
-            email: new FormControl({ value: userData.email, disabled: true }, [
+            first_name: new FormControl('', [ // Notice the initial empty string value
+                Validators.required,
+                this.validationsService.textWithoutNumbersValidator(),
+            ]),
+            last_name: new FormControl('', [ // Initial empty string value
+                Validators.required,
+                this.validationsService.textWithoutNumbersValidator(),
+            ]),
+            email: new FormControl('', [ // Initial empty string value
                 Validators.required,
                 this.validationsService.emailValidator(),
             ]),
-            id_number: new FormControl({value: userData.id_number, disabled: true}, [
+            id_number: new FormControl('', [ // Initial empty string value
                 Validators.required,
                 this.validationsService.idNumberValidator(),
             ]),
-            cell_number: new FormControl(
-                { value: userData.phoneNumber, disabled: true },
-                [
-                    Validators.required,
-                    this.validationsService.phoneNumberValidator(),
-                ]
-            ), // Set disabled to true to disable the field by default
-           
+            cell_number: new FormControl('', [ // Initial empty string value
+                Validators.required,
+                this.validationsService.phoneNumberValidator(),
+            ]),
+            // ... other fields
         });
       
 
+       
+
         // Save the initial form values
-        this.originalFormValues = userData;
+        // this.originalFormValues = userData;
     }
 
 

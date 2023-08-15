@@ -173,6 +173,39 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "1a5a556f-d4ad-4914-bb7b-09b4f5acc2a4",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "Users",
+      "responses": [
+        {
+          "uuid": "859e0028-3ae1-4a1e-8da7-23bbdfba660d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "6man",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -191,6 +224,10 @@
     {
       "type": "route",
       "uuid": "b39dfa7e-4c0b-4f4c-af7f-4fbbb3767241"
+    },
+    {
+      "type": "route",
+      "uuid": "1a5a556f-d4ad-4914-bb7b-09b4f5acc2a4"
     }
   ],
   "proxyMode": false,
@@ -268,6 +305,13 @@
       "name": "equipment ",
       "documentation": "",
       "value": "[\n  {{#repeat 10}}\n  {\n    \"id\": \"{{@index}}\",\n    \"farm_id\": \"0\",\n    \"name\": \"{{oneOf (array 'Plow' 'Wooden Rake' 'Tractor')}}\",\n    \"type\": \"{{oneOf (array 'Hand Tool' 'Vehicle' 'Farm Tool')}}\",\n    \"age\": \"{{toFixed (float 0 100) 0}}\",\n    \"purchase_price\": \"{{toFixed (float 0 5000) 0}}\"\n  }\n  {{/repeat}}\n]\n\n\n\n\n\n\n"
+    },
+    {
+      "uuid": "3a773cc8-f0a7-4bca-8ec3-2747ac145a85",
+      "id": "6man",
+      "name": "Users",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  {{/repeat}}\n]\n"
     }
   ]
 }

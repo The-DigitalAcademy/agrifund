@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService
+        private validationsService: ValidationsServiceService,private apiServive:ApiService
     ) {}
 
     ngOnInit(): void {
@@ -27,12 +28,5 @@ export class LoginComponent implements OnInit {
                 this.validationsService.passwordValidator(),
             ]),
         });
-    }
-    onSubmit() {
-        if (this.LoginForm.valid) {
-            // Process the form data here (e.g., call a service to register the user)
-        } else {
-            // Display an error message or handle invalid form submission
-        }
     }
 }

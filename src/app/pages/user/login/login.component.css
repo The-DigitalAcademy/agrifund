@@ -1,35 +1,29 @@
 .page-body {
-   
-    background-image: url("src/assets/images/background/orange-trees.webp");
-  }
+    background-image: url('src/assets/images/background/orange-trees.webp');
+    flex-direction: column;
+}
 
-.icon-btn{
+.icon-btn {
     background-color: var(--light);
 }
 @media only screen and (max-width: 575px) {
-    .page-body{
+    .mobile-header {
+        background-image: url('src/assets/images/background/orange-trees.webp');
+    }
+
+    .page-body {
         /* display: block; */
-       
-  
-     background-image: none; 
-     width: 100%;
-     height: 100%;
-     justify-content: center;
-     
-    }
-    img{
-        width: 100%;
-        height: 150%;
-    
-    }
 
+        justify-content: center;
+    }
+    .container {
+        border: none;
+    }
 }
-
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {
-
     .page-content {
         padding: var(--x-large-s) !important;
     }
@@ -41,8 +35,8 @@
 /* CSS Styles for Success and Error States */
 .has-success .form-control {
     border-color: green;
-  }
-  
-  .has-error .form-control {
+}
+
+.has-error .form-control {
     border-color: red;
-  }
+}
