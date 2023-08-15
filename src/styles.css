@@ -91,6 +91,14 @@ body {
 }
 
 /*------------------
+   NAVBAR & SIDEBAR
+--------------------*/
+.offcanvas{
+    /* changes offcanvas background color */
+    background-color: var(--light) !important;
+}
+
+/*------------------
     CONTAINERS 
 --------------------*/
 /* override bootstrap row styles */
@@ -437,7 +445,7 @@ label,
 /* styling for form input fields */
 input,
 .form-control,
-.form-select {
+.form-select{
 
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -445,11 +453,6 @@ input,
     background-color: var(--light);
     height: var(--xx-large-s);
 }
-
-/* remove the border for input in input group */
-/* .input-group-text, .input-group input{
-    border: none;
-} */
 
 /* styling for form input fields */
 .form-input {
@@ -573,7 +576,7 @@ button {
 
 /* style of an icon within an icon button */
 .icon-btn fa-icon {
-    color: var(--grey) !important;
+    color: var(--dark) !important;
     margin: var(--x-small-s) 0px;
 }
 

@@ -12,6 +12,10 @@ nav {
     background-color: var(--light);
 }
 
+.icon-btn{
+    color: var(--dark) !important;
+}
+
 .navbar {
     display: flex;
     /* puts navbar above everything else on a page*/
@@ -21,8 +25,9 @@ nav {
 
 }
 
-.navbar-toggler,
-.navbar-collapse {
+.navbar-toggler{
+    margin-left: 0px !important;
+    color: var(--dark);
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -30,12 +35,18 @@ nav {
     padding: 0px;
 }
 
+.icon-btn{
+    color: var(--dark) !important;
+}
+
+/* styles for all items on the left side of the navbar */
 .nav-left {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
     height: 100%;
+    width: 50%;
 
     padding: var(--small-s) var(--normal-s) !important;
 }
@@ -46,6 +57,7 @@ nav {
     align-items: center;
 
     height: 100%;
+    width: 50%;
 
     padding: var(--small-s) var(--normal-s) !important;
 }
@@ -55,21 +67,11 @@ nav {
     vertical-align: center !important;
 }
 
-.offcanvas .nav-brand {
-    padding: 0px var(--normal-s);
-}
-
 img {
     /* change the colour of the alternative f if the image doesn't load */
     color: var(--secondary-colour) !important;
     /* change the size of the agrifund logo */
     height: var(--x-large-s) !important;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
 }
 
 p,
@@ -123,12 +125,11 @@ span {
 
 /* OFFCANVAS */
 .offcanvas {
-    background-color: var(--primary-colour);
+    background-color: var(--light);
 }
 
 .offcanvas-header {
     padding: var(--small-s) !important;
-    background-color: var(--primary-colour);
 }
 
 .offcanvas-body {
