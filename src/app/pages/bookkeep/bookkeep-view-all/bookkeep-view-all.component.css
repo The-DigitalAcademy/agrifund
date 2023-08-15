@@ -66,6 +66,12 @@ tr,
     margin-top: 0px !important;
 }
 
+app-sidebar{
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+}
+
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
