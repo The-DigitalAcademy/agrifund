@@ -32,7 +32,7 @@ h1{
     font-weight:var(--regular) ;
     width: 100%;
     margin-top:var( --medium-s) ; 
-    color: var(--primary-colour);  
+    color: var( --primary-colour);  
     
   }
  

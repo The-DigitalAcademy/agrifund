@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class DynamicInputsComponent {
 
   inputFields: any[] = [];
+isSelected: any;
 
   addInputRow() {
     const newRow = { field1: '', field2: '', field3: '', field4: '', field5: '' };

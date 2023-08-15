@@ -1,4 +1,8 @@
 <div>
+    <p>
+      <span *ngIf="isSelected" class="icon"><i class="fas fa-check-square"></i></span>
+      <span *ngIf="!isSelected" class="icon"><i class="far fa-square"></i></span>
+    </p>
     <button (click)="addInputRow()">Add Input Field</button>
   </div>
   <table>
@@ -13,4 +17,5 @@
       </tr>
     </tbody>
   </table>
+  
   
