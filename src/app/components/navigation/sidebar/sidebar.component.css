@@ -1,5 +1,6 @@
 li,
 .nav-item {
+    /* aligns nav items to the left */
     display: flex;
     justify-content: flex-start;
     align-items: center;
