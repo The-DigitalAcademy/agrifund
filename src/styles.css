@@ -27,9 +27,9 @@
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-    --white: #F7F7F7;
-    /* backgrounf colour for asset table */
-    --white-2: #FDFDFD;
+    --light-1: #FDFDFD;
+    --light-2: #F8F9FA;
+    --light-3: #F7F7F7;
 
     /* colour alpha setting */
     --alpha: 0.4;
@@ -179,7 +179,12 @@ img::before {
     color: var(--light);
 }
 
-/*any div that needs a border around it  */
+/* outer most container */
+.outer-container {
+    background-color: var(--light-1) !important;
+}
+
+/*any div that needs a border around it middle container */
 .container {
     margin: 0px !important;
     border-radius: var(--border-radius);
@@ -187,11 +192,17 @@ img::before {
 
     /* padding: var(--normal-s); */
 
-    background-color: var(--white-2);
+    background-color: var(--light-2);
     background-size: 100%;
     max-width: 100% !important;
 }
 
+/* inner-most container */
+.inner-container {
+    background-color: var(--light-3) !important;
+}
+
+/* container for document upload input field */
 .document-upload {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -762,6 +773,7 @@ hr {
         padding: var(--normal-s) !important;
     }
 
+    /* outermost container */
     .outer-container {
         border: none !important;
     }

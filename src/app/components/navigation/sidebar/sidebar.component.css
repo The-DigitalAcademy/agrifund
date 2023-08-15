@@ -32,7 +32,8 @@ li:active {
 }
 
 a fa-icon {
-    margin: 0px var(--small-s);
+    /* add spsce */
+    margin-right: var(--small-s);
     font-size: var(--font-medium);
 }
 
@@ -69,3 +70,5 @@ a fa-icon {
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {}
+
+
