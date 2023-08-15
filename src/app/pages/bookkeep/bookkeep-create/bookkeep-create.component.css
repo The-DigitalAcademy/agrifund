@@ -29,7 +29,8 @@ h2 {
 }
 
 .actions {
-    margin: var(--normal-s) 0px 0px 0px !important;
+    /* removes bottom margin for actions container */
+    margin-bottom: 0px !important;
 }
 
 .text-danger {
