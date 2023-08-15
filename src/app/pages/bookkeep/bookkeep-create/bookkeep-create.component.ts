@@ -30,6 +30,7 @@ export class BookkeepCreateComponent implements OnInit {
             recordType: ['', [Validators.required]],
             recordAmount: ['', [Validators.required]],
             recordProof: ['', [Validators.required]],
+            recordDate: ['', [Validators.required]],
         });
     }
 

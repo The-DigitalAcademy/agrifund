@@ -1,7 +1,5 @@
 <div class="page-body justify-center">
-    <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
-        <img src="assets/images/background/barn.webp" alt="Avatar">
-    </div> -->
+    <!-- image header that will display on mobile devices -->
     <div class="mobile-header"></div>
     <div class="container form-container">
         <div class="container-header">
@@ -45,6 +43,28 @@
                     </div>
                 </div>
                 <div class="form-input" id="form-label">
+                    <label for="recordDate">Record Date</label>
+                    <div class="form-text">
+                        Please specify the date of the record.
+                    </div>
+                    <input
+                        formControlName="recordDate"
+                        type="date"
+                        class="form-control"
+                        id="recordDate" />
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordDate'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordDate'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please specify a valid date for your record.
+                    </div>
+                </div>
+                <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
                     <select
                         formControlName="recordType"
@@ -71,6 +91,7 @@
                         Please select a type for your record.
                     </div>
                 </div>
+                <!-- input for the amount of a record -->
                 <div class="form-input" id="label">
                     <label for="recordAmount" class="form-label">
                         Amount of Record
@@ -86,8 +107,7 @@
                     <div
                         class="form-text text-danger"
                         *ngIf="
-                            (createRecordForm.controls['recordAmount']
-                                .touched) &&
+                            createRecordForm.controls['recordAmount'].touched &&
                             createRecordForm.controls['recordAmount'].errors?.[
                                 'required'
                             ]
