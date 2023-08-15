@@ -92,7 +92,10 @@ span {
 }
 
 .icon-btn fa-icon {
-    color: var(--light) !important;
+    /* changes the colour of icons  */
+    color: var(--dark) !important;
+    /* removes margins from icon on buttons */
+    margin: 0px;
 }
 
 .name-greeting {
