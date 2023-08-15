@@ -1,8 +1,10 @@
-import { Chart } from 'chart.js/auto';
+import { Chart,registerables } from 'chart.js/auto';
 import { Component } from '@angular/core';
 import { ChartService } from 'src/app/services/chart/chart.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
+
+Chart.register(...registerables);
 @Component({
   selector: 'app-donut-graph',
   templateUrl: './donut-graph.component.html',
@@ -12,7 +14,8 @@ export class DonutGraphComponent {
   constructor(private chartService:ChartService) { }
 
   chartdata: any;
-  total_expense: any = [];
+  result:any;
+  expense: any = [];
   total_income: any = [];
   net_income: any = [];
 
