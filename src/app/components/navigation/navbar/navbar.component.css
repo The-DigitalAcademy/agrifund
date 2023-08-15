@@ -14,8 +14,9 @@ nav {
 
 .navbar {
     display: flex;
-    /* fixes navbar to the top of the page on scroll */
+    /* puts navbar above everything else on a page*/
     z-index: 100;
+    /* fixes navbar to the top of the page on scroll */
     position: fixed !important;
 
 }
