@@ -62,6 +62,9 @@ export class PortfolioProgressbarComponent {
                 this.checklistForm.patchValue({
                     personalInfo: true,
                 });
+
+                // Update progress based on personal info completion
+                this.progressService.setPersonalInfoCompleted(true);
             },
             (error) => {
                 console.error('Error fetching user details:', error);
