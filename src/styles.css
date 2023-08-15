@@ -396,7 +396,7 @@ fa-icon {
     width: var(--font-normal);
 
     padding: 0px;
-    margin-left: 0px !important;
+    margin: 0px;
 }
 
 /* used to override fontawesome css*/
