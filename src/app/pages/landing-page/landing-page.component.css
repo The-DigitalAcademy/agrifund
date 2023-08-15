@@ -25,7 +25,7 @@
 .header {
   display: flex;
   flex: 0 0 max-content;
-  min-height: 80% !important;
+  min-height: 55% !important;
   min-width: 100%;
   justify-content: flex-start !important;
   flex-direction: flex-container;
@@ -45,7 +45,7 @@
   left: 0;
   width: 100%;
   /* height needs to be te same as the header size */
-  height: 80%;
+  height: 55%;
   background-color: rgba(var(--darkRGB), 0.5);
 }
 
@@ -161,6 +161,14 @@ button fa-icon {
 
   .header-content{
     min-width: 80%;
+  }
+
+  .header{
+    min-height: 80% !important;
+  }
+
+  .header::before{
+    min-height: 80% !important;
   }
 
   .content {
