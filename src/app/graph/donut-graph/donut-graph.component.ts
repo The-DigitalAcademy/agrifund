@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./donut-graph.component.css']
 })
 export class DonutGraphComponent {
-  constructor(private service:ApiService) { }
+  constructor(private chartService:ChartService) { }
 
   chartdata: any;
   total_expense: any = [];
@@ -21,7 +21,7 @@ export class DonutGraphComponent {
   // labeldata: any[] =[];
 
   ngOnInit(): void {
-    
+  
     this.RenderChart();
     
   }
@@ -32,7 +32,7 @@ export class DonutGraphComponent {
         labels: ['Money Out', 'Money In'],
         datasets: [{
           label: 'Money Out Summary',
-          data: [1200, 590],
+          data: [234,1245],
           backgroundColor: ['#5A6537',
           '#9BA66F'],
           hoverOffset: 10

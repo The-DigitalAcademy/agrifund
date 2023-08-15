@@ -1,27 +1,27 @@
-.chart-container{
-    height: 38vh;
-    width: 95%;
-    padding-top: 2%;
-    padding-left: 2%;
-    background-color: #F7F7F7;
-    position: flex;
-    display: block;
-   
-    
+.chart-container {
+  height: 38vh;
+  width: 95%;
+  padding-top: 2%;
+  padding-left: 2%;
+  background-color: #F7F7F7;
+  position: flex;
+  display: block;
+
+
 }
 
-.chart-header{
-    justify-content: center !important;
-    padding-left: 30% !important; 
-    color:#6C757D !important;
+.chart-header {
+  justify-content: center !important;
+  padding-left: 30% !important;
+  color: #6C757D !important;
 }
 
 
 
-.container{
+.container {
   width: 100% !important;
-  display:flex !important;
-  flex-wrap:wrap !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
 
 
@@ -30,100 +30,112 @@
 ----------------------------------*/
 @media (max-width: 390px) {
 
- 
-  .chart-container{
-      height: 38vh !important;
-      width: 95% !important;
-      position: relative !important;
-      padding-top: 2% !important;
-      padding-left: 2% !important;
-      background-color: #F7F7F7 !important;
-      flex-wrap: wrap;
-      display: row;
-      align-items: start;
-    }
-    .chart-header{
-      justify-content: left !important;
-      padding-left: 30% !important;
-      color:#6C757D !important;
-      flex-wrap: wrap;
-      padding-right: 86%
-      
-      
+
+  .chart-container {
+    height: 30vh !important;
+    width: 95% !important;
+    position: relative !important;
+    padding-top: 2% !important;
+    padding-left: 2% !important;
+    background-color: #F7F7F7 !important;
+    flex-wrap: wrap;
+    display: row;
+    align-items: start;
+  }
+
+  .chart-header {
+    justify-content: left !important;
+    padding-left: 30% !important;
+    color: #6C757D !important;
+    flex-wrap: wrap;
+    padding-right: 86%
   }
 
 
 
-@media only screen and (max-width: 576px) {
+  @media only screen and (max-width: 576px) {
 
-  /* TEXT */
-  .mobile-hidden {
+    /* TEXT */
+    .mobile-hidden {
       display: none !important;
-  }
-  .chart-header{
+    }
+
+    .chart-header {
       justify-content: center !important;
       padding-left: 37% !important;
-      color:#6C757D !important;
-  }
+      color: #6C757D !important;
+      align-items: start;
+    }
 
- 
-  .chart-container{
-      height: 38vh !important;
+
+    .chart-container {
+      height: 30vh !important;
       width: 95% !important;
       position: relative !important;
       padding-top: 2% !important;
       padding-left: 2% !important;
       background-color: #F7F7F7 !important;
       display: flex;
-    
-  }
-   /* HIDE ITEMS*/
-  /* hide items on small screens */
-  .mobile-hidden {
+
+    }
+
+    /* HIDE ITEMS*/
+    /* hide items on small screens */
+    .mobile-hidden {
       display: none !important;
+    }
+
+
+
   }
 
+  @media only screen and (min-width: 576px) and (max-width: 1200px) {
 
-
-}
-
-@media only screen and (min-width: 576px) and (max-width: 1200px) {
-
-  /* HIDE ITEMS*/
-  /* hide items on large screens */
-  .large-hidden .about-company {
+    /* HIDE ITEMS*/
+    /* hide items on large screens */
+    .large-hidden .about-company {
       display: none !important;
-  }
-  .chart-container{
-      height: 40vh !important;
+    }
+
+    .chart-container {
+      height: 30vh !important;
       width: 100% !important;
       position: relative !important;
       padding-top: 2% !important;
       padding-left: 2% !important;
       background-color: #F7F7F7 !important;
     }
-}
 
-/*--------------------------------
+    .chart-header {
+      justify-content: center !important;
+      padding-left: 37% !important;
+      color: #6C757D !important;
+    }
+
+  }
+
+  /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
-@media (min-width: 1281px) {
+  @media (min-width: 1281px) {
 
-  .header-content>* {
-    margin-bottom: var(--x-large-s) !important;
-  }
-  .chart-container{
+    .header-content>* {
+      margin-bottom: var(--x-large-s) !important;
+    }
+
+    .chart-container {
       height: 40vh !important;
       width: 100% !important;
       position: relative !important;
       padding-top: 2% !important;
       padding-left: 2% !important;
       background-color: #F7F7F7 !important;
-    
+
+    }
+
+  }
 }
 
-}
-}
 .slogan {
   /* color: var(--light) !important; */
 }
@@ -131,5 +143,3 @@
 .bold {
   /* color: var(--light) !important; */
 }
-
-

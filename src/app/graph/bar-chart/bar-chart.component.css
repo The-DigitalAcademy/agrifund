@@ -25,14 +25,14 @@
 
 
     .chart-container {
-        height: 38vh !important;
+        height: 30vh !important;
         width: 100% !important;
         position: relative !important;
         padding-top: 2% !important;
         padding-left: 2% !important;
         background-color: #F7F7F7 !important;
         flex-wrap: wrap;
-        display: row;
+        display: block;
         align-items: start;
     }
 
@@ -40,7 +40,7 @@
         justify-content: center !important;
         padding-right: 45% !important;
         color: #6C757D !important;
-        display: row;
+        display: block;
 
 
 
@@ -63,7 +63,7 @@
 
 
         .chart-container {
-            height: 38vh !important;
+            height: 30vh !important;
             width: 100% !important;
             position: relative !important;
             padding-top: 2% !important;
@@ -72,7 +72,7 @@
             display: flex;
 
         }
-        
+
 
         /* HIDE ITEMS*/
         /* hide items on small screens */
@@ -101,10 +101,11 @@
             padding-left: 2% !important;
             background-color: #F7F7F7 !important;
         }
-        .chart-header{
+
+        .chart-header {
             justify-content: center !important;
             padding-left: 37% !important;
-            color:#6C757D !important;
+            color: #6C757D !important;
         }
 
     }
@@ -127,10 +128,11 @@
             background-color: #F7F7F7 !important;
 
         }
-        .chart-header{
+
+        .chart-header {
             justify-content: center !important;
             padding-left: 37% !important;
-            color:#6C757D !important;
+            color: #6C757D !important;
 
         }
     }

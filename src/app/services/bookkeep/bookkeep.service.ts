@@ -22,7 +22,7 @@ export class BookkeepService {
     }
 
     // TODO
-    
+
     // update income statement total income
     // calculateTotalIncome(): number {
     //     let total_income = 0;
@@ -64,7 +64,7 @@ export class BookkeepService {
 // }
 // get income statement items by date
 // fetchIncomeStatement(date: string) {
-//     this.incomeStatementService.getIncomeStatementByDate(date)
+//     this.bookkepService.getIncomeStatementByDate(date)
 //       .subscribe(
 //         response => {
 //           this.incomeStatement = response; // Store the fetched data
