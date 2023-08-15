@@ -47,7 +47,7 @@ img {
 }
 
 .about-company>* {
-  padding: 0px var(--large-s) 0px 0px;
+  padding: 0px var(--large-s) 0px 0px !important;
 }
 
 .about-company-img {
