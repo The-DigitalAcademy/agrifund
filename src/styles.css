@@ -93,9 +93,10 @@ body {
 /*------------------
    NAVBAR & SIDEBAR
 --------------------*/
-.offcanvas{
+.offcanvas {
     /* changes offcanvas background color */
     background-color: var(--light) !important;
+    border: none !important;
 }
 
 /*------------------
@@ -254,19 +255,21 @@ body {
     padding: var(--normal-s);
 }
 
-.modal-header, .modal-body{
+.modal-header,
+.modal-body {
     /* set padding */
-    padding: 0px ;
-    
+    padding: 0px;
+
 }
 
 /* set styles for a modal body */
-.modal-body{
+.modal-body {
     /* set margin for the top and bottom of modal body */
     margin: var(--normal-s) 0px;
 }
 
-.modal-footer, .modal-header{
+.modal-footer,
+.modal-header {
     /* removes the border lines on for the modal header and footer */
     border: none !important;
     /* set padding */
@@ -275,7 +278,8 @@ body {
     margin: var(--normal-s) 0px;
 }
 
-.modal-footer, .modal-header{
+.modal-footer,
+.modal-header {
     /* prevents modal footer from flexing int container */
     display: block;
     /* removes margins */
@@ -392,6 +396,7 @@ fa-icon {
     width: var(--font-normal);
 
     padding: 0px;
+    margin-left: 0px !important;
 }
 
 /* used to override fontawesome css*/
@@ -417,12 +422,12 @@ fa-icon {
 }
 
 /* sets any font to normal font */
-.normal-font{
+.normal-font {
     font-family: var(--normal-font);
 }
 
 /* align text to center */
-.align-center{
+.align-center {
     text-align: center;
 }
 
@@ -445,7 +450,7 @@ label,
 /* styling for form input fields */
 input,
 .form-control,
-.form-select{
+.form-select {
 
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -456,7 +461,7 @@ input,
 
 /* styling for form input fields */
 .form-input {
-    padding-bottom: var(--small-s)!important;
+    padding-bottom: var(--small-s) !important;
     /* margin: var(--small-s) 0px !important; */
 
 }
@@ -504,7 +509,7 @@ input[type=number]:focus,
 }
 
 /* changes the style of the input group text when the input field is in focus */
-.input-group:focus-within .input-group-text{
+.input-group:focus-within .input-group-text {
     border-radius: var(--border-radius);
     box-shadow: none;
     border: var(--thin-border) var(--dark);
@@ -582,7 +587,7 @@ button {
 
 /* style of an icon when hovering or focusing */
 .icon-btn:hover,
-.icon-btn:focus{
+.icon-btn:focus {
     color: var(--dark) !important;
 }
 
@@ -646,7 +651,7 @@ button fa-icon {
 }
 
 /* adds margins to on right for buttons on the left */
-.left-btn{
+.left-btn {
     margin-right: var(--small-s);
 }
 
@@ -708,7 +713,7 @@ hr {
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (min-width: 300px) and (max-width:428px){
+@media (min-width: 300px) and (max-width:428px) {
 
     /* TEXT */
     h1 {
@@ -733,7 +738,7 @@ hr {
         padding: var(--normal-s) !important;
     }
 
-    .outer-container{
+    .outer-container {
         border: none !important;
         border-radius: 0px !important;
     }
@@ -789,6 +794,7 @@ hr {
         display: none !important;
     }
 
+    /* hides the sidebar on smaller screens */
     .sidebar {
         display: none !important;
     }
@@ -801,7 +807,7 @@ hr {
 @media (min-width: 481px) and (max-width: 767px) {
 
     /* TEXT */
-    h1{
+    h1 {
         font-size: var(--font-large);
     }
 
@@ -832,15 +838,16 @@ hr {
         padding: var(--medium-s);
     }
 
-    .sidebar {
-        display: none !important;
-    }
-
     /*----------------------
         HIDE ITEMS
     ----------------------*/
     /* hide items on small screens */
     .mobile-hidden {
+        display: none !important;
+    }
+
+    /* hides the sidebar on smaller screens */
+    .sidebar {
         display: none !important;
     }
 }
@@ -863,13 +870,7 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .sidebar {
-        display: none !important;
-    }
 
-    .mobile-header {
-        display: none;
-    }
 
     .form-container {
         width: 80% !important;
@@ -895,6 +896,12 @@ hr {
     .mobile-header {
         display: none;
     }
+
+    /* hides the sidebar */
+    .sidebar {
+        display: none !important;
+    }
+
 }
 
 /*--------------------------------------
@@ -940,7 +947,7 @@ hr {
         padding: 55px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
-    .container{
+    .container {
         padding: var(--xx-large-s);
         /* width: 35% !important; */
     }
