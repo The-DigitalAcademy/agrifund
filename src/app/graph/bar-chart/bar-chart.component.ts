@@ -3,7 +3,6 @@ import {Chart, registerables} from 'chart.js/auto';
 import { ChartService } from 'src/app/services/chart/chart.service';
 
 
-Chart.register(...registerables);
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -11,9 +10,15 @@ Chart.register(...registerables);
 })
 export class BarChartComponent {
  
-  constructor() { }
+  constructor(private chartService:ChartService) {}
+
+  chartdata: any;
+  total_expense: any = [];
+  total_income: any = [];
+  net_income: any = [];
 
   ngOnInit(): void {
+    
     this.RenderChart();
   }
   RenderChart() {
