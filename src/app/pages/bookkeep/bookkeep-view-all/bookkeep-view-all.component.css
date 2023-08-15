@@ -1,8 +1,5 @@
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* opacity: 0.7; */
 }
 
 .container {

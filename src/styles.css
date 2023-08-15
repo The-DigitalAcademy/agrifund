@@ -166,8 +166,9 @@ img::before {
     /* width: 100% !important; */
     display: flex;
     flex-flow: column;
+    flex-direction: column;
     height: 100vh;
-    width: ma;
+    width: 100vw;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
