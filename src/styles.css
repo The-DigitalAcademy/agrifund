@@ -123,8 +123,11 @@ body {
 /*container for the entire page*/
 .page-body,
 .page-background {
-    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-flow: row;
     height: 100%;
+    width: 100%;
 
     background-size: cover;
     background-color: var(--light);
@@ -161,7 +164,10 @@ img::before {
 .page-content {
     /* padding: 55px var(--xx-large-s) var(--xx-large-s)  !important; */
     /* width: 100% !important; */
+    display: flex;
+    flex-flow: column;
     height: 100vh;
+    width: ma;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
@@ -265,7 +271,8 @@ img::before {
 
 
 .sidebar {
-    height: 100vh;
+    height: 100%;
+    width: max-content;
     position: relative;
 }
 
