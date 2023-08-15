@@ -48,10 +48,19 @@ h2 {
 }
 
 .input-group input {
+    /* remove the left border for input groups with input group text */
     border-left: none !important;
 }
 
-.input-group>*:focus {
+/* changes the style of the input group text when the input field is in focus */
+.input-group:focus-within .input-group-text{
+    border-radius: var(--border-radius);
     box-shadow: none;
     border: var(--thin-border) var(--dark);
+    background-color: white;
+}
+
+.input-group:focus-within *:focus {
+    /* removes the outline of input group */
+    outline: 0;
 }
