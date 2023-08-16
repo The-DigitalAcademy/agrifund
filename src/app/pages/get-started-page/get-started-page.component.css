@@ -39,25 +39,32 @@ p {
 }
 
 .carousel-indicators button {
-    height: 10px !important;
-    width: 10px !important;
-    margin: 0 10px !important;
+    /* sets the size of carousel indicators */
+    height: var(--normal-s) !important;
+    width: var(--normal-s) !important;
+    /* sets the margins on the left and right of a carousel indicator */
+    margin: 0px var(--x-small-s) !important;
+    /* makes the indicators rounded */
     border-radius: 100%;
+
+    background-color: var(--lighter-grey) !important;
+}
+
+.carousel-indicators .active {
+    /* changes the active indicator to green */
     background-color: var(--primary-colour) !important;
 }
 
-.carousel-control-next {
+
+
+.carousel-control-next, .carousel-control-prev {
+    /* fixes carousel controls to the bottom of the page*/
     display: flex;
     position: relative;
+    /* changes the  carousel indicator colors to dark*/
     color: var(--dark);
-
-}
-
-.carousel-control-prev {
-    display: flex;
-    position: relative;
-    color: var(--dark);
-
+    /* increases the opacity of controls */
+    opacity: 1;
 }
 
 .carousel-indicators {
@@ -67,6 +74,7 @@ p {
 }
 
 fa-icon {
+    /* changes icon colors to dark */
     color: var(--dark);
 }
 
@@ -75,49 +83,6 @@ fa-icon {
     color: var(--dark);
 }
 
-
-@media only screen and (max-width: 575px) {
-
-
-
-    .container {
-        text-align: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        height: 100% !important;
-
-    }
-
-    .mobile-header {
-        background-image: url("src/assets/images/background/orange-trees.webp");
-    }
-
-    .carousel-control-next {
-        display: flex;
-        align-items: center;
-        gap: 10px !important;
-        padding-right: 30;
-
-
-    }
-
-    .carousel-control-prev {
-
-        display: flex;
-        align-items: center;
-        gap: 5px !important;
-
-    }
-
-    .carousel-indicators {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2px;
-        flex: 2 0 0;
-    }
-
-}
 
 .justify-start {
     padding-left: 25px !important;
@@ -134,7 +99,7 @@ fa-icon {
 @media (min-width: 300px) and (max-width:428px) {
 
     .page-body {
-
+        /* removes the image from the background */
         background-image: none;
     }
 
@@ -146,6 +111,10 @@ fa-icon {
     .page-content {
         /* removes padding */
         padding: 0px !important;
+    }
+
+    .mobile-header {
+        background-image: url("src/assets/images/background/orange-trees.webp");
     }
 
 }
