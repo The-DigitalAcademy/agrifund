@@ -793,7 +793,7 @@ hr {
         /* border: none !important; */
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--medium-s);
     }
 
@@ -877,7 +877,7 @@ hr {
         padding: var(--normal-s) 0px 0px 0px;
     }
 
-    .container {
+    .container, .form-container {
         width: 75%;
         padding: var(--medium-s);
     }
@@ -923,7 +923,7 @@ hr {
         padding: 75px var(--xx-large-s) var(--normal-s) !important;
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--large-s);
     }
 
@@ -961,7 +961,7 @@ hr {
         width: 60% !important;
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--large-s);
     }
 
@@ -989,7 +989,7 @@ hr {
         padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--xx-large-s);
         /* width: 35% !important; */
     }
