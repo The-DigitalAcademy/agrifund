@@ -5,12 +5,15 @@
         <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">
           <form [formGroup]="formSlide.formGroup" (ngSubmit)="onSubmit(formSlide.formGroup)">
             <div *ngIf="i === 0">
-                <div class="container">
+                <div class = "carousel-inner">
+                <div class="inner-container">
                     <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
                       <h2>Welcome To AgriFund</h2>
                       <p>We are happy to to help you embark on your path to financial success.
+                        <br>
                         <br> But first we would love to hear more about your farm!</p>
                       </div>
+                    </div>
             </div>
             <div *ngIf="i === 1">
                 <div class="page-heading justify-center">
@@ -70,6 +73,7 @@
               </div>
             </div>
             <div *ngIf="i === 3">
+                <div class="container">
                         <div class="page-heading justify-center">
                             <h2>Crops</h2>
                         </div>
@@ -108,6 +112,7 @@
                                 </select>
                             </div>
                     </div>
+                 </div>
                 </div>
             <button type="submit" class="btn btn-primary justify-center" >Submit</button>
           </form>

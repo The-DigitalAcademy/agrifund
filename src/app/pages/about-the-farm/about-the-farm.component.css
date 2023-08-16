@@ -24,7 +24,7 @@ height: 40%;
 
     justify-content: center;
     align-items: center;
-    width: 40% !important;
+    width: 100% !important;
     padding: 2% !important;
 }
 .inner-container{
@@ -35,15 +35,7 @@ height: 40%;
     padding: 5% !important;
    
 }
-  .form-container{
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-    width: 80%;
-    height: 100%;
-    padding: 2% !important;
-  }
+
 
   
   /* Style for the carousel images */
