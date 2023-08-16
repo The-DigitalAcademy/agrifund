@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="row page-body page-background">
+    <div class="sidebar mobile-hidden">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="page-content">
+        <div class="page-heading">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="content justify-center">
+            <div class="container justify-center">
+                <h1>Your Dashboard Is Looking A Bit Empty...</h1>
+                <h3>Add bookkeeping records to fill it up!</h3>
+                <div class="actions justify-center">
+                    <button
+                        class="btn colourful-btn"
+                        type="button"
+                        [routerLink]="['/bookkeep']">
+                        Go to Bookkeep
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

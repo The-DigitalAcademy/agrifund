@@ -1,0 +1,37 @@
+
+fa-icon{
+    color: var(--grey);
+}
+.inline-content{
+    display: inline-block; /* or "inline" if you want them to be truly inline elements */
+    margin: 0;
+}
+.container{
+    width: 100%;
+}
+.add-icon-container{
+    
+    margin-bottom: 2%;
+}
+.left,
+.right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+ button{
+    margin-bottom: 10%;
+    
+ }
+
+  .info{
+    display: flex;
+  }
+    .container{
+        height: auto !important;
+    }
+}

@@ -1,0 +1,90 @@
+<!-- <div class="outer">
+<div class="container">
+    <form class="form-input" [formGroup]="myForm" disabled>
+      <div class="form-group">
+        <label>First Name:</label>
+        <input type="text" class="form-control" formControlName="firstName">
+      </div>
+      <div class="form-group">
+        <label>Last Name:</label>
+        <input type="text" formControlName="lastName">
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label>Phone Number:</label>
+        <input type="text" formControlName="phoneNumber">
+      </div>
+    </form>
+  </div>
+</div>
+   -->
+<!-- personal-info-form.component.html -->
+<!-- disabledform-personal-info.component.html -->
+
+
+
+<div class="container">
+  <div class="profile-heading">
+    <div class="heading">
+      <h3>Your Personal Info</h3>
+    </div>
+    <div class="action">
+      <app-enableform-crop-info (enableFields)="enableFields()"
+        (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+    </div>
+  </div>
+  <hr>
+  <div class="sub-container">
+    <form [formGroup]="myForm">
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['first_name'].valid && myForm.controls['first_name'].dirty, 'has-error': myForm.controls['first_name'].invalid && myForm.controls['first_name'].dirty}">
+        
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" 
+          formControlName="first_name" [disabled]="isDisabled">
+          <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('invalidName') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('textWithoutNumbers') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('required') && myForm.controls['first_name'].dirty" class="text-danger">First name required.</div>
+      </div>
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['last_name'].valid && myForm.controls['last_name'].dirty, 'has-error': myForm.controls['last_name'].invalid && myForm.controls['last_name'].dirty}">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" formControlName="last_name"
+          [disabled]="isDisabled">
+          <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
+          <div class="form-text text-danger" *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
+          <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</div>
+      </div>
+
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['email'].valid && myForm.controls['email'].dirty, 'has-error': myForm.controls['email'].invalid && myForm.controls['email'].dirty}">
+        <label for="exampleInputPassword1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email">
+        <div class="form-text text-danger" *ngIf="myForm.controls['email'].hasError('invalidEmail') && myForm.controls['email'].dirty" class="text-danger">Invalid email address.</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['email'].hasError('required') && !myForm.controls['email'].value && myForm.controls['email'].dirty" class="text-danger">email required</div>
+      </div>
+
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['id_number'].valid && myForm.controls['id_number'].dirty, 'has-error': myForm.controls['id_number'].invalid && myForm.controls['id_number'].dirty}">
+        <label for="id_number" class="form-label">ID Number</label>
+        <input type="text" class="form-control" id="id_number" formControlName="id_number" [disabled]="isDisabled">
+        <div class="form-text text-danger" *ngIf="myForm.controls['id_number'].hasError('invalidIdNumber') && myForm.controls['id_number'].dirty" class="text-danger">Cell number should start with +27</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['id_number'].hasError('required') && !myForm.controls['id_number'].value && myForm.controls['id_number'].dirty" class="text-danger">Cell number required.</div>
+      </div>
+
+      <div class="form-input" [ngClass]="{'has-success': myForm.controls['cell_number'].valid && myForm.controls['cell_number'].dirty, 'has-error': myForm.controls['cell_number'].invalid && myForm.controls['cell_number'].dirty}">
+        <label for="cell_number" class="form-label">Cell Number</label>
+        <input type="text" class="form-control" id="cell_number" formControlName="cell_number" [disabled]="isDisabled">
+        <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('invalidPhoneNumber') && myForm.controls['cell_number'].dirty" class="text-danger">Cell number should start with +27</div>
+        <div class="form-text text-danger" *ngIf="myForm.controls['cell_number'].hasError('required') && !myForm.controls['cell_number'].value && myForm.controls['cell_number'].dirty" class="text-danger">Cell number required.</div>
+      </div>
+
+
+      
+     <div class="button-container">
+        <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid" class="btn colourful-btn btn-width">Save</button>
+      <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
+    </div> 
+    </form>
+  </div>
+</div>
+

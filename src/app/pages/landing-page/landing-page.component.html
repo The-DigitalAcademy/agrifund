@@ -1,43 +1,89 @@
 <app-navbar></app-navbar>
-<div class="container-fluid">
-
-    <div class=" card">
-        <img src="assets/images/background/barn.webp" alt="No image">
-        <div class="card-img-overlay">
-            <div class="heading"></div>
-            <h1>Build Stronger Finances <br>
-                One Field At A Time
-            </h1>
-
-            <br />
-            <br />
-
-            <div>
-
-                <article>
-                    <p style='text-align: left'>We understand the challenges farmers face, and our app is designed to
-                        simplify financial complexities.
-                        <br /> We want to empower farmers to make informed decisions and succeed in their farming
-                        journey.
-                        <br /> Take Control of Your Farm's Financial Future with AgriFund.
+<div class="row page-body">
+    <div class="page-content">
+        <div class="header">
+            <div class="header-content">
+                <div>
+                    <h1 class="slogan">
+                        <span>
+                            Build Stronger Finances, <br />
+                            One Field At A Time
+                        </span>
+                    </h1>
+                </div>
+                <div class="description justify-start">
+                    <p class="description">
+                        <span class="mobile-hidden">
+                            We understand the challenges farmers face, and our
+                            app is designed to simplify financial complexities.
+                        </span>
+                        <span class="mobile-hidden">
+                            We want to empower farmers to make informed
+                            decisions and succeed in their farming journey.
+                        </span>
+                        <span>
+                            Take Control of Your Farm's Financial Future with
+                            AgriFund.
+                        </span>
                     </p>
-                </article>
-
-
-
+                </div>
+                <div class="actions">
+                    <button
+                        class="btn colourful-btn"
+                        [routerLink]="['/get-started']">
+                        <span class="justify-center">
+                            Get Started
+                            <fa-icon icon="external-link-alt"></fa-icon>
+                        </span>
+                    </button>
+                </div>
             </div>
-            <br />
-            <br />
+        </div>
 
-
-
-
-            <button class="btn colourful-btn" [routerLink]="['get-started']">Lets's get started</button>
+        <div class="form-container">
+            <div class="container">
+                <div class="row about-company">
+                    <div class="col-12 col-md-6">
+                        <div class="content">
+                            <div class="container-header">
+                                <h1>About AgriFund</h1>
+                            </div>
+                            <p>
+                                <span>
+                                    In South Africa, there are approximately two
+                                    million small-scale farmers compared to 35
+                                    000 commercial growers. Small-scale farmers
+                                    rely on their land to feed their families
+                                    while selling and trading any extra produce
+                                    they have left.
+                                </span>
+                                <span>
+                                    If provided with the opportunity to acquire
+                                    business funding, they will be able to grow
+                                    their farming activities to produce a
+                                    greater crop yield that can be sold to the
+                                    community. However, most small-scale farmers
+                                    don’t have bookkeeping records which
+                                    automatically disqualifies them from
+                                    business funding.
+                                </span>
+                                <span>
+                                    AgriFund’s purpose is to create a platform
+                                    that will allow small-scale farmers to
+                                    bookkeep data that can be used to build a
+                                    financial portfolio needed in applying for
+                                    business funding.
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 image-container">
+                        <img
+                            src="assets/images/background/agri-finance-image.png"
+                            alt="" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<app-about-company></app-about-company>
-<app-team-section></app-team-section>
-
-

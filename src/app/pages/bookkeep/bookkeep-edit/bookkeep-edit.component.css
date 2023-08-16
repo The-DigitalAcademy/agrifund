@@ -1,0 +1,35 @@
+.page-body {
+    background-image: url("src/assets/images/background/orange-trees.webp");
+    flex-direction: column;
+}
+
+.mobile-header {
+    background-image: url("src/assets/images/background/orange-trees.webp");
+}
+
+.actions {
+    /* removes bottom margin for actions container */
+    margin-bottom: 0px !important;
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (max-width: 390px) {
+
+    .page-body {
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+    }
+
+    .content .btn {
+        width: 80px;
+        margin: 0px var(--normal-s);
+    }
+
+    .actions .btn {
+        width: 100%;
+        margin: 0px var(--small-s);
+    }
+}

@@ -1,103 +1,136 @@
 .page-body {
-    display: flex;
+    /* sets background image */
+    background-image: url("src/assets/images/background/orange-trees.webp");
+    /* makes items display underneath each other */
+    flex-direction: column;
+}
+
+.page-heading h1 {
+    /* centers page heading text */
+    text-align: center;
+    /* changes the page headings to dark colour */
+        color: var(--dark);
+}
+
+/* makes the container take up all available width space */
+.container-inner {
     width: 100%;
     height: 100%;
+}
+
+.carousel-inner {
+    /* makes the carousel inner take up all the available space */
+    width: 100% !important;
+    height: 100% !important;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    background-image: url("src/assets/images/background/orange-trees.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* opacity: 0.7; */
-  }
-  h1{
+}
+
+.justify-center {
+    /* makes everything display underneath each other */
+    flex-direction: column;
+}
+
+p {
+    /* aligns items text to the center */
     text-align: center;
-    padding: 30px;
-  }
-  
-  img{
-      height: 100px;
-      width: 100px;
-      border-radius: 100px;
-    }
-  
-    .carousel-indicators button {
-      height: 10px !important;
-      width: 10px !important;
-      margin: 0 10px !important;
-      border-radius: 100%;
-      background-color: var(--primary-colour) !important;
-  }
-  
-     .carousel-inner{
-      display: block;
-      margin: auto;
-      width: auto;
-      height: auto;
-      padding: 24px;
-      gap: 24px;
-      background-color: var(--light);
-      align-items: center;
-      justify-items: center;
-      border-radius: var(--primary-colour 3px);
-      border: var(--container-border 3px solid)
-      
-    } 
-    .btn, button{
-      font-family: var(--normal-font);
-      font-size: var(--font-medium);
-      justify-content: center;
-      align-items: center;
-  
-      border-radius: var(--border-radius);
-  
-      height: var(--x-larger-s);
-      
-      padding: var(--small-s);
-      background-color: var(--primary-colour);
-    }
-    .colourful-btn{
-      border: var(--thick-border) var(--primary-colour) !important;
-      background-color: var(--primary-colour) !important;
-      color: var(--light) !important;
-  }
-  .carousel-control-next{
+}
+
+.carousel-image {
+    /* sets the size of carousel image */
+    min-height: 20% !important;
+    max-width: 20% !important;
+    border-radius: 20%;
+}
+
+.carousel-indicators button {
+    /* sets the size of carousel indicators */
+    height: var(--normal-s) !important;
+    width: var(--normal-s) !important;
+    /* sets the margins on the left and right of a carousel indicator */
+    margin: 0px var(--x-small-s) !important;
+    /* makes the indicators rounded */
+    border-radius: 100%;
+
+    background-color: var(--lighter-grey) !important;
+}
+
+.carousel-indicators .active {
+    /* changes the active indicator to green */
+    background-color: var(--primary-colour) !important;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    /* fixes carousel controls to the bottom of the page*/
     display: flex;
-    position: relative;
-  }
-  .carousel-control-prev{
-    display: flex;
-    position: relative; 
-  }
-  .justify-start{
-  width: 100%;
-  }
-  .justify-end{
-    width: 100%;
-  }
-    .container{
-     
-      margin-bottom: 100%;
-      padding: 25px;
-      width: 750px;
-      height: auto;
-      text-align: center;
-      justify-content: center;
-    }
-  h2{
-  text-align: center;
-    }
-  
-  .carousel-inner{
-    align-items: center;
-    gap: 25px;
-    width: fit-content;
-    padding: 50px;
-  }
-  
-  .carousel-indicators {
+    flex-direction: row;
+    position: static;
+    /* changes the  carousel indicator colors to dark*/
+    color: var(--dark);
+    /* increases the opacity of controls */
+    opacity: 1;
+    /* makes indicator take up all available space */
+    width: auto;
+}
+
+.carousel-indicators {
+    /* set default position to override bootstrap */
+    position: static;
     width: auto !important;
     height: auto !important;
-  }
-  
-  
-  
+    padding: 0px !important;
+    /* removes bootstrap margins */
+    margin: 0px !important;
+}
+
+fa-icon {
+    /* changes icon colors to dark */
+    color: var(--dark);
+    margin: 0px !important;
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+    .page-body {
+        /* removes the image from the background */
+        background-image: none;
+    }
+
+    .page-background::before {
+        /* removes the dark filter overlay from the background */
+        display: none;
+    }
+
+    .page-content {
+        /* removes padding */
+        padding: 0px !important;
+    }
+
+    .mobile-header {
+        background-image: url("src/assets/images/background/orange-trees.webp");
+    }
+
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {}
