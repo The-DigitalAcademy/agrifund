@@ -12,15 +12,20 @@ export class BarChartComponent {
  
   constructor(private chartService:ChartService) {}
 
-  chartdata: any;
+ 
   total_expense: any = [];
   total_income: any = [];
   net_income: any = [];
 
   ngOnInit(): void {
-    
+    this.chartService.Getchartinfo().subscribe(result=>{
+      this.total_expense = result;
+      console.log(this.total_expense)
+    });
+     // this.RenderChart(this.total_expense);
     this.RenderChart();
   }
+  // RenderChart(total_expense:any) 
   RenderChart() {
     new Chart("barchart", {
       type: 'bar',

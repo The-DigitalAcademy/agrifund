@@ -54,18 +54,3 @@ export class DonutGraphComponent {
 
 
 
-// this.service.getAllStatementItems().subscribe(result=>{
-  //   this.chartdata = result;
-  //   if(this.chartdata!=null){
-  //     for(let i=0; this.chartdata.length ;i++){
-
-  //       this.total_expenses.push(this.chartdata[i].expense);
-  //       this.total_income.push(this.chartdata[i].income);
-  //       this.net_income.push(this.chartdata[i].profit);
-  //     }
-  //     this.RenderChart(this.total_expenses, this.net_income, this.total_income);
-  //   }
-    
-
-
-  // });
