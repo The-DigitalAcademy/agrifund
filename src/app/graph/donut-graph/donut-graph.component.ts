@@ -13,15 +13,10 @@ Chart.register(...registerables);
 export class DonutGraphComponent {
   constructor(private chartService:ChartService) { }
 
-  // chartdata: any;
-  // result:any;
   total_expense: any = [];
   total_income: any = [];
   net_income: any = [];
 
-  // result: any;
-  // realdata: any[] =[];
-  // labeldata: any[] =[];
 
   ngOnInit(): void {
 
