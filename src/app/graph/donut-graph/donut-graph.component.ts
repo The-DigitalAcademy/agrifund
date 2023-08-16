@@ -13,9 +13,9 @@ Chart.register(...registerables);
 export class DonutGraphComponent {
   constructor(private chartService:ChartService) { }
 
-  chartdata: any;
-  result:any;
-  expense: any = [];
+  // chartdata: any;
+  // result:any;
+  total_expense: any = [];
   total_income: any = [];
   net_income: any = [];
 
@@ -24,10 +24,18 @@ export class DonutGraphComponent {
   // labeldata: any[] =[];
 
   ngOnInit(): void {
+
+    this.chartService.Getchartinfo().subscribe(result =>{
+      this.total_expense = result;
+      // this.total_expense = this.result.data.amount.map((amount: any) => amount.expense);
+      console.log(this.total_expense)
+    });
   
+    // this.RenderChart(this.total_expense);
     this.RenderChart();
     
   }
+  // RenderChart(total_expense:any) 
   RenderChart() {
     new Chart("Piechart", {
       type: 'doughnut',
@@ -35,7 +43,7 @@ export class DonutGraphComponent {
         labels: ['Money Out', 'Money In'],
         datasets: [{
           label: 'Money Out Summary',
-          data: [234,1245],
+          data: [378,882],
           backgroundColor: ['#5A6537',
           '#9BA66F'],
           hoverOffset: 10

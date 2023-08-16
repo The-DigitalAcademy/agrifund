@@ -34,9 +34,7 @@ export class BookkeepService {
     // TODO
     // update income statement total net income (profit)
 
-    // calculateTotalNetIncome() {
-    //     calculateTotalRevenue() - this.calculateTotalExpense();
-
+   
     // }
 
     // TODO

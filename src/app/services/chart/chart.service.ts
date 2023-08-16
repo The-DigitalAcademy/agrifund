@@ -13,7 +13,7 @@ export class ChartService {
   constructor(private http: HttpClient) { }
 
   Getchartinfo() {
-    return this.http.get("http://localhost:3000/expense");
+    return this.http.get("http://localhost:3000/total_expense");
     }
 
     // update income statement total income

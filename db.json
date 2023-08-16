@@ -1,6 +1,9 @@
 {
   "total_expense": [
-    498,543
+    {
+      "amount": [543,8290,6673]
+    }
+   
     
   ],
   "total_income": [
