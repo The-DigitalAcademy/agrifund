@@ -46,7 +46,7 @@
   width: 100%;
   /* height needs to be te same as the header size */
   height: 55%;
-  background-color: rgba(var(--darkRGB), 0.5);
+  background-color: rgba(var(--darkRGB), 0.6);
 }
 
 fa-icon {
@@ -98,7 +98,8 @@ button fa-icon {
 .slogan span,
 .description span {
   color: var(--light);
-  display: flex !important;
+  display: flex;
+  padding-bottom: var(--normal-s);
 }
 
 .container-header {
@@ -161,19 +162,22 @@ button fa-icon {
 
   .header-content {
     min-width: 80%;
+    justify-content: end;
   }
 
   .header {
-    min-height: 80% !important;
+    min-height: 60% !important;
   }
 
   .header::before {
-    min-height: 80% !important;
+    min-height: 60% !important;
   }
 
-  .content {
-    padding: var(--medium-s);
-  }
+    .slogan span,
+    .description span {
+      padding-bottom: var(--small-s);
+    }
+
 
     .about-company {
       flex-direction: column-reverse;
@@ -186,11 +190,11 @@ button fa-icon {
 @media (min-width: 481px) and (max-width: 767px) {
 
   .header {
-      min-height: 70% !important;
+      min-height: 60% !important;
     }
   
     .header::before {
-      min-height: 70% !important;
+      min-height: 60% !important;
     }
 
   .content {
@@ -204,12 +208,13 @@ button fa-icon {
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
 
+
   .header {
-      min-height: 70% !important;
+      min-height: 60% !important;
     }
   
     .header::before {
-      min-height: 70% !important;
+      min-height: 60% !important;
     }
 
   .content {
