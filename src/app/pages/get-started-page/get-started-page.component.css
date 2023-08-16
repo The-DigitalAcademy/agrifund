@@ -5,12 +5,17 @@
     flex-direction: column;
 }
 
-.page-heading {
+.page-heading h1 {
+    /* centers page heading text */
     text-align: center;
+    /* changes the page headings to dark colour */
+        color: var(--dark);
 }
 
+/* makes the container take up all available width space */
 .container-inner {
     width: 100%;
+    height: 100%;
 }
 
 .carousel-inner {
@@ -55,43 +60,34 @@ p {
     background-color: var(--primary-colour) !important;
 }
 
-
-
 .carousel-control-next, .carousel-control-prev {
     /* fixes carousel controls to the bottom of the page*/
     display: flex;
-    position: relative;
+    flex-direction: row;
+    position: static;
     /* changes the  carousel indicator colors to dark*/
     color: var(--dark);
     /* increases the opacity of controls */
     opacity: 1;
+    /* makes indicator take up all available space */
+    width: auto;
 }
 
 .carousel-indicators {
+    /* set default position to override bootstrap */
+    position: static;
     width: auto !important;
     height: auto !important;
     padding: 0px !important;
+    /* removes bootstrap margins */
+    margin: 0px !important;
 }
 
 fa-icon {
     /* changes icon colors to dark */
     color: var(--dark);
+    margin: 0px !important;
 }
-
-.page-heading h1 {
-    /* changes the page headings to dark colour */
-    color: var(--dark);
-}
-
-
-.justify-start {
-    padding-left: 25px !important;
-}
-
-.justify-end {
-    padding-right: 25px !important;
-}
-
 
 /*---------------------------------
     Media Query for Mobile Devices
