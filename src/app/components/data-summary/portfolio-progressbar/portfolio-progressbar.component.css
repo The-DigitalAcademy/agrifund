@@ -13,17 +13,31 @@
 .form-check-label {
     color: var(--primary-colour);
   }
-.form-check {
-    display: flex;
-    align-items: center;
-    margin-top:var(--small-s);
-  }
-  
-  .form-check-input {
-    margin-right: var(--small-s);
-    margin-bottom: var(--small-s)
-  }
 
+
+
+/* Customize the custom checkbox appearance */
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid var(--lighter-grey);
+  border-radius: 2px;
+  margin-right: 8px; /* Add some space between the icon and label */
+  vertical-align: middle;
+  position: relative;
+}
+
+/* Customize the tick icon appearance */
+.tick-icon {
+  color:var(--primary-colour); /* Set the color of the tick icon */
+  font-size: 14px; /* Adjust the font size of the tick icon */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
 h1{
@@ -47,6 +61,8 @@ h1{
     
     border: 2px solid var(--lighter-grey); 
     border-radius: 2px;
+    width: 20px;
+  height: 20px;
   }
   
   .progress-bar {
@@ -88,8 +104,8 @@ h1{
   .checklist{
     margin-bottom: 30px;
   }
-  
-
-  
-
-  
+  fa-icon{
+    color:green;
+    
+}
+ 

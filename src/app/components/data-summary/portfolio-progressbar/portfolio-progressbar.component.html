@@ -10,25 +10,37 @@
         <div class="checklist-container">
         <form [formGroup]="checklistForm">
             <div class="checklist">
+              
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" formControlName="personalInfo">
-                <label class="form-check-label">Personal Information</label>
-              </div>
+                <label class="form-check-label">
+                  <span class="custom-checkbox" (click)="toggleCheckbox('personalInfo')">
+                      <fa-icon *ngIf="isCheckboxChecked('personalInfo')" icon="check" class="tick-icon"></fa-icon>
+                  </span>
+                  Personal Information
+              </label>
+            </div>
+              
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" formControlName="farmInfo">
-                <label class="form-check-label">Farm Information</label>
+                <label class="form-check-label" formControlName="farmInfo">
+                  <span type="checkbox" class="custom-checkbox">
+                    <fa-icon *ngIf="checklistForm.get('farmInfo')?.value" icon="check" class="tick-icon"></fa-icon>
+                </span>
+              Farm Information</label>
               </div>
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" formControlName="cropInfo">
+                <fa-icon *ngIf="checklistForm.get('personalInfo')?.value === true" icon="check" class="tick-icon"></fa-icon>
                 <label class="form-check-label">Crop Information</label>
               </div>
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" formControlName="cropInfo">
+                <fa-icon *ngIf="checklistForm.get('personalInfo')?.value === true" icon="check" class="tick-icon"></fa-icon>
                 <label class="form-check-label">Equipment Information</label>
               </div>
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" formControlName="cropInfo">
-                <label class="form-check-label">Bookkeeping Data for 6 months</label>
+                <fa-icon *ngIf="checklistForm.get('personalInfo')?.value === true" icon="check" class="tick-icon"></fa-icon>
+                <label class="form-check-label">Bookkeeping Data for 6 months </label>
               </div>
             </div>
           </form>

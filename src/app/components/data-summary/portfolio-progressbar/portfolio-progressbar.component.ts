@@ -20,6 +20,18 @@ export class PortfolioProgressbarComponent {
         private _apiService: ApiService
     ) {}
 
+    toggleCheckbox(controlName: string) {
+        const checkboxControl = this.checklistForm.get(controlName);
+        if (checkboxControl) {
+            checkboxControl.setValue(!checkboxControl.value);
+        }
+    }
+
+    isCheckboxChecked(controlName: string): boolean {
+        const checkboxControl = this.checklistForm.get(controlName);
+        return checkboxControl?.value === true;
+    }
+
     ngOnInit() {
         this.progressService.personalInfoCompleted$.subscribe(
             personalInfoCompleted => {
