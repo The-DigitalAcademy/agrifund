@@ -45,7 +45,7 @@ import { MoneyCardSummaryComponent } from './components/data-summary/money-card-
 ---------------------------------*/
 import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
-import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
+
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/farmer/enableform-crop-info/enableform-crop-info.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
@@ -92,7 +92,8 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
-import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+import { EquipmentInfoComponent } from './components/farmer/equipment-info-form/equipment-info-form.component';
+
 
 @NgModule({
     declarations: [
@@ -125,7 +126,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         ModalContainerComponent,
         DeleteModalContentComponent,
         EquipmentEditComponent,
-        DynamicInputsComponent,
+        
     ],
     imports: [
         BrowserModule,
