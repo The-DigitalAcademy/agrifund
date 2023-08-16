@@ -5,16 +5,14 @@
 }
 
 .form-input {
-    margin: 2px 0; /* Adjust the margin as needed */
-/* your other existing styles */
+    margin: 2px 0;
 }
 
  .container {
-height: 40%;
+height: 100%;
     justify-content: center;
     align-items: center;
-
-    
+    padding: 2% !important;
   }
   h2{
     justify-content: center;
@@ -24,7 +22,7 @@ height: 40%;
 
     justify-content: center;
     align-items: center;
-    width: 100% !important;
+    width: 45% !important;
     padding: 2% !important;
 }
 .inner-container{
@@ -41,8 +39,8 @@ height: 40%;
   /* Style for the carousel images */
   .carousel-image{
     margin-bottom: 20px; 
-    max-width: 20% !important;
-    height: 20% !important;
+    max-width: 10% !important;
+    height: 10% !important;
     border-radius: 100%;
   }
   
@@ -63,6 +61,10 @@ height: 40%;
 
   }
  
+  /* button.carousel-control-next{
+    background-color: red;
+    visibility: visible;
+  } */
  .carousel-indicators {
     position: absolute;
     right: 0;
@@ -75,10 +77,56 @@ height: 40%;
     margin-right: 15%;
     margin-bottom: 1rem;
     margin-left: 15%;
+    /* color: black; */
     background-color: var(--primary-color)!important;
 }
 
-@media only screen and (max-width: 575px) {
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+    .page-body {
+        /* removes the image from the background */
+        background-image: none;
+    }
+
+    .page-background::before {
+        /* removes the dark filter overlay from the background */
+        display: none;
+    }
+
+    .page-content {
+        /* removes padding */
+        padding: 0px !important;
+    }
+
+    .mobile-header {
+        background-image: url("src/assets/images/background/orange-trees.webp");
+    }
+
+}
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {}
+
+/* @media only screen and (max-width: 575px) {
     .page-body{
     
      background-image: none; 
@@ -95,8 +143,8 @@ height: 40%;
         width: 100% !important;
         height: 100% !important;
        
-    }
-.mobile-header{
+    } */
+/* .mobile-header{
     background-image: url("src/assets/images/background/orange-trees.webp");
     background-size:contain;
     background-repeat: no-repeat;
@@ -112,4 +160,4 @@ height: 40%;
           
         }
 
-    }
+    } */

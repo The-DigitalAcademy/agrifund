@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./about-the-farm.component.css']
 })
 export class AboutTheFarmComponent {
+  
   formSlides = [
     {
       formGroup: this.fb.group({
@@ -44,12 +45,12 @@ export class AboutTheFarmComponent {
 
   constructor(private fb: FormBuilder) {}
 
-  onSubmit(formGroup: FormGroup) {
-    if (formGroup.valid) {
-      // Handle form submission
-      const formData = formGroup.value;
-      console.log(formData);
-    }
+  // onSubmit(formGroup: FormGroup) {
+  //   if (formGroup.valid) {
+  //     // Handle form submission
+  //     const formData = formGroup.value;
+  //     console.log(formData);
+  //   }
   }
-}
+
 

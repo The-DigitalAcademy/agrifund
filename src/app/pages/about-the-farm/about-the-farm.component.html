@@ -1,11 +1,13 @@
-<div class="row page-body ">
+<div class="page-body page-background">
     <div class="justify-center page-content col-12">
+        <!-- <div class ="mobile-header">
+        </div> -->
         <div class="outer-container mobile hidden">
 <ngb-carousel *ngIf="formSlides">
         <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">
-          <form [formGroup]="formSlide.formGroup" (ngSubmit)="onSubmit(formSlide.formGroup)">
+          <form [formGroup]="formSlide.formGroup">
+            <div class = "carousel-inner">
             <div *ngIf="i === 0">
-                <div class = "carousel-inner">
                 <div class="inner-container">
                     <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
                       <h2>Welcome To AgriFund</h2>
@@ -13,8 +15,7 @@
                         <br>
                         <br> But first we would love to hear more about your farm!</p>
                       </div>
-                    </div>
-            </div>
+                </div>
             <div *ngIf="i === 1">
                 <div class="page-heading justify-center">
                     <h2>Tell me about your farm</h2>
@@ -42,7 +43,7 @@
                         </div>
                         <div class="form-group"> 
                             <label for="funding">Why do you need funding for your farming activities?</label>
-                            <input formControlName="funding" class="form-control description" id="fundingInput"/>
+                            <input formControlName="funding" class="form-control" id="fundingInput"/>
                       </div>
                 </div>
                 </div>
@@ -79,7 +80,7 @@
                         </div>
                     <div class="inner-container">
                             <div class="form-group">
-                                <label for="seasonFarm" class="form-label">What season do you usually farm in?</label>
+                                <label for="seasonFarm">What season do you usually farm in?</label>
                                 <select
                                     id="seasonFarm"
                                     class="form-control"
@@ -114,7 +115,7 @@
                     </div>
                  </div>
                 </div>
-            <button type="submit" class="btn btn-primary justify-center" >Submit</button>
+            </div>
           </form>
         </ng-template>
       </ngb-carousel>
