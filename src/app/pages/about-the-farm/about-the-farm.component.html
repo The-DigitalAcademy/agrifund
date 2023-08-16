@@ -1,1 +1,53 @@
-<p>about-the-farm works!</p>
+<div class="row page-body ">
+    <div class="justify-center page-content col-12">
+        <div class="outer-container mobile hidden">
+<ngb-carousel *ngIf="formSlides">
+        <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">
+          <form [formGroup]="formSlide.formGroup" (ngSubmit)="onSubmit(formSlide.formGroup)">
+            <div *ngIf="i === 0">
+                <div class="container">
+                    <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
+                      <h2>Welcome To AgriFund</h2>
+                      <p>We are happy to to help you embark on your path to financial success.
+                        <br> But first we would love to hear more about your farm!</p>
+                      </div>
+            </div>
+            <div *ngIf="i === 1">
+                <div class="page-heading justify-center">
+                    <h1>Tell me about your farm</h1>
+                </div>
+                <div class="container">
+                    <div class="page-heading justify-center">
+                        <h2>You & Farm</h2>
+                    </div>   
+                <div class="inner-container">
+                          <div class="form-group"> 
+                            <label for="location">Where do you live?</label>
+                            <input formControlName="location" class="form-control" id="locationInput" />
+                        </div>
+                        <div class="form-group"> 
+                            <label for="ID">What is your ID number?</label>
+                            <input formControlName="ID" class="form-control" id="idInput" />
+                        </div>
+                        <div class="form-group"> 
+                            <label for="size">What is the size of your farm in hectares (ha)?</label>
+                            <input formControlName="size" class="form-control" id="sizeInput" />
+                        </div>
+                        <div class="form-group"> 
+                            <label for="number">How many people help you with your farming?</label>
+                            <input formControlName="number" class="form-control" id="numberInput" />
+                        </div>
+                        <div class="form-group"> 
+                            <label for="funding">Why do you need funding for your farming activities?</label>
+                            <input formControlName="funding" class="form-control description" id="fundingInput"/>
+                      </div>
+                </div>
+                </div>
+            </div>
+            <!-- Add more *ngIf conditions and form controls for additional slides if needed -->
+            <button type="submit" class="btn btn-primary justify-center" >Submit</button>
+          </form>
+        </ng-template>
+      </ngb-carousel>
+        </div>
+        </div>
