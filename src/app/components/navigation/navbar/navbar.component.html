@@ -1,4 +1,4 @@
-<nav class="navbar row g-0">
+<nav class="navbar">
     <!--before login-->
     <div class="nav-left">
         <div class="justify-start">
@@ -19,32 +19,34 @@
             </h1>
         </div>
     </div>
-
-    <div class="nav-right col-lg-10 g-0 mobile-hidden">
-        <button
-            type="button"
-            class="btn colourful-btn"
-            [routerLink]="['/login']">
-            Login
-        </button>
-        <button
-            type="button"
-            class="btn outline-btn"
-            [routerLink]="['/register']">
-            Register
-        </button>
+    <div class="nav-right mobile-hidden">
+        <div
+            *ngIf="
+                $userState !== null;
+                then navRightAfterLogin;
+                else navRightBeforeLogin
+            "></div>
     </div>
+</nav>
+<!-- navbar right side before login -->
+<ng-template #navRightBeforeLogin>
+    <button type="button" class="btn colourful-btn" [routerLink]="['/login']">
+        Login
+    </button>
+    <button type="button" class="btn outline-btn" [routerLink]="['/register']">
+        Register
+    </button>
+</ng-template>
 
-    <!--after login-->
-    <!-- <div class="nav-right col-lg-9 g-0">
+<!-- navbar left side after login -->
+<ng-template #navRightAfterLogin>
     <span class="name-greeting">
-      <p>Hello,</p>
-      <pre>&#x20;</pre>
-      <a class="username">FirstName</a>
+        <p class="bold">Hello,</p>
+        <pre>&#x20;</pre>
+        <a class="username bold">FirstName</a>
     </span>
     <button type="button" class="btn outline-btn">Logout</button>
-  </div> -->
-</nav>
+</ng-template>
 
 <!-- offcanvas after login -->
 <ng-template #offcanvasAfterLogin let-offcanvas>

@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,10 +6,15 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
-    // userState: String = 'notLoggedIn';
+export class NavbarComponent implements OnInit {
+    $userState!: any;
 
     constructor(private _offcanvasService: NgbOffcanvas) {}
+
+    ngOnInit() {
+        this.$userState = 'authenticated';
+        // this.$userState = null;
+    }
 
     // toggles the offcanvas visibility
     openOffcanvas(content: TemplateRef<any>) {
