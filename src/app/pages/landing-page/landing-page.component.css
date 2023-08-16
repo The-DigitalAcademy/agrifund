@@ -145,7 +145,7 @@ button fa-icon {
 
   /* removes padding on the right for content on small devices */
   .content {
-    padding: 0px!important;
+    padding: 0px !important;
   }
 
   .about-company {
@@ -159,21 +159,25 @@ button fa-icon {
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
 
-  .header-content{
+  .header-content {
     min-width: 80%;
   }
 
-  .header{
+  .header {
     min-height: 80% !important;
   }
 
-  .header::before{
+  .header::before {
     min-height: 80% !important;
   }
 
   .content {
     padding: var(--medium-s);
   }
+
+    .about-company {
+      flex-direction: column-reverse;
+    }
 }
 
 /*---------------------------------
@@ -181,15 +185,32 @@ button fa-icon {
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
 
+  .header {
+      min-height: 70% !important;
+    }
+  
+    .header::before {
+      min-height: 70% !important;
+    }
+
   .content {
     padding: var(--medium-s);
   }
+  
 }
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
+
+  .header {
+      min-height: 70% !important;
+    }
+  
+    .header::before {
+      min-height: 70% !important;
+    }
 
   .content {
     padding: var(--large-s);
@@ -200,6 +221,13 @@ button fa-icon {
     Media Query for laptops & desktops
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
+  .header {
+      min-height: 80% !important;
+    }
+  
+    .header::before {
+      min-height: 80% !important;
+    }
 
   p {
     font-size: var(--font-medium);
@@ -214,6 +242,14 @@ button fa-icon {
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {
+
+  .header {
+    min-height: 80% !important;
+  }
+
+  .header::before {
+    min-height: 80% !important;
+  }
 
   p {
     /* changes size of text  */
