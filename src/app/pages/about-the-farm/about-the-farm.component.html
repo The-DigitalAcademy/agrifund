@@ -44,7 +44,34 @@
                 </div>
                 </div>
             </div>
+            <div *ngIf="i === 2">
             <!-- Add more *ngIf conditions and form controls for additional slides if needed -->
+            <div class="container">
+                <div class="page-heading justify-center">
+                    <h1>Crops</h1>
+                </div>
+                <div class="inner-container">
+                    <div class="form-group">
+                      <label for="farmLocation">Where is your farm located?</label>
+                      <input formControlName="farmLocation" class="form-control description" id="farmLocationInput">
+                    </div>
+                    <div class="form-group">
+                      <label for="farmSize">What is the size of your farm in hectares (ha)?</label>
+                      <select id="farmSize" class="form-control" formControlName="farmSize">
+                          <option value="farmSize">8 to 10 hectares</option>
+                          <option value="farmSize">11 to 14 hectares</option>
+                          <option value="farmSize">15 to 18 hectares</option>
+                          <option value="farmSize">19 to 22 hectares</option>
+                      </select>
+                    </div>
+                  <label for="date">When did you start farming on this land?</label>
+                  <input formControlName="date" type="date" class="form-control" id="date" />
+                </div>
+              </div>
+            </div>
+            <div *ngIf="i === 3">
+
+            </div>
             <button type="submit" class="btn btn-primary justify-center" >Submit</button>
           </form>
         </ng-template>

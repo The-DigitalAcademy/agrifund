@@ -43,7 +43,6 @@ import { MoneyCardSummaryComponent } from './components/data-summary/money-card-
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
-import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
 import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
@@ -118,9 +117,8 @@ import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.com
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-
+         AboutTheFarmComponent,
         EquipmentCreateComponent,
-        TellMeAboutComponent,
         ModalContainerComponent,
         DeleteModalContentComponent,
         AboutTheFarmComponent,

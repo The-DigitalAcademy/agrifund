@@ -10,17 +10,28 @@ export class AboutTheFarmComponent {
   formSlides = [
     {
       formGroup: this.fb.group({
-        name: ['', Validators.required],
-        // Add more form controls specific to the first slide
+        
+       
       })
     },
     {
       formGroup: this.fb.group({
         age: ['', Validators.required],
-        // Add more form controls specific to the second slide
+        location: ['', Validators.required],
+        ID: ['', Validators.required],
+        size:['', Validators.required],
+        number:['', Validators.required],
+        funding:['', Validators.required],
       })
     },
-    // Add more form slides as needed
+    {
+      formGroup: this.fb.group({
+        farmLocation: ['', Validators.required],
+        farmSize: ['', Validators.required],
+        date: ['', Validators.required],
+       
+      })
+    },
   ];
 
   constructor(private fb: FormBuilder) {}
