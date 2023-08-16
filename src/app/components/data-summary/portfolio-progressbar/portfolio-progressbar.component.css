@@ -72,12 +72,12 @@ h1{
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: var( --x-large-s);
-
+    position: relative;
   }
   
   .progress {
     height: 100%;
-    background-color: #9BA66F ;
+    background: linear-gradient(180deg, rgb(155, 166, 111) 0%, rgb(125, 137, 83) 50%, rgb(96, 108, 56) 100%);
     justify-content: center;
     color: var(--white-2);
     font-size: var( --font-large);}

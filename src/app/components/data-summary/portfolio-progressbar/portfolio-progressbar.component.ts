@@ -53,15 +53,14 @@ export class PortfolioProgressbarComponent {
             }
         });
 
-        // Create the form controls and form group for the checklistForm
-        // this.checklistForm = this.fb.group({
-        //     personalInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-        //     farmInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-        //     cropInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-        // });
+       
 
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false
+            farmInfo: [false], // Set initial value to
+            cropInfo: [false],
+            equipmentInfo: [false],
+            bookkeepingInfo: [false],
             
         });
 
@@ -70,10 +69,16 @@ export class PortfolioProgressbarComponent {
             (user: Users) => {
                
 
-                // Update the "Personal Information" checkbox
+                // Update the checkbox
                 this.checklistForm.patchValue({
                     personalInfo: true,
                 });
+
+                // this.checklistForm.patchValue({
+                //     farmInfo: true,
+                // });
+
+
 
                 // Update progress based on personal info completion
                 this.progressService.setPersonalInfoCompleted(true);

@@ -34,6 +34,7 @@ throw new Error('Method not implemented.');
 
     ngOnInit() {
         const farmerData = {
+            farmer:'Mankweng-A Turfloop NO:3434 ',
             farm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
             size: '9', // Update with default values
             years: '10', // Update with default values
@@ -43,6 +44,11 @@ throw new Error('Method not implemented.');
         };
 
         this.myForm = this.fb.group({
+
+            farmer: new FormControl({ value: farmerData.farmer, disabled: true }, [
+                Validators.required,
+                this.validationsService.addressContainsStreetValidator,
+            ]),
             farm: new FormControl({ value: farmerData.farm, disabled: true }, [
                 Validators.required,
                 this.validationsService.addressContainsStreetValidator,
