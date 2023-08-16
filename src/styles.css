@@ -644,7 +644,9 @@ button {
 
 /* style of a dark icon button on hover or focus*/
 .icon-btn-dark:hover,
-.icon-btn-dark:focus {
+.icon-btn-dark:hover fa-icon,
+.icon-btn-dark:focus 
+.icon-btn-dark:focus fa-icon{
     color: var(--primary-colour) !important;
 }
 
