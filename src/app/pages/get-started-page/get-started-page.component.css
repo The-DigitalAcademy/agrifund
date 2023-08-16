@@ -18,11 +18,7 @@
     height: 100%;
 }
 
-ngb-carousel {
-    
-}
-
-.carousel-inner {
+.carousel-inner{
     /* makes the carousel inner take up all the available space */
     width: 100% !important;
     height: 100% !important;

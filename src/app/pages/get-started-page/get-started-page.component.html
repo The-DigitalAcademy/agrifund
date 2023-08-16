@@ -6,7 +6,9 @@
             <div class="page-heading">
                 <h1>Get Started</h1>
             </div>
-            <ngb-carousel class="container inner-container">
+            <ngb-carousel
+                class="container inner-container"
+                #carousel="ngbCarousel">
                 <ng-template #buildPortfolio ngbSlide>
                     <div class="justify-center">
                         <img
@@ -41,6 +43,65 @@
                     </div>
                 </ng-template>
             </ngb-carousel>
+            <div class="actions">
+                <div class="justify-start">
+                    <button
+                        class="carousel-control-prev btn icon-btn-dark"
+                        type="button"
+                        (click)="goToPreviousSlide()">
+                        <fa-icon icon="arrow-left"></fa-icon>
+                        <span class="visually-visible">Prev</span>
+                    </button>
+                </div>
+                <div class="carousel slide justify-center">
+                    <div class="carousel-indicators">
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                    </div>
+                </div>
+                <div class="justify-end">
+                    <button
+                        class="carousel-control-next btn icon-btn-dark"
+                        type="button"
+                        (click)="goToNextSlide()">
+                        <span class="visually-visible">Next</span>
+                        <fa-icon
+                            class="arrow-right"
+                            icon="arrow-right"></fa-icon>
+                    </button>
+                </div>
+            </div>
+
             <div
                 id="getStartedCarousel"
                 class="carousel slide"
