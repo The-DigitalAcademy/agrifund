@@ -72,7 +72,6 @@ button fa-icon {
   object-fit: cover;
   height: 100%;
   width: 100%;
-
 }
 
 .form-container {
@@ -82,11 +81,6 @@ button fa-icon {
 
 .content {
   padding: 0px var(--large-s) 0px 0px !important;
-}
-
-.about-company-img {
-  background: var(--dark) url("src/assets/images/background/agri-finance-image.png") no-repeat center;
-  padding: 0px !important;
 }
 
 .content span {
