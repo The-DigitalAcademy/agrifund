@@ -91,6 +91,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
 @NgModule({
     declarations: [
@@ -122,6 +123,7 @@ import {
         TellMeAboutComponent,
         ModalContainerComponent,
         DeleteModalContentComponent,
+        AboutTheFarmComponent,
     ],
     imports: [
         BrowserModule,
