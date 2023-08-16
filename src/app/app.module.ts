@@ -6,7 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-// import { OverlayModule } from '@angular/cdk/overlay';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -52,6 +53,12 @@ import { PortfolioProgressbarComponent } from './components/data-summary/portfol
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+
+/* --------------------------------
+    MODALS
+---------------------------------*/
+import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
+import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
 
 /* --------------------------------
     ICONS
@@ -112,9 +119,11 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-        
+
         EquipmentCreateComponent,
         TellMeAboutComponent,
+        ModalContainerComponent,
+        DeleteModalContentComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
     ],
@@ -126,9 +135,11 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgbModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
+    entryComponents: [DeleteModalContentComponent],
 })
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {

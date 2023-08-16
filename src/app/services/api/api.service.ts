@@ -96,7 +96,7 @@ export class ApiService {
     }
 
     // delete a bookkeeping record
-    deleteRecord(recordId: number) {
+    deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
 

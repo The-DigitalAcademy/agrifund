@@ -1,9 +1,19 @@
 li,
 .nav-item {
+    /* aligns nav items to the left */
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
+
+/* change nav item and icon text colour */
+.nav-item a,
+.nav-link fa-icon {
+
+    color: var(--dark) !important;
+}
+
+
 
 li:hover,
 li:active {
@@ -22,32 +32,29 @@ li:active {
 }
 
 a fa-icon {
-    margin: 0px var(--small-s);
+    /* add spsce */
+    margin-right: var(--small-s);
     font-size: var(--font-medium);
 }
 
-.sidebar-content{
-    position: fixed;
+.sidebar-content {
+    /* make  position of sidebar fixed on the page*/
+    /* position: fixed; */
     padding: var(--normal-s);
-    background-color: var(--primary-colour);
+    background-color: var(--light);
+    z-index: 99;
     height: 100%;
-    z-index: 1;
-    
-    
 }
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (min-width: 300px) and (max-width:428px) {
-}
+@media (min-width: 300px) and (max-width:428px) {}
 
 /*---------------------------------
     Media Query for tablets/IPad
 ----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {
-
-}
+@media (min-width: 481px) and (max-width: 767px) {}
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
@@ -63,7 +70,5 @@ a fa-icon {
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {}
-
-
 
 

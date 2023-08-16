@@ -7,4 +7,5 @@ export interface IncomeStatementItem {
     amount: number;
     proof: string;
     description: string;
+    date: string; //date of the record
 }

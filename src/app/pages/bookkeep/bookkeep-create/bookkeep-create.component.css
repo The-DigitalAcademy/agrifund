@@ -17,21 +17,23 @@ h2 {
     margin: 0px !important;
 }
 
-.justify-start{
+.justify-start {
     margin: 0px !important;
     align-items: center;
 }
 
-.doc-header>*{
+.doc-header>* {
     font-size: var(--font-small);
     padding-right: var(--small-s);
     margin-bottom: 0px !important;
 }
 
-.actions{
-    margin-bottom: var(--normal-s) !important;
+.actions {
+    /* removes bottom margin for actions container */
+    margin-bottom: 0px !important;
 }
 
-.text-danger{
+.text-danger {
+    /* adds margin to top of feedback text for input fields */
     margin-top: var(--s-small-s) !important;
 }

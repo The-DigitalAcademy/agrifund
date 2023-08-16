@@ -1,12 +1,5 @@
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* opacity: 0.7; */
-}
-
-.sidebar {
-    background-color: var(--primary-colour);
 }
 
 .container {
@@ -66,15 +59,16 @@ tr,
     border-radius: var(--border-radius);
 }
 
-/* take away spacing on the left for money-in card */
-/* .money-in-card {
-    margin: 0px 0px 0px 0px;
-} */
+.actions{
+    margin-top: 0px !important;
+}
 
-/* take away spacing on the right for money-out card */
-/* .money-out-card {
-    margin: 0px 0px 0px 0px;
-} */
+app-sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
 
 /*---------------------------------
     Media Query for Mobile Devices
@@ -161,3 +155,5 @@ tr,
         margin: var(--large-s) 0px !important;
     }
 }
+
+

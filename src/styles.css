@@ -22,13 +22,17 @@
     --grey-white: #E9ECEF;
     /*default colour for text*/
     --dark: #2E2E2E;
+    --darkRGB: 46, 46, 46;
     /* colour of paragraphs*/
     --dark-grey: #4C5359;
     /*default background colour and colour of text on colour backgrounds*/
     --light: #F8F9FA;
-    --white: F7F7F7;
-    /* backgrounf colour for asset table */
-    --white-2: #FDFDFD;
+    --light-1: #FDFDFD;
+    --light-2: #F8F9FA;
+    --light-3: #F7F7F7;
+
+    /* colour alpha setting */
+    --alpha: 0.4;
 
     /*------------------
         FONTS
@@ -95,6 +99,15 @@ body {
 }
 
 /*------------------
+   NAVBAR & SIDEBAR
+--------------------*/
+.offcanvas {
+    /* changes offcanvas background color */
+    background-color: var(--light) !important;
+    border: none !important;
+}
+
+/*------------------
     CONTAINERS 
 --------------------*/
 /* override bootstrap row styles */
@@ -112,9 +125,13 @@ body {
 }
 
 /*container for the entire page*/
-.page-body {
-    width: 100%;
+.page-body,
+.page-background {
+    display: flex;
+    justify-content: start;
+    flex-flow: row;
     height: 100%;
+    width: 100%;
 
     background-size: cover;
     background-color: var(--light);
@@ -124,22 +141,38 @@ body {
     overflow: scroll;
 }
 
-.page-body::before {
+/* puts filter on page-background */
+.page-background::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
-    /* 40% opacity white background */
+    background-color: rgba(var(--darkRGB), var(--alpha));
 }
+
+/* puts filter on background images */
+img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--darkRGB), var(--alpha));
+}
+
 
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
-    padding: var(--xx-large-s) !important;
+    /* padding: 55px var(--xx-large-s) var(--xx-large-s)  !important; */
     /* width: 100% !important; */
+    display: flex;
+    flex-flow: column;
+    flex-direction: column;
     height: 100vh;
+    width: 100vw;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
@@ -152,7 +185,17 @@ body {
     margin-bottom: var(--normal-s);
 }
 
-/*any div that needs a border around it  */
+.page-heading h1 {
+    /* changes the page headings to white */
+    color: var(--light);
+}
+
+/* outer most container */
+.outer-container {
+    background-color: var(--light-1) !important;
+}
+
+/*any div that needs a border around it middle container */
 .container {
     margin: 0px !important;
     border-radius: var(--border-radius);
@@ -160,11 +203,17 @@ body {
 
     /* padding: var(--normal-s); */
 
-    background-color: var(--white-2);
+    background-color: var(--light-2);
     background-size: 100%;
     max-width: 100% !important;
 }
 
+/* inner-most container */
+.inner-container {
+    background-color: var(--light-3) !important;
+}
+
+/* container for document upload input field */
 .document-upload {
     border-radius: var(--border-radius);
     border: var(--thin-border) var(--lighter-grey);
@@ -183,7 +232,7 @@ body {
 .container-header {
     display: flex;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: var(--small-s);
 }
 
@@ -202,16 +251,29 @@ body {
 
 /* image cards on mobile devices */
 .mobile-header {
-    /* background-size: fill; */
     background-color: var(--light);
     background-attachment: fixed;
+    background-size: contain;
+    background-repeat: no-repeat;
+
     display: inline-flex;
 
 
     width: 100%;
-    height: 12% !important;
+    min-height: 18% !important;
     align-items: flex-start;
     flex-shrink: 0;
+}
+
+/* adds a dark overlay on header */
+.mobile-header::before{
+content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 18%;
+    background-color: rgba(var(--darkRGB), var(--alpha));
 }
 
 /* container for groups of buttons are inputs for single row */
@@ -227,9 +289,63 @@ body {
 
 
 .sidebar {
-    height: 100vh;
+    height: 100%;
+    width: max-content;
     position: relative;
 }
+
+/*----------------------
+    MODALS
+----------------------*/
+.modal-dialog {
+    /* vertically centers the modal dialog on the page */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal,
+.modal-content {
+    /* changes border of the modal */
+    border-radius: var(--border-radius);
+    border: var(--thin-border) none;
+    padding: var(--normal-s);
+}
+
+.modal-header,
+.modal-body {
+    /* set padding */
+    padding: 0px;
+
+}
+
+/* set styles for a modal body */
+.modal-body {
+    /* set margin for the top and bottom of modal body */
+    margin: var(--normal-s) 0px;
+}
+
+.modal-footer,
+.modal-header {
+    /* removes the border lines on for the modal header and footer */
+    border: none !important;
+    /* set padding */
+    padding: 0px !important;
+    /* sets margin */
+    margin: var(--normal-s) 0px;
+}
+
+.modal-footer,
+.modal-header {
+    /* prevents modal footer from flexing int container */
+    display: block;
+    /* removes margins */
+    margin: 0px !important;
+    /* removes padding */
+    padding: 0px !important;
+}
+
 
 /*----------------------
     JUSTIFY CONTENT
@@ -275,7 +391,7 @@ h1 {
 
 /* styling for heading 2*/
 h2 {
-    font-family: var(--fancy-font);
+    font-family: var(--normal-font);
     font-size: var(--font-medium);
     font-weight: var(--bold);
     line-height: auto !important;
@@ -338,6 +454,7 @@ fa-icon {
     width: var(--font-normal);
 
     padding: 0px;
+    margin: 0px;
 }
 
 /* used to override fontawesome css*/
@@ -361,6 +478,17 @@ fa-icon {
 .greyed {
     color: var(--grey);
 }
+
+/* sets any font to normal font */
+.normal-font {
+    font-family: var(--normal-font);
+}
+
+/* align text to center */
+.align-center {
+    text-align: center;
+}
+
 
 /*----------------------
     FORMS
@@ -389,15 +517,10 @@ input,
     height: var(--xx-large-s);
 }
 
-/* remove the border for input in input group */
-/* .input-group-text, .input-group input{
-    border: none;
-} */
-
 /* styling for form input fields */
 .form-input {
-   
-    margin: var(--small-s) 0px !important;
+    padding-bottom: var(--small-s) !important;
+    /* margin: var(--small-s) 0px !important; */
 
 }
 
@@ -423,6 +546,37 @@ input[type=number]:focus,
 [contenteditable].form-control:focus {
     box-shadow: none;
     border: var(--thin-border) var(--dark);
+}
+
+/* styles the input group text match the style for the input group */
+.input-group-text {
+
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey);
+    /* removes the right border to make the input group look like a single field */
+    border-right: none !important;
+
+    background-color: var(--light);
+    height: var(--xx-large-s);
+
+}
+
+.input-group input {
+    /* remove the left border for input groups with input group text */
+    border-left: none !important;
+}
+
+/* changes the style of the input group text when the input field is in focus */
+.input-group:focus-within .input-group-text {
+    border-radius: var(--border-radius);
+    box-shadow: none;
+    border: var(--thin-border) var(--dark);
+    background-color: white;
+}
+
+.input-group:focus-within *:focus {
+    /* removes the outline of input group */
+    outline: 0;
 }
 
 /*----------------------
@@ -490,8 +644,10 @@ button {
 }
 
 /* style of an icon when hovering or focusing */
-.icon-btn:hover,
-.icon-btn:focus{
+.icon-btn:hover, 
+.icon-btn:hover fa-icon,
+.icon-btn:focus, 
+.icon-btn:focus fa-icon {
     color: var(--dark) !important;
 }
 
@@ -549,8 +705,19 @@ button fa-icon {
     margin: 0px var(--small-s) 0px 0px;
 }
 
+/* removes margins for close buttons using font awesome icons */
 .close-btn fa-icon {
     margin: 0px !important;
+}
+
+/* adds margins to on right for buttons on the left */
+.left-btn {
+    margin-right: var(--small-s);
+}
+
+/* adds margin on left for buttons on right */
+.right-btn {
+    margin-left: var(--small-s);
 }
 
 /*----------------------
@@ -606,7 +773,7 @@ hr {
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (min-width: 300px) and (max-width:428px){
+@media (min-width: 300px) and (max-width:428px) {
 
     /* TEXT */
     h1 {
@@ -621,9 +788,9 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .page-content {
-        padding: 0px !important;
-        /*var(--small-s)*/
+    .page-content, .mobile-header{
+        /* add space at the top to take the navbar size into consideration */
+        padding: 55px var(--normal-s) var(--normal-s) !important;
     }
 
     /* set styles for all content within page-content div */
@@ -631,9 +798,9 @@ hr {
         padding: var(--normal-s) !important;
     }
 
-    .outer-container{
+    /* outermost container */
+    .outer-container {
         border: none !important;
-        border-radius: 0px !important;
     }
 
     .container,
@@ -643,7 +810,7 @@ hr {
         /* border: none !important; */
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--medium-s);
     }
 
@@ -669,9 +836,15 @@ hr {
         margin-right: 0px !important;
     }
 
-    /* .btn-width {
-        width: 80px;
-    } */
+    .modal,
+    .modal-content {
+        /* changes padding for a modal */
+        padding: var(--normal-s);
+    }
+
+    .btn-width {
+        width: 100%;
+    }
 
     /*----------------------
         HIDE ITEMS
@@ -681,6 +854,7 @@ hr {
         display: none !important;
     }
 
+    /* hides the sidebar on smaller screens */
     .sidebar {
         display: none !important;
     }
@@ -693,7 +867,7 @@ hr {
 @media (min-width: 481px) and (max-width: 767px) {
 
     /* TEXT */
-    h1{
+    h1 {
         font-size: var(--font-large);
     }
 
@@ -706,8 +880,10 @@ hr {
     }
 
     .page-content {
-        padding: var(--normal-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 55px var(--xx-large-s) var(--normal-s) !important;
     }
+
 
     /* set styles for all contnet within page-content div */
     .page-content>* {
@@ -718,13 +894,9 @@ hr {
         padding: var(--normal-s) 0px 0px 0px;
     }
 
-    .container {
+    .container, .form-container {
         width: 75%;
         padding: var(--medium-s);
-    }
-
-    .sidebar {
-        display: none !important;
     }
 
     /*----------------------
@@ -732,6 +904,11 @@ hr {
     ----------------------*/
     /* hide items on small screens */
     .mobile-hidden {
+        display: none !important;
+    }
+
+    /* hides the sidebar on smaller screens */
+    .sidebar {
         display: none !important;
     }
 }
@@ -754,23 +931,16 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .sidebar {
-        display: none !important;
-    }
-
-    .mobile-header {
-        display: none;
-    }
-
     .form-container {
         width: 80% !important;
     }
 
     .page-content {
-        padding: var(--normal-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 75px var(--xx-large-s) var(--normal-s) !important;
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--large-s);
     }
 
@@ -786,6 +956,12 @@ hr {
     .mobile-header {
         display: none;
     }
+
+    /* hides the sidebar */
+    .sidebar {
+        display: none !important;
+    }
+
 }
 
 /*--------------------------------------
@@ -793,16 +969,16 @@ hr {
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
 
-    /*child to page-body - all page items headings and containers go in here */
     .page-content {
-        padding: var(--large-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
     .form-container {
         width: 60% !important;
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--large-s);
     }
 
@@ -826,10 +1002,11 @@ hr {
 @media (min-width: 1281px) {
 
     .page-content {
-        padding: var(--xx-large-s) !important;
+        /* add space at the top to take the navbar size into consideration */
+        padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
 
-    .container {
+    .container, .form-container {
         padding: var(--xx-large-s);
         /* width: 35% !important; */
     }

@@ -3,20 +3,8 @@
   background-image: url(src/assets/images/background/orange-trees.webp);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
-}
-
-
-
-
-
-.sidebar {
-  background-color: var(--primary-colour);
-  height: 100%;
-  
 
 }
-
 
 .crop-info {
   margin-top: var(--normal-s);
@@ -33,27 +21,24 @@
   width: 100%;
 }
 
-.sidebar {
-  background-color: var(--primary-colour);
-}
-
 #left {
   padding-right: var(--small-s) !important;
- 
+
 
 }
 
 #right {
 
   padding-left: var(--small-s) !important;
-  
+
 }
 
 #bottom {
 
   padding-top: var(--normal-s) !important;
 }
-h1{
+
+h1 {
   position: relative;
 }
 
@@ -61,43 +46,43 @@ h1{
 
 @media (max-width: 767px) {
 
+  
+
   #left {
-    padding-left: var(--small-s) !important;
-    
-
+    padding-right:0 !important;
+   
+  
   }
-
   #right {
 
-    padding-right: var(--small-s) !important;
-  }
-
-  #info {
-    
-   
+    padding-left: 0 !important;
+  
   }
 
   #bottom {
-  
-    padding: 0 var(--x-small-s) !important;
-    }
+
+    padding: 0  !important;
+  }
+
   .crop-info {
     margin-top: var(--normal-s);
   }
-  
+
   .farm-info {
     margin-bottom: var(--normal-s);
   }
-  .equipment-info{
+
+  .equipment-info {
     margin-top: var(--normal-s);
   }
 
-  .page-content > * {
+  .page-content>* {
     padding: 0px !important;
-}
-h1{
-  padding: 4% 2% !important;
- 
-}
-  
+  }
+
+  h1 {
+    padding: 4% 2% !important;
+
+  }
+
 }

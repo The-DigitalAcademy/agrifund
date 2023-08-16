@@ -26,7 +26,7 @@ const routes: Routes = [
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    {path: 'about-farm', component:TellMeAboutComponent},
+    { path: 'about-farm', component: TellMeAboutComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent },
@@ -41,7 +41,7 @@ const routes: Routes = [
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
-    {path: 'equipment-create', component: EquipmentCreateComponent },
+    { path: 'equipment-create', component: EquipmentCreateComponent },
     {path: 'equipment-edit/:id', component: EquipmentEditComponent },
     {path: 'dynamic-inputs', component: DynamicInputsComponent },
 ];

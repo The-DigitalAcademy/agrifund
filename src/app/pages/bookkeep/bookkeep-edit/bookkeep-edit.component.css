@@ -7,10 +7,9 @@
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
-.content .btn,
-.actions .btn {
-    width: 150px;
-    /* margin: 0px var(--normal-s); */
+.actions {
+    /* removes bottom margin for actions container */
+    margin-bottom: 0px !important;
 }
 
 /*---------------------------------

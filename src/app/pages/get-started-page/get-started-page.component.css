@@ -1,146 +1,136 @@
 .page-body {
- 
+    /* sets background image */
     background-image: url("src/assets/images/background/orange-trees.webp");
+    /* makes items display underneath each other */
+    flex-direction: column;
+}
+
+.page-heading h1 {
+    /* centers page heading text */
+    text-align: center;
+    /* changes the page headings to dark colour */
+        color: var(--dark);
+}
+
+/* makes the container take up all available width space */
+.container-inner {
+    width: 100%;
+    height: 100%;
 }
 
 .carousel-inner {
-     margin-top: 3% !important;
-    width: auto !important;
-    height: 350px !important;
-    background-color: var(--white-2);
+    /* makes the carousel inner take up all the available space */
+    width: 100% !important;
+    height: 100% !important;
     align-items: center;
     justify-content: center;
-    padding: 5%;
-  
 }
-.carousel-images {
-    height: 20% !important;
-    width: 20% !important;
-    border-radius: 100%;
+
+.justify-center {
+    /* makes everything display underneath each other */
+    flex-direction: column;
+}
+
+p {
+    /* aligns items text to the center */
+    text-align: center;
+}
+
+.carousel-image {
+    /* sets the size of carousel image */
+    min-height: 20% !important;
+    max-width: 20% !important;
+    border-radius: 20%;
 }
 
 .carousel-indicators button {
-    height: 10px !important;
-    width: 10px !important;
-    margin: 0 10px !important;
+    /* sets the size of carousel indicators */
+    height: var(--normal-s) !important;
+    width: var(--normal-s) !important;
+    /* sets the margins on the left and right of a carousel indicator */
+    margin: 0px var(--x-small-s) !important;
+    /* makes the indicators rounded */
     border-radius: 100%;
-    background-color: var(--primary-colour) !important;
-}
-.carousel-control-next {
-    display: flex;
-    position: relative;
-    color: var(--dark);
-    gap: 4px;
-   
+
+    background-color: var(--lighter-grey) !important;
 }
 
-.carousel-control-prev {
-    display: flex;
-    position: relative;
-    color: var(--dark);
-    gap: 4px;
- 
+.carousel-indicators .active {
+    /* changes the active indicator to green */
+    background-color: var(--primary-colour) !important;
 }
+
+.carousel-control-next, .carousel-control-prev {
+    /* fixes carousel controls to the bottom of the page*/
+    display: flex;
+    flex-direction: row;
+    position: static;
+    /* changes the  carousel indicator colors to dark*/
+    color: var(--dark);
+    /* increases the opacity of controls */
+    opacity: 1;
+    /* makes indicator take up all available space */
+    width: auto;
+}
+
 .carousel-indicators {
+    /* set default position to override bootstrap */
+    position: static;
     width: auto !important;
     height: auto !important;
     padding: 0px !important;
+    /* removes bootstrap margins */
+    margin: 0px !important;
 }
 
-fa-icon{
+fa-icon {
+    /* changes icon colors to dark */
     color: var(--dark);
+    margin: 0px !important;
 }
 
-.container {
-    padding: 2% !important;
-    text-align: center !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 50% !important;
-} 
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
 
-.form-container{
-
-    padding: 2% !important;
-    width: 100% !important;
-    border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);
-}
-
-
-@media only screen and (max-width: 575px) {
-    .page-body{
-    
-     background-image: none; 
-     width: 100%;
-     height: 100%;
-     text-align: center;
-     justify-content: center;
+    .page-body {
+        /* removes the image from the background */
+        background-image: none;
     }
 
-
-    .container{
-        text-align: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        height: 100% !important;
-       
+    .page-background::before {
+        /* removes the dark filter overlay from the background */
+        display: none;
     }
 
-    .mobile-header{
-background-image: url("src/assets/images/background/orange-trees.webp");
-background-size:contain;
-background-repeat: no-repeat;
-height: 20%;
-padding: 20%;
-
+    .page-content {
+        /* removes padding */
+        padding: 0px !important;
     }
 
-  .carousel-control-next {
-    display: flex;
-    align-items: center;
-    gap: 10px !important;
-    padding-right: 30;
+    .mobile-header {
+        background-image: url("src/assets/images/background/orange-trees.webp");
+    }
 
-      
-   }
-   .carousel-control-prev {
-
-    display: flex;
-    align-items: center;
-    gap: 5px !important;
-    
-   }
-   
-.carousel-inner{
-    
-    margin-top: 20% !important;
-    align-items: center;
-    justify-content: center;
-    height: 500px !important;
-    width: 100% !important;
-    padding: 12%;
-    /* border-radius: var(--border-radius);
-    border: var(--thin-border) var(--lighter-grey);    */
 }
 
-.carousel-indicators{
-display: flex;
-justify-content: center; 
-align-items: center;
-gap: 2px;
-flex: 2 0 0;
-}
-.page-heading{
-    justify-content: center;
-    color: var(--dark);
-}
- }
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {}
 
- .justify-start{
-    padding-left: 25px !important;
- }
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {}
 
- .justify-end{
-    padding-right: 25px !important;
- }
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {}

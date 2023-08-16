@@ -1,12 +1,9 @@
-<div class="row page-body">
-    <div class="col-12">
-        <app-navbar></app-navbar>
-    </div>
-    <div class="col-lg-2 sidebar mobile-hidden">
-        <hr />
+<app-navbar></app-navbar>
+<div class="row page-body page-background">
+    <div class="sidebar mobile-hidden">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="col-lg-10 page-content">
+    <div class="page-content">
         <div class="page-heading">
             <h1>Bookkeep</h1>
         </div>
@@ -38,7 +35,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="money-card-summary">
                 <app-money-card-summary></app-money-card-summary>
             </div>
@@ -72,13 +68,13 @@
                     </div>
                 </div>
 
-                <div class="container record-table">
+                <div class="container inner-container record-table">
                     <table class="table mobile-hidden">
                         <thead>
                             <tr>
                                 <th scope="col">Description</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Date Added</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Amount</th>
                                 <!-- <th scope="col">Uploaded Proof</th> -->
                                 <th scope="col"></th>
@@ -90,7 +86,7 @@
                                 (click)="viewRecordDetails(record.id)">
                                 <td scope="row">{{ record.description }}</td>
                                 <td>{{ record.category }}</td>
-                                <td>22/12/2022</td>
+                                <td>{{ record.date }}</td>
                                 <td>
                                     {{
                                         record.amount
@@ -118,7 +114,9 @@
                                 <p class="bold justify-start">
                                     {{ record.description }}
                                 </p>
-                                <p class="greyed justify-start">22/12/2022</p>
+                                <p class="greyed justify-start">
+                                    {{ record.date }}
+                                </p>
                             </div>
                             <div class="right justify-end">
                                 <p class="bold justify-end">
