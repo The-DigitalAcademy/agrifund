@@ -24,25 +24,12 @@ export class BookkeepService {
     // TODO
 
     // update income statement total income
-    // calculateTotalIncome(): number {
-    //     let total_income = 0;
-    //     for (let income of this.income) {
-    //         total_incomes += income.amount;
-    //     }
-    //     return total_income;
-    // }
+ 
 
     // TODO
     // update income statement total expense
 
-    // calculateTotalExpense(): number {
-    //     let total_expenses = 0;
-    //     for (let expense of this.expenses) {
-    //         total_expenses += expense.amount;
-    //     }
-    //     return total_expenses;
-    //   }
-    // }
+   
 
     // TODO
     // update income statement total net income (profit)
