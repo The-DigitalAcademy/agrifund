@@ -32,6 +32,14 @@ export class AboutTheFarmComponent {
        
       })
     },
+    {
+      formGroup: this.fb.group({
+       seasonFarm: ['', Validators.required],
+       cropType: ['', Validators.required],
+        type: ['', Validators.required],
+       
+      })
+    },
   ];
 
   constructor(private fb: FormBuilder) {}
