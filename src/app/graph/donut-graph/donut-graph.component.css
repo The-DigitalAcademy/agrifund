@@ -1,3 +1,12 @@
+/* AUTHOR: Monique
+CREATE DATE: 13 AUG 2023
+UPDATED DATE: 17 AUG 2023  */
+
+/*-----------------------------
+    GRAPH CONTAINERS & HEADING 
+-------------------------------*/
+
+/* Container for doughnut chart */
 .chart-container {
   height: 38vh;
   width: 95%;
@@ -9,7 +18,7 @@
 
 
 }
-
+/* heading for doughnut charts */
 .chart-header {
   justify-content: center !important;
   padding-left: 30% !important;
@@ -30,7 +39,7 @@
 ----------------------------------*/
 @media (max-width: 390px) {
 
-
+/* Container for doughnut */
   .chart-container {
     height: 30vh !important;
     width: 95% !important;
@@ -42,7 +51,7 @@
     display: row;
     align-items: start;
   }
-
+/* heading for charts */
   .chart-header {
     justify-content: left !important;
     padding-left: 30% !important;
@@ -59,7 +68,7 @@
     .mobile-hidden {
       display: none !important;
     }
-
+/* heading for charts */
     .chart-header {
       justify-content: center !important;
       padding-left: 37% !important;
@@ -67,7 +76,7 @@
       align-items: start;
     }
 
-
+/* Container for doughnut */
     .chart-container {
       height: 30vh !important;
       width: 95% !important;
@@ -96,7 +105,7 @@
     .large-hidden .about-company {
       display: none !important;
     }
-
+/* Container for doughnut */
     .chart-container {
       height: 30vh !important;
       width: 100% !important;
@@ -105,7 +114,7 @@
       padding-left: 2% !important;
       background-color: #F7F7F7 !important;
     }
-
+/* heading for charts */
     .chart-header {
       justify-content: center !important;
       padding-left: 37% !important;
@@ -122,7 +131,7 @@
     .header-content>* {
       margin-bottom: var(--x-large-s) !important;
     }
-
+/* Container for doughnut */
     .chart-container {
       height: 40vh !important;
       width: 100% !important;

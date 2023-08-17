@@ -1,7 +1,16 @@
+// AUTHOR: Monique
+//     CREATE DATE: 08 AUG 2023
+//     UPDATED DATE: 17 Aug 2023 
+
+//     DESCRIPTION:
+//     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
+//     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
+
+
 import { Chart,registerables } from 'chart.js/auto';
 import { Component } from '@angular/core';
 import { ChartService } from 'src/app/services/chart/chart.service';
-import { ApiService } from 'src/app/services/api/api.service';
+
 
 
 Chart.register(...registerables);
@@ -16,22 +25,32 @@ export class DonutGraphComponent {
   total_expense: any = [];
   total_income: any = [];
   net_income: any = [];
+  amount:any = [];
 
 
   ngOnInit(): void {
 
-    this.chartService.Getchartinfo().subscribe(result =>{
-      this.total_expense = result;
-      // this.total_expense = this.result.data.amount.map((amount: any) => amount.expense);
-      console.log(this.total_expense)
+    this.chartService.getTotalNetIncome().subscribe(result =>{
+      this.net_income = result;
+      
+      console.log(this.net_income)
+    });
+
+    this.chartService.getTotalIncome().subscribe(result =>{
+      this.total_income = result;
+
+      console.log(this.total_income)
     });
   
     // this.RenderChart(this.total_expense);
-    this.RenderChart();
+    this.RenderChart(this.net_income,this.net_income);
     
   }
   // RenderChart(total_expense:any) 
-  RenderChart() {
+
+  // doughnut graph properties
+
+  RenderChart(total_income:any,net_income:any) {
     new Chart("Piechart", {
       type: 'doughnut',
       data: {
@@ -45,12 +64,11 @@ export class DonutGraphComponent {
         }]
         
       },
+      // size of the graph properties
       options: {
         aspectRatio:2.0
       }
     });
   }
 }
-
-
 

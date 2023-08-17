@@ -1,8 +1,16 @@
+// AUTHOR: Monique
+//     CREATE DATE: 08 AUG 2023
+//     UPDATED DATE: 17 Aug 2023 
+
+//     DESCRIPTION:
+//     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
+//     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
+
 import { Component,OnInit } from '@angular/core';
 import {Chart, registerables} from 'chart.js/auto';
 import { ChartService } from 'src/app/services/chart/chart.service';
 
-
+Chart.register(...registerables);
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -25,7 +33,8 @@ export class BarChartComponent {
      // this.RenderChart(this.total_expense);
     this.RenderChart();
   }
-  // RenderChart(total_expense:any) 
+  // RenderChart(total_expense:any)
+   // size of the graph properties 
   RenderChart() {
     new Chart("barchart", {
       type: 'bar',
@@ -44,21 +53,7 @@ export class BarChartComponent {
   }
 }
 
-// this.service.getAllStatementItems().subscribe(result=>{
-  //   this.chartdata = result;
-  //   if(this.chartdata!=null){
-  //     for(let i=0; this.chartdata.length ;i++){
 
-  //       this.total_expenses.push(this.chartdata[i].expense);
-  //       this.total_income.push(this.chartdata[i].income);
-  //       this.net_income.push(this.chartdata[i].profit);
-  //     }
-  //     this.RenderChart(this.total_expenses, this.net_income, this.total_income);
-  //   }
-    
-
-
-  // });
 
 
  
