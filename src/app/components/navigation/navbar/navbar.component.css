@@ -139,7 +139,7 @@ h1 {
     background-color: var(--light);
 }
 
-.offcanvas-header {
+.offcanvas-header, .offcanvas-body, .offcanvas-footer {
     padding: var(--small-s) !important;
 }
 
@@ -156,6 +156,7 @@ h1 {
     justify-content: center;
     align-items: center;
     z-index: 2;
+    height: max-content;
 }
 
 .offcanvas-footer .btn {
