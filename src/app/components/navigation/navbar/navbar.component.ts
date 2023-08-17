@@ -16,6 +16,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
@@ -35,7 +36,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     constructor(
         private _offcanvasService: NgbOffcanvas,
-        private _userService: UserService
+        private _userService: UserService,
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -62,5 +64,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     closeOffcanvas() {
         this._offcanvasService.dismiss();
+    }
+
+    logout() {
+        this._userService.setUserState(null);
+        this.router.navigate(['']);
     }
 }

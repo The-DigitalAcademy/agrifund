@@ -51,7 +51,9 @@
         <pre>&#x20;</pre>
         <a class="username bold">FirstName</a>
     </span>
-    <button type="button" class="btn outline-btn">Logout</button>
+    <button type="button" class="btn outline-btn" (click)="logout()">
+        Logout
+    </button>
 </ng-template>
 
 <!-- offcanvas after login -->
@@ -91,7 +93,7 @@
 <ng-template #footerAfterLogin>
     <button
         class="btn btn colourful-btn"
-        [routerLink]="['']"
+        (click)="logout()"
         data-bs-dismiss="offcanvas">
         Logout
     </button>

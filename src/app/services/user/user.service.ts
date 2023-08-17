@@ -29,7 +29,7 @@ export class UserService {
     }
 
     // sets the users state
-    setUserState(value: string) {
+    setUserState(value: any) {
         this.userState$.next(value);
         // console.log(this.userState$.value);
     }
