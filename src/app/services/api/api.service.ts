@@ -13,7 +13,7 @@ export class ApiService {
     // base string for api connection with current version of api
     // private baseUrl = `${environment.apiURL}`;
     // base string for mock api connection
-    private baseUrl = `${environment.apiURL}`;
+    private baseUrl = `${environment.mockApiUrl}`;
 
     /* --------------------------------
         ADMIN USER CONNECTION STRINGS
@@ -24,9 +24,8 @@ export class ApiService {
     // used by admin to get farmer related data
 
     // TODO user
-    private userURL = this.baseUrl + '/users';
-    private loginURL = this.baseUrl + '/login';
-    private logoutURL = this.baseUrl + '/login';
+    private userURL = ''; // Define the URL for user registration
+    private loginURL = ''; // Define the URL for user login
 
     /* --------------------------------
         FARMER USER CONNECTION STRINGS
@@ -106,18 +105,13 @@ export class ApiService {
 
     // register user
     RegisterUser(user: any): Observable<any> {
-        // const url = '/api/v1/auth/register/farmer';
-        return this.http.post(this.registerFarmerURL, user);
+        // Send a POST request to the user registration URL
+        return this.http.post(this.userURL, user);
     }
-    LoginUser(email: string, password: string): Observable<any> {
+    login(email: string, password: string): Observable<any> {
+        // Create the request body with email and password
         const body = { email, password };
-        return this.http.post(
-            'http://localhost:3001/agrifund/api/v1/login',
-            body
-        );
-    }
-    logout(): Observable<any> {
-        // Implement logout if needed
-        return this.http.get(this.logoutURL);
+        // Send a POST request to the login URL with the provided credentials
+        return this.http.post(this.loginURL, body);
     }
 }

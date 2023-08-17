@@ -4,7 +4,6 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { Observer } from 'rxjs';
 import { Users } from 'src/app/models/users';
 
 @Component({
@@ -25,6 +24,7 @@ export class RegisterComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        // Initialize the registration form with validation rules
         this.RegisterForm = this.fb.group(
             {
                 first_name: new FormControl('', [
@@ -62,6 +62,7 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         if (this.RegisterForm.valid) {
+            // Gather user data from the form
             this.users = {
                 firstName: this.RegisterForm.get('first_name')?.value,
                 lastName: this.RegisterForm.get('last_name')?.value,
@@ -71,10 +72,11 @@ export class RegisterComponent implements OnInit {
                 idNumber: this.RegisterForm.get('id_number')?.value,
             };
 
+            // Call the API service to register the user
             this._apiService.RegisterUser(this.users).subscribe(data => {
                 // Handle success or error response from the API
-                this.router.navigate(['/login']);
-                alert('Successfully Registered');
+                this.router.navigate(['/login']); // Navigate to login page after successful registration
+                alert('Successfully Registered'); // Show an alert to the user
             });
         }
     }
