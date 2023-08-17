@@ -104,6 +104,16 @@ p {
     width: auto;
 }
 
+.carousel-control-next{
+    /* removes padding on the right side of the  button so it aligns with other container items */
+    padding-right: 0px !important;
+}
+
+.carousel-control-prev {
+    /* removes padding on the left side of the  button so it aligns with other container items */
+        padding-left: 0px !important;
+}
+
 .carousel-indicators {
     /* set default position to override bootstrap */
     position: static;
@@ -114,10 +124,22 @@ p {
     margin: 0px !important;
 }
 
-fa-icon {
+.carousel-control-next fa-icon,
+.carousel-control-prev fa-icon {
     /* changes icon colors to dark */
     color: var(--dark);
+    /* removes any preset margins from the icons */
     margin: 0px !important;
+}
+
+/* puts space between the icon and the button text for next button */
+.carousel-control-next fa-icon{
+    margin-left: var(--small-s) !important;
+}
+
+/* puts space between the icon and the button text for previous button */
+.carousel-control-prev fa-icon {
+    margin-right: var(--small-s) !important;
 }
 
 /*---------------------------------

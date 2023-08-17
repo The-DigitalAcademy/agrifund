@@ -35,8 +35,8 @@ li:active {
     color: var(--light) !important;
 }
 
-a fa-icon {
-    /* add spsce */
+.nav-link fa-icon {
+    /* add space */
     margin-right: var(--small-s);
     font-size: var(--font-medium);
 }
