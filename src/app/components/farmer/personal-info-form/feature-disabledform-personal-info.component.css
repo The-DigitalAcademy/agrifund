@@ -4,6 +4,10 @@
   
   border-color: var(--light-grey);
   border: 1px solid #ccc;
+  background-color: var(--light-3);
+}
+#container{
+  background-color: var(--light-1);
 }
 
 .form-control {

@@ -77,7 +77,7 @@ export class EquipmentEditComponent implements OnInit {
         
        
       });
-      this.router.navigate(['/equipment-table', this.asset.id]);
+      this.router.navigate(['/portfolio']);
     }
   }
 }

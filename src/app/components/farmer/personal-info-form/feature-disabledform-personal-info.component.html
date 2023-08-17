@@ -26,7 +26,7 @@
 
 
 
-<div class="container">
+<div class="container" id="container">
   <div class="profile-heading">
     <div class="heading">
       <h3>Your Personal Info</h3>
@@ -37,7 +37,7 @@
     </div>
   </div>
   <hr>
-  <div class="sub-container">
+  <div class="container">
     <form [formGroup]="myForm">
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['first_name'].valid && myForm.controls['first_name'].dirty, 'has-error': myForm.controls['first_name'].invalid && myForm.controls['first_name'].dirty}">
         
