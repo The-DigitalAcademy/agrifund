@@ -42,10 +42,10 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
         });
 
         this.bookkeepSubscription = this._bookkeepService
-            .getBookkeepRecords()
+            .getAllBookkeepRecords()
             .subscribe((records: any) => {
-                this.bookkeepRecords$ = records; //populate bookkeepRecords array with records from
-                console.log(records);
+                this.bookkeepRecords$ = records;
+                console.log(this.bookkeepRecords$);
             });
     }
 

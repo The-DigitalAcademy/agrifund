@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -27,14 +27,18 @@ export class BookkeepService {
 
     constructor(private _apiService: ApiService) {
         this._apiService.getAllStatementItems().subscribe((data: any) => {
-            // console.table(products);
             //populate bookkeep records array with records from api
             this.bookkeepRecords = data;
+            this.bookkeepRecords.forEach(record => {
+                // adds bookkeeping records to the observable array
+                this.addRecord(record);
+            });
+           
         });
 
         // creates a default bookkeeping record behaviour subject
         this.bookkeepRecords$ = new BehaviorSubject<IncomeStatementItem>({
-            id: this.generateRecordId(),
+            id: 0,
             statement_id: 0, //income statment id
             category: '',
             amount: 0,
@@ -45,7 +49,7 @@ export class BookkeepService {
     }
 
     /*---------------------------------
-        CREATE DATA
+        CREATE/ADD DATA
     ----------------------------------*/
     // generate a bookkeeping record value for a bookkeeping record
     generateRecordId() {
@@ -53,8 +57,23 @@ export class BookkeepService {
         return id;
     }
 
-    // adds a new bookkeeping record
-    setBookkeepRecords(record: IncomeStatementItem) {}
+    // adds bookkeeping record from api to observable bookkeep
+    addRecord(record: IncomeStatementItem) {
+
+        const addedRecord = {
+            id: record.id,
+            statement_id: record.statement_id, //income statment id
+            category: record.category,
+            amount: record.amount,
+            proof: record.proof,
+            description: record.description,
+            date: record.date, //date of the record
+        };
+
+        this.bookkeepRecords$.next(addedRecord);
+    }
+
+    // setBookkeepRecords(record: IncomeStatementItem) {}
 
     // getBookkeepRecords() {
 
@@ -70,10 +89,8 @@ export class BookkeepService {
         GET DATA
     ----------------------------------*/
     // returns all bookkeping records within the behavior subject
-    getBookkeepRecords() {
+    getAllBookkeepRecords(): Observable<any> {
         return this.bookkeepRecords$;
-
-
     }
 
     // TODO
