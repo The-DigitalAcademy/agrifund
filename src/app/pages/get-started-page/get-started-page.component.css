@@ -14,12 +14,8 @@
 
 ngb-carousel {
     max-width: 100%;
+    height: min-content;
     /* margin: 50px auto; */
-}
-
-ngb-carousel {
-    width: inherit;
-    height: inherit;
 }
 
 .carousel-inner {
@@ -36,7 +32,7 @@ ngb-carousel {
     /* hides in-active carousel item on the top to create sliding animation */
     opacity: 0;
     visibility: hidden;
-    z-index:-1;
+    z-index: -1;
 }
 
 .carousel-item {
@@ -140,6 +136,20 @@ fa-icon {
 
     .mobile-header {
         background-image: url("src/assets/images/background/orange-trees.webp");
+    }
+
+    .carousel-image {
+        /* sets the size of carousel image to be larger on smaller devices*/
+        min-height: 30% !important;
+        max-width: 40% !important;
+    }
+
+    .container {
+        /* makes carousel container not stretch to off screen size */
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+
     }
 
 }
