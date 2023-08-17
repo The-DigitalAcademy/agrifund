@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { Users } from 'src/app/models/users';
+import { UserService } from 'src/app/services/users.service';
+import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-service.service';
 
 @Component({
     selector: 'app-register',
@@ -30,7 +32,8 @@ export class RegisterComponent implements OnInit {
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
         private router: Router,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _portfolioService: PortfolioServiceService
     ) {}
 
     ngOnInit(): void {
@@ -74,6 +77,7 @@ export class RegisterComponent implements OnInit {
         if (this.RegisterForm.valid) {
             // Gather user data from the form
             this.users = {
+                id: this._portfolioService.generateId(),
                 firstName: this.RegisterForm.get('first_name')?.value,
                 lastName: this.RegisterForm.get('last_name')?.value,
                 email: this.RegisterForm.get('email')?.value,

@@ -1,0 +1,15 @@
+/* dynamic-input.component.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+
+
+  
+  /* Add space between input fields */
+  table input {
+    margin-right: 10px;
+  }
+  

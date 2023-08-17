@@ -91,6 +91,8 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 
 @NgModule({
     declarations: [
@@ -122,6 +124,8 @@ import {
         TellMeAboutComponent,
         ModalContainerComponent,
         DeleteModalContentComponent,
+        EquipmentEditComponent,
+        DynamicInputsComponent,
     ],
     imports: [
         BrowserModule,

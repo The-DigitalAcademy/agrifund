@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Ntokozo Radebe
+    AUTHOR: Ntokozo, Monique, Kamo
     CREATE DATE: 24 Jul 2023
     UPDATED DATE: 17 Aug 2023 
 
@@ -12,6 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap } from 'rxjs';
 import { Users } from 'src/app/models/users';
+import { Asset } from 'src/app/models/asset';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -41,21 +42,33 @@ export class ApiService {
         FARMER CONNECTION STRINGS
     ---------------------------------*/
     private farmerAssetURL = this.baseUrl + '/assets';
-    // url used to register a farmer user
-    private registerFarmerURL = this.baseUrl + 'auth/register/farmer';
-    // url used to login a farmer user
-    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
-    // TODO find farmer by email
 
-    // TODO reset password
+    // gets a farmer by their id
+    getFarmerUser(userId: number): Observable<any> {
+        console.log(userId);
+        return this.http.get(`${this.userURL}/${userId}`);
+    }
 
-    // TODO send OTP
+    // adds a new equipment item
+    addEquipment(body: any) {
+        return this.http.post(`${this.farmerAssetURL}`, body);
+    }
 
-    // TODO farmer
-    // TODO assets
-    // TODO plot
-    // TODO farm
-    // TODO crop
+    // gets all equipment items for a farmer
+    getAllEquipment() {
+        console.log(this.farmerAssetURL);
+        return this.http.get(`${this.farmerAssetURL}`);
+    }
+
+    // update data for a single equipment record
+    editEquipment(equipmentId: number, body: any) {
+        return this.http.put(`${this.farmerAssetURL}/${equipmentId}`, body);
+    }
+
+    // get a single equipment item by id
+    getEquipmentById(equipmentId: number) {
+        return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
+    }
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -117,20 +130,11 @@ export class ApiService {
     /* --------------------------------
         FARMER
     ---------------------------------*/
-    addEquipment(body: any) {
-        return this.http.post(`${this.farmerAssetURL}`, body);
-    }
-
-    getAllEquipment() {
-        console.log(this.farmerAssetURL);
-        return this.http.get(`${this.farmerAssetURL}`);
-    }
     // register user
     registerUser(user: any): Observable<any> {
         // Send a POST request to the user registration URL
         return this.http.post(this.userURL, user);
     }
-    // login a user
     login(email: string, password: string): Observable<any> {
         // Create the request body with email and password
         const body = { email, password };

@@ -8,8 +8,9 @@
 
 -------------------------------------------------------------------------------------------------*/
 
-
 export interface Users {
+    // userId
+    id: number;
     // User's first name
     firstName: string;
 
