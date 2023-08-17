@@ -9,20 +9,51 @@
     /* centers page heading text */
     text-align: center;
     /* changes the page headings to dark colour */
-        color: var(--dark);
+    color: var(--dark);
 }
 
-.container-inner {
-    width: 100%;
-    height: 100%;
+ngb-carousel {
+    max-width: 100%;
+    /* margin: 50px auto; */
 }
 
-.carousel-inner{
+ngb-carousel {
+    width: inherit;
+    height: inherit;
+}
+
+.carousel-inner {
     /* makes the carousel inner take up all the available space */
     max-width: 100% !important;
     min-height: 100% !important;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-item {
+    /* hides in-active carousel item on the top to create sliding animation */
+    display: flex !important;
+    opacity: 0;
+    visibility: hidden;
+    z-index:-1;
+}
+
+.carousel-item {
+    /* makes */
+    transition: transform 0s ease-in-out;
+}
+
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+    transition: opacity 1.2s;
+}
+
+.carousel-item.active {
+    /* places active carousel item on the top to create sliding animation */
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
 }
 
 .justify-center {
@@ -60,7 +91,8 @@ p {
     background-color: var(--primary-colour) !important;
 }
 
-.carousel-control-next, .carousel-control-prev {
+.carousel-control-next,
+.carousel-control-prev {
     /* fixes carousel controls to the bottom of the page*/
     display: flex;
     flex-direction: row;
