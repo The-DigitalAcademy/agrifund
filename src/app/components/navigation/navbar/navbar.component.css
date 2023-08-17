@@ -32,6 +32,7 @@ nav {
 
 }
 
+/* styles the navbar toggle button on mobile devices */
 .navbar-toggler{
     margin-left: 0px !important;
     color: var(--dark);
@@ -42,11 +43,12 @@ nav {
     padding: 0px;
 }
 
+/* changes the colour of the icon on the button */
 .icon-btn{
     color: var(--dark) !important;
 }
 
-/* styles for all items on the left side of the navbar */
+/* styles the left side of the navbar */
 .nav-left {
     display: flex;
     justify-content: flex-start;
@@ -58,6 +60,7 @@ nav {
     padding: var(--small-s) var(--normal-s) !important;
 }
 
+/* styles the right side of the navbar */
 .nav-right {
     display: flex;
     justify-content: flex-end;
@@ -69,6 +72,7 @@ nav {
     padding: var(--small-s) var(--normal-s) !important;
 }
 
+/* sets the alignment of all the elements within the navbar brand and flexes them in a single line*/
 .nav-brand {
     display: flex;
     vertical-align: center !important;
@@ -83,19 +87,13 @@ img {
 
 p,
 h1 {
+    /* removes the margins from the p and h1 tag that is set in the main styles */
     margin: 0px !important;
 }
 
 h1 {
     /* changes the navbar brand heading color to dark */
     color: var(--dark) !important;
-}
-
-span {
-    display: flex !important;
-    vertical-align: middle;
-    justify-content: center;
-
 }
 
 .icon-btn fa-icon {
@@ -125,11 +123,11 @@ span {
     padding: var(--x-small-s);
 }
 
+/* adds spaace between the nabar toggle and the navbar brand */
 .icon-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 0px var(--small-s);
 }
 
@@ -161,24 +159,12 @@ span {
     width: 100%;
 }
 
-.white-btn {
-    margin: var(--small-s) var(--small-s) var(--normal-s) var(--normal-s) !important;
-}
-
-.white-outline-btn {
-    margin: var(--small-s) var(--normal-s) var(--normal-s) var(--small-s) !important;
-}
-
-
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
-    .offcanvas {
-        width: 100%;
-    }
-
     nav {
+        /* makes the navbar height shorter on smaller screens */
         height: 45px !important;
     }
 
@@ -193,13 +179,10 @@ span {
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
-    .offcanvas {
-        width: 100%;
-    }
 
     nav {
+        /* sets the height the navbar on tablets */
         height: 45px !important;
-        background-color: var(--primary-colour);
     }
 
     img {

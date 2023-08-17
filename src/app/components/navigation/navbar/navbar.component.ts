@@ -1,3 +1,18 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 16 Aug 2023 
+
+    DESCRIPTION:
+        This component is for the navbar that is used for navigation toggling the sidebar and offcanvas.
+        The username for a logged in user is displayed on the navbar.
+
+    PARAMETERS:
+    $userState -> stores the user state as an observable to keep the validity of a user token for a session
+    _offcanvasService -> calls the ngbootstrap offcanvas service
+
+-------------------------------------------------------------------------------------------------*/
+
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
