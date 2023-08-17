@@ -1,3 +1,9 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Precious, Monique, Kamo
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 .page-body {
     /* sets background image */
     background-image: url("src/assets/images/background/orange-trees.webp");
@@ -9,21 +15,42 @@
     /* centers page heading text */
     text-align: center;
     /* changes the page headings to dark colour */
-        color: var(--dark);
+    color: var(--dark);
 }
 
-/* makes the container take up all available width space */
-.container-inner {
-    width: 100%;
-    height: 100%;
+ngb-carousel {
+    max-width: 100%;
+    height: min-content;
+    /* margin: 50px auto; */
 }
 
 .carousel-inner {
     /* makes the carousel inner take up all the available space */
-    width: 100% !important;
-    height: 100% !important;
+    max-width: 100% !important;
+    min-height: 100% !important;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: flex !important;
+    /* hides in-active carousel item on the top to create sliding animation */
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.carousel-item {
+    /* immediately hides an inactive slide*/
+    transition: transform 0s ease-in-out;
+}
+
+.carousel-item.active {
+    /* places active carousel item on the top to create sliding animation */
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
 }
 
 .justify-center {
@@ -40,7 +67,10 @@ p {
     /* sets the size of carousel image */
     min-height: 20% !important;
     max-width: 20% !important;
-    border-radius: 20%;
+    /* makes image a circle */
+    border-radius: 100%;
+    /* adds space underneath the image */
+    margin-bottom: var(--normal-s);
 }
 
 .carousel-indicators button {
@@ -60,7 +90,8 @@ p {
     background-color: var(--primary-colour) !important;
 }
 
-.carousel-control-next, .carousel-control-prev {
+.carousel-control-next,
+.carousel-control-prev {
     /* fixes carousel controls to the bottom of the page*/
     display: flex;
     flex-direction: row;
@@ -73,6 +104,16 @@ p {
     width: auto;
 }
 
+.carousel-control-next{
+    /* removes padding on the right side of the  button so it aligns with other container items */
+    padding-right: 0px !important;
+}
+
+.carousel-control-prev {
+    /* removes padding on the left side of the  button so it aligns with other container items */
+        padding-left: 0px !important;
+}
+
 .carousel-indicators {
     /* set default position to override bootstrap */
     position: static;
@@ -83,10 +124,22 @@ p {
     margin: 0px !important;
 }
 
-fa-icon {
+.carousel-control-next fa-icon,
+.carousel-control-prev fa-icon {
     /* changes icon colors to dark */
     color: var(--dark);
+    /* removes any preset margins from the icons */
     margin: 0px !important;
+}
+
+/* puts space between the icon and the button text for next button */
+.carousel-control-next fa-icon{
+    margin-left: var(--small-s) !important;
+}
+
+/* puts space between the icon and the button text for previous button */
+.carousel-control-prev fa-icon {
+    margin-right: var(--small-s) !important;
 }
 
 /*---------------------------------
@@ -111,6 +164,20 @@ fa-icon {
 
     .mobile-header {
         background-image: url("src/assets/images/background/orange-trees.webp");
+    }
+
+    .carousel-image {
+        /* sets the size of carousel image to be larger on smaller devices*/
+        min-height: 30% !important;
+        max-width: 40% !important;
+    }
+
+    .container {
+        /* makes carousel container not stretch to off screen size */
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+
     }
 
 }
