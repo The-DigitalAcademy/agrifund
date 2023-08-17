@@ -1,9 +1,11 @@
 .page-body {
   /* align-items: flex-start; */
   background-image: url(src/assets/images/background/orange-trees.webp);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 
+}
+
+.page-content {
+  width: 100% !important;
 }
 
 .crop-info {
@@ -76,9 +78,6 @@ h1 {
     margin-top: var(--normal-s);
   }
 
-  .page-content>* {
-    padding: 0px !important;
-  }
 
   h1 {
     padding: 4% 2% !important;

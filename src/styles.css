@@ -103,6 +103,13 @@ body {
     border: none !important;
 }
 
+/* sets how the app sidebar will display when it is called any */
+app-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: max-content;
+}
 /*------------------
     CONTAINERS 
 --------------------*/

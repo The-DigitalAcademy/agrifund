@@ -19,32 +19,34 @@
 
 <!-- sidebar after a user has logged in -->
 <ng-template #sidebarAfterLogin>
-    <ul class="sidebar-content">
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['']">
-                <fa-icon icon="home"></fa-icon>
-                <span>Home</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/dashboard']">
-                <fa-icon icon="chart-pie"></fa-icon>
-                <span>Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/bookkeep']">
-                <fa-icon icon="table"></fa-icon>
-                <span>Bookkeep</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/portfolio']">
-                <fa-icon icon="address-card"></fa-icon>
-                <span>Portfolio</span>
-            </a>
-        </li>
-    </ul>
+    <div class="sidebar-content">
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['']">
+                    <fa-icon icon="home"></fa-icon>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/dashboard']">
+                    <fa-icon icon="chart-pie"></fa-icon>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/bookkeep']">
+                    <fa-icon icon="table"></fa-icon>
+                    <span>Bookkeep</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/portfolio']">
+                    <fa-icon icon="address-card"></fa-icon>
+                    <span>Portfolio</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </ng-template>
 
 <!-- sidebar before a user is logged in -->
