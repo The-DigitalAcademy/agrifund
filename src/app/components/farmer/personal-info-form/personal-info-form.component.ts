@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { ProgressService } from 'src/app/services/progress.service';
+import { ProgressService } from 'src/app/services/portfolio/progress.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormBuilder,
@@ -15,8 +15,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
-    templateUrl: './feature-disabledform-personal-info.component.html',
-    styleUrls: ['./feature-disabledform-personal-info.component.css'],
+    templateUrl: './personal-info-form.component.html',
+    styleUrls: ['./personal-info-form.component.css'],
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
@@ -76,14 +76,13 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 Validators.required,
                 this.validationsService.phoneNumberValidator(),
             ]),
-            // ... other fields
+           
         });
       
 
        
 
-        // Save the initial form values
-        // this.originalFormValues = userData;
+        
     }
 
 

@@ -1,22 +1,23 @@
-.container{
-    
-   
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: flex-start;
-    width: 100%;
-    justify-content: space-between;
-   
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
 
+/* Styling for a general container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  width: 100%;
+  justify-content: space-between;
 }
+
+/* Styling for form check labels */
 .form-check-label {
-    color: var(--primary-colour);
-  }
+  color: var(--primary-colour);
+}
 
-
-
-/* Customize the custom checkbox appearance */
+/* Customize the appearance of custom checkboxes */
 .custom-checkbox {
   display: inline-block;
   width: 20px;
@@ -24,88 +25,91 @@
   background-color: #fff;
   border: 2px solid var(--lighter-grey);
   border-radius: 2px;
-  margin-right: 8px; /* Add some space between the icon and label */
+  margin-right: 8px;
   vertical-align: middle;
   position: relative;
 }
 
-/* Customize the tick icon appearance */
+/* Customize the appearance of the tick icon within checkboxes */
 .tick-icon {
-  color:var(--primary-colour); /* Set the color of the tick icon */
-  font-size: 14px; /* Adjust the font size of the tick icon */
+  color: var(--primary-colour);
+  font-size: 14px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-
-h1{
-     font-size: var( --font-x-large);
-    font-family: var(--fancy-font);
-    font-weight:var(--regular) ;
-    width: 100%;
-    margin-top:var( --medium-s) ; 
-    color: var( --primary-colour);  
-    
-  }
- 
-  
-  
-  .actions{
-    justify-content: center;
-    margin-top:var(--medium-s) ;
-  }
-
-  .form-check-input[type="checkbox"] {
-    
-    border: 2px solid var(--lighter-grey); 
-    border-radius: 2px;
-    width: 20px;
-  height: 20px;
-  }
-  
-  .progress-bar {
-    width: 100%;
-    height: var( --x-large-s);
-    background-color: #f0f0f0; /* Set the background color for the progress bar container */
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: var( --x-large-s);
-    position: relative;
-  }
-  
-  .progress {
-    height: 100%;
-    background: linear-gradient(180deg, rgb(155, 166, 111) 0%, rgb(125, 137, 83) 50%, rgb(96, 108, 56) 100%);
-    justify-content: center;
-    color: var(--white-2);
-    font-size: var( --font-large);}
-
-  .container-feedback {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--normal-s);
-    width: 100%;
-    border-radius: var(--thin-border);
-    border: 2px solid var(--lighter-grey);
-    
-   
-  }
-  
-  .container-feedback h2,
-  .container-feedback p,
-  .container-feedback .actions {
-    text-align: center;
-    margin-top: var(--normal-s);
-  }
-  .checklist{
-    margin-bottom: 30px;
-  }
-  fa-icon{
-    color:green;
-    
+/* Styling for h1 headings */
+h1 {
+  font-size: var(--font-x-large);
+  font-family: var(--fancy-font);
+  font-weight: var(--regular);
+  width: 100%;
+  margin-top: var(--medium-s);
+  color: var(--primary-colour);
 }
- 
+
+/* Styling for action elements */
+.actions {
+  justify-content: center;
+  margin-top: var(--medium-s);
+}
+
+/* Styling for form check inputs of type "checkbox" */
+.form-check-input[type="checkbox"] {
+  border: 2px solid var(--lighter-grey);
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Styling for a progress bar container */
+.progress-bar {
+  width: 100%;
+  height: var(--x-large-s);
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: var(--x-large-s);
+  position: relative;
+}
+
+/* Styling for the progress within the progress bar */
+.progress {
+  height: 100%;
+  background: linear-gradient(180deg, rgb(155, 166, 111) 0%, rgb(125, 137, 83) 50%, rgb(96, 108, 56) 100%);
+  justify-content: center;
+  color: var(--white-2);
+  font-size: var(--font-large);
+}
+
+/* Styling for a feedback container */
+.container-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--normal-s);
+  width: 100%;
+  border-radius: var(--thin-border);
+  border: 2px solid var(--lighter-grey);
+}
+
+/* Styling for elements within the feedback container */
+.container-feedback h2,
+.container-feedback p,
+.container-feedback .actions {
+  text-align: center;
+  margin-top: var(--normal-s);
+}
+
+/* Styling for a checklist component */
+.checklist {
+  margin-bottom: 30px;
+}
+
+/* Styling for FontAwesome icons */
+fa-icon {
+  color: green;
+}

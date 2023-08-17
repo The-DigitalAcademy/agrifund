@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EquipmentInfoComponent } from './equipment-info.component';
+import { EquipmentInfoComponent } from './equipment-info-form.component';
 
 describe('EquipmentInfoComponent', () => {
     let component: EquipmentInfoComponent;

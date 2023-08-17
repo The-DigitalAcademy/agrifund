@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Users } from 'src/app/models/users';
 import { ApiService } from 'src/app/services/api/api.service';
-import { ProgressService } from 'src/app/services/progress.service';
+import { ProgressService } from 'src/app/services/portfolio/progress.service';
 
 @Component({
     selector: 'app-portfolio-progressbar',
@@ -20,32 +20,38 @@ export class PortfolioProgressbarComponent {
         private _apiService: ApiService
     ) {}
 
-    toggleCheckbox(controlName: string) {
-        const checkboxControl = this.checklistForm.get(controlName);
-        if (checkboxControl) {
-            checkboxControl.setValue(!checkboxControl.value);
+      // Toggle the value of a checkbox control
+  toggleCheckbox(controlName: string) {
+    const checkboxControl = this.checklistForm.get(controlName);
+    if (checkboxControl) {
+      checkboxControl.setValue(!checkboxControl.value);
+    }
+  }
+
+  // Check if a checkbox control is checked
+  isCheckboxChecked(controlName: string): boolean {
+    const checkboxControl = this.checklistForm.get(controlName);
+    return checkboxControl?.value === true;
+  }
+
+  ngOnInit() {
+    // Subscribe to the personalInfoCompleted$ observable from the ProgressService
+    this.progressService.personalInfoCompleted$.subscribe(
+      personalInfoCompleted => {
+        if (personalInfoCompleted) {
+          // Increase the progressPercentage when personal info is completed
+          this.progressPercentage += 35;
         }
-    }
+      }
+    );
 
-    isCheckboxChecked(controlName: string): boolean {
-        const checkboxControl = this.checklistForm.get(controlName);
-        return checkboxControl?.value === true;
-    }
-
-    ngOnInit() {
-        this.progressService.personalInfoCompleted$.subscribe(
-            personalInfoCompleted => {
-                if (personalInfoCompleted) {
-                    this.progressPercentage += 35;
-                }
-            }
-        );
-
-        this.progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
-            if (cropInfoCompleted) {
-                this.progressPercentage += 30;
-            }
-        });
+    // Subscribe to the cropInfoCompleted$ observable from the ProgressService
+    this.progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
+      if (cropInfoCompleted) {
+        // Increase the progressPercentage when crop info is completed
+        this.progressPercentage += 30;
+      }
+    });
 
         this.progressService.farmInfoCompleted$.subscribe(farmInfoCompleted => {
             if (farmInfoCompleted) {

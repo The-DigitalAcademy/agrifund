@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisabledformCropInfoComponent } from './disabledform-crop-info.component';
+import { DisabledformCropInfoComponent } from './crop-info-form.component';
 
 describe('DisabledformCropInfoComponent', () => {
     let component: DisabledformCropInfoComponent;

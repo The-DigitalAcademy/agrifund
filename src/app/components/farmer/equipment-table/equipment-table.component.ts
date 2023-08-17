@@ -13,26 +13,29 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class EquipmentTableComponent {
 
-  assets: Asset[] = [];
-isLast: any;
-  constructor(private _apiService: ApiService, private router: Router){
-    }
+  assets: Asset[] = []; // Initializing assets with interfaceAsset
+  isLast: any;
 
-  ngOnInit() {
-
-    //use the method to get the all the data 
-    this._apiService.getAllEquipment().subscribe(
-      (data: any) => {
-        // console.table(assets)
-         this.assets = data;
-      });
+  constructor(private _apiService: ApiService, private router: Router) {
+   
   }
 
-ngOnDestroy() {};
+  ngOnInit() {
+    // Fetch all equipment data from the API service
+    this._apiService.getAllEquipment().subscribe(
+      (data: any) => {
+        this.assets = data; // Populate the assets array with retrieved data
+      }
+    );
+  }
 
-  
+  ngOnDestroy() {
+    // This perform cleanup when the component is destroyed
+  }
+
+  // Handle "Edit" button click
   onEditClicked(id: number) {
+    // Navigate to the "equipment-edit" route with the specified ID
     this.router.navigate(['/equipment-edit', id]);
-   
-    }
+  }
 }

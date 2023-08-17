@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DisabledformPersonalInfoComponent } from './feature-disabledform-personal-info.component';
+import { DisabledformPersonalInfoComponent } from './personal-info-form.component';
 
 
 

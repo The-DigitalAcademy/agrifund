@@ -1,19 +1,25 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
+
+/* Styling for the main content area */
 .page-body {
-  /* align-items: flex-start; */
   background-image: url(src/assets/images/background/orange-trees.webp);
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
+/* Styling for crop information section */
 .crop-info {
   margin-top: var(--normal-s);
 }
 
+/* Styling for farm information section */
 .farm-info {
   margin-top: var(--normal-s);
 }
 
+/* Styling for headings and their alignment */
 .headings {
   display: flex;
   align-items: center;
@@ -21,68 +27,58 @@
   width: 100%;
 }
 
+/* Styling for the left section */
 #left {
   padding-right: var(--small-s) !important;
-
-
 }
 
+/* Styling for the right section */
 #right {
-
   padding-left: var(--small-s) !important;
-
 }
 
+/* Styling for the bottom section */
 #bottom {
-
   padding-top: var(--normal-s) !important;
 }
 
+/* Styling for h1 headings */
 h1 {
   position: relative;
 }
 
-
-
+/* Media query for screens with max width 767px */
 @media (max-width: 767px) {
-
-  
+  /* Adjust padding and margins for responsive layout */
 
   #left {
-    padding-right:0 !important;
-   
-  
+    padding-right: 0 !important;
   }
   #right {
-
     padding-left: 0 !important;
-  
   }
-
   #bottom {
-
-    padding: 0  !important;
+    padding: 0 !important;
   }
 
+  /* Adjust margins for specific sections */
   .crop-info {
     margin-top: var(--normal-s);
   }
-
   .farm-info {
     margin-bottom: var(--normal-s);
   }
-
   .equipment-info {
     margin-top: var(--normal-s);
   }
 
+  /* Remove padding for specific elements */
   .page-content>* {
     padding: 0px !important;
   }
 
+  /* Adjust padding for h1 headings */
   h1 {
     padding: 4% 2% !important;
-
   }
-
 }

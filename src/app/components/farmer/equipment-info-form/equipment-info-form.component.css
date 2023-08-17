@@ -1,0 +1,31 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
+
+/* Styling for a heading with a profile section */
+.profile-heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling for a heading section */
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Styling for a general container */
+.container {
+  width: 100%;
+}
+
+/* Styling for horizontal rules (hr) */
+hr {
+  height: 2px;
+  border-color: var(--grey);
+  border: 1px solid #ccc;
+  margin-bottom: var(--medium-s);
+}

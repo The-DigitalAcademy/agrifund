@@ -1,40 +1,54 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
+
+/* Styling for the page body with a background image */
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
     flex-direction: column;
 }
 
+/* Styling for a mobile header with a background image */
 .mobile-header {
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
+/* Styling for h2 headings */
 h2 {
     margin: 0px !important;
     padding: var(--small-s) 0px;
     font-family: var(--normal-font);
 }
 
+/* Styling for form input elements */
 .form-input {
     margin: 0px !important;
 }
 
-.justify-start{
+/* Styling for aligning content to the start with zero margin */
+.justify-start {
     margin: 0px !important;
     align-items: center;
 }
 
-.doc-header>*{
+/* Styling for elements within a doc header */
+.doc-header > * {
     font-size: var(--font-small);
     padding-right: var(--small-s);
     margin-bottom: 0px !important;
 }
 
-.actions{
+/* Styling for action elements */
+.actions {
     margin-bottom: var(--normal-s) !important;
 }
 
-.text-danger{
+/* Styling for text indicating danger with top margin */
+.text-danger {
     margin-top: var(--s-small-s) !important;
 }
+
+/* Media Query for Small Screens (max-width: 767px) */
 @media (max-width: 767px) {
-    
+    /* Add responsive styles for small screens here */
 }
