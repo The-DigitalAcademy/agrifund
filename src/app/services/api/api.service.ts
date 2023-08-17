@@ -1,5 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Ntokozo Radebe
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+
+    DESCRIPTION:
+     This service is for all methods related to a user
+
+-------------------------------------------------------------------------------------------------*/
+// Import necessary modules and components from Angular core and other sources
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, tap } from 'rxjs';
+import { Users } from 'src/app/models/users';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -22,12 +34,28 @@ export class ApiService {
     // used by admin to get farmer related data
 
     // TODO user
-    private userURL = this.baseUrl + '/users';
+    private userURL = this.baseUrl + '/users'; // Define the URL for user registration
+    private loginURL = this.baseUrl + '/login'; // Define the URL for user login
 
     /* --------------------------------
         FARMER CONNECTION STRINGS
     ---------------------------------*/
     private farmerAssetURL = this.baseUrl + '/assets';
+    // url used to register a farmer user
+    private registerFarmerURL = this.baseUrl + 'auth/register/farmer';
+    // url used to login a farmer user
+    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
+    // TODO find farmer by email
+
+    // TODO reset password
+
+    // TODO send OTP
+
+    // TODO farmer
+    // TODO assets
+    // TODO plot
+    // TODO farm
+    // TODO crop
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -89,12 +117,24 @@ export class ApiService {
     /* --------------------------------
         FARMER
     ---------------------------------*/
-    addEquipment(body: any){
+    addEquipment(body: any) {
         return this.http.post(`${this.farmerAssetURL}`, body);
     }
 
-    getAllEquipment(){
+    getAllEquipment() {
         console.log(this.farmerAssetURL);
         return this.http.get(`${this.farmerAssetURL}`);
+    }
+    // register user
+    registerUser(user: any): Observable<any> {
+        // Send a POST request to the user registration URL
+        return this.http.post(this.userURL, user);
+    }
+    // login a user
+    login(email: string, password: string): Observable<any> {
+        // Create the request body with email and password
+        const body = { email, password };
+        // Send a POST request to the login URL with the provided credentials
+        return this.http.post(this.loginURL, body);
     }
 }

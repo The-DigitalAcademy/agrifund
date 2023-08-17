@@ -218,6 +218,62 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "c1b52927-87a7-4f09-a913-24b3a5867920",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "64ff791d-5a8b-4373-bd8f-df296d22a528",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "3i64",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fc9b8369-8826-4f62-9edd-1c8ed8220d52",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "59661ae9-5e4a-4dde-84e2-e1cb83f07123",
+          "body": "{ \n  \"token\": \"your_mock_token_here\" \n\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -240,6 +296,14 @@
     {
       "type": "route",
       "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc"
+    },
+    {
+      "type": "route",
+      "uuid": "c1b52927-87a7-4f09-a913-24b3a5867920"
+    },
+    {
+      "type": "route",
+      "uuid": "fc9b8369-8826-4f62-9edd-1c8ed8220d52"
     }
   ],
   "proxyMode": false,
@@ -309,7 +373,7 @@
       "id": "3i64",
       "name": "user",
       "documentation": "",
-      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\",\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "aa6aeb07-e3b8-48cc-a17a-be507a4e1d79",
