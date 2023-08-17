@@ -1,15 +1,15 @@
-// AUTHOR: Monique
-//     CREATE DATE: 08 AUG 2023
-//     UPDATED DATE: 17 Aug 2023 
+    // AUTHOR: Bolebo
+    // CREATE DATE: 08 AUG 2023
+    // UPDATED DATE: 17 Aug 2023 
 
-//     DESCRIPTION:
-//     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO.
-//     calculateTotalIncome: update income statement total income
-//     calculateTotalExpense: update income statement total expense
-//     calculateTotalNetIncome:  method to calculate overall profit
-//     Getchartinfo -> A METHOD TO FETCH DATA INFO FROM THE MOCK API
-//    fetch total income
-//    fetch total net income (profit)
+    // DESCRIPTION:
+    // I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO.
+    // calculateTotalIncome: update income statement total income
+    // calculateTotalExpense: update income statement total expense
+    // calculateTotalNetIncome:  method to calculate overall profit
+    // Getchartinfo -> A METHOD TO FETCH DATA INFO FROM THE MOCK API
+    // fetch total income
+    // fetch total net income (profit)
 
 
 
