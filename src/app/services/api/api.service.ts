@@ -34,8 +34,8 @@ export class ApiService {
     // used by admin to get farmer related data
 
     // TODO user
-    private userURL = ''; // Define the URL for user registration
-    private loginURL = ''; // Define the URL for user login
+    private userURL = this.baseUrl + '/users'; // Define the URL for user registration
+    private loginURL = this.baseUrl + '/login'; // Define the URL for user login
 
     /* --------------------------------
         FARMER USER CONNECTION STRINGS
