@@ -48,6 +48,7 @@ a fa-icon {
     background-color: var(--light);
     z-index: 99;
     height: 100%;
+    width: max-content;
 }
 
 /*---------------------------------

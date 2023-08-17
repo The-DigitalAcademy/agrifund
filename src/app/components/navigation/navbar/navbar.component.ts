@@ -15,7 +15,7 @@
 
 -------------------------------------------------------------------------------------------------*/
 
-import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { UserServiceService } from 'src/app/services/user/user-service.service';
@@ -30,6 +30,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     userState$: Observable<string> | undefined;
     // stores the subscription to user service
     userSubscription!: Subscription;
+    // revers to the offcanvas html element
+    @ViewChild('offcanvas', { static: true }) private offcanvas!: NgbOffcanvas;
 
     constructor(
         private _offcanvasService: NgbOffcanvas,
@@ -51,10 +53,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     // toggles the offcanvas visibility
-    openOffcanvas(content: TemplateRef<any>) {
-        this._offcanvasService.open(content, {
+    openOffcanvas() {
+        this._offcanvasService.open(this.offcanvas, {
             backdrop: 'static',
             keyboard: false,
         });
+    }
+
+    closeOffcanvas() {
+        this._offcanvasService.dismiss();
     }
 }
