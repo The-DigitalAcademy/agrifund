@@ -1,3 +1,4 @@
+<!-- Mamotsoko Precious Maphutha Validations 07/08/2023-->
 <div class="mobile-header">
     <img src="assets/images/background/barn.webp" alt="..." />
 </div>
@@ -16,6 +17,7 @@
                             </button>
                         </div>
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -31,6 +33,7 @@
                             formControlName="first_name"
                             class="form-control"
                             id="firstNameInput" />
+                            <!--This is the validation for firstname-->
                         <small
                             *ngIf="
                                 RegisterForm.controls['first_name'].hasError(
@@ -61,6 +64,7 @@
                             >Field is required.</small
                         >
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -76,6 +80,7 @@
                             formControlName="last_name"
                             class="form-control"
                             id="lastNameInput" />
+                             <!--This is the validation for lastname-->
                         <small
                             *ngIf="
                                 RegisterForm.controls['last_name'].hasError(
@@ -106,6 +111,7 @@
                             >Field is required.</small
                         >
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -121,6 +127,7 @@
                             formControlName="id_number"
                             class="form-control"
                             id="idnumInput" />
+                                 <!--This is the validation for ID NUMBER-->
                         <small
                             *ngIf="
                                 RegisterForm.controls['id_number'].hasError(
@@ -149,6 +156,7 @@
                             >Field is required.</small
                         >
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -164,6 +172,7 @@
                             formControlName="email"
                             class="form-control"
                             id="emailInput" />
+                                 <!--This is the validation for email-->
                         <small
                             *ngIf="
                                 RegisterForm.controls['email'].hasError(
@@ -183,6 +192,7 @@
                             >Field is required.</small
                         >
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -198,6 +208,7 @@
                             formControlName="cell_number"
                             class="form-control"
                             id="phoneNumberInput" />
+                                 <!--This is the validation for cell number-->
                         <small
                             *ngIf="
                                 RegisterForm.controls['cell_number'].hasError(
@@ -217,7 +228,7 @@
                             >Field is required.</small
                         >
                     </div>
-
+                               <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -233,6 +244,7 @@
                             formControlName="password"
                             class="form-control"
                             id="passwordinput" />
+                                 <!--This is the validation for invalid password-->
                         <small
                             *ngIf="
                                 RegisterForm.controls['password'].hasError(
@@ -253,6 +265,7 @@
                             >Field is required.</small
                         >
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -268,6 +281,7 @@
                             formControlName="cpassword"
                             class="form-control"
                             id="cpassword" />
+                               <!--This is the validation for invalid confirm password-->
                         <small
                             *ngIf="
                                 RegisterForm.hasError('passwordsMatch') &&
