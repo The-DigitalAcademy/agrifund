@@ -1,7 +1,12 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique, Kamo
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 .page-body {
   /* align-items: flex-start; */
   background-image: url(src/assets/images/background/orange-trees.webp);
-
 }
 
 .page-content {
