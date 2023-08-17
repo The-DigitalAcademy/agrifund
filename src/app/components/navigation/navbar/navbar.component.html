@@ -3,36 +3,42 @@
     CREATE DATE: 24 Jul 2023
     UPDATED DATE: 17 Aug 2023 
  -->
-<nav class="navbar">
-    <!--before login-->
-    <div class="nav-left">
-        <div class="justify-start">
-            <button
-                class="btn icon-btn navbar-toggler"
-                type="button"
-                (click)="openOffcanvas(offcanvasAfterLogin)">
-                <fa-icon icon="bars"></fa-icon>
-            </button>
+<ng-container
+    *ngIf="{
+        userState: userState$ | async
+    } as observables">
 
-            <h1 class="nav-brand">
-                <span>Agri</span>
-                <img
-                    src="assets/images/logo/f_carrot.png"
-                    class="icon-img"
-                    alt="F" />
-                <span>und</span>
-            </h1>
+    <nav class="navbar">
+        <!--before login-->
+        <div class="nav-left">
+            <div class="justify-start">
+                <button
+                    class="btn icon-btn navbar-toggler"
+                    type="button"
+                    (click)="openOffcanvas(offcanvas)">
+                    <fa-icon icon="bars"></fa-icon>
+                </button>
+
+                <h1 class="nav-brand">
+                    <span>Agri</span>
+                    <img
+                        src="assets/images/logo/f_carrot.png"
+                        class="icon-img"
+                        alt="F" />
+                    <span>und</span>
+                </h1>
+            </div>
         </div>
-    </div>
-    <div class="nav-right mobile-hidden">
-        <div
-            *ngIf="
-                $userState !== null;
-                then navRightAfterLogin;
-                else navRightBeforeLogin
-            "></div>
-    </div>
-</nav>
+        <div class="nav-right mobile-hidden">
+            <div
+                *ngIf="
+                    userState$ !== null;
+                    then navRightAfterLogin;
+                    else navRightBeforeLogin
+                "></div>
+        </div>
+    </nav>
+</ng-container>
 <!-- navbar right side before login -->
 <ng-template #navRightBeforeLogin>
     <button type="button" class="btn colourful-btn" [routerLink]="['/login']">
@@ -54,7 +60,7 @@
 </ng-template>
 
 <!-- offcanvas after login -->
-<ng-template #offcanvasAfterLogin let-offcanvas>
+<ng-template #offcanvas let-offcanvas>
     <div class="offcanvas-header">
         <h1 class="nav-brand">
             <span>Agri</span>
@@ -118,5 +124,5 @@
         </button>
     </div>
 </ng-template>
-
-<ng-template #navbarBrand></ng-template>
+<!-- 
+<ng-template #navbarBrand></ng-template> -->

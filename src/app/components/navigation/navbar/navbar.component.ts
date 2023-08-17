@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 16 Aug 2023 
+    UPDATED DATE: 17 Aug 2023 
 
     DESCRIPTION:
         This component is for the navbar that is used for navigation toggling the sidebar and offcanvas.
@@ -10,11 +10,15 @@
     PARAMETERS:
     $userState -> stores the user state as an observable to keep the validity of a user token for a session
     _offcanvasService -> calls the ngbootstrap offcanvas service
+    offcanvas-> used to store the name of the offcanvas item that should be triggered
+    _userService -> stores the subscription of the user service
 
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 @Component({
     selector: 'app-navbar',
@@ -22,13 +26,21 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-    $userState!: any;
+    // stores the state of the user login=
+    userState$: Observable<string> | undefined;
 
-    constructor(private _offcanvasService: NgbOffcanvas) {}
+    constructor(
+        private _offcanvasService: NgbOffcanvas,
+        private _userService: UserServiceService
+    ) {}
 
     ngOnInit() {
-        this.$userState = 'authenticated';
-        // this.$userState = null;
+        // sets the user stat for testing purposes
+        // this.$userState = 'authenticated';
+        this._userService.getUserState().subscribe((userState: any) => {
+            this.userState$ = userState;
+            console.log(userState);
+        });
     }
 
     // toggles the offcanvas visibility

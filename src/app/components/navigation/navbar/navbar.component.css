@@ -3,18 +3,19 @@
     CREATE DATE: 24 Jul 2023
     UPDATED DATE: 17 Aug 2023 
 -------------------------------------------------------------------------------------------------*/
-
 nav {
     display: flex;
     vertical-align: center !important;
-
+    /* makes the navbar fill the width of the page */
     width: 100%;
+    /* sets teh height of the navbar */
     height: 55px !important;
-
+    /* removes margins and padding from navbar */
     margin: 0px;
     padding: 0px;
 
     overflow: hidden;
+    /* makes the navbar a light colour */
     background-color: var(--light);
 }
 
