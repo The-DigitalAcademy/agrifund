@@ -6,9 +6,6 @@
     DESCRIPTION:
         This component controls the carousel component of page
 
-        
-
-
     PARAMETERS:
     carousel -> used to call the ng-bootstrap carousel html element 
     ViewEncapsulation -> make bootstrap css for the carousel overridable

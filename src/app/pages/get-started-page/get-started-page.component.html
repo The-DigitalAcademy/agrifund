@@ -1,3 +1,9 @@
+<!-- 
+    AUTHOR: Mamokgosi(Precious), Monique, Kamogelo
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+ -->
+
 <app-navbar></app-navbar>
 <div class="row page-body page-background">
     <div class="mobile-header"></div>
@@ -10,9 +16,6 @@
                 class="container inner-container"
                 #carousel="ngbCarousel"
                 [activeId]="'slide1'">
-                <!-- dynamically display slides based on element in array -->
-                <!-- <ng-container> -->
-                <!-- build portfolio slide -->
                 <ng-template ngbSlide id="slide1">
                     <div class="justify-center">
                         <img
@@ -117,7 +120,6 @@
                         </div>
                     </div>
                 </ng-template>
-                <!-- </ng-container> -->
             </ngb-carousel>
             <div class="actions">
                 <div class="justify-start">

@@ -1,3 +1,9 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 nav {
     display: flex;
     vertical-align: center !important;
@@ -12,6 +18,7 @@ nav {
     background-color: var(--light);
 }
 
+/* changes the colour of the burger menu button to dark */
 .icon-btn{
     color: var(--dark) !important;
 }
