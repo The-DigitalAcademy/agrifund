@@ -7,8 +7,10 @@
             <h1>Bookkeep</h1>
         </div>
 
-        <!-- no bookkeep data card -->
-        <div class="content justify-center no-data-card">
+        <!-- no bookkeep data card displayed if bookkeep records is empty-->
+        <div
+            *ngIf="bookkeepRecords?.length === 0"
+            class="content justify-center no-data-card">
             <div class="container justify-center no-data-card-inner">
                 <h1 class="align-center">Add Your First Bookkeep Record...</h1>
                 <h3 class="align-center">

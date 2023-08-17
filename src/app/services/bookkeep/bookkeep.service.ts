@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -14,11 +15,12 @@ export class BookkeepService {
     ----------------------------------*/
     // stores all the bookkeep records
     private bookkeepRecords: IncomeStatementItem[] = [];
+    // used to store bookkeeping records as observables
+    private bookkeepRecords$: BehaviorSubject<IncomeStatementItem>;
     // stores the the filtered and searched records
+    // private fileterdRecords$: BehaviorSubject<IncomeStatementItem>;
 
     //TODO
-    // create a bookkeep record observable
-
     // create bookkeep records observable
     // create incomeStatment observable
     // create income statements observable
@@ -28,6 +30,17 @@ export class BookkeepService {
             // console.table(products);
             //populate bookkeep records array with records from api
             this.bookkeepRecords = data;
+        });
+
+        // creates a default bookkeeping record behaviour subject
+        this.bookkeepRecords$ = new BehaviorSubject<IncomeStatementItem>({
+            id: this.generateRecordId(),
+            statement_id: 0, //income statment id
+            category: '',
+            amount: 0,
+            proof: '',
+            description: '',
+            date: '', //date of the record
         });
     }
 
@@ -40,6 +53,13 @@ export class BookkeepService {
         return id;
     }
 
+    // adds a new bookkeeping record
+    setBookkeepRecords(record: IncomeStatementItem) {}
+
+    // getBookkeepRecords() {
+
+    // }
+
     // TODO
     // create a new bookkeeping record
 
@@ -49,6 +69,13 @@ export class BookkeepService {
     /*---------------------------------
         GET DATA
     ----------------------------------*/
+    // returns all bookkeping records within the behavior subject
+    getBookkeepRecords() {
+        return this.bookkeepRecords$;
+
+
+    }
+
     // TODO
     // get a bookkeep record by id
 
