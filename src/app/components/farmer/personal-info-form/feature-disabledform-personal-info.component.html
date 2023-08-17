@@ -24,7 +24,7 @@
 <!-- personal-info-form.component.html -->
 <!-- disabledform-personal-info.component.html -->
 
-
+<!-- Mamotsoko Precious Maphutha Validations 07/08/2023-->
 
 <div class="container">
   <div class="profile-heading">
@@ -39,11 +39,13 @@
   <hr>
   <div class="sub-container">
     <form [formGroup]="myForm">
+       <!--ngClass it is used for the error and success state-->
       <div class="form-input" [ngClass]="{'has-success': myForm.controls['first_name'].valid && myForm.controls['first_name'].dirty, 'has-error': myForm.controls['first_name'].invalid && myForm.controls['first_name'].dirty}">
         
         <label for="first_name" class="form-label">First Name</label>
         <input type="text" class="form-control" id="first_name" 
           formControlName="first_name" [disabled]="isDisabled">
+          <!--This is the validation for firstname-->
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('invalidName') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('textWithoutNumbers') && myForm.controls['first_name'].dirty" class="text-danger">First name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['first_name'].hasError('required') && myForm.controls['first_name'].dirty" class="text-danger">First name required.</div>
@@ -52,6 +54,7 @@
         <label for="last_name" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="last_name" formControlName="last_name"
           [disabled]="isDisabled">
+          <!--This is the validation for lastname-->
           <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('invalidName') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf=" myForm.controls['last_name'].hasError('textWithoutNumbers') && myForm.controls['last_name'].dirty" class="text-danger">Last name should contain only text characters.</div>
           <div class="form-text text-danger" *ngIf="myForm.controls['last_name'].hasError('required') && myForm.controls['last_name'].dirty" class="text-danger">Last name required.</div>
