@@ -53,6 +53,7 @@ export class ChartService {
   // method to calculate overall profit
   calculateTotalNetIncome() {
     this.calculateTotalIncome() - this.calculateTotalExpense();
+    
   }
   // fetch total income
   getTotalIncome() {
