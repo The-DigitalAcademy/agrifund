@@ -595,6 +595,8 @@ button {
 
 /* style for buttons on white backgrounds */
 .colourful-btn {
+    display: flex;
+        flex-direction: row;
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
