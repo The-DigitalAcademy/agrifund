@@ -23,37 +23,44 @@ constructor(private router: Router, private _fb: FormBuilder, private _portfolio
   }
   ngOnInit(): void {
 
-    this.createEquipmentForm = this._fb.group({
-      equipmentName: ['', [Validators.required]],
-      equipmentType:['', [Validators.required]],
-      equipmentAge:['', [Validators.required]],
-      equipmentAmount:['', [Validators.required]],
-    });
-    
+    // Create the form group for equipment creation with validators
+this.createEquipmentForm = this._fb.group({
+  equipmentName: ['', [Validators.required]],
+  equipmentType: ['', [Validators.required]],
+  equipmentAge: ['', [Validators.required]],
+  equipmentAmount: ['', [Validators.required]],
+});
   }
-
-  
-  //test if the the data filled in the form is valid
-  //also check if the data can display on the console
+// Function to save equipment data
 saveEquipment() {
+  // Mark the form as submitted
   this.submitted = true;
-  if(this.createEquipmentForm.valid) {
+
+  // Check if the form data is valid
+  if (this.createEquipmentForm.valid) {
+    // Create an object representing the equipment data
     this.asset = {
-      id: this._portfolioServiceService.generateId(),
-      farm_id: this._portfolioServiceService.generateFarmId(),
+      id: this._portfolioServiceService.generateId(),         // Generate an ID
+      farm_id: this._portfolioServiceService.generateFarmId(), // Generate a Farm ID
       name: this.createEquipmentForm.get('equipmentName')?.value,
       type: this.createEquipmentForm.get('equipmentType')?.value,
       age: this.createEquipmentForm.get('equipmentAge')?.value,
       purchase_price: this.createEquipmentForm.get('equipmentAmount')?.value,
     };
 
+    // Log the equipment data to the console as a table
     console.table(this.asset);
-    this._apiService.addEquipment(this.asset).subscribe(data => {
-      console.table(data);
 
+    // Call the API service to add equipment data
+    this._apiService.addEquipment(this.asset).subscribe(data => {
+      // Log the response data to the console as a table
+      console.table(data);
     });
 
+    // Navigate to the '/portfolio' route after saving
     this.router.navigate(['/portfolio']);
   }
 }
+
 }
+

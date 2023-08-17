@@ -1,37 +1,51 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
 
-fa-icon{
+/* Styling for FontAwesome icons */
+fa-icon {
     color: var(--grey);
-}
-.inline-content{
+  }
+  
+  /* Styling for inline content */
+  .inline-content {
     display: inline-block; /* or "inline" if you want them to be truly inline elements */
     margin: 0;
-}
-.container{
+  }
+  
+  /* Styling for a general container */
+  .container {
     width: 100%;
-}
-.add-icon-container{
-    
+  }
+  
+  /* Styling for a container with "add" icons */
+  .add-icon-container {
     margin-bottom: 2%;
-}
-.left,
-.right {
+  }
+  
+  /* Styling for left and right sections (flex containers) */
+  .left,
+  .right {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-/*---------------------------------
-    Media Query for Mobile Devices
-----------------------------------*/
-@media (min-width: 300px) and (max-width:428px) {
- button{
-    margin-bottom: 10%;
-    
- }
-
-  .info{
-    display: flex;
   }
-    .container{
-        height: auto !important;
+  
+  /* Media Query for Mobile Devices (width range: 300px to 428px) */
+  @media (min-width: 300px) and (max-width: 428px) {
+    /* Styles for buttons */
+    button {
+      margin-bottom: 10%;
     }
-}
+  
+    /* Styles for the "info" section */
+    .info {
+      display: flex;
+    }
+  
+    /* Adjust container height for mobile devices */
+    .container {
+      height: auto !important;
+    }
+  }
+  

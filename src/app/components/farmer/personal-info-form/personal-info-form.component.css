@@ -1,0 +1,101 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
+
+/* Styling for a general container */
+.container {
+  border-color: var(--light-grey);
+  border: 1px solid #ccc;
+  background-color: var(--light-3);
+}
+
+/* Additional styling for a specific container with id "container" */
+#container {
+  background-color: var(--light-1);
+}
+
+/* Styling for form controls (input fields, etc.) */
+.form-control {
+  border-color: var(--lighter-grey);
+}
+
+/* Styling for horizontal rules (hr) */
+hr {
+  height: 2px;
+  border-color: var(--grey);
+  border: 1px solid #ccc;
+  margin-bottom: var(--medium-s);
+}
+
+/* Styling for a container for file-related content */
+.file-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+
+/* Styling for buttons container */
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for buttons */
+.btn {
+  margin: 30px;
+}
+
+/* Styling for a file input element */
+#document {
+  width: 75%;
+  height: 10%;
+}
+
+/* Styling for the label within the file container */
+.file-container label {
+  font-weight: bold;
+}
+
+/* Styling for file input within the file container */
+.file-container input[type="file"] {
+  margin-top: 5px;
+}
+
+/* Styling for a heading with a profile section */
+.profile-heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling for a heading section */
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Styling for an action section */
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Media query for small screens */
+@media (max-width: 767px) {
+  /* Add responsive styles for small screens here */
+}
+
+/* CSS Styles for Success and Error States */
+.has-success .form-control {
+  border-color: green;
+}
+
+.has-error .form-control {
+  border-color: red;
+}

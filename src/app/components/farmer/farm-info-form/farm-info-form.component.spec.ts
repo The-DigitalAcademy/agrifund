@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisabledformFarmInfoComponent } from './disabledform-farm-info.component';
+import { DisabledformFarmInfoComponent } from './farm-info-form.component';
 
 describe('DisabledformFarmInfoComponent', () => {
   let component: DisabledformFarmInfoComponent;

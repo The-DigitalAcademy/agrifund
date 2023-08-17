@@ -44,13 +44,13 @@ import { MoneyCardSummaryComponent } from './components/data-summary/money-card-
     PORTFOLIO
 ---------------------------------*/
 import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
-import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
+import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/personal-info-form.component';
 
-import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
-import { EnableformCropInfoComponent } from './components/farmer/enableform-crop-info/enableform-crop-info.component';
+import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/crop-info-form.component';
+import { EnableformCropInfoComponent } from './components/farmer/edit-all-form/edit-all-form.component';
 import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
 import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
-import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
+import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/farm-info-form.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 

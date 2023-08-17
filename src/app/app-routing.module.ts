@@ -10,7 +10,7 @@ import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfoli
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
 import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
-import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
+import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/farm-info-form.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 
 import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
