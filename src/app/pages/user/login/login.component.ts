@@ -1,3 +1,13 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Ntokozo Radebe
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 10 Aug 2023 
+
+    DESCRIPTION:
+    All the methods related to logging in a farmer
+
+-------------------------------------------------------------------------------------------------*/
+// Import necessary modules and components from Angular core and other sources
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';

@@ -1,3 +1,13 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Ntokozo Radebe
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+
+    DESCRIPTION:
+     This service is for all methods related to a user
+
+-------------------------------------------------------------------------------------------------*/
+// Import necessary modules and components from Angular core and other sources
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap } from 'rxjs';
