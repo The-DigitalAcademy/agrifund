@@ -13,6 +13,8 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -20,11 +22,24 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-    userState$!: any;
+    // stores the state of the user token
+    userState$: Observable<string> | undefined;
+    // stores the subscription to user service
+    userSubscription!: Subscription;
+
+    constructor(private _userService: UserServiceService) {}
 
     ngOnInit() {
-        // sets the user stat for testing purposes
-        this.userState$ = 'authenticated';
-        // this.$userState = null;
+        // get the user state value and stores it within the subscription
+        this.userSubscription = this._userService
+            .getUserState()
+            .subscribe((userState: any) => {
+                this.userState$ = userState;
+                // console.log(userState);
+            });
+    }
+
+    ngOnDestroy() {
+        this.userSubscription.unsubscribe();
     }
 }

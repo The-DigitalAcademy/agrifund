@@ -4,7 +4,7 @@
     UPDATED DATE: 17 Aug 2023 
 
     DESCRIPTION:
-        This service is for all methods related to a user
+    This service is for all methods related to a user
 
     PARAMETERS:
     userState$ -> stores the user state as an observable to keep the validity of a user token for a session
@@ -18,8 +18,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class UserServiceService {
-    value = 'mock_Token';
-    // value: any = null;
+    // value = 'mock-token';
+    value: any = null;
     // observable to store the user state
     private userState$: BehaviorSubject<string> = new BehaviorSubject(
         this.value
