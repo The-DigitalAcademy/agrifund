@@ -18,8 +18,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class UserServiceService {
-    value = 'mock-token';
-    // value: any = null;
+    // value = 'mock-token';
+    value: any = null;
     // observable to store the user state
     private userState$: BehaviorSubject<string> = new BehaviorSubject(
         this.value

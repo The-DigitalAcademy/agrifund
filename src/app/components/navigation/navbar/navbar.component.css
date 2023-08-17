@@ -137,9 +137,10 @@ h1 {
 /* OFFCANVAS */
 .offcanvas {
     background-color: var(--light);
+    width: min-content;
 }
 
-.offcanvas-header, .offcanvas-body, .offcanvas-footer {
+.offcanvas-header, .offcanvas-footer {
     padding: var(--small-s) !important;
 }
 
@@ -157,6 +158,14 @@ h1 {
     align-items: center;
     z-index: 2;
     height: max-content;
+}
+
+.offcanvas-footer .justify-end{
+    padding-left: var(--xx-small-s) !important;
+}
+
+.offcanvas-footer .justify-start {
+    padding-right: var(--xx-small-s) !important;
 }
 
 .offcanvas-footer .btn {
