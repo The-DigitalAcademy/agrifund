@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
                         if (this.userService.isAuthenticated(response.token)) {
                             // Redirect to the dashboard upon successful authentication
                             this.router.navigate(['/dashboard']);
-                            alert('Authentication successful');
+                          
                         } else {
                             // Handle non-authenticated scenario, for example:
                             localStorage.removeItem('token');

@@ -86,7 +86,7 @@ export class RegisterComponent implements OnInit {
             this._apiService.RegisterUser(this.users).subscribe(data => {
                 // Handle success or error response from the API
                 this.router.navigate(['/login']); // Navigate to login page after successful registration
-                alert('Successfully Registered'); // Show an alert to the user
+                
             });
         }
     }
