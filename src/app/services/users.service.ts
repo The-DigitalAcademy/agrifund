@@ -8,7 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
+private mockToken = 'your_mock_token_here';
 
+  constructor() {}
+
+  isAuthenticated(token: string): boolean {
+    return token === this.mockToken;
   }
+}
+  
 
 

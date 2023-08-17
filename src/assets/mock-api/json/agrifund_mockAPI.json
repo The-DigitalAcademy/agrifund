@@ -728,6 +728,13 @@
       "name": "users",
       "documentation": "",
       "value": "\n[\n  {{#repeat 3}}\n  {\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "2bfafc58-4d63-4328-a0de-0b3a18ea4d1e",
+      "id": "81i1",
+      "name": "New data",
+      "documentation": "",
+      "value": ""
     }
   ]
 }

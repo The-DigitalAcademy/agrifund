@@ -52,7 +52,7 @@ import { PortfolioProgressbarComponent } from './components/data-summary/portfol
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-import { AuthInterceptor } from './auth.interceptor';
+
 
 /* --------------------------------
     ICONS
@@ -123,9 +123,7 @@ import {
         ReactiveFormsModule,
         HttpClientModule,
     ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    ],
+    providers: [],
     bootstrap: [AppComponent],
 })
 export class AppModule {
