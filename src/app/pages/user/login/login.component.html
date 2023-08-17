@@ -1,3 +1,4 @@
+<!-- Mamotsoko Precious Maphutha Validations 07/08/2023-->
 <div class="mobile-header">
     <img src="assets/images/background/orange-trees.webp" alt="..." />
 </div>
@@ -18,7 +19,7 @@
                             </button>
                         </div>
                     </div>
-
+<!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -34,6 +35,7 @@
                             formControlName="email"
                             class="form-control"
                             id="emailInput" />
+                                 <!--This is the validation for invalid password-->
                         <small
                             *ngIf="
                                 LoginForm.controls['email'].hasError(
@@ -53,6 +55,7 @@
                             >Field is required.</small
                         >
                     </div>
+                    <!--ngClass it is used for the error and success state-->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -68,6 +71,7 @@
                             formControlName="password"
                             class="form-control"
                             id="passwordinput" />
+                            <!--This is the validation for invalid password-->
                         <small
                             *ngIf="
                                 LoginForm.controls['password'].hasError(

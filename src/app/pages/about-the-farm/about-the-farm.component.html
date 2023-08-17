@@ -4,9 +4,10 @@
         </div> -->
         <div class="outer-container mobile hidden">
 <ngb-carousel *ngIf="formSlides">
-        <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">
+        <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">  <!-- Array for form slides -->
           <form [formGroup]="formSlide.formGroup">
             <div class = "carousel-inner">
+                <!-- *ngIf conditions and form controls -->
             <div *ngIf="i === 0">
                 <div class="inner-container">
                     <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
@@ -16,6 +17,7 @@
                         <br> But first we would love to hear more about your farm!</p>
                       </div>
                 </div>
+                <!-- *ngIf conditions and form controls -->
             <div *ngIf="i === 1">
                 <div class="page-heading justify-center">
                     <h2>Tell me about your farm</h2>
@@ -48,8 +50,8 @@
                 </div>
                 </div>
             </div>
+            <!-- *ngIf conditions and form controls -->
             <div *ngIf="i === 2">
-            <!-- Add more *ngIf conditions and form controls for additional slides if needed -->
             <div class="container">
                 <div class="page-heading justify-center">
                     <h2>Plot</h2>
@@ -73,6 +75,7 @@
                 </div>
               </div>
             </div>
+              <!-- *ngIf conditions and form controls -->
             <div *ngIf="i === 3">
                 <div class="container">
                         <div class="page-heading justify-center">
