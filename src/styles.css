@@ -110,6 +110,7 @@ app-sidebar {
     height: 100%;
     max-width: max-content;
 }
+
 /*------------------
     CONTAINERS 
 --------------------*/
@@ -257,8 +258,8 @@ app-sidebar {
 }
 
 /* adds a dark overlay on header */
-.mobile-header::before{
-content: "";
+.mobile-header::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -603,7 +604,7 @@ button {
 /* style for buttons on white backgrounds */
 .colourful-btn {
     display: flex;
-        flex-direction: row;
+    flex-direction: row;
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
@@ -637,9 +638,9 @@ button {
 }
 
 /* style of an icon when hovering or focusing */
-.icon-btn:hover, 
+.icon-btn:hover,
 .icon-btn:hover fa-icon,
-.icon-btn:focus, 
+.icon-btn:focus,
 .icon-btn:focus fa-icon {
     color: var(--dark) !important;
 }
@@ -654,8 +655,7 @@ button {
 /* style of a dark icon button on hover or focus*/
 .icon-btn-dark:hover,
 .icon-btn-dark:hover fa-icon,
-.icon-btn-dark:focus 
-.icon-btn-dark:focus fa-icon{
+.icon-btn-dark:focus .icon-btn-dark:focus fa-icon {
     color: var(--primary-colour) !important;
 }
 
@@ -783,7 +783,8 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .page-content, .mobile-header{
+    .page-content,
+    .mobile-header {
         /* add space at the top to take the navbar size into consideration */
         padding: 55px var(--normal-s) var(--normal-s) !important;
     }
@@ -805,7 +806,8 @@ hr {
         /* border: none !important; */
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--medium-s);
     }
 
@@ -874,11 +876,10 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .page-content {
+    .page-content{
         /* add space at the top to take the navbar size into consideration */
         padding: 55px var(--xx-large-s) var(--normal-s) !important;
     }
-
 
     /* set styles for all contnet within page-content div */
     .page-content>* {
@@ -889,7 +890,8 @@ hr {
         padding: var(--normal-s) 0px 0px 0px;
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         width: 75%;
         padding: var(--medium-s);
     }
@@ -935,7 +937,12 @@ hr {
         padding: 75px var(--xx-large-s) var(--normal-s) !important;
     }
 
-    .container, .form-container {
+        app-sidebar {
+            padding-top: 55px;
+        }
+
+    .container,
+    .form-container {
         padding: var(--large-s);
     }
 
@@ -964,16 +971,20 @@ hr {
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
 
-    .page-content {
+    .page-content{
         /* add space at the top to take the navbar size into consideration */
         padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
+        app-sidebar {
+            padding-top: 55px;
+        }
 
     .form-container {
         width: 60% !important;
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--large-s);
     }
 
@@ -996,12 +1007,16 @@ hr {
 ----------------------------------*/
 @media (min-width: 1281px) {
 
-    .page-content {
+    .page-content{
         /* add space at the top to take the navbar size into consideration */
-        padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
+        padding: 55px var(--xx-large-s) var(--xx-large-s) !important;
     }
+        app-sidebar {
+            padding-top: 75px;
+        }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--xx-large-s);
         /* width: 35% !important; */
     }
