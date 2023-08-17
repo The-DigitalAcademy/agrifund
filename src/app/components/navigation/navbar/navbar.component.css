@@ -77,6 +77,8 @@ nav {
 .nav-brand {
     display: flex;
     vertical-align: center !important;
+    cursor: pointer;
+    
 }
 
 img {
