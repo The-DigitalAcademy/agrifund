@@ -1,8 +1,7 @@
 <app-navbar></app-navbar>
-<div class="row page-body page-background">
-    <div class="sidebar mobile-hidden">
-        <app-sidebar></app-sidebar>
-    </div>
+<div class="page-body page-background">
+    <!-- sidebar will be hidden on small devices -->
+    <app-sidebar class="mobile-hidden"></app-sidebar>
     <div class="page-content">
         <div class="page-heading">
             <h1>Bookkeep</h1>
@@ -45,10 +44,8 @@
                         <button
                             class="btn colourful-btn"
                             [routerLink]="['/bookkeep/create-record']">
-                            <span>
-                                <fa-icon icon="plus"></fa-icon>
-                                Create <span class="mobile-hidden">Record</span>
-                            </span>
+                            <fa-icon icon="plus"></fa-icon>
+                            Create <span class="mobile-hidden">Record</span>
                         </button>
                     </div>
 

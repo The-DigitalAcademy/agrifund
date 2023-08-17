@@ -13,8 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { UserService } from 'src/app/services/users.service';
+// import { UserService } from 'src/app/services/users.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
     selector: 'app-login',
@@ -29,8 +30,9 @@ export class LoginComponent implements OnInit {
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
         private router: Router,
-        private userService: UserService, // Service to handle user-related functionalities
-        private apiService: ApiService // Service to make API requests
+        // private userService: UserService, // Service to handle user-related functionalities
+        private apiService: ApiService, // Service to make API requests
+        private _userService: UserService
     ) {}
 
     ngOnInit(): void {
@@ -54,29 +56,32 @@ export class LoginComponent implements OnInit {
         if (this.LoginForm.valid) {
             const formValue = this.LoginForm.value;
 
-            // Call the login method of the ApiService to authenticate the user
-            this.apiService
-                .login(formValue.email, formValue.password)
-                .subscribe(
-                    (response: any) => {
-                        console.log(response);
-                        localStorage.setItem('token', response.token);
 
-                        if (this.userService.isAuthenticated(response.token)) {
-                            // Redirect to the dashboard upon successful authentication
-                            this.router.navigate(['/dashboard']);
-                          
-                        } else {
-                            // Handle non-authenticated scenario, for example:
-                            localStorage.removeItem('token');
-                            alert('Authentication failed');
-                        }
-                    },
-                    (error: HttpErrorResponse) => {
-                        // Handle errors, such as incorrect username or password
-                        this.message = 'Wrong username or password';
-                    }
-                );
+            this._userService.setUserState('mock_token');
+            this.router.navigate(['/dashboard']);
+
+            // Call the login method of the ApiService to authenticate the user
+            // this.apiService
+            //     .login(formValue.email, formValue.password)
+            //     .subscribe(
+            //         (response: any) => {
+            //             console.log(response);
+            //             localStorage.setItem('token', response.token);
+
+            //             if (this.userService.isAuthenticated(response.token)) {
+            //                 // Redirect to the dashboard upon successful authentication
+            //                 this.router.navigate(['/dashboard']);
+            //             } else {
+            //                 // Handle non-authenticated scenario, for example:
+            //                 localStorage.removeItem('token');
+            //                 alert('Authentication failed');
+            //             }
+            //         },
+            //         (error: HttpErrorResponse) => {
+            //             // Handle errors, such as incorrect username or password
+            //             this.message = 'Wrong username or password';
+            //         }
+            //     );
         }
     }
 }

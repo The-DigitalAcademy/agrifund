@@ -1,3 +1,9 @@
+<!-- 
+    AUTHOR: Mamokgosi(Precious), Monique, Kamogelo
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+ -->
+
 <app-navbar></app-navbar>
 <div class="row page-body page-background">
     <div class="mobile-header"></div>
@@ -6,125 +12,126 @@
             <div class="page-heading">
                 <h1>Get Started</h1>
             </div>
-            <div
-                id="getStartedCarousel"
-                class="carousel slide"
-                data-bs-ride="carousel">
-                <div class="container inner-container">
-                    <div class="carousel-inner">
-                        <div class="carousel-item justify-center active">
-                            <div class="justify-center">
-                                <img
-                                    class="carousel-image"
-                                    src="assets/images/get-started/icons2.jpg"
-                                    alt="..." />
-                                <h2>Build A Financial Portfolio.</h2>
-                                <p>
-                                    AgriFund will assist you in providing the
-                                    necessary information and documents needed
-                                    to help build a financial portfolio for
-                                    agricultural financial funding. Take control
-                                    of your farm’s financial future with
-                                    AgriFund and embark on a path to financial
-                                    success.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="carousel-caption"></div>
-                            <img
-                                class="carousel-image"
-                                src="assets/images/get-started/icons7.jpg"
-                                alt="..." />
-                            <h2>
-                                Keep Track of your <br />Bookkeeping Records
-                            </h2>
-                            <p>
-                                We understand the challenges farmers face,
-                                keeping track of books can be complicated.Our
-                                app simplifies financial complexities by
-                                allowing you to add, view, edit and delete
-                                financial records .
-                            </p>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="carousel-caption"></div>
-                            <img
-                                class="carousel-image"
-                                src="assets/images/get-started/icons8.jpg"
-                                alt="..." />
-                            <h2>View Your Summarized Financial Data</h2>
-                            <p>
-                                With AgriFund, you can easily make sense of
-                                complex financial information with visual
-                                representation of key financial data in the form
-                                of graphs.
-                            </p>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="carousel-caption"></div>
-                            <img
-                                class="carousel-image"
-                                src="assets/images/get-started/icons4.jpg"
-                                alt="..." />
-                            <h2>View Your Progress To Qualify for Funding</h2>
-                            <p>
-                                Stay up to date about your progress in
-                                qualifying for business funding.
-                            </p>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="carousel-caption"></div>
-                            <img
-                                class="carousel-image"
-                                src="assets/images/get-started/icons6.jpg"
-                                alt="..." />
-                            <h2>Get Feedback From A Finance Agent</h2>
-                            <p>
-                                Get feedback from a Finance Agent on the status
-                                of your financial portfolio.
-                            </p>
-                        </div>
-                        <div class="carousel-item">
-                            <div class=""></div>
-                            <img
-                                class="carousel-image"
-                                src="assets/images/get-started/icons1.jpg"
-                                alt="..." />
-                            <h2>Like What You See?</h2>
-                            <p>
-                                Take control of your farm’s financial future
-                                with AgriFund and embark on a path to financial
-                                success!
-                            </p>
-                            <div class="actions justify-center">
-                                <button
-                                    type="submit"
-                                    class="btn colourful-btn pt-6"
-                                    [routerLink]="['/register']">
-                                    Register Now
-                                </button>
-                            </div>
+            <ngb-carousel
+                class="container inner-container"
+                #carousel="ngbCarousel"
+                [activeId]="'slide1'">
+                <ng-template ngbSlide id="slide1">
+                    <div class="justify-center">
+                        <img
+                            class="carousel-image"
+                            src="assets/images/get-started/icons2.jpg"
+                            alt="..." />
+                        <h2>Build A Financial Portfolio.</h2>
+                        <p>
+                            AgriFund will assist you in providing the necessary
+                            information and documents needed to help build a
+                            financial portfolio for agricultural financial
+                            funding. Take control of your farm’s financial
+                            future with AgriFund and embark on a path to
+                            financial success.
+                        </p>
+                    </div>
+                </ng-template>
+                <!-- track bookkeep slide -->
+                <ng-template ngbSlide id="slide2">
+                    <div class="justify-center">
+                        <img
+                            class="carousel-image"
+                            src="assets/images/get-started/icons7.jpg"
+                            alt="..." />
+                        <h2>
+                            Keep Track of your <br />
+                            Bookkeeping Records
+                        </h2>
+                        <p>
+                            We understand the challenges farmers face, keeping
+                            track of books can be complicated.Our app simplifies
+                            financial complexities by allowing you to add, view,
+                            edit and delete financial records .
+                        </p>
+                    </div>
+                </ng-template>
+                <!-- view data summary slide -->
+                <ng-template id="slide3" ngbSlide>
+                    <div class="justify-center">
+                        <img
+                            class="carousel-image"
+                            src="assets/images/get-started/icons2.jpg"
+                            alt="..." />
+                        <h2>Build A Financial Portfolio.</h2>
+                        <p>
+                            AgriFund will assist you in providing the necessary
+                            information and documents needed to help build a
+                            financial portfolio for agricultural financial
+                            funding. Take control of your farm’s financial
+                            future with AgriFund and embark on a path to
+                            financial success.
+                        </p>
+                    </div>
+                </ng-template>
+                <!-- view progress slide -->
+                <ng-template id="slide4" ngbSlide>
+                    <div class="justify-center">
+                        <img
+                            class="carousel-image"
+                            src="assets/images/get-started/icons4.jpg"
+                            alt="..." />
+                        <h2>View Your Progress To Qualify for Funding</h2>
+                        <p>
+                            Stay up to date about your progress in qualifying
+                            for business funding.
+                        </p>
+                    </div>
+                </ng-template>
+                <!-- get feedback slide -->
+                <ng-template id="slide5" ngbSlide>
+                    <div class="justify-center">
+                        <img
+                            class="carousel-image"
+                            src="assets/images/get-started/icons6.jpg"
+                            alt="..." />
+                        <h2>Get Feedback From A Finance Agent</h2>
+                        <p>
+                            Get feedback from a Finance Agent on the status of
+                            your financial portfolio.
+                        </p>
+                    </div>
+                </ng-template>
+                <!-- register now slide -->
+                <ng-template id="slide6" ngbSlide>
+                    <div class="justify-center">
+                        <img
+                            class="carousel-image"
+                            src="assets/images/get-started/icons1.jpg"
+                            alt="..." />
+                        <h2>Like What You See?</h2>
+                        <p>
+                            Take control of your farm’s financial future with
+                            AgriFund and embark on a path to financial success!
+                        </p>
+                        <div class="actions justify-center">
+                            <button
+                                type="submit"
+                                class="btn colourful-btn pt-6"
+                                [routerLink]="['/register']">
+                                Register Now
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
-
+                </ng-template>
+            </ngb-carousel>
             <div class="actions">
                 <div class="justify-start">
                     <button
                         class="carousel-control-prev btn icon-btn-dark"
                         type="button"
-                        data-bs-target="#getStartedCarousel"
-                        data-bs-slide="prev">
+                        (click)="goToPreviousSlide()">
                         <fa-icon icon="arrow-left"></fa-icon>
-                        <span class="visually-visible">Prev</span>
+                        Prev
                     </button>
                 </div>
-                <div
-                    id="getStartedCarousel"
-                    class="carousel slide justify-center"
-                    data-bs-ride="carousel">
+                <div class="carousel slide justify-center">
                     <div class="carousel-indicators">
                         <button
                             type="button"
@@ -161,12 +168,12 @@
                     </div>
                 </div>
                 <div class="justify-end">
+                    <!-- *ngIf="slide !== last" -->
                     <button
                         class="carousel-control-next btn icon-btn-dark"
                         type="button"
-                        data-bs-target="#getStartedCarousel"
-                        data-bs-slide="next">
-                        <span class="visually-visible">Next</span>
+                        (click)="goToNextSlide()">
+                        Next
                         <fa-icon
                             class="arrow-right"
                             icon="arrow-right"></fa-icon>
