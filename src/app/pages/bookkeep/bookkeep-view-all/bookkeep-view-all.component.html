@@ -6,6 +6,24 @@
         <div class="page-heading">
             <h1>Bookkeep</h1>
         </div>
+
+        <!-- when there are no bookkeeping records -->
+        <div class="content justify-center no-data-card">
+            <div class="container justify-center">
+                <h1>Add Your First Bookkeep Record</h1>
+                <h3>
+                    Click the button below to add your first bookkeep record.
+                </h3>
+                <div class="actions justify-center">
+                    <button
+                        class="btn colourful-btn"
+                        [routerLink]="['/bookkeep/create-record']">
+                        <fa-icon icon="plus"></fa-icon>
+                        Create Record
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="container outer-container">
             <div class="actions">
                 <div class="justify-start">

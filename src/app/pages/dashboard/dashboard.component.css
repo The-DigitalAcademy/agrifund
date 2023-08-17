@@ -1,4 +1,5 @@
-.align-center/* ------------------------------------------------------------------------------------------------
+.align-center
+/* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
     UPDATED DATE: 17 Aug 2023 
@@ -6,36 +7,24 @@
 
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* opacity: 0.7; */
 }
-
-.container {
-    flex-direction: column;
-    width: 75%;
-}
-
-.container>* {
-    margin: var(--normal-s);
-}
-
-.container h1 {
-    text-align: center;
-}
-
-.content {
-    flex: 1 1 auto;
-}
-
-
 
 @media (min-width: 300px) and (max-width:428px) {
 
-    
-    .content .container{
-        width: 100%;
-        /* makes the dashboard container for no items height fit to the content within it*/
-        height: max-content !important;
+    .page-body {
+        background-image: url("src/assets/images/background/orange-trees.webp");
+    }
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .page-body {
+        background-image: url("src/assets/images/background/orange-trees.webp");
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .page-body {
+        background-image: url("src/assets/images/background/orange-trees.webp");
     }
 }

@@ -296,6 +296,23 @@ app-sidebar {
     position: relative;
 }
 
+.no-data-card-inner {
+    /* card inner items will display underneath each other */
+    flex-direction: column;
+    width: 75%;
+}
+
+/* adds sping to all card inner items */
+.no-data-card-inner>* {
+    margin: var(--normal-s);
+}
+
+
+.no-data-card {
+    /* makes card size enough to just fit content */
+    flex: 1 1 auto;
+}
+
 /*----------------------
     MODALS
 ----------------------*/
@@ -851,6 +868,12 @@ hr {
 
     .btn-width {
         width: 100%;
+    }
+
+    .no-data-card-inner {
+        width: 100%;
+        /* makes the dashboard container for no items height fit to the content within it*/
+        height: max-content !important;
     }
 
     /*----------------------
