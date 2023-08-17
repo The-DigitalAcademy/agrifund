@@ -218,9 +218,20 @@ h1 {
 /*--------------------------------------
     Media Query for laptops & desktops
 ----------------------------------------*/
-@media (min-width: 1025px) and (max-width: 1280px) {}
+@media (min-width: 1025px) and (max-width: 1280px) {
+    /* hides navbar toggle button on larger screens */
+        .navbar-toggler {
+            display: none !important;
+        }
+}
 
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
-@media (min-width: 1281px) {}
+@media (min-width: 1281px) {
+
+    /* hides navbar toggle button on larger screens */
+    .navbar-toggler{
+        display: none !important;
+    }
+}

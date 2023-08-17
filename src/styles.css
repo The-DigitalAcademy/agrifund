@@ -943,10 +943,6 @@ hr {
         padding: 75px var(--xx-large-s) var(--normal-s) !important;
     }
 
-        app-sidebar {
-            padding-top: 55px;
-        }
-
     .container,
     .form-container {
         padding: var(--large-s);
