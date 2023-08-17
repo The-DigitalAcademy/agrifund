@@ -24,9 +24,12 @@
 
 
 
-@media (max-width: 390px) {
+@media (min-width: 300px) and (max-width:428px) {
 
-    .container {
+    
+    .content .container{
         width: 100%;
+        /* makes the dashboard container for no items height fit to the content within it*/
+        height: max-content !important;
     }
 }
