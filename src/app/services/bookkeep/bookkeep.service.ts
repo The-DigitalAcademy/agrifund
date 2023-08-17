@@ -12,9 +12,13 @@ export class BookkeepService {
     /*---------------------------------
         OBSERVABLES
     ----------------------------------*/
+    // stores all the bookkeep records
     private bookkeepRecords: IncomeStatementItem[] = [];
+    // stores the the filtered and searched records
+
     //TODO
     // create a bookkeep record observable
+
     // create bookkeep records observable
     // create incomeStatment observable
     // create income statements observable
@@ -30,7 +34,7 @@ export class BookkeepService {
     /*---------------------------------
         CREATE DATA
     ----------------------------------*/
-    // generate a value for a bookkeeping record
+    // generate a bookkeeping record value for a bookkeeping record
     generateRecordId() {
         const id: number = this.bookkeepRecords.length;
         return id;
@@ -77,7 +81,6 @@ export class BookkeepService {
     /*---------------------------------
         SEARCH & FILTER
     ----------------------------------*/
-
     // TODO
     // update income statement total income
     calculateTotalIncome() {}
