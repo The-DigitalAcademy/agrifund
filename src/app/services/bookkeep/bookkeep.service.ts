@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, count, map } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -33,7 +33,6 @@ export class BookkeepService {
                 // adds bookkeeping records to the observable array
                 this.addRecord(record);
             });
-           
         });
 
         // creates a default bookkeeping record behaviour subject
@@ -59,7 +58,6 @@ export class BookkeepService {
 
     // adds bookkeeping record from api to observable bookkeep
     addRecord(record: IncomeStatementItem) {
-
         const addedRecord = {
             id: record.id,
             statement_id: record.statement_id, //income statment id
@@ -126,18 +124,6 @@ export class BookkeepService {
         SEARCH & FILTER
     ----------------------------------*/
     // TODO
-    // update income statement total income
-    calculateTotalIncome() {}
-
-    // TODO
-    // update income statement total expense
-    calculateTotalExpense() {}
-
-    // TODO
-    // update income statement total net income (profit)
-    calculateTotalNetIncome() {}
-
-    // TODO
     // set the income statement date
 
     //TODO
@@ -148,4 +134,19 @@ export class BookkeepService {
 
     // TODO
     // get records by search text
+
+    /*---------------------------------
+        CALCULATIONS
+    ----------------------------------*/
+
+    // calculate the total number of records within observable
+    getTotalRecords(): Observable<number> {
+        return this.bookkeepRecords$.pipe(
+            map((records: any) => {
+                const count = records.length;
+                console.log(count);
+                return count;
+            })
+        );
+    }
 }

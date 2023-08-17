@@ -14,8 +14,10 @@ import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     bookkeepRecords: IncomeStatementItem[] = [];
     bookkeepRecords$: Observable<IncomeStatementItem[]> | undefined;
+    // stores the total number of bookkeeping records
+    private totalBookkeepRecords$: Observable<number> | undefined;
 
-    bookkeepSubscription!: Subscription;
+    private subscription = new Subscription();
 
     constructor(
         private router: Router,
@@ -41,16 +43,24 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
             // console.log(this.bookkeepRecords);
         });
 
-        this.bookkeepSubscription = this._bookkeepService
-            .getAllBookkeepRecords()
-            .subscribe((records: any) => {
-                this.bookkeepRecords$ = records;
-                console.log(this.bookkeepRecords$);
-            });
+        // adds get all records to subscription
+        this.subscription.add(
+            this._bookkeepService
+                .getAllBookkeepRecords()
+                .subscribe((records: any) => {
+                    this.bookkeepRecords$ = records;
+                    console.log(this.bookkeepRecords$);
+                })
+        );
+        // this.subscription.add(
+        //     this._bookkeepService
+        //         .getTotalRecords()
+        //         .subscribe((recordCount: number) => {})
+        // );
     }
 
     ngOnDestroy() {
         // unsubscribe from bookkeep subscription
-        this.bookkeepSubscription.unsubscribe();
+        this.subscription.unsubscribe();
     }
 }
