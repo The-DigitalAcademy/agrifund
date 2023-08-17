@@ -15,7 +15,7 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     bookkeepRecords: IncomeStatementItem[] = [];
     bookkeepRecords$: Observable<IncomeStatementItem[]> | undefined;
     // stores the total number of bookkeeping records
-    private totalBookkeepRecords$: Observable<number> | undefined;
+    totalBookkeepRecords$: Observable<number> | undefined;
 
     private subscription = new Subscription();
 
@@ -49,14 +49,14 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
                 .getAllBookkeepRecords()
                 .subscribe((records: any) => {
                     this.bookkeepRecords$ = records;
-                    console.log(this.bookkeepRecords$);
+                    // console.log(this.bookkeepRecords$);
                 })
         );
-        // this.subscription.add(
-        //     this._bookkeepService
-        //         .getTotalRecords()
-        //         .subscribe((recordCount: number) => {})
-        // );
+
+        // gets the total bookkeep records
+        // this.totalBookkeepRecords$ =
+        //     this._bookkeepService.getTotalBookkeepRecords();
+        // console.log(this.totalBookkeepRecords$);
     }
 
     ngOnDestroy() {

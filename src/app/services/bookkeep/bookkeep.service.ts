@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
-import { BehaviorSubject, Observable, count, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber, count } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -139,14 +139,29 @@ export class BookkeepService {
         CALCULATIONS
     ----------------------------------*/
 
-    // calculate the total number of records within observable
-    getTotalRecords(): Observable<number> {
-        return this.bookkeepRecords$.pipe(
-            map((records: any) => {
-                const count = records.length;
-                console.log(count);
-                return count;
-            })
-        );
-    }
+    // TODO
+    // update income statement total income
+    calculateTotalIncome() {}
+
+    // TODO
+    // update income statement total expense
+    calculateTotalExpense() {}
+
+    // TODO
+    // update income statement total net income (profit)
+    calculateTotalNetIncome() {}
+
+    // calcualtes the total bookkeeping records within the observables records
+    // getTotalBookkeepRecords(): Observable<number> {
+    //     return new Observable<number>(subscriber => {
+    //         let count = 0;
+    //         this.bookkeepRecords$.subscribe({
+    //             next: () => count++,
+    //             complete: () => {
+    //                 subscriber.next(count);
+    //                 subscriber.complete();
+    //             },
+    //         });
+    //     });
+    // }
 }
