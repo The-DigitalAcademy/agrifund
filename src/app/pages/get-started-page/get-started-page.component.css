@@ -32,21 +32,16 @@ ngb-carousel {
 }
 
 .carousel-item {
-    /* hides in-active carousel item on the top to create sliding animation */
     display: flex !important;
+    /* hides in-active carousel item on the top to create sliding animation */
     opacity: 0;
     visibility: hidden;
     z-index:-1;
 }
 
 .carousel-item {
-    /* makes */
+    /* immediately hides an inactive slide*/
     transition: transform 0s ease-in-out;
-}
-
-.carousel-fade .active.carousel-item-start,
-.carousel-fade .active.carousel-item-end {
-    transition: opacity 1.2s;
 }
 
 .carousel-item.active {
@@ -72,6 +67,8 @@ p {
     max-width: 20% !important;
     /* makes image a circle */
     border-radius: 100%;
+    /* adds space underneath the image */
+    margin-bottom: var(--normal-s);
 }
 
 .carousel-indicators button {
