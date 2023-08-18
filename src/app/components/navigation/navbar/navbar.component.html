@@ -1,3 +1,8 @@
+<!-- 
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+ -->
 <nav class="navbar">
     <!--before login-->
     <div class="nav-left">
@@ -5,11 +10,11 @@
             <button
                 class="btn icon-btn navbar-toggler"
                 type="button"
-                (click)="openOffcanvas(offcanvasAfterLogin)">
+                (click)="openOffcanvas()">
                 <fa-icon icon="bars"></fa-icon>
             </button>
 
-            <h1 class="nav-brand">
+            <h1 class="nav-brand" [routerLink]="['']">
                 <span>Agri</span>
                 <img
                     src="assets/images/logo/f_carrot.png"
@@ -22,12 +27,13 @@
     <div class="nav-right mobile-hidden">
         <div
             *ngIf="
-                $userState !== null;
+                userState$ !== null;
                 then navRightAfterLogin;
                 else navRightBeforeLogin
             "></div>
     </div>
 </nav>
+
 <!-- navbar right side before login -->
 <ng-template #navRightBeforeLogin>
     <button type="button" class="btn colourful-btn" [routerLink]="['/login']">
@@ -45,11 +51,13 @@
         <pre>&#x20;</pre>
         <a class="username bold">FirstName</a>
     </span>
-    <button type="button" class="btn outline-btn">Logout</button>
+    <button type="button" class="btn outline-btn" (click)="logout()">
+        Logout
+    </button>
 </ng-template>
 
 <!-- offcanvas after login -->
-<ng-template #offcanvasAfterLogin let-offcanvas>
+<ng-template #offcanvas let-offcanvas>
     <div class="offcanvas-header">
         <h1 class="nav-brand">
             <span>Agri</span>
@@ -70,48 +78,42 @@
         <app-sidebar></app-sidebar>
     </div>
     <div class="offcanvas-footer">
-        <button
-            class="btn white-outline-btn"
-            [routerLink]="['']"
-            data-bs-dismiss="offcanvas">
-            Logout
-        </button>
+        <div
+            *ngIf="
+                userState$ !== null;
+                then footerAfterLogin;
+                else footerBeforeLogin
+            "></div>
     </div>
 </ng-template>
+<!-- 
+<ng-template #navbarBrand></ng-template> -->
 
-<!-- offcanvas before login -->
-<ng-template #offcanvasBeforeLogin let-offcanvas>
-    <div class="offcanvas-body">
-        <ul class="navbar-nav sidebar-content">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['']">
-                    <fa-icon icon="home"></fa-icon>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/get-started']">
-                    <fa-icon icon="external-link-alt"></fa-icon>
-                    <span>Get Started</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="offcanvas-footer">
+<!-- footer button after login -->
+<ng-template #footerAfterLogin>
+    <button
+        class="btn btn colourful-btn"
+        (click)="logout()"
+        data-bs-dismiss="offcanvas">
+        Logout
+    </button>
+</ng-template>
+<!-- footer button before login -->
+<ng-template #footerBeforeLogin>
+    <div class="justify-start">
         <button
-            class="btn white-btn"
+            class="btn btn colourful-btn"
             [routerLink]="['/login']"
             data-bs-dismiss="offcanvas">
             Login
         </button>
+    </div>
+    <div class="justify-end">
         <button
-            class="btn white-outline-btn"
+            class="btn outline-btn"
             [routerLink]="['/register']"
             data-bs-dismiss="offcanvas">
             Register
         </button>
     </div>
 </ng-template>
-
-<ng-template #navbarBrand></ng-template>

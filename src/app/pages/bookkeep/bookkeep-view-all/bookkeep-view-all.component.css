@@ -1,3 +1,9 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
@@ -63,13 +69,6 @@ tr,
     margin-top: 0px !important;
 }
 
-app-sidebar{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-}
-
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
@@ -93,6 +92,16 @@ app-sidebar{
         width: 100%;
     }
 
+    .form-control{
+        /* removes the margin from form control */
+        margin: 0px !important;
+    }
+
+    .search input {
+        /* adds borders to mobile searchbar */
+        border-radius: var(--border-radius);
+        border: var(--thin-border) var(--lighter-grey) !important;
+    }
 }
 
 /*---------------------------------

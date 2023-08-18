@@ -4,7 +4,7 @@ import { ApiService } from '../api/api.service'; // Importing ApiService
 import { Asset } from 'src/app/models/asset'; // Importing Asset model
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class PortfolioServiceService {
   

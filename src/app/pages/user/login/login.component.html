@@ -1,22 +1,32 @@
-<div class="mobile-header">
-    <img src="assets/images/background/orange-trees.webp" alt="..." />
-</div>
+<!-- 
+    AUTHOR: Ntokozo Radebe
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+ -->
 <div class="page-body page-background justify-center">
+    <div class="mobile-header"></div>
     <div class="container form-container">
-        <form [formGroup]="LoginForm">
+        <!-- Login Form -->
+        <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+            <!-- Form Row -->
             <div class="row">
                 <div class="col-sm-12 loginform">
+                    <!-- Container Header -->
                     <div class="container-header">
                         <div class="justify-start">
                             <h1>Login</h1>
                         </div>
                         <div class="justify-end">
-                            <button class="icon-btn btn-icon" [routerLink]="['']">
+                            <!-- Close Button -->
+                            <button
+                                class="icon-btn btn-icon"
+                                [routerLink]="['']">
                                 <fa-icon icon="times"></fa-icon>
                             </button>
                         </div>
                     </div>
 
+                    <!-- Email Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -51,6 +61,8 @@
                             >Field is required.</small
                         >
                     </div>
+
+                    <!-- Password Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -64,7 +76,7 @@
                         <label for="password">Password:</label>
                         <input
                             formControlName="password"
-                            class="form-control"
+                            class="form-control between-button"
                             id="passwordinput" />
                         <small
                             *ngIf="
@@ -86,22 +98,28 @@
                             >Field is required.</small
                         >
                     </div>
+
+                    <!-- Submit Button -->
                     <div class="form-group">
                         <button
                             type="submit"
                             [disabled]="!LoginForm.valid"
                             class="btn actions colourful-btn"
-                            [routerLink]="['/dashboard']">
+                            (click)="onSubmit()">
                             <fa-icon icon="user"></fa-icon>
                             Login
                         </button>
                     </div>
+
+                    <!-- Forgot Password Link -->
                     <a
                         id="forget"
                         class="font-weight-lighter"
                         routerLink="/reset-password"
                         >Forgot your password?</a
                     >
+
+                    <!-- Register Link -->
                     <div class="text muted">
                         Don't have an account?
                         <a
@@ -112,11 +130,11 @@
                         >
                     </div>
                 </div>
-                <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
-                    <img src="assets/images/background/barn.webp"
-                    alt="Avatar">
-                </div> -->
             </div>
+            <!-- End of Form Row -->
+
+            <br /><br />
+            <p>{{ message }}</p>
         </form>
     </div>
 </div>

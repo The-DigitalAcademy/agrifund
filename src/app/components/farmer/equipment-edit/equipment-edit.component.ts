@@ -11,41 +11,41 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Asset } from 'src/app/models/asset';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-service.service';
 
 @Component({
-  selector: 'app-equipment-edit',
-  templateUrl: './equipment-edit.component.html',
-  styleUrls: ['./equipment-edit.component.css']
+    selector: 'app-equipment-edit',
+    templateUrl: './equipment-edit.component.html',
+    styleUrls: ['./equipment-edit.component.css'],
 })
 export class EquipmentEditComponent implements OnInit {
+    editEquipmentForm!: FormGroup;
+    submitted = false;
+    asset!: Asset;
+    id: any;
 
-  editEquipmentForm!: FormGroup;
-  submitted = false;
-  asset!: Asset;
-  id: any;
-  
-  
+    constructor(
+        private _apiService: ApiService,
+        private router: Router,
+        private _fb: FormBuilder,
+        private route: ActivatedRoute,
+        private _portfolioServiceService: PortfolioServiceService
+    ) {}
 
-  constructor(
-    private _apiService: ApiService,
-    private router: Router,
-    private _fb: FormBuilder,
-    private route: ActivatedRoute,
-    private _portfolioServiceService: PortfolioServiceService 
-  ) {}
-
-  ngOnInit(): void {
-
-
-     // Fetch equipment details using the id
-    // Example: this.getEquipmentDetails(id);
-    this.getEquipmentDetails((this.id = this.route.snapshot.params['id']));
-    console.log(this.id);
+    ngOnInit(): void {
+        // Fetch equipment details using the id
+        // Example: this.getEquipmentDetails(id);
+        this.getEquipmentDetails((this.id = this.route.snapshot.params['id']));
+        console.log(this.id);
 
 
     

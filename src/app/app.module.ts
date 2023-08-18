@@ -5,9 +5,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -53,6 +53,7 @@ import { PortfolioProgressbarComponent } from './components/data-summary/portfol
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/farm-info-form.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+
 
 /* --------------------------------
     MODALS
@@ -137,6 +138,7 @@ import { EquipmentInfoComponent } from './components/farmer/equipment-info-form/
         ReactiveFormsModule,
         HttpClientModule,
         NgbModule,
+        Ng2SearchPipeModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

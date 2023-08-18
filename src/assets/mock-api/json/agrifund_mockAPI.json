@@ -1,6 +1,6 @@
 {
   "uuid": "330ca689-ae88-41c2-b1f8-86ae709e47f1",
-  "lastMigration": 27,
+  "lastMigration": 28,
   "name": "Agrifund_Mock_API",
   "endpointPrefix": "agrifund/api/v1",
   "latency": 0,
@@ -47,7 +47,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         },
         {
           "uuid": "9ea37855-b2cf-4508-8362-dfc39e174eda",
@@ -69,7 +70,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false
+          "default": false,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -102,7 +104,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -135,7 +138,8 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -168,7 +172,55 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "plot",
+      "responses": [
+        {
+          "uuid": "e25de18e-6f5a-42c6-bb13-24c5316b6eec",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "962a020f-34af-47d2-a626-d37f6da8d061",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -201,7 +253,37 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c4d02647-48b0-4cf1-9f87-6aa641003160",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "crop",
+      "responses": [
+        {
+          "uuid": "32b81dde-d7a2-4d67-8b05-463949b55e1c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
         }
       ],
       "enabled": true,
@@ -228,6 +310,10 @@
     {
       "type": "route",
       "uuid": "1a5a556f-d4ad-4914-bb7b-09b4f5acc2a4"
+    },
+    {
+      "type": "route",
+      "uuid": "c4d02647-48b0-4cf1-9f87-6aa641003160"
     }
   ],
   "proxyMode": false,
@@ -309,7 +395,14 @@
     {
       "uuid": "3a773cc8-f0a7-4bca-8ec3-2747ac145a85",
       "id": "6man",
-      "name": "Users",
+      "name": "user",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\",\n  }\n  {{/repeat}}\n]\n"
+    },
+    {
+      "uuid": "bc822cbd-4929-4ebf-be74-3c4524bf6a61",
+      "id": "f476",
+      "name": "crop",
       "documentation": "",
       "value": "[\n  {{#repeat 3}}\n  {\n  \"id\":\"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  }\n  {{/repeat}}\n]\n"
     }

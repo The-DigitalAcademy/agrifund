@@ -14,6 +14,9 @@ export class PortfolioProgressbarComponent {
 
     checklistForm!: FormGroup;
 
+    // hardcoded farmer id
+    farmerId = 1;
+
     constructor(
         private fb: FormBuilder,
         private progressService: ProgressService,

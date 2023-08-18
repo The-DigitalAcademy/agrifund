@@ -1,4 +1,4 @@
- /* --------------------------------
+/* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
 import { Asset } from './../../../models/asset';
@@ -9,13 +9,12 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-equipment-create',
-  templateUrl: './equipment-create.component.html',
-  styleUrls: ['./equipment-create.component.css']
+    selector: 'app-equipment-create',
+    templateUrl: './equipment-create.component.html',
+    styleUrls: ['./equipment-create.component.css'],
 })
 export class EquipmentCreateComponent implements OnInit {
-
-  asset!: Asset;
+    asset!: Asset;
 
   createEquipmentForm!: FormGroup;
   submitted = false;

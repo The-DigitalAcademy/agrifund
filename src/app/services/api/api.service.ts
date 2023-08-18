@@ -1,3 +1,13 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Ntokozo, Monique, Kamo
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+
+    DESCRIPTION:
+     This service is for all methods related to a user
+
+-------------------------------------------------------------------------------------------------*/
+// Import necessary modules and components from Angular core and other sources
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap } from 'rxjs';
@@ -25,27 +35,40 @@ export class ApiService {
     // used by admin to get farmer related data
 
     // TODO user
-    private userURL = this.baseUrl + '/users';
+    private userURL = this.baseUrl + '/users'; // Define the URL for user registration
+    private loginURL = this.baseUrl + '/login'; // Define the URL for user login
 
     /* --------------------------------
         FARMER CONNECTION STRINGS
     ---------------------------------*/
-    // url used to register a farmer user
-    private registerFarmerURL = this.baseUrl;
-    // url used to login a farmer user
-    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
-    // TODO find farmer by email
-
-    // TODO reset password
-
-    // TODO send OTP
-
-    // TODO farmer
-    // TODO assets
-    // TODO plot
-    // TODO farm
-    // TODO crop
     private farmerAssetURL = this.baseUrl + '/assets';
+
+    // gets a farmer by their id
+    getFarmerUser(userId: number): Observable<any> {
+        console.log(userId);
+        return this.http.get(`${this.userURL}/${userId}`);
+    }
+
+    // adds a new equipment item
+    addEquipment(body: any) {
+        return this.http.post(`${this.farmerAssetURL}`, body);
+    }
+
+    // gets all equipment items for a farmer
+    getAllEquipment() {
+        console.log(this.farmerAssetURL);
+        return this.http.get(`${this.farmerAssetURL}`);
+    }
+
+    // update data for a single equipment record
+    editEquipment(equipmentId: number, body: any) {
+        return this.http.put(`${this.farmerAssetURL}/${equipmentId}`, body);
+    }
+
+    // get a single equipment item by id
+    getEquipmentById(equipmentId: number) {
+        return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
+    }
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -116,10 +139,10 @@ export class ApiService {
 
 
     // get record for a single user loggin in
-    getFarmerUser(userId:number) {
-        // console.log(this.userURL);
-        return this.http.get(`${this.userURL}/${userId}`);
-    }
+    // getFarmerUser(userId:number) {
+    //     // console.log(this.userURL);
+    //     return this.http.get(`${this.userURL}/${userId}`);
+    // }
 
 
 
@@ -128,26 +151,15 @@ export class ApiService {
     /* --------------------------------
         FARMER
     ---------------------------------*/
-    //add an equipment record
-    addEquipment(body: any){
-        return this.http.post(`${this.farmerAssetURL}`, body);
+    // register user
+    registerUser(user: any): Observable<any> {
+        // Send a POST request to the user registration URL
+        return this.http.post(this.userURL, user);
     }
-
-    //get all equipment records
-    getAllEquipment(){
-        console.log(this.farmerAssetURL);
-        return this.http.get(`${this.farmerAssetURL}`);
+    login(email: string, password: string): Observable<any> {
+        // Create the request body with email and password
+        const body = { email, password };
+        // Send a POST request to the login URL with the provided credentials
+        return this.http.post(this.loginURL, body);
     }
-
-     // get a single equipment item
-     getEquipmentById(equipmentId: number) {
-        return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
-    }
-    // update data for a single equipment record
-    editEquipment(equipmentId: number, body : any) {
-        return this.http.put(`${this.farmerAssetURL}/${equipmentId}`,body);
-    }
-
-   
-
 }

@@ -1,12 +1,8 @@
-/* --------------------------------
-      Created by Nkadimeng Kamogelo
-    ---------------------------------*/
-
-/* Styling for the main content area */
 .page-body {
   background-image: url(src/assets/images/background/orange-trees.webp);
   background-repeat: no-repeat;
   background-attachment: fixed;
+
 }
 
 /* Styling for crop information section */
