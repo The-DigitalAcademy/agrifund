@@ -44,13 +44,7 @@ export class AboutTheFarmComponent {
   ];
 
   constructor(private fb: FormBuilder) {}
-
-  // onSubmit(formGroup: FormGroup) {
-  //   if (formGroup.valid) {
-  //     // Handle form submission
-  //     const formData = formGroup.value;
-  //     console.log(formData);
-  //   }
+  
   }
 
 
