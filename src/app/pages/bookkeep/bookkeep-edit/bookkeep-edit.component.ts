@@ -52,7 +52,7 @@ export class BookkeepEditComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // gets the id passed throught the routing url
+        // gets the id passed through the routing url
         this.getRecordDetails((this.id = this.route.snapshot.params['id']));
 
         this.editRecordForm = this.fb.group({
@@ -76,7 +76,7 @@ export class BookkeepEditComponent implements OnInit {
                     recordName: new FormControl(this.record.description),
                     recordType: new FormControl(this.record.category),
                     recordAmount: new FormControl(this.record.amount),
-                    recordProof: new FormControl(this.record.amount),
+                    recordProof: new FormControl(this.record.proof),
                 });
             });
     }

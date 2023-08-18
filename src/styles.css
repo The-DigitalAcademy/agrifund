@@ -147,6 +147,7 @@ app-sidebar {
     height: 100%;
     width: 100%;
 
+    background-image: url("src/assets/images/background/orange-trees.webp");
     background-size: cover;
     background-color: var(--light);
     background-repeat: fill no-repeat;
@@ -583,6 +584,14 @@ input[type=number]:focus,
 .input-group input {
     /* remove the left border for input groups with input group text */
     border-left: none !important;
+}
+
+/* changes display for search input group */
+.search input {
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey) !important;
+    /* removes the left border for input groups with input group text */
+    border-right: none !important;
 }
 
 /* changes the style of the input group text when the input field is in focus */
@@ -1038,8 +1047,9 @@ hr {
 
     .page-content{
         /* add space at the top to take the navbar size into consideration */
-        padding: 55px var(--xx-large-s) var(--xx-large-s) !important;
+        padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
+    /* adds padding to top of sidebar */
         app-sidebar {
             padding-top: 55px;
         }
