@@ -113,6 +113,13 @@ body {
     border: none !important;
 }
 
+/* sets size of the top offcanvas */
+.offcanvas.offcanvas-top {
+    /* background-color: var(--light); */
+    height: max-content !important;
+    max-height: max-content !important;
+}
+
 /* sets how the app sidebar will display when it is called any */
 app-sidebar {
     display: flex;

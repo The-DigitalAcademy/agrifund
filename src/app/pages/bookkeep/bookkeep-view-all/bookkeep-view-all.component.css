@@ -102,15 +102,6 @@ tr,
         border-radius: var(--border-radius);
         border: var(--thin-border) var(--lighter-grey) !important;
     }
-
-    /* sets size of the offcanvas */
-        .offcanvas .offcanvas-top{
-        /* background-color: var(--light); */
-        height: max-content !important;
-        max-height: max-content !important;
-    }
-    
-
 }
 
 /*---------------------------------

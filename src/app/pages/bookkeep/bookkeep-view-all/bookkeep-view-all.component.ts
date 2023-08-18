@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {
+    Component,
+    OnDestroy,
+    OnInit,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
@@ -23,7 +29,8 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     // stores the value within the search bar
     searchValue = '';
     // refers to the offcanvas html element
-    @ViewChild('mobileSearchbar', { static: true }) private mobileSearchBar!: NgbOffcanvas;
+    @ViewChild('mobileSearchbar', { static: true })
+    private mobileSearchBar!: NgbOffcanvas;
 
     constructor(
         private router: Router,
