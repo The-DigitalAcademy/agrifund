@@ -22,7 +22,7 @@ h2{
     align-items: center;
     padding: 3% !important;
     width: 400px !important;
-    color: red;
+
  
   }
 
@@ -32,7 +32,6 @@ h2{
     align-items: center;
     width: 50% !important;
     padding: 1% !important;
-    color: red;
 }
 .inner-container{
     justify-content: center;
