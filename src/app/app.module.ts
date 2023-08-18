@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -136,6 +137,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         ReactiveFormsModule,
         HttpClientModule,
         NgbModule,
+        Ng2SearchPipeModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

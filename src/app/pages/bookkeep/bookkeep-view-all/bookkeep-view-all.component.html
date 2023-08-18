@@ -72,14 +72,16 @@
                             Create <span class="mobile-hidden">Record</span>
                         </button>
                     </div>
-
+                    <!-- bookkeep searchbar -->
                     <div class="search justify-end">
                         <div class="input-group justify-end">
                             <input
+                                [(ngModel)]="searchValue"
                                 class="form-control searchbar mobile-hidden"
                                 type="text"
                                 name="search"
-                                autocomplete="off" />
+                                autocomplete="off"
+                                placeholder="Find for bookkeep record..." />
                             <button
                                 type="button"
                                 class="btn colourful-btn search-btn">
@@ -101,7 +103,11 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody *ngFor="let record of bookkeepRecords">
+                        <tbody
+                            *ngFor="
+                                let record of bookkeepRecords
+                                    | filter: searchValue
+                            ">
                             <tr
                                 class="record-tr"
                                 (click)="viewRecordDetails(record.id)">
@@ -129,7 +135,10 @@
 
                     <div
                         class="large-hidden"
-                        *ngFor="let record of bookkeepRecords; last as isLast">
+                        *ngFor="
+                            let record of bookkeepRecords | filter: searchValue;
+                            last as isLast
+                        ">
                         <div
                             class="info"
                             (click)="viewRecordDetails(record.id)">

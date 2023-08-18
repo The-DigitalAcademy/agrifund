@@ -13,11 +13,14 @@ import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
 })
 export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     bookkeepRecords: IncomeStatementItem[] = [];
+    // bookkeping records stored within an observable
     bookkeepRecords$: Observable<IncomeStatementItem[]> | undefined;
     // stores the total number of bookkeeping records
     totalBookkeepRecords$: Observable<number> | undefined;
-
+    // used to store subscriptions to services
     private subscription = new Subscription();
+    // stores the value within the search bar
+    searchValue = '';
 
     constructor(
         private router: Router,
