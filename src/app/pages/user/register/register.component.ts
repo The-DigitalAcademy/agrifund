@@ -15,8 +15,8 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { Users } from 'src/app/models/users';
-import { UserService } from 'src/app/services/users.service';
-import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-service.service';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+// import { UserService } from 'src/app/services/users.service';
 
 @Component({
     selector: 'app-register',
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
         private validationsService: ValidationsServiceService,
         private router: Router,
         private _apiService: ApiService,
-        private _portfolioService: PortfolioServiceService
+        private _portfolioService: PortfolioService
     ) {}
 
     ngOnInit(): void {

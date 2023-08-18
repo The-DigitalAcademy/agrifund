@@ -2,7 +2,7 @@
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
 import { Asset } from './../../../models/asset';
-import { PortfolioServiceService } from './../../../services/portfolio/portfolio-service.service';
+import { PortfolioService } from '../../../services/portfolio/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class EquipmentCreateComponent implements OnInit {
     constructor(
         private router: Router,
         private _fb: FormBuilder,
-        private _portfolioServiceService: PortfolioServiceService,
+        private _portfolioServiceService: PortfolioService,
         private _apiService: ApiService
     ) {}
     ngOnInit(): void {

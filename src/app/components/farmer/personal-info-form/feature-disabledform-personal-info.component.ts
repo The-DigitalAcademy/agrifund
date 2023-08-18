@@ -1,7 +1,6 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { ProgressService } from 'src/app/services/progress.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormBuilder,
@@ -12,6 +11,7 @@ import {
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { Users } from 'src/app/models/users';
 import { ApiService } from 'src/app/services/api/api.service';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -33,7 +33,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
-        private progressService: ProgressService,
+        private _portfolioService: PortfolioService,
         private _apiService: ApiService
     ) {}
 
@@ -104,7 +104,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.isDisabled = true;
         this.myForm.disable();
         // Set personal info completion status to true
-        this.progressService.setPersonalInfoCompleted(true);
+        // this.progressService.setPersonalInfoCompleted(true);
     }
 
     onCancelClicked() {

@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Asset } from 'src/app/models/asset';
 import { ApiService } from 'src/app/services/api/api.service';
-import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-service.service';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 
 @Component({
     selector: 'app-equipment-edit',
@@ -26,7 +26,7 @@ export class EquipmentEditComponent implements OnInit {
         private router: Router,
         private _fb: FormBuilder,
         private route: ActivatedRoute,
-        private _portfolioServiceService: PortfolioServiceService
+        private _portfolioServiceService: PortfolioService
     ) {}
 
     ngOnInit(): void {

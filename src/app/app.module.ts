@@ -54,7 +54,6 @@ import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-for
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
-
 /* --------------------------------
     MODALS
 ---------------------------------*/

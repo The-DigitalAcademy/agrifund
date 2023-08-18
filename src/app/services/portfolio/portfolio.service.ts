@@ -6,7 +6,7 @@ import { Asset } from 'src/app/models/asset';
 @Injectable({
     providedIn: 'root',
 })
-export class PortfolioServiceService {
+export class PortfolioService {
     private assets: Asset[] = [];
     constructor(
         private _http: HttpClient,

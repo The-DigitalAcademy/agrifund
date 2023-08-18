@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Users } from 'src/app/models/users';
 import { ApiService } from 'src/app/services/api/api.service';
-import { ProgressService } from 'src/app/services/progress.service';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+// import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
     selector: 'app-portfolio-progressbar',
@@ -19,7 +20,7 @@ export class PortfolioProgressbarComponent {
 
     constructor(
         private fb: FormBuilder,
-        private progressService: ProgressService,
+        private _portfolioService: PortfolioService,
         private _apiService: ApiService
     ) {}
 
@@ -36,25 +37,25 @@ export class PortfolioProgressbarComponent {
     }
 
     ngOnInit() {
-        this.progressService.personalInfoCompleted$.subscribe(
-            personalInfoCompleted => {
-                if (personalInfoCompleted) {
-                    this.progressPercentage += 35;
-                }
-            }
-        );
+        // this._portfolioService.personalInfoCompleted$.subscribe(
+        //     personalInfoCompleted => {
+        //         if (personalInfoCompleted) {
+        //             this.progressPercentage += 35;
+        //         }
+        //     }
+        // );
 
-        this.progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
-            if (cropInfoCompleted) {
-                this.progressPercentage += 30;
-            }
-        });
+        // this.progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
+        //     if (cropInfoCompleted) {
+        //         this.progressPercentage += 30;
+        //     }
+        // });
 
-        this.progressService.farmInfoCompleted$.subscribe(farmInfoCompleted => {
-            if (farmInfoCompleted) {
-                this.progressPercentage += 35;
-            }
-        });
+        // this.progressService.farmInfoCompleted$.subscribe(farmInfoCompleted => {
+        //     if (farmInfoCompleted) {
+        //         this.progressPercentage += 35;
+        //     }
+        // });
 
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false
@@ -77,7 +78,7 @@ export class PortfolioProgressbarComponent {
                 // });
 
                 // Update progress based on personal info completion
-                this.progressService.setPersonalInfoCompleted(true);
+                // this.progressService.setPersonalInfoCompleted(true);
             },
             error => {
                 console.error('Error fetching user details:', error);
