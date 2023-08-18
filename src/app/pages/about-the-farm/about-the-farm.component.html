@@ -1,10 +1,17 @@
-
+<!-- Author: Mamotsoko Maphutha 13/08/2023  --> 
 <div class="page-body page-background">
     <div class="justify-center page-content col-12">
-        <!-- <div class ="mobile-header">
-        </div> -->
+        <div class ="mobile-header">
+        </div>
         <div class="outer-container mobile hidden">
 <ngb-carousel *ngIf="formSlides">
+    <ol class="carousel-indicators">
+        <li
+          *ngFor="let formSlide of formSlides; let i = index"
+          [class.active]="i === 0"
+          (click)="carousel.select(i)"
+        ></li>
+      </ol>
         <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">  <!-- Array for form slides -->
           <form [formGroup]="formSlide.formGroup">
             <div class = "carousel-inner">
@@ -120,6 +127,12 @@
                  </div>
                 </div>
             </div>
+            <div class="carousel-control-prev" (click)="carousel.prev()">Prev
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </div>
+              <div class="carousel-control-next" (click)="carousel.next()"> Next
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </div>
           </form>
         </ng-template>
       </ngb-carousel>

@@ -44,7 +44,26 @@ export class AboutTheFarmComponent {
   ];
 
   constructor(private fb: FormBuilder) {}
+  carousel: any; // You might need to change the type to match the actual type
 
+  // Function to set the carousel reference
+  setCarouselReference(carousel: any) {
+    this.carousel = carousel;
   }
 
+  // Function to navigate to the previous slide
+  prevSlide() {
+    if (this.carousel) {
+      this.carousel.prev();
+    }
+  }
+
+  // Function to navigate to the next slide
+  nextSlide() {
+    if (this.carousel) {
+      this.carousel.next();
+
+  }
+  }
+}
 
