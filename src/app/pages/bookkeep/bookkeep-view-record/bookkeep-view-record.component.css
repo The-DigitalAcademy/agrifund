@@ -1,3 +1,9 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 .page-body{
     background-image: url("src/assets/images/background/barn.webp");
     flex-direction: column;
@@ -29,14 +35,10 @@ h2 {
     }
 
     .content .btn {
-        width: 80px;
+        width: auto;
         margin: 0px var(--normal-s);
     }
 
-    .actions .btn {
-        width: 100%;
-        margin: 0px var(--small-s);
-    }
 }
 
 /*---------------------------------

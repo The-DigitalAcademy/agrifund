@@ -19,13 +19,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    {path: 'about-farm', component:TellMeAboutComponent},
+    { path: 'about-farm', component: TellMeAboutComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
@@ -40,7 +42,9 @@ const routes: Routes = [
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
     { path: 'dashboard', component: DashboardComponent},
-    { path: 'equipment-create', component: EquipmentCreateComponent },
+    {  path: 'equipment-create', component: EquipmentCreateComponent },
+    { path: 'equipment-edit/:id', component: EquipmentEditComponent },
+    { path: 'dynamic-inputs', component: DynamicInputsComponent },
 ];
 
 @NgModule({

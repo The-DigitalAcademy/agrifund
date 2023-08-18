@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
-<div class="row page-body g-0">
-    <div class="col-lg-2 g-0 sidebar mobile-hidden">
-        <hr>
-        <app-sidebar></app-sidebar>
-    </div>
+<div class="page-body page-background">
+    <!-- sidebar will be hidden on small devices -->
+    <app-sidebar class="mobile-hidden"></app-sidebar>
 
     <!-- portfolio page -->
-    <div class="col-md-12 col-lg-10 g-0 page-content">
+    <div class="page-content">
+
         <div class="page-heading">
             <div class="headings">
                 <h1>Portfolio</h1>
@@ -14,33 +13,26 @@
         </div>
 
         <div class="row">
-
-            <div class="col-sm-12 col-md-6" id="left" >
+            <div class="col-sm-12 col-md-6" id="left">
                 <div class="progress-info" id="info">
                     <app-portfolio-progressbar></app-portfolio-progressbar>
                 </div>
                 <div class="farm-info" id="info">
                     <app-disabledform-farm-info></app-disabledform-farm-info>
                 </div>
-
             </div>
             <div class="col-sm-12 col-md-6" id="right">
-                <div class=" personal-info" id="info">
-                    <app-feature-disabledform-personal-info 
-                    ></app-feature-disabledform-personal-info>
-
+                <div class="personal-info" id="info">
+                    <app-feature-disabledform-personal-info></app-feature-disabledform-personal-info>
                 </div>
                 <div class="crop-info" id="info">
-                    <app-disabledform-crop-info  
-                    ></app-disabledform-crop-info>
+                    <app-disabledform-crop-info></app-disabledform-crop-info>
                 </div>
-
             </div>
             <div class="col-12" id="bottom">
                 <div class="equipment-info" id="info">
                     <app-equipment-info></app-equipment-info>
                 </div>
-
             </div>
         </div>
     </div>

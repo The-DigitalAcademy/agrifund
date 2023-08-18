@@ -1,5 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Ntokozo, Monique, Kamo
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+
+    DESCRIPTION:
+     This service is for all methods related to a user
+
+-------------------------------------------------------------------------------------------------*/
+// Import necessary modules and components from Angular core and other sources
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, tap } from 'rxjs';
+import { Users } from 'src/app/models/users';
+import { Asset } from 'src/app/models/asset';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -22,12 +35,40 @@ export class ApiService {
     // used by admin to get farmer related data
 
     // TODO user
-    private userURL = this.baseUrl + '/users';
+    private userURL = this.baseUrl + '/users'; // Define the URL for user registration
+    private loginURL = this.baseUrl + '/login'; // Define the URL for user login
 
     /* --------------------------------
         FARMER CONNECTION STRINGS
     ---------------------------------*/
     private farmerAssetURL = this.baseUrl + '/assets';
+
+    // gets a farmer by their id
+    getFarmerUser(userId: number): Observable<any> {
+        console.log(userId);
+        return this.http.get(`${this.userURL}/${userId}`);
+    }
+
+    // adds a new equipment item
+    addEquipment(body: any) {
+        return this.http.post(`${this.farmerAssetURL}`, body);
+    }
+
+    // gets all equipment items for a farmer
+    getAllEquipment() {
+        console.log(this.farmerAssetURL);
+        return this.http.get(`${this.farmerAssetURL}`);
+    }
+
+    // update data for a single equipment record
+    editEquipment(equipmentId: number, body: any) {
+        return this.http.put(`${this.farmerAssetURL}/${equipmentId}`, body);
+    }
+
+    // get a single equipment item by id
+    getEquipmentById(equipmentId: number) {
+        return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
+    }
 
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
@@ -78,7 +119,7 @@ export class ApiService {
     }
 
     // delete a bookkeeping record
-    deleteRecord(recordId: number) {
+    deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
 
@@ -86,17 +127,18 @@ export class ApiService {
 
     //get an income statement record from a search text
 
-
-
     /* --------------------------------
         FARMER
     ---------------------------------*/
-    addEquipment(body: any){
-        return this.http.post(`${this.farmerAssetURL}`, body);
+    // register user
+    registerUser(user: any): Observable<any> {
+        // Send a POST request to the user registration URL
+        return this.http.post(this.userURL, user);
     }
-
-    getAllEquipment(){
-        console.log(this.farmerAssetURL);
-        return this.http.get(`${this.farmerAssetURL}`);
+    login(email: string, password: string): Observable<any> {
+        // Create the request body with email and password
+        const body = { email, password };
+        // Send a POST request to the login URL with the provided credentials
+        return this.http.post(this.loginURL, body);
     }
 }

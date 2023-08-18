@@ -30,6 +30,7 @@ export class BookkeepCreateComponent implements OnInit {
             recordType: ['', [Validators.required]],
             recordAmount: ['', [Validators.required]],
             recordProof: ['', [Validators.required]],
+            recordDate: ['', [Validators.required]],
         });
     }
 
@@ -41,7 +42,7 @@ export class BookkeepCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createRecordForm.valid) {
             this.record = {
-                id: this._bookkeepService.generateId(),
+                id: this._bookkeepService.generateRecordId(),
                 statement_id: 0,
                 description: this.createRecordForm.get('recordName')?.value,
                 category: this.createRecordForm.get('recordType')?.value,
@@ -49,6 +50,7 @@ export class BookkeepCreateComponent implements OnInit {
                 proof:
                     'src/assets/mock-api/bookkeep-record-proof/' +
                     this.createRecordForm.get('recordProof')?.value,
+                date: this.createRecordForm.get('recordDate')?.value,
             };
 
             // console.table(this.record);

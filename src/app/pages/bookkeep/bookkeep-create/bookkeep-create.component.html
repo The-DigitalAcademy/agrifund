@@ -1,12 +1,15 @@
-<div class="page-body justify-center">
-    <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
-        <img src="assets/images/background/barn.webp" alt="Avatar">
-    </div> -->
+<!-- 
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+ -->
+<div class="page-body page-background justify-center">
+    <!-- image header that will display on mobile devices -->
     <div class="mobile-header"></div>
     <div class="container form-container">
         <div class="container-header">
             <div class="justify-start">
-                <h2>Create Record</h2>
+                <h1 class="normal-font">Create Record</h1>
             </div>
             <div class="justify-end">
                 <button
@@ -45,6 +48,28 @@
                     </div>
                 </div>
                 <div class="form-input" id="form-label">
+                    <label for="recordDate">Record Date</label>
+                    <div class="form-text">
+                        Please specify the date of the record.
+                    </div>
+                    <input
+                        formControlName="recordDate"
+                        type="date"
+                        class="form-control"
+                        id="recordDate" />
+                    <div
+                        class="form-text text-danger"
+                        *ngIf="
+                            (createRecordForm.controls['recordDate'].touched ||
+                                submitted) &&
+                            createRecordForm.controls['recordDate'].errors?.[
+                                'required'
+                            ]
+                        ">
+                        Please specify a valid date for your record.
+                    </div>
+                </div>
+                <div class="form-input" id="form-label">
                     <label for="recordType">Type of Record</label>
                     <select
                         formControlName="recordType"
@@ -71,6 +96,7 @@
                         Please select a type for your record.
                     </div>
                 </div>
+                <!-- input for the amount of a record -->
                 <div class="form-input" id="label">
                     <label for="recordAmount" class="form-label">
                         Amount of Record
@@ -86,8 +112,7 @@
                     <div
                         class="form-text text-danger"
                         *ngIf="
-                            (createRecordForm.controls['recordAmount']
-                                .touched) &&
+                            createRecordForm.controls['recordAmount'].touched &&
                             createRecordForm.controls['recordAmount'].errors?.[
                                 'required'
                             ]

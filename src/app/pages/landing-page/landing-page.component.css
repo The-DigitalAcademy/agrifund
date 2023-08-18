@@ -1,33 +1,62 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Bolebo, Monique 
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 .page-body {
   background-image: none !important;
-  
+  flex-direction: column;
 }
 
+.page-content {
+  padding: 0px !important;
+}
 
 .header-content>* {
-  margin-bottom: var(--x-large-s) !important;
+  padding-right: var(--x-large-s) !important;
 }
 
+
 .header-content {
+  display: flex;
+  flex-direction: column;
   margin-left: var(--x-large-s) !important;
   width: 55% !important;
+  /* prevents text from being affected by the header layer */
   position: relative !important;
 }
 
+/* sets style for the header with image */
 .header {
-  height: 65% !important;
-  display: flex !important;
+  display: flex;
+  flex: 0 0 max-content;
+  min-height: 55% !important;
+  min-width: 100%;
   justify-content: flex-start !important;
+  flex-direction: flex-container;
   align-items: center !important;
 
-  margin: var(--x-large-s);
+  padding: var(--x-large-s);
 
-  background: var(--dark) url("src/assets/images/background/barn.webp") no-repeat center !important;
+  background: url("src/assets/images/background/barn.webp") no-repeat center !important;
   background-size: cover !important;
 }
 
+/* puts a dark overlay over header image */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height needs to be te same as the header size */
+  height: 55%;
+  background-color: rgba(var(--darkRGB), 0.6);
+}
+
 fa-icon {
-  margin: 0px var(--small-s) -1px 7px !important;
+  margin-right: var(--small-s);
 }
 
 .btn,
@@ -37,25 +66,27 @@ button {
   position: relative !important;
 }
 
-img {
-  height: 100% !important;
-  width: 100% !important;
-  
+.btn fa-icon,
+button fa-icon {
+  margin: 0px 0px 0px var(--small-s);
+}
+
+.image-container img {
+  border-radius: var(--border-radius);
+  display: flex;
+  object-position: center;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .form-container {
   width: 100% !important;
-  
+
 }
 
-.about-company>* {
+.content {
   padding: 0px var(--large-s) 0px 0px !important;
-}
-
-.about-company-img {
-  background: var(--dark) url("src/assets/images/background/agri-finance-image.png") no-repeat center !important;
-  padding: 0px !important;
-  
 }
 
 .content span {
@@ -63,73 +94,152 @@ img {
   padding-bottom: var(--medium-s) !important;
 }
 
-.slogan span {
-  display: flex !important;
+/* sets the colour of the header's text and the layout of the text*/
+.slogan span,
+.description span {
+  color: var(--light);
+  display: flex;
+  padding-bottom: var(--normal-s);
 }
 
-h1 {
+.container-header {
+  /* adds margin to the bottom of container */
   margin-bottom: var(--large-s) !important;
 }
 
-.container{
+/* sets the width and layout for containers*/
+.container {
   width: 100% !important;
-  display:flex !important;
-  flex-wrap:wrap !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.page-heading h1 {
+  /* changes the page headings to dark colour */
+  color: var(--dark);
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+  .header-content>* {
+    margin-bottom: var(--medium-s) !important;
+
+  }
+
+  .container-header {
+    /* centers text */
+    display: flex;
+    justify-content: center;
+    /* adds margin to the top and bottom of container */
+    margin: var(--medium-s) 0px !important;
+  }
+
+  .content>* {
+    /* centers text  */
+    align-items: center !important;
+    text-align: center !important;
+    padding-right: 0px !important;
+  }
+
+  /* removes padding on the right for content on small devices */
+  .content {
+    padding: 0px !important;
+  }
+
+  .about-company {
+    flex-direction: column-reverse;
+  }
 }
 
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
+@media (min-width: 300px) and (max-width:428px) {
 
-  .header-content>* {
-    margin-bottom: var(--medium-s) !important;
+  .header-content {
+    min-width: 80%;
+    justify-content: end;
   }
 
-
-
-@media only screen and (max-width: 576px) {
-
-  /* TEXT */
-  h1 {
-    display: flex;
-      font-size: var(--font-medium) !important;
-      padding-top: 10px !important;
-      
+  .header {
+    min-height: 60% !important;
   }
 
-  h2 {
-      font-size: var(--font-normal) !important;
+  .header::before {
+    min-height: 60% !important;
   }
 
-  h3 {
-      font-size: var(--font-small) !important;
-  }
-
-  /* HIDE ITEMS*/
-  /* hide items on small screens */
-  .mobile-hidden {
-      display: none !important;
-  }
-
-  .page-content {
-      padding: 0px !important;
-  }
-
-  .page-heading {
-      padding: var(--normal-s) 0px 0px var(--normal-s) !important;
-  }
+    .slogan span,
+    .description span {
+      padding-bottom: var(--small-s);
+    }
 
 
+    .about-company {
+      flex-direction: column-reverse;
+    }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 1200px) {
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
 
-  /* HIDE ITEMS*/
-  /* hide items on large screens */
-  .large-hidden .about-company {
-      display: none !important;
+  .header {
+      min-height: 60% !important;
+    }
+  
+    .header::before {
+      min-height: 60% !important;
+    }
+
+  .content {
+    padding: var(--medium-s);
+  }
+  
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+  .header {
+      min-height: 60% !important;
+    }
+  
+    .header::before {
+      min-height: 60% !important;
+    }
+
+  .content {
+    padding: var(--large-s);
+  }
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .header {
+      min-height: 80% !important;
+    }
+  
+    .header::before {
+      min-height: 80% !important;
+    }
+
+  p {
+    font-size: var(--font-medium);
+  }
+
+  .content {
+    padding: 0px var(--large-s) 0px 0px !important;
   }
 }
 
@@ -138,16 +248,16 @@ h1 {
 ----------------------------------*/
 @media (min-width: 1281px) {
 
-  .header-content>* {
-    margin-bottom: var(--x-large-s) !important;
+  .header {
+    min-height: 80% !important;
   }
 
 }
-}
-.slogan {
 
+.slogan {
+  /* color: var(--light) !important; */
 }
 
 .bold {
-  
+  /* color: var(--light); */
 }

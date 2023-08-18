@@ -1,21 +1,43 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Ntokozo Radebe
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 10 Aug 2023 
+
+    DESCRIPTION:
+    All the methods related to registering a farmer
+
+-------------------------------------------------------------------------------------------------*/
+// Import necessary modules and components from Angular core and other sources
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { Users } from 'src/app/models/users';
+import { UserService } from 'src/app/services/users.service';
+import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-service.service';
+
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+    users!: Users;
     RegisterForm!: FormGroup;
+    submitted = false;
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService
+        private validationsService: ValidationsServiceService,
+        private router: Router,
+        private _apiService: ApiService,
+        private _portfolioService: PortfolioServiceService
     ) {}
 
     ngOnInit(): void {
+        // Initialize the registration form with validation rules
         this.RegisterForm = this.fb.group(
             {
                 first_name: new FormControl('', [
@@ -30,7 +52,7 @@ export class RegisterComponent implements OnInit {
                     Validators.required,
                     this.validationsService.idNumberValidator(),
                 ]),
-               email: new FormControl('', [
+                email: new FormControl('', [
                     Validators.required,
                     this.validationsService.emailValidator(),
                 ]),
@@ -49,11 +71,26 @@ export class RegisterComponent implements OnInit {
             }
         );
     }
+
     onSubmit() {
+        this.submitted = true;
         if (this.RegisterForm.valid) {
-            // Process the form data here (e.g., call a service to register the user)
-        } else {
-            // Display an error message or handle invalid form submission
+            // Gather user data from the form
+            this.users = {
+                id: this._portfolioService.generateId(),
+                firstName: this.RegisterForm.get('first_name')?.value,
+                lastName: this.RegisterForm.get('last_name')?.value,
+                email: this.RegisterForm.get('email')?.value,
+                cellNumber: this.RegisterForm.get('cell_number')?.value,
+                password: this.RegisterForm.get('password')?.value,
+                idNumber: this.RegisterForm.get('id_number')?.value,
+            };
+
+            // Call the API service to register the user
+            this._apiService.registerUser(this.users).subscribe(data => {
+                // Handle success or error response from the API
+                this.router.navigate(['/login']); // Navigate to login page after successful registration
+            });
         }
     }
 }

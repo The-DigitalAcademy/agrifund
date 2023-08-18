@@ -1,3 +1,9 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
     flex-direction: column;
@@ -7,10 +13,9 @@
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
-.content .btn,
-.actions .btn {
-    width: 150px;
-    /* margin: 0px var(--normal-s); */
+.actions {
+    /* removes bottom margin for actions container */
+    margin-bottom: 0px !important;
 }
 
 /*---------------------------------

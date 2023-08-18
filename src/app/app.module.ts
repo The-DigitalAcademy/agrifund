@@ -5,8 +5,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-// import { OverlayModule } from '@angular/cdk/overlay';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -16,7 +17,6 @@ import {
     OVERALL
 ---------------------------------*/
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
@@ -62,6 +62,13 @@ import { BarChartComponent } from './graph/bar-chart/bar-chart.component';
 import { DonutGraphComponent } from './graph/donut-graph/donut-graph.component';
 
 
+
+/* --------------------------------
+    MODALS
+---------------------------------*/
+import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
+import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
+
 /* --------------------------------
     ICONS
 ---------------------------------*/
@@ -93,6 +100,9 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 
 
 
@@ -121,9 +131,13 @@ import {
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-        
+
         EquipmentCreateComponent,
         TellMeAboutComponent,
+        ModalContainerComponent,
+        DeleteModalContentComponent,
+        EquipmentEditComponent,
+        DynamicInputsComponent,
         BarChartComponent,
         DonutGraphComponent
  
@@ -136,9 +150,12 @@ import {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgbModule,
+        Ng2SearchPipeModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
+    entryComponents: [DeleteModalContentComponent],
 })
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {

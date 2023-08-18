@@ -1,9 +1,31 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+ul{
+    /* removes bootstrap default spacing */
+    margin: 0px!important;
+    padding: 0px !important;
+}
+
+
 li,
 .nav-item {
+    /* aligns nav items to the left */
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    width: max-content;
 }
+
+/* change nav item and icon text colour */
+.nav-item a,
+.nav-link fa-icon {
+
+    color: var(--dark) !important;
+}
+
 
 li:hover,
 li:active {
@@ -21,19 +43,22 @@ li:active {
     color: var(--light) !important;
 }
 
-a fa-icon {
-    margin: 0px var(--small-s);
+.nav-link fa-icon {
+    /* add space */
+    margin-right: var(--small-s);
     font-size: var(--font-medium);
 }
 
-.sidebar-content{
-    position: fixed;
-    padding: var(--normal-s);
-    background-color: var(--primary-colour);
+.sidebar-content {
+    /* make  position of sidebar fixed on the page*/
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    padding: var(--normal-medium-s);
+    background-color: var(--light);
+    z-index: 99;
     height: 100%;
-    z-index: 1;
-    
-    
+    max-width: max-content;
 }
 
 /*---------------------------------
@@ -45,9 +70,7 @@ a fa-icon {
 /*---------------------------------
     Media Query for tablets/IPad
 ----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {
-
-}
+@media (min-width: 481px) and (max-width: 767px) {}
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
@@ -63,7 +86,5 @@ a fa-icon {
     Media Query for large screens
 ----------------------------------*/
 @media (min-width: 1281px) {}
-
-
 
 
