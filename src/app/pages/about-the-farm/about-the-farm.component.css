@@ -4,17 +4,13 @@
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
-.form-input {
-    margin: 2px 0;
-}
-
 /* Style for the containers */
  .container {
     height: 100% !important;
     justify-content: center;
     align-items: center;
     padding: 3% !important;
-    width: 450% !important;
+    width: 450px !important;
   }
   h2{
     margin-bottom: -0% !important;
