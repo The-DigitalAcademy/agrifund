@@ -1,8 +1,8 @@
 
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Monique, Ntokozo Radebe
+    AUTHOR: Monique Nagel, Ntokozo Radebe
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 18 Aug 2023 
 
     DESCRIPTION:
     This service is for all methods related to a user
