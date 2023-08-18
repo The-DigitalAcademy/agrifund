@@ -849,6 +849,8 @@ hr {
 
     .page-heading {
         padding: var(--normal-s) 0px 0px 0px;
+        /* ensures that page heading appear above  the background image opacity*/
+        position: relative;
     }
 
     .card {
