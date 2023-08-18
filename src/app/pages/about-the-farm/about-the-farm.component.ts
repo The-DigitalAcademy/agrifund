@@ -11,7 +11,7 @@ export class AboutTheFarmComponent {
   formSlides = [
     {
       formGroup: this.fb.group({
-        
+        // This is the welcome page for tell us about your farm
        
       })
     },
@@ -44,7 +44,7 @@ export class AboutTheFarmComponent {
   ];
 
   constructor(private fb: FormBuilder) {}
-  
+
   }
 
 
