@@ -74,10 +74,10 @@
                     </div>
                     <!-- bookkeep searchbar -->
                     <div class="search justify-end">
-                        <div class="input-group justify-end">
+                        <div class="input-group justify-end mobile-hidden">
                             <input
                                 [(ngModel)]="searchValue"
-                                class="form-control searchbar mobile-hidden"
+                                class="form-control searchbar"
                                 type="text"
                                 name="search"
                                 autocomplete="off"
@@ -88,107 +88,138 @@
                                 <fa-icon icon="search"></fa-icon>
                             </button>
                         </div>
+
+                        <button
+                            type="button"
+                            class="btn colourful-btn search-btn large-hidden">
+                            <fa-icon icon="search"></fa-icon>
+                        </button>
                     </div>
                 </div>
 
                 <div class="container inner-container record-table">
-                    <table class="table mobile-hidden">
-                        <thead>
-                            <tr>
-                                <th scope="col">Description</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Amount</th>
-                                <!-- <th scope="col">Uploaded Proof</th> -->
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody
-                            *ngFor="
-                                let record of bookkeepRecords
-                                    | filter: searchValue
-                            ">
-                            <tr
-                                class="record-tr"
-                                (click)="viewRecordDetails(record.id)">
-                                <td scope="row">
-                                    {{ record.description }}
-                                </td>
-                                <td>{{ record.category }}</td>
-                                <td>{{ record.date }}</td>
-                                <td>
-                                    {{
-                                        record.amount
-                                            | currency: ' R ' : 'symbol' : '.2'
-                                    }}
-                                </td>
-                                <!-- <td>No</td> -->
-                                <td>
-                                    <div class="action-buttons">
-                                        <div class="delete-btn"></div>
-                                        <div class="view-btn"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div
-                        class="large-hidden"
-                        *ngFor="
-                            let record of bookkeepRecords | filter: searchValue;
-                            last as isLast
+                    <!-- checks if bookkeep records search result return anything -->
+                    <ng-container
+                        *ngIf="
+                            (bookkeepRecords | filter: searchValue).length > 0;
+                            else noResults
                         ">
-                        <div
-                            class="info"
-                            (click)="viewRecordDetails(record.id)">
-                            <div class="left justify-start">
-                                <p class="bold justify-start">
-                                    {{ record.description }}
-                                </p>
-                                <p class="greyed justify-start">
-                                    {{ record.date }}
-                                </p>
-                            </div>
-                            <div class="right justify-end">
-                                <p class="bold justify-end">
-                                    {{ record.amount }}
-                                </p>
-                                <p class="greyed justify-end">
-                                    {{ record.category }}
-                                </p>
-                            </div>
-                        </div>
-                        <hr *ngIf="!isLast" />
-                    </div>
+                        <div class="container inner-container record-table">
+                            <table class="table mobile-hidden">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Amount</th>
+                                        <!-- <th scope="col">Uploaded Proof</th> -->
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    *ngFor="
+                                        let record of bookkeepRecords
+                                            | filter: searchValue
+                                    ">
+                                    <tr
+                                        class="record-tr"
+                                        (click)="viewRecordDetails(record.id)">
+                                        <td scope="row">
+                                            {{ record.description }}
+                                        </td>
+                                        <td>{{ record.category }}</td>
+                                        <td>{{ record.date }}</td>
+                                        <td>
+                                            {{
+                                                record.amount
+                                                    | currency
+                                                        : ' R '
+                                                        : 'symbol'
+                                                        : '.2'
+                                            }}
+                                        </td>
+                                        <!-- <td>No</td> -->
+                                        <td>
+                                            <div class="action-buttons">
+                                                <div class="delete-btn"></div>
+                                                <div class="view-btn"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                    <hr />
-                    <nav class="actions justify-center">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                            <div
+                                class="large-hidden"
+                                *ngFor="
+                                    let record of bookkeepRecords
+                                        | filter: searchValue;
+                                    last as isLast
+                                ">
+                                <div
+                                    class="info"
+                                    (click)="viewRecordDetails(record.id)">
+                                    <div class="left justify-start">
+                                        <p class="bold justify-start">
+                                            {{ record.description }}
+                                        </p>
+                                        <p class="greyed justify-start">
+                                            {{ record.date }}
+                                        </p>
+                                    </div>
+                                    <div class="right justify-end">
+                                        <p class="bold justify-end">
+                                            {{ record.amount }}
+                                        </p>
+                                        <p class="greyed justify-end">
+                                            {{ record.category }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr *ngIf="!isLast" />
+                            </div>
+
+                            <hr />
+                            <nav class="actions justify-center">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a
+                                            class="page-link"
+                                            aria-label="Previous">
+                                            <span aria-hidden="true"
+                                                >&laquo;</span
+                                            >
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" aria-label="Next">
+                                            <span aria-hidden="true"
+                                                >&raquo;</span
+                                            >
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- </ng-container> -->
+
+<!-- displays if no search results were returned -->
+<ng-template #noResults>
+    <div class="justify-center">
+        <p>No results found...</p>
+    </div>
+</ng-template>
