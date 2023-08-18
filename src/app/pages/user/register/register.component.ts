@@ -17,6 +17,9 @@ export class RegisterComponent implements OnInit {
     RegisterForm!: FormGroup;
     submitted = false;
 
+    // stores the user id
+    userId = 1;
+
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
@@ -63,6 +66,7 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
         if (this.RegisterForm.valid) {
             this.users = {
+                id: this.userId,
                 firstName: this.RegisterForm.get('first_name')?.value,
                 lastName: this.RegisterForm.get('last_name')?.value,
                 email: this.RegisterForm.get('email')?.value,

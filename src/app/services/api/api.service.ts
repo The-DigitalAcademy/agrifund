@@ -110,9 +110,18 @@ export class ApiService {
         return this.http.post(this.userURL, user);
     }
     getRegisterUser(): Observable<any> {
-        console.log(this.userURL);
+        // console.log(this.userURL);
         return this.http.get(`${this.userURL}`);
     }
+
+
+    // get record for a single user loggin in
+    getFarmerUser(userId:number) {
+        // console.log(this.userURL);
+        return this.http.get(`${this.userURL}/${userId}`);
+    }
+
+
 
 
 

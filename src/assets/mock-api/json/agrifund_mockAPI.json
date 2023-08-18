@@ -206,39 +206,6 @@
       ],
       "enabled": true,
       "responseMode": null
-    },
-    {
-      "uuid": "ccfb0917-72d4-4980-85a0-e788d86bf0e8",
-      "type": "crud",
-      "documentation": "",
-      "method": "",
-      "endpoint": "crops",
-      "responses": [
-        {
-          "uuid": "549a730d-72b4-451c-af64-875848e021ce",
-          "body": "{}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "6man",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -261,10 +228,6 @@
     {
       "type": "route",
       "uuid": "1a5a556f-d4ad-4914-bb7b-09b4f5acc2a4"
-    },
-    {
-      "type": "route",
-      "uuid": "ccfb0917-72d4-4980-85a0-e788d86bf0e8"
     }
   ],
   "proxyMode": false,
@@ -334,7 +297,7 @@
       "id": "3i64",
       "name": "user",
       "documentation": "",
-      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"345678dyufgsjf$\",\n  \"role\": \"farmer\",\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "4ffdb66f-5e92-4fec-973f-7ece75b988e5",
@@ -348,7 +311,7 @@
       "id": "6man",
       "name": "Users",
       "documentation": "",
-      "value": "[\n  {{#repeat 3}}\n  {\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  {{/repeat}}\n]\n"
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"id\":\"{{@index}}\",\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  }\n  {{/repeat}}\n]\n"
     }
   ]
 }

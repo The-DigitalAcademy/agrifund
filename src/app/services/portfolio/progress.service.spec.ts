@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProgressService } from './progress.service';
+import { ProgressService } from '../progress.service';
 
 describe('ProgressService', () => {
   let service: ProgressService;

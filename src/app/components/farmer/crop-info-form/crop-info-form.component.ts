@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { ProgressService } from 'src/app/services/portfolio/progress.service';
+import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
     selector: 'app-disabledform-crop-info',

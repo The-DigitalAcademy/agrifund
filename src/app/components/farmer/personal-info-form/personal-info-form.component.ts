@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { ProgressService } from 'src/app/services/portfolio/progress.service';
+import { ProgressService } from 'src/app/services/progress.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormBuilder,
@@ -28,6 +28,11 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     originalFormValues: any;
     submitted = false;
 
+    // stores the farmers personal information
+    personalInfo!: Users[];
+    // stores the user id
+    userId = 1;
+
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
@@ -35,25 +40,35 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+       this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
+           this.personalInfo = farmer;
+           this.myForm.get('first_name')?.setValue(farmer.first_name);
+           this.myForm.get('last_name')?.setValue(farmer.last_name);
+           this.myForm.get('email')?.setValue(farmer.email);
+           this.myForm.get('id_number')?.setValue(farmer.idNumber);
+           this.myForm.get('cell_number')?.setValue(farmer.cell_phone);
+           console.table(farmer);
+       });
+
 
          // Assuming you have a method in your ApiService to get registered user details
-         this._apiService. getRegisterUser().subscribe(
-            (user: Users) => {
-                // Populate the form with user details
-                this.myForm.patchValue({
-                    first_name: user.firstName,
-                    last_name: user.lastName,
-                    email: user.email,
-                    id_number: user.idNumber,
-                    cell_number: user.cellNumber,
-                });
-                 // Disable the form fields
-                 this.myForm.disable();
-            },
-            (error) => {
-                console.error('Error fetching user details:', error);
-            }
-        );
+        //  this._apiService. getRegisterUser().subscribe(
+        //     (user: Users) => {
+        //         // Populate the form with user details
+        //         this.myForm.patchValue({
+        //             first_name: user.firstName,
+        //             last_name: user.lastName,
+        //             email: user.email,
+        //             id_number: user.idNumber,
+        //             cell_number: user.cellNumber,
+        //         });
+        //          // Disable the form fields
+        //          this.myForm.disable();
+        //     },
+        //     (error) => {
+        //         console.error('Error fetching user details:', error);
+        //     }
+        // );
 
         this.myForm = this.fb.group({
             first_name: new FormControl('', [ // Notice the initial empty string value

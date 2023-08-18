@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Users } from 'src/app/models/users';
 import { ApiService } from 'src/app/services/api/api.service';
-import { ProgressService } from 'src/app/services/portfolio/progress.service';
+import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
     selector: 'app-portfolio-progressbar',
