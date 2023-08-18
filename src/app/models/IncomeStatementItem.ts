@@ -2,7 +2,7 @@
 
 export interface IncomeStatementItem {
     id: number;
-    statement_id: number; //IncomeStatementItem;
+    statement_id: number; //IncomeStatement;
     category: string;
     amount: number;
     proof: string;

@@ -1,3 +1,9 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+
 @import "~bootstrap/dist/css/bootstrap.css";
 @import 'src/assets/fonts/_fonts.css';
 
@@ -103,6 +109,14 @@ body {
     border: none !important;
 }
 
+/* sets how the app sidebar will display when it is called any */
+app-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: max-content;
+}
+
 /*------------------
     CONTAINERS 
 --------------------*/
@@ -129,6 +143,7 @@ body {
     height: 100%;
     width: 100%;
 
+    background-image: url("src/assets/images/background/orange-trees.webp");
     background-size: cover;
     background-color: var(--light);
     background-repeat: fill no-repeat;
@@ -250,8 +265,8 @@ body {
 }
 
 /* adds a dark overlay on header */
-.mobile-header::before{
-content: "";
+.mobile-header::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -276,6 +291,23 @@ content: "";
     height: 100%;
     width: max-content;
     position: relative;
+}
+
+.no-data-card-inner {
+    /* card inner items will display underneath each other */
+    flex-direction: column;
+    width: 75%;
+}
+
+/* adds sping to all card inner items */
+.no-data-card-inner>* {
+    margin: var(--normal-s);
+}
+
+
+.no-data-card {
+    /* makes card size enough to just fit content */
+    flex: 1 1 auto;
 }
 
 /*----------------------
@@ -550,6 +582,14 @@ input[type=number]:focus,
     border-left: none !important;
 }
 
+/* changes display for search input group */
+.search input {
+    border-radius: var(--border-radius);
+    border: var(--thin-border) var(--lighter-grey) !important;
+    /* removes the left border for input groups with input group text */
+    border-right: none !important;
+}
+
 /* changes the style of the input group text when the input field is in focus */
 .input-group:focus-within .input-group-text {
     border-radius: var(--border-radius);
@@ -595,6 +635,8 @@ button {
 
 /* style for buttons on white backgrounds */
 .colourful-btn {
+    display: flex;
+    flex-direction: row;
     border: var(--thick-border) var(--primary-colour) !important;
     background-color: var(--primary-colour) !important;
     color: var(--light) !important;
@@ -628,9 +670,9 @@ button {
 }
 
 /* style of an icon when hovering or focusing */
-.icon-btn:hover, 
+.icon-btn:hover,
 .icon-btn:hover fa-icon,
-.icon-btn:focus, 
+.icon-btn:focus,
 .icon-btn:focus fa-icon {
     color: var(--dark) !important;
 }
@@ -644,7 +686,8 @@ button {
 
 /* style of a dark icon button on hover or focus*/
 .icon-btn-dark:hover,
-.icon-btn-dark:focus {
+.icon-btn-dark:hover fa-icon,
+.icon-btn-dark:focus .icon-btn-dark:focus fa-icon {
     color: var(--primary-colour) !important;
 }
 
@@ -772,7 +815,8 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .page-content, .mobile-header{
+    .page-content,
+    .mobile-header {
         /* add space at the top to take the navbar size into consideration */
         padding: 55px var(--normal-s) var(--normal-s) !important;
     }
@@ -794,12 +838,15 @@ hr {
         /* border: none !important; */
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--medium-s);
     }
 
     .page-heading {
         padding: var(--normal-s) 0px 0px 0px;
+        /* ensures that page heading appear above  the background image opacity*/
+        position: relative;
     }
 
     .card {
@@ -828,6 +875,12 @@ hr {
 
     .btn-width {
         width: 100%;
+    }
+
+    .no-data-card-inner {
+        width: 100%;
+        /* makes the dashboard container for no items height fit to the content within it*/
+        height: max-content !important;
     }
 
     /*----------------------
@@ -863,11 +916,10 @@ hr {
         font-size: var(--font-normal);
     }
 
-    .page-content {
+    .page-content{
         /* add space at the top to take the navbar size into consideration */
         padding: 55px var(--xx-large-s) var(--normal-s) !important;
     }
-
 
     /* set styles for all contnet within page-content div */
     .page-content>* {
@@ -878,7 +930,8 @@ hr {
         padding: var(--normal-s) 0px 0px 0px;
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         width: 75%;
         padding: var(--medium-s);
     }
@@ -924,7 +977,8 @@ hr {
         padding: 75px var(--xx-large-s) var(--normal-s) !important;
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--large-s);
     }
 
@@ -953,16 +1007,20 @@ hr {
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
 
-    .page-content {
+    .page-content{
         /* add space at the top to take the navbar size into consideration */
         padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
+        app-sidebar {
+            padding-top: 55px;
+        }
 
     .form-container {
         width: 60% !important;
     }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--large-s);
     }
 
@@ -985,12 +1043,17 @@ hr {
 ----------------------------------*/
 @media (min-width: 1281px) {
 
-    .page-content {
+    .page-content{
         /* add space at the top to take the navbar size into consideration */
         padding: 75px var(--xx-large-s) var(--xx-large-s) !important;
     }
+    /* adds padding to top of sidebar */
+        app-sidebar {
+            padding-top: 55px;
+        }
 
-    .container, .form-container {
+    .container,
+    .form-container {
         padding: var(--xx-large-s);
         /* width: 35% !important; */
     }

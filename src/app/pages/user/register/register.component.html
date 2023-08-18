@@ -1,23 +1,35 @@
+<!-- 
+    AUTHOR: Ntokozo Radebe
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+ -->
+
 <!-- Mamotsoko Precious Maphutha Validations 07/08/2023-->
 <div class="mobile-header">
     <img src="assets/images/background/barn.webp" alt="..." />
 </div>
 <div class="page-body page-background justify-center">
+    <div class="mobile-header"></div>
     <div class="container form-container">
+        <!-- Registration Form -->
         <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+            <!-- Form Row -->
             <div class="row">
                 <div class="col-sm-12 registerform">
+                    <!-- Container Header -->
                     <div class="container-header">
                         <div class="justify-start">
                             <h1>Register</h1>
                         </div>
                         <div class="justify-end">
+                            <!-- Close Button -->
                             <button class="icon-btn" [routerLink]="['']">
                                 <fa-icon icon="times"></fa-icon>
                             </button>
                         </div>
                     </div>
-                    <!--ngClass it is used for the error and success state-->
+
+                    <!-- First Name Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -64,7 +76,8 @@
                             >Field is required.</small
                         >
                     </div>
-                    <!--ngClass it is used for the error and success state-->
+
+                    <!-- Last Name Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -111,7 +124,8 @@
                             >Field is required.</small
                         >
                     </div>
-                    <!--ngClass it is used for the error and success state-->
+
+                    <!-- ID Number Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -156,7 +170,8 @@
                             >Field is required.</small
                         >
                     </div>
-                    <!--ngClass it is used for the error and success state-->
+
+                    <!-- Email Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -192,7 +207,8 @@
                             >Field is required.</small
                         >
                     </div>
-                    <!--ngClass it is used for the error and success state-->
+
+                    <!-- Cell Number Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -228,7 +244,8 @@
                             >Field is required.</small
                         >
                     </div>
-                               <!--ngClass it is used for the error and success state-->
+
+                    <!-- Password Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -265,7 +282,8 @@
                             >Field is required.</small
                         >
                     </div>
-                    <!--ngClass it is used for the error and success state-->
+
+                    <!-- Confirm Password Input -->
                     <div
                         class="form-input"
                         [ngClass]="{
@@ -276,10 +294,10 @@
                                 RegisterForm.controls['cpassword'].invalid &&
                                 RegisterForm.controls['cpassword'].dirty
                         }">
-                        <label for="cpassword">Confirm Password:</label
-                        ><input
+                        <label for="cpassword">Confirm Password:</label>
+                        <input
                             formControlName="cpassword"
-                            class="form-control"
+                            class="form-control between-button"
                             id="cpassword" />
                                <!--This is the validation for invalid confirm password-->
                         <small
@@ -300,28 +318,30 @@
                             >Field is required.</small
                         >
                     </div>
+
+                    <!-- Register Button -->
                     <div class="form-group">
                         <button
                             type="submit"
                             [disabled]="!RegisterForm.valid"
-                            class="btn actions colourful-btn"
-                            [routerLink]="['/dashboard']">
+                            class="btn actions colourful-btn">
                             Register
                         </button>
                     </div>
+
+                    <!-- Login Link -->
                     <div class="text muted">
                         Have an account?
-                        <a id="forget" class="font-weight-lighter" routerLink="/login">Login</a>
+                        <a
+                            id="forget"
+                            class="font-weight-lighter"
+                            routerLink="/login"
+                            >Login</a
+                        >
                     </div>
                 </div>
-
-                <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
-                    <img
-                        src="assets/images/background/orange-trees.webp"
-                        alt="Avatar" />
-                </div> -->
             </div>
+            <!-- End of Form Row -->
         </form>
     </div>
-
 </div>

@@ -1,71 +1,96 @@
 <div class="container">
-  <div class="progress-bar">
-    <div class="progress" [style.width]="progressPercentage + '%'">
-      {{ progressPercentage }}%</div>
-  </div>
+    <div class="progress-bar">
+        <div class="progress" [style.width]="progressPercentage + '%'">
+            {{ progressPercentage }}%
+        </div>
+    </div>
 
-
-
-   
-        
-        <div class="checklist-container">
+    <div class="checklist-container">
         <form [formGroup]="checklistForm">
             <div class="checklist">
-              
-              <div class="form-check">
-                <label class="form-check-label">
-                  <span class="custom-checkbox" (click)="toggleCheckbox('personalInfo')">
-                      <fa-icon *ngIf="isCheckboxChecked('personalInfo')" icon="check" class="tick-icon"></fa-icon>
-                  </span>
-                  Personal Information
-              </label>
-            </div>
-              
-            <div class="form-check">
-              <label class="form-check-label">
-                <span class="custom-checkbox" (click)="toggleCheckbox('farmInfo')">
-                    <fa-icon *ngIf="isCheckboxChecked('farmInfo')" icon="check" class="tick-icon"></fa-icon>
-                </span>
-                Farm Information
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <span class="custom-checkbox" (click)="toggleCheckbox('cropInfo')">
-                  <fa-icon *ngIf="isCheckboxChecked('cropInfo')" icon="check" class="tick-icon"></fa-icon>
-              </span>
-              Crop Information
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <span class="custom-checkbox" (click)="toggleCheckbox('equipmentInfo')">
-                <fa-icon *ngIf="isCheckboxChecked('equipmentInfo')" icon="check" class="tick-icon"></fa-icon>
-            </span>
-            Equipment Information
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <span class="custom-checkbox" (click)="toggleCheckbox('bookkeepingInfo')">
-              <fa-icon *ngIf="isCheckboxChecked('bookkeepingInfo')" icon="check" class="tick-icon"></fa-icon>
-          </span>
-          Bookkeeping Data for 6 months
-      </label>
-    </div>
-            </div>
-          </form>
-        </div>
-          
-              
-        
-        <div class="container-feedback">
-            <h2>You can qualify for business funding.</h2>
-            <p>Click the  button below to go to  the ABSA website to apply for business funding.</p>
-            <div class="actions">
-              <a class="btn colourful-btn" href="https://www.absa.co.za/business/starting-my-business/access-to-finance/sme-contract-financing/" target="_blank">Go to ABSA</a>
-            </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <span
+                            class="custom-checkbox"
+                            (click)="toggleCheckbox('personalInfo')">
+                            <fa-icon
+                                *ngIf="isCheckboxChecked('personalInfo')"
+                                icon="check"
+                                class="tick-icon"></fa-icon>
+                        </span>
+                        Personal Information
+                    </label>
+                </div>
 
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <span
+                            class="custom-checkbox"
+                            (click)="toggleCheckbox('farmInfo')">
+                            <fa-icon
+                                *ngIf="isCheckboxChecked('farmInfo')"
+                                icon="check"
+                                class="tick-icon"></fa-icon>
+                        </span>
+                        Farm Information
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <span
+                            class="custom-checkbox"
+                            (click)="toggleCheckbox('cropInfo')">
+                            <fa-icon
+                                *ngIf="isCheckboxChecked('cropInfo')"
+                                icon="check"
+                                class="tick-icon"></fa-icon>
+                        </span>
+                        Crop Information
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <span
+                            class="custom-checkbox"
+                            (click)="toggleCheckbox('equipmentInfo')">
+                            <fa-icon
+                                *ngIf="isCheckboxChecked('equipmentInfo')"
+                                icon="check"
+                                class="tick-icon"></fa-icon>
+                        </span>
+                        Equipment Information
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <span
+                            class="custom-checkbox"
+                            (click)="toggleCheckbox('bookkeepingInfo')">
+                            <fa-icon
+                                *ngIf="isCheckboxChecked('bookkeepingInfo')"
+                                icon="check"
+                                class="tick-icon"></fa-icon>
+                        </span>
+                        Bookkeeping Data for 6 months
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-feedback">
+        <h2>You can qualify for business funding.</h2>
+        <p>
+            Click the button below to go to the ABSA website to apply for
+            business funding.
+        </p>
+        <div class="actions">
+            <a
+                class="btn colourful-btn"
+                href="https://www.absa.co.za/business/starting-my-business/access-to-finance/sme-contract-financing/"
+                target="_blank"
+                >Go to ABSA</a
+            >
         </div>
-      </div>
-      
+    </div>
+</div>

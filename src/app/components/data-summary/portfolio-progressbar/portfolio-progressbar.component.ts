@@ -14,6 +14,9 @@ export class PortfolioProgressbarComponent {
 
     checklistForm!: FormGroup;
 
+    // hardcoded farmer id
+    farmerId = 1;
+
     constructor(
         private fb: FormBuilder,
         private progressService: ProgressService,
@@ -53,22 +56,17 @@ export class PortfolioProgressbarComponent {
             }
         });
 
-       
-
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false
             farmInfo: [false], // Set initial value to
             cropInfo: [false],
             equipmentInfo: [false],
             bookkeepingInfo: [false],
-            
         });
 
-         // Fetch user data from API and populate the form
-         this._apiService.getRegisterUser().subscribe(
+        // Fetch user data from API and populate the form
+        this._apiService.getFarmerUser(this.farmerId).subscribe(
             (user: Users) => {
-               
-
                 // Update the checkbox
                 this.checklistForm.patchValue({
                     personalInfo: true,
@@ -78,16 +76,12 @@ export class PortfolioProgressbarComponent {
                 //     farmInfo: true,
                 // });
 
-
-
                 // Update progress based on personal info completion
                 this.progressService.setPersonalInfoCompleted(true);
             },
-            (error) => {
+            error => {
                 console.error('Error fetching user details:', error);
             }
         );
     }
-
-    
 }

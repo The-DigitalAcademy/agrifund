@@ -42,8 +42,8 @@ const routes: Routes = [
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
     { path: 'equipment-create', component: EquipmentCreateComponent },
-    {path: 'equipment-edit/:id', component: EquipmentEditComponent },
-    {path: 'dynamic-inputs', component: DynamicInputsComponent },
+    { path: 'equipment-edit/:id', component: EquipmentEditComponent },
+    { path: 'dynamic-inputs', component: DynamicInputsComponent },
 ];
 
 @NgModule({
