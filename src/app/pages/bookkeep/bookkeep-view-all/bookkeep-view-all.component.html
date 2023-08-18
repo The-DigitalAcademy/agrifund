@@ -90,6 +90,7 @@
                         </div>
 
                         <button
+                            (click)="openMobileSearchbar(mobileSearchbar)"
                             type="button"
                             class="btn colourful-btn search-btn large-hidden">
                             <fa-icon icon="search"></fa-icon>
@@ -221,5 +222,33 @@
 <ng-template #noResults>
     <div class="justify-center">
         <p>No results found...</p>
+    </div>
+</ng-template>
+
+<!-- mobile searchbar -->
+<ng-template #mobileSearchbar let-mobileSearchbar>
+    <div class="offcanvas-body">
+        <div class="actions">
+            <div class="search">
+                <input
+                    [(ngModel)]="searchValue"
+                    class="form-control searchbar"
+                    type="text"
+                    name="search"
+                    autocomplete="off"
+                    placeholder="Find for bookkeep record..." />
+                <!-- <button type="button" class="btn colourful-btn search-btn">
+                        <fa-icon icon="search"></fa-icon>
+                    </button> -->
+            </div>
+            <div class="close-btn">
+                <button
+                    class="btn icon-btn"
+                    type="button"
+                    (click)="mobileSearchbar.dismiss('Cross click')">
+                    <fa-icon icon="times"></fa-icon>
+                </button>
+            </div>
+        </div>
     </div>
 </ng-template>

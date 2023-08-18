@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatement } from 'src/app/models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
@@ -21,11 +22,14 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     private subscription = new Subscription();
     // stores the value within the search bar
     searchValue = '';
+    // refers to the offcanvas html element
+    @ViewChild('mobileSearchbar', { static: true }) private mobileSearchBar!: NgbOffcanvas;
 
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _bookkeepService: BookkeepService
+        private _bookkeepService: BookkeepService,
+        private _offcanvasService: NgbOffcanvas
     ) {
         this._apiService.getAllStatementItems().subscribe((records: any) => {
             // console.table(products);
@@ -60,6 +64,17 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
         // this.totalBookkeepRecords$ =
         //     this._bookkeepService.getTotalBookkeepRecords();
         // console.log(this.totalBookkeepRecords$);
+    }
+
+    openMobileSearchbar(content: TemplateRef<any>) {
+        this._offcanvasService.open(this.mobileSearchBar, {
+            position: 'top',
+            backdrop: false,
+        });
+    }
+
+    closeSearchbar() {
+        this._offcanvasService.dismiss();
     }
 
     ngOnDestroy() {

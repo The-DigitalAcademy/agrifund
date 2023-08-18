@@ -92,6 +92,25 @@ tr,
         width: 100%;
     }
 
+    .form-control{
+        /* removes the margin from form control */
+        margin: 0px !important;
+    }
+
+    .search input {
+        /* adds borders to mobile searchbar */
+        border-radius: var(--border-radius);
+        border: var(--thin-border) var(--lighter-grey) !important;
+    }
+
+    /* sets size of the offcanvas */
+        .offcanvas .offcanvas-top{
+        /* background-color: var(--light); */
+        height: max-content !important;
+        max-height: max-content !important;
+    }
+    
+
 }
 
 /*---------------------------------

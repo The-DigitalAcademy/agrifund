@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     userState$: Observable<string> | undefined;
     // stores the subscription to user service
     userSubscription!: Subscription;
-    // revers to the offcanvas html element
+    // refers to the offcanvas html element
     @ViewChild('offcanvas', { static: true }) private offcanvas!: NgbOffcanvas;
 
     constructor(
