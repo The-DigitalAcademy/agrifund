@@ -66,11 +66,6 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
                     // console.log(this.bookkeepRecords$);
                 })
         );
-
-        // gets the total bookkeep records
-        // this.totalBookkeepRecords$ =
-        //     this._bookkeepService.getTotalBookkeepRecords();
-        // console.log(this.totalBookkeepRecords$);
     }
 
     openMobileSearchbar(content: TemplateRef<any>) {

@@ -216,6 +216,7 @@ app-sidebar {
     background-color: var(--light-2);
     background-size: 100%;
     max-width: 100% !important;
+    height: max-content;
 }
 
 /* inner-most container */
