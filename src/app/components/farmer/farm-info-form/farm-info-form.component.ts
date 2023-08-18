@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { ProgressService } from 'src/app/services/progress.service';
+import { ProgressService } from 'src/app/services/portfolio/progress.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -17,9 +17,9 @@ import { ProgressService } from 'src/app/services/progress.service';
     styleUrls: ['./farm-info-form.component.css'],
 })
 export class DisabledformFarmInfoComponent {
-onFileSelected($event: Event) {
-throw new Error('Method not implemented.');
-}
+    onFileSelected($event: Event) {
+        throw new Error('Method not implemented.');
+    }
     originalFormValues: any;
     myForm!: FormGroup;
     isDisabled = true;
@@ -33,17 +33,15 @@ throw new Error('Method not implemented.');
     ) {}
 
     ngOnInit() {
-
-
         // Placeholder data for the farmer's information
         const farmerData = {
-            farmer:'Mankweng-A Turfloop NO:3434 ',
-            farm: 'Mankweng-A Turfloop NO:3434 ', 
-            size: '9', 
-            years: '10', 
-            num_employee: '2', 
+            farmer: 'Mankweng-A Turfloop NO:3434 ',
+            farm: 'Mankweng-A Turfloop NO:3434 ',
+            size: '9',
+            years: '10',
+            num_employee: '2',
             reasonForFunding:
-                'I want to improve my land of farming and equipments', 
+                'I want to improve my land of farming and equipments',
         };
 
         this.myForm = this.fb.group({
@@ -87,31 +85,29 @@ throw new Error('Method not implemented.');
                 [Validators.required]
             ),
         });
-        
 
         this.originalFormValues = farmerData;
     }
 
-   // Enable form fields for editing
-enableFields() {
-    this.isDisabled = false; // Enable the fields by setting isDisabled to false
-    this.myForm.enable(); // Enable the formGroup
-}
+    // Enable form fields for editing
+    enableFields() {
+        this.isDisabled = false; // Enable the fields by setting isDisabled to false
+        this.myForm.enable(); // Enable the formGroup
+    }
 
-// Save edited data
-saveFields() {
-    this.editedData = this.myForm.value;
-    this.isDisabled = true; // Disable the fields after saving
-}
+    // Save edited data
+    saveFields() {
+        this.editedData = this.myForm.value;
+        this.isDisabled = true; // Disable the fields after saving
+    }
 
-// Handle "Save" button click
-onSaveClicked(formData: any) {
-    this.farmerData = formData; // Update farmerData with the form data
-    this.isDisabled = true; // Disable the fields
-    this.myForm.disable(); // Disable the formGroup
-    this.progressService.setFarmInfoCompleted(true); // Update progress status
-}
-
+    // Handle "Save" button click
+    onSaveClicked(formData: any) {
+        this.farmerData = formData; // Update farmerData with the form data
+        this.isDisabled = true; // Disable the fields
+        this.myForm.disable(); // Disable the formGroup
+        this.progressService.setFarmInfoCompleted(true); // Update progress status
+    }
 
     onCancelClicked() {
         // Reset the form values to the original values

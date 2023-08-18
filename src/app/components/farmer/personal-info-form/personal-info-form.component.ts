@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { ProgressService } from 'src/app/services/progress.service';
+import { ProgressService } from 'src/app/services/portfolio/progress.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormBuilder,
@@ -21,7 +21,6 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
 
-    
     editedData: any;
     farmerData: any;
     isDisabled = true;
@@ -36,22 +35,22 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
-        private progressService: ProgressService, private _apiService: ApiService
+        private progressService: ProgressService,
+        private _apiService: ApiService
     ) {}
 
     ngOnInit() {
-       this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
-           this.personalInfo = farmer;
-           this.myForm.get('first_name')?.setValue(farmer.first_name);
-           this.myForm.get('last_name')?.setValue(farmer.last_name);
-           this.myForm.get('email')?.setValue(farmer.email);
-           this.myForm.get('id_number')?.setValue(farmer.idNumber);
-           this.myForm.get('cell_number')?.setValue(farmer.cell_phone);
-           console.table(farmer);
-       });
+        this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
+            this.personalInfo = farmer;
+            this.myForm.get('first_name')?.setValue(farmer.first_name);
+            this.myForm.get('last_name')?.setValue(farmer.last_name);
+            this.myForm.get('email')?.setValue(farmer.email);
+            this.myForm.get('id_number')?.setValue(farmer.idNumber);
+            this.myForm.get('cell_number')?.setValue(farmer.cell_phone);
+            console.table(farmer);
+        });
 
-
-         // Assuming you have a method in your ApiService to get registered user details
+        // Assuming you have a method in your ApiService to get registered user details
         //  this._apiService. getRegisterUser().subscribe(
         //     (user: Users) => {
         //         // Populate the form with user details
@@ -71,35 +70,33 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         // );
 
         this.myForm = this.fb.group({
-            first_name: new FormControl('', [ // Notice the initial empty string value
+            first_name: new FormControl('', [
+                // Notice the initial empty string value
                 Validators.required,
                 this.validationsService.textWithoutNumbersValidator(),
             ]),
-            last_name: new FormControl('', [ // Initial empty string value
+            last_name: new FormControl('', [
+                // Initial empty string value
                 Validators.required,
                 this.validationsService.textWithoutNumbersValidator(),
             ]),
-            email: new FormControl('', [ // Initial empty string value
+            email: new FormControl('', [
+                // Initial empty string value
                 Validators.required,
                 this.validationsService.emailValidator(),
             ]),
-            id_number: new FormControl('', [ // Initial empty string value
+            id_number: new FormControl('', [
+                // Initial empty string value
                 Validators.required,
                 this.validationsService.idNumberValidator(),
             ]),
-            cell_number: new FormControl('', [ // Initial empty string value
+            cell_number: new FormControl('', [
+                // Initial empty string value
                 Validators.required,
                 this.validationsService.phoneNumberValidator(),
             ]),
-           
         });
-      
-
-       
-
-        
     }
-
 
     enableFields() {
         this.isDisabled = false; // Enable the fields by setting isDisabled to false
