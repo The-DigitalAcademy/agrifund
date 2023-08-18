@@ -148,18 +148,6 @@ body {
     background-color: rgba(var(--darkRGB), var(--alpha));
 }
 
-/* puts filter on background images */
-img::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--darkRGB), var(--alpha));
-}
-
-
 /*child to page-body - all page items headings and containers go in here*/
 .page-content {
     /* padding: 55px var(--xx-large-s) var(--xx-large-s)  !important; */

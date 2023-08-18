@@ -21,6 +21,7 @@ export class ValidationsServiceService {
     return null;
   }
 
+
   passwordValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
@@ -118,15 +119,25 @@ export class ValidationsServiceService {
 
  
 
+  // phoneNumberValidator(): ValidatorFn {
+  //   return (control: AbstractControl): ValidationErrors | null => {
+  //     const phoneNumberRegex = /^(\+27|0)\d{9}$/;
+  //     if (!phoneNumberRegex.test(control.value)) {
+  //       return { invalidPhoneNumber: true };
+  //     }
+  //     return null;
+  //   };
+  // }
   phoneNumberValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const phoneNumberRegex = /^(\+27|0)\d{9}$/;
+      const phoneNumberRegex = /^\+27\d{9}$/;
       if (!phoneNumberRegex.test(control.value)) {
         return { invalidPhoneNumber: true };
       }
       return null;
     };
   }
+  
  
   dropdownSelectionValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {

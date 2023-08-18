@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Users } from 'src/app/models/users';
+import { ApiService } from 'src/app/services/api/api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
@@ -14,8 +16,21 @@ export class PortfolioProgressbarComponent {
 
     constructor(
         private fb: FormBuilder,
-        private progressService: ProgressService
+        private progressService: ProgressService,
+        private _apiService: ApiService
     ) {}
+
+    toggleCheckbox(controlName: string) {
+        const checkboxControl = this.checklistForm.get(controlName);
+        if (checkboxControl) {
+            checkboxControl.setValue(!checkboxControl.value);
+        }
+    }
+
+    isCheckboxChecked(controlName: string): boolean {
+        const checkboxControl = this.checklistForm.get(controlName);
+        return checkboxControl?.value === true;
+    }
 
     ngOnInit() {
         this.progressService.personalInfoCompleted$.subscribe(
@@ -38,13 +53,41 @@ export class PortfolioProgressbarComponent {
             }
         });
 
-        // Create the form controls and form group for the checklistForm
+       
+
         this.checklistForm = this.fb.group({
-            personalInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-            farmInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
-            cropInfo: new FormControl({ value: false, disabled: true }), // Set disabled to true to disable the checkbox by default
+            personalInfo: [false], // Set initial value to false
+            farmInfo: [false], // Set initial value to
+            cropInfo: [false],
+            equipmentInfo: [false],
+            bookkeepingInfo: [false],
+            
         });
+
+         // Fetch user data from API and populate the form
+         this._apiService.getRegisterUser().subscribe(
+            (user: Users) => {
+               
+
+                // Update the checkbox
+                this.checklistForm.patchValue({
+                    personalInfo: true,
+                });
+
+                // this.checklistForm.patchValue({
+                //     farmInfo: true,
+                // });
+
+
+
+                // Update progress based on personal info completion
+                this.progressService.setPersonalInfoCompleted(true);
+            },
+            (error) => {
+                console.error('Error fetching user details:', error);
+            }
+        );
     }
 
-    // Other methods and code for your component...
+    
 }

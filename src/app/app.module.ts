@@ -90,6 +90,8 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
 @NgModule({
@@ -121,6 +123,8 @@ import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.com
         EquipmentCreateComponent,
         ModalContainerComponent,
         DeleteModalContentComponent,
+        EquipmentEditComponent,
+        DynamicInputsComponent,
         AboutTheFarmComponent,
     ],
     imports: [

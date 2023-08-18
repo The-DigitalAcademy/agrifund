@@ -1,5 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, tap } from 'rxjs';
+import { Users } from 'src/app/models/users';
+import { Asset } from 'src/app/models/asset';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -27,6 +30,21 @@ export class ApiService {
     /* --------------------------------
         FARMER CONNECTION STRINGS
     ---------------------------------*/
+    // url used to register a farmer user
+    private registerFarmerURL = this.baseUrl;
+    // url used to login a farmer user
+    private loginFarmerURL = this.baseUrl + '/api/v1/auth/farmer';
+    // TODO find farmer by email
+
+    // TODO reset password
+
+    // TODO send OTP
+
+    // TODO farmer
+    // TODO assets
+    // TODO plot
+    // TODO farm
+    // TODO crop
     private farmerAssetURL = this.baseUrl + '/assets';
 
     /* --------------------------------
@@ -86,15 +104,41 @@ export class ApiService {
 
     //get an income statement record from a search text
 
+    // register user
+    RegisterUser(user: any): Observable<any> {
+        // const url = '/api/v1/auth/register/farmer';
+        return this.http.post(this.userURL, user);
+    }
+    getRegisterUser(): Observable<any> {
+        console.log(this.userURL);
+        return this.http.get(`${this.userURL}`);
+    }
+
+
+
     /* --------------------------------
         FARMER
     ---------------------------------*/
+    //add an equipment record
     addEquipment(body: any){
         return this.http.post(`${this.farmerAssetURL}`, body);
     }
 
+    //get all equipment records
     getAllEquipment(){
         console.log(this.farmerAssetURL);
         return this.http.get(`${this.farmerAssetURL}`);
     }
+
+     // get a single equipment item
+     getEquipmentById(equipmentId: number) {
+        return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
+    }
+    // update data for a single equipment record
+    editEquipment(equipmentId: number, body : any) {
+        return this.http.put(`${this.farmerAssetURL}/${equipmentId}`,body);
+    }
+
+   
+
 }

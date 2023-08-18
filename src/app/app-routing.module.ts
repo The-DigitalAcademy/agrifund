@@ -17,6 +17,8 @@ import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookke
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
 const routes: Routes = [
@@ -40,6 +42,8 @@ const routes: Routes = [
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
     { path: 'equipment-create', component: EquipmentCreateComponent },
+    {path: 'equipment-edit/:id', component: EquipmentEditComponent },
+    {path: 'dynamic-inputs', component: DynamicInputsComponent },
 ];
 
 @NgModule({

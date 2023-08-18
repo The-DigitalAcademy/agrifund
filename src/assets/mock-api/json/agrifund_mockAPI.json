@@ -218,6 +218,39 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "1a5a556f-d4ad-4914-bb7b-09b4f5acc2a4",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "Users",
+      "responses": [
+        {
+          "uuid": "859e0028-3ae1-4a1e-8da7-23bbdfba660d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "6man",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -240,6 +273,10 @@
     {
       "type": "route",
       "uuid": "c9feaaa8-3651-45bd-820e-cca42ef02bbc"
+    },
+    {
+      "type": "route",
+      "uuid": "1a5a556f-d4ad-4914-bb7b-09b4f5acc2a4"
     }
   ],
   "proxyMode": false,
@@ -302,7 +339,7 @@
       "id": "kp8f",
       "name": "incomeStatements",
       "documentation": "",
-      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"statementDate\": \"{{dateFormat (faker 'date.recent') 'yyyy-MM-dd'}}\", \n  \"totalIncome\": \"{{toFixed (float 0 5000) 2}}\",\n  \"totalExpenses\": \"{{toFixed (float 0 5000) 2}}\", \n  \"netIncome\": \"{{toFixed (float 0 5000) 2}}\"\n  }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 10}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"statementDate\": \"{{dateFormat (faker 'date.recent') 'yyyy-MM-dd'}}\", \n  \"totalIncome\": \"{{toFixed (float 0 5000) 2}}\",\n  \"totalExpenses\": \"{{toFixed (float 0 5000) 2}}\", \n  \"netIncome\": \"{{toFixed (float 0 5000) 2}}\"\n  }\n  {{/repeat}}\n]"
     },
     {
       "uuid": "fc9e6866-f09a-4919-8c04-1192b2101f05",
@@ -316,7 +353,14 @@
       "id": "b7iv",
       "name": "cropInfo",
       "documentation": "",
-      "value": "[\n  {{#repeat 1}}\n  {\n  \"id\": \"{{@index}}\",\n  \"farmId\":\"0\",\n  \"name\": \"{{oneOf (array 'Corn' 'Grapes' 'Potatoes')}}\", \n  \"season\": \"{{oneOf (array 'Summer' 'Autumn' 'Spring' 'Winter')}}\",\n  \"price\": \"{{toFixed (float 0 5000) 2}}\", \n  \"market_value\": \"{{toFixed (float 0 5000) 2}}\",\n  \"type\": \"{{oneOf (array 'Fruit' 'Vegatable')}}\",\n  }\n  {{/repeat}}\n]"
+      "value": "[\n  {{#repeat 10}}\n  {\n    \"id\": \"{{@index}}\",\n    \"farm_id\": \"0\",\n    \"name\": \"{{oneOf (array 'Plow' 'Wooden Rake' 'Tractor')}}\",\n    \"type\": \"{{oneOf (array 'Hand Tool' 'Vehicle' 'Farm Tool')}}\",\n    \"age\": \"{{toFixed (float 0 100) 0}}\",\n    \"purchase_price\": \"{{toFixed (float 0 5000) 0}}\"\n  }\n  {{/repeat}}\n]\n\n\n\n\n\n\n"
+    },
+    {
+      "uuid": "3a773cc8-f0a7-4bca-8ec3-2747ac145a85",
+      "id": "6man",
+      "name": "Users",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n  {\n  \"first_name\": \"{{faker 'name.firstName'}}\",\n  \"last_name\": \"{{faker 'name.lastName'}}\", \n  \"email\": \"{{faker 'internet.email'}}\",\n  \"cell_phone\": \"{{faker 'phone.phoneNumber'}}\", \n  \"password\": \"345678dyufgsjf$\",\n  \"idNumber\": \"0001180588087\"\n  {{/repeat}}\n]\n"
     }
   ]
 }

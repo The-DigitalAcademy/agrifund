@@ -46,22 +46,22 @@ h1 {
 
 @media (max-width: 767px) {
 
+  
+
   #left {
-    padding-left: var(--small-s) !important;
-
-
+    padding-right:0 !important;
+   
+  
   }
-
   #right {
 
-    padding-right: var(--small-s) !important;
+    padding-left: 0 !important;
+  
   }
-
-  #info {}
 
   #bottom {
 
-    padding: 0 var(--x-small-s) !important;
+    padding: 0  !important;
   }
 
   .crop-info {
