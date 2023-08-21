@@ -8,10 +8,10 @@ import {Chart} from 'chart.js'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  total_income!: number;
-  total_expenses!: number;
-  title!: 'ng-chart';
-  result: Object | undefined;
+  // total_income!: number;
+  // total_expenses!: number;
+  // title!: 'ng-chart';
+  // result: Object | undefined;
 
   constructor(private service: ChartService) {}
 
