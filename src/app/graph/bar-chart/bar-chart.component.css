@@ -13,9 +13,11 @@ UPDATED DATE: 17 AUG 2023  */
     position: relative !important;
     padding-top: 2% !important;
     padding-right: 2% !important;
-    background-color: #bbc82b !important;
+    background-color: #F7F7F7 !important;
     margin-left: 5% !important;
     margin-top: 3%;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
 
 
 
@@ -26,6 +28,8 @@ UPDATED DATE: 17 AUG 2023  */
     justify-content: center !important;
     padding-left: 35% !important;
     color: #6C757D !important;
+    flex-wrap: wrap;
+
 }
 
 
@@ -36,13 +40,12 @@ UPDATED DATE: 17 AUG 2023  */
 
 /* Container for bar chart */
     .chart-container {
-        height: 100% !important;
+        height: 20% !important;
         width: 100% !important;
-        position: relative !important;
         padding-top: 2% !important;
         padding-left: 2% !important;
         background-color: #F7F7F7 !important;
-        flex-wrap: wrap;
+   
        
        
     }
@@ -51,7 +54,8 @@ UPDATED DATE: 17 AUG 2023  */
         justify-content: center !important;
         padding-right: 45% !important;
         color: #6C757D !important;
-        display: block;
+      
+     
 
 
 

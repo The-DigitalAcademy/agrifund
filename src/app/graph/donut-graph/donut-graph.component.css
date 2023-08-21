@@ -12,12 +12,11 @@ UPDATED DATE: 17 AUG 2023  */
   width: 95%;
   padding-top: 5%;
   padding-left: 2%;
-  background-color: #df9114;
-  position: relative;
-  /* position: flex; */
-  /* display: block; */
+  background-color: #F7F7F7;
   margin-right: 5% !important;
-  margin-top: 3%;
+  margin-top: 3% !important;
+  flex-wrap: wrap;
+  
 
 
 }
@@ -27,15 +26,6 @@ UPDATED DATE: 17 AUG 2023  */
   padding-left: 29% !important;
   color: #6C757D !important;
 }
-
-
-
-.container {
-  width: 100% !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
 
 /*---------------------------------
     Media Query for Mobile Devices
@@ -50,17 +40,17 @@ UPDATED DATE: 17 AUG 2023  */
     padding-top: 2% !important;
     padding-left: 2% !important;
     background-color: #F7F7F7 !important;
-    /* flex-wrap: wrap;
-    display: row;
-    align-items: start; */
+    flex-wrap: wrap;
+  
   }
 /* heading for charts */
   .chart-header {
-    justify-content: left !important;
-    padding-left: 30% !important;
+    justify-content: center !important;
+    padding-left: 0% !important;
     color: #6C757D !important;
     flex-wrap: wrap;
-    padding-right: 86%
+    padding-right: 16%;
+  
   }
 
 
@@ -107,7 +97,7 @@ UPDATED DATE: 17 AUG 2023  */
 /* heading for charts */
     .chart-header {
       justify-content: center !important;
-      padding-left: 37% !important;
+      padding-left: 27% !important;
       color: #6C757D !important;
     }
 
@@ -118,9 +108,6 @@ UPDATED DATE: 17 AUG 2023  */
 ----------------------------------*/
   @media (min-width: 1281px) {
 
-    .header-content>* {
-      margin-bottom: var(--x-large-s) !important;
-    }
 /* Container for doughnut */
     .chart-container {
       height: 40vh !important;
