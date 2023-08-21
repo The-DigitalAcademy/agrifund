@@ -87,10 +87,10 @@ export class RegisterComponent implements OnInit {
             };
 
             // Call the API service to register the user
-            this._apiService.registerUser(this.users).subscribe(data => {
-                // Handle success or error response from the API
-                this.router.navigate(['/login']); // Navigate to login page after successful registration
-            });
+            // this._apiService.registerUser(this.users).subscribe(data => {
+            //     // Handle success or error response from the API
+            //     this.router.navigate(['/login']); // Navigate to login page after successful registration
+            // });
         }
     }
 }

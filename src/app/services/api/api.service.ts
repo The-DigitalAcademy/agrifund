@@ -6,6 +6,10 @@
     DESCRIPTION:
      This service is used for all api connections 
 
+    PARAMETERS:
+    registerUser( newUser: User) -> receives an body that is an instance of User
+    loginUser( email: string, password:string) -> both parameters passed should be a string
+
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
 import { HttpClient } from '@angular/common/http';
@@ -24,7 +28,7 @@ export class ApiService {
     // private BASE_URL = `${environment.mockApiUrl}`;
 
     // base url of api connection
-    private BASE_URL = `${environment.apiURL}`;
+    private BASE_URL = `${environment.API_URL}`;
 
     /* --------------------------------
         USER CONNECTION STRINGS
@@ -34,16 +38,13 @@ export class ApiService {
     // register url of api connection
     private REGISTER_URL = this.AUTH_URL + '/register';
 
-    // TODO user
-    private userURL = this.BASE_URL + '/users'; // Define the URL for user registration
-    private loginURL = this.BASE_URL + '/login'; // Define the URL for user login
-
     /* --------------------------------
        FARMER CONNECTION STRINGS
     ---------------------------------*/
-    // farmer url string piece for api connection -> for single farmer (farmer)
-    private FARMER_URL = '/farmer';
-
+    // farmer url string piece for api connection
+    private FARMER_URL = 'farmer';
+    // farmers url string piece for api connection
+    private FARMERS_URL = '/farmers';
     // connection string to get farmer assets
     private farmerAssetURL = this.BASE_URL + '/assets';
 
@@ -56,33 +57,35 @@ export class ApiService {
     /* --------------------------------
         ADMIN USER CONNECTION STRINGS
     ---------------------------------*/
-    // farmers url string piece for api connection -> for all farmers (admin)
-    private FARMERS_URL = '/farmers';
+
+    /* --------------------------------
+        USER
+    ---------------------------------*/
+    // POST function for registering a new farmer user
+    logout(request: string) {
+        return this.http.post(
+            `${this.REGISTER_URL}/${this.FARMER_URL}`,
+            request
+        );
+    }
 
     /* --------------------------------
         FARMER
     ---------------------------------*/
     // POST function for registering a new farmer user
-    registerFarmer(body: User) {}
+    registerFarmer(newFarmer: User) {
+        return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, newFarmer);
+    }
 
     // POST function for a farmer to login
-    loginFarmer() {}
-
-    registerUser(user: any): Observable<any> {
-        // Send a POST request to the user registration URL
-        return this.http.post(this.userURL, user);
+    loginFarmer(loginBody: any) {
+        return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
     }
-    // login(email: string, password: string): Observable<any> {
-    //     // Create the request body with email and password
-    //     const body = { email, password };
-    //     // Send a POST request to the login URL with the provided credentials
-    //     return this.http.post(this.loginURL, body);
-    // }
 
     // gets a farmer by their id
     getFarmerUser(userId: number): Observable<any> {
         console.log(userId);
-        return this.http.get(`${this.userURL}/${userId}`);
+        return this.http.get(`${this.FARMERS_URL}/${userId}`);
     }
 
     // adds a new equipment item

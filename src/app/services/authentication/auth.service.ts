@@ -17,13 +17,5 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
     constructor() {}
-
-    //when a user creates a new session
-    login() {}
-
-    // when a new user is registered
-    register() {}
-
-    // when a user logs out of their session
-    logout() {}
+ 
 }

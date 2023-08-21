@@ -8,7 +8,7 @@
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,26 +16,29 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
 // import { UserService } from 'src/app/services/users.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     LoginForm!: FormGroup; // Form group to hold login form controls
     message = ''; // Message to display error or validation messages
+    // used to store subscriptions to services
+    private subscription = new Subscription();
 
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
         private router: Router,
         // private userService: UserService, // Service to handle user-related functionalities
-        private apiService: ApiService, // Service to make API requests
+        private _apiService: ApiService, // Service to make API requests
         private _userService: UserService
     ) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         // Initialize the login form with email and password fields
         this.LoginForm = this.fb.group({
             email: [
@@ -52,13 +55,29 @@ export class LoginComponent implements OnInit {
         });
     }
 
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
     onSubmit() {
         if (this.LoginForm.valid) {
             const formValue = this.LoginForm.value;
+            // sets the data that will be sent to the api
+            const loginBody = {
+                email: formValue.email,
+                password: formValue.password,
+            };
 
+            this.subscription.add(
+                this._apiService
+                    .loginFarmer(loginBody)
+                    .subscribe((data: any) => {
+                        console.log(data);
+                    })
+            );
 
-            this._userService.setUserState('mock_token');
-            this.router.navigate(['/dashboard']);
+            // this._userService.setUserState('mock_token');
+            // this.router.navigate(['/dashboard']);
 
             // Call the login method of the ApiService to authenticate the user
             // this.apiService

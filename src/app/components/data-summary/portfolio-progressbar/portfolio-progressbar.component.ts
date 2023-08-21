@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';

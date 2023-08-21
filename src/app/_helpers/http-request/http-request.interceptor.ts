@@ -22,8 +22,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
-    constructor() {}
-
     intercept(
         request: HttpRequest<unknown>,
         next: HttpHandler
