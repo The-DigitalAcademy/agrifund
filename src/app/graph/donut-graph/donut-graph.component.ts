@@ -25,41 +25,52 @@ export class DonutGraphComponent {
   total_expense: any = [];
   total_income: any = [];
   net_income: any = [];
-  amount:any = [];
-  results:any = [];
+  chartdata:any = [];
+  
 
 
   ngOnInit(): void {
 
     this.chartService.getTotalNetIncome().subscribe(result =>{
-      this.net_income = result;
+      this.chartdata = result;
+      if(this.chartdata!=null) {
+        for(let i=0; i<this.chartdata.length ;i++) {
+          this.net_income.push(this.chartdata[i].amount)
+          this.total_expense.push(this.chartdata[i].amount)
+        }
+        this.RenderChart(this.net_income,this.total_expense);
+      }
   
       
-      console.log(this.net_income)
+      // console.log(this.net_income)
     });
 
     this.chartService.getTotalIncome().subscribe(result =>{
       this.total_income = result;
-
-      console.log(this.total_income)
+      if(this.chartdata!=null) {
+        for(let i=0; i<this.chartdata.length ;i++) {
+          this.total_income.push(this.chartdata[i].amount)
+        }
+      }
+      // console.log(this.total_income)
     });
   
-    // this.RenderChart(this.total_expense);
-    this.RenderChart(this.net_income,this.net_income);
+    
+    
     
   }
   // RenderChart(total_expense:any) 
 
   // doughnut graph properties
 
-  RenderChart(total_income:any,net_income:any) {
+  RenderChart(net_income:any, total_expense:any) {
     new Chart("Piechart", {
       type: 'doughnut',
       data: {
         labels: ['Money Out', 'Money In'],
         datasets: [{
           label: 'Money Out Summary',
-          data: [378,882],
+          data: [net_income,total_expense],
           backgroundColor: ['#5A6537',
           '#9BA66F'],
           hoverOffset: 10
