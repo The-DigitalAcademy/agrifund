@@ -43,6 +43,12 @@ export class ApiService {
     ---------------------------------*/
     private farmerAssetURL = this.baseUrl + '/assets';
 
+        /* --------------------------------
+        About the farm connection strings
+    ---------------------------------*/
+    private cropInfoURL = this.baseUrl + '/cropInfo';
+
+
     // gets a farmer by their id
     getFarmerUser(userId: number): Observable<any> {
         console.log(userId);
@@ -141,4 +147,15 @@ export class ApiService {
         // Send a POST request to the login URL with the provided credentials
         return this.http.post(this.loginURL, body);
     }
+      /* --------------------------------
+        ABOUT THE FARM
+    ---------------------------------*/
+
+
+
+    /* --------------------------------
+        ABOUT THE FARM/CROP
+    ---------------------------------*/
+
+    
 }
