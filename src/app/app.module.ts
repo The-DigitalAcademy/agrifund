@@ -5,13 +5,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
     FontAwesomeModule,
     FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
+
+/* --------------------------------
+    INTERCEPTORS
+---------------------------------*/
+import { httpInterceptorProviders } from './_helpers/http-request/http-request.interceptor';
 
 /* --------------------------------
     OVERALL
@@ -138,7 +143,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         NgbModule,
         Ng2SearchPipeModule,
     ],
-    providers: [],
+    providers: [httpInterceptorProviders],
     bootstrap: [AppComponent],
     entryComponents: [DeleteModalContentComponent],
 })
