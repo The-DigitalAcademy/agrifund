@@ -157,5 +157,9 @@ export class ApiService {
         ABOUT THE FARM/CROP
     ---------------------------------*/
 
-    
+    addCropInfo(body:any){
+     return this.http.post(`${this.cropInfoURL}`, body)
+    }
+
+
 }
