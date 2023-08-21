@@ -39,7 +39,7 @@ export class BarChartComponent {
    
     // this.RenderChart();
   }
-  // RenderChart(total_expense:any)
+  
    // size of the graph properties 
   RenderChart(total_expense:any) {
     new Chart("barchart", {
