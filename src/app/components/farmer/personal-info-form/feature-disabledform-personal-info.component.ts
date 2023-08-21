@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { Users } from 'src/app/models/users';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 
@@ -40,7 +40,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ngOnInit() {
         // Assuming you have a method in your ApiService to get registered user details
         this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: Users) => {
+            (user: User) => {
                 // Populate the form with user details
                 this.myForm.patchValue({
                     first_name: user.firstName,

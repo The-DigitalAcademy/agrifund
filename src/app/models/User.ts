@@ -8,7 +8,7 @@
 
 -------------------------------------------------------------------------------------------------*/
 
-export interface Users {
+export interface User {
     // userId
     id: number;
     // User's first name

@@ -8,11 +8,10 @@
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, tap } from 'rxjs';
-import { Users } from 'src/app/models/users';
-import { Asset } from 'src/app/models/asset';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/User';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -26,31 +25,59 @@ export class ApiService {
 
     // base url of api connection
     private BASE_URL = `${environment.apiURL}`;
+
+    /* --------------------------------
+        USER CONNECTION STRINGS
+    ---------------------------------*/
     // authentication url of api connection
     private AUTH_URL = this.BASE_URL + '/auth';
     // register url of api connection
     private REGISTER_URL = this.AUTH_URL + '/register';
-    // farmer url string piece for api connection -> for single farmer (farmer)
-    private FARMER_URL = '/farmer';
-    // farmers url string piece for api connection -> for all farmers (admin)
-    private FARMERS_URL = '/farmers';
-
-    /* --------------------------------
-        ADMIN USER CONNECTION STRINGS
-    ---------------------------------*/
-    // TODO admin
-
-    // TODO farmer
-    // used by admin to get farmer related data
 
     // TODO user
     private userURL = this.BASE_URL + '/users'; // Define the URL for user registration
     private loginURL = this.BASE_URL + '/login'; // Define the URL for user login
 
     /* --------------------------------
-        FARMER CONNECTION STRINGS
+       FARMER CONNECTION STRINGS
     ---------------------------------*/
+    // farmer url string piece for api connection -> for single farmer (farmer)
+    private FARMER_URL = '/farmer';
+
+    // connection string to get farmer assets
     private farmerAssetURL = this.BASE_URL + '/assets';
+
+    /* --------------------------------
+        BOOKKEEP CONNECTION STRINGS
+    ---------------------------------*/
+    private statementsUrl = this.BASE_URL + '/incomeStatements';
+    private statementItemsUrl = this.BASE_URL + '/incomeStatementItems';
+
+    /* --------------------------------
+        ADMIN USER CONNECTION STRINGS
+    ---------------------------------*/
+    // farmers url string piece for api connection -> for all farmers (admin)
+    private FARMERS_URL = '/farmers';
+
+    /* --------------------------------
+        FARMER
+    ---------------------------------*/
+    // POST function for registering a new farmer user
+    registerFarmer(body: User) {}
+
+    // POST function for a farmer to login
+    loginFarmer() {}
+
+    registerUser(user: any): Observable<any> {
+        // Send a POST request to the user registration URL
+        return this.http.post(this.userURL, user);
+    }
+    // login(email: string, password: string): Observable<any> {
+    //     // Create the request body with email and password
+    //     const body = { email, password };
+    //     // Send a POST request to the login URL with the provided credentials
+    //     return this.http.post(this.loginURL, body);
+    // }
 
     // gets a farmer by their id
     getFarmerUser(userId: number): Observable<any> {
@@ -78,12 +105,6 @@ export class ApiService {
     getEquipmentById(equipmentId: number) {
         return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
     }
-
-    /* --------------------------------
-        BOOKKEEP CONNECTION STRINGS
-    ---------------------------------*/
-    private statementsUrl = this.BASE_URL + '/incomeStatements';
-    private statementItemsUrl = this.BASE_URL + '/incomeStatementItems';
 
     /* --------------------------------
         BOOKKEEP / INCOME STATEMENT
@@ -135,24 +156,4 @@ export class ApiService {
     // get income statement records between two dates
 
     //get an income statement record from a search text
-
-    /* --------------------------------
-        FARMER
-    ---------------------------------*/
-    // POST function for registering a new farmer user
-    registerFarmer() {}
-
-    // POST function for a farmer to login
-    loginFarmer() {}
-
-    registerUser(user: any): Observable<any> {
-        // Send a POST request to the user registration URL
-        return this.http.post(this.userURL, user);
-    }
-    // login(email: string, password: string): Observable<any> {
-    //     // Create the request body with email and password
-    //     const body = { email, password };
-    //     // Send a POST request to the login URL with the provided credentials
-    //     return this.http.post(this.loginURL, body);
-    // }
 }

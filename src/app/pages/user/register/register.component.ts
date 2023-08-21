@@ -14,7 +14,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { Users } from 'src/app/models/users';
+import { User } from 'src/app/models/User';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 // import { UserService } from 'src/app/services/users.service';
 
@@ -24,7 +24,7 @@ import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
     styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-    users!: Users;
+    users!: User;
     RegisterForm!: FormGroup;
     submitted = false;
 

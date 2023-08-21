@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Users } from 'src/app/models/users';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 // import { ProgressService } from 'src/app/services/progress.service';
@@ -67,7 +67,7 @@ export class PortfolioProgressbarComponent {
 
         // Fetch user data from API and populate the form
         this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: Users) => {
+            (user: User) => {
                 // Update the checkbox
                 this.checklistForm.patchValue({
                     personalInfo: true,
