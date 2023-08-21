@@ -1,4 +1,4 @@
-/* AUTHOR: Bolebo
+/* AUTHOR: 
 CREATE DATE: 13 AUG 2023
 UPDATED DATE: 17 AUG 2023  */
 
@@ -8,12 +8,15 @@ UPDATED DATE: 17 AUG 2023  */
 
 /* Container for bar chart */
 .chart-container {
-    height: 38vh !important;
-    width: 100% !important;
+    height: 100% !important;
+    width: 95% !important;
     position: relative !important;
     padding-top: 2% !important;
-    padding-left: 2% !important;
-    background-color: #F7F7F7 !important;
+    padding-right: 2% !important;
+    background-color: #bbc82b !important;
+    margin-left: 5% !important;
+    position: relative;
+    margin-top: 3%;
 
 
 

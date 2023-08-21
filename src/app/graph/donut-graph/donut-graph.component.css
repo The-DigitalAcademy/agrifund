@@ -8,13 +8,16 @@ UPDATED DATE: 17 AUG 2023  */
 
 /* Container for doughnut chart */
 .chart-container {
-  height: 38vh;
+  height: 100%;
   width: 95%;
-  padding-top: 2%;
+  padding-top: 5%;
   padding-left: 2%;
-  background-color: #F7F7F7;
-  position: flex;
-  display: block;
+  background-color: #df9114;
+  position: relative;
+  /* position: flex; */
+  /* display: block; */
+  margin-right: 5% !important;
+  margin-top: 3%;
 
 
 }
