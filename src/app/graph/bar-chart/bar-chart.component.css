@@ -61,16 +61,13 @@ UPDATED DATE: 17 AUG 2023  */
 
     @media only screen and (max-width: 576px) {
 
-        /* TEXT */
-        .mobile-hidden {
-            display: none !important;
-        }
         /* heading for bar charts */
         .chart-header {
             justify-content: center !important;
-            padding-left: 37% !important;
+            padding-left: 3% !important;
             color: #6C757D !important;
         }
+        
 
 /* Container for bar chart */
         .chart-container {
@@ -85,24 +82,11 @@ UPDATED DATE: 17 AUG 2023  */
         }
 
 
-        /* HIDE ITEMS*/
-        /* hide items on small screens */
-        .mobile-hidden {
-            display: none !important;
-        }
-
-
 
     }
 
     @media only screen and (min-width: 576px) and (max-width: 1200px) {
 
-        /* HIDE ITEMS*/
-        /* hide items on large screens */
-
-        .large-hidden .about-company {
-            display: none !important;
-        }
 /* Container for bar chart */
         .chart-container {
             height: 40vh !important;
@@ -149,10 +133,3 @@ UPDATED DATE: 17 AUG 2023  */
     }
 }
 
-.slogan {
-    /* color: var(--light) !important; */
-}
-
-.bold {
-    /* color: var(--light) !important; */
-}

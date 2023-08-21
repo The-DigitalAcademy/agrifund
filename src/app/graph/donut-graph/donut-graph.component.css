@@ -50,9 +50,9 @@ UPDATED DATE: 17 AUG 2023  */
     padding-top: 2% !important;
     padding-left: 2% !important;
     background-color: #F7F7F7 !important;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     display: row;
-    align-items: start;
+    align-items: start; */
   }
 /* heading for charts */
   .chart-header {
@@ -91,23 +91,10 @@ UPDATED DATE: 17 AUG 2023  */
 
     }
 
-    /* HIDE ITEMS*/
-    /* hide items on small screens */
-    .mobile-hidden {
-      display: none !important;
-    }
-
-
-
   }
 
   @media only screen and (min-width: 576px) and (max-width: 1200px) {
 
-    /* HIDE ITEMS*/
-    /* hide items on large screens */
-    .large-hidden .about-company {
-      display: none !important;
-    }
 /* Container for doughnut */
     .chart-container {
       height: 30vh !important;
@@ -146,12 +133,4 @@ UPDATED DATE: 17 AUG 2023  */
     }
 
   }
-}
-
-.slogan {
-  /* color: var(--light) !important; */
-}
-
-.bold {
-  /* color: var(--light) !important; */
 }
