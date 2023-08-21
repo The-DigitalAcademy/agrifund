@@ -40,35 +40,15 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
-            this.personalInfo = farmer;
-            this.myForm.get('first_name')?.setValue(farmer.first_name);
-            this.myForm.get('last_name')?.setValue(farmer.last_name);
-            this.myForm.get('email')?.setValue(farmer.email);
-            this.myForm.get('id_number')?.setValue(farmer.idNumber);
-            this.myForm.get('cell_number')?.setValue(farmer.cell_phone);
-            console.table(farmer);
-        });
-
-        // Assuming you have a method in your ApiService to get registered user details
-        //  this._apiService. getRegisterUser().subscribe(
-        //     (user: Users) => {
-        //         // Populate the form with user details
-        //         this.myForm.patchValue({
-        //             first_name: user.firstName,
-        //             last_name: user.lastName,
-        //             email: user.email,
-        //             id_number: user.idNumber,
-        //             cell_number: user.cellNumber,
-        //         });
-        //          // Disable the form fields
-        //          this.myForm.disable();
-        //     },
-        //     (error) => {
-        //         console.error('Error fetching user details:', error);
-        //     }
-        // );
-
+       this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
+      this.myForm.patchValue({
+        first_name: farmer.first_name,
+        last_name: farmer.last_name,
+        email: farmer.email,
+        id_number: farmer.idNumber,
+        cell_number: farmer.cell_phone,
+      });
+    });
         this.myForm = this.fb.group({
             first_name: new FormControl('', [
                 // Notice the initial empty string value

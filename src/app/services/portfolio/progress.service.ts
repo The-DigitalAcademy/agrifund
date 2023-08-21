@@ -29,4 +29,6 @@ export class ProgressService {
     setFarmInfoCompleted(status: boolean) {
         this.farmInfoCompleted.next(status);
     }
+
+    
 }

@@ -9,6 +9,7 @@ import { Asset } from 'src/app/models/asset'; // Importing Asset model
 export class PortfolioServiceService {
   
   private assets: Asset[] = []; // Private property to store asset data
+  
   constructor(private _http: HttpClient, private _apiService: ApiService) { 
     // Constructor initializes the service with HttpClient and ApiService
 
