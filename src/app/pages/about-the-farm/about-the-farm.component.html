@@ -1,33 +1,26 @@
-<!-- Author: Mamotsoko Maphutha 13/08/2023  --> 
-<div class="page-body page-background">
+Author: Mamotsoko Maphutha 13/08/2023  
+<!-- <div class=" rowpage-body page-background">
     <div class="justify-center page-content col-12">
         <div class ="mobile-header">
         </div>
-        <div class="outer-container mobile hidden">
-<ngb-carousel *ngIf="formSlides">
-    <ol class="carousel-indicators">
-        <li
-          *ngFor="let formSlide of formSlides; let i = index"
-          [class.active]="i === 0"
-          (click)="carousel.select(i)"
-        ></li>
-      </ol>
-        <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">  <!-- Array for form slides -->
-          <form [formGroup]="formSlide.formGroup">
-            <div class = "carousel-inner">
+        <div class="outer-container mobile hidden"> -->
+<!-- <ngb-carousel *ngIf="formSlides"> -->
+        <!-- <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">  -->
+          <!-- <form [formGroup]="formSlide.formGroup">
+            <div class = "carousel-inner"> -->
                 <!-- *ngIf conditions and form controls -->
-            <div *ngIf="i === 0">
-                <div class="inner-container">
+            <!-- <div *ngIf="i === 0"> -->
+                <!-- <div class="inner-container">
                     <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
                       <h1>Welcome To AgriFund</h1>
                       <p>We are happy to to help you embark on your path to financial success.
                         <br>
                         <br> But first we would love to hear more about your farm!</p>
                       </div>
-                </div>
+                </div> -->
                 <!-- *ngIf conditions and form controls -->
-            <div *ngIf="i === 1">
-                <div class="justify-center">
+            <!-- <div *ngIf="i === 1"> -->
+                <!-- <div class="justify-center">
                     <h2>Tell me about your farm</h2>
                 </div>
                 <div class="container">
@@ -57,10 +50,10 @@
                       </div>
                 </div>
                 </div>
-            </div>
+          -->
             <!-- *ngIf conditions and form controls -->
-            <div *ngIf="i === 2">
-                <div class="justify-center">
+            <!-- <div *ngIf="i === 2"> -->
+                <!-- <div class="justify-center">
                     <h2>Tell me about your farm</h2>
                 </div>
             <div class="container">
@@ -84,11 +77,8 @@
                   <label for="date">When did you start farming on this land?</label>
                   <input formControlName="date" type="date" class="form-control" id="date" />
                 </div>
-              </div>
-            </div>
-              <!-- *ngIf conditions and form controls -->
-            <div *ngIf="i === 3">
-                <div class="justify-center">
+              </div> -->
+                <!-- <div class="justify-center">
                     <h2>Tell me about your farm</h2>
                 </div>
                 <div class="container">
@@ -126,14 +116,214 @@
                  </div>
                 </div>
             </div>
-            <div class="carousel-control-prev" (click)="carousel.prev()">Prev
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              </div>
-              <div class="carousel-control-next" (click)="carousel.next()"> Next
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              </div>
           </form>
         </ng-template>
-      </ngb-carousel>
+      </ngb-carousel> -->
+      <!-- <div class="actions">
+        <div class="justify-start">
+            <button
+                class="carousel-control-prev btn icon-btn-dark"
+                type="button"
+                (click)="goToPreviousSlide()">
+                <fa-icon icon="arrow-left"></fa-icon>
+                Prev
+            </button>
         </div>
+        <div class="carousel slide justify-center">
+            <div class="carousel-indicators">
+                <button
+                    type="button"
+                    data-bs-target="#getStartedCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"></button>
+                <button
+                    type="button"
+                    data-bs-target="#getStartedCarousel"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button
+                    type="button"
+                    data-bs-target="#getStartedCarousel"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                    <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+            </div>
+            
+            
+ -->
+ <div class="row page-body page-background">
+    <div class="mobile-header"></div>
+    <div class="justify-center page-content">
+        <div class="form-container container outer-container">
+            <ngb-carousel
+                class="container inner-container"
+                #carousel="ngbCarousel"
+                [activeId]="'slide1'">
+                <ng-template ngbSlide id="slide1">
+                    <div class="justify-center">
+                            <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
+                              <h1>Welcome To AgriFund</h1>
+                              <p>We are happy to to help you embark on your path to financial success.
+                                <br>
+                                <br> But first we would love to hear more about your farm!</p>
+                              </div>
+                </ng-template>
+                <ng-template ngbSlide id="slide2">
+                    <div class="justify-center">
+                        <h2>Tell me about your farm</h2>
+                    </div>
+                    <div class="container">
+                        <div class="justify-center">
+                            <h2>You & Farm</h2>
+                        </div>   
+                    <div class="inner-container">
+                              <div class="form-group"> 
+                                <label for="location">Where do you live?</label>
+                                <input formControlName="location" class="form-control" id="locationInput" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="ID">What is your ID number?</label>
+                                <input formControlName="ID" class="form-control" id="idInput" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="size">What is the size of your farm in hectares (ha)?</label>
+                                <input formControlName="size" class="form-control" id="sizeInput" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="number">How many people help you with your farming?</label>
+                                <input formControlName="number" class="form-control" id="numberInput" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="funding">Why do you need funding for your farming activities?</label>
+                                <input formControlName="funding" class="form-control" id="fundingInput"/>
+                          </div>
+                    </div> 
+                    </div>   
+                </ng-template>
+                <ng-template id="slide3" ngbSlide>
+                <div class="justify-center">
+                    <h2>Tell me about your farm</h2>
+                </div>
+            <div class="container">
+                <div class="justify-center">
+                    <h2>Plot</h2>
+                </div>
+                <div class="inner-container">
+                    <div class="form-group">
+                      <label for="farmLocation">Where is your farm located?</label>
+                      <input formControlName="farmLocation" class="form-control description" id="farmLocationInput">
+                    </div>
+                    <div class="form-group">
+                      <label for="farmSize">What is the size of your farm in hectares (ha)?</label>
+                      <select id="farmSize" class="form-control" formControlName="farmSize">
+                          <option value="farmSize">8 to 10 hectares</option>
+                          <option value="farmSize">11 to 14 hectares</option>
+                          <option value="farmSize">15 to 18 hectares</option>
+                          <option value="farmSize">19 to 22 hectares</option>
+                      </select>
+                    </div>
+                  <label for="date">When did you start farming on this land?</label>
+                  <input formControlName="date" type="date" class="form-control" id="date" />
+                </div>
+              </div>
+                </ng-template>
+                <ng-template id="slide4" ngbSlide>
+                    <div class="justify-center">
+                        <h2>Tell me about your farm</h2>
+                    </div>
+                    <div class="justify-center">
+                        <h2>Crops</h2>
+                    </div>
+                <div class="inner-container">
+                    
+                        <div class="form-group">
+                            <label for="seasonFarm">What season do you usually farm in?</label>
+                            <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
+                                <option value="seasonFarm">Spring</option>
+                                <option value="seasonFarm">Summer</option>
+                                <option value="seasonFarm">Fall</option>
+                                <option value="seasonFarm">Winter</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cropType">What crops do you farm?</label>
+                            <select id="cropType" class="form-control" formControlName="cropType">
+                                <option value="cropType">Corn</option>
+                                <option value="cropType">Maize</option>
+                                <option value="cropType">Fibre Crops</option>
+                                <option value="cropType">Wheat</option>
+                        </select> 
+                        </div>
+                        <div class="form-group">
+                            <label for="type">What is the type of your crop?</label>
+                            <select id="type" class="form-control" formControlName="type">
+                                <option value="type">Vegetables</option>
+                                <option value="type">Fruits</option>
+                            
+                            </select>
+                        </div>
+                </div>
+                </ng-template>
+            </ngb-carousel>
+            <div class="actions">
+                <div class="justify-start">
+                    <button
+                        class="carousel-control-prev btn icon-btn-dark"
+                        type="button"
+                        (click)="goToPreviousSlide()">
+                        <fa-icon icon="arrow-left"></fa-icon>
+                        Prev
+                    </button>
+                </div>
+                <div class="carousel slide justify-center">
+                    <div class="carousel-indicators">
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#getStartedCarousel"
+                            data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                      
+                    </div>
+                </div>
+                <div class="justify-end">
+                    <!-- *ngIf="slide !== last" -->
+                    <button
+                        class="carousel-control-next btn icon-btn-dark"
+                        type="button"
+                        (click)="goToNextSlide()">
+                        Next
+                        <fa-icon
+                            class="arrow-right"
+                            icon="arrow-right"></fa-icon>
+                    </button>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+
+
+            
