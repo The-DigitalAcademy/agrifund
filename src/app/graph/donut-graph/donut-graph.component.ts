@@ -26,12 +26,14 @@ export class DonutGraphComponent {
   total_income: any = [];
   net_income: any = [];
   amount:any = [];
+  results:any = [];
 
 
   ngOnInit(): void {
 
     this.chartService.getTotalNetIncome().subscribe(result =>{
       this.net_income = result;
+  
       
       console.log(this.net_income)
     });

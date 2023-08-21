@@ -1,10 +1,25 @@
 {
   "total_expense": [
     {
-      "amount": [543,8290,6673]
+      "amount": [5243]
+    },
+
+    {
+      "amount": [11378]
+    },
+
+    {
+      "amount": [6378]
+    },
+
+    {
+      "amount": [7378]
+    },
+
+    {
+      "amount": [9378]
     }
-   
-    
+
   ],
   "total_income": [
     {

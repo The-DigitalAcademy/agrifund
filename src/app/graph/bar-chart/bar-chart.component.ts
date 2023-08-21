@@ -20,29 +20,35 @@ export class BarChartComponent {
  
   constructor(private chartService:ChartService) {}
 
- 
+  chartdata:any = [];
   total_expense: any = [];
   total_income: any = [];
   net_income: any = [];
 
   ngOnInit(): void {
     this.chartService.Getchartinfo().subscribe(result=>{
-      this.total_expense = result;
-      console.log(this.total_expense)
+      this.chartdata = result;
+      if(this.chartdata!=null) {
+        for(let i=0; i<this.chartdata.length ;i++) {
+          this.total_expense.push(this.chartdata[i].amount)
+        }
+        this.RenderChart(this.total_expense);
+      }
+      // console.log(this.total_expense)
     });
-     // this.RenderChart(this.total_expense);
-    this.RenderChart();
+   
+    // this.RenderChart();
   }
   // RenderChart(total_expense:any)
    // size of the graph properties 
-  RenderChart() {
+  RenderChart(total_expense:any) {
     new Chart("barchart", {
       type: 'bar',
       data: {
         labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
         datasets: [{
           label: 'Money Out Summary',
-          data: [1200, 590, 350, 825, 900],
+          data: total_expense,
           backgroundColor: ['#5A6537'], 
         }]
       },
