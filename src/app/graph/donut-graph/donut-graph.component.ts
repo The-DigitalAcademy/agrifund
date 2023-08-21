@@ -51,6 +51,7 @@ export class DonutGraphComponent {
         for(let i=0; i<this.chartdata.length ;i++) {
           this.total_income.push(this.chartdata[i].amount)
         }
+        this.RenderChart(this.total_income.net_income,this.total_expense);
       }
       // console.log(this.total_income)
     });
@@ -63,14 +64,14 @@ export class DonutGraphComponent {
 
   // doughnut graph properties
 
-  RenderChart(net_income:any, total_expense:any) {
+  RenderChart(net_income:any, total_income:any) {
     new Chart("Piechart", {
       type: 'doughnut',
       data: {
         labels: ['Money Out', 'Money In'],
         datasets: [{
           label: 'Money Out Summary',
-          data: [net_income,total_expense],
+          data: [net_income,total_income],
           backgroundColor: ['#5A6537',
           '#9BA66F'],
           hoverOffset: 10
