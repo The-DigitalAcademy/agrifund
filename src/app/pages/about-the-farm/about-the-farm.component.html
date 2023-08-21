@@ -27,12 +27,8 @@
                                 <input formControlName="location" class="form-control" id="locationInput" />
                             </div>
                             <div class="form-group"> 
-                                <label for="ID">What is your ID number?</label>
-                                <input formControlName="ID" class="form-control" id="idInput" />
-                            </div>
-                            <div class="form-group"> 
-                                <label for="size">What is the size of your farm in hectares (ha)?</label>
-                                <input formControlName="size" class="form-control" id="sizeInput" />
+                                <label for="activeFarming">How many years have you been actively farming?</label>
+                                <input formControlName="activeFarming" class="form-control" id="activeFarming" />
                             </div>
                             <div class="form-group"> 
                                 <label for="number">How many people help you with your farming?</label>
@@ -50,22 +46,25 @@
                     <h2>Tell me about your farm</h2>
                <h2>Plot</h2>
                 <div class="container inner-container">
+                    <form [formGroup]="plotForm">
                     <div class="form-group">
-                      <label for="farmLocation">Where is your farm located?</label>
-                      <input formControlName="farmLocation" class="form-control description" id="farmLocationInput">
+                      <label for="plot_address">Where is your farm located?</label>
+                      <input formControlName="plot_address" class="form-control description" id="plot_addressInput">
                     </div>
                     <div class="form-group">
-                      <label for="farmSize">What is the size of your farm in hectares (ha)?</label>
-                      <select id="farmSize" class="form-control" formControlName="farmSize">
-                          <option value="farmSize">8 to 10 hectares</option>
-                          <option value="farmSize">11 to 14 hectares</option>
-                          <option value="farmSize">15 to 18 hectares</option>
-                          <option value="farmSize">19 to 22 hectares</option>
+                      <label for="size">What is the size of your farm in hectares (ha)?</label>
+                      <select id="size" class="form-control" formControlName="size">
+                          <option value="size">8 to 10 hectares</option>
+                          <option value="size">11 to 14 hectares</option>
+                          <option value="size">15 to 18 hectares</option>
+                          <option value="size">19 to 22 hectares</option>
                       </select>
                     </div>
-                  <label for="date">When did you start farming on this land?</label>
-                  <input formControlName="date" type="date" class="form-control" id="date" />
+                  <label for="ownership_date">When did you start farming on this land?</label>
+                  <input formControlName="ownership_date" type="ownership_date" class="form-control" id="ownership_dateInput" />
+                </form>
                 </div>
+                
               </div>
                 </ng-template>
                 <ng-template ngbSlide id="slide4" >
@@ -118,24 +117,24 @@
                     <div class="carousel-indicators">
                         <button
                             type="button"
-                            data-bs-target="#getStartedCarousel"
+                            data-bs-target="#aboutFarmCarousel"
                             data-bs-slide-to="0"
                             class="active"
                             aria-current="true"
                             aria-label="Slide 1"></button>
                         <button
                             type="button"
-                            data-bs-target="#getStartedCarousel"
+                            data-bs-target="##aboutFarmCarousel"
                             data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                         <button
                             type="button"
-                            data-bs-target="#getStartedCarousel"
+                            data-bs-target="##aboutFarmCarousel"
                             data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                         <button
                             type="button"
-                            data-bs-target="#getStartedCarousel"
+                            data-bs-target="#aboutFarmCarousel"
                             data-bs-slide-to="4"
                             aria-label="Slide 5"></button>
                       

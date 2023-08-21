@@ -47,6 +47,7 @@ export class ApiService {
         About the farm connection strings
     ---------------------------------*/
     private cropInfoURL = this.baseUrl + '/cropInfo';
+    private plotInfoURL = this.baseUrl + '/plotInfo';
 
 
     // gets a farmer by their id
@@ -160,6 +161,14 @@ export class ApiService {
     addCropInfo(body:any){
      return this.http.post(`${this.cropInfoURL}`, body)
     }
+
+     /* --------------------------------
+        ABOUT THE FARM/PLOT
+    ---------------------------------*/
+
+    addPlotInfo(body:any){
+        return this.http.post(`${this.plotInfoURL}`, body)
+       }
 
 
 }

@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Plot } from 'src/app/models/plot';
 import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -19,8 +20,10 @@ export class AboutTheFarmComponent implements OnInit {
   // sets the first slide as the active slide
   slides: any = ['slide1', 'slide2', 'slide3', 'slide4'];
   cropForm!:  FormGroup  ;
+  plotForm!:  FormGroup  ;
   submitted = false;
   crop!: Crop;
+  plot!: Plot;
 
   constructor(private fb: FormBuilder,private router: Router, carouselConfig: NgbCarouselConfig, private _aboutFarm: AboutTheFarmService, private _apiService: ApiService) {
     // prevents the carousel from wrapping
@@ -37,6 +40,12 @@ export class AboutTheFarmComponent implements OnInit {
       cropType: ['', Validators.required],
       type: ['', Validators.required],
   })
+
+  this.plotForm = this.fb.group({
+    seasonFarm: ['', Validators.required],
+    cropType: ['', Validators.required],
+    type: ['', Validators.required],
+})
     this.carousel.pause();
   }
   // navigates to a specific slide
@@ -47,36 +56,40 @@ export class AboutTheFarmComponent implements OnInit {
 
 // navigates to the next slide
 goToNextSlide() {
-    
+  this.submitted = true;
 
-    this.submitted = true;
-
-    if( this.cropForm.valid){
-      this.crop ={
+  if (this.cropForm.valid) {
+    this.crop = {
+      farm_id: this._aboutFarm.generateFarmId(),
+      season: this.cropForm.get('seasonFarm')?.value,
+      name: this.cropForm.get('cropType')?.value,
+      type: this.cropForm.get('type')?.value,
+    };
+    if (this.plotForm.valid) {
+      this.plot = {
         farm_id: this._aboutFarm.generateFarmId(),
-        season: this.cropForm.get('seasonFarm')?.value,
-        name: this.cropForm.get('cropType')?.value,
-        type: this.cropForm.get('type')?.value,
-
+        plot_address: this.plotForm.get('farmLocation')?.value,
+        size: this.plotForm.get('size')?.value,
+        ownership_date: this.plotForm.get('date')?.value,
       };
 
-      console.table(this.crop);
+    // console.table(this.crop);
 
-this._apiService.addCropInfo(this.crop).subscribe(data => {
-  console.table(data);
-});
+    this._apiService.addCropInfo(this.crop).subscribe(data => {
+      console.table(data);
+      
+    });
+  }
+
+  this.carousel.next(); // Move to the next slide
 
 
-
-    }
-    this.carousel.next();
 }
-
-
+}
 // navigates to the previous slide
 goToPreviousSlide() {
     this.carousel.prev();
 }
  
-}
 
+}
