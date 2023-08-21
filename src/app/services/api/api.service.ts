@@ -1,10 +1,10 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Ntokozo, Monique, Kamo
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 21 Aug 2023 
 
     DESCRIPTION:
-     This service is for all methods related to a user
+     This service is used for all api connections 
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
@@ -21,10 +21,19 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for api connection with current version of api
-    // private baseUrl = `${environment.apiURL}`;
     // base string for mock api connection
-    private baseUrl = `${environment.mockApiUrl}`;
+    // private BASE_URL = `${environment.mockApiUrl}`;
+
+    // base url of api connection
+    private BASE_URL = `${environment.apiURL}`;
+    // authentication url of api connection
+    private AUTH_URL = this.BASE_URL + '/auth';
+    // register url of api connection
+    private REGISTER_URL = this.AUTH_URL + '/register';
+    // farmer url string piece for api connection -> for single farmer (farmer)
+    private FARMER_URL = '/farmer';
+    // farmers url string piece for api connection -> for all farmers (admin)
+    private FARMERS_URL = '/farmers';
 
     /* --------------------------------
         ADMIN USER CONNECTION STRINGS
@@ -35,13 +44,13 @@ export class ApiService {
     // used by admin to get farmer related data
 
     // TODO user
-    private userURL = this.baseUrl + '/users'; // Define the URL for user registration
-    private loginURL = this.baseUrl + '/login'; // Define the URL for user login
+    private userURL = this.BASE_URL + '/users'; // Define the URL for user registration
+    private loginURL = this.BASE_URL + '/login'; // Define the URL for user login
 
     /* --------------------------------
         FARMER CONNECTION STRINGS
     ---------------------------------*/
-    private farmerAssetURL = this.baseUrl + '/assets';
+    private farmerAssetURL = this.BASE_URL + '/assets';
 
     // gets a farmer by their id
     getFarmerUser(userId: number): Observable<any> {
@@ -73,8 +82,8 @@ export class ApiService {
     /* --------------------------------
         BOOKKEEP CONNECTION STRINGS
     ---------------------------------*/
-    private statementsUrl = this.baseUrl + '/incomeStatements';
-    private statementItemsUrl = this.baseUrl + '/incomeStatementItems';
+    private statementsUrl = this.BASE_URL + '/incomeStatements';
+    private statementItemsUrl = this.BASE_URL + '/incomeStatementItems';
 
     /* --------------------------------
         BOOKKEEP / INCOME STATEMENT
@@ -130,15 +139,20 @@ export class ApiService {
     /* --------------------------------
         FARMER
     ---------------------------------*/
-    // register user
+    // POST function for registering a new farmer user
+    registerFarmer() {}
+
+    // POST function for a farmer to login
+    loginFarmer() {}
+
     registerUser(user: any): Observable<any> {
         // Send a POST request to the user registration URL
         return this.http.post(this.userURL, user);
     }
-    login(email: string, password: string): Observable<any> {
-        // Create the request body with email and password
-        const body = { email, password };
-        // Send a POST request to the login URL with the provided credentials
-        return this.http.post(this.loginURL, body);
-    }
+    // login(email: string, password: string): Observable<any> {
+    //     // Create the request body with email and password
+    //     const body = { email, password };
+    //     // Send a POST request to the login URL with the provided credentials
+    //     return this.http.post(this.loginURL, body);
+    // }
 }
