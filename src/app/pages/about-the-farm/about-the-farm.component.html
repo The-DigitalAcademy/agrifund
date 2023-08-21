@@ -19,12 +19,9 @@
                 <ng-template ngbSlide id="slide2">
                     <div class="justify-center">
                         <h2>Tell me about your farm</h2>
-                    </div>
-                    <div class="container">
-                        <div class="justify-center">
                             <h2>You & Farm</h2>
-                        </div>   
-                    <div class="container justify-center">
+                          
+                    <div class="container inner-container">
                               <div class="form-group"> 
                                 <label for="location">Where do you live?</label>
                                 <input formControlName="location" class="form-control" id="locationInput" />
@@ -46,17 +43,13 @@
                                 <input formControlName="funding" class="form-control" id="fundingInput"/>
                           </div>
                     </div> 
-                    </div>   
+                    </div> 
                 </ng-template>
                 <ng-template id="slide3" ngbSlide>
                 <div class="justify-center">
                     <h2>Tell me about your farm</h2>
-                </div>
-            <div class="container">
-                <div class="justify-center">
-                    <h2>Plot</h2>
-                </div>
-                <div class="inner-container">
+               <h2>Plot</h2>
+                <div class="container inner-container">
                     <div class="form-group">
                       <label for="farmLocation">Where is your farm located?</label>
                       <input formControlName="farmLocation" class="form-control description" id="farmLocationInput">
@@ -78,11 +71,8 @@
                 <ng-template ngbSlide id="slide4" >
                     <div class="justify-center">
                         <h2>Tell me about your farm</h2>
-                    </div>
-                    <div class="justify-center">
                         <h2>Crops</h2>
-                    </div>
-                <div class="inner-container">
+                    <div class="container inner-container">
                     <form [formGroup]="cropForm">
                         <div class="form-group">
                           <label for="seasonFarm">What season do you usually farm in?</label>
@@ -110,6 +100,7 @@
                           </select>
                         </div>
                       </form>
+                    </div>
                 </div>
                 </ng-template>
             </ngb-carousel>
