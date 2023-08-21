@@ -233,7 +233,7 @@ Author: Mamotsoko Maphutha 13/08/2023
                 </div>
               </div>
                 </ng-template>
-                <ng-template id="slide4" ngbSlide>
+                <ng-template ngbSlide id="slide4" >
                     <div class="justify-center">
                         <h2>Tell me about your farm</h2>
                     </div>
@@ -241,33 +241,38 @@ Author: Mamotsoko Maphutha 13/08/2023
                         <h2>Crops</h2>
                     </div>
                 <div class="inner-container">
-                    
+                    <form [formGroup]="cropForm" (ngSubmit)="saveCrop()">
                         <div class="form-group">
-                            <label for="seasonFarm">What season do you usually farm in?</label>
-                            <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
-                                <option value="seasonFarm">Spring</option>
-                                <option value="seasonFarm">Summer</option>
-                                <option value="seasonFarm">Fall</option>
-                                <option value="seasonFarm">Winter</option>
-                            </select>
+                          <label for="seasonFarm">What season do you usually farm in?</label>
+                          <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
+                            <option value="Spring">Spring</option>
+                            <option value="Summer">Summer</option>
+                            <option value="Fall">Fall</option>
+                            <option value="Winter">Winter</option>
+                          </select>
                         </div>
                         <div class="form-group">
-                            <label for="cropType">What crops do you farm?</label>
-                            <select id="cropType" class="form-control" formControlName="cropType">
-                                <option value="cropType">Corn</option>
-                                <option value="cropType">Maize</option>
-                                <option value="cropType">Fibre Crops</option>
-                                <option value="cropType">Wheat</option>
-                        </select> 
+                          <label for="cropType">What crops do you farm?</label>
+                          <select id="cropType" class="form-control" formControlName="cropType">
+                            <option value="Corn">Corn</option>
+                            <option value="Maize">Maize</option>
+                            <option value="Fibre Crops">Fibre Crops</option>
+                            <option value="Wheat">Wheat</option>
+                          </select>
                         </div>
                         <div class="form-group">
-                            <label for="type">What is the type of your crop?</label>
-                            <select id="type" class="form-control" formControlName="type">
-                                <option value="type">Vegetables</option>
-                                <option value="type">Fruits</option>
-                            
-                            </select>
+                          <label for="type">What is the type of your crop?</label>
+                          <select id="type" class="form-control" formControlName="type">
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Fruits">Fruits</option>
+                          </select>
                         </div>
+                        <div class="actions">
+                          <div class="justify-start">
+                            <button class="btn colourful-btn btn-width left-btn" type="submit">Save</button>
+                          </div>
+                        </div>
+                      </form>
                 </div>
                 </ng-template>
             </ngb-carousel>
@@ -312,7 +317,7 @@ Author: Mamotsoko Maphutha 13/08/2023
                     <!-- *ngIf="slide !== last" -->
                     <button
                         class="carousel-control-next btn icon-btn-dark"
-                        type="button"
+                        type="submit"
                         (click)="goToNextSlide()">
                         Next
                         <fa-icon
