@@ -68,7 +68,7 @@ export class DonutGraphComponent {
       options: {
         responsive:true,
         maintainAspectRatio:true,
-        aspectRatio:1.6
+        aspectRatio:1.7
       }
     });
   }

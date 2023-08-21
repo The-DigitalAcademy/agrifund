@@ -15,7 +15,6 @@ UPDATED DATE: 17 AUG 2023  */
     padding-right: 2% !important;
     background-color: #bbc82b !important;
     margin-left: 5% !important;
-    position: relative;
     margin-top: 3%;
 
 
@@ -25,7 +24,7 @@ UPDATED DATE: 17 AUG 2023  */
  /* heading for bar charts */
 .chart-header {
     justify-content: center !important;
-    padding-left: 34% !important;
+    padding-left: 35% !important;
     color: #6C757D !important;
 }
 
@@ -37,15 +36,15 @@ UPDATED DATE: 17 AUG 2023  */
 
 /* Container for bar chart */
     .chart-container {
-        height: 30vh !important;
+        height: 100% !important;
         width: 100% !important;
         position: relative !important;
         padding-top: 2% !important;
         padding-left: 2% !important;
         background-color: #F7F7F7 !important;
         flex-wrap: wrap;
-        display: block;
-        align-items: start;
+       
+       
     }
 /* heading for bar charts */
     .chart-header {

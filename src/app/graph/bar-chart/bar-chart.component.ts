@@ -49,7 +49,7 @@ export class BarChartComponent {
       options: {
         responsive:true,
         maintainAspectRatio:true,
-        aspectRatio:1.9
+        aspectRatio:1.5
       }
     });
   }
