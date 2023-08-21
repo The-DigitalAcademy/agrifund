@@ -9,11 +9,12 @@
   "total_income": [
     {
      
-      "amount": 3672
+      "amount": [3672]
     }
   ],
-  "net_income": {
+  "net_income": [
+    {
     "amount": [2355]
-
+    }
+  ]
   }
-}
