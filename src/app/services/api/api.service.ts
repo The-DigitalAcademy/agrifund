@@ -84,7 +84,6 @@ export class ApiService {
 
     // gets a farmer by their id
     getFarmerUser(userId: number): Observable<any> {
-        console.log(userId);
         return this.http.get(`${this.FARMERS_URL}/${userId}`);
     }
 
@@ -95,7 +94,6 @@ export class ApiService {
 
     // gets all equipment items for a farmer
     getAllEquipment() {
-        console.log(this.farmerAssetURL);
         return this.http.get(`${this.farmerAssetURL}`);
     }
 
@@ -135,14 +133,11 @@ export class ApiService {
 
     // get a single income statement item
     getStatementItemById(recordId: number) {
-        // console.log(`${this.statementItemsUrl}/${recordId}`);
         return this.http.get(`${this.statementItemsUrl}/${recordId}`);
     }
 
     // add a new income statement record
     addRecord(body: any) {
-        // body.shift();
-        // console.log(body);
         return this.http.post(`${this.statementItemsUrl}`, body);
     }
 
