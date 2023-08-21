@@ -2,13 +2,12 @@
 .page-body {
  
     background-image: url("src/assets/images/background/orange-trees.webp");
+    flex-direction: column;
 }
-.page-heading{
-    margin-bottom: -5% !important;
-    padding: 10% !important;
-    justify-content: center;
-    align-items: center;
+.page-heading h1 {
+    /* centers page heading text */
     text-align: center;
+    /* changes the page headings to dark colour */
     color: var(--dark);
 }
 ngb-carousel {
@@ -18,7 +17,6 @@ ngb-carousel {
 }
 
 h2{
-    margin-bottom: -0% !important;
     justify-content: center;
   }
 
@@ -140,7 +138,6 @@ p {
 .carousel-control-prev fa-icon {
     margin-right: var(--small-s) !important;
 }
-
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/

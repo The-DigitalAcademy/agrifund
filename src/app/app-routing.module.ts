@@ -21,6 +21,7 @@ import { EquipmentEditComponent } from './components/farmer/equipment-edit/equip
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
+
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },

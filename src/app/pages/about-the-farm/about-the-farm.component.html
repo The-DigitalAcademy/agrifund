@@ -1,162 +1,4 @@
-Author: Mamotsoko Maphutha 13/08/2023  
-<!-- <div class=" rowpage-body page-background">
-    <div class="justify-center page-content col-12">
-        <div class ="mobile-header">
-        </div>
-        <div class="outer-container mobile hidden"> -->
-<!-- <ngb-carousel *ngIf="formSlides"> -->
-        <!-- <ng-template ngbSlide *ngFor="let formSlide of formSlides; let i = index">  -->
-          <!-- <form [formGroup]="formSlide.formGroup">
-            <div class = "carousel-inner"> -->
-                <!-- *ngIf conditions and form controls -->
-            <!-- <div *ngIf="i === 0"> -->
-                <!-- <div class="inner-container">
-                    <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
-                      <h1>Welcome To AgriFund</h1>
-                      <p>We are happy to to help you embark on your path to financial success.
-                        <br>
-                        <br> But first we would love to hear more about your farm!</p>
-                      </div>
-                </div> -->
-                <!-- *ngIf conditions and form controls -->
-            <!-- <div *ngIf="i === 1"> -->
-                <!-- <div class="justify-center">
-                    <h2>Tell me about your farm</h2>
-                </div>
-                <div class="container">
-                    <div class="justify-center">
-                        <h2>You & Farm</h2>
-                    </div>   
-                <div class="inner-container">
-                          <div class="form-group"> 
-                            <label for="location">Where do you live?</label>
-                            <input formControlName="location" class="form-control" id="locationInput" />
-                        </div>
-                        <div class="form-group"> 
-                            <label for="ID">What is your ID number?</label>
-                            <input formControlName="ID" class="form-control" id="idInput" />
-                        </div>
-                        <div class="form-group"> 
-                            <label for="size">What is the size of your farm in hectares (ha)?</label>
-                            <input formControlName="size" class="form-control" id="sizeInput" />
-                        </div>
-                        <div class="form-group"> 
-                            <label for="number">How many people help you with your farming?</label>
-                            <input formControlName="number" class="form-control" id="numberInput" />
-                        </div>
-                        <div class="form-group"> 
-                            <label for="funding">Why do you need funding for your farming activities?</label>
-                            <input formControlName="funding" class="form-control" id="fundingInput"/>
-                      </div>
-                </div>
-                </div>
-          -->
-            <!-- *ngIf conditions and form controls -->
-            <!-- <div *ngIf="i === 2"> -->
-                <!-- <div class="justify-center">
-                    <h2>Tell me about your farm</h2>
-                </div>
-            <div class="container">
-                <div class="justify-center">
-                    <h2>Plot</h2>
-                </div>
-                <div class="inner-container">
-                    <div class="form-group">
-                      <label for="farmLocation">Where is your farm located?</label>
-                      <input formControlName="farmLocation" class="form-control description" id="farmLocationInput">
-                    </div>
-                    <div class="form-group">
-                      <label for="farmSize">What is the size of your farm in hectares (ha)?</label>
-                      <select id="farmSize" class="form-control" formControlName="farmSize">
-                          <option value="farmSize">8 to 10 hectares</option>
-                          <option value="farmSize">11 to 14 hectares</option>
-                          <option value="farmSize">15 to 18 hectares</option>
-                          <option value="farmSize">19 to 22 hectares</option>
-                      </select>
-                    </div>
-                  <label for="date">When did you start farming on this land?</label>
-                  <input formControlName="date" type="date" class="form-control" id="date" />
-                </div>
-              </div> -->
-                <!-- <div class="justify-center">
-                    <h2>Tell me about your farm</h2>
-                </div>
-                <div class="container">
-                        <div class="justify-center">
-                            <h2>Crops</h2>
-                        </div>
-                    <div class="inner-container">
-                            <div class="form-group">
-                                <label for="seasonFarm">What season do you usually farm in?</label>
-                                <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
-                                    <option value="seasonFarm">Spring</option>
-                                    <option value="seasonFarm">Summer</option>
-                                    <option value="seasonFarm">Fall</option>
-                                    <option value="seasonFarm">Winter</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="cropType">What crops do you farm?</label>
-                                <select id="cropType" class="form-control" formControlName="cropType">
-                                    <option value="cropType">Corn</option>
-                                    <option value="cropType">Maize</option>
-                                    <option value="cropType">Fibre Crops</option>
-                                    <option value="cropType">Wheat</option>
-                            </select> 
-                            </div>
-                            <div class="form-group">
-                                <label for="type">What is the type of your crop?</label>
-                                <select id="type" class="form-control" formControlName="type">
-                                    <option value="type">Vegetables</option>
-                                    <option value="type">Fruits</option>
-                                
-                                </select>
-                            </div>
-                    </div>
-                 </div>
-                </div>
-            </div>
-          </form>
-        </ng-template>
-      </ngb-carousel> -->
-      <!-- <div class="actions">
-        <div class="justify-start">
-            <button
-                class="carousel-control-prev btn icon-btn-dark"
-                type="button"
-                (click)="goToPreviousSlide()">
-                <fa-icon icon="arrow-left"></fa-icon>
-                Prev
-            </button>
-        </div>
-        <div class="carousel slide justify-center">
-            <div class="carousel-indicators">
-                <button
-                    type="button"
-                    data-bs-target="#getStartedCarousel"
-                    data-bs-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Slide 1"></button>
-                <button
-                    type="button"
-                    data-bs-target="#getStartedCarousel"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button
-                    type="button"
-                    data-bs-target="#getStartedCarousel"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                    <button
-                            type="button"
-                            data-bs-target="#getStartedCarousel"
-                            data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-            </div>
-            
-            
- -->
+<!-- Author: Mamotsoko Maphutha 13/08/2023   -->
  <div class="row page-body page-background">
     <div class="mobile-header"></div>
     <div class="justify-center page-content">
@@ -182,7 +24,7 @@ Author: Mamotsoko Maphutha 13/08/2023
                         <div class="justify-center">
                             <h2>You & Farm</h2>
                         </div>   
-                    <div class="inner-container">
+                    <div class="container justify-center">
                               <div class="form-group"> 
                                 <label for="location">Where do you live?</label>
                                 <input formControlName="location" class="form-control" id="locationInput" />
@@ -241,7 +83,7 @@ Author: Mamotsoko Maphutha 13/08/2023
                         <h2>Crops</h2>
                     </div>
                 <div class="inner-container">
-                    <form [formGroup]="cropForm" (ngSubmit)="saveCrop()">
+                    <form [formGroup]="cropForm">
                         <div class="form-group">
                           <label for="seasonFarm">What season do you usually farm in?</label>
                           <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
@@ -266,11 +108,6 @@ Author: Mamotsoko Maphutha 13/08/2023
                             <option value="Vegetables">Vegetables</option>
                             <option value="Fruits">Fruits</option>
                           </select>
-                        </div>
-                        <div class="actions">
-                          <div class="justify-start">
-                            <button class="btn colourful-btn btn-width left-btn" type="submit">Save</button>
-                          </div>
                         </div>
                       </form>
                 </div>
