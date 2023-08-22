@@ -20,6 +20,8 @@ import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.ser
 export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
     // bookkeeping records stored within an observable
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
+    // stores the total bookkeeping records
+    totalBookkeepingRecords$!: Observable<number>;
     // bookkeeping records stored within an observable
     filteredRecords$!: Observable<IncomeStatementItem[]>;
     // used to store subscriptions to services
@@ -42,13 +44,28 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // adds get all records to subscription
+        // gets data from the api and sends it he be added to the bookkeeping observable in the service
         this.subscription.add(
-            this._apiService
-                .getAllStatementItems()
-                .subscribe((records: any) => {
-                    //populate bookkeepingRecords observable with records from api
-                    this.bookkeepingRecords$ = records;
+            this._apiService.getAllStatementItems().subscribe((data: any) => {
+                //populate sets the bookkeeping records value in the bookkeeping service
+                this._bookkeepingService.setBookkeepingRecords(data);
+                // this.bookkeepingRecords$ = records;
+                // gets all values now stored in observable in service
+                this._bookkeepingService
+                    .getAllBookkeepingRecords()
+                    .subscribe(records => {
+                        this.bookkeepingRecords$ = records;
+                    });
+            })
+        );
+
+        // adds calculate total bookkeeping records to subscription
+        this.subscription.add(
+            this._bookkeepingService
+                .totalBookkeepingRecords()
+                .subscribe(value => {
+                    // this.totalBookkeepingRecords$ = value;
+                    // console.log(value);
                 })
         );
     }
