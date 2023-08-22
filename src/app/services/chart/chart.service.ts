@@ -16,6 +16,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 
@@ -29,8 +30,8 @@ export class ChartService {
   constructor(private http: HttpClient) { }
 
   // method to fetch data from the mock API
-  Getchartinfo() {
-    return this.http.get("http://localhost:3000/total_expense");
+  Getchartinfo(): Observable<any> {
+    return this.http.get<any>("http://localhost:3000/total_expense");
   }
 
   
@@ -53,15 +54,16 @@ export class ChartService {
   // method to calculate overall profit
   calculateTotalNetIncome() {
     this.calculateTotalIncome() - this.calculateTotalExpense();
+    return this.http.get("");
     
   }
   // fetch total income
-  getTotalIncome() {
-    return this.http.get("http://localhost:3000/total_income");
+  getTotalIncome(): Observable<any> {
+    return this.http.get<any>("http://localhost:3000/total_income");
   }
   // fetch total net income (profit)
-  getTotalNetIncome() {
-    return this.http.get("http://localhost:3000/net_income");
+  getTotalNetIncome(): Observable<any> {
+    return this.http.get<any>("http://localhost:3000/net_income");
   }
 
 }

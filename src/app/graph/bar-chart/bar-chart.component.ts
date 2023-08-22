@@ -31,6 +31,7 @@ export class BarChartComponent {
       if(this.chartdata!=null) {
         for(let i=0; i<this.chartdata.length ;i++) {
           this.total_expense.push(this.chartdata[i].amount)
+          
         }
         this.RenderChart(this.total_expense);
       }

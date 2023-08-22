@@ -46,12 +46,12 @@ export class DonutGraphComponent {
     });
 
     this.chartService.getTotalIncome().subscribe(result =>{
-      this.total_income = result;
+      this.chartdata = result;
       if(this.chartdata!=null) {
         for(let i=0; i<this.chartdata.length ;i++) {
           this.total_income.push(this.chartdata[i].amount)
         }
-        this.RenderChart(this.total_income.net_income,this.total_expense);
+        this.RenderChart(this.total_income,this);
       }
       // console.log(this.total_income)
     });
