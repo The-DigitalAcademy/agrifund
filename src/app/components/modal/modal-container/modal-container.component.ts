@@ -4,9 +4,10 @@
     UPDATED DATE: 
 
     DESCRIPTION:
-        This it the parent component for all modal components.
+        This it the parent modal container component for all modal content components.
 
     PARAMETERS:
+        recordId: number stores the id of the record to be passed to a modal component
         _modalService -> used for the ng bootstrap modal service 
 
 -------------------------------------------------------------------------------------------------*/

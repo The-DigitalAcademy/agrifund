@@ -5,12 +5,13 @@
 
     DESCRIPTION:
         Displays the delete modal dialog. The user can the confirm to delete a record.
-        The id for a record is also passed to the bookkeep/api service to delete the record.
+        The id for a record is also passed to the bookkeeping/api service to delete the record.
 
     PARAMETERS:
-        _apiService - used to subscribe and call methods related to the api connection
-        _bookkeepService -> used to subscribe and call methods within the bookkeep service
-        recordId -> receives the record id from the parent modal container
+        _apiService: ApiService - used to subscribe and call methods related to the api connection
+        _bookkeepingService: BookkeepingService -> used to subscribe and call methods within the bookkeeping service
+        recordId: number -> receives the record id from the parent modal container
+        router: Router -> used to route to another page
 
 -------------------------------------------------------------------------------------------------*/
 
@@ -26,7 +27,7 @@ import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.ser
     styleUrls: ['./bookkeeping-delete-modal-content.component.css'],
 })
 export class BookkeepingDeleteModalContentComponent {
-    // receives the bookkeep record id from the parent modal component
+    // receives the bookkeeping record id from the parent modal component
     @Input() recordId!: number;
 
     constructor(
@@ -36,18 +37,20 @@ export class BookkeepingDeleteModalContentComponent {
         private router: Router
     ) {}
 
+    // closes the modal
     closeModal() {
         this.activeModal.close();
     }
 
+    // after a user confirms the delete by clicking yes, the id of a record is passed to the api service
     confirmedDelete() {
-        console.log(this.recordId);
-
         this._apiService
             .deleteIncomeStatementItem(this.recordId)
-            .subscribe((data: any) => {
-                console.log(data);
+            .subscribe((message: unknown) => {
+                console.log(message);
+                // closes the modal after the record is deleted
                 this.activeModal.close();
+                // routes back to bookkeeping view all page after deletion
                 this.router.navigate(['/bookkeeping']);
             });
     }
