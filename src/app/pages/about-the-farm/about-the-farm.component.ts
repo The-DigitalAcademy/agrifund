@@ -32,6 +32,7 @@ export class AboutTheFarmComponent implements OnInit {
   farm!: YouAndFarm;
   assets: Asset[] = [];
 isLast: any;
+assetForm!: FormGroup;
   
 
   constructor(private fb: FormBuilder,private router: Router, carouselConfig: NgbCarouselConfig, private _aboutFarm: AboutTheFarmService, private _apiService: ApiService) {
@@ -54,6 +55,12 @@ isLast: any;
     plot_address : ['', Validators.required],
     size: ['', Validators.required],
     date : ['', Validators.required],
+})
+this.assetForm = this.fb.group({
+  name: ['', Validators.required],
+  type: ['', Validators.required],
+  age: ['', Validators.required],
+  purchase_price: ['', Validators.required],
 })
 this.farmForm = this.fb.group({
   farm_name : ['', Validators.required],
@@ -126,6 +133,9 @@ goToNextSlide() {
 goToPreviousSlide() {
     this.carousel.prev();
 }
- 
+getAssetFormGroup(index: number): FormGroup {
+  // Assuming your assets array is available in this component
+  return this.assetForm;
+}
 
 }

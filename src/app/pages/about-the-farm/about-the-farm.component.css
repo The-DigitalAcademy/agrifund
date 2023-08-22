@@ -15,7 +15,16 @@ ngb-carousel {
     height: min-content;
     /* margin: 50px auto; */
 }
-
+.add-icon-container{
+    
+    margin-bottom: 2%;
+}
+.left,
+.right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 h2{
     justify-content: center;
   }
