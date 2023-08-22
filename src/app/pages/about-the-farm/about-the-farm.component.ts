@@ -1,10 +1,10 @@
+import { YouAndFarm } from './../../models/you-and-farm';
 import { Crop } from './../../models/crop';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Plot } from 'src/app/models/plot';
-import { YouAndFarm } from 'src/app/models/you-and-farm';
 import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -109,7 +109,7 @@ goToNextSlide() {
 
    
 
-    this._apiService.addYouandFarm(this.plot).subscribe(data => {
+    this._apiService.addYouandFarm(this.farm).subscribe(data => {
       console.table(data);
     });
   }
