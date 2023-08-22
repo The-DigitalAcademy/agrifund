@@ -48,7 +48,7 @@ export class BarChartComponent {
       data: {
         labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
         datasets: [{
-          label: 'Money Out Summary',
+          label: 'Expenses',
           data: total_expense,
           backgroundColor: ['#5A6537'], 
         }]

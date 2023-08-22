@@ -38,7 +38,7 @@ export class DonutGraphComponent {
           this.net_income.push(this.chartdata[i].amount)
           this.total_expense.push(this.chartdata[i].amount)
         }
-        this.RenderChart(this.net_income,this.total_expense);
+        this.RenderChart(this.net_income,this.total_income);
       }
   
       
