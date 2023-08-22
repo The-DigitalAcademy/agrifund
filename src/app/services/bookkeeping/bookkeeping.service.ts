@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
-import { BehaviorSubject, Observable, Subscriber, count } from 'rxjs';
+import { BehaviorSubject, Observable, count, map, reduce } from 'rxjs';
+import { BookkeepingLoadData } from 'src/app/models/interfaces/bookkeeping-load-data';
 
 @Injectable({
     providedIn: 'root',
@@ -15,7 +16,7 @@ export class BookkeepingService {
     ----------------------------------*/
     // stores all the bookkeeping records
     private bookkeepingRecords: IncomeStatementItem[] = [];
-    // used to store bookkeepinging records as observables
+    // used to store bookkeeping records as observables
     private bookkeepingRecords$: BehaviorSubject<IncomeStatementItem>;
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
@@ -75,14 +76,6 @@ export class BookkeepingService {
         this.bookkeepingRecords$.next(addedRecord);
     }
 
-    // adds a new bookkeeping record to the api
-    // addNewRecord(newRecord: IncomeStatementItem) { 
-
-    //     this._apiService
-    //     // adds record to the observable array
-        
-    // }
-
     // setBookkeepingRecords(record: IncomeStatementItem) {}
 
     // getBookkeepingRecords() {
@@ -90,7 +83,7 @@ export class BookkeepingService {
     // }
 
     // TODO
-    // create a new bookkeepinging record
+    // create a new bookkeeping record
 
     // TODO
     // create a income statement
@@ -98,16 +91,25 @@ export class BookkeepingService {
     /*---------------------------------
         GET DATA
     ----------------------------------*/
-    // returns all bookkeepinging records within the behavior subject
+    // returns all bookkeeping records within the behavior subject
     getAllBookkeepingRecords(): Observable<IncomeStatementItem> {
         return this.bookkeepingRecords$;
     }
 
-    // TODO
-    // get a bookkeeping record by id
-
-    // TODO
-    // get an income statement by id
+    // loads bookkeeping data according to pagination
+    // public loadBookkeepingRecords(
+    //     page: number,
+    //     recordsPerPage: number
+    // ): Observable<BookkeepingLoadData> {
+    //     return this.bookkeepingRecords$.pipe(map(records => ({
+    //         metadata: {
+    //             itemsPerPage: recordsPerPage,
+    //             page: page,
+    //             totalItems: 10,
+    //         },
+    //         data: 
+    //     })));
+    // }
 
     /*---------------------------------
         UPDATE DATA
@@ -119,7 +121,6 @@ export class BookkeepingService {
     // TODO
     // delete and income statement
 
-    // TODO
     // delete and income statement item
     deleteRecord(recordId: number) {
         console.log(`Before Delete: ${this.bookkeepingRecords.length}`);
@@ -150,30 +151,24 @@ export class BookkeepingService {
     /*---------------------------------
         CALCULATIONS
     ----------------------------------*/
+    // calculate the total number of bookkeeping records
+    totalBookkeepingRecords() {
+        // each bookkeeping record is mapped to 1 and summed to the total
+        return this.bookkeepingRecords$.pipe(
+            map(() => 1),
+            reduce((total, count) => total + count, 0)
+        );
+    }
 
-    // TODO
-    // update income statement total income
-    calculateTotalIncome() {}
+    // // TODO
+    // // update income statement total income
+    // calculateTotalIncome() {}
 
-    // TODO
-    // update income statement total expense
-    calculateTotalExpense() {}
+    // // TODO
+    // // update income statement total expense
+    // calculateTotalExpense() {}
 
-    // TODO
-    // update income statement total net income (profit)
-    calculateTotalNetIncome() {}
-
-    // calcualtes the total bookkeepinging records within the observables records
-    // getTotalBookkeepingRecords(): Observable<number> {
-    //     return new Observable<number>(subscriber => {
-    //         let count = 0;
-    //         this.bookkeepingRecords$.subscribe({
-    //             next: () => count++,
-    //             complete: () => {
-    //                 subscriber.next(count);
-    //                 subscriber.complete();
-    //             },
-    //         });
-    //     });
-    // }
+    // // TODO
+    // // update income statement total net income (profit)
+    // calculateTotalNetIncome() {}
 }

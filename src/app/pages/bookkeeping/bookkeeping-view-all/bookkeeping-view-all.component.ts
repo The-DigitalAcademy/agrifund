@@ -18,11 +18,10 @@ import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.ser
     styleUrls: ['./bookkeeping-view-all.component.css'],
 })
 export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
-    // bookkeepingRecords: IncomeStatementItem[] = [];
     // bookkeeping records stored within an observable
-    bookkeepingRecords$: Observable<IncomeStatementItem[]> | undefined;
-    // stores the total number of bookkeeping records
-    totalBookkeepingRecords$: Observable<number> | undefined;
+    bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
+    // bookkeeping records stored within an observable
+    filteredRecords$!: Observable<IncomeStatementItem[]>;
     // used to store subscriptions to services
     private subscription = new Subscription();
     // stores the value within the search bar
@@ -48,7 +47,7 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
             this._apiService
                 .getAllStatementItems()
                 .subscribe((records: any) => {
-                    //populate bookkeepingRecords array with records from api
+                    //populate bookkeepingRecords observable with records from api
                     this.bookkeepingRecords$ = records;
                 })
         );
