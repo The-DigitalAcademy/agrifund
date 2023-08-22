@@ -18,7 +18,7 @@
             <!-- no bookkeeping data card displayed if bookkeeping records is empty-->
             <div
                 *ngIf="
-                    (bookkeepingRecords$ | async)?.length !== 0;
+                    bookkeepingRecords$;
                     then recordsExist;
                     else noRecords
                 "></div>
@@ -159,7 +159,10 @@
                             </div>
                             <div class="right justify-end">
                                 <p class="bold justify-end">
-                                    {{ record.amount }}
+                                    {{
+                                        record.amount
+                                            | currency: ' R ' : 'symbol' : '.2'
+                                    }}
                                 </p>
                                 <p class="greyed justify-end">
                                     {{ record.category }}
