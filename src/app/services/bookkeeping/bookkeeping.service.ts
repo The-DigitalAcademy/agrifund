@@ -20,9 +20,12 @@ export class BookkeepingService {
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
 
-    //TODO
-    // create bookkeeping records observable
-    // create incomeStatment observable
+    // stores the total income for bookkeeping records (money in)
+    // private totalBookkeepingIncome$: BehaviorSubject<number>;
+    // stores the total expense for bookkeeping records (money out)
+    // private totalBookkeepingExpenses$: BehaviorSubject<number>;
+
+    // create incomeStatement observable
     // create income statements observable
 
     constructor(private _apiService: ApiService) {
@@ -30,15 +33,15 @@ export class BookkeepingService {
             //populate bookkeeping records array with records from api
             this.bookkeepingRecords = data;
             this.bookkeepingRecords.forEach(record => {
-                // adds bookkeepinging records to the observable array
+                // adds bookkeeping records to the observable array
                 this.addRecord(record);
             });
         });
 
-        // creates a default bookkeepinging record behaviour subject
+        // creates a default bookkeeping record behavior subject
         this.bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem>({
             id: 0,
-            statement_id: 0, //income statment id
+            statement_id: 0, //income statement id
             category: '',
             amount: 0,
             proof: '',
@@ -68,8 +71,17 @@ export class BookkeepingService {
             date: record.date, //date of the record
         };
 
+        // adds record to bookkeeping record observable
         this.bookkeepingRecords$.next(addedRecord);
     }
+
+    // adds a new bookkeeping record to the api
+    // addNewRecord(newRecord: IncomeStatementItem) { 
+
+    //     this._apiService
+    //     // adds record to the observable array
+        
+    // }
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}
 

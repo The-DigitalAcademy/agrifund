@@ -18,7 +18,7 @@ import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.ser
     styleUrls: ['./bookkeeping-view-all.component.css'],
 })
 export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
-    bookkeepingRecords: IncomeStatementItem[] = [];
+    // bookkeepingRecords: IncomeStatementItem[] = [];
     // bookkeeping records stored within an observable
     bookkeepingRecords$: Observable<IncomeStatementItem[]> | undefined;
     // stores the total number of bookkeeping records
@@ -48,13 +48,6 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.subscription.add();
-
-        this._apiService.getAllStatementItems().subscribe((records: any) => {
-            //populate bookkeepingRecords array with records from api
-            this.bookkeepingRecords = records;
-        });
-
         // adds get all records to subscription
         this.subscription.add(
             this._bookkeepingService
@@ -73,6 +66,7 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
         });
     }
 
+    // closes offcanvas search bar
     closeSearchbar() {
         this._offcanvasService.dismiss();
     }

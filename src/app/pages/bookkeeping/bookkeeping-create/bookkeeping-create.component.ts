@@ -58,6 +58,8 @@ export class BookkeepingCreateComponent implements OnInit {
             this._apiService.addRecord(this.record).subscribe(data => {
                 // console.log(data);
                 // console.table(this.createRecordForm.value);
+                // adds the new record to the observable array after successfully adding the record
+                this._bookkeepingService.addRecord(this.record);
             });
 
             this.router.navigate(['/bookkeeping']);
