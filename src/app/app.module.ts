@@ -143,7 +143,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         NgbModule,
         Ng2SearchPipeModule,
     ],
-    providers: [httpInterceptorProviders],
+    providers: [],
     bootstrap: [AppComponent],
     entryComponents: [DeleteModalContentComponent],
 })

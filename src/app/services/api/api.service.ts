@@ -12,7 +12,7 @@
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/User';
@@ -29,6 +29,11 @@ export class ApiService {
 
     // base url of api connection
     private BASE_URL = `${environment.API_URL}`;
+    private bookUrl = 'https://node-rest-66bq.onrender.com/api/book';
+
+    //Headers
+    headers = new HttpHeaders()
+        .set('Access-Control-Allow-Origin', '*');
 
     /* --------------------------------
         USER CONNECTION STRINGS
@@ -149,6 +154,12 @@ export class ApiService {
     // delete a bookkeeping record
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
+    }
+    createBook(body: any) {
+        return this.http.post(`${this.bookUrl}`, body, { 'headers': this.headers });
+    }
+    getBooks() {
+        return this.http.get(`${this.bookUrl}`);
     }
 
     // get income statement records between two dates
