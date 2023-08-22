@@ -7,6 +7,7 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Plot } from 'src/app/models/plot';
 import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { Asset } from 'src/app/models/asset';
 
 @Component({
   selector: 'app-about-the-farm',
@@ -29,7 +30,7 @@ export class AboutTheFarmComponent implements OnInit {
   crop!: Crop;
   plot!: Plot;
   farm!: YouAndFarm;
-assets: any;
+  assets: Asset[] = [];
 isLast: any;
   
 
