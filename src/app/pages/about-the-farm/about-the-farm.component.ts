@@ -42,9 +42,9 @@ export class AboutTheFarmComponent implements OnInit {
   })
 
   this.plotForm = this.fb.group({
-    seasonFarm: ['', Validators.required],
-    cropType: ['', Validators.required],
-    type: ['', Validators.required],
+    plot_address : ['', Validators.required],
+    size: ['', Validators.required],
+    date : ['', Validators.required],
 })
     this.carousel.pause();
   }
@@ -65,26 +65,32 @@ goToNextSlide() {
       name: this.cropForm.get('cropType')?.value,
       type: this.cropForm.get('type')?.value,
     };
-    if (this.plotForm.valid) {
-      this.plot = {
-        farm_id: this._aboutFarm.generateFarmId(),
-        plot_address: this.plotForm.get('farmLocation')?.value,
-        size: this.plotForm.get('size')?.value,
-        ownership_date: this.plotForm.get('date')?.value,
-      };
+    
 
     // console.table(this.crop);
 
     this._apiService.addCropInfo(this.crop).subscribe(data => {
       console.table(data);
-      
+    });
+  }
+  if (this.plotForm.valid) {
+    this.plot = {
+      farm_id: this._aboutFarm.generateFarm_Id(),
+      plot_address: this.plotForm.get('plot_address')?.value,
+      size: this.plotForm.get('size')?.value,
+       ownership_date: this.plotForm.get('date')?.value,
+    };
+
+   
+
+    this._apiService.addPlotInfo(this.plot).subscribe(data => {
+      console.table(data);
     });
   }
 
   this.carousel.next(); // Move to the next slide
 
 
-}
 }
 // navigates to the previous slide
 goToPreviousSlide() {

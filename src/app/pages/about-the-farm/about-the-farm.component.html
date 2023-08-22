@@ -42,31 +42,30 @@
                     </div> 
                 </ng-template>
                 <ng-template id="slide3" ngbSlide>
-                <div class="justify-center">
-                    <h2>Tell me about your farm</h2>
-               <h2>Plot</h2>
-                <div class="container inner-container">
-                    <form [formGroup]="plotForm">
-                    <div class="form-group">
-                      <label for="plot_address">Where is your farm located?</label>
-                      <input formControlName="plot_address" class="form-control description" id="plot_addressInput">
+                    <div class="justify-center">
+                      <h2>Tell me about your farm</h2>
+                      <h2>Plot</h2>
+                      <div class="container inner-container">
+                        <form [formGroup]="plotForm">
+                          <div class="form-group">
+                            <label for="plot_address">Where is your farm located?</label>
+                            <input formControlName="plot_address" class="form-control description" id="plot_addressIn">
+                          </div>
+                          <div class="form-group">
+                            <label for="size">What is the size of your farm in hectares (ha)?</label>
+                            <select id="size" class="form-control" formControlName="size">
+                              <option value="size">8 to 10 hectares</option>
+                              <option value="size">11 to 14 hectares</option>
+                              <option value="size">15 to 18 hectares</option>
+                              <option value="size">19 to 22 hectares</option>
+                            </select>
+                          </div>
+                          <label for="date">When did you start farming on this land?</label>
+                          <input formControlName="date" type="date" class="form-control" id="date" />
+                        </form>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="size">What is the size of your farm in hectares (ha)?</label>
-                      <select id="size" class="form-control" formControlName="size">
-                          <option value="size">8 to 10 hectares</option>
-                          <option value="size">11 to 14 hectares</option>
-                          <option value="size">15 to 18 hectares</option>
-                          <option value="size">19 to 22 hectares</option>
-                      </select>
-                    </div>
-                  <label for="ownership_date">When did you start farming on this land?</label>
-                  <input formControlName="ownership_date" type="ownership_date" class="form-control" id="ownership_dateInput" />
-                </form>
-                </div>
-                
-              </div>
-                </ng-template>
+                  </ng-template>
                 <ng-template ngbSlide id="slide4" >
                     <div class="justify-center">
                         <h2>Tell me about your farm</h2>
