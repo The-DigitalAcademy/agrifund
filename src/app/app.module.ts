@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
@@ -58,7 +58,7 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
     MODALS
 ---------------------------------*/
 import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
-import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
+import { BookkeepingDeleteModalContentComponent } from './components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 
 /* --------------------------------
     ICONS
@@ -122,7 +122,6 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         EquipmentCreateComponent,
         TellMeAboutComponent,
         ModalContainerComponent,
-        DeleteModalContentComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
     ],
@@ -139,7 +138,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [DeleteModalContentComponent],
+    entryComponents: [BookkeepingDeleteModalContentComponent],
 })
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {

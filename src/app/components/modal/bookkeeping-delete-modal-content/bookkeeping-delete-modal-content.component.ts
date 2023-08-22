@@ -22,10 +22,10 @@ import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.ser
 
 @Component({
     selector: 'app-delete-modal-content',
-    templateUrl: './delete-modal-content.component.html',
-    styleUrls: ['./delete-modal-content.component.css'],
+    templateUrl: './bookkeeping-delete-modal-content.component.html',
+    styleUrls: ['./bookkeeping-delete-modal-content.component.css'],
 })
-export class DeleteModalContentComponent {
+export class BookkeepingDeleteModalContentComponent {
     // receives the bookkeep record id from the parent modal component
     @Input() recordId!: number;
 

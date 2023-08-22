@@ -12,7 +12,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, Input, OnInit } from '@angular/core';
-import { DeleteModalContentComponent } from '../delete-modal-content/delete-modal-content.component';
+import { BookkeepingDeleteModalContentComponent } from '../bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -21,8 +21,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./modal-container.component.css'],
 })
 export class ModalContainerComponent {
-    recordId!: number; // bookkeep record id
+    recordId!: number; // bookkeeping record id
 
     constructor(private _modalService: NgbModal) {}
-
 }

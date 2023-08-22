@@ -19,7 +19,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DeleteModalContentComponent } from 'src/app/components/modal/delete-modal-content/delete-modal-content.component';
+import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
@@ -65,10 +65,10 @@ export class BookkeepingViewRecordComponent implements OnInit {
 
     // routes to delete page with the record id
     deleteRecord(recordId: any) {
-        // this.router.navigate(['bookkeeping/delete-record', recordId]);
-
         // sets that the main modal component should open and instance of the delete modal
-        const modalRef = this._modalService.open(DeleteModalContentComponent);
+        const modalRef = this._modalService.open(
+            BookkeepingDeleteModalContentComponent
+        );
         // assign the record id to the main modal component record id
         modalRef.componentInstance.recordId = recordId;
     }
