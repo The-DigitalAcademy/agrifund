@@ -38,22 +38,21 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
         private _offcanvasService: NgbOffcanvas
     ) {
         this._apiService.getAllStatementItems().subscribe((records: any) => {
-            // console.table(products);
-            this.bookkeepingRecords$ = records; //populate bookkeepingRecords array with records from api
-            // console.log(this.bookkeepingRecords);
+            //populate bookkeepingRecords array with records from api
+            this.bookkeepingRecords$ = records;
         });
     }
 
     viewRecordDetails(recordId: number) {
-        // console.log(recordId);
         this.router.navigate(['/bookkeeping/view-record', recordId]);
     }
 
     ngOnInit() {
+        this.subscription.add();
+
         this._apiService.getAllStatementItems().subscribe((records: any) => {
-            // console.table(products);
-            this.bookkeepingRecords = records; //populate bookkeepingRecords array with records from api
-            // console.log(this.bookkeepingRecords);
+            //populate bookkeepingRecords array with records from api
+            this.bookkeepingRecords = records;
         });
 
         // adds get all records to subscription
@@ -62,12 +61,12 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
                 .getAllBookkeepingRecords()
                 .subscribe((records: any) => {
                     this.bookkeepingRecords$ = records;
-                    // console.log(this.bookkeepingRecords$);
                 })
         );
     }
 
-    openMobileSearchbar(content: TemplateRef<any>) {
+    // toggles the offcanvas mobile search bar
+    openMobileSearchbar() {
         this._offcanvasService.open(this.mobileSearchBar, {
             position: 'top',
             backdrop: false,
