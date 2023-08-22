@@ -1,7 +1,6 @@
 // AUTHOR: Bolebo
 //     CREATE DATE: 08 AUG 2023
 //     UPDATED DATE: 21 Aug 2023 
-
 //     DESCRIPTION:
 //     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
 //     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
@@ -30,13 +29,13 @@ export class DonutGraphComponent {
 
 
   ngOnInit(): void {
-
+    // method of fetching data and posting data of net income and this.total_income
     this.chartService.getTotalNetIncome().subscribe(result =>{
       this.chartdata = result;
       if(this.chartdata!=null) {
         for(let i=0; i<this.chartdata.length ;i++) {
           this.net_income.push(this.chartdata[i].amount)
-          this.total_expense.push(this.chartdata[i].amount)
+          // this.total_expense.push(this.chartdata[i].amount)
         }
         this.RenderChart(this.net_income,this.total_income);
       }
@@ -70,7 +69,7 @@ export class DonutGraphComponent {
       data: {
         labels: ['Money Out', 'Money In'],
         datasets: [{
-          label: 'Money Out Summary',
+          label: 'Money In/Out Summary',
           data: [net_income,total_income],
           backgroundColor: ['#5A6537',
           '#9BA66F'],
