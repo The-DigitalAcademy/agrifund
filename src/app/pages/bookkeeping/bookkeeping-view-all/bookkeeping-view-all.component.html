@@ -7,29 +7,29 @@
 <app-navbar></app-navbar>
 <!-- <ng-container
     *ngIf="{
-        bookkeepRecords: bookkeepRecords$ | async
+        bookkeepingRecords: bookkeepingRecords$ | async
     } as observables"> -->
 <div class="page-body page-background">
     <!-- sidebar will be hidden on small devices -->
     <app-sidebar class="mobile-hidden"></app-sidebar>
     <div class="page-content">
         <div class="page-heading">
-            <h1>Bookkeep</h1>
+            <h1>Bookkeeping</h1>
         </div>
 
-        <!-- no bookkeep data card displayed if bookkeep records is empty-->
+        <!-- no bookkeeping data card displayed if bookkeeping records is empty-->
         <!-- <div
-            *ngIf="(bookkeepRecords$ | async)?.length === 0"
+            *ngIf="(bookkeepingRecords$ | async)?.length === 0"
             class="content justify-center no-data-card">
             <div class="container justify-center no-data-card-inner">
-                <h1 class="align-center">Add Your First Bookkeep Record...</h1>
+                <h1 class="align-center">Add Your First Bookkeeping Record...</h1>
                 <h3 class="align-center">
-                    Click the button below to add your first bookkeep record!
+                    Click the button below to add your first bookkeeping record!
                 </h3>
                 <div class="actions justify-center">
                     <button
                         class="btn colourful-btn"
-                        [routerLink]="['/bookkeep/create-record']">
+                        [routerLink]="['/bookkeeping/create-record']">
                         <fa-icon icon="plus"></fa-icon>
                         Create Record
                     </button>
@@ -73,12 +73,12 @@
                     <div class="justify-start">
                         <button
                             class="btn colourful-btn"
-                            [routerLink]="['/bookkeep/create-record']">
+                            [routerLink]="['/bookkeeping/create-record']">
                             <fa-icon icon="plus"></fa-icon>
                             Create <span class="mobile-hidden">Record</span>
                         </button>
                     </div>
-                    <!-- bookkeep searchbar -->
+                    <!-- bookkeeping searchbar -->
                     <div class="search justify-end">
                         <div class="input-group justify-end mobile-hidden">
                             <input
@@ -87,7 +87,7 @@
                                 type="text"
                                 name="search"
                                 autocomplete="off"
-                                placeholder="Find for bookkeep record..." />
+                                placeholder="Find for bookkeeping record..." />
                             <button
                                 type="button"
                                 class="btn colourful-btn search-btn">
@@ -105,10 +105,11 @@
                 </div>
 
                 <div class="container inner-container record-table">
-                    <!-- checks if bookkeep records search result return anything -->
+                    <!-- checks if bookkeeping records search result return anything -->
                     <ng-container
                         *ngIf="
-                            (bookkeepRecords | filter: searchValue).length > 0;
+                            (bookkeepingRecords | filter: searchValue).length >
+                                0;
                             else noResults
                         ">
                         <div class="container inner-container record-table">
@@ -124,7 +125,7 @@
                                 </thead>
                                 <tbody
                                     *ngFor="
-                                        let record of bookkeepRecords
+                                        let record of bookkeepingRecords
                                             | filter: searchValue
                                     ">
                                     <tr
@@ -157,7 +158,7 @@
                             <div
                                 class="large-hidden"
                                 *ngFor="
-                                    let record of bookkeepRecords
+                                    let record of bookkeepingRecords
                                         | filter: searchValue;
                                     last as isLast
                                 ">
@@ -240,7 +241,7 @@
                     type="text"
                     name="search"
                     autocomplete="off"
-                    placeholder="Find for bookkeep record..." />
+                    placeholder="Find for bookkeeping record..." />
                 <!-- <button type="button" class="btn colourful-btn search-btn">
                         <fa-icon icon="search"></fa-icon>
                     </button> -->

@@ -34,10 +34,10 @@ import { ResetPasswordComponent } from './pages/user/reset-password/reset-passwo
 /* --------------------------------
     BOOKKEEP 
 ---------------------------------*/
-import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
-import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
-import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
-import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+import { BookkeepingViewAllComponent } from './pages/bookkeeping/bookkeeping-view-all/bookkeeping-view-all.component';
+import { BookkeepingViewRecordComponent } from './pages/bookkeeping/bookkeeping-view-record/bookkeeping-view-record.component';
+import { BookkeepingCreateComponent } from './pages/bookkeeping/bookkeeping-create/bookkeeping-create.component';
+import { BookkeepingEditComponent } from './pages/bookkeeping/bookkeeping-edit/bookkeeping-edit.component';
 
 import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 /* --------------------------------
@@ -53,7 +53,6 @@ import { PortfolioProgressbarComponent } from './components/data-summary/portfol
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-
 
 /* --------------------------------
     MODALS
@@ -107,10 +106,10 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         LoginComponent,
         ForgotPasswordComponent,
         ResetPasswordComponent,
-        BookkeepViewAllComponent,
-        BookkeepViewRecordComponent,
-        BookkeepCreateComponent,
-        BookkeepEditComponent,
+        BookkeepingViewAllComponent,
+        BookkeepingViewRecordComponent,
+        BookkeepingCreateComponent,
+        BookkeepingEditComponent,
         PortfolioViewInfoComponent,
         PortfolioProgressbarComponent,
         DisabledformFarmInfoComponent,
@@ -120,7 +119,6 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-
         EquipmentCreateComponent,
         TellMeAboutComponent,
         ModalContainerComponent,

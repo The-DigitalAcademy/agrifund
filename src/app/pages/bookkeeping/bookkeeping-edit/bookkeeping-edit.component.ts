@@ -9,8 +9,8 @@
 
     PARAMETERS:
         _apiService - used to subscribe and call methods related to the api connection
-        _bookkeepService -> used to subscribe and call methods within the bookkeep service
-        $bookkeepRecord -> stores the bookkeeping record as an observable.
+        _bookkeepingService -> used to subscribe and call methods within the bookkeeping service
+        $bookkeepingRecord -> stores the bookkeeping record as an observable.
         editRecordForm -> name of the form group used for the reactive form
 -------------------------------------------------------------------------------------------------*/
 
@@ -24,14 +24,14 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
-import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
+import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeep-edit',
-    templateUrl: './bookkeep-edit.component.html',
-    styleUrls: ['./bookkeep-edit.component.css'],
+    selector: 'app-bookkeeping-edit',
+    templateUrl: './bookkeeping-edit.component.html',
+    styleUrls: ['./bookkeeping-edit.component.css'],
 })
-export class BookkeepEditComponent implements OnInit {
+export class BookkeepingEditComponent implements OnInit {
     // used to store the id of the bookkeeping record
     id!: any;
     // used to store the bookkeeping record's data retrieved from the api
@@ -46,7 +46,7 @@ export class BookkeepEditComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private _bookkeepService: BookkeepService,
+        private _bookkeepingService: BookkeepingService,
         private fb: FormBuilder,
         private _apiService: ApiService
     ) {}
@@ -84,7 +84,7 @@ export class BookkeepEditComponent implements OnInit {
     // routes back to view record page
     goBackToDetails(recordId: any) {
         // console.log(recordId);
-        this.router.navigate(['bookkeep/view-record', recordId]);
+        this.router.navigate(['bookkeeping/view-record', recordId]);
     }
 
     get createRecordControl() {
@@ -105,7 +105,7 @@ export class BookkeepEditComponent implements OnInit {
                 category: this.editRecordForm.get('recordType')?.value,
                 amount: this.editRecordForm.get('recordAmount')?.value,
                 proof:
-                    'src/assets/mock-api/bookkeep-record-proof/' +
+                    'src/assets/mock-api/bookkeeping-record-proof/' +
                     this.editRecordForm.get('recordProof')?.value,
                 date: this.record.date,
             };
@@ -117,7 +117,7 @@ export class BookkeepEditComponent implements OnInit {
                     // console.log(data);
                     // console.table(this.editRecordForm.value);
                 });
-            this.router.navigate(['bookkeep/view-record', this.record.id]);
+            this.router.navigate(['bookkeeping/view-record', this.record.id]);
         }
     }
 }

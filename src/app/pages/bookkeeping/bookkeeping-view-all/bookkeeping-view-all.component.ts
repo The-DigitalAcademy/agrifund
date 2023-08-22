@@ -8,22 +8,21 @@ import {
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
-import { IncomeStatement } from 'src/app/models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
-import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
+import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeep-view-all',
-    templateUrl: './bookkeep-view-all.component.html',
-    styleUrls: ['./bookkeep-view-all.component.css'],
+    selector: 'app-bookkeeping-view-all',
+    templateUrl: './bookkeeping-view-all.component.html',
+    styleUrls: ['./bookkeeping-view-all.component.css'],
 })
-export class BookkeepViewAllComponent implements OnInit, OnDestroy {
-    bookkeepRecords: IncomeStatementItem[] = [];
-    // bookkeping records stored within an observable
-    bookkeepRecords$: Observable<IncomeStatementItem[]> | undefined;
+export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
+    bookkeepingRecords: IncomeStatementItem[] = [];
+    // bookkeeping records stored within an observable
+    bookkeepingRecords$: Observable<IncomeStatementItem[]> | undefined;
     // stores the total number of bookkeeping records
-    totalBookkeepRecords$: Observable<number> | undefined;
+    totalBookkeepingRecords$: Observable<number> | undefined;
     // used to store subscriptions to services
     private subscription = new Subscription();
     // stores the value within the search bar
@@ -35,35 +34,35 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _bookkeepService: BookkeepService,
+        private _bookkeepingService: BookkeepingService,
         private _offcanvasService: NgbOffcanvas
     ) {
         this._apiService.getAllStatementItems().subscribe((records: any) => {
             // console.table(products);
-            this.bookkeepRecords$ = records; //populate bookkeepRecords array with records from api
-            // console.log(this.bookkeepRecords);
+            this.bookkeepingRecords$ = records; //populate bookkeepingRecords array with records from api
+            // console.log(this.bookkeepingRecords);
         });
     }
 
     viewRecordDetails(recordId: any) {
         // console.log(recordId);
-        this.router.navigate(['bookkeep/view-record', recordId]);
+        this.router.navigate(['bookkeeping/view-record', recordId]);
     }
 
     ngOnInit() {
         this._apiService.getAllStatementItems().subscribe((records: any) => {
             // console.table(products);
-            this.bookkeepRecords = records; //populate bookkeepRecords array with records from api
-            // console.log(this.bookkeepRecords);
+            this.bookkeepingRecords = records; //populate bookkeepingRecords array with records from api
+            // console.log(this.bookkeepingRecords);
         });
 
         // adds get all records to subscription
         this.subscription.add(
-            this._bookkeepService
-                .getAllBookkeepRecords()
+            this._bookkeepingService
+                .getAllBookkeepingRecords()
                 .subscribe((records: any) => {
-                    this.bookkeepRecords$ = records;
-                    // console.log(this.bookkeepRecords$);
+                    this.bookkeepingRecords$ = records;
+                    // console.log(this.bookkeepingRecords$);
                 })
         );
     }
@@ -80,7 +79,7 @@ export class BookkeepViewAllComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        // unsubscribe from bookkeep subscription
+        // unsubscribe from bookkeeping subscription
         this.subscription.unsubscribe();
     }
 }

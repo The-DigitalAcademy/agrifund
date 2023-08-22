@@ -96,7 +96,7 @@ tbody tr,
     }
 
     .search input {
-        /* adds borders to mobile searchbar */
+        /* adds borders to mobile search bar */
         border-radius: var(--border-radius);
         border: var(--thin-border) var(--lighter-grey) !important;
     }

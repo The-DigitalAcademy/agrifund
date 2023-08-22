@@ -18,7 +18,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/services/api/api.service';
-import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
+import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({
     selector: 'app-delete-modal-content',
@@ -31,7 +31,7 @@ export class DeleteModalContentComponent {
 
     constructor(
         private _apiService: ApiService,
-        private _bookkeepService: BookkeepService,
+        private _bookkeepingService: BookkeepingService,
         private activeModal: NgbActiveModal,
         private router: Router
     ) {}
