@@ -16,6 +16,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class AboutTheFarmComponent implements OnInit {
 
+
+
   // used to refer to the bootstrap carousel on HTML
   @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
   // sets the first slide as the active slide
@@ -27,6 +29,8 @@ export class AboutTheFarmComponent implements OnInit {
   crop!: Crop;
   plot!: Plot;
   farm!: YouAndFarm;
+assets: any;
+isLast: any;
   
 
   constructor(private fb: FormBuilder,private router: Router, carouselConfig: NgbCarouselConfig, private _aboutFarm: AboutTheFarmService, private _apiService: ApiService) {
