@@ -148,5 +148,18 @@ export class ApiService {
 
 
 
-    
+    /* --------------------------------
+        FARMER
+    ---------------------------------*/
+    // register user
+    registerUser(user: any): Observable<any> {
+        // Send a POST request to the user registration URL
+        return this.http.post(this.userURL, user);
+    }
+    login(email: string, password: string): Observable<any> {
+        // Create the request body with email and password
+        const body = { email, password };
+        // Send a POST request to the login URL with the provided credentials
+        return this.http.post(this.loginURL, body);
+    }
 }

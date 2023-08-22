@@ -30,7 +30,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     // stores the farmers personal information
     personalInfo!: Users[];
     // stores the user id
-    userId = 1;
+    userId = 2;
 
     constructor(
         private fb: FormBuilder,
@@ -40,15 +40,16 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-       this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
-      this.myForm.patchValue({
-        first_name: farmer.first_name,
-        last_name: farmer.last_name,
-        email: farmer.email,
-        id_number: farmer.idNumber,
-        cell_number: farmer.cell_phone,
-      });
-    });
+        this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
+            this.personalInfo = farmer;
+            this.myForm.get('first_name')?.setValue(farmer.first_name);
+            this.myForm.get('last_name')?.setValue(farmer.last_name);
+            this.myForm.get('email')?.setValue(farmer.email);
+            this.myForm.get('id_number')?.setValue(farmer.idNumber);
+            this.myForm.get('cell_number')?.setValue(farmer.cell_phone);
+            console.table(farmer);
+        });
+
         this.myForm = this.fb.group({
             first_name: new FormControl('', [
                 // Notice the initial empty string value
