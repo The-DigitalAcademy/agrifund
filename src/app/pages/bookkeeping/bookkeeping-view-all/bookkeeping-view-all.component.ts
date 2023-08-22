@@ -36,12 +36,7 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
         private _apiService: ApiService,
         private _bookkeepingService: BookkeepingService,
         private _offcanvasService: NgbOffcanvas
-    ) {
-        this._apiService.getAllStatementItems().subscribe((records: any) => {
-            //populate bookkeepingRecords array with records from api
-            this.bookkeepingRecords$ = records;
-        });
-    }
+    ) {}
 
     viewRecordDetails(recordId: number) {
         this.router.navigate(['/bookkeeping/view-record', recordId]);
@@ -50,9 +45,10 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // adds get all records to subscription
         this.subscription.add(
-            this._bookkeepingService
-                .getAllBookkeepingRecords()
+            this._apiService
+                .getAllStatementItems()
                 .subscribe((records: any) => {
+                    //populate bookkeepingRecords array with records from api
                     this.bookkeepingRecords$ = records;
                 })
         );
