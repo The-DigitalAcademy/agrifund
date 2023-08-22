@@ -50,6 +50,7 @@ export class ApiService {
     private cropInfoURL = this.baseUrl + '/cropInfo';
     private plotInfoURL = this.baseUrl + '/plotInfo';
     private YouAndFarmURL = this.baseUrl + '/youAndFarm';
+    private equipmentCarouselURL = this.baseUrl + '/equipmentCarousel'
 
 
 
@@ -177,5 +178,12 @@ export class ApiService {
     ---------------------------------*/
        addYouandFarm(body:any){
         return this.http.post(`${this.YouAndFarmURL}`, body)
+       }
+
+       /* --------------------------------
+        ABOUT THE FARM/EQUIPMENT
+    ---------------------------------*/
+    addEquipmentCaroousel(body:any){
+        return this.http.post(`${this.equipmentCarouselURL}`, body)
        }
 }
