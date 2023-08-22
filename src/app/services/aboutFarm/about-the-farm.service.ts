@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Crop } from 'src/app/models/crop';
 import { ApiService } from '../api/api.service';
 import { Plot } from 'src/app/models/plot';
+import { YouAndFarm } from 'src/app/models/you-and-farm';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Plot } from 'src/app/models/plot';
 export class AboutTheFarmService {
 
   private crops: Crop[] = [];
-  private plots: Plot[] = [];  
+  private plots: Plot[] = [];
+  private farms: YouAndFarm[] = [];  
 
   constructor(private _apiService: ApiService) {
 
@@ -25,4 +27,9 @@ export class AboutTheFarmService {
     const farm_id: number = this.plots.length;
     return farm_id;
   }
+  generateFarm_FarmId() {
+    const farm_id: number = this.farms.length;
+    return farm_id;
+  }
+
 }

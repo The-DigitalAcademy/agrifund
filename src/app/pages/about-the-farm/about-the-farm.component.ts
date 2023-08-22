@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Plot } from 'src/app/models/plot';
+import { YouAndFarm } from 'src/app/models/you-and-farm';
 import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -21,9 +22,12 @@ export class AboutTheFarmComponent implements OnInit {
   slides: any = ['slide1', 'slide2', 'slide3', 'slide4'];
   cropForm!:  FormGroup  ;
   plotForm!:  FormGroup  ;
+  farmForm!: FormGroup;
   submitted = false;
   crop!: Crop;
   plot!: Plot;
+  farm!: YouAndFarm;
+  
 
   constructor(private fb: FormBuilder,private router: Router, carouselConfig: NgbCarouselConfig, private _aboutFarm: AboutTheFarmService, private _apiService: ApiService) {
     // prevents the carousel from wrapping
@@ -45,6 +49,12 @@ export class AboutTheFarmComponent implements OnInit {
     plot_address : ['', Validators.required],
     size: ['', Validators.required],
     date : ['', Validators.required],
+})
+this.farmForm = this.fb.group({
+  farm_name : ['', Validators.required],
+  years_active: ['', Validators.required],
+  num_employee : ['', Validators.required],
+  funding_reason : ['', Validators.required],
 })
     this.carousel.pause();
   }
@@ -88,6 +98,21 @@ goToNextSlide() {
     });
   }
 
+  if (this.farmForm.valid) {
+    this.farm = {
+      farm_id: this._aboutFarm.generateFarm_FarmId(),
+      farm_name: this.farmForm.get('farm_name')?.value,
+      years_active: this.farmForm.get('years_active')?.value,
+      num_employee: this.farmForm.get('num_employee')?.value,
+      funding_reason: this.farmForm.get('funding_reason')?.value,
+    };
+
+   
+
+    this._apiService.addYouandFarm(this.plot).subscribe(data => {
+      console.table(data);
+    });
+  }
   this.carousel.next(); // Move to the next slide
 
 

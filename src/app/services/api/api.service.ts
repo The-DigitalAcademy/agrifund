@@ -1,3 +1,4 @@
+import { YouAndFarm } from './../../models/you-and-farm';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Ntokozo, Monique, Kamo
     CREATE DATE: 24 Jul 2023
@@ -48,6 +49,8 @@ export class ApiService {
     ---------------------------------*/
     private cropInfoURL = this.baseUrl + '/cropInfo';
     private plotInfoURL = this.baseUrl + '/plotInfo';
+    private YouAndFarmURL = this.baseUrl + '/youAndFarm';
+
 
 
     // gets a farmer by their id
@@ -169,6 +172,10 @@ export class ApiService {
     addPlotInfo(body:any){
         return this.http.post(`${this.plotInfoURL}`, body)
        }
-
-
+   /* --------------------------------
+        ABOUT THE FARM/YOUANDFARM
+    ---------------------------------*/
+       addYouandFarm(body:any){
+        return this.http.post(`${this.YouAndFarmURL}`, body)
+       }
 }

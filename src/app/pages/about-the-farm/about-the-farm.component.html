@@ -22,22 +22,24 @@
                             <h2>You & Farm</h2>
                           
                     <div class="container inner-container">
+                        <form [formGroup]="farmForm">
                               <div class="form-group"> 
-                                <label for="location">Where do you live?</label>
-                                <input formControlName="location" class="form-control" id="locationInput" />
+                                <label for="farm_name">Where do you live?</label>
+                                <input formControlName="farm_name" class="form-control" id="farm_nameInfa-pull-left" />
                             </div>
                             <div class="form-group"> 
-                                <label for="activeFarming">How many years have you been actively farming?</label>
-                                <input formControlName="activeFarming" class="form-control" id="activeFarming" />
+                                <label for="years_active">How many years have you been actively farming?</label>
+                                <input formControlName="years_active" class="form-control" id="years_active" />
                             </div>
                             <div class="form-group"> 
-                                <label for="number">How many people help you with your farming?</label>
-                                <input formControlName="number" class="form-control" id="numberInput" />
+                                <label for="num_employee">How many people help you with your farming?</label>
+                                <input formControlName="num_employee" class="form-control" id="num_employee" />
                             </div>
                             <div class="form-group"> 
-                                <label for="funding">Why do you need funding for your farming activities?</label>
-                                <input formControlName="funding" class="form-control" id="fundingInput"/>
+                                <label for="funding_reason">Why do you need funding for your farming activities?</label>
+                                <input formControlName="funding_reason" class="form-control" id="funding_reason"/>
                           </div>
+                        </form>
                     </div> 
                     </div> 
                 </ng-template>
