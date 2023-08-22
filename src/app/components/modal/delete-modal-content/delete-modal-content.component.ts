@@ -48,7 +48,7 @@ export class DeleteModalContentComponent {
             .subscribe((data: any) => {
                 console.log(data);
                 this.activeModal.close();
-                this.router.navigate(['bookkeep']);
+                this.router.navigate(['/bookkeeping']);
             });
     }
 }
