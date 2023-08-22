@@ -44,9 +44,9 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
         });
     }
 
-    viewRecordDetails(recordId: any) {
+    viewRecordDetails(recordId: number) {
         // console.log(recordId);
-        this.router.navigate(['bookkeeping/view-record', recordId]);
+        this.router.navigate(['/bookkeeping/view-record', recordId]);
     }
 
     ngOnInit() {

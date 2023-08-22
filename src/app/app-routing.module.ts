@@ -35,7 +35,7 @@ const routes: Routes = [
         component: BookkeepingCreateComponent,
     },
     {
-        path: 'Bookkeeping/view-record/:id',
+        path: 'bookkeeping/view-record/:id',
         component: BookkeepingViewRecordComponent,
     },
     {
