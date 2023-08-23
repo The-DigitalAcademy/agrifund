@@ -40,73 +40,14 @@ UPDATED DATE: 17 AUG 2023  */
 ----------------------------------*/
 @media (max-width: 390px) {
 
-/* Container for doughnut */
-  .chart-container {
-    height: 30vh !important;
-    width: 95% !important;
-    position: relative !important;
-    padding-top: 2% !important;
-    padding-left: 2% !important;
-    flex-wrap: wrap;
-  
-  }
-/* heading for charts */
-  .chart-header {
-    justify-content: center !important;
-    padding-left: 0% !important;
-    flex-wrap: wrap;
-    padding-right: 40%;
-    justify-content: center;
-  
-  }
-
 
 
   @media only screen and (max-width: 576px) {
 
-    /* TEXT */
-    .mobile-hidden {
-      display: none !important;
-    }
-/* heading for charts */
-    .chart-header {
-      justify-content: center !important;
-      padding-left: 37% !important;
-      color: #6C757D !important;
-      align-items: start;
-    }
-
-/* Container for doughnut */
-    .chart-container {
-      height: 30vh !important;
-      width: 95% !important;
-      position: relative !important;
-      padding-top: 2% !important;
-      padding-left: 0% !important;
-      background-color: #F7F7F7 !important;
-      display: flex;
-
-    }
 
   }
 
   @media only screen and (min-width: 576px) and (max-width: 1200px) {
-
-/* Container for doughnut */
-    .chart-container {
-      height: 30vh !important;
-      width: 100% !important;
-      position: relative !important;
-      padding-top: 2% !important;
-      padding-left: 2% !important;
-      background-color: #F7F7F7 !important;
-    }
-/* heading for charts */
-    .chart-header {
-      justify-content: center !important;
-      padding-left: 27% !important;
-      color: #6C757D !important;
-    }
 
   }
 
@@ -114,17 +55,6 @@ UPDATED DATE: 17 AUG 2023  */
     Media Query for large screens
 ----------------------------------*/
   @media (min-width: 1281px) {
-
-/* Container for doughnut */
-    .chart-container {
-      height: 40vh !important;
-      width: 100% !important;
-      position: relative !important;
-      padding-top: 2% !important;
-      padding-left: 2% !important;
-      background-color: #F7F7F7 !important;
-
-    }
 
   }
 }

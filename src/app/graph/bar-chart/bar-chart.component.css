@@ -44,89 +44,19 @@ UPDATED DATE: 17 AUG 2023  */
   ----------------------------------*/
 @media (max-width: 390px) {
 
-/* Container for bar chart */
-    .chart-container {
-        height: 100% !important;
-        width: 100% !important;
-        padding-top: 2% !important;
-        padding-left: 2% !important;
-        background-color: #F7F7F7 !important;
-        display: flex !important;
-        flex-direction: row !important;
-    
-   
-       
-       
-    }
+
 /* heading for bar charts */
-    .chart-header {
-        justify-content: center !important;
-        padding-left:0% !important;
-        flex-wrap: wrap;
-        padding-right: 0%;
-        justify-content: center;
-    }
+ 
 
 
 
     @media only screen and (max-width: 576px) {
-
-        /* heading for bar charts */
-        .chart-header {
-            justify-content: center !important;
-            padding-left: 0% !important;
-            margin-top: 3%;
-            color: #6C757D !important;
-            flex-wrap: wrap !important;
-            display: flex;
-            flex-direction: row !important;
-        
-        }
-        
-
-/* Container for bar chart */
-        .chart-container {
-            height: 100% !important;
-            width: 95% !important;
-            position: relative !important;
-            padding-top: 2% !important;
-            padding-right: 0% !important;
-            background-color: #F7F7F7 !important;
-            margin-left: 0% !important;
-            margin-top: 3%;
-            flex-wrap: wrap;
-            display: flex !important;
-            flex-direction: row !important;
-            justify-content: center;
-         }
-
 
 
     }
 
     @media only screen and (min-width: 576px) and (max-width: 1200px) {
 
-/* Container for bar chart */
-        .chart-container {
-            height: 40vh !important;
-            width: 100% !important;
-            position: relative !important;
-            padding-top: 2% !important;
-            padding-left: 2% !important;
-            background-color: #F7F7F7 !important;
-            display: flex !important;
-            flex-direction: row !important;
-        
-        }
-        /* heading for bar charts */
-        .chart-header {
-            justify-content: center !important;
-            padding-left: 30% !important;
-            color: #6C757D !important;
-            display: flex !important;
-            flex-direction: row !important;
-        
-        }
 
     }
 
@@ -138,29 +68,7 @@ UPDATED DATE: 17 AUG 2023  */
         .header-content>* {
             margin-bottom: var(--x-large-s) !important;
         }
-/* Container for bar chart */
-        .chart-container {
-            height: 40vh !important;
-            width: 100% !important;
-            position: relative !important;
-            padding-top: 2% !important;
-            padding-left: 2% !important;
-            background-color: #F7F7F7 !important;
-            display: flex !important;
-            flex-direction: row !important;
-        
-
-        }
-        /* heading for bar charts */
-        .chart-header {
-            justify-content: center !important;
-            padding-left: 37% !important;
-            color: #6C757D !important;
-            display: flex !important;
-            flex-direction: row !important;
-        
-
-        }
+       }
     }
-}
+
 
