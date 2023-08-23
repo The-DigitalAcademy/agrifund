@@ -16,7 +16,6 @@ import {
 /* --------------------------------
     INTERCEPTORS
 ---------------------------------*/
-import { httpInterceptorProviders } from './_helpers/http-request/http-request.interceptor';
 
 /* --------------------------------
     OVERALL
