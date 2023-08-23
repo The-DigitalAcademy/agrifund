@@ -6,14 +6,6 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-    
-    ngOnInit(): void {
-        this.http
-            .get('https://node-rest-66bq.onrender.com/api/book')
-            .subscribe(data => console.log(data));
-    }
-    title = 'agrifund';
+export class AppComponent {
 
-    constructor(private http: HttpClient) {}
 }

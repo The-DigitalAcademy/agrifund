@@ -68,19 +68,19 @@ export class LoginComponent implements OnInit, OnDestroy {
                 password: formValue.password,
             };
 
-            // this.subscription.add(
-            //     this._apiService
-            //         .loginFarmer(loginBody)
-            //         .subscribe((data: any) => {
-            //             console.log(data);
-            //         })
-            // );
             this.subscription.add(
-                this._apiService.createBook(loginBody).subscribe((data: any) => {
-                    console.log(data);
+                this._apiService
+                    .loginFarmer(loginBody)
+                    .subscribe((data: any) => {
+                        console.log(data);
+                    })
+            );
+            // this.subscription.add(
+            //     this._apiService.createBook(loginBody).subscribe((data: any) => {
+            //         console.log(data);
                     
-                })
-            )
+            //     })
+            // )
         
 
             // this._userService.setUserState('mock_token');
