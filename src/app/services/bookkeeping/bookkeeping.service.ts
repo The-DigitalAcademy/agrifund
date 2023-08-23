@@ -9,15 +9,23 @@ import { BookkeepingLoadData } from 'src/app/models/interfaces/bookkeeping-load-
 })
 export class BookkeepingService {
     /*---------------------------------
-        API CONNECTION
-    ----------------------------------*/
-    /*---------------------------------
         OBSERVABLES
     ----------------------------------*/
     // stores all the bookkeeping records
-    private bookkeepingRecords: IncomeStatementItem[] = [];
+    private records: IncomeStatementItem[] = [];
     // used to store bookkeeping records as observables
-    private bookkeepingRecords$: BehaviorSubject<IncomeStatementItem>;
+    private _bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem[]>(
+        []
+    );
+    // readonly value for bookkeeping records observables to pass data components
+    readonly bookkeepingRecords$ = this._bookkeepingRecords$.asObservable();
+
+    // stores the total bookkeeping records number as a behavior subject
+    private _totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
+    // readonly value for total bookkeeping records to pass data components
+    readonly totalBookkeepingRecords$ =
+        this._totalBookkeepingRecords$.asObservable(); //
+
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
     // stores the total income for bookkeeping records (money in)
@@ -28,78 +36,35 @@ export class BookkeepingService {
     // create incomeStatement observable
     // create income statements observable
 
-    constructor(private _apiService: ApiService) {
-        // this._apiService.getAllStatementItems().subscribe((data: any) => {
-        //     //populate bookkeeping records array with records from api
-        //     this.bookkeepingRecords = data;
-        //     this.bookkeepingRecords.forEach(record => {
-        //         // adds bookkeeping records to the observable array
-        //         this.addRecord(record);
-        //     });
-        // });
+    constructor(private _apiService: ApiService) {}
 
-        // creates a default bookkeeping record behavior subject
-        this.bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem>({
-            id: 0,
-            statement_id: 0, //income statement id
-            category: '',
-            amount: 0,
-            proof: '',
-            description: '',
-            date: '', //date of the record
+    /*---------------------------------
+        GET & SET DATA
+    ----------------------------------*/
+    // sets data from the api to the bookkeeping observable
+    setBookkeepingRecords() {
+        this._apiService.getAllStatementItems().subscribe((data: any) => {
+            this.records = data;
+            // console.log(this.records);
+            this.records.forEach(record => {
+                this.addRecord(record);
+            });
         });
     }
 
-    /*---------------------------------
-        CREATE/ADD DATA
-    ----------------------------------*/
-    // generate an id value for a bookkeeping record
-    generateRecordId() {
-        const id: number = this.bookkeepingRecords.length;
-        return id;
-    }
-
-    // adds bookkeeping record from api to observable bookkeeping
-    addRecord(record: IncomeStatementItem) {
-        const addedRecord = {
-            id: record.id,
-            statement_id: record.statement_id, //income statement id
-            category: record.category,
-            amount: record.amount,
-            proof: record.proof,
-            description: record.description,
-            date: record.date, //date of the record
-        };
-
-        // adds record to bookkeeping record observable
-        this.bookkeepingRecords$.next(addedRecord);
-    }
-
-    // setBookkeepingRecords(record: IncomeStatementItem) {}
-
-    // getBookkeepingRecords() {
-
-    // }
-
-    // TODO
-    // create a new bookkeeping record
-
-    // TODO
-    // create a income statement
-    /*---------------------------------
-        SET  DATA
-    ----------------------------------*/
-    // sets data from the api to the bookkeeping observable
-    setBookkeepingRecords(records: IncomeStatementItem) {
-        this.bookkeepingRecords$.next(records);
-    }
-
-    /*---------------------------------
-        GET DATA
-    ----------------------------------*/
     // returns all bookkeeping records within the behavior subject
     getAllBookkeepingRecords(): Observable<any> {
-        return this.bookkeepingRecords$;
+        return this._bookkeepingRecords$;
+    }
+
+    // get the total number of  bookkeeping records
+    getTotalBookkeepingRecords(): Observable<number> {
+        // each bookkeeping record is mapped to 1 and summed to the total
+        console.table(this.getAllBookkeepingRecords());
+        return this.getAllBookkeepingRecords().pipe(
+            map(() => 1),
+            reduce((total, count) => total + count, 0)
+        );
     }
 
     // loads bookkeeping data according to pagination
@@ -118,6 +83,45 @@ export class BookkeepingService {
     // }
 
     /*---------------------------------
+        CREATE/ADD DATA
+    ----------------------------------*/
+    // generate an id value for a bookkeeping record
+    generateRecordId() {
+        const id: number = this.records.length;
+        return id;
+    }
+
+    // adds bookkeeping record from api to observable bookkeeping
+    addRecord(record: IncomeStatementItem) {
+        const addedRecord = {
+            id: record.id,
+            statement_id: record.statement_id, //income statement id
+            category: record.category,
+            amount: record.amount,
+            proof: record.proof,
+            description: record.description,
+            date: record.date, //date of the record
+        };
+
+        // adds record to records
+        this.records.push(addedRecord);
+        // adds record to bookkeeping record observable
+        this._bookkeepingRecords$.next(this.records);
+    }
+
+    // setBookkeepingRecords(record: IncomeStatementItem) {}
+
+    // getBookkeepingRecords() {
+
+    // }
+
+    // TODO
+    // create a new bookkeeping record
+
+    // TODO
+    // create a income statement
+
+    /*---------------------------------
         UPDATE DATA
     ----------------------------------*/
 
@@ -129,11 +133,11 @@ export class BookkeepingService {
 
     // delete and income statement item
     deleteRecord(recordId: number) {
-        console.log(`Before Delete: ${this.bookkeepingRecords.length}`);
+        console.log(`Before Delete: ${this.records.length}`);
         return this._apiService
             .getStatementItemById(recordId)
             .subscribe((data: any) => {
-                console.log(`Before Delete: ${this.bookkeepingRecords.length}`);
+                console.log(`Before Delete: ${this.records.length}`);
                 console.log(data);
                 console.log('Successfully deleted record.');
             });
@@ -157,16 +161,6 @@ export class BookkeepingService {
     /*---------------------------------
         CALCULATIONS
     ----------------------------------*/
-    // calculate the total number of bookkeeping records based on the observable passed
-    totalBookkeepingRecords() {
-        // each bookkeeping record is mapped to 1 and summed to the total
-        // console.table(this.totalBookkeepingRecords());
-        const total = this.getAllBookkeepingRecords().pipe(
-            map(() => 1),
-            reduce((total, count) => total + count, 0)
-        );
-        return total;
-    }
 
     // // TODO
     // // update income statement total income

@@ -44,28 +44,29 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // gets data from the api and sends it he be added to the bookkeeping observable in the service
+        // sets the bookkeeping records
         this.subscription.add(
-            this._apiService.getAllStatementItems().subscribe((data: any) => {
-                //populate sets the bookkeeping records value in the bookkeeping service
-                this._bookkeepingService.setBookkeepingRecords(data);
-                // this.bookkeepingRecords$ = records;
-                // gets all values now stored in observable in service
-                this._bookkeepingService
-                    .getAllBookkeepingRecords()
-                    .subscribe(records => {
-                        this.bookkeepingRecords$ = records;
-                    });
-            })
+            //populate sets the bookkeeping records value in the bookkeeping service
+            this._bookkeepingService.setBookkeepingRecords()
+        );
+
+        // gets all bookkeeping values stored in the bookkeeping service observable
+        this.subscription.add(
+            // gets all values now stored in observable in service
+            this._bookkeepingService
+                .getAllBookkeepingRecords()
+                .subscribe(records => {
+                    this.bookkeepingRecords$ = records;
+                })
         );
 
         // adds calculate total bookkeeping records to subscription
         this.subscription.add(
             this._bookkeepingService
-                .totalBookkeepingRecords()
-                .subscribe(value => {
-                    // this.totalBookkeepingRecords$ = value;
-                    // console.log(value);
+                .getTotalBookkeepingRecords()
+                .subscribe((value: any) => {
+                    this.totalBookkeepingRecords$ = value;
+                    console.log(value);
                 })
         );
     }

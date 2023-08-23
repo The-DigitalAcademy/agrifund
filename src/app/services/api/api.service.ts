@@ -95,8 +95,8 @@ export class ApiService {
         return this.http.get(`${this.statementItemsUrl}`);
     }
 
-    // get all bookkeep records based on the statement id
-    getrecordsByStatementId(statementId: number) {
+    // get all bookkeeping records based on the statement id
+    getRecordsByStatementId(statementId: number) {
         return this.http.get(`${this.statementItemsUrl}/${statementId}`);
     }
 
