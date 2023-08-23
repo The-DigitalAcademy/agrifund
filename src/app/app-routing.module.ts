@@ -20,24 +20,53 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
 import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+/* --------------------------------
+    ACCESS GUARDS
+---------------------------------*/
+import { isUserLoggedInGuard } from './services/authorization-services/auth-guard-service/auth-guard.service';
 
 const routes: Routes = [
-    { path: '', component: LandingPageComponent },
+    {
+        path: '',
+        component: LandingPageComponent,
+        pathMatch: 'full',
+    },
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'about-farm', component: TellMeAboutComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'bookkeep', component: BookkeepViewAllComponent },
-    { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [isUserLoggedInGuard],
+    },
+    {
+        path: 'bookkeep',
+        component: BookkeepViewAllComponent,
+        canActivate: [isUserLoggedInGuard],
+    },
+    {
+        path: 'bookkeep/create-record',
+        component: BookkeepCreateComponent,
+        canActivate: [isUserLoggedInGuard],
+    },
     {
         path: 'bookkeep/view-record/:id',
         component: BookkeepViewRecordComponent,
+        canActivate: [isUserLoggedInGuard],
     },
-    { path: 'bookkeep/edit-record/:id', component: BookkeepEditComponent },
-    { path: 'portfolio', component: PortfolioViewInfoComponent },
+    {
+        path: 'bookkeep/edit-record/:id',
+        component: BookkeepEditComponent,
+        canActivate: [isUserLoggedInGuard],
+    },
+    {
+        path: 'portfolio',
+        component: PortfolioViewInfoComponent,
+        canActivate: [isUserLoggedInGuard],
+    },
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },

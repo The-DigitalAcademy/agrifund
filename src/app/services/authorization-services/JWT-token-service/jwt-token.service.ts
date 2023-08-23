@@ -20,7 +20,7 @@ export class JWTTokenService {
     // the token is stored as a string - initialized as empty
     token = '';
     // the decoded sting will be stored here as key value pairs - initialized as empty
-    decodedToken: { [key: string]: string } = { '': '' };
+    decodedToken: { [key: string]: string } = {};
 
     constructor() {}
 
@@ -66,9 +66,18 @@ export class JWTTokenService {
     }
 
     // gets the date the token will expire
-    getExpiredDate() {
+    getExpiryTime() {
         this.decodeToken();
         console.log(this.decodedToken);
         return this.decodedToken ? this.decodedToken['exp'] : null;
+    }
+
+    isTokenExpired(): boolean {
+        const expiryTime = this.getExpiryTime();
+        if (expiryTime) {
+            return 1000 * Number(expiryTime) - new Date().getTime() < 5000;
+        } else {
+            return false;
+        }
     }
 }
