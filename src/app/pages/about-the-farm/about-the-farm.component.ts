@@ -63,6 +63,7 @@ this.assetForm = this.fb.group({
   purchase_price: ['', Validators.required],
 })
 this.farmForm = this.fb.group({
+  address : ['', Validators.required],
   farm_name : ['', Validators.required],
   years_active: ['', Validators.required],
   num_employee : ['', Validators.required],

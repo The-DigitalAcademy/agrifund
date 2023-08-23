@@ -24,7 +24,11 @@
                     <div class="container inner-container">
                         <form [formGroup]="farmForm">
                               <div class="form-group"> 
-                                <label for="farm_name">Where do you live?</label>
+                                <label for="address">Where do you live?</label>
+                                <input formControlName="address" class="form-control" id="addressInfa-pull-left" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="farm_name">What is the name of your farm?</label>
                                 <input formControlName="farm_name" class="form-control" id="farm_nameInfa-pull-left" />
                             </div>
                             <div class="form-group"> 
