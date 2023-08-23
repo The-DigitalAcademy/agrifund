@@ -32,6 +32,10 @@
                                 <input formControlName="farm_name" class="form-control" id="farm_nameInfa-pull-left" />
                             </div>
                             <div class="form-group"> 
+                                <label for="farm_address">Where is your farm located?</label>
+                                <input formControlName="farm_address" class="form-control" id="farm_addressInfa-pull-left" />
+                            </div>
+                            <div class="form-group"> 
                                 <label for="years_active">How many years have you been actively farming?</label>
                                 <input formControlName="years_active" class="form-control" id="years_active" />
                             </div>
@@ -109,60 +113,38 @@
                 </ng-template>
                 <ng-template ngbSlide id="slide5" >
                     <div class="justify-center">
-                        <div class="container record-table">
-                            <div class="add-icon-container">
-                                <button class="btn icon-btn btn" type="button" [routerLink]="['/equipment-create']">
-                                  <fa-icon icon="plus"></fa-icon>Add another
-                                </button>
-                              </div>
-                            <table class="table mobile-hidden">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Type</th>
-                                        <th scope="col">Age(years)</th>
-                                        <th scope="col">Purchase Amount</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody *ngFor="let asset of assets">
-                                    <tr class="record-tr">
-                                        <td scope="row">{{asset.name}}</td> 
-                                        <td>{{asset.type}}</td>
-                                        <td>{{asset.age}}</td>
-                                        <td>{{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}</td>
-                                       <td>
-                                        </td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>
-                        
-                            <div class="large-hidden" *ngFor="let asset of assets">
-                               
-                                <div class="info">
-                                    <div class="left justify-start">
-                                        <p class="bold justify-start">
-                                            {{asset.type}}
-                                        </p>
-                                        <p class=" inline-content greyed  justify-end">
-                                            {{ asset.name}}
-                                            
-                                        </p>
-                                    </div>
-                                    <div class="right justify-end">
-                                        <p class="bold justify-end">
-                                            {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
-                                        </p>
-                                        <p class=" greyed justify-end">
-                                            {{ asset.age }} {{ asset.age === 1 || asset.age === 0 ? 'year' : 'years' }}
-                                        </p>
-                                    </div>
-                               </div>
-                                <hr *ngIf="!isLast" />
+                        <h2>Tell me about your farm</h2>
+                            <h2>You & Farm</h2>
+                          
+                    <div class="container inner-container">
+                        <form [formGroup]="farmForm">
+                              <div class="form-group"> 
+                                <label for="address">Where do you live?</label>
+                                <input formControlName="address" class="form-control" id="addressInfa-pull-left" />
                             </div>
-                        </div>
-                    </div>  
+                            <div class="form-group"> 
+                                <label for="farm_name">What is the name of your farm?</label>
+                                <input formControlName="farm_name" class="form-control" id="farm_nameInfa-pull-left" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="farm_address">Where is your farm located?</label>
+                                <input formControlName="farm_address" class="form-control" id="farm_addressInfa-pull-left" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="years_active">How many years have you been actively farming?</label>
+                                <input formControlName="years_active" class="form-control" id="years_active" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="num_employee">How many people help you with your farming?</label>
+                                <input formControlName="num_employee" class="form-control" id="num_employee" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="funding_reason">Why do you need funding for your farming activities?</label>
+                                <input formControlName="funding_reason" class="form-control" id="funding_reason"/>
+                          </div>
+                        </form>
+                    </div> 
+                    </div> 
                     </ng-template>
             </ngb-carousel>
             <div class="actions">

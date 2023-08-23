@@ -76,8 +76,11 @@ p {
     /* adds space underneath the image  */
     margin-bottom: var(--normal-s);
 }
-
-
+ /*sets the height of the form control on farm form */
+#funding_reason {
+    height: px !important; 
+    resize: vertical;
+}
 
   .carousel-indicators button {
     /* sets the size of carousel indicators */
