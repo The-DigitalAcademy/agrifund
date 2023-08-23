@@ -11,14 +11,16 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import jwtDecode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
     providedIn: 'root',
 })
 export class JWTTokenService {
-    token: string;
-    decodedToken: string;
+    // the token is stored as a string - initialized as empty
+    token = '';
+    // the decoded sting will be stored here as key value pairs - initialized as empty
+    decodedToken: { [key: string]: string } = { '': '' };
 
     constructor() {}
 
@@ -33,18 +35,40 @@ export class JWTTokenService {
     //  decodes the token value
     decodeToken() {
         if (this.token) {
-            this.decodedToken = jwtDecode(this.token);
+            this.decodedToken = jwt_decode(this.token);
         }
     }
 
     // gets the decoded token value
     getDecodedToken() {
-        return jwtDecode(this.token);
+        return jwt_decode(this.token);
     }
 
-    // TODO
-    // checks if the token is expired
+    // gets the user email from the JWT token
+    getUserEmail() {
+        this.decodeToken();
+        console.log(this.decodedToken);
+        return this.decodedToken ? this.decodedToken['sub'] : null;
+    }
 
-    // TODO
-    // gets the user from the JWT token
+    // gets the user role from the JWT token
+    getUserRole() {
+        this.decodeToken();
+        console.log(this.decodedToken);
+        return this.decodedToken ? this.decodedToken['roles'] : null;
+    }
+
+    // gets the date the token was created
+    getIssuedDate() {
+        this.decodeToken();
+        console.log(this.decodedToken);
+        return this.decodedToken ? this.decodedToken['iat'] : null;
+    }
+
+    // gets the date the token will expire
+    getExpiredDate() {
+        this.decodeToken();
+        console.log(this.decodedToken);
+        return this.decodedToken ? this.decodedToken['exp'] : null;
+    }
 }
