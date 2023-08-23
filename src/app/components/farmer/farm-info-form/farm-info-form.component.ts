@@ -36,8 +36,9 @@ export class DisabledformFarmInfoComponent {
         // Placeholder data for the farmer's information
         const farmerData = {
             farmer: 'Mankweng-A Turfloop NO:3434 ',
+            farm_name: 'John Doe Farm',
             farm: 'Mankweng-A Turfloop NO:3434 ',
-            size: '9',
+
             years: '10',
             num_employee: '2',
             reasonForFunding:
@@ -59,13 +60,11 @@ export class DisabledformFarmInfoComponent {
                     this.validationsService.addressContainsStreetValidator,
                 ]
             ),
-            size: new FormControl(
-                { value: farmerData.size, disabled: true }, // Initialize with provided value and disable the field
-                [
-                    Validators.required,
-                    this.validationsService.positiveNumberValidator(),
-                ]
-            ),
+              farm_name: new FormControl('', [
+                // Notice the initial empty string value
+                Validators.required,
+                this.validationsService.textWithoutNumbersValidator(),
+            ]),
             years: new FormControl(
                 { value: farmerData.years, disabled: true }, // Initialize with provided value and disable the field
                 [
