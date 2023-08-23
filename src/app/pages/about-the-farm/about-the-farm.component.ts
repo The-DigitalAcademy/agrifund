@@ -16,6 +16,10 @@ import { Asset } from 'src/app/models/asset';
   styleUrls: ['./about-the-farm.component.css']
 })
 export class AboutTheFarmComponent implements OnInit {
+isDisabled: any;
+onFileSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
 
 
 
@@ -26,6 +30,7 @@ export class AboutTheFarmComponent implements OnInit {
   cropForm!:  FormGroup  ;
   plotForm!:  FormGroup  ;
   farmForm!: FormGroup;
+  equipmentForm!: FormGroup;
   submitted = false;
   crop!: Crop;
   plot!: Plot;
@@ -65,9 +70,18 @@ this.assetForm = this.fb.group({
 this.farmForm = this.fb.group({
   address : ['', Validators.required],
   farm_name : ['', Validators.required],
+  farm_address:['', Validators.required],
   years_active: ['', Validators.required],
   num_employee : ['', Validators.required],
   funding_reason : ['', Validators.required],
+})
+this.equipmentForm = this.fb.group({
+  equipmentName: ['', Validators.required],
+  equipmentType: ['', Validators.required],
+  purchase_Amount: ['', Validators.required],
+  age: ['', Validators.required],
+  file:['', Validators.required],
+
 })
     this.carousel.pause();
   }

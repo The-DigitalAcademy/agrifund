@@ -113,11 +113,10 @@
                 </ng-template>
                 <ng-template ngbSlide id="slide5" >
                     <div class="justify-center">
-                        <h2>Tell me about your farm</h2>
-                            <h2>You & Farm</h2>
-                          
+                            <h2>Equipment</h2>
+                            <h2>What type of tools do you use on your farm?</h2> 
                     <div class="container inner-container">
-                        <form [formGroup]="farmForm">
+                        <form [formGroup]="equipmentForm">
                               <div class="form-group"> 
                                 <label for="equipmentName">Name of equipment</label>
                                 <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
@@ -134,10 +133,14 @@
                                 <label for="age">Age in years</label>
                                 <input formControlName="age" class="form-control" id="age" />
                             </div>
-                            <div class="form-group"> 
-                                <label for="num_employee">How many people help you with your farming?</label>
-                                <input formControlName="num_employee" class="form-control" id="num_employee" />
-                            </div>
+                            <div class="form-input">
+                                <label class="form-label" for="file">Proof of ID</label>
+                                <div class="file-container">
+                                  <label for="file">Upload Document</label><hr>
+                                  <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
+                                </div>
+                              </div>
+
                         </form>
                     </div> 
                     </div> 
