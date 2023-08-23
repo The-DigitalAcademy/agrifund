@@ -94,6 +94,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { EquipmentInfoComponent } from './components/farmer/equipment-info-form/equipment-info-form.component';
+import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
 
 
 @NgModule({
@@ -127,6 +128,7 @@ import { EquipmentInfoComponent } from './components/farmer/equipment-info-form/
         ModalContainerComponent,
         DeleteModalContentComponent,
         EquipmentEditComponent,
+        PlotInfoFormComponent,
         
     ],
     imports: [

@@ -17,9 +17,7 @@ import { ProgressService } from 'src/app/services/portfolio/progress.service';
     styleUrls: ['./farm-info-form.component.css'],
 })
 export class DisabledformFarmInfoComponent {
-    onFileSelected($event: Event) {
-        throw new Error('Method not implemented.');
-    }
+    
     originalFormValues: any;
     myForm!: FormGroup;
     isDisabled = true;
@@ -94,11 +92,7 @@ export class DisabledformFarmInfoComponent {
         this.myForm.enable(); // Enable the formGroup
     }
 
-    // Save edited data
-    saveFields() {
-        this.editedData = this.myForm.value;
-        this.isDisabled = true; // Disable the fields after saving
-    }
+    
 
     // Handle "Save" button click
     onSaveClicked(formData: any) {

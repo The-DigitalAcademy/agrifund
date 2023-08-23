@@ -44,9 +44,9 @@ export class ApiService {
     private farmerAssetURL = this.baseUrl + '/assets';
 
     // gets a farmer by their id
-    getFarmerUser(userId: number): Observable<any> {
-        console.log(userId);
-        return this.http.get(`${this.userURL}/${userId}`);
+    getFarmerUser(email: number): Observable<any> {
+        
+        return this.http.get(`${this.userURL}/${email}`);
     }
 
     // adds a new equipment item

@@ -1,1 +1,73 @@
-<p>plot-info-form works!</p>
+<div class="container" id="container">
+    <div class="profile-heading">
+        <div class="heading">
+            <h3>Your Plot Info</h3>
+        </div>
+        <div class="action">
+            <app-enableform-crop-info (enableFields)="enableFields()"
+                (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <form [formGroup]="myForm">
+
+            <div class="form-input"
+                [ngClass]="{'has-success': myForm.controls['farmer'].valid && myForm.controls['farm'].dirty, 'has-error': myForm.controls['farm'].invalid && myForm.controls['farm'].dirty}">
+                <label for="farmer" class="form-label">Plot Address</label>
+                <input type="text" class="form-control" id="farmer" aria-describedby="farmer" formControlName="farmer"
+                    [disabled]="isDisabled">
+                <small
+                    *ngIf="myForm.controls['farmer'].hasError('addressContainsStreet') && myForm.controls['farm'].dirty"
+                    class="text-danger">Please enter word Street in your address</small>
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['farmer'].hasError('required') && myForm.controls['farmer'].dirty"
+                    class="text-danger">
+                    Field is required.</div>
+            </div>
+
+            <div class="form-input"
+                [ngClass]="{'has-success': myForm.controls['size'].valid && myForm.controls['size'].dirty, 'has-error': myForm.controls['size'].invalid && myForm.controls['size'].dirty}">
+                <label for="size" class="form-label">Size of farm (in hectares)</label>
+                <input type="text" class="form-control" id="size" formControlName="size" [disabled]="isDisabled">
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty"
+                    class="text-danger">Please enter a positive number.</div>
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty"
+                    class="text-danger">Field is required.</div>
+
+            </div>
+
+            <div class="form-input"
+                [ngClass]="{'has-success': myForm.controls['farm'].valid && myForm.controls['farm'].dirty, 'has-error': myForm.controls['farm'].invalid && myForm.controls['farm'].dirty}">
+                <label for="farm" class="form-label">Farm Address</label>
+                <input type="text" class="form-control" id="farm" aria-describedby="farm" formControlName="farm"
+                    [disabled]="isDisabled">
+                <small
+                    *ngIf="myForm.controls['farm'].hasError('addressContainsStreet') && myForm.controls['farm'].dirty"
+                    class="text-danger">Please enter word Street in your address</small>
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['farm'].hasError('required') && myForm.controls['farm'].dirty"
+                    class="text-danger">
+                    Field is required.</div>
+            </div>
+      
+            <div class="form-input" >
+                <label for="date">When did you start farming on this land?</label>
+                <input formControlName="date" type="date" class="form-control" id="date" />
+            </div>
+
+        
+
+            
+            <div class="button-container">
+                <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
+                    class="btn colourful-btn btn-width">Save</button>
+                <button *ngIf="!isDisabled" (click)="onCancelClicked()"
+                    class="btn outline-btn btn-width">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>
