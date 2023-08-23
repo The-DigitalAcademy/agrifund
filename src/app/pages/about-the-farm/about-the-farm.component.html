@@ -9,14 +9,12 @@
                 [activeId]="'slide1'">
                 <ng-template ngbSlide id="slide1">
                     <div class="justify-center">
-                        <div class ="carousel-inner">
                             <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
                               <h1>Welcome To AgriFund</h1>
                               <p>We are happy to to help you embark on your path to financial success.
                                 <br>
                                 <br> But first we would love to hear more about your farm!</p>
                               </div>
-                            </div>
                 </ng-template>
                 <ng-template ngbSlide id="slide2">
                     <div class="justify-center">
@@ -117,12 +115,12 @@
                     <div class="justify-center">
                             <h2>Equipment</h2>
                             <h2>What type of tools do you use on your farm?</h2> 
-                    <div class="container inner-container">
-                          <div class="add-icon-container">
+                          <div class="add-icon-container justify-end">
         <button class="btn icon-btn btn" type="button" [routerLink]="['/equipment-create']">
           <fa-icon icon="plus"></fa-icon>Add another
         </button>
       </div>
+      <div class="container inner-container">
                         <form [formGroup]="equipmentForm">
                               <div class="form-group"> 
                                 <label for="equipmentName">Name of equipment</label>
