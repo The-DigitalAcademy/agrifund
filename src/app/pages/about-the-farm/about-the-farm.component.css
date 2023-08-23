@@ -35,7 +35,7 @@ h2{
     min-height: 100% !important;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    /* overflow: hidden; */
 
   }
   .carousel-item {
@@ -75,11 +75,6 @@ p {
     border-radius: 100%;
     /* adds space underneath the image  */
     margin-bottom: var(--normal-s);
-}
- /*sets the height of the form control on farm form */
-#funding_reason {
-    height: px !important; 
-    resize: vertical;
 }
 
   .carousel-indicators button {
@@ -149,6 +144,15 @@ p {
 /* puts space between the icon and the button text for previous button */
 .carousel-control-prev fa-icon {
     margin-right: var(--small-s) !important;
+}
+
+ /*sets the height of the form control on farm form */
+ #funding_reason {
+    height: 50px !important; 
+    resize: vertical;
+}
+.inner-container{
+padding: var(--x-small-s);
 }
 /*---------------------------------
     Media Query for Mobile Devices
