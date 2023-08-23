@@ -1,6 +1,6 @@
 .align-center
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Monique
+    AUTHOR: Monique, Bolebo
     CREATE DATE: 24 Jul 2023
     UPDATED DATE: 17 Aug 2023 
 -------------------------------------------------------------------------------------------------*/
@@ -35,7 +35,20 @@
     .page-body {
         background-image: url("src/assets/images/background/orange-trees.webp");
     }
+
+.row {
     
+    /* height: 50%; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.col-6 {
+    width: 100%;
+    margin: 5%;
+}
+
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
