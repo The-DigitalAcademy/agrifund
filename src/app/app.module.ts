@@ -13,10 +13,8 @@ import {
     FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 
-/* --------------------------------
-    INTERCEPTORS
----------------------------------*/
-import { httpInterceptorProviders } from './_helpers/http-request/http-request.interceptor';
+
+
 
 /* --------------------------------
     OVERALL
