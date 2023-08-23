@@ -1,3 +1,4 @@
+
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/user/login/login.component';
@@ -29,7 +30,6 @@ const routes: Routes = [
     { path: 'about-farm', component: TellMeAboutComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
-    { path: 'dashboard', component: DashboardComponent },
     { path: 'bookkeep', component: BookkeepViewAllComponent },
     { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     {
@@ -41,7 +41,8 @@ const routes: Routes = [
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
-    { path: 'equipment-create', component: EquipmentCreateComponent },
+    { path: 'dashboard', component: DashboardComponent},
+    {  path: 'equipment-create', component: EquipmentCreateComponent },
     { path: 'equipment-edit/:id', component: EquipmentEditComponent },
     { path: 'dynamic-inputs', component: DynamicInputsComponent },
 ];

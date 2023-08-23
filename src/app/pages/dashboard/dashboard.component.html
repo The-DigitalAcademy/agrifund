@@ -1,7 +1,7 @@
 <!-- 
-    AUTHOR: Monique
+    AUTHOR: Bolebo
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 21 Aug 2023 
  -->
 
 <app-navbar></app-navbar>
@@ -30,6 +30,37 @@
                     </button>
                 </div>
             </div>
+        </div> 
+        <div class="container">
+            <div class="container-header">
+                <div class="justify-start">
+
+                </div>
+                <!-- <div class="justify-end">
+                    <button class="btn colourful-btn">
+                        <p>Month</p>
+                    </button>
+                    <button class="white-btn">
+                        <p>Year</p>
+                    </button>
+                </div> -->
+            </div> 
+
+    <!-- <ng-template [ngIf]="is"> -->
+        
+       <div class="container">
+            <app-money-card-summary></app-money-card-summary>
+            <div class="row">
+                <div class="col-6" >
+                    <app-donut-graph></app-donut-graph>
+                </div>
+                <div class="col-6">
+                    <app-bar-chart></app-bar-chart>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        
+        <div class="outer-container">
+            <app-portfolio-progressbar></app-portfolio-progressbar>
+        </div>
+    <!-- </ng-template> -->

@@ -140,16 +140,20 @@ export class BookkeepService {
     ----------------------------------*/
 
     // TODO
+
     // update income statement total income
-    calculateTotalIncome() {}
+ 
 
     // TODO
     // update income statement total expense
-    calculateTotalExpense() {}
+
+   
 
     // TODO
     // update income statement total net income (profit)
-    calculateTotalNetIncome() {}
+
+   
+    // }
 
     // calcualtes the total bookkeeping records within the observables records
     // getTotalBookkeepRecords(): Observable<number> {

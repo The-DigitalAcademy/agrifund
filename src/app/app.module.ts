@@ -20,7 +20,6 @@ import {
     OVERALL
 ---------------------------------*/
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
@@ -56,6 +55,15 @@ import { PortfolioProgressbarComponent } from './components/data-summary/portfol
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+
+/* --------------------------------
+    GRAPHS
+---------------------------------*/
+
+import { BarChartComponent } from './graph/bar-chart/bar-chart.component';
+import { DonutGraphComponent } from './graph/donut-graph/donut-graph.component';
+
+
 
 /* --------------------------------
     MODALS
@@ -96,6 +104,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+
+
 
 @NgModule({
     declarations: [
@@ -129,6 +140,9 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         DeleteModalContentComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
+        BarChartComponent,
+        DonutGraphComponent
+ 
     ],
     imports: [
         BrowserModule,
@@ -174,6 +188,7 @@ export class AppModule {
             faFileDownload,
             faTimes,
             faCheck
+        
         );
     }
 }
