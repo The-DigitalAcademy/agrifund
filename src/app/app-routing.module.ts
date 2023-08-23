@@ -23,7 +23,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
 /* --------------------------------
     ACCESS GUARDS
 ---------------------------------*/
-import { isUserLoggedInGuard } from './services/authorization-services/auth-guard-service/auth-guard.service';
+import { authenticationGuard } from './services/authorization-services/auth-guard-service/auth-guard.service';
 
 const routes: Routes = [
     {
@@ -31,6 +31,7 @@ const routes: Routes = [
         component: LandingPageComponent,
         pathMatch: 'full',
     },
+    { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -40,32 +41,26 @@ const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [isUserLoggedInGuard],
     },
     {
         path: 'bookkeep',
         component: BookkeepViewAllComponent,
-        canActivate: [isUserLoggedInGuard],
     },
     {
         path: 'bookkeep/create-record',
         component: BookkeepCreateComponent,
-        canActivate: [isUserLoggedInGuard],
     },
     {
         path: 'bookkeep/view-record/:id',
         component: BookkeepViewRecordComponent,
-        canActivate: [isUserLoggedInGuard],
     },
     {
         path: 'bookkeep/edit-record/:id',
         component: BookkeepEditComponent,
-        canActivate: [isUserLoggedInGuard],
     },
     {
         path: 'portfolio',
         component: PortfolioViewInfoComponent,
-        canActivate: [isUserLoggedInGuard],
     },
     { path: 'progressbar', component: PortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },

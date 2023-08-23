@@ -39,5 +39,17 @@ export const isUserLoggedInGuard = (
     return auth.isUserLoggedIn();
 };
 
+export function authenticationGuard(redirectRoute: string): CanActivateFn {
+    return () => {
+        const _authService: AuthService = inject(AuthService);
+        const router = inject(Router);
+
+        return (
+            _authService.isUserLoggedIn() ||
+            router.createUrlTree([redirectRoute])
+        );
+    };
+}
+
 // TODO ADMIN GUARD
 // TODO FARMER GUARD

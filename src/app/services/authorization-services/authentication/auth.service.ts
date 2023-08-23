@@ -29,8 +29,8 @@ export class AuthService {
     ) {}
 
     isUserLoggedIn() {
-        // checks that the user email value is not empty
         let loginState = false;
+        // checks that the user email value is not empty
         if (this._jwtService.getUserEmail()) {
             // if the token is not expired the login state will be true
             if (!this._jwtService.isTokenExpired()) {
