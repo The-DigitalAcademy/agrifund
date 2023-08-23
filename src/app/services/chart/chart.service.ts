@@ -17,6 +17,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IncomeStatement } from 'src/app/models/IncomeStatement';
 
 
 
@@ -24,6 +25,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ChartService {
+  private readonly apiUrl:string = '';
 
   income: any
   expense: any
@@ -32,6 +34,7 @@ export class ChartService {
   // method to fetch data from the mock API
   Getchartinfo(): Observable<any> {
     return this.http.get<any>("http://localhost:3000/total_expense");
+    // return this.http.get<any>('${this. }')
   }
 
   
@@ -65,6 +68,12 @@ export class ChartService {
   getTotalNetIncome(): Observable<any> {
     return this.http.get<any>("http://localhost:3000/net_income");
   }
+  // private processIncomeStatement(response: IncomeStatement): Response {
+  //   return {
+  //     data: { ...response.data },
+  //     data: response.data.map((farm_id:number) =>{}) 
+  //   };
+  // }
 
 }
 

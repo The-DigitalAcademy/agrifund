@@ -17,7 +17,8 @@ UPDATED DATE: 17 AUG 2023  */
     margin-left: 5% !important;
     margin-top: 3%;
     flex-wrap: wrap;
-    flex-direction: column-reverse;
+    display: flex !important;
+    flex-direction: row !important;
 
 
 
@@ -27,6 +28,7 @@ UPDATED DATE: 17 AUG 2023  */
 .chart-header {
     justify-content: center !important;
     padding-left: 35% !important;
+    margin-top: 3%;
     color: #6C757D !important;
     flex-wrap: wrap;
 
