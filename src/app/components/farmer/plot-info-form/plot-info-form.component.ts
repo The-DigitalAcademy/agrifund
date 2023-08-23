@@ -27,21 +27,31 @@ export class PlotInfoFormComponent implements OnInit {
     ngOnInit() {
         // Placeholder data for the farmer's information
         const farmerData = {
-            farmer: 'Mankweng-A Turfloop NO:3434',
+            farmer: 'Mankweng-A Turfloop NO:3434 ',
             size: '9',
-            date: '2023-07-13', // Format the date as 'yyyy-MM-dd'
+            farm: 'Farm Address Placeholder',
+            date: '2023-07-13',
         };
 
         this.myForm = this.fb.group({
-            farmer: new FormControl(farmerData.farmer, [
-                Validators.required,
-                this.validationsService.addressContainsStreetValidator,
-            ]),
-            size: new FormControl(farmerData.size, [
+            farmer: new FormControl(
+                { value: farmerData.farmer, disabled: true },
+                [
+                    Validators.required,
+                    this.validationsService.addressContainsStreetValidator,
+                ]
+            ),
+            size: new FormControl({ value: farmerData.size, disabled: true }, [
                 Validators.required,
                 this.validationsService.positiveNumberValidator(),
             ]),
-            date: new FormControl(farmerData.date, [Validators.required]),
+            farm: new FormControl({ value: farmerData.farm, disabled: true }, [
+                Validators.required,
+                this.validationsService.addressContainsStreetValidator,
+            ]),
+            date: new FormControl({ value: farmerData.date, disabled: true }, [
+                Validators.required,
+            ]),
         });
 
         this.originalFormValues = farmerData;
