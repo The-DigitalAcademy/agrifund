@@ -154,6 +154,24 @@ p {
 .inner-container{
 padding: var(--x-small-s);
 }
+
+.button-group {
+    margin-left: 5px; /* Adjust the margin as needed */
+    margin-top: -35px;
+  }
+  .view-button, .replace-button {
+    margin-right: 5px; /* Adjust the margin between buttons */
+    padding: 0px 20px;
+    background-color: var(--primary-colour);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .view-button:hover, .replace-button:hover {
+    background-color: var(--primary-colour);
+  }
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/

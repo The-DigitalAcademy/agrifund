@@ -2,29 +2,39 @@
  <div class="row page-body page-background">
     <div class="mobile-header"></div>
     <div class="justify-center page-content">
+
+
         <div class="form-container container outer-container">
+            
             <ngb-carousel
-                class="container inner-container"
                 #carousel="ngbCarousel"
                 [activeId]="'slide1'">
                 <ng-template ngbSlide id="slide1">
-                    <div class="justify-center">
+                    
+                    <div class="container inner-container">
+                        <div class="justify-center">
                             <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
                               <h1>Welcome To AgriFund</h1>
                               <p>We are happy to to help you embark on your path to financial success.
                                 <br>
                                 <br> But first we would love to hear more about your farm!</p>
                               </div>
+                    </div>
                 </ng-template>
+                
                 <ng-template ngbSlide id="slide2">
                     <div class="justify-center">
-                        <h2>Tell me about your farm</h2>
-                            <h2>You & Farm</h2>
+                        <h2>Tell us about your farm</h2>
+
+                       <div class="container">
+
+                            <h2 class="justify-center">Farm</h2>
                           
                     <div class="container inner-container">
                         <form [formGroup]="farmForm">
                               <div class="form-group"> 
-                                <label for="address">Where do you live?</label>
+                                <label for="address">Where do you live?</label> <br>
+                                Please enter your residential address. Might not  be te same as your farm address.
                                 <input formControlName="address" class="form-control" id="addressInfa-pull-left" />
                             </div>
                             <div class="form-group"> 
@@ -50,12 +60,16 @@
                         </form>
                     </div> 
                     </div> 
+                </div>
+
                 </ng-template>
                 <ng-template id="slide3" ngbSlide>
                     <div class="justify-center">
-                      <h2>Tell me about your farm</h2>
+                        <h2>Tell us about your farm</h2>
+                       <div class="container">
+                    <div class="justify-center">
                       <h2>Plot</h2>
-                      <div class="container inner-container">
+                      <div class="justify-center container inner-container">
                         <form [formGroup]="plotForm">
                           <div class="form-group">
                             <label for="plot_address">Where is your farm located?</label>
@@ -75,10 +89,14 @@
                         </form>
                       </div>
                     </div>
+                       </div>
+                    </div>
                   </ng-template>
                 <ng-template ngbSlide id="slide4" >
                     <div class="justify-center">
-                        <h2>Tell me about your farm</h2>
+                        <h2>Tell us about your farm</h2>
+                       <div class="container">
+                    <div class="justify-center">
                         <h2>Crops</h2>
                     <div class="container inner-container">
                     <form [formGroup]="cropForm">
@@ -110,8 +128,13 @@
                       </form>
                     </div>
                 </div>
+                       </div>
+                       </div>
                 </ng-template>
                 <ng-template ngbSlide id="slide5" >
+                    <div class="justify-center">
+                        <h2>Tell us about your farm</h2>
+                       <div class="container">
                     <div class="justify-center">
                             <h2>Equipment</h2>
                             <h2>What type of tools do you use on your farm?</h2> 
@@ -144,11 +167,17 @@
                                   <label for="file">Upload Document</label><br>
                                   <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
                                 </div>
+                                <div class="button-group justify-end">
+                                    <button class="view-button">View</button>
+                                    <button class="replace-button">Replace</button>
+                                  </div>
                               </div>
 
                         </form>
                     </div> 
                     </div> 
+                       </div>
+                    </div>
                     </ng-template>
             </ngb-carousel>
             <div class="actions">
