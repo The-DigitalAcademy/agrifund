@@ -16,6 +16,9 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class UserService {
+    getAuthenticatedUser() {
+        throw new Error('Method not implemented.');
+    }
     // Define a mock token for demonstration purposes
     private mockToken = 'your_mock_token_here';
 

@@ -28,9 +28,9 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     submitted = false;
 
     // stores the farmers personal information
-    personalInfo!: Users[];
+    personalInfo!: Users;
     // stores the user id
-    userId = 2;
+    userId=2;
 
     constructor(
         private fb: FormBuilder,

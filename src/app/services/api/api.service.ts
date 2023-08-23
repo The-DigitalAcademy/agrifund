@@ -10,7 +10,7 @@
 // Import necessary modules and components from Angular core and other sources
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable} from 'rxjs';
 import { Users } from 'src/app/models/users';
 import { Asset } from 'src/app/models/asset';
 import { environment } from 'src/environment/environment';
@@ -162,4 +162,5 @@ export class ApiService {
         // Send a POST request to the login URL with the provided credentials
         return this.http.post(this.loginURL, body);
     }
+    
 }
