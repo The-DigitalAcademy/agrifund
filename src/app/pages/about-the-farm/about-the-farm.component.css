@@ -151,10 +151,18 @@ p {
     height: 50px !important; 
     resize: vertical;
 }
-.inner-container{
-padding: var(--x-small-s);
+#slide3{
+    height:100% !important;
+    padding: 50% !important;
 }
 
+.justify-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100% !important;
+  }
+ 
 .button-group {
     margin-left: 5px; /* Adjust the margin as needed */
     margin-top: -35px;

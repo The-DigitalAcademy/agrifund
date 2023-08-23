@@ -10,8 +10,8 @@
                 #carousel="ngbCarousel"
                 [activeId]="'slide1'">
                 <ng-template ngbSlide id="slide1">
-                    
-                    <div class="container inner-container">
+                    <div class="container justify-center">
+                    <div class="inner-container">
                         <div class="justify-center">
                             <img class= "carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
                               <h1>Welcome To AgriFund</h1>
@@ -19,6 +19,7 @@
                                 <br>
                                 <br> But first we would love to hear more about your farm!</p>
                               </div>
+                    </div>
                     </div>
                 </ng-template>
                 
@@ -69,7 +70,7 @@
                        <div class="container">
                     <div class="justify-center">
                       <h2>Plot</h2>
-                      <div class="justify-center container inner-container">
+                      <div class="container inner-container">
                         <form [formGroup]="plotForm">
                           <div class="form-group">
                             <label for="plot_address">Where is your farm located?</label>
