@@ -72,6 +72,7 @@ export class JWTTokenService {
         return this.decodedToken ? this.decodedToken['exp'] : null;
     }
 
+    // checks if the token had expired
     isTokenExpired(): boolean {
         const expiryTime = this.getExpiryTime();
         if (expiryTime) {

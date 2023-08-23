@@ -21,12 +21,7 @@ import { AuthService } from '../authentication/auth.service';
     providedIn: 'root',
 })
 export class TokenStorageService {
-    constructor(
-        private router: Router,
-        private _authService: AuthService,
-        private _tokenStorage: TokenStorageService,
-        private _jwtService: JWTTokenService
-    ) {}
+    constructor() {}
 
     // sets the token local storage
     set(key: string, value: string) {

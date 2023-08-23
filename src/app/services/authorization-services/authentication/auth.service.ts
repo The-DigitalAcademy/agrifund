@@ -41,6 +41,14 @@ export class AuthService {
         return loginState;
     }
 
+    setToken(tokenValue: string) {
+        this._tokenStorage.set('tokenName', tokenValue);
+    }
+
+    getLoginToken() {
+        this._tokenStorage.get('tokenName');
+    }
+
     // TODO
     // check if a user is an administrator
 
