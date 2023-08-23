@@ -12,9 +12,9 @@ export class PortfolioService {
         private _http: HttpClient,
         private _apiService: ApiService
     ) {
-        this._apiService.getAllEquipment().subscribe((data: any) => {
-            this.assets = data;
-        });
+        // this._apiService.getAllEquipment().subscribe((data: any) => {
+        //     this.assets = data;
+        // });
     }
 
     generateId() {

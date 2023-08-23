@@ -12,7 +12,7 @@
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/User';
@@ -29,6 +29,11 @@ export class ApiService {
 
     // base url of api connection
     private BASE_URL = `${environment.API_URL}`;
+    
+
+    //Headers
+    headers = new HttpHeaders()
+        .set('Access-Control-Allow-Origin', '*');
 
     /* --------------------------------
         USER CONNECTION STRINGS
@@ -74,11 +79,13 @@ export class ApiService {
     ---------------------------------*/
     // POST function for registering a new farmer user
     registerFarmer(newFarmer: User) {
-        return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, newFarmer);
+        console.log(`URL: ${this.REGISTER_URL}/${this.FARMER_URL}`);
+        return this.http.post(`${this.REGISTER_URL}/${this.FARMER_URL}`, newFarmer);
     }
 
     // POST function for a farmer to login
     loginFarmer(loginBody: any) {
+        console.log(`${this.AUTH_URL}/${this.FARMER_URL}`)
         return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
     }
 
@@ -150,6 +157,7 @@ export class ApiService {
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
+   
 
     // get income statement records between two dates
 
