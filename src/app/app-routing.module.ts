@@ -19,7 +19,7 @@ import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-e
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
-import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -43,7 +43,7 @@ const routes: Routes = [
     { path: 'equipment-table', component: EquipmentTableComponent },
     { path: 'equipment-create', component: EquipmentCreateComponent },
     {path: 'equipment-edit/:id', component: EquipmentEditComponent },
-    {path: 'dynamic-inputs', component: DynamicInputsComponent },
+
 ];
 
 @NgModule({
