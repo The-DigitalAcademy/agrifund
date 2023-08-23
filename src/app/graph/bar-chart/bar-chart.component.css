@@ -9,16 +9,17 @@ UPDATED DATE: 17 AUG 2023  */
 /* Container for bar chart */
 .chart-container {
     height: 100% !important;
-    width: 95% !important;
+    width: 100% !important;
     position: relative !important;
     padding-top: 2% !important;
-    padding-right: 2% !important;
+    padding-right: 0% !important;
     background-color: #F7F7F7 !important;
-    margin-left: 5% !important;
-    margin-top: 3%;
+    margin-left: 0% !important;
+    margin-top: 4%;
     flex-wrap: wrap;
     display: flex !important;
     flex-direction: row !important;
+    justify-content: center;
 
 
 
@@ -27,10 +28,13 @@ UPDATED DATE: 17 AUG 2023  */
  /* heading for bar charts */
 .chart-header {
     justify-content: center !important;
-    padding-left: 35% !important;
+    padding-left: 0% !important;
     margin-top: 3%;
     color: #6C757D !important;
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
+    display: flex;
+    flex-direction: row !important;
+    
 
 }
 
@@ -42,11 +46,14 @@ UPDATED DATE: 17 AUG 2023  */
 
 /* Container for bar chart */
     .chart-container {
-        height: 20% !important;
+        height: 100% !important;
         width: 100% !important;
         padding-top: 2% !important;
         padding-left: 2% !important;
         background-color: #F7F7F7 !important;
+        display: flex !important;
+        flex-direction: row !important;
+    
    
        
        
@@ -54,13 +61,10 @@ UPDATED DATE: 17 AUG 2023  */
 /* heading for bar charts */
     .chart-header {
         justify-content: center !important;
-        padding-right: 45% !important;
-        color: #6C757D !important;
-      
-     
-
-
-
+        padding-left:0% !important;
+        flex-wrap: wrap;
+        padding-right: 0%;
+        justify-content: center;
     }
 
 
@@ -70,22 +74,31 @@ UPDATED DATE: 17 AUG 2023  */
         /* heading for bar charts */
         .chart-header {
             justify-content: center !important;
-            padding-left: 3% !important;
+            padding-left: 0% !important;
+            margin-top: 3%;
             color: #6C757D !important;
+            flex-wrap: wrap !important;
+            display: flex;
+            flex-direction: row !important;
+        
         }
         
 
 /* Container for bar chart */
         .chart-container {
-            height: 30vh !important;
-            width: 100% !important;
+            height: 100% !important;
+            width: 95% !important;
             position: relative !important;
             padding-top: 2% !important;
-            padding-left: 2% !important;
+            padding-right: 0% !important;
             background-color: #F7F7F7 !important;
-            display: flex;
-
-        }
+            margin-left: 0% !important;
+            margin-top: 3%;
+            flex-wrap: wrap;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center;
+         }
 
 
 
@@ -101,12 +114,18 @@ UPDATED DATE: 17 AUG 2023  */
             padding-top: 2% !important;
             padding-left: 2% !important;
             background-color: #F7F7F7 !important;
+            display: flex !important;
+            flex-direction: row !important;
+        
         }
         /* heading for bar charts */
         .chart-header {
             justify-content: center !important;
-            padding-left: 37% !important;
+            padding-left: 30% !important;
             color: #6C757D !important;
+            display: flex !important;
+            flex-direction: row !important;
+        
         }
 
     }
@@ -127,6 +146,9 @@ UPDATED DATE: 17 AUG 2023  */
             padding-top: 2% !important;
             padding-left: 2% !important;
             background-color: #F7F7F7 !important;
+            display: flex !important;
+            flex-direction: row !important;
+        
 
         }
         /* heading for bar charts */
@@ -134,6 +156,9 @@ UPDATED DATE: 17 AUG 2023  */
             justify-content: center !important;
             padding-left: 37% !important;
             color: #6C757D !important;
+            display: flex !important;
+            flex-direction: row !important;
+        
 
         }
     }

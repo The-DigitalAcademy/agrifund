@@ -15,12 +15,27 @@
         background-image: url("src/assets/images/background/orange-trees.webp");
     }
 
+.row {
+    
+    /* height: 50%; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.col-6 {
+    width: 100%;
+    margin: 5%;
+}
+
+
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
     .page-body {
         background-image: url("src/assets/images/background/orange-trees.webp");
     }
+    
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

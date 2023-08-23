@@ -8,14 +8,18 @@ UPDATED DATE: 17 AUG 2023  */
 
 /* Container for doughnut chart */
 .chart-container {
-  height: 100%;
-  width: 95%;
-  padding-top: 5%;
-  padding-left: 2%;
-  background-color: #F7F7F7;
-  margin-right: 5% !important;
-  margin-top: 3% !important;
+  height: 100% !important;
+  width: 95% !important;
+  position: relative !important;
+  padding-top: 2% !important;
+  padding-right: 0% !important;
+  background-color: #F7F7F7 !important;
+  margin-left: 0% !important;
+  margin-top: 4%;
   flex-wrap: wrap;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
   
 
 
@@ -23,8 +27,12 @@ UPDATED DATE: 17 AUG 2023  */
 /* heading for doughnut charts */
 .chart-header {
   justify-content: center !important;
-  padding-left: 29% !important;
+  padding-left: 0% !important;
+  margin-top: 3%;
   color: #6C757D !important;
+  flex-wrap: wrap !important;
+  display: flex;
+  flex-direction: row !important;
 }
 
 /*---------------------------------
@@ -39,7 +47,6 @@ UPDATED DATE: 17 AUG 2023  */
     position: relative !important;
     padding-top: 2% !important;
     padding-left: 2% !important;
-    background-color: #F7F7F7 !important;
     flex-wrap: wrap;
   
   }
@@ -47,9 +54,9 @@ UPDATED DATE: 17 AUG 2023  */
   .chart-header {
     justify-content: center !important;
     padding-left: 0% !important;
-    color: #6C757D !important;
     flex-wrap: wrap;
-    padding-right: 16%;
+    padding-right: 40%;
+    justify-content: center;
   
   }
 
@@ -75,7 +82,7 @@ UPDATED DATE: 17 AUG 2023  */
       width: 95% !important;
       position: relative !important;
       padding-top: 2% !important;
-      padding-left: 2% !important;
+      padding-left: 0% !important;
       background-color: #F7F7F7 !important;
       display: flex;
 
