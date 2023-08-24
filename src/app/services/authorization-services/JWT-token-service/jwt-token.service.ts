@@ -47,28 +47,24 @@ export class JWTTokenService {
     // gets the user email from the JWT token
     getUserEmail() {
         this.decodeToken();
-        console.log(this.decodedToken);
         return this.decodedToken ? this.decodedToken['sub'] : null;
     }
 
     // gets the user role from the JWT token
     getUserRole() {
         this.decodeToken();
-        console.log(this.decodedToken);
         return this.decodedToken ? this.decodedToken['roles'] : null;
     }
 
     // gets the date the token was created
     getIssuedDate() {
         this.decodeToken();
-        console.log(this.decodedToken);
         return this.decodedToken ? this.decodedToken['iat'] : null;
     }
 
     // gets the date the token will expire
     getExpiryTime() {
         this.decodeToken();
-        console.log(this.decodedToken);
         return this.decodedToken ? this.decodedToken['exp'] : null;
     }
 

@@ -13,7 +13,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ResolveStart, Router } from '@angular/router';
 import { JWTTokenService } from '../JWT-token-service/jwt-token.service';
 import { TokenStorageService } from '../token-storage-service/token-storage.service';
 import { ApiService } from '../../api/api.service';
@@ -22,6 +22,15 @@ import { ApiService } from '../../api/api.service';
     providedIn: 'root',
 })
 export class AuthService {
+    // stores the error message sent by the api
+    errorMessage = '';
+    // api response structure
+    apiResponse = {
+        data: '',
+        message: '',
+        code: '',
+    };
+
     constructor(
         private router: Router,
         private _apiService: ApiService,
@@ -30,11 +39,29 @@ export class AuthService {
     ) {}
 
     // logs a user into the application
-    loginUser(loginDetails: any) {
-        this._apiService.loginUser(loginDetails).subscribe(data => {
-            console.log(data);
-        });
+    loginUser(loginEmail: string, loginPassword: string) {
+        const loginBody = {
+            email: loginEmail,
+            password: loginPassword,
+        };
+        this._apiService.loginUser(loginBody).subscribe(
+            (result: any) => {
+                // assigns the result to the structure of the api response object
+                this.apiResponse = result;
+                this._jwtService.setToken(this.apiResponse.data);
+                this._tokenStorage.set('login', this.apiResponse.data);
+            },
+            error => {
+                console.error(
+                    `Error occurred while logging in: ${error.string}`
+                );
+            }
+        );
+
+        // return result;
     }
+
+    logoutUser() {}
 
     isUserLoggedIn() {
         let loginState = false;
@@ -45,16 +72,10 @@ export class AuthService {
                 // allows user access when returning true
                 loginState = true;
             }
+        } else {
+            this.logoutUser();
         }
         return loginState;
-    }
-
-    setToken(tokenValue: string) {
-        this._tokenStorage.set('tokenName', tokenValue);
-    }
-
-    getLoginToken() {
-        this._tokenStorage.get('tokenName');
     }
 
     // TODO

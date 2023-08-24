@@ -25,6 +25,7 @@ export class TokenStorageService {
 
     // sets the token local storage
     set(key: string, value: string) {
+        console.log(`key: ${key}, value: ${value}`);
         localStorage.setItem(key, value);
     }
 

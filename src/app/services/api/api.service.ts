@@ -29,11 +29,9 @@ export class ApiService {
 
     // base url of api connection
     private BASE_URL = `${environment.API_URL}`;
-    
 
     //Headers
-    headers = new HttpHeaders()
-        .set('Access-Control-Allow-Origin', '*');
+    headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
 
     /* --------------------------------
         USER CONNECTION STRINGS
@@ -66,6 +64,11 @@ export class ApiService {
     /* --------------------------------
         USER
     ---------------------------------*/
+    // POST function for a farmer to login
+    loginUser(loginBody: any) {
+        return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
+    }
+
     // POST function for registering a new farmer user
     logout(request: string) {
         return this.http.post(
@@ -80,13 +83,10 @@ export class ApiService {
     // POST function for registering a new farmer user
     registerFarmer(newFarmer: User) {
         console.log(`URL: ${this.REGISTER_URL}/${this.FARMER_URL}`);
-        return this.http.post(`${this.REGISTER_URL}/${this.FARMER_URL}`, newFarmer);
-    }
-
-    // POST function for a farmer to login
-    loginUser(loginBody: any) {
-        console.log(`${this.AUTH_URL}/${this.FARMER_URL}`)
-        return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
+        return this.http.post(
+            `${this.REGISTER_URL}/${this.FARMER_URL}`,
+            newFarmer
+        );
     }
 
     // gets a farmer by their id
@@ -157,7 +157,6 @@ export class ApiService {
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
-   
 
     // get income statement records between two dates
 

@@ -17,6 +17,7 @@ import { ValidationsServiceService } from 'src/app/services/validation/validatio
 import { ApiService } from 'src/app/services/api/api.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         private router: Router,
         // private userService: UserService, // Service to handle user-related functionalities
         private _apiService: ApiService, // Service to make API requests
-        private _userService: UserService
+        private _authService: AuthService
     ) {}
 
     ngOnInit() {
@@ -61,17 +62,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     onSubmit() {
         if (this.LoginForm.valid) {
-            const formValue = this.LoginForm.value;
+            const formInputVal = this.LoginForm.value;
             // sets the data that will be sent to the api
             const loginBody = {
-                email: formValue.email,
-                password: formValue.password,
+                email: formInputVal.email,
+                password: formInputVal.password,
             };
 
             this.subscription.add(
-                this._apiService.loginUser(loginBody).subscribe((data: any) => {
-                    console.log(data);
-                })
+                this._authService.loginUser(
+                    formInputVal.email,
+                    formInputVal.password
+                )
             );
 
             // this._userService.setUserState('mock_token');
