@@ -88,10 +88,6 @@
     --x-large-s: 28px;
     --xx-large-s: 36px;
 }
-/*space between the last control-input and button*/
-.between-button{
-    margin-bottom: var( --large-s);
- }
 
 html body {
     height: 100vh;
