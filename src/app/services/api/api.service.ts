@@ -52,7 +52,7 @@ export class ApiService {
     private farmerAssetURL = this.BASE_URL + '/assets';
 
     /* --------------------------------
-        BOOKKEEP CONNECTION STRINGS
+        BOOKKEEPING CONNECTION STRINGS
     ---------------------------------*/
     private statementsUrl = this.BASE_URL + '/incomeStatements';
     private statementItemsUrl = this.BASE_URL + '/incomeStatementItems';

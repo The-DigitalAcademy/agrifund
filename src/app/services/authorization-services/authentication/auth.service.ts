@@ -49,7 +49,7 @@ export class AuthService {
                 // assigns the result to the structure of the api response object
                 this.apiResponse = result;
                 this._jwtService.setToken(this.apiResponse.data);
-                this._tokenStorage.set('login', this.apiResponse.data);
+                this._tokenStorage.setToken('session', this.apiResponse.data);
             },
             error => {
                 console.error(
