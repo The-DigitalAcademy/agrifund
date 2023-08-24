@@ -6,7 +6,29 @@
 fa-icon {
     color: var(--grey);
 }
-
+.file {
+    display: flex;
+    width: 100%;
+    gap: 2%;
+}
+.document-upload {
+    margin-top: 5%;
+}
+.form-group {
+    margin-top: 2%;
+}
+.add-icon-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+/* Styling for an action section */
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
 /* Styling for inline content */
 .inline-content {
     display: inline-block; /* or "inline" if you want them to be truly inline elements */
@@ -16,6 +38,18 @@ fa-icon {
 /* Styling for a general container */
 .container {
     width: 100%;
+
+    border-color: var(--light-grey);
+    border: 1px solid #ccc;
+    background-color: var(--light-3);
+}
+.form-text {
+    padding-top: 2%;
+}
+
+.doc-header > * {
+    padding-right: var(--small-s);
+    margin-bottom: 0px !important;
 }
 
 /* Styling for a container with "add" icons */

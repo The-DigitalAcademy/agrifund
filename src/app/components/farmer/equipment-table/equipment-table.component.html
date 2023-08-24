@@ -1,64 +1,48 @@
-<div class="container record-table">
+<div class=" record-table">
     <div class="add-icon-container">
         <button class="btn icon-btn btn" type="button" [routerLink]="['/equipment-create']">
-            <fa-icon icon="plus"></fa-icon>Add another
+            <fa-icon icon="plus"></fa-icon>Add
         </button>
+        <div class="action">
+            <app-enableform-crop-info (enableFields)="enableFields()"
+                (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+        </div>
     </div>
-
     <div class="container">
-        <table class="table mobile-hidden">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Age(years)</th>
-                    <th scope="col">Purchase Amount</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let asset of assets">
-                <tr class="record-tr">
-                    <td scope="row">{{asset.name}}</td>
-                    <td>{{asset.type}}</td>
-                    <td>{{asset.age}}</td>
-                    <td>{{asset.purchase_price | currency: ' R ' : 'symbol' : '.2'}}</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="btn colourful-btn btn-width" (click)="onEditClicked(asset.id)"
-                                [routerLink]="['/equipment-edit/:id']">Edit</button>
-                        </div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <div class="large-hidden" *ngFor="let asset of assets">
-
-        <div class="info">
-            <div class="left justify-start">
-                <p class="bold justify-start">
-                    {{asset.type}}
-                </p>
-                <p class=" inline-content greyed  justify-end">
-                    {{ asset.name}}
-
-                </p>
+        <form [formGroup]="equipmentForm">
+            <div class="form-group">
+                <label for="equipmentName">Name of equipment</label>
+                <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
             </div>
-            <div class="right justify-end">
-                <p class="bold justify-end">
-                    {{asset.purchase_price | currency: ' R ' : 'symbol' : '.2'}}
-                </p>
-                <p class=" greyed justify-end">
-                    {{ asset.age }} {{ asset.age === 1 || asset.age === 0 ? 'year' : 'years' }}
-                </p>
+            <div class="form-group">
+                <label for="equipmentType">Type of</label>
+                <input formControlName="equipmentType" class="form-control" id="equipmentTypeInfa-pull-left" />
             </div>
-            <div class=" justify-end">
-                <div class="action-buttons ">
-                    <button class="btn colourful-btn" (click)="onEditClicked(asset.id)">Edit</button>
+            <div class="form-group">
+                <label for="purchase_Amount">Purchase Amount</label>
+                <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
+            </div>
+            <div class="form-group">
+                <label for="age">Age in years</label>
+                <input formControlName="age" class="form-control" id="age" />
+            </div>
+            <div class="document-upload">
+                <div class="doc-header justify-start">
+                    <label for="recordProof">Upload Proof of Ownership </label>
+                    <div class="form-text">PDF, PNG, JPG</div>
+                </div>
+                <hr />
+                <div class="file">
+                <input formControlName="recordProof" class="form-control" type="file" id="recordProof" />
+                <button 
+                    class="btn colourful-btn ">
+                    View
+                </button>
                 </div>
             </div>
-        </div>
-        <hr *ngIf="!isLast" />
+
+        </form>
     </div>
+
+
 </div>
