@@ -16,6 +16,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JWTTokenService } from '../JWT-token-service/jwt-token.service';
 import { TokenStorageService } from '../token-storage-service/token-storage.service';
+import { ApiService } from '../../api/api.service';
 
 @Injectable({
     providedIn: 'root',
@@ -23,10 +24,17 @@ import { TokenStorageService } from '../token-storage-service/token-storage.serv
 export class AuthService {
     constructor(
         private router: Router,
-        private _authService: AuthService,
+        private _apiService: ApiService,
         private _tokenStorage: TokenStorageService,
         private _jwtService: JWTTokenService
     ) {}
+
+    // logs a user into the application
+    loginUser(loginDetails: any) {
+        this._apiService.loginUser(loginDetails).subscribe(data => {
+            console.log(data);
+        });
+    }
 
     isUserLoggedIn() {
         let loginState = false;

@@ -84,7 +84,7 @@ export class ApiService {
     }
 
     // POST function for a farmer to login
-    loginFarmer(loginBody: any) {
+    loginUser(loginBody: any) {
         console.log(`${this.AUTH_URL}/${this.FARMER_URL}`)
         return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
     }
