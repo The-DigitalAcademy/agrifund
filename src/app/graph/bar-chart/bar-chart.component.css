@@ -65,9 +65,6 @@ UPDATED DATE: 17 AUG 2023  */
   ----------------------------------*/
     @media (min-width: 1281px) {
 
-        .header-content>* {
-            margin-bottom: var(--x-large-s) !important;
-        }
        }
     }
 
