@@ -1,230 +1,126 @@
  /* <!-- Author: Mamotsoko Maphutha 13/08/2023  -->  */
-.page-body {
- 
-    background-image: url("src/assets/images/background/orange-trees.webp");
-    flex-direction: column;
-}
-.page-heading h1 {
-    /* centers page heading text */
-    text-align: center;
-    /* changes the page headings to dark colour */
-    color: var(--dark);
-}
-ngb-carousel {
-    max-width: 100%;
-    height: min-content;
-    /* margin: 50px auto; */
-}
-.add-icon-container{
-    
-    margin-bottom: 2%;
-}
-.left,
-.right {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-h2{
-    justify-content: center;
-  }
+ .page-body {
 
-  /* Center the carousel items vertically */
-  .carousel-inner {
-    max-width: 100% !important;
-    min-height: 100% !important;
+     background-image: url("src/assets/images/background/orange-trees.webp");
+     flex-direction: column;
+ }
+
+ .page-heading h1 {
+     /* centers page heading text */
+     text-align: center;
+     /* changes the page headings to dark colour */
+     color: var(--dark);
+ }
+
+ /* makes the containers stretch to the full width available in their parent containers */
+ .justify-center,
+ .carousel-item>* {
+     width: 100%;
+ }
+
+ .justify-center{
+    display: flex;
     align-items: center;
-    justify-content: center;
-    /* overflow: hidden; */
+    max-height: 100%;
+ }
 
-  }
-  .carousel-item {
-    display: flex !important;
-    /* hides in-active carousel item on the top to create sliding animation */
-    opacity: 0;
-    visibility: hidden;
-    z-index: -1; 
-}
+ .left,
+ .right {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+ }
 
-.carousel-item {
-    /* immediately hides an inactive slide*/
-    transition: transform 0s ease-in-out;
-}
+ h2 {
+     justify-content: center;
+ }
 
-.carousel-item.active {
-    /* places active carousel item on the top to create sliding animation */
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
-}
-.justify-center {
-    /* makes everything display underneath each other*/
-    flex-direction: column;
-}
 
-p {
-    /* aligns items text to the center */
-    text-align: center;
-}
+ .justify-center {
+     /* makes everything display underneath each other*/
+     flex-direction: column;
+ }
 
-.carousel-image {
-    /* sets the size of carousel image */
-    min-height: 20% !important;
-    max-width: 20% !important;
-    /* makes image a circle  */
-    border-radius: 100%;
-    /* adds space underneath the image  */
-    margin-bottom: var(--normal-s);
-}
+ p {
+     /* aligns items text to the center */
+     text-align: center;
+ }
 
-  .carousel-indicators button {
-    /* sets the size of carousel indicators */
-    height: var(--normal-s) !important;
-    width: var(--normal-s) !important;
-    /* sets the margins on the left and right of a carousel indicator */
-    margin: 0px var(--x-small-s) !important;
-    /* makes the indicators rounded */
-    border-radius: 100%;
-
-    background-color: var(--lighter-grey) !important;
-}
-
-.carousel-indicators .active {
-    /* changes the active indicator to green */
-    background-color: var(--primary-colour) !important;
-}
-
-.carousel-control-next,
-.carousel-control-prev {
-    /* fixes carousel controls to the bottom of the page*/
-    display: flex;
-    flex-direction: row;
-    position: static;
-    /* changes the  carousel indicator colors to dark*/
-    color: var(--dark);
-    /* increases the opacity of controls */
-    opacity: 1;
-    /* makes indicator take up all available space */
-    width: auto;
-}
-
-.carousel-control-next{
-    /* removes padding on the right side of the  button so it aligns with other container items */
-    padding-right: 0px !important;
-}
-
-.carousel-control-prev {
-    /* removes padding on the left side of the  button so it aligns with other container items */
-        padding-left: 0px !important;
-}
-
-.carousel-indicators {
-    /* set default position to override bootstrap */
-    position: static;
-    width: auto !important;
-    height: auto !important;
-    padding: 0px !important;
-    /* removes bootstrap margins */
-    margin: 0px !important;
-}
-
-.carousel-control-next fa-icon,
-.carousel-control-prev fa-icon {
-    /* changes icon colors to dark */
-    color: var(--dark);
-    /* removes any preset margins from the icons */
-    margin: 0px !important;
-}
-
-/* puts space between the icon and the button text for next button */
-.carousel-control-next fa-icon{
-    margin-left: var(--small-s) !important;
-}
-
-/* puts space between the icon and the button text for previous button */
-.carousel-control-prev fa-icon {
-    margin-right: var(--small-s) !important;
-}
 
  /*sets the height of the form control on farm form */
  #funding_reason {
-    height: 50px !important; 
-    resize: vertical;
-}
-#slide3{
-    height:100% !important;
-    padding: 50% !important;
-}
+     height: 50px !important;
+     resize: vertical;
+ }
 
-.justify-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100% !important;
-  }
- 
-.button-group {
-    margin-left: 5px; /* Adjust the margin as needed */
-    margin-top: -35px;
-  }
-  .view-button, .replace-button {
-    margin-right: 5px; /* Adjust the margin between buttons */
-    padding: 0px 20px;
-    background-color: var(--primary-colour);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .view-button:hover, .replace-button:hover {
-    background-color: var(--primary-colour);
-  }
-/*---------------------------------
+ .button-group {
+     margin-left: 5px;
+     /* Adjust the margin as needed */
+     margin-top: -35px;
+ }
+
+ .view-button,
+ .replace-button {
+     margin-right: 5px;
+     /* Adjust the margin between buttons */
+     padding: 0px 20px;
+     background-color: var(--primary-colour);
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+
+ .view-button:hover,
+ .replace-button:hover {
+     background-color: var(--primary-colour);
+ }
+
+ /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (min-width: 300px) and (max-width:428px) {
+ @media (min-width: 300px) and (max-width:428px) {
 
-    .page-body {
-        /* removes the image from the background */
-        background-image: none;
+     .page-body {
+         /* removes the image from the background */
+         background-image: none;
 
-        
-    }
 
-    .page-background::before {
-        /* removes the dark filter overlay from the background */
-        display: none;
-    }
+     }
 
-    .page-content {
-        /* removes padding */
-        padding: 0px !important;
-    }
+     .page-background::before {
+         /* removes the dark filter overlay from the background */
+         display: none;
+     }
 
-    .mobile-header {
-        background-image: url("src/assets/images/background/orange-trees.webp");
-      
-    }
+     .page-content {
+         /* removes padding */
+         padding: 0px !important;
+     }
 
-}
-/*---------------------------------
+     .mobile-header {
+         background-image: url("src/assets/images/background/orange-trees.webp");
+
+     }
+
+ }
+
+ /*---------------------------------
     Media Query for tablets/IPad
 ----------------------------------*/
-@media (min-width: 481px) and (max-width: 767px) {}
+ @media (min-width: 481px) and (max-width: 767px) {}
 
-/*-------------------------------------------------
+ /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1024px) {}
+ @media (min-width: 768px) and (max-width: 1024px) {}
 
-/*--------------------------------------
+ /*--------------------------------------
     Media Query for laptops & desktops
 ----------------------------------------*/
-@media (min-width: 1025px) and (max-width: 1280px) {}
+ @media (min-width: 1025px) and (max-width: 1280px) {}
 
-/*--------------------------------
+ /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
-@media (min-width: 1281px) {}
-
+ @media (min-width: 1281px) {}
