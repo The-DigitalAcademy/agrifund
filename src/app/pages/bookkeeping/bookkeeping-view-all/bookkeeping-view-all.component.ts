@@ -21,7 +21,7 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
     // bookkeeping records stored within an observable
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
     // stores the total bookkeeping records
-    totalBookkeepingRecords$!: Observable<number>;
+    totalBookkeepingRecords$!: number;
     // bookkeeping records stored within an observable
     filteredRecords$!: Observable<IncomeStatementItem[]>;
     // used to store subscriptions to services
@@ -60,9 +60,14 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
                 })
         );
 
-        // get the total number of bookkeeping records
-        this.totalBookkeepingRecords$ =
-            this._bookkeepingService.getTotalBookkeepingRecords();
+        this.subscription.add(
+            this._bookkeepingService
+                .getTotalBookkeepingRecords()
+                .subscribe(total => {
+                    this.totalBookkeepingRecords$ = total;
+                    console.log(this.totalBookkeepingRecords$);
+                })
+        );
     }
 
     // toggles the offcanvas mobile search bar
