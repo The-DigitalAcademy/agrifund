@@ -19,6 +19,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -37,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     constructor(
         private _offcanvasService: NgbOffcanvas,
         private _userService: UserService,
+        private _authService: AuthService,
         private router: Router
     ) {}
 
@@ -67,7 +69,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     logout() {
-        this._userService.setUserState(null);
+        this._authService.logoutUser();
         this.router.navigate(['']);
     }
 }

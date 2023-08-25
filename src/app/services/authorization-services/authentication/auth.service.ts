@@ -61,7 +61,9 @@ export class AuthService {
         // return result;
     }
 
-    logoutUser() {}
+    logoutUser() {
+        this._tokenStorage.removeToken('session');
+    }
 
     isUserLoggedIn() {
         let loginState = false;
