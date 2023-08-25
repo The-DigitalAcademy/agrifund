@@ -73,41 +73,13 @@ export class LoginComponent implements OnInit, OnDestroy {
                     .loginFarmer(loginBody)
                     .subscribe((data: any) => {
                         console.log(data);
+                        
+                      
                     })
+                
             );
-            // this.subscription.add(
-            //     this._apiService.createBook(loginBody).subscribe((data: any) => {
-            //         console.log(data);
-                    
-            //     })
-            // )
-        
-
-            // this._userService.setUserState('mock_token');
-            // this.router.navigate(['/dashboard']);
-
-            // Call the login method of the ApiService to authenticate the user
-            // this.apiService
-            //     .login(formValue.email, formValue.password)
-            //     .subscribe(
-            //         (response: any) => {
-            //             console.log(response);
-            //             localStorage.setItem('token', response.token);
-
-            //             if (this.userService.isAuthenticated(response.token)) {
-            //                 // Redirect to the dashboard upon successful authentication
-            //                 this.router.navigate(['/dashboard']);
-            //             } else {
-            //                 // Handle non-authenticated scenario, for example:
-            //                 localStorage.removeItem('token');
-            //                 alert('Authentication failed');
-            //             }
-            //         },
-            //         (error: HttpErrorResponse) => {
-            //             // Handle errors, such as incorrect username or password
-            //             this.message = 'Wrong username or password';
-            //         }
-            //     );
+            
+  
         }
     }
 }
