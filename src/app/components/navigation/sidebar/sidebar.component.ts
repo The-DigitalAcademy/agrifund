@@ -13,9 +13,8 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
-import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -35,9 +34,5 @@ export class SidebarComponent implements OnInit {
         this._authService.getUserState().subscribe(userState => {
             this.userState$ = userState;
         });
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
     }
 }

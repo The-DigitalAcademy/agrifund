@@ -70,6 +70,10 @@
         </button>
     </div>
     <div class="offcanvas-body">
+        <div class="offcanvas-greeting" *ngIf="userState$">
+            <h2>Hello, Username</h2>
+            <hr />
+        </div>
         <app-sidebar></app-sidebar>
     </div>
     <div class="offcanvas-footer">
