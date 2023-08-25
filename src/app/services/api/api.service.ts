@@ -1,3 +1,4 @@
+
 import { YouAndFarm } from './../../models/you-and-farm';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Ntokozo, Monique, Kamo
@@ -30,7 +31,6 @@ export class ApiService {
 
     // base url of api connection
     // private BASE_URL = `${environment.API_URL}`;
-    
 
     //Headers
     // headers = new HttpHeaders()
@@ -43,6 +43,13 @@ export class ApiService {
     private AUTH_URL = this.BASE_URL + '/auth';
     // register url of api connection
     private REGISTER_URL = this.AUTH_URL + '/register';
+
+    /* --------------------------------
+        ABOUT FARM STRINGS
+    ---------------------------------*/
+    // private cropInfo_URL = this.cropInfo_URL + '/cropInfo';
+    // private plotInfo_URL = this.plotInfo_URL + '/plotInfo';
+    // private YouAndFarm_URL = this.YouAndFarm_URL + '/youAndFarm';
 
     /* --------------------------------
        FARMER CONNECTION STRINGS
@@ -81,12 +88,15 @@ export class ApiService {
     // POST function for registering a new farmer user
     registerFarmer(newFarmer: User) {
         console.log(`URL: ${this.REGISTER_URL}/${this.FARMER_URL}`);
-        return this.http.post(`${this.REGISTER_URL}/${this.FARMER_URL}`, newFarmer);
+        return this.http.post(
+            `${this.REGISTER_URL}/${this.FARMER_URL}`,
+            newFarmer
+        );
     }
 
     // POST function for a farmer to login
     loginFarmer(loginBody: any) {
-        console.log(`${this.AUTH_URL}/${this.FARMER_URL}`)
+        console.log(`${this.AUTH_URL}/${this.FARMER_URL}`);
         return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
     }
 
@@ -158,7 +168,6 @@ export class ApiService {
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
-   
 
     // get income statement records between two dates
 
@@ -168,43 +177,40 @@ export class ApiService {
         FARMER
     ---------------------------------*/
     // register user
-    registerUser(user: any): Observable<any> {
-        // Send a POST request to the user registration URL
-        return this.http.post(this.userURL, user);
-    }
-    login(email: string, password: string): Observable<any> {
-        // Create the request body with email and password
-        const body = { email, password };
-        // Send a POST request to the login URL with the provided credentials
-        return this.http.post(this.loginURL, body);
-    }
-      /* --------------------------------
-        ABOUT THE FARM
-    ---------------------------------*/
-
-
+    // registerUser(user: any): Observable<any> {
+    //     // Send a POST request to the user registration URL
+    //     return this.http.post(this.userURL, user);
+    // }
+    // login(email: string, password: string): Observable<any> {
+    // Create the request body with email and password
+    // const body = { email, password };
+    // Send a POST request to the login URL with the provided credentials
+    //     return this.http.post(this.loginURL, body);
+    // }
+    /* --------------------------------
+      ABOUT THE FARM
+  ---------------------------------*/
 
     /* --------------------------------
         ABOUT THE FARM/CROP
     ---------------------------------*/
 
-    addCropInfo(body:any){
-     return this.http.post(`${this.cropInfoURL}`, body)
-    }
+    // addCropInfo(body: any) {
+    //     return this.http.post(`${this.cropInfoURL}`, body);
+    // }
 
-     /* --------------------------------
-        ABOUT THE FARM/PLOT
-    ---------------------------------*/
+    //     /* --------------------------------
+    //        ABOUT THE FARM/PLOT
+    //    ---------------------------------*/
 
-    addPlotInfo(body:any){
-        return this.http.post(`${this.plotInfoURL}`, body)
-       }
-   /* --------------------------------
-        ABOUT THE FARM/YOUANDFARM
-    ---------------------------------*/
-       addYouandFarm(body:any){
-        return this.http.post(`${this.YouAndFarmURL}`, body)
-       }
-
-     
+    // addPlotInfo(body: any) {
+    //     return this.http.post(`${this.plotInfoURL}`, body);
+    // }
+    /* --------------------------------
+            ABOUT THE FARM/YOUANDFARM
+        ---------------------------------*/
+    // addYouandFarm(body: any) {
+    //     return this.http.post(`${this.YouAndFarmURL}`, body);
+    // }
 }
+

@@ -7,6 +7,7 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Plot } from 'src/app/models/plot';
 import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
 import { ApiService } from 'src/app/services/api/api.service';
+
 import { Asset } from 'src/app/models/asset';
 
 @Component({
@@ -33,7 +34,7 @@ export class AboutTheFarmComponent implements OnInit {
   // used to refer to the bootstrap carousel on HTML
   @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
   // sets the first slide as the active slide
-  slides: any = ['slide1', 'slide2', 'slide3', 'slide4'];
+  slides: any = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5'];
   cropForm!: FormGroup;
   plotForm!: FormGroup;
   farmForm!: FormGroup;
@@ -82,7 +83,7 @@ export class AboutTheFarmComponent implements OnInit {
       num_employee: ['', Validators.required],
       funding_reason: ['', Validators.required],
     })
-    this.equipmentForm = this.fb.group({
+    this.assetForm = this.fb.group({
       equipmentName: ['', Validators.required],
       equipmentType: ['', Validators.required],
       purchase_Amount: ['', Validators.required],
@@ -90,6 +91,9 @@ export class AboutTheFarmComponent implements OnInit {
       file: ['', Validators.required],
 
     })
+   
+
+  
     this.carousel.pause();
   }
   // navigates to a specific slide
@@ -103,8 +107,8 @@ export class AboutTheFarmComponent implements OnInit {
     this.submitted = true;
 
     if (this.activeSlideId != this.totalSlides) {
-        // increments the active slide
-        this.activeSlideId++;
+      // increments the active slide
+      this.activeSlideId++;
     }
 
     
@@ -120,9 +124,9 @@ export class AboutTheFarmComponent implements OnInit {
 
       // console.table(this.crop);
 
-      this._apiService.addCropInfo(this.crop).subscribe(data => {
-        console.table(data);
-      });
+      // this._apiService.addCropInfo(this.crop).subscribe(data => {
+      //   console.table(data);
+      // });
     }
     if (this.plotForm.valid) {
       this.plot = {
@@ -131,12 +135,9 @@ export class AboutTheFarmComponent implements OnInit {
         size: this.plotForm.get('size')?.value,
         ownership_date: this.plotForm.get('date')?.value,
       };
-
-
-
-      this._apiService.addPlotInfo(this.plot).subscribe(data => {
-        console.table(data);
-      });
+      // this._apiService.addPlotInfo(this.plot).subscribe(data => {
+      //   console.table(data);
+      // });
     }
 
     if (this.farmForm.valid) {
@@ -148,16 +149,20 @@ export class AboutTheFarmComponent implements OnInit {
         funding_reason: this.farmForm.get('funding_reason')?.value,
       };
 
-
-
-      this._apiService.addYouandFarm(this.farm).subscribe(data => {
-        console.table(data);
-      });
+      // this._apiService.addYouandFarm(this.farm).subscribe(data => {
+      //   console.table(data);
+      // });
     }
-    this.carousel.next(); // Move to the next slide
-
-
+      if (this.activeSlideId > this.totalSlides) {
+          // Navigate to the dashboard
+          this.router.navigate(['/dashboard']); // Update '/dashboard' with the actual route to your dashboard
+      }
+     else {
+        
+         this.carousel.next(); // Move to the next slide
+     }
   }
+
   // navigates to the previous slide
   goToPreviousSlide() {
 

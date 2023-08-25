@@ -92,7 +92,6 @@
                 </form>
               </div>
             </div>
-
           </div>
         </ng-template>
         <ng-template ngbSlide id="slide4">
@@ -145,7 +144,7 @@
                 </button>
               </div>
               <div class="container inner-container">
-                <form [formGroup]="equipmentForm">
+                <form [formGroup]="assetForm">
                   <div class="form-group">
                     <label for="equipmentName">Name of equipment</label>
                     <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
@@ -205,7 +204,7 @@
         </div>
         <div class="justify-end">
           <!-- *ngIf="slide !== last" -->
-          <button class="carousel-control-next btn icon-btn-dark" type="submit" (click)="goToNextSlide()">
+          <button class="carousel-control-next btn icon-btn-dark" type="submit" (click)="goToNextSlide()" [disabled]="activeSlideId === totalSlides">
             Next
             <fa-icon class="arrow-right" icon="arrow-right"></fa-icon>
           </button>

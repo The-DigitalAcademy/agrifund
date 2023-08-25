@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 import { ChartService } from 'src/app/services/chart/chart.service';
-import { Chart } from 'chart.js';
+
 
 @Component({
     selector: 'app-dashboard',

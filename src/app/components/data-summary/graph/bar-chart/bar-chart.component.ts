@@ -7,10 +7,10 @@
 //     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
 
 import { Component, OnInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js/auto';
+// import { Chart, registerables } from 'chart.js/auto';
 import { ChartService } from 'src/app/services/chart/chart.service';
 
-Chart.register(...registerables);
+// Chart.register(...registerables);
 @Component({
     selector: 'app-bar-chart',
     templateUrl: './bar-chart.component.html',
@@ -31,7 +31,7 @@ export class BarChartComponent {
                 for (let i = 0; i < this.chartdata.length; i++) {
                     this.total_expense.push(this.chartdata[i].amount);
                 }
-                this.RenderChart(this.total_expense);
+                // this.RenderChart(this.total_expense);
             }
             // console.log(this.total_expense)
         });
@@ -40,24 +40,24 @@ export class BarChartComponent {
     }
 
     // size of the graph properties
-    RenderChart(total_expense: any) {
-        new Chart('barchart', {
-            type: 'bar',
-            data: {
-                labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
-                datasets: [
-                    {
-                        label: 'Expenses',
-                        data: total_expense,
-                        backgroundColor: ['#5A6537'],
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 1.5,
-            },
-        });
-    }
+    // RenderChart(total_expense: any) {
+    //     new Chart('barchart', {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
+    //             datasets: [
+    //                 {
+    //                     label: 'Expenses',
+    //                     data: total_expense,
+    //                     backgroundColor: ['#5A6537'],
+    //                 },
+    //             ],
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             maintainAspectRatio: true,
+    //             aspectRatio: 1.5,
+    //         },
+    //     });
+    // }
 }
