@@ -14,6 +14,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -23,23 +24,20 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class SidebarComponent implements OnInit {
     // stores the state of the user token
-    userState$: Observable<string> | undefined;
+    userState$!: boolean;
     // stores the subscription to user service
-    userSubscription!: Subscription;
+    subscription!: Subscription;
 
-    constructor(private _userService: UserService) {}
+    constructor(private _authService: AuthService) {}
 
     ngOnInit() {
-        // get the user state value and stores it within the subscription
-        this.userSubscription = this._userService
-            .getUserState()
-            .subscribe((userState: any) => {
-                this.userState$ = userState;
-                // console.log(userState);
-            });
+        // sets the user state to the values stored int the observable within auth service
+        this._authService.getUserState().subscribe(userState => {
+            this.userState$ = userState;
+        });
     }
 
     ngOnDestroy() {
-        this.userSubscription.unsubscribe();
+        this.subscription.unsubscribe();
     }
 }

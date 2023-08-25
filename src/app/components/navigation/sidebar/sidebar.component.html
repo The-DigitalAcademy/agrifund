@@ -10,12 +10,7 @@
         $userState -> stores the user state as an observable to keep the validity of a user token for a session
  -->
 
-<div
-    *ngIf="
-        userState$ !== null;
-        then sidebarAfterLogin;
-        else sidebarBeforeLogin
-    "></div>
+<div *ngIf="userState$; then sidebarAfterLogin; else sidebarBeforeLogin"></div>
 
 <!-- sidebar after a user has logged in -->
 <ng-template #sidebarAfterLogin>

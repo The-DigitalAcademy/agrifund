@@ -15,12 +15,11 @@
 
 -------------------------------------------------------------------------------------------------*/
 
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
-import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
     selector: 'app-navbar',
@@ -37,16 +36,13 @@ export class NavbarComponent implements OnInit {
 
     constructor(
         private _offcanvasService: NgbOffcanvas,
-        private _userService: UserService,
         private _authService: AuthService,
         private router: Router
     ) {}
 
     ngOnInit() {
         this._authService.getUserState().subscribe(userState => {
-            console.log(userState);
             this.userState$ = userState;
-            // console.log(userState);
         });
     }
 
