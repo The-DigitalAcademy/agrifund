@@ -25,15 +25,15 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     // base string for mock api connection
-    // private BASE_URL = `${environment.mockApiUrl}`;
+    private BASE_URL = `${environment.mockApiUrl}`;
 
     // base url of api connection
-    private BASE_URL = `${environment.API_URL}`;
+    // private BASE_URL = `${environment.API_URL}`;
     
 
     //Headers
-    headers = new HttpHeaders()
-        .set('Access-Control-Allow-Origin', '*');
+    // headers = new HttpHeaders()
+    //     .set('Access-Control-Allow-Origin', '*');
 
     /* --------------------------------
         USER CONNECTION STRINGS

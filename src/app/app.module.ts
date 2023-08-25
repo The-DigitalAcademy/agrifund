@@ -60,8 +60,8 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
     GRAPHS
 ---------------------------------*/
 
-import { BarChartComponent } from './graph/bar-chart/bar-chart.component';
-import { DonutGraphComponent } from './graph/donut-graph/donut-graph.component';
+import { BarChartComponent } from './components/data-summary/graph/bar-chart/bar-chart.component';
+import { DonutGraphComponent } from './components/data-summary/graph/donut-graph/donut-graph.component';
 
 
 
