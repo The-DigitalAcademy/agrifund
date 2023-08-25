@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from 'src/app/services/api/api.service';
-import { BookkeepService } from 'src/app/services/bookkeep/bookkeep.service';
+import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeep-create',
-    templateUrl: './bookkeep-create.component.html',
-    styleUrls: ['./bookkeep-create.component.css'],
+    selector: 'app-bookkeeping-create',
+    templateUrl: './bookkeeping-create.component.html',
+    styleUrls: ['./bookkeeping-create.component.css'],
 })
-export class BookkeepCreateComponent implements OnInit {
+export class BookkeepingCreateComponent implements OnInit {
     createRecordForm!: FormGroup;
     submitted = false;
     recordType: any = ['Money In', 'Money Out'];
@@ -21,7 +21,7 @@ export class BookkeepCreateComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private _apiService: ApiService,
-        private _bookkeepService: BookkeepService
+        private _bookkeepingService: BookkeepingService
     ) {}
 
     ngOnInit() {
@@ -42,13 +42,13 @@ export class BookkeepCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createRecordForm.valid) {
             this.record = {
-                id: this._bookkeepService.generateRecordId(),
+                id: this._bookkeepingService.generateRecordId(),
                 statement_id: 0,
                 description: this.createRecordForm.get('recordName')?.value,
                 category: this.createRecordForm.get('recordType')?.value,
                 amount: this.createRecordForm.get('recordAmount')?.value,
                 proof:
-                    'src/assets/mock-api/bookkeep-record-proof/' +
+                    'src/assets/mock-api/bookkeeping-record-proof/' +
                     this.createRecordForm.get('recordProof')?.value,
                 date: this.createRecordForm.get('recordDate')?.value,
             };
@@ -56,11 +56,11 @@ export class BookkeepCreateComponent implements OnInit {
             // console.table(this.record);
 
             this._apiService.addRecord(this.record).subscribe(data => {
-                // console.log(data);
-                // console.table(this.createRecordForm.value);
+                // adds the new record to the observable array after successfully adding the record
+                this._bookkeepingService.addRecord(this.record);
             });
 
-            this.router.navigate(['/bookkeep']);
+            this.router.navigate(['/bookkeeping']);
         }
     }
 }

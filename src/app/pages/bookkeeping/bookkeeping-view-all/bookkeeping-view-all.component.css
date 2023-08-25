@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 22 Aug 2023 
 -------------------------------------------------------------------------------------------------*/
 
 .page-body {
@@ -46,26 +46,24 @@
     display: flex;
     flex-direction: column;
 }
-
-tr,
-.info {
-    cursor: pointer;
+thead{
+    /* removes the text highlight select cursor for the table header */
+    user-select: none;
 }
 
-tr,
+tbody tr,
 .info {
+    /* changes the cursor to a pointer to indicate the a single record can be clicked to view details */
     cursor: pointer;
 }
 
 .search-btn fa-icon {
+    /* removes the space from the search icon in the search button */
     margin: 0px;
 }
 
-.input-group .btn {
-    border-radius: var(--border-radius);
-}
-
 .actions{
+    /* removes the space at the top of the actions container */
     margin-top: 0px !important;
 }
 
@@ -75,20 +73,24 @@ tr,
 @media (min-width: 300px) and (max-width:428px) {
 
     .money-card-summary {
+        /* removes space around the card summary on smaller devices*/
         margin: var(--normal-s) 0px;
     }
 
 
+    /* adds smaller spacing around record tables */
     .record-table {
         padding: var(--small-s);
     }
 
     .container,
     .form-container {
+        /* automatically set the height of the container on smaller devices */
         height: auto !important;
     }
 
     .search {
+        /* makes the search input expand to the full width of the offcanvas */
         width: 100%;
     }
 
@@ -98,7 +100,7 @@ tr,
     }
 
     .search input {
-        /* adds borders to mobile searchbar */
+        /* adds borders to mobile search bar */
         border-radius: var(--border-radius);
         border: var(--thin-border) var(--lighter-grey) !important;
     }

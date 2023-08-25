@@ -13,9 +13,6 @@ import {
     FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 
-
-
-
 /* --------------------------------
     OVERALL
 ---------------------------------*/
@@ -24,6 +21,7 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 
 /* --------------------------------
     USER
@@ -36,12 +34,11 @@ import { ResetPasswordComponent } from './pages/user/reset-password/reset-passwo
 /* --------------------------------
     BOOKKEEP 
 ---------------------------------*/
-import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
-import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
-import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
-import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+import { BookkeepingViewAllComponent } from './pages/bookkeeping/bookkeeping-view-all/bookkeeping-view-all.component';
+import { BookkeepingViewRecordComponent } from './pages/bookkeeping/bookkeeping-view-record/bookkeeping-view-record.component';
+import { BookkeepingCreateComponent } from './pages/bookkeeping/bookkeeping-create/bookkeeping-create.component';
+import { BookkeepingEditComponent } from './pages/bookkeeping/bookkeeping-edit/bookkeeping-edit.component';
 
-import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 /* --------------------------------
     PORTFOLIO
 ---------------------------------*/
@@ -57,19 +54,17 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 
 /* --------------------------------
-    GRAPHS
+    DATA SUMMARY
 ---------------------------------*/
-
+import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
 import { BarChartComponent } from './components/data-summary/graph/bar-chart/bar-chart.component';
 import { DonutGraphComponent } from './components/data-summary/graph/donut-graph/donut-graph.component';
-
-
 
 /* --------------------------------
     MODALS
 ---------------------------------*/
 import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
-import { DeleteModalContentComponent } from './components/modal/delete-modal-content/delete-modal-content.component';
+import { BookkeepingDeleteModalContentComponent } from './components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 
 /* --------------------------------
     ICONS
@@ -104,9 +99,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
-import { NavbarComponent } from './components/navigation/navbar/navbar.component';
-
-
 
 @NgModule({
     declarations: [
@@ -120,10 +112,10 @@ import { NavbarComponent } from './components/navigation/navbar/navbar.component
         LoginComponent,
         ForgotPasswordComponent,
         ResetPasswordComponent,
-        BookkeepViewAllComponent,
-        BookkeepViewRecordComponent,
-        BookkeepCreateComponent,
-        BookkeepEditComponent,
+        BookkeepingViewAllComponent,
+        BookkeepingViewRecordComponent,
+        BookkeepingCreateComponent,
+        BookkeepingEditComponent,
         PortfolioViewInfoComponent,
         PortfolioProgressbarComponent,
         DisabledformFarmInfoComponent,
@@ -133,16 +125,13 @@ import { NavbarComponent } from './components/navigation/navbar/navbar.component
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-
         EquipmentCreateComponent,
         TellMeAboutComponent,
         ModalContainerComponent,
-        DeleteModalContentComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
         BarChartComponent,
-        DonutGraphComponent
- 
+        DonutGraphComponent,
     ],
     imports: [
         BrowserModule,
@@ -157,7 +146,7 @@ import { NavbarComponent } from './components/navigation/navbar/navbar.component
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [DeleteModalContentComponent],
+    entryComponents: [BookkeepingDeleteModalContentComponent],
 })
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {
@@ -188,7 +177,6 @@ export class AppModule {
             faFileDownload,
             faTimes,
             faCheck
-        
         );
     }
 }
