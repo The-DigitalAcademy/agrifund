@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.subscription.add(this._bookkeepingService.setBookkeepingRecords());
         // gets all bookkeeping values stored in the bookkeeping service observable
         this.subscription.add(
             // gets all values now stored in observable in service
