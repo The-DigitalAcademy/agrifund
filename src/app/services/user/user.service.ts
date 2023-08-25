@@ -1,4 +1,3 @@
-
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel, Ntokozo Radebe
     CREATE DATE: 24 Jul 2023
@@ -14,6 +13,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from '../authorization-services/authentication/auth.service';
 
 @Injectable({
     providedIn: 'root',
@@ -24,7 +24,7 @@ export class UserService {
     // observable to store the user state
     private userState$: BehaviorSubject<string>;
 
-    constructor() {
+    constructor(private _authService: AuthService) {
         this.userState$ = new BehaviorSubject(this.value);
     }
 
@@ -39,5 +39,7 @@ export class UserService {
         return this.userState$;
     }
 
-    // used when a user logs in
+    //TODO: gets & set a users name
+
+    //TODO: gets & sets a user's email
 }

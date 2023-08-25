@@ -27,11 +27,11 @@ import { UserService } from 'src/app/services/user/user.service';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
     // stores the state of the user token
-    userState$: Observable<string> | undefined;
+    userState$!: boolean;
     // stores the subscription to user service
-    userSubscription!: Subscription;
+    subscription!: Subscription;
     // refers to the offcanvas html element
     @ViewChild('offcanvas', { static: true }) private offcanvas!: NgbOffcanvas;
 
@@ -43,17 +43,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        // get the user state value and stores it within the subscription
-        this.userSubscription = this._userService
-            .getUserState()
-            .subscribe((userState: any) => {
-                this.userState$ = userState;
-                // console.log(userState);
-            });
-    }
-
-    ngOnDestroy() {
-        this.userSubscription.unsubscribe();
+        this._authService.getUserState().subscribe(userState => {
+            console.log(userState);
+            this.userState$ = userState;
+            // console.log(userState);
+        });
     }
 
     // toggles the offcanvas visibility

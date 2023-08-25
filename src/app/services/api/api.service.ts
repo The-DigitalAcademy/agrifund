@@ -47,7 +47,7 @@ export class ApiService {
     // farmer url string piece for api connection
     private FARMER_URL = 'farmer';
     // farmers url string piece for api connection
-    private FARMERS_URL = '/farmers';
+    private FARMERS_URL = 'farmers';
     // connection string to get farmer assets
     private farmerAssetURL = this.BASE_URL + '/assets';
 
@@ -70,7 +70,7 @@ export class ApiService {
     }
 
     // POST function for registering a new farmer user
-    logout(request: string) {
+    logoutUser(request: string) {
         return this.http.post(
             `${this.REGISTER_URL}/${this.FARMER_URL}`,
             request

@@ -36,7 +36,7 @@ export const isUserLoggedInGuard = (
         // navigates to home page if the token is expired
         router.navigate(['']);
     }
-    return auth.isUserLoggedIn();
+    return auth.getUserState();
 };
 
 export function authenticationGuard(redirectRoute: string): CanActivateFn {
@@ -45,8 +45,7 @@ export function authenticationGuard(redirectRoute: string): CanActivateFn {
         const router = inject(Router);
 
         return (
-            _authService.isUserLoggedIn() ||
-            router.createUrlTree([redirectRoute])
+            _authService.getUserState() || router.createUrlTree([redirectRoute])
         );
     };
 }

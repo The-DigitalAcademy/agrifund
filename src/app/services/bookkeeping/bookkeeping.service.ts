@@ -1,3 +1,21 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 04 Aug 2023 
+    UPDATED DATE: 25 Aug 2023 
+
+    DESCRIPTION:
+        This service manages all functions related to bookkeeping:
+        Manages bookkeeping CRUD operations
+        Calculates the total bookkeeping records 
+        Filters bookkeeping records
+
+    PARAMETERS:
+        _apiService - used to subscribe and call methods related to the api connection
+        _bookkeepingService -> used to subscribe and call methods within the bookkeeping service
+        $bookkeepingRecord -> stores the bookkeeping record as an observable.
+        editRecordForm -> name of the form group used for the reactive form
+-------------------------------------------------------------------------------------------------*/
+
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
@@ -14,11 +32,11 @@ export class BookkeepingService {
     // stores all the bookkeeping records
     private records: IncomeStatementItem[] = [];
     // used to store bookkeeping records as observables
-    private _bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem[]>(
+    private bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem[]>(
         []
     );
     // readonly value for bookkeeping records observables to pass data components
-    readonly bookkeepingRecords$ = this._bookkeepingRecords$.asObservable();
+    // readonly bookkeepingRecords$ = this._bookkeepingRecords$.asObservable();
 
     // stores the total bookkeeping records number as a behavior subject
     private _totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
@@ -54,7 +72,7 @@ export class BookkeepingService {
 
     // returns all bookkeeping records within the behavior subject
     getAllBookkeepingRecords(): Observable<any> {
-        return this._bookkeepingRecords$;
+        return this.bookkeepingRecords$;
     }
 
     // get the total number of  bookkeeping records
@@ -106,7 +124,7 @@ export class BookkeepingService {
         // adds record to records
         this.records.push(addedRecord);
         // adds record to bookkeeping record observable
-        this._bookkeepingRecords$.next(this.records);
+        this.bookkeepingRecords$.next(this.records);
     }
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}

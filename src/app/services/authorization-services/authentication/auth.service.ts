@@ -13,15 +13,18 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { ResolveStart, Router } from '@angular/router';
 import { JWTTokenService } from '../JWT-token-service/jwt-token.service';
 import { TokenStorageService } from '../token-storage-service/token-storage.service';
 import { ApiService } from '../../api/api.service';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
+    // stores the user state value as a behavior subject
+    userState$ = new BehaviorSubject<any>(false);
     // stores the error message sent by the api
     errorMessage = '';
     // api response structure
@@ -40,6 +43,7 @@ export class AuthService {
 
     // logs a user into the application
     loginUser(loginEmail: string, loginPassword: string) {
+        // set the body that will be passed to the api connection
         const loginBody = {
             email: loginEmail,
             password: loginPassword,
@@ -48,8 +52,14 @@ export class AuthService {
             (result: any) => {
                 // assigns the result to the structure of the api response object
                 this.apiResponse = result;
+                // sets the token to the one received from the api
                 this._jwtService.setToken(this.apiResponse.data);
+                // stores the token for the session
                 this._tokenStorage.setToken('session', this.apiResponse.data);
+                // sets the user login state to true
+                this.setUserState();
+                // routes to dashboard if the login was successful
+                this.router.navigate(['/dashboard']);
             },
             error => {
                 console.error(
@@ -57,27 +67,35 @@ export class AuthService {
                 );
             }
         );
-
-        // return result;
     }
 
     logoutUser() {
+        // removes the token from storage
         this._tokenStorage.removeToken('session');
+        // calls the set user state method to change it to false
+        this.setUserState();
     }
 
-    isUserLoggedIn() {
-        let loginState = false;
-        // checks that the user email value is not empty
-        if (this._jwtService.getUserEmail()) {
-            // if the token is not expired the login state will be true
-            if (!this._jwtService.isTokenExpired()) {
-                // allows user access when returning true
-                loginState = true;
+    // sets the boolean user login state value
+    setUserState() {
+        if (this._tokenStorage.getToken('session') != null) {
+            // checks to see if user email is in the token
+            if (this._jwtService.getUserEmail()) {
+                // checks to see if token is not expired
+                if (!this._jwtService.isTokenExpired()) {
+                    // sets the user state to true if the token contains an email and is still valid
+                    this.userState$.next(true);
+                }
             }
         } else {
-            this.logoutUser();
+            // set the user state to false if the token has value of null
+            this.userState$.next(false);
         }
-        return loginState;
+    }
+
+    // used to get the user state value
+    getUserState() {
+        return this.userState$.asObservable();
     }
 
     // TODO

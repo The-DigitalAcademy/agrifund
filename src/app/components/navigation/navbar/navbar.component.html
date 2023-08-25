@@ -25,17 +25,12 @@
         </div>
     </div>
     <div class="nav-right mobile-hidden">
-        <div
-            *ngIf="
-                userState$ !== null;
-                then navRightAfterLogin;
-                else navRightBeforeLogin
-            "></div>
+        <div *ngIf="userState$; then navAfterLogin; else navBeforeLogin"></div>
     </div>
 </nav>
 
 <!-- navbar right side before login -->
-<ng-template #navRightBeforeLogin>
+<ng-template #navBeforeLogin>
     <button type="button" class="btn colourful-btn" [routerLink]="['/login']">
         Login
     </button>
@@ -45,7 +40,7 @@
 </ng-template>
 
 <!-- navbar left side after login -->
-<ng-template #navRightAfterLogin>
+<ng-template #navAfterLogin>
     <span class="name-greeting">
         <p class="bold">Hello,</p>
         <pre>&#x20;</pre>
@@ -80,9 +75,9 @@
     <div class="offcanvas-footer">
         <div
             *ngIf="
-                userState$ !== null;
-                then footerAfterLogin;
-                else footerBeforeLogin
+                userState$;
+                then offcanvasFooterAfterLogin;
+                else offcanvasFooterBeforeLogin
             "></div>
     </div>
 </ng-template>
@@ -90,7 +85,7 @@
 <ng-template #navbarBrand></ng-template> -->
 
 <!-- footer button after login -->
-<ng-template #footerAfterLogin>
+<ng-template #offcanvasFooterAfterLogin>
     <button
         class="btn btn colourful-btn"
         (click)="logout()"
@@ -99,7 +94,7 @@
     </button>
 </ng-template>
 <!-- footer button before login -->
-<ng-template #footerBeforeLogin>
+<ng-template #offcanvasFooterBeforeLogin>
     <div class="justify-start">
         <button
             class="btn btn colourful-btn"
