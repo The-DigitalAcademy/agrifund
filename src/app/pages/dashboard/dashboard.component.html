@@ -13,59 +13,66 @@
             <h1>Dashboard</h1>
         </div>
 
-        <!-- <div *ngIf=""></div> -->
+        <div
+            class="content justify-center"
+            *ngIf="
+                (bookkeepingRecords$ | async)?.length === 0;
+                then emptyDash;
+                else populatedDash
+            "></div>
 
-        <!-- no bookkeep data card -->
-        <div class="content justify-center no-data-card">
-            <div class="container justify-center no-data-card-inner">
-                <h1 class="align-center">
-                    Your Dashboard Is Looking A Bit Empty...
-                </h1>
-                <h3 class="align-center">
-                    Add bookkeeping records to fill it up!
-                </h3>
-                <div class="actions justify-center">
-                    <button
-                        class="btn colourful-btn"
-                        type="button"
-                        [routerLink]="['/bookkeeping']">
-                        Go to Bookkeeping
-                    </button>
-                </div>
-            </div>
-        </div>
         <!-- 
-        <div class="container">
-            <div class="container-header">
-                <div class="justify-start"></div>
-                <!-- <div class="justify-end">
-                    <button class="btn colourful-btn">
-                        <p>Month</p>
-                    </button>
-                    <button class="white-btn">
-                        <p>Year</p>
-                    </button>
-                </div>
-            </div>
-
-            <div class="container">
-                <app-money-card-summary></app-money-card-summary>
-                <div class="row">
-                    <div class="col-6">
-                        <app-donut-graph></app-donut-graph>
-                    </div>
-                    <div class="col-6">
-                        <app-bar-chart></app-bar-chart>
-                    </div>
-                </div>
-            </div>
-
-            <div class="outer-container">
-                <app-portfolio-progressbar></app-portfolio-progressbar>
-            </div>
-        </div>
+        
          -->
     </div>
 </div>
 
-<ng-template #NoBookkepingData></ng-template>
+<!-- display when no bookkeeping data exists -->
+<ng-template #emptyDash>
+    <div class="container justify-center no-data-card-inner">
+        <h1 class="align-center">Your Dashboard Is Looking A Bit Empty...</h1>
+        <h3 class="align-center">Add bookkeeping records to fill it up!</h3>
+        <div class="actions justify-center">
+            <button
+                class="btn colourful-btn"
+                type="button"
+                [routerLink]="['/bookkeeping']">
+                Go to Bookkeeping
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #populatedDash>
+    <div class="container">
+        <div class="actions">
+            <div class="justify-start"></div>
+            <div class="justify-end">
+                <button class="btn colourful-btn">Month</button>
+                <button class="btn outline-btn">Year</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <app-money-card-summary></app-money-card-summary>
+            <div class="row">
+                <div class="col-6">
+                    <app-donut-graph></app-donut-graph>
+                </div>
+                <div class="col-6">
+                    <app-bar-chart></app-bar-chart>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="justify-start">
+                <div class="outer-container">
+                    <app-portfolio-progressbar></app-portfolio-progressbar>
+                </div>
+            </div>
+
+            <div class="justify-end"></div>
+        </div>
+    </div>
+</ng-template>

@@ -9,6 +9,10 @@
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
+button{
+    margin-left: var(--small-s);
+}
+
 @media (min-width: 300px) and (max-width:428px) {
 
     .page-body {
