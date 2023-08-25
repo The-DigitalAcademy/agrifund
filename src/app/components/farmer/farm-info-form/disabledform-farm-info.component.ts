@@ -8,8 +8,8 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -17,9 +17,9 @@ import { ProgressService } from 'src/app/services/progress.service';
     styleUrls: ['./disabledform-farm-info.component.css'],
 })
 export class DisabledformFarmInfoComponent {
-onFileSelected($event: Event) {
-throw new Error('Method not implemented.');
-}
+    onFileSelected($event: Event) {
+        throw new Error('Method not implemented.');
+    }
     originalFormValues: any;
     myForm!: FormGroup;
     isDisabled = true;
@@ -29,12 +29,12 @@ throw new Error('Method not implemented.');
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
-        private progressService: ProgressService
+        private _portfolioService: PortfolioService
     ) {}
 
     ngOnInit() {
         const farmerData = {
-            farmer:'Mankweng-A Turfloop NO:3434 ',
+            farmer: 'Mankweng-A Turfloop NO:3434 ',
             farm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
             size: '9', // Update with default values
             years: '10', // Update with default values
@@ -44,11 +44,13 @@ throw new Error('Method not implemented.');
         };
 
         this.myForm = this.fb.group({
-
-            farmer: new FormControl({ value: farmerData.farmer, disabled: true }, [
-                Validators.required,
-                this.validationsService.addressContainsStreetValidator,
-            ]),
+            farmer: new FormControl(
+                { value: farmerData.farmer, disabled: true },
+                [
+                    Validators.required,
+                    this.validationsService.addressContainsStreetValidator,
+                ]
+            ),
             farm: new FormControl({ value: farmerData.farm, disabled: true }, [
                 Validators.required,
                 this.validationsService.addressContainsStreetValidator,
@@ -94,7 +96,7 @@ throw new Error('Method not implemented.');
         this.farmerData = formData;
         this.isDisabled = true;
         this.myForm.disable();
-        this.progressService.setFarmInfoCompleted(true);
+        // this.progressService.setFarmInfoCompleted(true);
     }
 
     onCancelClicked() {

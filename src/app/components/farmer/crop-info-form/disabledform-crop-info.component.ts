@@ -6,7 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { ProgressService } from 'src/app/services/progress.service';
+// import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -24,8 +24,7 @@ export class DisabledformCropInfoComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService,
-        private progressService: ProgressService
+        private validationsService: ValidationsServiceService
     ) {}
 
     ngOnInit() {
@@ -80,7 +79,7 @@ export class DisabledformCropInfoComponent implements OnInit {
         this.isDisabled = true;
         this.myForm.disable();
         // Set crop info completion status to true
-        this.progressService.setCropInfoCompleted(true);
+        // this.progressService.setCropInfoCompleted(true);
     }
 
     onCancelClicked() {

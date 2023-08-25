@@ -1,9 +1,0 @@
-{
-    "/api/*": {
-        "target": "https://agrifund.tech",
-        "secure": false,
-        "changeOrigin": true,
-        "logLevel": "debug",
-        "pathRewrite": { "^/api": "https://agrifund.tech" }
-    }
-}

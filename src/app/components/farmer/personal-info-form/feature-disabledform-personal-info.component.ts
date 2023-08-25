@@ -1,8 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { ProgressService } from 'src/app/services/progress.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -10,8 +9,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { Users } from 'src/app/models/users';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api/api.service';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -33,14 +33,14 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
-        private progressService: ProgressService,
+        private _portfolioService: PortfolioService,
         private _apiService: ApiService
     ) {}
 
     ngOnInit() {
         // Assuming you have a method in your ApiService to get registered user details
         this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: Users) => {
+            (user: User) => {
                 // Populate the form with user details
                 this.myForm.patchValue({
                     first_name: user.firstName,
@@ -104,7 +104,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.isDisabled = true;
         this.myForm.disable();
         // Set personal info completion status to true
-        this.progressService.setPersonalInfoCompleted(true);
+        // this.progressService.setPersonalInfoCompleted(true);
     }
 
     onCancelClicked() {
