@@ -16,7 +16,7 @@
         <div
             class="content justify-center"
             *ngIf="
-                (bookkeepingRecords$ | async)?.length === 0;
+                totalBookkeepingRecords$ <= 0;
                 then emptyDash;
                 else populatedDash
             "></div>

@@ -60,15 +60,9 @@ export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
                 })
         );
 
-        // adds calculate total bookkeeping records to subscription
-        this.subscription.add(
-            this._bookkeepingService
-                .getTotalBookkeepingRecords()
-                .subscribe((value: any) => {
-                    this.totalBookkeepingRecords$ = value;
-                    console.log(value);
-                })
-        );
+        // get the total number of bookkeeping records
+        this.totalBookkeepingRecords$ =
+            this._bookkeepingService.getTotalBookkeepingRecords();
     }
 
     // toggles the offcanvas mobile search bar

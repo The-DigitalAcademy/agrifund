@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
@@ -11,7 +11,9 @@ import { Chart } from 'chart.js';
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
+    // stores the total number of bookkeeping records
+    totalBookkeepingRecords$!: number;
     // bookkeeping records stored within an observable
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
     // used to store subscriptions to services
@@ -33,5 +35,19 @@ export class DashboardComponent implements OnInit {
                     // console.log(records);
                 })
         );
+
+        this.subscription.add(
+            this._bookkeepingService
+                .getTotalBookkeepingRecords()
+                .subscribe(total => {
+                    this.totalBookkeepingRecords$ = total;
+                    console.log(this.totalBookkeepingRecords$);
+                })
+        );
+    }
+
+    ngOnDestroy() {
+        // unsubscribe from bookkeeping subscription
+        this.subscription.unsubscribe();
     }
 }
