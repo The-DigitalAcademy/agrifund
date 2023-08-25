@@ -252,16 +252,12 @@ button fa-icon {
     min-height: 80% !important;
   }
 
-  .header::before {
-    min-height: 80% !important;
-  }
+}
 
-  p {
-    /* changes size of text  */
-    font-size: var(--font-medium);
-  }
+.slogan {
+  /* color: var(--light) !important; */
+}
 
-  .content {
-    padding: 0px var(--xx-large-s) 0px 0px !important;
-  }
+.bold {
+  /* color: var(--light); */
 }
