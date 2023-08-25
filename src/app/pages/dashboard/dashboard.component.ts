@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
             this._bookkeepingService
                 .getAllBookkeepingRecords()
                 .subscribe(records => {
-                    // this.bookkeepingRecords$ = records;
+                    this.bookkeepingRecords$ = records;
                     // console.log(records);
                 })
         );

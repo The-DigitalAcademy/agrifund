@@ -44,16 +44,18 @@
 </ng-template>
 
 <ng-template #populatedDash>
-    <div class="container">
+    <div class="container inner-container">
         <div class="actions">
-            <div class="justify-start"></div>
+            <div class="justify-start">
+                <h2>Bookkeeping Overview</h2>
+            </div>
             <div class="justify-end">
-                <button class="btn colourful-btn">Month</button>
-                <button class="btn outline-btn">Year</button>
+                <button class="btn colourful-btn btn-width">Month</button>
+                <button class="btn outline-btn btn-width">Year</button>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container inner-container">
             <app-money-card-summary></app-money-card-summary>
             <div class="row">
                 <div class="col-6">
@@ -64,15 +66,13 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="actions">
-            <div class="justify-start">
-                <div class="outer-container">
-                    <app-portfolio-progressbar></app-portfolio-progressbar>
-                </div>
-            </div>
-
-            <div class="justify-end"></div>
+    <div class="actions">
+        <div class="justify-start">
+            <app-portfolio-progressbar></app-portfolio-progressbar>
         </div>
+
+        <div class="justify-end mobile-hidden"></div>
     </div>
 </ng-template>

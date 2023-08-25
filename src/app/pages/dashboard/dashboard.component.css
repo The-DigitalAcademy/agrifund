@@ -31,6 +31,13 @@ button{
     width: 100%;
     margin: 5%;
 }
+.container {
+    height: auto;
+}
+
+.actions {
+    padding: 0 !important;
+}
 
 
 }
