@@ -18,7 +18,7 @@
 
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { ApiService } from '../api/api.service';
+import { ApiService } from '../../_services/api-service/api.service';
 import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
 import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
 

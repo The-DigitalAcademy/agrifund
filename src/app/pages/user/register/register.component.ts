@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { User } from 'src/app/_models/User';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';

@@ -23,7 +23,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({

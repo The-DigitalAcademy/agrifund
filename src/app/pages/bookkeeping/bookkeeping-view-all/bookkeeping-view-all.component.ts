@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({

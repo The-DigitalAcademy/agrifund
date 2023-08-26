@@ -18,7 +18,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 
 @Component({

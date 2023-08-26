@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { User } from 'src/app/_models/User';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 
 @Component({

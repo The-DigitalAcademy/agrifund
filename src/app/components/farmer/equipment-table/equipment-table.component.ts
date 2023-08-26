@@ -4,7 +4,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Asset } from 'src/app/_models/asset';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
     selector: 'app-equipment-table',

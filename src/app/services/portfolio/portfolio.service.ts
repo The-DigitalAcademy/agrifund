@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from '../api/api.service';
+import { ApiService } from '../../_services/api-service/api.service';
 import { Asset } from 'src/app/_models/asset';
 
 @Injectable({

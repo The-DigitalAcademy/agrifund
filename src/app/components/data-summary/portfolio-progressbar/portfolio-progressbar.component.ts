@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'src/app/_models/User';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 // import { ProgressService } from 'src/app/services/progress.service';
 
