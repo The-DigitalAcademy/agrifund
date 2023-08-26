@@ -12,7 +12,7 @@ import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-for
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
+import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { BookkeepingEditComponent } from './pages/bookkeeping/bookkeeping-edit/bookkeeping-edit.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'about-farm', component: TellMeAboutComponent },
+    { path: 'about-farm', component: TellMeAboutFarmPageComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent },
