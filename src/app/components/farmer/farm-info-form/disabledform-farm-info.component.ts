@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
-import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { ValidationsServiceService } from 'src/app/services/validation-service/validations-service.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',

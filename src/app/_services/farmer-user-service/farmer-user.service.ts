@@ -1,24 +1,23 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel, Ntokozo Radebe
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 18 Aug 2023 
+    UPDATED DATE: 26 Aug 2023 
 
     DESCRIPTION:
-    This service is for all methods related to a user
+    This service is for all methods related to a farmer user
 
     PARAMETERS:
-    userState$ -> stores the user state as an observable to keep the validity of a user token for a session
-
+    
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthService } from '../../_services/authentication-service/auth.service';
+import { AuthService } from '../authentication-service/auth.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class UserService {
+export class FarmerUserService {
     value = 'mock-token';
     // value: any = null;
     // observable to store the user state

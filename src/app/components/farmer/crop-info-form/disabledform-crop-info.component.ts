@@ -5,7 +5,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { ValidationsServiceService } from 'src/app/services/validation-service/validations-service.service';
 // import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
