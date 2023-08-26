@@ -37,6 +37,7 @@ export class NavbarComponent {
         private _authService: AuthService,
         private router: Router
     ) {
+        // gets the current user state
         this.userState$ = this._authService.getUserState();
     }
 

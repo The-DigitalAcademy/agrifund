@@ -81,9 +81,6 @@ export class AuthService {
         this._jwtService.setToken(null);
         // calls the set user state method to change it to false
         this.setUserState();
-        console.log(this.sessionToken$);
-        // unsubscribes from the token subscription
-        console.log(this.sessionToken$);
     }
 
     // sets the boolean user login state value
@@ -105,6 +102,7 @@ export class AuthService {
 
     // used to get the user state value
     getUserState(): Observable<boolean> {
+        this.setUserState();
         return this.userState$;
     }
 
