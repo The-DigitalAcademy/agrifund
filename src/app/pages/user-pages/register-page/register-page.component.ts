@@ -19,11 +19,11 @@ import { Subscription } from 'rxjs';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css'],
+    selector: 'app-register-page',
+    templateUrl: './register-page.component.html',
+    styleUrls: ['./register-page.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterPageComponent implements OnInit {
     user!: User;
     RegisterForm!: FormGroup;
     submitted = false;

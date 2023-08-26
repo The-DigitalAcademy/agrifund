@@ -12,11 +12,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'app-reset-password',
-    templateUrl: './reset-password.component.html',
-    styleUrls: ['./reset-password.component.css'],
+    selector: 'app-reset-password-page',
+    templateUrl: './reset-password-page.component.html',
+    styleUrls: ['./reset-password-page.component.css'],
 })
-export class ResetPasswordComponent {
+export class ResetPasswordPageComponent {
     // Create a new FormGroup for the reset password form
     ResetPasswordForm = new FormGroup({
         // Create a FormControl for the email field

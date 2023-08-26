@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookkeepViewRecordComponent } from './bookkeeping-view-record.component';
+import { BookkeepViewRecordComponent } from './bookkeeping-view-record-page.component';
 
 describe('BookkeepViewRecordComponent', () => {
     let component: BookkeepViewRecordComponent;

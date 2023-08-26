@@ -24,24 +24,24 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 
 /* --------------------------------
     USER
 ---------------------------------*/
-import { LoginComponent } from './pages/user/login/login.component';
-import { RegisterComponent } from './pages/user/register/register.component';
-import { ForgotPasswordComponent } from './pages/user/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/user/reset-password/reset-password.component';
+import { LoginPageComponent } from './pages/user-pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
+import { ForgotPasswordPageComponent } from './pages/user-pages/forgot-password-page/forgot-password-page.component';
+import { ResetPasswordPageComponent } from './pages/user-pages/reset-password-page/reset-password-page.component';
 
 /* --------------------------------
     BOOKKEEPING
 ---------------------------------*/
-import { BookkeepingViewAllComponent } from './pages/bookkeeping/bookkeeping-view-all/bookkeeping-view-all.component';
-import { BookkeepingViewRecordComponent } from './pages/bookkeeping/bookkeeping-view-record/bookkeeping-view-record.component';
-import { BookkeepingCreateComponent } from './pages/bookkeeping/bookkeeping-create/bookkeeping-create.component';
-import { BookkeepingEditComponent } from './pages/bookkeeping/bookkeeping-edit/bookkeeping-edit.component';
+import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
+import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
+import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
+import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeeping-edit-page/bookkeeping-edit-page.component';
 
 /* --------------------------------
     PORTFOLIO
@@ -111,15 +111,15 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         SidebarComponent,
         LandingPageComponent,
         GetStartedPageComponent,
-        DashboardComponent,
-        RegisterComponent,
-        LoginComponent,
-        ForgotPasswordComponent,
-        ResetPasswordComponent,
-        BookkeepingViewAllComponent,
-        BookkeepingViewRecordComponent,
-        BookkeepingCreateComponent,
-        BookkeepingEditComponent,
+        DashboardPageComponent,
+        RegisterPageComponent,
+        LoginPageComponent,
+        ForgotPasswordPageComponent,
+        ResetPasswordPageComponent,
+        BookkeepingViewAllPageComponent,
+        BookkeepingViewRecordPageComponent,
+        BookkeepingCreatePageComponent,
+        BookkeepingEditPageComponent,
         PortfolioPageComponent,
         PortfolioProgressbarComponent,
         DisabledformFarmInfoComponent,

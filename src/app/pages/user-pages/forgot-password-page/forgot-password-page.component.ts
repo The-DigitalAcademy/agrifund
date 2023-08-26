@@ -12,11 +12,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'app-forgot-password',
-    templateUrl: './forgot-password.component.html',
-    styleUrls: ['./forgot-password.component.css'],
+    selector: 'app-forgot-password-page',
+    templateUrl: './forgot-password-page.component.html',
+    styleUrls: ['./forgot-password-page.component.css'],
 })
-export class ForgotPasswordComponent {
+export class ForgotPasswordPageComponent {
     // Create a new FormGroup for the forgot password form
     ForgotPasswordForm = new FormGroup({
         // Create a FormControl for the new password field

@@ -17,11 +17,11 @@ import { AuthService } from 'src/app/_services/authentication-service/auth.servi
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    selector: 'app-login-page',
+    templateUrl: './login-page.component.html',
+    styleUrls: ['./login-page.component.css'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginPageComponent implements OnInit, OnDestroy {
     LoginForm!: FormGroup; // Form group to hold login form controls
     message = ''; // Message to display error or validation messages
     // used to store subscriptions to services

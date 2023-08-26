@@ -13,11 +13,11 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeeping-view-all',
-    templateUrl: './bookkeeping-view-all.component.html',
-    styleUrls: ['./bookkeeping-view-all.component.css'],
+    selector: 'app-bookkeeping-view-all-page',
+    templateUrl: './bookkeeping-view-all-page.component.html',
+    styleUrls: ['./bookkeeping-view-all-page.component.css'],
 })
-export class BookkeepingViewAllComponent implements OnInit, OnDestroy {
+export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     // bookkeeping records stored within an observable
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
     // stores the total bookkeeping records

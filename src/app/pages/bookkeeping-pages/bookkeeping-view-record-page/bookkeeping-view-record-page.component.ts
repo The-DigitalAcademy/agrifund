@@ -25,11 +25,11 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeeping-view-record',
-    templateUrl: './bookkeeping-view-record.component.html',
-    styleUrls: ['./bookkeeping-view-record.component.css'],
+    selector: 'app-bookkeeping-view-record-page',
+    templateUrl: './bookkeeping-view-record-page.component.html',
+    styleUrls: ['./bookkeeping-view-record-page.component.css'],
 })
-export class BookkeepingViewRecordComponent implements OnInit {
+export class BookkeepingViewRecordPageComponent implements OnInit {
     id!: any;
     record!: IncomeStatementItem;
 

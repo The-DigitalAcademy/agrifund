@@ -6,11 +6,11 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeeping-create',
-    templateUrl: './bookkeeping-create.component.html',
-    styleUrls: ['./bookkeeping-create.component.css'],
+    selector: 'app-bookkeeping-create-page',
+    templateUrl: './bookkeeping-create-page.component.html',
+    styleUrls: ['./bookkeeping-create-page.component.css'],
 })
-export class BookkeepingCreateComponent implements OnInit {
+export class BookkeepingCreatePageComponent implements OnInit {
     createRecordForm!: FormGroup;
     submitted = false;
     recordType: any = ['Money In', 'Money Out'];

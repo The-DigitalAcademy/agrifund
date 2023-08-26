@@ -7,11 +7,11 @@ import { ChartService } from 'src/app/_services/chart-service/chart.service';
 import { Chart } from 'chart.js';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css'],
+    selector: 'app-dashboard-page',
+    templateUrl: './dashboard-page.component.html',
+    styleUrls: ['./dashboard-page.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardPageComponent implements OnInit {
     // bookkeeping records stored within an observable
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
     // used to store subscriptions to services

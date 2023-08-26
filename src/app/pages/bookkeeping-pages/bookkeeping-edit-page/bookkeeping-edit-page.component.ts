@@ -27,11 +27,11 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
-    selector: 'app-bookkeeping-edit',
-    templateUrl: './bookkeeping-edit.component.html',
-    styleUrls: ['./bookkeeping-edit.component.css'],
+    selector: 'app-bookkeeping-edit-page',
+    templateUrl: './bookkeeping-edit-page.component.html',
+    styleUrls: ['./bookkeeping-edit-page.component.css'],
 })
-export class BookkeepingEditComponent implements OnInit {
+export class BookkeepingEditPageComponent implements OnInit {
     // used to store the id of the bookkeeping record
     id!: any;
     // used to store the bookkeeping record's data retrieved from the api
