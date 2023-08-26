@@ -10,7 +10,7 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
+import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
     selector: 'app-bookkeeping-view-all',

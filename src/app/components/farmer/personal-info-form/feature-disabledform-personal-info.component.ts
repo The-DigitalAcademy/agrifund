@@ -11,7 +11,7 @@ import {
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',

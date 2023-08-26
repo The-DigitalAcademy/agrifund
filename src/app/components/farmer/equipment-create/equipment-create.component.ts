@@ -2,7 +2,7 @@
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
 import { Asset } from '../../../_models/asset';
-import { PortfolioService } from '../../../services/portfolio/portfolio.service';
+import { PortfolioService } from '../../../_services/portfolio-service/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';

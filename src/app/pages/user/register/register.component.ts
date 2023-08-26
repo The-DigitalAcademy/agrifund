@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
 import { User } from 'src/app/_models/User';
-import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Subscription } from 'rxjs';
 
 @Component({

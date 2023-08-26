@@ -22,7 +22,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
+import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
     selector: 'app-bookkeeping-view-record',

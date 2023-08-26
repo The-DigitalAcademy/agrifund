@@ -8,7 +8,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js/auto';
-import { ChartService } from 'src/app/services/chart/chart.service';
+import { ChartService } from 'src/app/_services/chart-service/chart.service';
 
 Chart.register(...registerables);
 @Component({

@@ -7,7 +7,7 @@
 
 import { Chart, registerables } from 'chart.js/auto';
 import { Component } from '@angular/core';
-import { ChartService } from 'src/app/services/chart/chart.service';
+import { ChartService } from 'src/app/_services/chart-service/chart.service';
 
 Chart.register(...registerables);
 @Component({

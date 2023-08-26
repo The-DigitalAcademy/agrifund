@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Asset } from 'src/app/_models/asset';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
     selector: 'app-equipment-edit',
