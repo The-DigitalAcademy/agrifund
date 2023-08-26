@@ -7,6 +7,7 @@
         This service is used to decode JWT values and toe set and get the token value
 
     PARAMETERS:
+    _tokenStorage: TokenStorageService -> used to access token storage methods
          
 -------------------------------------------------------------------------------------------------*/
 
@@ -19,8 +20,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class JWTTokenService {
-    // the token is stored as a string - initialized as empty
-    token: any;
     // token value can either be null or a string value
     token$ = new BehaviorSubject<string | null>(null);
     // the decoded sting will be stored here as key value pairs - initialized as empty
@@ -50,9 +49,9 @@ export class JWTTokenService {
     //  decodes the token value
     decodeToken() {
         // gets the value of the observable storing the token value
-        this.token = this.token$.value;
-        if (this.token) {
-            this.decodedToken = jwt_decode(this.token);
+        const token = this.token$.value;
+        if (token) {
+            this.decodedToken = jwt_decode(token);
         }
     }
 

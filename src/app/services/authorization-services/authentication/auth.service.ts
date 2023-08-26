@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 21 Aug 2023 
-    UPDATED DATE: 
+    UPDATED DATE: 26 Aug 2023
 
     DESCRIPTION:
         Methods within this service is used to perform functions related to user authentication and 
@@ -10,7 +10,9 @@
         token
 
     PARAMETERS:
-    key: string -> used to pass the key for a token
+    _jwtService: JWTTokenService -> used to retrieve token and set its value
+    _apiService: ApiService -> used to make login request 
+    router: Router -> used to route to a different page if a user logs in
          
 -------------------------------------------------------------------------------------------------*/
 
@@ -97,7 +99,6 @@ export class AuthService {
             }
         } else {
             // set the user state to false if the token has value of null
-            console.log(`this is running : ${this.userState$.value}`);
             this.userState$.next(false);
         }
     }

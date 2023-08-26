@@ -1,10 +1,10 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 23 Aug 2023 
-    UPDATED DATE: 
+    UPDATED DATE: 26 Aug 2023
 
     DESCRIPTION:
-        This service controls the storage of the jwt token
+        This service controls the storage of the jwt as a cookie
 
     PARAMETERS:
     key: string -> the key name for the token
