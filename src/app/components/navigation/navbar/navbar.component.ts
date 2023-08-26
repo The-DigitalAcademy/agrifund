@@ -19,7 +19,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
+import { AuthService } from 'src/app/_services/authentication-service/auth.service';
 
 @Component({
     selector: 'app-navbar',
@@ -35,7 +35,7 @@ export class NavbarComponent {
     constructor(
         private _offcanvasService: NgbOffcanvas,
         private _authService: AuthService,
-        private router: Router,
+        private router: Router
     ) {
         this.userState$ = this._authService.getUserState();
     }

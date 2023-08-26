@@ -13,7 +13,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthService } from '../authorization-services/authentication/auth.service';
+import { AuthService } from '../../_services/authentication-service/auth.service';
 
 @Injectable({
     providedIn: 'root',

@@ -14,7 +14,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
+import { AuthService } from 'src/app/_services/authentication-service/auth.service';
 
 @Component({
     selector: 'app-sidebar',
