@@ -6,11 +6,11 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
 // import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
-    selector: 'app-portfolio-progressbar',
-    templateUrl: './portfolio-progressbar.component.html',
-    styleUrls: ['./portfolio-progressbar.component.css'],
+    selector: 'app-farmer-portfolio-progressbar',
+    templateUrl: './farmer-portfolio-progressbar.component.html',
+    styleUrls: ['./farmer-portfolio-progressbar.component.css'],
 })
-export class PortfolioProgressbarComponent {
+export class FarmerPortfolioProgressbarComponent {
     @Input() progressPercentage = 0;
 
     checklistForm!: FormGroup;

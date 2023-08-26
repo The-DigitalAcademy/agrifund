@@ -7,7 +7,7 @@ import { ResetPasswordPageComponent } from './pages/user-pages/reset-password-pa
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
-import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
+import { FarmerPortfolioProgressbarComponent } from './components/data-summary-components/farmer-portfolio-progressbar/farmer-portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
@@ -52,7 +52,7 @@ const routes: Routes = [
         component: BookkeepingEditPageComponent,
     },
     { path: 'portfolio', component: PortfolioPageComponent },
-    { path: 'progressbar', component: PortfolioProgressbarComponent },
+    { path: 'progressbar', component: FarmerPortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
     { path: 'equipment-create', component: EquipmentCreateComponent },

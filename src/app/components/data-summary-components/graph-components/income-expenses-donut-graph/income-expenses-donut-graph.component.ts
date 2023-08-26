@@ -11,11 +11,11 @@ import { ChartService } from 'src/app/_services/chart-service/chart.service';
 
 Chart.register(...registerables);
 @Component({
-    selector: 'app-donut-graph',
-    templateUrl: './donut-graph.component.html',
-    styleUrls: ['./donut-graph.component.css'],
+    selector: 'app-income-expenses-donut-graph',
+    templateUrl: './income-expenses-donut-graph.component.html',
+    styleUrls: ['./income-expenses-donut-graph.component.css'],
 })
-export class DonutGraphComponent {
+export class IncomeExpensesDonutGraphComponent {
     constructor(private chartService: ChartService) {}
 
     total_expense: any = [];

@@ -19,7 +19,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
+import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal-components/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';

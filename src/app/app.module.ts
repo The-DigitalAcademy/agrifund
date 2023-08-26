@@ -44,7 +44,7 @@ import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookke
 import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeeping-edit-page/bookkeeping-edit-page.component';
 
 /* --------------------------------
-    PORTFOLIO
+    FARMER PORTFOLIO
 ---------------------------------*/
 import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
@@ -52,23 +52,25 @@ import { EquipmentInfoComponent } from './components/farmer/equipment-info/equip
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/farmer/enableform-crop-info/enableform-crop-info.component';
 import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
-import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
+import { FarmerPortfolioProgressbarComponent } from './components/data-summary-components/farmer-portfolio-progressbar/farmer-portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 
 /* --------------------------------
     DATA SUMMARY
 ---------------------------------*/
-import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
-import { BarChartComponent } from './components/data-summary/graph/bar-chart/bar-chart.component';
-import { DonutGraphComponent } from './components/data-summary/graph/donut-graph/donut-graph.component';
+import { MoneyCardSummaryComponent } from './components/data-summary-components/money-card-summary/money-card-summary.component';
+import { ExpensesBarChartComponent } from './components/data-summary-components/graph-components/expenses-bar-chart/expenses-bar-chart.component';
+import { IncomeExpensesDonutGraphComponent } from './components/data-summary-components/graph-components/income-expenses-donut-graph/income-expenses-donut-graph.component';
 
 /* --------------------------------
     MODALS
 ---------------------------------*/
-import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
-import { BookkeepingDeleteModalContentComponent } from './components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
+import { ModalContainerComponent } from './components/modal-components/modal-container/modal-container.component';
+import { BookkeepingDeleteModalContentComponent } from './components/modal-components/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 
 /* --------------------------------
     ICONS
@@ -101,8 +103,6 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
-import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 
 @NgModule({
     declarations: [
@@ -121,7 +121,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         BookkeepingCreatePageComponent,
         BookkeepingEditPageComponent,
         PortfolioPageComponent,
-        PortfolioProgressbarComponent,
+        FarmerPortfolioProgressbarComponent,
         DisabledformFarmInfoComponent,
         DisabledformPersonalInfoComponent,
         DisabledformCropInfoComponent,
@@ -134,8 +134,8 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         ModalContainerComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
-        BarChartComponent,
-        DonutGraphComponent,
+        ExpensesBarChartComponent,
+        IncomeExpensesDonutGraphComponent,
     ],
     imports: [
         BrowserModule,

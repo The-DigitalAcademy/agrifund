@@ -12,11 +12,11 @@ import { ChartService } from 'src/app/_services/chart-service/chart.service';
 
 Chart.register(...registerables);
 @Component({
-    selector: 'app-bar-chart',
-    templateUrl: './bar-chart.component.html',
-    styleUrls: ['./bar-chart.component.css'],
+    selector: 'app-expenses-bar-chart',
+    templateUrl: './expenses-bar-chart.component.html',
+    styleUrls: ['./expenses-bar-chart.component.css'],
 })
-export class BarChartComponent {
+export class ExpensesBarChartComponent {
     constructor(private chartService: ChartService) {}
 
     chartdata: any = [];
