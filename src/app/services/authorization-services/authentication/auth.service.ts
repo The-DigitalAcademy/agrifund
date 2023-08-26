@@ -54,8 +54,6 @@ export class AuthService {
                 this.apiResponse = result;
                 // sets the token to the one received from the api
                 this._jwtService.setToken(this.apiResponse.data);
-                // stores the token for the session
-                this._tokenStorage.setToken('session', this.apiResponse.data);
                 // sets the user login state to true
                 this.setUserState();
                 // routes to dashboard if the login was successful
@@ -78,7 +76,10 @@ export class AuthService {
 
     // sets the boolean user login state value
     setUserState() {
-        if (this._tokenStorage.getToken('session') != null) {
+        if (
+            this._tokenStorage.getToken('session') != undefined ||
+            this._tokenStorage.getToken('session') != null
+        ) {
             // checks to see if user email is in the token
             if (this._jwtService.getUserEmail()) {
                 // checks to see if token is not expired
@@ -95,6 +96,7 @@ export class AuthService {
 
     // used to get the user state value
     getUserState() {
+        this.setUserState();
         return this.userState$.asObservable();
     }
 

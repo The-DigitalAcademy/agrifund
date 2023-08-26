@@ -18,20 +18,40 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 export class TokenStorageService {
-    constructor() {}
-
-    // sets the token local storage
-    setToken(key: string, value: string) {
-        localStorage.setItem(key, value);
+    // token cookie will be stored in here
+    private cookieStore: { [key: string]: string } = {};
+    constructor() {
+        this.parseCookies(document.cookie);
     }
 
-    // gets the token from local storage
+    public parseCookies(cookies = document.cookie) {
+        // coverts cookies into a boolean value and checks if a cookie value exists
+        if (!!cookies === false) {
+            return false;
+        }
+        // splits the substring of the cookie
+        const cookieArray = cookies.split(';');
+        for (const cookie of cookieArray) {
+            const cookieArray = cookie.split('=');
+            // gets the token value specifically without the key value
+            this.cookieStore[cookieArray[0].trim()] = cookieArray[1];
+        }
+
+        // returns true if the cookie contains a value
+        return true;
+    }
+
     getToken(key: string) {
-        return localStorage.getItem(key);
+        this.parseCookies();
+        return this.cookieStore[key] ? this.cookieStore[key] : null;
     }
 
-    // removes the token from local storage
     removeToken(key: string) {
-        localStorage.removeItem(key);
+        document.cookie = `${key} = ; expires=Thu, 1 jan 1990 12:00:00 UTC; path=/`;
+    }
+
+    setToken(key: string, value: string) {
+        this.removeToken('session')
+        document.cookie = key + '=' + (value || '');
     }
 }

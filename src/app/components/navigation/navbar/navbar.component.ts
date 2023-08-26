@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/authorization-services/authentication/auth.service';
+import { TokenStorageService } from 'src/app/services/authorization-services/token-storage-service/token-storage.service';
 
 @Component({
     selector: 'app-navbar',
@@ -41,9 +42,12 @@ export class NavbarComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this._authService.getUserState().subscribe(userState => {
-            this.userState$ = userState;
-        });
+        this.subscription = this._authService
+            .getUserState()
+            .subscribe(userState => {
+                this.userState$ = userState;
+                console.log(this.userState$);
+            });
     }
 
     // toggles the offcanvas visibility

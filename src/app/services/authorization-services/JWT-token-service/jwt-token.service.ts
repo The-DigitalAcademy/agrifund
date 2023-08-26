@@ -12,23 +12,30 @@
 
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
+import { TokenStorageService } from '../token-storage-service/token-storage.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class JWTTokenService {
     // the token is stored as a string - initialized as empty
-    token = '';
+    token: any;
     // the decoded sting will be stored here as key value pairs - initialized as empty
     decodedToken: { [key: string]: string } = {};
 
-    constructor() {}
+    constructor(private _tokenStorage: TokenStorageService) {
+        // gets the token value from the token storage service
+        this.token = this._tokenStorage.getToken('session');
+        console.log(this.token);
+    }
 
     // sets the token value
     setToken(token: string) {
         // checks if token is not empty
         if (token) {
             this.token = token;
+            // stores the token for the session
+            this._tokenStorage.setToken('session', token);
         }
     }
 
