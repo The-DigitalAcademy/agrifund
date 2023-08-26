@@ -21,11 +21,11 @@ import {
     OVERALL
 ---------------------------------*/
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { SidebarComponent } from './components/navigation-components/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
-import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { NavbarComponent } from './components/navigation-components/navbar/navbar.component';
 
 /* --------------------------------
     USER
