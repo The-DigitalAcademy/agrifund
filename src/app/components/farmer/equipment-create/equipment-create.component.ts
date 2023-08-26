@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { Asset } from './../../../models/asset';
+import { Asset } from '../../../_models/asset';
 import { PortfolioService } from '../../../services/portfolio/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

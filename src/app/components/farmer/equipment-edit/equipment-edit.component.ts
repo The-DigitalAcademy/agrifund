@@ -6,7 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Asset } from 'src/app/models/asset';
+import { Asset } from 'src/app/_models/asset';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 

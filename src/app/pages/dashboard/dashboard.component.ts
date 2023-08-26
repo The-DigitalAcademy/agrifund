@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { BookkeepingService } from 'src/app/services/bookkeeping/bookkeeping.service';
 import { ChartService } from 'src/app/services/chart/chart.service';
 import { Chart } from 'chart.js';

@@ -14,7 +14,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/_models/User';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 import { Subscription } from 'rxjs';
 

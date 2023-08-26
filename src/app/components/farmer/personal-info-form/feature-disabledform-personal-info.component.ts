@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 

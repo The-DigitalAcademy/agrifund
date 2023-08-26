@@ -17,10 +17,10 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { IncomeStatementItem } from 'src/app/models/IncomeStatementItem';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from '../api/api.service';
 import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
-import { BookkeepingLoadData } from 'src/app/models/interfaces/bookkeeping-load-data';
+import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
 
 @Injectable({
     providedIn: 'root',

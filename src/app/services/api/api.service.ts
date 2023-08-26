@@ -15,7 +15,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/_models/User';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
