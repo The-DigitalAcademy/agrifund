@@ -1,8 +1,9 @@
 <!-- 
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 26 Aug 2023 
  -->
+
 <nav class="navbar">
     <!--before login-->
     <div class="nav-left">
@@ -25,7 +26,12 @@
         </div>
     </div>
     <div class="nav-right mobile-hidden">
-        <div *ngIf="userState$; then navAfterLogin; else navBeforeLogin"></div>
+        <div
+            *ngIf="
+                (userState$ | async) !== false;
+                then navAfterLogin;
+                else navBeforeLogin
+            "></div>
     </div>
 </nav>
 
@@ -70,7 +76,7 @@
         </button>
     </div>
     <div class="offcanvas-body">
-        <div class="offcanvas-greeting" *ngIf="userState$">
+        <div class="offcanvas-greeting" *ngIf="(userState$ | async) !== false">
             <h2>Hello, Username</h2>
             <hr />
         </div>
@@ -79,7 +85,7 @@
     <div class="offcanvas-footer">
         <div
             *ngIf="
-                userState$;
+                (userState$ | async) !== false;
                 then offcanvasFooterAfterLogin;
                 else offcanvasFooterBeforeLogin
             "></div>

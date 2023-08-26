@@ -5,7 +5,9 @@
 
     DESCRIPTION:
         Methods within this service is used to perform functions related to user authentication and 
-        authorizing the use of api tokens
+        authorizing the use of api tokens.
+        This service sets the user state and call the jwt service to get the current value of the 
+        token
 
     PARAMETERS:
     key: string -> used to pass the key for a token
@@ -14,17 +16,20 @@
 
 import { Injectable } from '@angular/core';
 import { JWTTokenService } from '../JWT-token-service/jwt-token.service';
-import { TokenStorageService } from '../token-storage-service/token-storage.service';
 import { ApiService } from '../../api/api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
     // stores the user state value as a behavior subject
-    userState$ = new BehaviorSubject<any>(false);
+    userState$ = new BehaviorSubject<boolean>(false);
+    // stores the session token as an observable
+    sessionToken$!: string | null;
+    // stores the subscription to user service
+    subscription!: Subscription;
     // stores the error message sent by the api
     errorMessage = '';
     // api response structure
@@ -37,9 +42,12 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _tokenStorage: TokenStorageService,
         private _jwtService: JWTTokenService
-    ) {}
+    ) {
+        this._jwtService.getToken().subscribe(token => {
+            this.sessionToken$ = token;
+        });
+    }
 
     // logs a user into the application
     loginUser(loginEmail: string, loginPassword: string) {
@@ -60,26 +68,25 @@ export class AuthService {
                 this.router.navigate(['/dashboard']);
             },
             error => {
-                console.error(
-                    `Error occurred while logging in: ${error.string}`
-                );
+                console.error(`Error occurred while logging in`);
+                // TODO: when a login fails it should print an error message from the api at the top of a form
             }
         );
     }
 
     logoutUser() {
-        // removes the token from storage
-        this._tokenStorage.removeToken('session');
+        // sets the user token to null
+        this._jwtService.setToken(null);
         // calls the set user state method to change it to false
         this.setUserState();
+        console.log(this.sessionToken$);
+        // unsubscribes from the token subscription
+        console.log(this.sessionToken$);
     }
 
     // sets the boolean user login state value
     setUserState() {
-        if (
-            this._tokenStorage.getToken('session') != undefined ||
-            this._tokenStorage.getToken('session') != null
-        ) {
+        if (this.sessionToken$ != null) {
             // checks to see if user email is in the token
             if (this._jwtService.getUserEmail()) {
                 // checks to see if token is not expired
@@ -90,14 +97,14 @@ export class AuthService {
             }
         } else {
             // set the user state to false if the token has value of null
+            console.log(`this is running : ${this.userState$.value}`);
             this.userState$.next(false);
         }
     }
 
     // used to get the user state value
-    getUserState() {
-        this.setUserState();
-        return this.userState$.asObservable();
+    getUserState(): Observable<boolean> {
+        return this.userState$;
     }
 
     // TODO

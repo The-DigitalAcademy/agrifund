@@ -1,10 +1,10 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 23 Aug 2023 
-    UPDATED DATE: 
+    UPDATED DATE: 26 Aug 2023
 
     DESCRIPTION:
-        This service is used to decode JWT tokens and retrieve data from JWT.
+        This service is used to decode JWT values and toe set and get the token value
 
     PARAMETERS:
          
@@ -13,6 +13,7 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import { TokenStorageService } from '../token-storage-service/token-storage.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -20,27 +21,36 @@ import { TokenStorageService } from '../token-storage-service/token-storage.serv
 export class JWTTokenService {
     // the token is stored as a string - initialized as empty
     token: any;
+    // token value can either be null or a string value
+    token$ = new BehaviorSubject<string | null>(null);
     // the decoded sting will be stored here as key value pairs - initialized as empty
     decodedToken: { [key: string]: string } = {};
 
     constructor(private _tokenStorage: TokenStorageService) {
-        // gets the token value from the token storage service
-        this.token = this._tokenStorage.getToken('session');
-        console.log(this.token);
+        // observable token value is assigned to the token value retrieved from token in storage service
+        this.token$.next(this._tokenStorage.getToken('session'));
     }
 
-    // sets the token value
-    setToken(token: string) {
-        // checks if token is not empty
-        if (token) {
-            this.token = token;
-            // stores the token for the session
-            this._tokenStorage.setToken('session', token);
-        }
+    // sets the token value -> can be empty or a string value
+    setToken(token: string | null) {
+        // sets the passed token as the observables' value
+        this.token$.next(token);
+
+        /* if the value is a string it will be set as the cookie value
+            if the value is null it will be remove the token as a cookie*/
+        token
+            ? this._tokenStorage.setToken('session', token)
+            : this._tokenStorage.removeToken('session');
+    }
+
+    getToken(): Observable<string | null> {
+        return this.token$;
     }
 
     //  decodes the token value
     decodeToken() {
+        // gets the value of the observable storing the token value
+        this.token = this.token$.value;
         if (this.token) {
             this.decodedToken = jwt_decode(this.token);
         }
@@ -48,7 +58,9 @@ export class JWTTokenService {
 
     // gets the decoded token value
     getDecodedToken() {
-        return jwt_decode(this.token);
+        if (this.token$.value != null) return jwt_decode(this.token$.value);
+
+        return 'The token value is empty.';
     }
 
     // gets the user email from the JWT token
