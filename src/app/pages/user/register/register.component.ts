@@ -13,10 +13,10 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { ValidationsServiceService } from 'src/app/services/validation-service/validations-service.service';
 import { User } from 'src/app/_models/User';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Subscription } from 'rxjs';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
     selector: 'app-register',
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService,
+        private _validationsService: ValidationService,
         private router: Router,
         private _apiService: ApiService,
         private _portfolioService: PortfolioService
@@ -44,32 +44,32 @@ export class RegisterComponent implements OnInit {
             {
                 first_name: new FormControl('', [
                     Validators.required,
-                    this.validationsService.textWithoutNumbersValidator(),
+                    this._validationsService.textWithoutNumbersValidator(),
                 ]),
                 last_name: new FormControl('', [
                     Validators.required,
-                    this.validationsService.textWithoutNumbersValidator(),
+                    this._validationsService.textWithoutNumbersValidator(),
                 ]),
                 id_number: new FormControl('', [
                     Validators.required,
-                    this.validationsService.idNumberValidator(),
+                    this._validationsService.idNumberValidator(),
                 ]),
                 email: new FormControl('', [
                     Validators.required,
-                    this.validationsService.emailValidator(),
+                    this._validationsService.emailValidator(),
                 ]),
                 cell_number: new FormControl('', [
                     Validators.required,
-                    this.validationsService.phoneNumberValidator(),
+                    this._validationsService.phoneNumberValidator(),
                 ]),
                 password: new FormControl('', [
                     Validators.required,
-                    this.validationsService.passwordValidator(),
+                    this._validationsService.passwordValidator(),
                 ]),
                 cpassword: ['', [Validators.required]],
             },
             {
-                validators: [this.validationsService.passwordsMatchValidator], // Add custom password matching validation method from your validation service
+                validators: [this._validationsService.passwordsMatchValidator], // Add custom password matching validation method from your validation service
             }
         );
     }

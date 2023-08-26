@@ -11,11 +11,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ValidationsServiceService } from 'src/app/services/validation-service/validations-service.service';
-// import { UserService } from 'src/app/services/users.service';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/_services/authentication-service/auth.service';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
     selector: 'app-login',
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService,
+        private _validationsService: ValidationService,
         private router: Router,
         // private userService: UserService, // Service to handle user-related functionalities
         private _apiService: ApiService, // Service to make API requests
@@ -42,13 +41,16 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.LoginForm = this.fb.group({
             email: [
                 '',
-                [Validators.required, this.validationsService.emailValidator()],
+                [
+                    Validators.required,
+                    this._validationsService.emailValidator(),
+                ],
             ],
             password: [
                 '',
                 [
                     Validators.required,
-                    this.validationsService.passwordValidator(),
+                    this._validationsService.passwordValidator(),
                 ],
             ],
         });

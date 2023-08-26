@@ -8,10 +8,10 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { ValidationsServiceService } from 'src/app/services/validation-service/validations-service.service';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -32,7 +32,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService,
+        private _validationsService: ValidationService,
         private _portfolioService: PortfolioService,
         private _apiService: ApiService
     ) {}
@@ -61,27 +61,27 @@ export class DisabledformPersonalInfoComponent implements OnInit {
             first_name: new FormControl('', [
                 // Notice the initial empty string value
                 Validators.required,
-                this.validationsService.textWithoutNumbersValidator(),
+                this._validationsService.textWithoutNumbersValidator(),
             ]),
             last_name: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.textWithoutNumbersValidator(),
+                this._validationsService.textWithoutNumbersValidator(),
             ]),
             email: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.emailValidator(),
+                this._validationsService.emailValidator(),
             ]),
             id_number: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.idNumberValidator(),
+                this._validationsService.idNumberValidator(),
             ]),
             cell_number: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.phoneNumberValidator(),
+                this._validationsService.phoneNumberValidator(),
             ]),
             // ... other fields
         });

@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
-import { ValidationsServiceService } from 'src/app/services/validation-service/validations-service.service';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -28,7 +28,7 @@ export class DisabledformFarmInfoComponent {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService,
+        private _validationsService: ValidationService,
         private _portfolioService: PortfolioService
     ) {}
 
@@ -48,29 +48,29 @@ export class DisabledformFarmInfoComponent {
                 { value: farmerData.farmer, disabled: true },
                 [
                     Validators.required,
-                    this.validationsService.addressContainsStreetValidator,
+                    this._validationsService.addressContainsStreetValidator,
                 ]
             ),
             farm: new FormControl({ value: farmerData.farm, disabled: true }, [
                 Validators.required,
-                this.validationsService.addressContainsStreetValidator,
+                this._validationsService.addressContainsStreetValidator,
             ]),
             size: new FormControl({ value: farmerData.size, disabled: true }, [
                 Validators.required,
-                this.validationsService.positiveNumberValidator(),
+                this._validationsService.positiveNumberValidator(),
             ]),
             years: new FormControl(
                 { value: farmerData.years, disabled: true },
                 [
                     Validators.required,
-                    this.validationsService.isNumericValidator(),
+                    this._validationsService.isNumericValidator(),
                 ]
             ),
             num_employee: new FormControl(
                 { value: farmerData.num_employee, disabled: true },
                 [
                     Validators.required,
-                    this.validationsService.isNumericValidator(),
+                    this._validationsService.isNumericValidator(),
                 ]
             ),
             reasonForFunding: new FormControl(
