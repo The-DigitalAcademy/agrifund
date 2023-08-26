@@ -51,7 +51,7 @@ import { DisabledformPersonalInfoComponent } from './components/farmer/personal-
 import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
 import { EnableformCropInfoComponent } from './components/farmer/enableform-crop-info/enableform-crop-info.component';
-import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
+import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
 import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
@@ -120,7 +120,7 @@ import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynam
         BookkeepingViewRecordComponent,
         BookkeepingCreateComponent,
         BookkeepingEditComponent,
-        PortfolioViewInfoComponent,
+        PortfolioPageComponent,
         PortfolioProgressbarComponent,
         DisabledformFarmInfoComponent,
         DisabledformPersonalInfoComponent,
