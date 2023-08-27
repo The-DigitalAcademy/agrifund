@@ -46,9 +46,21 @@ export class AuthService {
         private _apiService: ApiService,
         private _jwtService: JwtService
     ) {
+        this.setSessionToken();
+    }
+
+
+    // sets the session token to the one set in the jwt service
+    setSessionToken() {
         this._jwtService.getToken().subscribe(token => {
             this.sessionToken$ = token;
         });
+    }
+
+    // gets the set session token
+    getSessionToken() { 
+        this.setSessionToken();
+        return this.sessionToken$;
     }
 
     // logs a user into the application
