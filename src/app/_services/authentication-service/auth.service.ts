@@ -17,7 +17,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { JWTTokenService } from '../JWT-token-service/jwt-token.service';
+import { JwtService } from '../JWT-token-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -44,7 +44,7 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _jwtService: JWTTokenService
+        private _jwtService: JwtService
     ) {
         this._jwtService.getToken().subscribe(token => {
             this.sessionToken$ = token;

@@ -19,7 +19,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
-export class JWTTokenService {
+export class JwtService {
     // token value can either be null or a string value
     token$ = new BehaviorSubject<string | null>(null);
     // the decoded sting will be stored here as key value pairs - initialized as empty
