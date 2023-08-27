@@ -34,8 +34,6 @@ export class JwtService {
     setToken(token: string | null) {
         // sets the passed token as the observables' value
         this.token$.next(token);
-        console.log(`This is the set token value: ${token}`);
-
         /* if the value is a string it will be set as the cookie value
             if the value is null it will be remove the token as a cookie*/
         token
