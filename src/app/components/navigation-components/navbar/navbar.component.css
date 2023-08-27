@@ -190,16 +190,17 @@ h1 {
         height: var(--large-s) !important;
     }
 
-    .offcanvas-body{
+    .offcanvas-body {
         flex-direction: column;
-        
+
     }
 
-    .offcanvas-body, .offcanvas-greeting{
+    .offcanvas-body,
+    .offcanvas-greeting {
         padding: 0px var(--small-s);
     }
 
-    hr{
+    hr {
         background-color: var(--dark);
         margin: 0px;
     }
@@ -221,6 +222,16 @@ h1 {
         /* change the size of the agrifund logo */
         height: var(--large-s) !important;
     }
+
+    .offcanvas-body {
+        flex-direction: column;
+
+    }
+
+    .offcanvas-body,
+    .offcanvas-greeting {
+        padding: 0px var(--small-s);
+    }
 }
 
 /*-------------------------------------------------
@@ -231,6 +242,16 @@ h1 {
     img {
         /* change the size of the agrifund logo */
         height: var(--large-s) !important;
+    }
+
+    .offcanvas-body {
+        flex-direction: column;
+
+    }
+
+    .offcanvas-body,
+    .offcanvas-greeting {
+        padding: 0px var(--small-s);
     }
 }
 
