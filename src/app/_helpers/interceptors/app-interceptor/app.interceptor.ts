@@ -19,19 +19,23 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/_services/authentication-service/auth.service';
-import { JWTTokenService } from 'src/app/_services/JWT-token-service/jwt-token.service';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-    constructor(
-        private _authService: AuthService,
-        private _jwtService: JWTTokenService
-    ) {}
+    constructor(private _authService: AuthService) {}
 
-    intercept(
-        request: HttpRequest<unknown>,
-        next: HttpHandler
-    ): Observable<HttpEvent<unknown>> {
+    intercept(request: HttpRequest<unknown>, next: HttpHandler) {
+        const token = this._authService.getSessionToken();
+
+        if (token) {
+            request = request.clone({
+                url: request.url,
+                setHeaders: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+        }
+
         return next.handle(request);
     }
 }

@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
@@ -16,6 +16,7 @@ import {
 /* --------------------------------
     INTERCEPTORS
 ---------------------------------*/
+import { AppInterceptor } from './_helpers/interceptors/app-interceptor/app.interceptor';
 
 /* --------------------------------
     OVERALL
@@ -104,6 +105,15 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 
+// all interceptors go in here
+export const interceptorProviders = [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AppInterceptor,
+        multi: true,
+    },
+];
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -148,7 +158,7 @@ import {
         NgbModule,
         Ng2SearchPipeModule,
     ],
-    providers: [],
+    providers: [interceptorProviders],
     bootstrap: [AppComponent],
     entryComponents: [BookkeepingDeleteModalContentComponent],
 })
