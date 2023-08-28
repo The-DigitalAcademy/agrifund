@@ -1,0 +1,71 @@
+<!-- 
+    AUTHOR: Monique Nagel, Bolebo 
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 25 Aug 2023 
+ -->
+
+<app-navbar></app-navbar>
+<div class="page-body page-background">
+    <!-- sidebar will be hidden on small devices -->
+    <app-sidebar class="mobile-hidden"></app-sidebar>
+    <div class="page-content">
+        <div class="page-heading">
+            <h1>Dashboard</h1>
+        </div>
+
+        <!-- <div *ngIf=""></div> -->
+
+        <!-- no bookkeep data card -->
+        <div class="content justify-center no-data-card">
+            <div class="container justify-center no-data-card-inner">
+                <h1 class="align-center">
+                    Your Dashboard Is Looking A Bit Empty...
+                </h1>
+                <h3 class="align-center">
+                    Add bookkeeping records to fill it up!
+                </h3>
+                <div class="actions justify-center">
+                    <button
+                        class="btn colourful-btn"
+                        type="button"
+                        [routerLink]="['/bookkeeping']">
+                        Go to Bookkeeping
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 
+        <div class="container">
+            <div class="container-header">
+                <div class="justify-start"></div>
+               <div class="justify-end">
+                    <button class="btn colourful-btn">
+                        <p>Month</p>
+                    </button>
+                    <button class="white-btn">
+                        <p>Year</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container">
+                <app-money-card-summary></app-money-card-summary>
+                <div class="row">
+                    <div class="col-6">
+                        <app-income-expenses-donut-graph></app-income-expenses-donut-graph>
+                    </div>
+                    <div class="col-6">
+                        <app-bar-chart></app-bar-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="outer-container">
+                <app-farmer-portfolio-progressbar></app-farmer-portfolio-progressbar>
+            </div>
+        </div>
+         -->
+    </div>
+</div>
+
+<ng-template #NoBookkepingData></ng-template>

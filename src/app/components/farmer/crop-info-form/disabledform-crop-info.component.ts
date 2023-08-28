@@ -5,8 +5,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-// import { ProgressService } from 'src/app/services/progress.service';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -24,7 +23,7 @@ export class DisabledformCropInfoComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService
+        private _validationsService: ValidationService
     ) {}
 
     ngOnInit() {
@@ -44,14 +43,14 @@ export class DisabledformCropInfoComponent implements OnInit {
                 { value: this.farmerData.crop_name, disabled: true },
                 [
                     Validators.required,
-                    this.validationsService.textWithoutNumbersValidator(),
+                    this._validationsService.textWithoutNumbersValidator(),
                 ]
             ),
             seedsAmount: new FormControl(
                 { value: this.farmerData.seedsAmount, disabled: true },
                 [
                     Validators.required,
-                    this.validationsService.isNumericValidator(),
+                    this._validationsService.isNumericValidator(),
                 ]
             ),
             cropsInfo: new FormControl({
