@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { ProgressService } from 'src/app/services/portfolio/progress.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormBuilder,
@@ -9,10 +9,10 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
-import { ApiService } from 'src/app/services/api/api.service';
-import { User } from 'src/app/models/User';
+import { ApiService } from 'src/app/_services/api-service/api.service';
+import { User } from 'src/app/_models/User';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -35,8 +35,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService,
-        private progressService: ProgressService,
+        private validationService: ValidationService,
+        private progressService: ProgressServiceService,
         private _apiService: ApiService,
         
     ) {}
@@ -56,27 +56,27 @@ export class DisabledformPersonalInfoComponent implements OnInit {
             first_name: new FormControl('', [
                 // Notice the initial empty string value
                 Validators.required,
-                this.validationsService.textWithoutNumbersValidator(),
+                this.validationService.textWithoutNumbersValidator(),
             ]),
             last_name: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.textWithoutNumbersValidator(),
+                this.validationService.textWithoutNumbersValidator(),
             ]),
             email: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.emailValidator(),
+                this.validationService.emailValidator(),
             ]),
             id_number: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.idNumberValidator(),
+                this.validationService.idNumberValidator(),
             ]),
             cell_number: new FormControl('', [
                 // Initial empty string value
                 Validators.required,
-                this.validationsService.phoneNumberValidator(),
+                this.validationService.phoneNumberValidator(),
             ]),
         });
     }

@@ -4,8 +4,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Asset } from 'src/app/models/asset';
-import { ApiService } from 'src/app/services/api/api.service';
+import { Asset } from 'src/app/_models/asset';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
     selector: 'app-equipment-table',
@@ -13,6 +13,12 @@ import { ApiService } from 'src/app/services/api/api.service';
     styleUrls: ['./equipment-table.component.css'],
 })
 export class EquipmentTableComponent {
+onSaveClicked($event: any) {
+throw new Error('Method not implemented.');
+}
+enableFields() {
+throw new Error('Method not implemented.');
+}
     isDisabled = true;
     onFileSelected($event: Event) {
         
@@ -34,26 +40,9 @@ export class EquipmentTableComponent {
         });
     }
 
-    ngOnDestroy() {
-        // This perform cleanup when the component is destroyed
-    }
+    ngOnDestroy() {}
 
-    // Handle "Edit" button click
     onEditClicked(id: number) {
-        // Navigate to the "equipment-edit" route with the specified ID
         this.router.navigate(['/equipment-edit', id]);
-    }
-
-     // Enable form fields for editing
-    enableFields() {
-        this.isDisabled = false; // Enable the fields by setting isDisabled to false
-        this.equipmentForm.enable(); // Enable the formGroup
-    }
-
-    
-
-    // Handle "Save" button click
-    onSaveClicked(formData: any) {
-        
     }
 }

@@ -3,7 +3,7 @@
     ---------------------------------*/
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ProgressService } from 'src/app/services/portfolio/progress.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 
 @Component({
     selector: 'app-enableform-crop-info',
@@ -18,7 +18,7 @@ export class EnableformCropInfoComponent {
     
     myForm!: FormGroup;
 
-    constructor(private progressService: ProgressService) {}
+    constructor(private progressService: ProgressServiceService) {}
 
     // Emit the enableFields event when "Edit" is clicked
     onEditClicked() {

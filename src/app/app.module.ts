@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
@@ -14,57 +14,64 @@ import {
 } from '@fortawesome/angular-fontawesome';
 
 /* --------------------------------
-    OVERALL
+    INTERCEPTORS
 ---------------------------------*/
+import { AppInterceptor } from './_helpers/interceptors/app-interceptor/app.interceptor';
+
+/* --------------------------------
+    OVERALL
+---------------------------------*/ 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { SidebarComponent } from './components/navigation-components/sidebar/sidebar.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { NavbarComponent } from './components/navigation-components/navbar/navbar.component';
 
 /* --------------------------------
     USER
 ---------------------------------*/
-import { LoginComponent } from './pages/user/login/login.component';
-import { RegisterComponent } from './pages/user/register/register.component';
-import { ForgotPasswordComponent } from './pages/user/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/user/reset-password/reset-password.component';
+import { LoginPageComponent } from './pages/user-pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
+import { ForgotPasswordPageComponent } from './pages/user-pages/forgot-password-page/forgot-password-page.component';
+import { ResetPasswordPageComponent } from './pages/user-pages/reset-password-page/reset-password-page.component';
 
 /* --------------------------------
-    BOOKKEEP 
+    BOOKKEEPING
 ---------------------------------*/
-import { BookkeepingViewAllComponent } from './pages/bookkeeping/bookkeeping-view-all/bookkeeping-view-all.component';
-import { BookkeepingViewRecordComponent } from './pages/bookkeeping/bookkeeping-view-record/bookkeeping-view-record.component';
-import { BookkeepingCreateComponent } from './pages/bookkeeping/bookkeeping-create/bookkeeping-create.component';
-import { BookkeepingEditComponent } from './pages/bookkeeping/bookkeeping-edit/bookkeeping-edit.component';
+import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
+import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
+import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
+import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeeping-edit-page/bookkeeping-edit-page.component';
 
 /* --------------------------------
-    PORTFOLIO
+    FARMER PORTFOLIO
 ---------------------------------*/
-import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
+import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/personal-info-form.component';
 
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/crop-info-form.component';
 import { EnableformCropInfoComponent } from './components/farmer/edit-all-form/edit-all-form.component';
-import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
-import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
+import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
+import { FarmerPortfolioProgressbarComponent } from './components/data-summary-components/farmer-portfolio-progressbar/farmer-portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/farm-info-form.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+
 
 /* --------------------------------
     DATA SUMMARY
 ---------------------------------*/
-import { MoneyCardSummaryComponent } from './components/data-summary/money-card-summary/money-card-summary.component';
-import { BarChartComponent } from './components/data-summary/graph/bar-chart/bar-chart.component';
-import { DonutGraphComponent } from './components/data-summary/graph/donut-graph/donut-graph.component';
+import { MoneyCardSummaryComponent } from './components/data-summary-components/money-card-summary/money-card-summary.component';
+import { ExpensesBarChartComponent } from './components/data-summary-components/graph-components/expenses-bar-chart/expenses-bar-chart.component';
+import { IncomeExpensesDonutGraphComponent } from './components/data-summary-components/graph-components/income-expenses-donut-graph/income-expenses-donut-graph.component';
 
 /* --------------------------------
     MODALS
 ---------------------------------*/
-import { ModalContainerComponent } from './components/modal/modal-container/modal-container.component';
-import { BookkeepingDeleteModalContentComponent } from './components/modal/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
+import { ModalContainerComponent } from './components/modal-components/modal-container/modal-container.component';
+import { BookkeepingDeleteModalContentComponent } from './components/modal-components/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 
 /* --------------------------------
     ICONS
@@ -97,9 +104,10 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+
 import { EquipmentInfoComponent } from './components/farmer/equipment-info-form/equipment-info-form.component';
 import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
+
 
 
 @NgModule({
@@ -109,17 +117,17 @@ import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-i
         SidebarComponent,
         LandingPageComponent,
         GetStartedPageComponent,
-        DashboardComponent,
-        RegisterComponent,
-        LoginComponent,
-        ForgotPasswordComponent,
-        ResetPasswordComponent,
-        BookkeepingViewAllComponent,
-        BookkeepingViewRecordComponent,
-        BookkeepingCreateComponent,
-        BookkeepingEditComponent,
-        PortfolioViewInfoComponent,
-        PortfolioProgressbarComponent,
+        DashboardPageComponent,
+        RegisterPageComponent,
+        LoginPageComponent,
+        ForgotPasswordPageComponent,
+        ResetPasswordPageComponent,
+        BookkeepingViewAllPageComponent,
+        BookkeepingViewRecordPageComponent,
+        BookkeepingCreatePageComponent,
+        BookkeepingEditPageComponent,
+        PortfolioPageComponent,
+        FarmerPortfolioProgressbarComponent,
         DisabledformFarmInfoComponent,
         DisabledformPersonalInfoComponent,
         DisabledformCropInfoComponent,
@@ -128,13 +136,13 @@ import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-i
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         EquipmentCreateComponent,
-        TellMeAboutComponent,
+        TellMeAboutFarmPageComponent,
         ModalContainerComponent,
         EquipmentEditComponent,
         PlotInfoFormComponent,
         
-        BarChartComponent,
-        DonutGraphComponent,
+        ExpensesBarChartComponent,
+        IncomeExpensesDonutGraphComponent,
     ],
     imports: [
         BrowserModule,
@@ -147,7 +155,9 @@ import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-i
         NgbModule,
         Ng2SearchPipeModule,
     ],
-    providers: [],
+    providers: [
+        // { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
     entryComponents: [BookkeepingDeleteModalContentComponent],
 })

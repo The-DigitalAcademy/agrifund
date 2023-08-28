@@ -5,7 +5,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
+import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
     selector: 'app-plot-info-form',
@@ -21,7 +21,7 @@ export class PlotInfoFormComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationsServiceService
+        private validationsService: ValidationService
     ) {}
 
     ngOnInit() {

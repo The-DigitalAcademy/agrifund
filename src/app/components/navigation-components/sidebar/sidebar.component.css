@@ -1,0 +1,106 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+ul {
+    /* removes bootstrap default spacing */
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+
+li,
+.nav-item {
+    /* aligns nav items to the left */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+}
+
+/* change nav item and icon text colour */
+.nav-item a,
+.nav-link fa-icon {
+
+    color: var(--dark) !important;
+}
+
+
+li:hover,
+li:active {
+    text-decoration: none;
+    color: var(--light-grey) !important;
+}
+
+.nav-link {
+    font-size: var(--font-medium);
+    font-weight: var(--bold);
+    text-decoration: none;
+
+    margin: var(--small-s) 0px;
+
+    color: var(--light) !important;
+}
+
+.nav-link fa-icon {
+    /* add space */
+    margin-right: var(--small-s);
+    font-size: var(--font-medium);
+}
+
+.sidebar-content {
+    /* make  position of sidebar fixed on the page*/
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    padding: var(--normal-medium-s);
+    background-color: var(--light);
+    z-index: 99;
+    height: 100%;
+    max-width: max-content;
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+    .sidebar-content {
+        /* make  position of sidebar fixed on the page*/
+        /* position: fixed; */
+        padding-top: 0px;
+    }
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .sidebar-content {
+        /* make  position of sidebar fixed on the page*/
+        /* position: fixed; */
+        padding-top: 0px;
+    }
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .sidebar-content {
+        /* make  position of sidebar fixed on the page*/
+        /* position: fixed; */
+        padding-top: 0px;
+    }
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {}
