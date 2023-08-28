@@ -18,15 +18,14 @@ import { BookkeepingEditComponent } from './pages/bookkeeping/bookkeeping-edit/b
 import { BookkeepingViewRecordComponent } from './pages/bookkeeping/bookkeeping-view-record/bookkeeping-view-record.component';
 import { BookkeepingViewAllComponent } from './pages/bookkeeping/bookkeeping-view-all/bookkeeping-view-all.component';
 import { BookkeepingCreateComponent } from './pages/bookkeeping/bookkeeping-create/bookkeeping-create.component';
-import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
-
+import { AboutTheFarmComponent } from './pages/farm/about-the-farm/about-the-farm.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    {path: 'about-farm', component: AboutTheFarmComponent},
+    { path: 'about-farm', component: AboutTheFarmComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent },

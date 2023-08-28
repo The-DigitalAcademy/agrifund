@@ -47,9 +47,9 @@ export class ApiService {
     /* --------------------------------
         ABOUT FARM STRINGS
     ---------------------------------*/
-     private cropInfo_URL = this.BASE_URL +  '/cropInfo';
-     private plotInfo_URL = this.BASE_URL + '/plotInfo';
-    private YouAndFarm_URL = this.BASE_URL + '/youAndFarm';
+    private cropInfo_URL = this.BASE_URL + '/cropInfo';
+    private plotInfo_URL = this.BASE_URL + '/plotInfo';
+    private FarmInfo_URL = this.BASE_URL + '/youAndFarm';
 
     /* --------------------------------
        FARMER CONNECTION STRINGS
@@ -111,8 +111,8 @@ export class ApiService {
     }
 
     // gets all equipment items for a farmer
-    getAllEquipment() {
-        return this.http.get(`${this.farmerAssetURL}`);
+    getAllEquipment(id : number) {
+        return this.http.get(`${this.farmerAssetURL}/${id}`);
     }
 
     // update data for a single equipment record
@@ -195,22 +195,26 @@ export class ApiService {
         ABOUT THE FARM/CROP
     ---------------------------------*/
 
-     addCropInfo(body: any) {
-         return this.http.post(`${this.cropInfo_URL}`, body);
-     }
+    addCropInfo(body: any) {
+        return this.http.post(`${this.cropInfo_URL}`, body);
+    }
 
     //     /* --------------------------------
     //        ABOUT THE FARM/PLOT
     //    ---------------------------------*/
 
     addPlotInfo(body: any) {
-         return this.http.post(`${this.plotInfo_URL}`, body);
-     }
+        return this.http.post(`${this.plotInfo_URL}`, body);
+    }
     /* --------------------------------
             ABOUT THE FARM/YOUANDFARM
         ---------------------------------*/
-     addYouandFarm(body: any) {
-         return this.http.post(`${this.YouAndFarm_URL}`, body);
-     }
+    addFarmInfo(body: any) {
+        return this.http.post(`${this.FarmInfo_URL}`, body);
+    }
+    getFarmInfo(userID: number) {
+        return this.http.get(`${this.FarmInfo_URL}/${userID}`);
+        
+    }
 }
 

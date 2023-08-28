@@ -98,7 +98,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
-import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
+import { AboutTheFarmComponent } from './pages/farm/about-the-farm/about-the-farm.component';
+import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
 
 @NgModule({
     declarations: [
@@ -125,7 +126,7 @@ import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.com
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-         AboutTheFarmComponent,
+        AboutTheFarmComponent,
         EquipmentCreateComponent,
         ModalContainerComponent,
         EquipmentEditComponent,
@@ -133,6 +134,7 @@ import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.com
         BarChartComponent,
         DonutGraphComponent,
         AboutTheFarmComponent,
+        CreateAssetComponent,
     ],
     imports: [
         BrowserModule,

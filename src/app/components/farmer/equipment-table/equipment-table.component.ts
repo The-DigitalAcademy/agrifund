@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./equipment-table.component.css']
 })
 export class EquipmentTableComponent {
-
+  id = 3;
   assets: Asset[] = [];
 isLast: any;
   constructor(private _apiService: ApiService, private router: Router){
@@ -21,7 +21,7 @@ isLast: any;
   ngOnInit() {
 
     //use the method to get the all the data 
-    this._apiService.getAllEquipment().subscribe(
+    this._apiService.getAllEquipment(this.id).subscribe(
       (data: any) => {
         // console.table(assets)
          this.assets = data;
