@@ -1,7 +1,7 @@
 <!-- 
-    AUTHOR: Monique
+    AUTHOR: Monique Nagel, Bolebo 
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 25 Aug 2023 
  -->
 
 <app-navbar></app-navbar>
@@ -12,6 +12,9 @@
         <div class="page-heading">
             <h1>Dashboard</h1>
         </div>
+
+        <!-- <div *ngIf=""></div> -->
+
         <!-- no bookkeep data card -->
         <div class="content justify-center no-data-card">
             <div class="container justify-center no-data-card-inner">
@@ -25,11 +28,44 @@
                     <button
                         class="btn colourful-btn"
                         type="button"
-                        [routerLink]="['/bookkeep']">
-                        Go to Bookkeep
+                        [routerLink]="['/bookkeeping']">
+                        Go to Bookkeeping
                     </button>
                 </div>
             </div>
         </div>
+        <!-- 
+        <div class="container">
+            <div class="container-header">
+                <div class="justify-start"></div>
+                <!-- <div class="justify-end">
+                    <button class="btn colourful-btn">
+                        <p>Month</p>
+                    </button>
+                    <button class="white-btn">
+                        <p>Year</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container">
+                <app-money-card-summary></app-money-card-summary>
+                <div class="row">
+                    <div class="col-6">
+                        <app-donut-graph></app-donut-graph>
+                    </div>
+                    <div class="col-6">
+                        <app-bar-chart></app-bar-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="outer-container">
+                <app-portfolio-progressbar></app-portfolio-progressbar>
+            </div>
+        </div>
+         -->
     </div>
 </div>
+
+<ng-template #NoBookkepingData></ng-template>

@@ -58,11 +58,14 @@ export class DisabledformFarmInfoComponent {
                     this.validationsService.addressContainsStreetValidator,
                 ]
             ),
-              farm_name: new FormControl('', [
-                // Notice the initial empty string value
-                Validators.required,
-                this.validationsService.textWithoutNumbersValidator(),
-            ]),
+            farm_name: new FormControl(
+                { value: farmerData.farm_name, disabled: true },
+                [
+                    // Notice the initial empty string value
+                    Validators.required,
+                    this.validationsService.textWithoutNumbersValidator(),
+                ]
+            ),
             years: new FormControl(
                 { value: farmerData.years, disabled: true }, // Initialize with provided value and disable the field
                 [

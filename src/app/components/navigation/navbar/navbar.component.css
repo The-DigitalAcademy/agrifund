@@ -17,10 +17,13 @@ nav {
     overflow: hidden;
     /* makes the navbar a light colour */
     background-color: var(--light);
+
+    /* ensures that the navbar is above the background image opacity*/
+    position: relative;
 }
 
 /* changes the colour of the burger menu button to dark */
-.icon-btn{
+.icon-btn {
     color: var(--dark) !important;
 }
 
@@ -34,7 +37,7 @@ nav {
 }
 
 /* styles the navbar toggle button on mobile devices */
-.navbar-toggler{
+.navbar-toggler {
     margin-left: 0px !important;
     color: var(--dark);
     border: 0;
@@ -45,7 +48,7 @@ nav {
 }
 
 /* changes the colour of the icon on the button */
-.icon-btn{
+.icon-btn {
     color: var(--dark) !important;
 }
 
@@ -78,7 +81,7 @@ nav {
     display: flex;
     vertical-align: center !important;
     cursor: pointer;
-    
+
 }
 
 img {
@@ -140,7 +143,8 @@ h1 {
     width: min-content;
 }
 
-.offcanvas-header, .offcanvas-footer {
+.offcanvas-header,
+.offcanvas-footer {
     padding: var(--small-s) !important;
 }
 
@@ -160,7 +164,7 @@ h1 {
     height: max-content;
 }
 
-.offcanvas-footer .justify-end{
+.offcanvas-footer .justify-end {
     padding-left: var(--xx-small-s) !important;
 }
 
@@ -208,7 +212,7 @@ h1 {
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
-    
+
     img {
         /* change the size of the agrifund logo */
         height: var(--large-s) !important;
@@ -219,10 +223,11 @@ h1 {
     Media Query for laptops & desktops
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
+
     /* hides navbar toggle button on larger screens */
-        .navbar-toggler {
-            display: none !important;
-        }
+    .navbar-toggler {
+        display: none !important;
+    }
 }
 
 /*--------------------------------
@@ -231,7 +236,7 @@ h1 {
 @media (min-width: 1281px) {
 
     /* hides navbar toggle button on larger screens */
-    .navbar-toggler{
+    .navbar-toggler {
         display: none !important;
     }
 }

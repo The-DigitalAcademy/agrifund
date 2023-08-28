@@ -14,9 +14,9 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { Users } from 'src/app/models/users';
-import { UserService } from 'src/app/services/users.service';
-import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-service.service';
+import { User } from 'src/app/models/User';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-register',
@@ -24,9 +24,11 @@ import { PortfolioServiceService } from 'src/app/services/portfolio/portfolio-se
     styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-    users!: Users;
+    user!: User;
     RegisterForm!: FormGroup;
     submitted = false;
+    // used to store subscriptions to services
+    private subscription = new Subscription();
 
     // stores the user id
     userId = 1;
@@ -36,7 +38,7 @@ export class RegisterComponent implements OnInit {
         private validationsService: ValidationsServiceService,
         private router: Router,
         private _apiService: ApiService,
-        private _portfolioService: PortfolioServiceService
+        private _portfolioService: PortfolioService
     ) {}
 
     ngOnInit(): void {
@@ -78,22 +80,26 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         if (this.RegisterForm.valid) {
+            const inputValue = this.RegisterForm.value;
             // Gather user data from the form
-            this.users = {
+            this.user = {
                 id: this._portfolioService.generateId(),
-                firstName: this.RegisterForm.get('first_name')?.value,
-                lastName: this.RegisterForm.get('last_name')?.value,
-                email: this.RegisterForm.get('email')?.value,
-                cellNumber: this.RegisterForm.get('cell_number')?.value,
-                password: this.RegisterForm.get('password')?.value,
-                idNumber: this.RegisterForm.get('id_number')?.value,
+                firstName: inputValue.first_name,
+                lastName: inputValue.last_name,
+                email: inputValue.email,
+                cellNumber: inputValue.cell_number,
+                password: inputValue.password,
+                idNumber: inputValue.id_number,
             };
 
             // Call the API service to register the user
-            this._apiService.registerUser(this.users).subscribe(data => {
-                // Handle success or error response from the API
-                this.router.navigate(['/login']); // Navigate to login page after successful registration
-            });
+            this.subscription.add(
+                this._apiService
+                    .registerFarmer(this.user)
+                    .subscribe((data: any) => {
+                        console.log(data);
+                    })
+            );
         }
     }
 }

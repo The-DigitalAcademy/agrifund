@@ -829,8 +829,9 @@ hr {
 
     .page-content,
     .mobile-header {
-        /* add space at the top to take the navbar size into consideration */
-        padding: 55px var(--normal-s) var(--normal-s) !important;
+        /* add space at the top to take the navbar size into consideration 
+        removes space on the left, right and bottom for smaller screens */
+        padding: 55px 0px 0px !important;
     }
 
     /* set styles for all content within page-content div */

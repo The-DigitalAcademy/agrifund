@@ -1,18 +1,21 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Ntokozo, Monique, Kamo
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 21 Aug 2023 
 
     DESCRIPTION:
-     This service is for all methods related to a user
+     This service is used for all api connections 
+
+    PARAMETERS:
+    registerUser( newUser: User) -> receives an body that is an instance of User
+    loginUser( email: string, password:string) -> both parameters passed should be a string
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
-import { Users } from 'src/app/models/users';
-import { Asset } from 'src/app/models/asset';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/User';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -21,32 +24,74 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-    // base string for api connection with current version of api
-    // private baseUrl = `${environment.apiURL}`;
     // base string for mock api connection
-    private baseUrl = `${environment.mockApiUrl}`;
+    private BASE_URL = `${environment.mockApiUrl}`;
+
+    // base url of api connection
+    // private BASE_URL = `${environment.API_URL}`;
+    
+
+    //Headers
+    // headers = new HttpHeaders()
+    //     .set('Access-Control-Allow-Origin', '*');
+
+    /* --------------------------------
+        USER CONNECTION STRINGS
+    ---------------------------------*/
+    // authentication url of api connection
+    private AUTH_URL = this.BASE_URL + '/auth';
+    // register url of api connection
+    private REGISTER_URL = this.AUTH_URL + '/register';
+
+    /* --------------------------------
+       FARMER CONNECTION STRINGS
+    ---------------------------------*/
+    // farmer url string piece for api connection
+    private FARMER_URL = 'farmer';
+    // farmers url string piece for api connection
+    private FARMERS_URL = '/farmers';
+    // connection string to get farmer assets
+    private farmerAssetURL = this.BASE_URL + '/assets';
+
+    /* --------------------------------
+        BOOKKEEP CONNECTION STRINGS
+    ---------------------------------*/
+    private statementsUrl = this.BASE_URL + '/incomeStatements';
+    private statementItemsUrl = this.BASE_URL + '/incomeStatementItems';
 
     /* --------------------------------
         ADMIN USER CONNECTION STRINGS
     ---------------------------------*/
-    // TODO admin
-
-    // TODO farmer
-    // used by admin to get farmer related data
-
-    // TODO user
-    private userURL = this.baseUrl + '/users'; // Define the URL for user registration
-    private loginURL = this.baseUrl + '/login'; // Define the URL for user login
 
     /* --------------------------------
-        FARMER CONNECTION STRINGS
+        USER
     ---------------------------------*/
-    private farmerAssetURL = this.baseUrl + '/assets';
+    // POST function for registering a new farmer user
+    logout(request: string) {
+        return this.http.post(
+            `${this.REGISTER_URL}/${this.FARMER_URL}`,
+            request
+        );
+    }
+
+    /* --------------------------------
+        FARMER
+    ---------------------------------*/
+    // POST function for registering a new farmer user
+    registerFarmer(newFarmer: User) {
+        console.log(`URL: ${this.REGISTER_URL}/${this.FARMER_URL}`);
+        return this.http.post(`${this.REGISTER_URL}/${this.FARMER_URL}`, newFarmer);
+    }
+
+    // POST function for a farmer to login
+    loginFarmer(loginBody: any) {
+        console.log(`${this.AUTH_URL}/${this.FARMER_URL}`)
+        return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
+    }
 
     // gets a farmer by their id
-    getFarmerUser(email: number): Observable<any> {
-        
-        return this.http.get(`${this.userURL}/${email}`);
+    getFarmerUser(userId: number): Observable<any> {
+        return this.http.get(`${this.FARMERS_URL}/${userId}`);
     }
 
     // adds a new equipment item
@@ -56,7 +101,6 @@ export class ApiService {
 
     // gets all equipment items for a farmer
     getAllEquipment() {
-        console.log(this.farmerAssetURL);
         return this.http.get(`${this.farmerAssetURL}`);
     }
 
@@ -69,12 +113,6 @@ export class ApiService {
     getEquipmentById(equipmentId: number) {
         return this.http.get(`${this.farmerAssetURL}/${equipmentId}`);
     }
-
-    /* --------------------------------
-        BOOKKEEP CONNECTION STRINGS
-    ---------------------------------*/
-    private statementsUrl = this.baseUrl + '/incomeStatements';
-    private statementItemsUrl = this.baseUrl + '/incomeStatementItems';
 
     /* --------------------------------
         BOOKKEEP / INCOME STATEMENT
@@ -95,21 +133,18 @@ export class ApiService {
         return this.http.get(`${this.statementItemsUrl}`);
     }
 
-    // get all bookkeep records based on the statement id
-    getrecordsByStatementId(statementId: number) {
+    // get all bookkeeping records based on the statement id
+    getRecordsByStatementId(statementId: number) {
         return this.http.get(`${this.statementItemsUrl}/${statementId}`);
     }
 
     // get a single income statement item
     getStatementItemById(recordId: number) {
-        // console.log(`${this.statementItemsUrl}/${recordId}`);
         return this.http.get(`${this.statementItemsUrl}/${recordId}`);
     }
 
     // add a new income statement record
     addRecord(body: any) {
-        // body.shift();
-        // console.log(body);
         return this.http.post(`${this.statementItemsUrl}`, body);
     }
 
@@ -122,45 +157,9 @@ export class ApiService {
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.statementItemsUrl}/${recordId}`);
     }
+   
 
     // get income statement records between two dates
 
     //get an income statement record from a search text
-
-    // register user
-    RegisterUser(user: any): Observable<any> {
-        // const url = '/api/v1/auth/register/farmer';
-        return this.http.post(this.userURL, user);
-    }
-    getRegisterUser(): Observable<any> {
-        // console.log(this.userURL);
-        return this.http.get(`${this.userURL}`);
-    }
-
-
-    // get record for a single user loggin in
-    // getFarmerUser(userId:number) {
-    //     // console.log(this.userURL);
-    //     return this.http.get(`${this.userURL}/${userId}`);
-    // }
-
-
-
-
-
-    /* --------------------------------
-        FARMER
-    ---------------------------------*/
-    // register user
-    registerUser(user: any): Observable<any> {
-        // Send a POST request to the user registration URL
-        return this.http.post(this.userURL, user);
-    }
-    login(email: string, password: string): Observable<any> {
-        // Create the request body with email and password
-        const body = { email, password };
-        // Send a POST request to the login URL with the provided credentials
-        return this.http.post(this.loginURL, body);
-    }
-    
 }

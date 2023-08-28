@@ -1,8 +1,8 @@
 
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Monique, Ntokozo Radebe
+    AUTHOR: Monique Nagel, Ntokozo Radebe
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 18 Aug 2023 
 
     DESCRIPTION:
     This service is for all methods related to a user
@@ -19,8 +19,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class UserService {
-    // value = 'mock-token';
-    value: any = null;
+    value = 'mock-token';
+    // value: any = null;
     // observable to store the user state
     private userState$: BehaviorSubject<string>;
 
@@ -38,5 +38,8 @@ export class UserService {
     getUserState(): Observable<any> {
         return this.userState$;
     }
-    
+
+    // used when a user logs in
+
+    // 
 }

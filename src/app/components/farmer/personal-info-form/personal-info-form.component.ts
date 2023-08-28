@@ -10,8 +10,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { ValidationsServiceService } from 'src/app/services/validation/validations-service.service';
-import { Users } from 'src/app/models/users';
+
 import { ApiService } from 'src/app/services/api/api.service';
+import { User } from 'src/app/models/User';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -28,7 +29,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     submitted = false;
 
     // stores the farmers personal information
-    personalInfo!: Users;
+    personalInfo: User[] =[];
     // stores the user id
     userId=2;
 
@@ -36,7 +37,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         private fb: FormBuilder,
         private validationsService: ValidationsServiceService,
         private progressService: ProgressService,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        
     ) {}
 
     ngOnInit() {

@@ -1,4 +1,3 @@
-
 <div class="page-body justify-center">
     <!-- <div class="col-md-6 col-sm-12 mobile-hidden">
         <img src="assets/images/background/barn.webp" alt="Avatar">
@@ -20,18 +19,19 @@
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
                 <div class="form-input" id="label">
                     <label for="equipmentName" class="form-label">
-                        Name
+                        Name of equipment
                     </label>
+                 
 
                     <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
 
                 </div>
                 <div class="form-input" id="form-label">
-                    <label for="equipmentType">Type</label>
+                    <label for="equipmentType">Type of</label>
                     <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
 
                 </div>
-       
+
 
                 <div class="form-input" id="label">
                     <label for="equipmentAge" class="form-label">
@@ -62,7 +62,7 @@
         </div>
 
 
-        
+
         <div class="content large-hidden">
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
                 <div class="form-input" id="label">
@@ -87,7 +87,7 @@
                     <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
                 </div>
 
-               <div class="form-input" id="label">
+                <div class="form-input" id="label">
                     <label for="equipmentAmount" class="form-label">
                         Purchase Amount
                     </label>
@@ -108,6 +108,6 @@
             </form>
         </div>
 
-        
-</div>
+
+    </div>
 </div>
