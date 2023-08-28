@@ -1,0 +1,278 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+-------------------------------------------------------------------------------------------------*/
+nav {
+    display: flex;
+    vertical-align: center !important;
+    /* makes the navbar fill the width of the page */
+    width: 100%;
+    /* sets teh height of the navbar */
+    height: 55px !important;
+    /* removes margins and padding from navbar */
+    margin: 0px;
+    padding: 0px;
+
+    overflow: hidden;
+    /* makes the navbar a light colour */
+    background-color: var(--light);
+
+    /* ensures that the navbar is above the background image opacity*/
+    position: relative;
+}
+
+/* changes the colour of the burger menu button to dark */
+.icon-btn {
+    color: var(--dark) !important;
+}
+
+.navbar {
+    display: flex;
+    /* puts navbar above everything else on a page*/
+    z-index: 100;
+    /* fixes navbar to the top of the page on scroll */
+    position: fixed !important;
+
+}
+
+/* styles the navbar toggle button on mobile devices */
+.navbar-toggler {
+    margin-left: 0px !important;
+    color: var(--dark);
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    padding: 0px;
+}
+
+/* changes the colour of the icon on the button */
+.icon-btn {
+    color: var(--dark) !important;
+}
+
+/* styles the left side of the navbar */
+.nav-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 100%;
+    width: 50%;
+
+    padding: var(--small-s) var(--normal-s) !important;
+}
+
+/* styles the right side of the navbar */
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    height: 100%;
+    width: 50%;
+
+    padding: var(--small-s) var(--normal-s) !important;
+}
+
+/* sets the alignment of all the elements within the navbar brand and flexes them in a single line*/
+.nav-brand {
+    display: flex;
+    vertical-align: center !important;
+    cursor: pointer;
+
+}
+
+img {
+    /* change the colour of the alternative f if the image doesn't load */
+    color: var(--secondary-colour) !important;
+    /* change the size of the agrifund logo */
+    height: var(--x-large-s) !important;
+}
+
+p,
+h1 {
+    /* removes the margins from the p and h1 tag that is set in the main styles */
+    margin: 0px !important;
+}
+
+h1 {
+    /* changes the navbar brand heading color to dark */
+    color: var(--dark) !important;
+}
+
+.icon-btn fa-icon {
+    /* changes the colour of icons  */
+    color: var(--dark) !important;
+    /* removes margins from icon on buttons */
+    margin: 0px;
+}
+
+.name-greeting {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin: 0px var(--small-s);
+}
+
+.username {
+    text-decoration: underline;
+}
+
+/* BUTTONS */
+.nav-right .btn {
+    width: 100px !important;
+
+    margin: 0px var(--small-s);
+    padding: var(--x-small-s);
+}
+
+/* adds spaace between the nabar toggle and the navbar brand */
+.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px var(--small-s);
+}
+
+/* OFFCANVAS */
+.offcanvas {
+    background-color: var(--light);
+    width: min-content;
+}
+
+.offcanvas-header,
+.offcanvas-footer {
+    padding: var(--small-s) !important;
+}
+
+.offcanvas-body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: top;
+
+    padding: 0px;
+}
+
+.offcanvas-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    height: max-content;
+}
+
+.offcanvas-footer .justify-end {
+    padding-left: var(--xx-small-s) !important;
+}
+
+.offcanvas-footer .justify-start {
+    padding-right: var(--xx-small-s) !important;
+}
+
+.offcanvas-footer .btn {
+    width: 100%;
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+    nav {
+        /* makes the navbar height shorter on smaller screens */
+        height: 45px !important;
+    }
+
+    img {
+        /* change the size of the agrifund logo */
+        height: var(--large-s) !important;
+    }
+
+    .offcanvas-body {
+        flex-direction: column;
+
+    }
+
+    .offcanvas-body,
+    .offcanvas-greeting {
+        padding: 0px var(--small-s);
+    }
+
+    hr {
+        background-color: var(--dark);
+        margin: 0px;
+    }
+
+
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+    nav {
+        /* sets the height the navbar on tablets */
+        height: 45px !important;
+    }
+
+    img {
+        /* change the size of the agrifund logo */
+        height: var(--large-s) !important;
+    }
+
+    .offcanvas-body {
+        flex-direction: column;
+
+    }
+
+    .offcanvas-body,
+    .offcanvas-greeting {
+        padding: 0px var(--small-s);
+    }
+}
+
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    img {
+        /* change the size of the agrifund logo */
+        height: var(--large-s) !important;
+    }
+
+    .offcanvas-body {
+        flex-direction: column;
+
+    }
+
+    .offcanvas-body,
+    .offcanvas-greeting {
+        padding: 0px var(--small-s);
+    }
+}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    /* hides navbar toggle button on larger screens */
+    .navbar-toggler {
+        display: none !important;
+    }
+}
+
+/*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+@media (min-width: 1281px) {
+
+    /* hides navbar toggle button on larger screens */
+    .navbar-toggler {
+        display: none !important;
+    }
+}

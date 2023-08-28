@@ -252,6 +252,7 @@ button fa-icon {
     min-height: 80% !important;
   }
 
+  /* makes the header overlay same height as header  */
   .header::before {
     min-height: 80% !important;
   }
