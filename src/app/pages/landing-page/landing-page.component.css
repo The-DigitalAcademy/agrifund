@@ -252,16 +252,17 @@ button fa-icon {
     min-height: 80% !important;
   }
 
-  .header::before {
-    min-height: 80% !important;
-  }
+  /* makes the header overlay same height as header  */
+    .header::before {
+      min-height: 80% !important;
+    }
 
-  p {
-    /* changes size of text  */
-    font-size: var(--font-medium);
-  }
+}
 
-  .content {
-    padding: 0px var(--xx-large-s) 0px 0px !important;
-  }
+.slogan {
+  /* color: var(--light) !important; */
+}
+
+.bold {
+  /* color: var(--light); */
 }

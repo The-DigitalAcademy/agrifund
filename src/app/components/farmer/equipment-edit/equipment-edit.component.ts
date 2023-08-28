@@ -6,9 +6,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Asset } from 'src/app/models/asset';
-import { ApiService } from 'src/app/services/api/api.service';
-import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { Asset } from 'src/app/_models/asset';
+import { ApiService } from 'src/app/_services/api-service/api.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
     selector: 'app-equipment-edit',
