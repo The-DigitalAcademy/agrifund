@@ -7,7 +7,7 @@
     <div class="form-container container outer-container">
       <div *ngIf="activeSlideId > 1"
       class="page-heading">
-        <h1>Tell Me about Your Farm</h1>
+        <h1>Tell Me About Your Farm</h1>
       </div>
 
       <ngb-carousel class="container inner-container" #carousel="ngbCarousel" [activeId]="'slide1'">
@@ -17,7 +17,7 @@
           <div class="justify-center">
             <img class="carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
             <h1>Welcome To AgriFund</h1>
-            <p>We are happy to to help you embark on your path to financial success.
+            <p>We are happy to help you embark on your path to financial success.
               <br>
               <br> But first we would love to hear more about your farm!
             </p>
@@ -145,35 +145,54 @@
               </div>
               <div class="container inner-container">
                 <form [formGroup]="assetForm">
+                  <div class = "equipment-container">
                   <div class="form-group">
                     <label for="equipmentName">Name of equipment</label>
                     <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
                   </div>
-                  <div class="form-group">
-                    <label for="equipmentType">Type of</label>
-                    <input formControlName="equipmentType" class="form-control" id="equipmentTypeInfa-pull-left" />
+                    <div class="form-group">
+                  <label for="equipmentType">Type of</label>
+                    <select id="equipmentType" class="form-control wide-select" formControlName="equipmentType">
+                      <option value="tractor">Tractor</option>
+                      <option value="plow">Plow</option>
+                      <option value="seedDrill">Seed Drill</option>
+                      <option value="cultivator">Cultivator</option>
+                    </select>
+                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="purchase_Amount">Purchase Amount</label>
-                    <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
-                  </div>
+                  <div class = "equip-container">
                   <div class="form-group">
                     <label for="age">Age in years</label>
                     <input formControlName="age" class="form-control" id="age" />
                   </div>
-                  <div class="form-input">
-                    <label class="form-label" for="file">Proof of ID</label>
-                    <hr>
-                    <div class="file-container">
-                      <label for="file">Upload Document</label><br>
-                      <input type="file" id="document" (change)="onFileSelected($event)" [disabled]="isDisabled">
-                    </div>
-                    <div class="button-group justify-end">
-                      <button class="view-button">View</button>
-                      <button class="replace-button">Replace</button>
-                    </div>
-                  </div>
 
+                  <div class="form-group">
+                    <label for="purchase_Amount">Purchase Amount</label>
+                    <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
+                  </div>
+                </div>
+                   <div class="form-group">
+                     <label for="proof" class="proof">Proof of Ownership</label>
+                  <div class="document-upload">
+                <div class="doc-header justify-start">
+                    <label for="recordProof">Upload Document </label>
+                    <div class="form-text">PDF, PNG, JPG</div>
+                </div>
+                <hr/>
+                <div class="file">
+                <input formControlName="recordProof" class="form-control" type="file" id="recordProof" />
+                <button 
+                    class="btn colourful-btn ">
+                    View
+                </button>
+                <button 
+                    class="btn outline-btn" >
+                    Replace
+                </button>
+                </div>
+            </div>
+            </div>
+   <hr/>
                 </form>
               </div>
             </div>
