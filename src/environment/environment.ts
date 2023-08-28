@@ -1,6 +1,5 @@
 export const environment = {
     production: false,
-    REG_URL: 'https://agrifund.tech/api/v1/auth/register/farmer',
-    LOGIN_URL: 'https://agrifund.tech/api/v1/auth/farmer',
-    API_URL: 'https://agrifund.tech/api/v1', //realApiUrl
+    // API_URL: 'https://agrifund.tech/api/v1', 
+    API_URL: "/api/v1" //completes the proxy url for the api connection
 };

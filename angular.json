@@ -61,11 +61,12 @@
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "agrifund:build:production"
+                            "browserTarget": "agrifund:build:production",
+                            "proxyConfig": "src/proxy.conf.json"
                         },
                         "development": {
-                            "browserTarget": "agrifund:build:development"
-            
+                            "browserTarget": "agrifund:build:development",
+                            "proxyConfig": "src/proxy.conf.json"
                         }
                     },
                     "defaultConfiguration": "development"

@@ -24,18 +24,13 @@ import { environment } from 'src/environment/environment';
 })
 export class ApiService {
     constructor(private http: HttpClient) {}
-
-    // base string for mock api connection
-    // private BASE_URL = `${environment.mockApiUrl}`;
-
     // base url of api connection
     private BASE_URL = `${environment.API_URL}`;
-
     //Headers
-    headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+    // headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
 
     /* --------------------------------
-        USER CONNECTION STRINGS
+        USER CONNECTION STRINGSs
     ---------------------------------*/
     private cropInfo_URL = this.BASE_URL + '/cropInfo';
     private plotInfo_URL = this.BASE_URL + '/plotInfo';
@@ -47,7 +42,9 @@ export class ApiService {
     // users url for api connection
     private USERS_URL = this.BASE_URL + '/users';
     // authenticate a farmer user
-    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';
+    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';;
+
+    private REGISTER_FARMER_URL = this.REGISTER_URL + '/farmer';
     /* --------------------------------
        FARMER CONNECTION STRINGS
     ---------------------------------*/
@@ -94,11 +91,7 @@ export class ApiService {
     ---------------------------------*/
     // POST function for registering a new farmer user
     registerFarmer(newFarmer: User) {
-        console.log(`URL: ${this.REGISTER_URL}/${this.FARMER_URL}`);
-        return this.http.post(
-            `${this.REGISTER_URL}/${this.FARMER_URL}`,
-            newFarmer
-        );
+        return this.http.post(`${this.REGISTER_FARMER_URL}`, newFarmer);
     }
 
     // gets a farmer by their id
