@@ -98,7 +98,9 @@ export class RegisterPageComponent implements OnInit {
                     .registerFarmer(this.user)
                     .subscribe((data: any) => {
                         console.log(data);
+                        this.router.navigate(['/login']);
                     })
+                    
             );
         }
     }
