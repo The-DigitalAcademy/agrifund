@@ -56,9 +56,6 @@ import { FarmerPortfolioProgressbarComponent } from './components/data-summary-c
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
-import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
-
 /* --------------------------------
     DATA SUMMARY
 ---------------------------------*/
@@ -105,8 +102,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
-import { AboutTheFarmComponent } from './pages/farm/about-the-farm/about-the-farm.component';
 import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
+import { AboutTheFarmComponent } from './pages/farm/about-the-farm/about-the-farm.component';
 
 @NgModule({
     declarations: [
@@ -133,18 +130,16 @@ import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.com
         EquipmentInfoComponent,
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
-        AboutTheFarmComponent,
         EquipmentCreateComponent,
-        TellMeAboutComponent,
         ModalContainerComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
-        BarChartComponent,
-        DonutGraphComponent,
-        AboutTheFarmComponent,
         CreateAssetComponent,
+        AboutTheFarmComponent
+      
+      
     ],
     imports: [
         BrowserModule,

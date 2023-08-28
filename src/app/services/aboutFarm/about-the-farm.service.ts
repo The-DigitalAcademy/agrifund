@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Crop } from 'src/app/models/crop';
-import { ApiService } from '../api/api.service';
-import { Plot } from 'src/app/models/plot';
-import { YouAndFarm } from 'src/app/models/you-and-farm';
+import { Crop } from 'src/app/_models/crop';
+import { ApiService } from 'src/app/_services/api-service/api.service';
+import { Plot } from 'src/app/_models/plot';
+import { YouAndFarm } from 'src/app/_models/you-and-farm';
 
 
 @Injectable({

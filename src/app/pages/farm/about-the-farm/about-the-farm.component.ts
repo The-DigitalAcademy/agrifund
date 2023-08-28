@@ -1,14 +1,16 @@
-import { YouAndFarm } from '../../../models/you-and-farm';
-import { Crop } from '../../../models/crop';
+
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Plot } from 'src/app/models/plot';
-import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
-import { ApiService } from 'src/app/services/api/api.service';
+import { Asset } from 'src/app/_models/asset';
+import { Crop } from 'src/app/_models/crop';
+import { Plot } from 'src/app/_models/plot';
+import { YouAndFarm } from 'src/app/_models/you-and-farm';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 
-import { Asset } from 'src/app/models/asset';
+import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
+
 
 @Component({
     selector: 'app-about-the-farm',
@@ -76,21 +78,21 @@ export class AboutTheFarmComponent implements OnInit {
             date: ['', Validators.required],
         });
         // Assuming you have a method in your ApiService to get registered user details
-        this._apiService.getAllEquipment(this.id).subscribe(
-            (user: any) => {
-                this.assets = user;
+        // this._apiService.getAllEquipment(this.id).subscribe(
+        //     (user: any) => {
+        //         this.assets = user;
                 // Populate the form with user details
-                this.assetForm.patchValue({
-                    equipmentName: user.name,
-                    equipmentType: user.type,
-                    age: user.age,
-                    purchase_Amount: user.purchase_price,
-                });
-            },
-            error => {
-                console.error('Error fetching user details:', error);
-            }
-        );
+        //         this.assetForm.patchValue({
+        //             equipmentName: user.name,
+        //             equipmentType: user.type,
+        //             age: user.age,
+        //             purchase_Amount: user.purchase_price,
+        //         });
+        //     },
+        //     error => {
+        //         console.error('Error fetching user details:', error);
+        //     }
+        // );
 
         this.farmForm = this.fb.group({
             address: ['', Validators.required],

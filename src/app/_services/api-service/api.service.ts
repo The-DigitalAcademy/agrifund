@@ -16,6 +16,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/_models/User';
+import { Crop } from 'src/app/_models/crop';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -36,6 +37,9 @@ export class ApiService {
     /* --------------------------------
         USER CONNECTION STRINGS
     ---------------------------------*/
+    private cropInfo_URL = this.BASE_URL + '/cropInfo';
+    private plotInfo_URL = this.BASE_URL + '/plotInfo';
+    private farmInfo_URL = this.BASE_URL + '/farmInfo';
     // authentication url of api connection
     private AUTH_URL = this.BASE_URL + '/auth';
     // register url of api connection
@@ -43,7 +47,7 @@ export class ApiService {
     // users url for api connection
     private USERS_URL = this.BASE_URL + '/users';
     // authenticate a farmer user
-    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer'
+    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';
     /* --------------------------------
        FARMER CONNECTION STRINGS
     ---------------------------------*/
@@ -169,5 +173,15 @@ export class ApiService {
     // get income statement records between two dates
 
     //get an income statement record from a search text
+
+    addCropInfo(body: any) {
+        return this.http.post(`${this.cropInfo_URL}`, body);
+    }
+    addPlotInfo(body: any) {
+        return this.http.post(`${this.plotInfo_URL}`, body);
+    }
+    addFarmInfo(body: any) {
+        return this.http.post(`${this.farmInfo_URL}`, body);
+    }
 }
 
