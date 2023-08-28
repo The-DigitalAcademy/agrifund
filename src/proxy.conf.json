@@ -1,0 +1,8 @@
+{
+    "/api":{
+        "target": "https://agrifund.tech",
+        "secure": false,
+        "changeOrigin": false,
+        "logLevel": "debug"
+    }
+}
