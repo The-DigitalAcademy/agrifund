@@ -1,0 +1,65 @@
+<!-- 
+    AUTHOR: Monique
+    CREATE DATE: 24 Jul 2023
+    UPDATED DATE: 17 Aug 2023 
+
+    DESCRIPTION:
+        This component is for the sidebar items that are called within the offcanvas or just as is for navigation.
+
+    PARAMETERS:
+        $userState -> stores the user state as an observable to keep the validity of a user token for a session
+ -->
+
+<div *ngIf="userState$; then sidebarAfterLogin; else sidebarBeforeLogin"></div>
+
+<!-- sidebar after a user has logged in -->
+<ng-template #sidebarAfterLogin>
+    <div class="sidebar-content">
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['']">
+                    <fa-icon icon="home"></fa-icon>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/dashboard']">
+                    <fa-icon icon="chart-pie"></fa-icon>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/bookkeeping']">
+                    <fa-icon icon="table"></fa-icon>
+                    <span>Bookkeeping</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/portfolio']">
+                    <fa-icon icon="address-card"></fa-icon>
+                    <span>Portfolio</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<!-- sidebar before a user is logged in -->
+<ng-template #sidebarBeforeLogin>
+    <div class="sidebar-content">
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['']">
+                    <fa-icon icon="home"></fa-icon>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/get-started']">
+                    <fa-icon icon="external-link-alt"></fa-icon>
+                    <span>Get Started</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</ng-template>

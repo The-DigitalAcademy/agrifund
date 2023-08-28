@@ -1,48 +1,61 @@
-
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/user/login/login.component';
-import { RegisterComponent } from './pages/user/register/register.component';
-import { ForgotPasswordComponent } from './pages/user/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/user/reset-password/reset-password.component';
+import { LoginPageComponent } from './pages/user-pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
+import { ForgotPasswordPageComponent } from './pages/user-pages/forgot-password-page/forgot-password-page.component';
+import { ResetPasswordPageComponent } from './pages/user-pages/reset-password-page/reset-password-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { BookkeepViewAllComponent } from './pages/bookkeep/bookkeep-view-all/bookkeep-view-all.component';
-import { PortfolioViewInfoComponent } from './pages/portfolio-view-info/portfolio-view-info.component';
+import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
 import { GetStartedPageComponent } from './pages/get-started-page/get-started-page.component';
-import { BookkeepViewRecordComponent } from './pages/bookkeep/bookkeep-view-record/bookkeep-view-record.component';
-import { PortfolioProgressbarComponent } from './components/data-summary/portfolio-progressbar/portfolio-progressbar.component';
+import { FarmerPortfolioProgressbarComponent } from './components/data-summary-components/farmer-portfolio-progressbar/farmer-portfolio-progressbar.component';
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
-
-import { BookkeepCreateComponent } from './pages/bookkeep/bookkeep-create/bookkeep-create.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BookkeepEditComponent } from './pages/bookkeep/bookkeep-edit/bookkeep-edit.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-import { TellMeAboutComponent } from './pages/tell-me-about/tell-me-about.component';
+import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeeping-edit-page/bookkeeping-edit-page.component';
+import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
+import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
+import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
+
+/* --------------------------------
+    ACCESS GUARDS
+---------------------------------*/
 
 const routes: Routes = [
-    { path: '', component: LandingPageComponent },
-    { path: 'get-started', component: GetStartedPageComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'about-farm', component: TellMeAboutComponent },
-    { path: 'forgot-password', component: ForgotPasswordComponent },
-    { path: 'reset-password', component: ResetPasswordComponent },
-    { path: 'bookkeep', component: BookkeepViewAllComponent },
-    { path: 'bookkeep/create-record', component: BookkeepCreateComponent },
     {
-        path: 'bookkeep/view-record/:id',
-        component: BookkeepViewRecordComponent,
+        path: '',
+        component: LandingPageComponent,
+        pathMatch: 'full',
     },
-    { path: 'bookkeep/edit-record/:id', component: BookkeepEditComponent },
-    { path: 'portfolio', component: PortfolioViewInfoComponent },
-    { path: 'progressbar', component: PortfolioProgressbarComponent },
+    { path: 'home', redirectTo: '', pathMatch: 'full' },
+    { path: 'get-started', component: GetStartedPageComponent },
+    { path: 'login', component: LoginPageComponent },
+    { path: 'register', component: RegisterPageComponent },
+    { path: 'about-farm', component: TellMeAboutFarmPageComponent },
+    { path: 'forgot-password', component: ForgotPasswordPageComponent },
+    { path: 'reset-password', component: ResetPasswordPageComponent },
+    { path: 'dashboard', component: DashboardPageComponent },
+    { path: 'bookkeeping', component: BookkeepingViewAllPageComponent },
+    {
+        path: 'bookkeeping/create-record',
+        component: BookkeepingCreatePageComponent,
+    },
+    {
+        path: 'bookkeeping/view-record/:id',
+        component: BookkeepingViewRecordPageComponent,
+    },
+    {
+        path: 'bookkeeping/edit-record/:id',
+        component: BookkeepingEditPageComponent,
+    },
+    { path: 'portfolio', component: PortfolioPageComponent },
+    { path: 'progressbar', component: FarmerPortfolioProgressbarComponent },
     { path: 'farm', component: DisabledformFarmInfoComponent },
     { path: 'equipment-table', component: EquipmentTableComponent },
-    { path: 'dashboard', component: DashboardComponent},
-    {  path: 'equipment-create', component: EquipmentCreateComponent },
+    { path: 'equipment-create', component: EquipmentCreateComponent },
     { path: 'equipment-edit/:id', component: EquipmentEditComponent },
     { path: 'dynamic-inputs', component: DynamicInputsComponent },
 ];

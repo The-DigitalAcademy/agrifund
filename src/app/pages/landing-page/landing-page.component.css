@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Bolebo, Monique 
+    AUTHOR: Bolebo, Monique Nagel
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 25 Aug 2023 
 -------------------------------------------------------------------------------------------------*/
 
 .page-body {
@@ -173,15 +173,15 @@ button fa-icon {
     min-height: 60% !important;
   }
 
-    .slogan span,
-    .description span {
-      padding-bottom: var(--small-s);
-    }
+  .slogan span,
+  .description span {
+    padding-bottom: var(--small-s);
+  }
 
 
-    .about-company {
-      flex-direction: column-reverse;
-    }
+  .about-company {
+    flex-direction: column-reverse;
+  }
 }
 
 /*---------------------------------
@@ -190,17 +190,17 @@ button fa-icon {
 @media (min-width: 481px) and (max-width: 767px) {
 
   .header {
-      min-height: 60% !important;
-    }
-  
-    .header::before {
-      min-height: 60% !important;
-    }
+    min-height: 60% !important;
+  }
+
+  .header::before {
+    min-height: 60% !important;
+  }
 
   .content {
     padding: var(--medium-s);
   }
-  
+
 }
 
 /*-------------------------------------------------
@@ -210,12 +210,12 @@ button fa-icon {
 
 
   .header {
-      min-height: 60% !important;
-    }
-  
-    .header::before {
-      min-height: 60% !important;
-    }
+    min-height: 60% !important;
+  }
+
+  .header::before {
+    min-height: 60% !important;
+  }
 
   .content {
     padding: var(--large-s);
@@ -227,12 +227,12 @@ button fa-icon {
 ----------------------------------------*/
 @media (min-width: 1025px) and (max-width: 1280px) {
   .header {
-      min-height: 80% !important;
-    }
-  
-    .header::before {
-      min-height: 80% !important;
-    }
+    min-height: 80% !important;
+  }
+
+  .header::before {
+    min-height: 80% !important;
+  }
 
   p {
     font-size: var(--font-medium);
@@ -252,12 +252,9 @@ button fa-icon {
     min-height: 80% !important;
   }
 
-}
+  /* makes the header overlay same height as header  */
+  .header::before {
+    min-height: 80% !important;
+  }
 
-.slogan {
-  /* color: var(--light) !important; */
-}
-
-.bold {
-  /* color: var(--light); */
 }
