@@ -1,5 +1,6 @@
 <div class="page-body justify-center">
     <div class="mobile-header"></div>
+
     <div class="container form-container">
         <div class="container-header">
             <div class="justify-start">
@@ -13,38 +14,47 @@
         </div>
         <hr />
         <div class="content mobile-hidden">
-            <form [formGroup]="assetForm" (ngSubmit)="saveEquipment()">
-                <div class="form-input" id="label">
-                    <label for="equipmentName" class="form-label">
-                        Name
-                    </label>
-
-                    <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
-
+            <form [formGroup]="equipForm" (ngSubmit)="saveEquipment()">
+               <div class="form-group">
+                    <label for="equipmentName">Name of equipment</label>
+                    <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
+                  </div>
+               <div class="form-group">
+                  <label for="equipmentType">Type of</label>
+                   <input formControlName="equipmentType" class="form-control" id="type" />
+                     </div>
+                <div class="form-group">
+                    <label for="age">Age in years</label>
+                    <input formControlName="age" class="form-control" id="age" />
+                  </div>
+                  <div class="form-group">
+                    <label for="purchase_Amount">Purchase Amount</label>
+                    <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
+                  </div>
+                 <div class="form-group">
+                     <label for="proof" class="proof">Proof of Ownership</label>
+                  <div class="document-upload">
+                <div class="doc-header justify-start">
+                    <label for="recordProof">Upload Document </label>
+                    <div class="form-text">PDF, PNG, JPG</div>
                 </div>
-                <div class="form-input" id="form-label">
-                    <label for="equipmentType">Type</label>
-                    <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
-
+                <hr/>
+                <div class="file">
+                <input formControlName="recordProof" class="form-control" type="file" id="recordProof" />
+                <button 
+                    class="btn colourful-btn ">
+                    View
+                </button>
+                <button 
+                    class="btn outline-btn" >
+                    Replace
+                </button>
                 </div>
-       
-
-                <div class="form-input" id="label">
-                    <label for="age" class="form-label">
-                        Age(years)
-                    </label>
-                    <input formControlName="age" type="text" class="form-control" id="age" />
-                </div>
-
-                <div class="form-input" id="label">
-                    <label for="purchase_Amount" class="form-label">
-                        Purchase Amount
-                    </label>
-                    <input formControlName="purchase_Amount" type="text" class="form-control" id="purchase_Amount" />
-                </div>
+            </div>
+            </div>
                 <div class="actions">
                     <div class="justify-start">
-                        <button class="btn colourful-btn btn-width left-btn" type="submit">
+                        <button class="btn colourful-btn btn-width left-btn" [routerLink]="['/slide5']">
                             Save
                         </button>
                     </div>
