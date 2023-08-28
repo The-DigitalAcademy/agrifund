@@ -40,7 +40,8 @@ export class ApiService {
     private AUTH_URL = this.BASE_URL + '/auth';
     // register url of api connection
     private REGISTER_URL = this.AUTH_URL + '/register';
-
+    // users url for api connection
+    private USERS_URL = this.BASE_URL + '/users';
     /* --------------------------------
        FARMER CONNECTION STRINGS
     ---------------------------------*/
@@ -69,12 +70,11 @@ export class ApiService {
         return this.http.post(`${this.AUTH_URL}/${this.FARMER_URL}`, loginBody);
     }
 
-    // POST function for registering a new farmer user
-    logoutUser(request: string) {
-        return this.http.post(
-            `${this.REGISTER_URL}/${this.FARMER_URL}`,
-            request
-        );
+    // TODO POST function for registering a new farmer user
+
+    // GET function to get a use by their email
+    getUserByEmail(email: string) {
+        return this.http.get(`${this.USERS_URL}/${email}`);
     }
 
     /* --------------------------------

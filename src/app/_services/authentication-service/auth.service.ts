@@ -17,7 +17,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { JwtService } from '../JWT-token-service/jwt.service';
+import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -30,8 +30,6 @@ export class AuthService {
     userState$ = new BehaviorSubject<boolean>(false);
     // stores the session token as an observable
     sessionToken$!: string | null;
-    // stores the subscription to user service
-    subscription!: Subscription;
     // stores the error message sent by the api
     errorMessage = '';
     // api response structure
@@ -117,6 +115,12 @@ export class AuthService {
         this.setUserState();
         return this.userState$;
     }
+
+    // gets the user email that was extracted from the token within the jwt service
+    getUserEmail(): string | null {
+        return this._jwtService.getUserEmail();
+    }
+
 
     // TODO
     // check if a user is an administrator

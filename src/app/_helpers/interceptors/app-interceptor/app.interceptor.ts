@@ -17,7 +17,6 @@ import {
     HttpEvent,
     HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/_services/authentication-service/auth.service';
 
 @Injectable()
@@ -27,6 +26,7 @@ export class AppInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<unknown>, next: HttpHandler) {
         const token = this._authService.getSessionToken();
 
+        // checks if token value is valid
         if (token) {
             request = request.clone({
                 url: request.url,

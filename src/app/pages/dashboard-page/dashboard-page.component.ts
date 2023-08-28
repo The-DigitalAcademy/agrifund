@@ -5,6 +5,7 @@ import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 import { ChartService } from 'src/app/_services/chart-service/chart.service';
 import { Chart } from 'chart.js';
+import { UserService } from 'src/app/_services/user-service/user.service';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -18,8 +19,13 @@ export class DashboardPageComponent implements OnInit {
     private subscription = new Subscription();
     constructor(
         private router: Router,
-        private _bookkeepingService: BookkeepingService
-    ) {}
+        private _bookkeepingService: BookkeepingService,
+        private _userService: UserService
+    ) {
+
+        this._userService.getUserByEmail();
+
+    }
 
     ngOnInit() {
         // this.subscription.add(this._bookkeepingService.setBookkeepingRecords());
