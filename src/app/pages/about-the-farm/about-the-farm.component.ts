@@ -124,9 +124,9 @@ export class AboutTheFarmComponent implements OnInit {
 
       // console.table(this.crop);
 
-      // this._apiService.addCropInfo(this.crop).subscribe(data => {
-      //   console.table(data);
-      // });
+      this._apiService.addCropInfo(this.crop).subscribe(data => {
+        console.table(data);
+      });
     }
     if (this.plotForm.valid) {
       this.plot = {
@@ -135,9 +135,9 @@ export class AboutTheFarmComponent implements OnInit {
         size: this.plotForm.get('size')?.value,
         ownership_date: this.plotForm.get('date')?.value,
       };
-      // this._apiService.addPlotInfo(this.plot).subscribe(data => {
-      //   console.table(data);
-      // });
+      this._apiService.addPlotInfo(this.plot).subscribe(data => {
+        console.table(data);
+      });
     }
 
     if (this.farmForm.valid) {
@@ -149,18 +149,11 @@ export class AboutTheFarmComponent implements OnInit {
         funding_reason: this.farmForm.get('funding_reason')?.value,
       };
 
-      // this._apiService.addYouandFarm(this.farm).subscribe(data => {
-      //   console.table(data);
-      // });
+      this._apiService.addYouandFarm(this.farm).subscribe(data => {
+        console.table(data);
+      });
     }
-      if (this.activeSlideId > this.totalSlides) {
-          // Navigate to the dashboard
-          this.router.navigate(['/dashboard']); // Update '/dashboard' with the actual route to your dashboard
-      }
-     else {
-        
-         this.carousel.next(); // Move to the next slide
-     }
+    this.carousel.next(); // Move to the next slide
   }
 
   // navigates to the previous slide

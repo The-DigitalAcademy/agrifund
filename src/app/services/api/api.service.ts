@@ -47,9 +47,9 @@ export class ApiService {
     /* --------------------------------
         ABOUT FARM STRINGS
     ---------------------------------*/
-    // private cropInfo_URL = this.cropInfo_URL + '/cropInfo';
-    // private plotInfo_URL = this.plotInfo_URL + '/plotInfo';
-    // private YouAndFarm_URL = this.YouAndFarm_URL + '/youAndFarm';
+     private cropInfo_URL = this.BASE_URL +  '/cropInfo';
+     private plotInfo_URL = this.BASE_URL + '/plotInfo';
+    private YouAndFarm_URL = this.BASE_URL + '/youAndFarm';
 
     /* --------------------------------
        FARMER CONNECTION STRINGS
@@ -195,22 +195,22 @@ export class ApiService {
         ABOUT THE FARM/CROP
     ---------------------------------*/
 
-    // addCropInfo(body: any) {
-    //     return this.http.post(`${this.cropInfoURL}`, body);
-    // }
+     addCropInfo(body: any) {
+         return this.http.post(`${this.cropInfo_URL}`, body);
+     }
 
     //     /* --------------------------------
     //        ABOUT THE FARM/PLOT
     //    ---------------------------------*/
 
-    // addPlotInfo(body: any) {
-    //     return this.http.post(`${this.plotInfoURL}`, body);
-    // }
+    addPlotInfo(body: any) {
+         return this.http.post(`${this.plotInfo_URL}`, body);
+     }
     /* --------------------------------
             ABOUT THE FARM/YOUANDFARM
         ---------------------------------*/
-    // addYouandFarm(body: any) {
-    //     return this.http.post(`${this.YouAndFarmURL}`, body);
-    // }
+     addYouandFarm(body: any) {
+         return this.http.post(`${this.YouAndFarm_URL}`, body);
+     }
 }
 
