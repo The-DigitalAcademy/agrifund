@@ -105,15 +105,6 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 
-// all interceptors go in here
-export const interceptorProviders = [
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: AppInterceptor,
-        multi: true,
-    },
-];
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -158,7 +149,9 @@ export const interceptorProviders = [
         NgbModule,
         Ng2SearchPipeModule,
     ],
-    providers: [interceptorProviders],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
     entryComponents: [BookkeepingDeleteModalContentComponent],
 })

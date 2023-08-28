@@ -17,12 +17,14 @@ export class UserService {
 
     getUserByEmail() {
         const userEmail = this._authService.getUserEmail();
+        console.log(this._authService.getSessionToken());
         if (userEmail) {
             this._apiService.getUserByEmail(userEmail).subscribe(
                 (result: any) => {
                     console.log(result);
                     // assigns the result to the structure of the api response object
                     this.user$.next(result);
+                    console.log(this._authService.getSessionToken());
 
                     return this.user$;
                 },
