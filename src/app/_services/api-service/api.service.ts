@@ -45,12 +45,13 @@ export class ApiService {
     /* --------------------------------
        FARMER CONNECTION STRINGS
     ---------------------------------*/
-    // farmer url string piece for api connection
-    private FARMER_URL = 'farmer';
     // farmers url string piece for api connection
-    private FARMERS_URL = 'farmers';
+    private FARMERS_URL = this.BASE_URL + '/farmers';
+    // farmer url string piece for api connection to get farmer information
+    private FARMER_URL = this.FARMERS_URL + '/farmer';
     // connection string to get farmer assets
     private farmerAssetURL = this.BASE_URL + '/assets';
+    //
 
     /* --------------------------------
         BOOKKEEPING CONNECTION STRINGS
@@ -72,9 +73,14 @@ export class ApiService {
 
     // TODO POST function for registering a new farmer user
 
-    // GET function to get a use by their email
-    getUserByEmail(email: string) {
-        return this.http.get(`${this.USERS_URL}/${email}`);
+    // GET function to get a user by their email
+    getUserByEmail() {
+        return this.http.get(`${this.USERS_URL}`);
+    }
+
+    // GET function to get a farmer by their email
+    getFarmerByEmail() {
+        return this.http.get(`${this.FARMER_URL}`);
     }
 
     /* --------------------------------

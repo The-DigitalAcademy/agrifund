@@ -22,7 +22,7 @@ export class DashboardPageComponent implements OnInit {
         private _bookkeepingService: BookkeepingService,
         private _userService: UserService
     ) {
-        this._userService.getUserByEmail();
+        this._userService.getFarmerByEmail();
     }
 
     ngOnInit() {

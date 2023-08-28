@@ -15,11 +15,11 @@ export class UserService {
         private _authService: AuthService
     ) {}
 
-    getUserByEmail() {
+    getFarmerByEmail() {
         const userEmail = this._authService.getUserEmail();
         console.log(this._authService.getSessionToken());
         if (userEmail) {
-            this._apiService.getUserByEmail(userEmail).subscribe(
+            this._apiService.getFarmerByEmail().subscribe(
                 (result: any) => {
                     console.log(result);
                     // assigns the result to the structure of the api response object
