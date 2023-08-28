@@ -15,6 +15,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IncomeStatement } from 'src/app/_models/IncomeStatement';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { User } from 'src/app/_models/User';
 import { environment } from 'src/environment/environment';
 
@@ -43,15 +45,15 @@ export class ApiService {
     ---------------------------------*/
     // authenticate a farmer user
     private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';
-    // conneciotn to register a farmer user 
+    // connection to register a farmer user
     private REGISTER_FARMER_URL = this.REGISTER_URL + '/farmer';
     // farmers url string piece for api connection
     private FARMERS_URL = this.BASE_URL + '/farmers';
     // farmer url string piece for api connection to get farmer information
     private FARMER_URL = this.FARMERS_URL + '/farmer';
     // connection string for farmer OTP function
-    private FARMER_OTP_URL = this.FARMERS_URL + '/otp'
-    
+    private FARMER_OTP_URL = this.FARMERS_URL + '/otp';
+
     /* --------------------------------
        FARMER PORTFOLIO CONNECTION STRINGS
     ---------------------------------*/
@@ -60,7 +62,7 @@ export class ApiService {
     //connection string for farmer crop info
     private FARMER_CROP_URL = this.BASE_URL + '/crops';
     // connection string for farmer plot info
-    private FARMER_PLOT_URL = this.BASE_URL + '/plots'
+    private FARMER_PLOT_URL = this.BASE_URL + '/plots';
     // connection string for a farmer's farm info
     private FARMER_FARM_URL = this.BASE_URL + '/farms';
 
@@ -126,19 +128,54 @@ export class ApiService {
         return this.http.get(`${this.FARMER_ASSET_URL}/${equipmentId}`);
     }
 
-    /* --------------------------------
-        BOOKKEEP / INCOME STATEMENT
-    ---------------------------------*/
-
-    // get an income statement data based on the farm id
-    getIncomeStatementsByFarm(farmId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmId}`);
+    /* ----------------------------------
+        BOOKKEEPING / INCOME STATEMENT
+    ------------------------------------*/
+    // GET function to get an income statement data based for a farm
+    getAllIncomeStatementsForFarm(farmName: string) {
+        return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmName}`);
     }
 
-    // get an income statement by their id
+    // POST function used to save an income statement
+    createIncomeStatementForFarm(farmName: string, incomeStatementBody: any) {
+        return this.http.post(
+            `${this.INCOME_STATEMENT_URL}/${farmName}`,
+            incomeStatementBody
+        );
+    }
+
+    // GET function for getting an income statement by id
     getIncomeStatementById(statementId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
+
+    // POST function for creating an income statement item/ bookkeeping record for an income statement
+    createIncomeStatementItem(statementId: number, recordItemBody: any) {
+        return this.http.post(
+            `${this.INCOME_STATEMENT_URL}/${statementId}`,
+            recordItemBody
+        );
+    }
+
+    // DELETE function to delete an income statement
+    deleteIncomeStatement(statementId: number) {
+        return this.http.delete(`${this.INCOME_STATEMENT_URL}/${statementId}`);
+    }
+
+    // PATCH function for updating an income statement item
+    updateIncomeStatementItem(recordItemId: number, recordItemBody: any) {
+        return this.http.patch(
+            `${this.INCOME_STATEMENT_URL}/${recordItemId}`,
+            recordItemBody
+        );
+    }
+
+    // DELETE function for deleting a single income statement item
+    // deleteIncomeStatementItem(statementId: number, recordItemId: number) {
+    //     return this.http.delete(
+    //         `${this.INCOME_STATEMENT_URL}/${statementId}/item/${recordItemId}`
+    //     );
+    // }
 
     // get all bookkeeping records
     getAllStatementItems() {
