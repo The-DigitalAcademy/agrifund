@@ -103,7 +103,7 @@ import {
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
-import { AboutTheFarmComponent } from './pages/farm/about-the-farm/about-the-farm.component';
+import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
 @NgModule({
     declarations: [
@@ -137,9 +137,7 @@ import { AboutTheFarmComponent } from './pages/farm/about-the-farm/about-the-far
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
         CreateAssetComponent,
-        AboutTheFarmComponent
-      
-      
+        AboutTheFarmComponent,
     ],
     imports: [
         BrowserModule,

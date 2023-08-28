@@ -8,15 +8,13 @@ import { Asset } from 'src/app/_models/asset';
     styleUrls: ['./create-asset.component.css'],
 })
 export class CreateAssetComponent {
-saveEquipment() {
-throw new Error('Method not implemented.');
-}
+    fb: any;
+    private _apiService: any;
     assets: Asset[] = [];
     id = 0;
     assetForm!: FormGroup;
-    private _apiService: any;
     ngOnInit() {
-        // Assuming you have a method in your ApiService to get registered user details
+        //  Assuming you have a method in your ApiService to get registered user details
         this._apiService.getAllEquipment(this.id).subscribe(
             (user: any) => {
                 this.assets = user;
@@ -28,9 +26,35 @@ throw new Error('Method not implemented.');
                     purchase_Amount: user.purchase_price,
                 });
             },
-          (            error: any) => {
+            (error: any) => {
                 console.error('Error fetching user details:', error);
             }
         );
+        this.assetForm = this.fb.group({
+            equipmentName: ['', Validators.required],
+            equipmentType: ['', Validators.required],
+            purchase_Amount: ['', Validators.required],
+            age: ['', Validators.required],
+            // file: ['', Validators.required],
+        });
+    }
+
+    saveEquipment() {
+        console.table(this.assets)
     }
 }
+
+
+
+//  this._apiService.getAllEquipment(this.id).subscribe(
+//             (user: any) => {
+//                 this.assets = user;
+                // Populate the form with user details
+            //     this.assetForm.patchValue({
+            //         equipmentName: user.name,
+            //         equipmentType: user.type,
+            //         age: user.age,
+            //         purchase_Amount: user.purchase_price,
+            //     });
+                 
+            // },

@@ -77,23 +77,6 @@ export class AboutTheFarmComponent implements OnInit {
             size: ['', Validators.required],
             date: ['', Validators.required],
         });
-        // Assuming you have a method in your ApiService to get registered user details
-        // this._apiService.getAllEquipment(this.id).subscribe(
-        //     (user: any) => {
-        //         this.assets = user;
-                // Populate the form with user details
-        //         this.assetForm.patchValue({
-        //             equipmentName: user.name,
-        //             equipmentType: user.type,
-        //             age: user.age,
-        //             purchase_Amount: user.purchase_price,
-        //         });
-        //     },
-        //     error => {
-        //         console.error('Error fetching user details:', error);
-        //     }
-        // );
-
         this.farmForm = this.fb.group({
             address: ['', Validators.required],
             farm_name: ['', Validators.required],
