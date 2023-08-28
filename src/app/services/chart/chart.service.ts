@@ -20,12 +20,12 @@ import { Observable } from 'rxjs';
 import { IncomeStatement } from 'src/app/models/IncomeStatement';
 
 
-
+// const API_BASE_URL = 'https://agrifund.tech/api/v1/farmers/0001180588087';
 @Injectable({
   providedIn: 'root',
 })
 export class ChartService {
-  private readonly apiUrl:string = '';
+  // private readonly apiUrl:string = 'https://agrifund.tech/api/v1/farmers/0001180588087';
 
   income: any
   expense: any
@@ -34,7 +34,7 @@ export class ChartService {
   // method to fetch data from the mock API
   Getchartinfo(): Observable<any> {
     return this.http.get<any>("http://localhost:3000/total_expense");
-    // return this.http.get<any>('${this. }')
+    // return this.http.get<amount>('${this.apiUrl}/?result=${}')
   }
 
   
@@ -63,10 +63,12 @@ export class ChartService {
   // fetch total income
   getTotalIncome(): Observable<any> {
     return this.http.get<any>("http://localhost:3000/total_income");
+  // return this.http.get<any>('${this.apiUrl}/?result=${}')
   }
   // fetch total net income (profit)
   getTotalNetIncome(): Observable<any> {
     return this.http.get<any>("http://localhost:3000/net_income");
+  // return this.http.get<any>('${this.apiUrl}/?result=${}')
   }
   // private processIncomeStatement(response: IncomeStatement): Response {
   //   return {

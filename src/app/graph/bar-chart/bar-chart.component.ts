@@ -53,6 +53,7 @@ export class BarChartComponent {
           backgroundColor: ['#5A6537'], 
         }]
       },
+      // size of the graph properties
       options: {
         responsive:true,
         maintainAspectRatio:true,
