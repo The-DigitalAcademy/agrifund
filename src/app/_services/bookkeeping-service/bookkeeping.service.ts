@@ -78,11 +78,20 @@ export class BookkeepingService {
     // get the total number of  bookkeeping records
     getTotalBookkeepingRecords(): Observable<number> {
         // each bookkeeping record is mapped to 1 and summed to the total
-        console.table(this.getAllBookkeepingRecords());
-        return this.getAllBookkeepingRecords().pipe(
-            map(() => 1),
-            reduce((total, count) => total + count, 0)
-        );
+        // console.table(this.getAllBookkeepingRecords());
+        // return this.getAllBookkeepingRecords().pipe(
+        //     map(() => 1),
+        //     reduce((total, count) => total + count, 0)
+        // );
+        let totalRecords = 0;
+
+        this._apiService.getAllStatementItems().subscribe((data: any) => {
+            this.records = data;
+            totalRecords = this.records.length;
+            this._totalBookkeepingRecords$.next(totalRecords);
+        });
+
+        return this._totalBookkeepingRecords$;
     }
 
     // loads bookkeeping data according to pagination
