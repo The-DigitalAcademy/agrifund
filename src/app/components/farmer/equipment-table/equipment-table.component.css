@@ -6,6 +6,10 @@
 fa-icon {
     color: var(--grey);
 }
+/* Additional styling for a specific container with id "container" */
+#container {
+    background-color: var(--light-1);
+}
 .file {
     display: flex;
     width: 100%;
