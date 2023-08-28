@@ -104,10 +104,14 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+<<<<<<< .merge_file_rUEa9K
 
 import { EquipmentInfoComponent } from './components/farmer/equipment-info-form/equipment-info-form.component';
 import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
 
+=======
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+>>>>>>> .merge_file_eCEJW0
 
 
 @NgModule({
@@ -139,10 +143,14 @@ import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-i
         TellMeAboutFarmPageComponent,
         ModalContainerComponent,
         EquipmentEditComponent,
+<<<<<<< .merge_file_rUEa9K
         PlotInfoFormComponent,
         
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
+=======
+        
+>>>>>>> .merge_file_eCEJW0
     ],
     imports: [
         BrowserModule,

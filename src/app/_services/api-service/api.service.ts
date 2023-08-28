@@ -91,8 +91,8 @@ export class ApiService {
     }
 
     // gets a farmer by their id
-    getFarmerUser(userId: number): Observable<any> {
-        return this.http.get(`${this.FARMERS_URL}/${userId}`);
+    getFarmerUser(){
+        return this.http.get(`${this.REGISTER_FARMER_URL}`);
     }
 
     // adds a new equipment item

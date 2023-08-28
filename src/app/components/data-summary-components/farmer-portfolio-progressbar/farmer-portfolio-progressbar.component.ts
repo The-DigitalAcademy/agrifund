@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 // import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
@@ -14,14 +15,15 @@ export class FarmerPortfolioProgressbarComponent {
     @Input() progressPercentage = 0;
 
     checklistForm!: FormGroup;
-
+   
     // hardcoded farmer id
     farmerId = 1;
 
     constructor(
         private fb: FormBuilder,
-        private _portfolioService: PortfolioService,
-        private _apiService: ApiService
+        private _portfolioService: ProgressServiceService,
+        private _apiService: ApiService,
+        
     ) {}
 
     toggleCheckbox(controlName: string) {
@@ -37,13 +39,13 @@ export class FarmerPortfolioProgressbarComponent {
     }
 
     ngOnInit() {
-        // this._portfolioService.personalInfoCompleted$.subscribe(
-        //     personalInfoCompleted => {
-        //         if (personalInfoCompleted) {
-        //             this.progressPercentage += 35;
-        //         }
-        //     }
-        // );
+        this._portfolioService.personalInfoCompleted$.subscribe(
+            personalInfoCompleted => {
+                if (personalInfoCompleted) {
+                    this.progressPercentage += 35;
+                }
+            }
+        );
 
         // this.progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
         //     if (cropInfoCompleted) {
@@ -66,12 +68,12 @@ export class FarmerPortfolioProgressbarComponent {
         });
 
         // Fetch user data from API and populate the form
-        this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: User) => {
-                // Update the checkbox
-                this.checklistForm.patchValue({
-                    personalInfo: true,
-                });
+        // this._apiService.getFarmerUser().subscribe(
+        //     (user: User) => {
+        //         // Update the checkbox
+        //         this.checklistForm.patchValue({
+        //             personalInfo: true,
+        //         });
 
                 // this.checklistForm.patchValue({
                 //     farmInfo: true,
@@ -79,10 +81,10 @@ export class FarmerPortfolioProgressbarComponent {
 
                 // Update progress based on personal info completion
                 // this.progressService.setPersonalInfoCompleted(true);
-            },
-            error => {
-                console.error('Error fetching user details:', error);
-            }
-        );
+        //     },
+        //     error => {
+        //         console.error('Error fetching user details:', error);
+        //     }
+        // );
     }
 }

@@ -31,7 +31,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     // stores the farmers personal information
     personalInfo: User[] =[];
     // stores the user id
-    userId=2;
+ 
 
     constructor(
         private fb: FormBuilder,
@@ -42,7 +42,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this._apiService.getFarmerUser(this.userId).subscribe((farmer: any) => {
+        this._apiService.getFarmerUser().subscribe((farmer: any) => {
             this.personalInfo = farmer;
             this.myForm.get('first_name')?.setValue(farmer.first_name);
             this.myForm.get('last_name')?.setValue(farmer.last_name);
