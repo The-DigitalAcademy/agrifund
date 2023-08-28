@@ -15,7 +15,6 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
 import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 
-<<<<<<< .merge_file_YuHiRO
 import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeeping-edit-page/bookkeeping-edit-page.component';
 import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
 import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
@@ -24,8 +23,6 @@ import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookke
 /* --------------------------------
     ACCESS GUARDS
 ---------------------------------*/
-=======
->>>>>>> .merge_file_1nW3o3
 
 const routes: Routes = [
     {
@@ -60,11 +57,7 @@ const routes: Routes = [
     { path: 'equipment-table', component: EquipmentTableComponent },
     { path: 'equipment-create', component: EquipmentCreateComponent },
     {path: 'equipment-edit/:id', component: EquipmentEditComponent },
-<<<<<<< .merge_file_YuHiRO
     
-=======
-
->>>>>>> .merge_file_1nW3o3
 ];
 
 @NgModule({
