@@ -37,7 +37,7 @@ export class PortfolioService {
         );
     }
 
-    // set farm infor in obaservable
+    // set farm info in observable
     setFarmInfo() {
         // api connecition for getting farmer info
         // within api connec tin assign date to behviour subject for farm info
@@ -54,12 +54,47 @@ export class PortfolioService {
     createFarmerPlotInfo(plotBody: Plot) {
         this._apiService.addPlotInfo(plotBody).subscribe(
             result => {
-                console.table(`Creates this farm data: ${plotBody}`);
+                console.table(`Creates this plot data: ${plotBody}`);
             },
             error => {
-                console.error('error occured when create new farm data');
+                console.error('error occured when create new plot data');
                 console.error(error);
             }
         );
+    }
+    setPlotInfo() {
+        // api connecition for getting plot info
+        // within api connection assign data to behaviour subject for plot info
+    }
+    // get plot info
+    getPlotInfo() {
+        // esnures that the plot info is set when get method is called
+        this.setPlotInfo();
+
+        // return the behaviour subject containing the plot info data if it is not blank
+        return this.plots;
+    }
+    createFarmerCropInfo(cropBody: Crop) {
+        this._apiService.addCropInfo(cropBody).subscribe(
+            result => {
+                console.table(`Creates this crop data: ${cropBody}`);
+            },
+            error => {
+                console.error('error occured when create new crop data');
+                console.error(error);
+            }
+        );
+    }
+    setCropInfo() {
+        // api connecition for getting crop info
+        // within api connection assign data to behaviour subject for crop info
+    }
+    // get plot info
+    getCropInfo() {
+        // esnures that the crop info is set when get method is called
+        this.setCropInfo();
+
+        // return the behaviour subject containing the crop info data if it is not blank
+        return this.crops;
     }
 }

@@ -71,8 +71,8 @@ export class AboutTheFarmComponent implements OnInit {
         });
 
         this.plotForm = this.fb.group({
-            plot_address: ['', Validators.required],
-            size: ['', Validators.required],
+            plotAddress: ['', Validators.required],
+            plotSize: ['', Validators.required],
             date: ['', Validators.required],
         });
         this.farmForm = this.fb.group({
@@ -124,15 +124,17 @@ export class AboutTheFarmComponent implements OnInit {
             });
         }
         if (this.plotForm.valid) {
+              const formInputValue = this.plotForm.value;
             this.plot = {
-                farm_id: 0,
-                plot_address: this.plotForm.get('plot_address')?.value,
-                size: this.plotForm.get('size')?.value,
-                ownership_date: this.plotForm.get('date')?.value,
+                plotAddress: formInputValue.plotAddress,
+                plotSize: formInputValue.plotSize,
+                dateOfOwnership: formInputValue.date,
             };
-            this._apiService.addPlotInfo(this.plot).subscribe(data => {
-                console.table(data);
-            });
+            this._portfolioService.createFarmerPlotInfo(this.plot);
+            console.table(this.plot);
+            // this._apiService.addPlotInfo(this.plot).subscribe(data => {
+            //     console.table(data);
+            // });
         }
 
         if (this.farmForm.valid) {
