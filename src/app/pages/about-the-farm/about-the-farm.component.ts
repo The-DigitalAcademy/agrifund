@@ -6,11 +6,9 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Asset } from 'src/app/_models/asset';
 import { Crop } from 'src/app/_models/crop';
 import { Plot } from 'src/app/_models/plot';
-import { YouAndFarm } from 'src/app/_models/you-and-farm';
+import { Farm } from 'src/app/_models/Farm';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-
-import { AboutTheFarmService } from 'src/app/services/aboutFarm/about-the-farm.service';
-
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
     selector: 'app-about-the-farm',
@@ -45,7 +43,7 @@ export class AboutTheFarmComponent implements OnInit {
     submitted = false;
     crop!: Crop;
     plot!: Plot;
-    farm!: YouAndFarm;
+    farm!: Farm;
     assets: Asset[] = [];
     id = 0;
     isLast: any;
@@ -55,8 +53,8 @@ export class AboutTheFarmComponent implements OnInit {
         private fb: FormBuilder,
         private router: Router,
         carouselConfig: NgbCarouselConfig,
-        private _aboutFarm: AboutTheFarmService,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _portfolioService: PortfolioService
     ) {
         // prevents the carousel from wrapping
         carouselConfig.wrap = false;
@@ -79,18 +77,18 @@ export class AboutTheFarmComponent implements OnInit {
         });
         this.farmForm = this.fb.group({
             address: ['', Validators.required],
-            farm_name: ['', Validators.required],
-            farm_address: ['', Validators.required],
-            years_active: ['', Validators.required],
-            num_employee: ['', Validators.required],
-            funding_reason: ['', Validators.required],
+            farmName: ['', Validators.required],
+            farmAddress: ['', Validators.required],
+            yearsActive: ['', Validators.required],
+            numEmployee: ['', Validators.required],
+            fundingReason: ['', Validators.required],
         });
         this.assetForm = this.fb.group({
             equipmentName: ['', Validators.required],
             equipmentType: ['', Validators.required],
             purchase_Amount: ['', Validators.required],
             age: ['', Validators.required],
-            file: ['', Validators.required],
+            recordProof: ['', Validators.required],
         });
 
         this.carousel.pause();
@@ -113,7 +111,7 @@ export class AboutTheFarmComponent implements OnInit {
 
         if (this.cropForm.valid) {
             this.crop = {
-                farm_id: this._aboutFarm.generateFarmId(),
+                farm_id: 0,
                 season: this.cropForm.get('seasonFarm')?.value,
                 name: this.cropForm.get('cropType')?.value,
                 type: this.cropForm.get('type')?.value,
@@ -127,7 +125,7 @@ export class AboutTheFarmComponent implements OnInit {
         }
         if (this.plotForm.valid) {
             this.plot = {
-                farm_id: this._aboutFarm.generateFarm_Id(),
+                farm_id: 0,
                 plot_address: this.plotForm.get('plot_address')?.value,
                 size: this.plotForm.get('size')?.value,
                 ownership_date: this.plotForm.get('date')?.value,
@@ -138,17 +136,24 @@ export class AboutTheFarmComponent implements OnInit {
         }
 
         if (this.farmForm.valid) {
+            const formInputValue = this.farmForm.value;
             this.farm = {
-                farm_id: this._aboutFarm.generateFarm_FarmId(),
-                farm_name: this.farmForm.get('farm_name')?.value,
-                years_active: this.farmForm.get('years_active')?.value,
-                num_employee: this.farmForm.get('num_employee')?.value,
-                funding_reason: this.farmForm.get('funding_reason')?.value,
+                farmName: formInputValue.farmName,
+                farmAddress: formInputValue.farmAddress,
+                yearsActive: formInputValue.yearsActive,
+                numEmployee: formInputValue.numEmployee,
+                address: formInputValue.address,
+                fundingReason: formInputValue.fundingReason,
             };
 
-            this._apiService.addFarmInfo(this.farm).subscribe(data => {
-                console.table(data);
-            });
+        
+
+            this._portfolioService.createFarmerFarmInfo(this.farm);
+
+
+            // this._apiService.addFarmInfo(this.farm).subscribe(data => {
+            //     console.table(data);
+            // });
         }
         this.carousel.next(); // Move to the next slide
     }

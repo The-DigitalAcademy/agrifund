@@ -21,6 +21,7 @@ import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { PortfolioService } from '../portfolio-service/portfolio.service';
 
 @Injectable({
     providedIn: 'root',
@@ -42,7 +43,8 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _jwtService: JwtService
+        private _jwtService: JwtService,
+        private _portfolioService: PortfolioService
     ) {
         this.setSessionToken();
     }
@@ -76,8 +78,15 @@ export class AuthService {
                 this._jwtService.setToken(this.apiResponse.data);
                 // sets the user login state to true
                 this.setUserState();
-                // routes to dashboard if the login was successful
-                this.router.navigate(['/dashboard']);
+                
+                if (this._portfolioService.getFarmInfo().length > 0) {
+                    // routes to dashboard if the login was successful
+                    this.router.navigate(['/dashboard']);
+                }
+                else {
+                    // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
+                    this.router.navigate(['/about-farm']);
+                }
             },
             error => {
                 console.error(`Error occurred while logging in`);

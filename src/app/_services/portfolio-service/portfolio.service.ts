@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
 import { Asset } from 'src/app/_models/asset';
+import { Farm } from 'src/app/_models/Farm';
+import { Crop } from 'src/app/_models/crop';
+import { Plot } from 'src/app/_models/plot';
 
 @Injectable({
     providedIn: 'root',
@@ -16,14 +19,47 @@ export class PortfolioService {
         //     this.assets = data;
         // });
     }
+    // stores the farmer user's farm date
+    private farms: Farm[] = [];
+    private crops: Crop[] = [];
+    private plots: Plot[] = [];
 
-    generateId() {
-        const id: number = this.assets.length;
-
-        return id;
+    // creates data for a farmers farm and sends to api
+    createFarmerFarmInfo(farmBody: Farm) {
+        this._apiService.addFarmInfo(farmBody).subscribe(
+            result => {
+                console.table(`Creates this farm data: ${farmBody}`);
+            },
+            error => {
+                console.error('error occured when create new farm data');
+                console.error(error);
+            }
+        );
     }
-    generateFarmId() {
-        const farm_id: number = this.assets.length;
-        return farm_id;
+
+    // set farm infor in obaservable
+    setFarmInfo() {
+        // api connecition for getting farmer info
+        // within api connec tin assign date to behviour subject for farm info
+    }
+
+    // get farm info
+    getFarmInfo() {
+        // esnures that the farm infor is set when get method is called
+        this.setFarmInfo();
+
+        // return the behaviour subject containing the farm info data if it is not blank
+        return this.farms;
+    }
+    createFarmerPlotInfo(plotBody: Plot) {
+        this._apiService.addPlotInfo(plotBody).subscribe(
+            result => {
+                console.table(`Creates this farm data: ${plotBody}`);
+            },
+            error => {
+                console.error('error occured when create new farm data');
+                console.error(error);
+            }
+        );
     }
 }

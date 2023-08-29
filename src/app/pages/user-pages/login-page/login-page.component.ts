@@ -77,8 +77,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
                 )
                 
             );
-
-          this.router.navigate(['/about-farm']);
         }
     }
 }

@@ -15,8 +15,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Farm } from 'src/app/_models/Farm';
 import { User } from 'src/app/_models/User';
 import { Crop } from 'src/app/_models/crop';
+import { Plot } from 'src/app/_models/plot';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -32,9 +34,6 @@ export class ApiService {
     /* --------------------------------
         USER CONNECTION STRINGS
     ---------------------------------*/
-    private cropInfo_URL = this.BASE_URL + '/cropInfo';
-    private plotInfo_URL = this.BASE_URL + '/plotInfo';
-    private farmInfo_URL = this.BASE_URL + '/farmInfo';
     // authentication url of api connection
     private AUTH_URL = this.BASE_URL + '/auth';
     // register url of api connection
@@ -46,16 +45,16 @@ export class ApiService {
         FARMER USER CONNECTION STRINGS
     ---------------------------------*/
     // authenticate a farmer user
-    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';;
-    // conneciotn to register a farmer user 
+    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';
+    // conneciotn to register a farmer user
     private REGISTER_FARMER_URL = this.REGISTER_URL + '/farmer';
     // farmers url string piece for api connection
     private FARMERS_URL = this.BASE_URL + '/farmers';
     // farmer url string piece for api connection to get farmer information
     private FARMER_URL = this.FARMERS_URL + '/farmer';
     // connection string for farmer OTP function
-    private FARMER_OTP_URL = this.FARMERS_URL + '/otp'
-    
+    private FARMER_OTP_URL = this.FARMERS_URL + '/otp';
+
     /* --------------------------------
        FARMER PORTFOLIO CONNECTION STRINGS
     ---------------------------------*/
@@ -64,7 +63,7 @@ export class ApiService {
     //connection string for farmer crop info
     private FARMER_CROP_URL = this.BASE_URL + '/crops';
     // connection string for farmer plot info
-    private FARMER_PLOT_URL = this.BASE_URL + '/plots'
+    private FARMER_PLOT_URL = this.BASE_URL + '/plots';
     // connection string for a farmer's farm info
     private FARMER_FARM_URL = this.BASE_URL + '/farms';
 
@@ -178,14 +177,19 @@ export class ApiService {
 
     //get an income statement record from a search text
 
-    addCropInfo(body: any) {
-        return this.http.post(`${this.cropInfo_URL}`, body);
+    // POST function to create crop data for a farm user
+    addCropInfo(cropBody: any) {
+        return this.http.post(`${this.FARMER_CROP_URL}`, cropBody);
     }
-    addPlotInfo(body: any) {
-        return this.http.post(`${this.plotInfo_URL}`, body);
+
+    // POST function to create plot data for a farm user
+    addPlotInfo(plotBody: Plot) {
+        return this.http.post(`${this.FARMER_PLOT_URL}`, plotBody);
     }
-    addFarmInfo(body: any) {
-        return this.http.post(`${this.farmInfo_URL}`, body);
+
+    // POST function to create farm data for a farm user
+    addFarmInfo(farmBody: Farm) {
+        return this.http.post(`${this.FARMER_FARM_URL}`, farmBody);
     }
 }
 

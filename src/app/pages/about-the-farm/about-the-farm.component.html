@@ -25,33 +25,32 @@
         <ng-template ngbSlide id="slide2">
           <div class="justify-center">
             <h2 class="justify-center">Farm</h2>
-
             <div class="container inner-container">
               <form [formGroup]="farmForm">
                 <div class="form-group">
-                  <label for="address">Where do you live?</label> <br>
+                  <label for="res_address">Where do you live?</label> <br>
                   Please enter your residential address. Might not be te same as your farm address.
-                  <input formControlName="address" class="form-control" id="addressInfa-pull-left" />
+                  <input formControlName="address" class="form-control" id="address" />
                 </div>
                 <div class="form-group">
                   <label for="farm_name">What is the name of your farm?</label>
-                  <input formControlName="farm_name" class="form-control" id="farm_nameInfa-pull-left" />
+                  <input formControlName="farmName" class="form-control" id="farmName" />
                 </div>
                 <div class="form-group">
                   <label for="farm_address">Where is your farm located?</label>
-                  <input formControlName="farm_address" class="form-control" id="farm_addressInfa-pull-left" />
+                  <input formControlName="farmAddress" class="form-control" id="farmAddress" />
                 </div>
                 <div class="form-group">
                   <label for="years_active">How many years have you been actively farming?</label>
-                  <input formControlName="years_active" class="form-control" id="years_active" />
+                  <input formControlName="yearsActive" class="form-control" id="yearsActive" />
                 </div>
                 <div class="form-group">
                   <label for="num_employee">How many people help you with your farming?</label>
-                  <input formControlName="num_employee" class="form-control" id="num_employee" />
+                  <input formControlName="numEmployee" class="form-control" id="numEmployee" />
                 </div>
                 <div class="form-group">
                   <label for="funding_reason">Why do you need funding for your farming activities?</label>
-                  <input formControlName="funding_reason" class="form-control" id="funding_reason" />
+                  <input formControlName="fundingReason" class="form-control" id="fundingReason" />
                 </div>
               </form>
             </div>
@@ -210,7 +209,7 @@
         </div>
         <div class="justify-end">
           <!-- *ngIf="slide !== last" -->
-          <button class="carousel-control-next btn icon-btn-dark" type="submit" (click)="goToNextSlide()" [disabled]="activeSlideId === totalSlides">
+          <button class="carousel-control-next btn icon-btn-dark" type="submit" (click)="goToNextSlide()">
             Next
             <fa-icon class="arrow-right" icon="arrow-right"></fa-icon>
           </button>
