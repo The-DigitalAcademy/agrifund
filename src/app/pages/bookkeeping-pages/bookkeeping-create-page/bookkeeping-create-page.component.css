@@ -43,3 +43,13 @@ h2 {
     /* adds margin to top of feedback text for input fields */
     margin-top: var(--s-small-s) !important;
 }
+
+/* changes the look of the browse button */
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Choose";
+}
+
+input {
+    /* changes the width of the file upload input fields */
+    min-width: 100%;
+}

@@ -133,11 +133,26 @@
                             <div class="form-text">PDF, PNG, JPG</div>
                         </div>
                         <hr />
-                        <input
-                            formControlName="recordProof"
-                            class="form-control"
-                            type="file"
-                            id="recordProof" />
+                        <div class="actions">
+                            <!-- where the file name will be displayed -->
+                            <div class="justify-start">
+                                <input
+                                    formControlName="recordProof"
+                                    class="form-control file-upload"
+                                    type="text"
+                                    id="recordProof"
+                                    class="file-upload"
+                                    placeholder="{{
+                                        fileName || 'No file uploaded yet.'
+                                    }}" />
+                            </div>
+                            <div class="">
+                                <button
+                                    class="btn colourful-btn btn-width right-btn">
+                                    Choose
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div
                         class="form-text text-danger"

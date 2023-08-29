@@ -1,3 +1,17 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique Nagel
+    CREATE DATE: 04 Aug 2023 
+    UPDATED DATE: 29 Aug 2023 
+
+    DESCRIPTION:
+        This file manages the capture of a new bookkeeping record's data and passes it to the  
+        bookkeeping service to be passed to the api.
+
+
+    PARAMETERS:
+        
+-------------------------------------------------------------------------------------------------*/
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +29,18 @@ export class BookkeepingCreatePageComponent implements OnInit {
     submitted = false;
     recordType: any = ['Money In', 'Money Out'];
 
-    record!: IncomeStatementItem;
+    // creates an empty instance of an income statement item to store the created record
+    record: IncomeStatementItem = {
+        id: 0,
+        statement_id: 0,
+        category: '',
+        amount: 0,
+        proof: '',
+        description: '',
+        date: '',
+    };
+    // stores the file name for an uploaded file
+    fileName = '';
 
     constructor(
         private router: Router,
@@ -25,6 +50,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        // on initialization the form croup is created
         this.createRecordForm = this.fb.group({
             recordName: ['', [Validators.required]],
             recordType: ['', [Validators.required]],
@@ -32,16 +58,25 @@ export class BookkeepingCreatePageComponent implements OnInit {
             recordProof: ['', [Validators.required]],
             recordDate: ['', [Validators.required]],
         });
+
+        // disabled the file upload input from accepting user input
+        this.createRecordForm.controls['recordProof'].disable();
     }
 
     get createRecordControl() {
         return this.createRecordForm.controls;
     }
 
+    // manges the label and name of a file that is uploaded
+    fileUpload(file: FileList) {}
+
+    // used to save a new bookkeeping record
     saveRecord() {
         this.submitted = true;
+        // creates a reusable variable to extract create form input value
         const formInputVal = this.createRecordForm.value;
         if (this.createRecordForm.valid) {
+            // adds the form data the the record object instance of incomeStatementItem
             this.record = {
                 id: 0,
                 statement_id: 0,
@@ -60,8 +95,6 @@ export class BookkeepingCreatePageComponent implements OnInit {
                 // adds the new record to the observable array after successfully adding the record
                 this._bookkeepingService.addRecord(this.record);
             });
-
-            this.router.navigate(['/bookkeeping']);
         }
     }
 }

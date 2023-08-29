@@ -22,6 +22,7 @@ import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
 import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
 import { state } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -49,7 +50,10 @@ export class BookkeepingService {
     // create incomeStatement observable
     // create income statements observable
 
-    constructor(private _apiService: ApiService) {}
+    constructor(
+        private _apiService: ApiService,
+        private router: Router
+    ) {}
 
     /*---------------------------------
         GET & SET DATA
@@ -97,21 +101,6 @@ export class BookkeepingService {
         // TODO: save a record to an income statement based on the date of the record
     }
 
-    // loads bookkeeping data according to pagination
-    // public loadBookkeepingRecords(
-    //     page: number,
-    //     recordsPerPage: number
-    // ): Observable<BookkeepingLoadData> {
-    //     return this.bookkeepingRecords$.pipe(map(records => ({
-    //         metadata: {
-    //             itemsPerPage: recordsPerPage,
-    //             page: page,
-    //             totalItems: 10,
-    //         },
-    //         data:
-    //     })));
-    // }
-
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/
@@ -150,7 +139,20 @@ export class BookkeepingService {
             proofOfReceipt: recordBody.proof,
         };
 
-        this._apiService.createIncomeStatementItem(statementId, newRecord);
+        this._apiService
+            .createIncomeStatementItem(statementId, newRecord)
+            .subscribe(
+                data => {
+                    console.log(data);
+
+                    // routes back to bookkeeping view all page is the creation of a record was successful
+                    this.router.navigate(['/bookkeeping']);
+                },
+                error => {
+                    console.error(`Error occurred while creating a new record`);
+                    console.log(error);
+                }
+            );
     }
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}
@@ -190,8 +192,20 @@ export class BookkeepingService {
     /*---------------------------------
         SEARCH & FILTER
     ----------------------------------*/
-    // TODO
-    // set the income statement date
+    // loads bookkeeping data according to pagination
+    // public loadBookkeepingRecords(
+    //     page: number,
+    //     recordsPerPage: number
+    // ): Observable<BookkeepingLoadData> {
+    //     return this.bookkeepingRecords$.pipe(map(records => ({
+    //         metadata: {
+    //             itemsPerPage: recordsPerPage,
+    //             page: page,
+    //             totalItems: 10,
+    //         },
+    //         data:
+    //     })));
+    // }
 
     //TODO
     //get income statement items by date
