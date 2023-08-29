@@ -40,16 +40,17 @@ export class BookkeepingCreatePageComponent implements OnInit {
 
     saveRecord() {
         this.submitted = true;
+        const formInputVal = this.createRecordForm.value;
         if (this.createRecordForm.valid) {
             this.record = {
-                id: this._bookkeepingService.generateRecordId(),
+                id: 0,
                 statement_id: 0,
-                description: this.createRecordForm.get('recordName')?.value,
-                category: this.createRecordForm.get('recordType')?.value,
-                amount: this.createRecordForm.get('recordAmount')?.value,
+                description: formInputVal.recordName,
+                category: formInputVal.recordType,
+                amount: formInputVal.recordAmount,
                 proof:
                     'src/assets/mock-api/bookkeeping-record-proof/' +
-                    this.createRecordForm.get('recordProof')?.value,
+                    formInputVal.recordProof,
                 date: this.createRecordForm.get('recordDate')?.value,
             };
 

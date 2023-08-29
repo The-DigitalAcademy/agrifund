@@ -36,14 +36,8 @@ export class BookkeepingService {
     private bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem[]>(
         []
     );
-    // readonly value for bookkeeping records observables to pass data components
-    // readonly bookkeepingRecords$ = this._bookkeepingRecords$.asObservable();
-
     // stores the total bookkeeping records number as a behavior subject
-    private _totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
-    // readonly value for total bookkeeping records to pass data components
-    readonly totalBookkeepingRecords$ =
-        this._totalBookkeepingRecords$.asObservable(); //
+    private totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
 
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
@@ -87,21 +81,20 @@ export class BookkeepingService {
 
     // get the total number of  bookkeeping records
     getTotalBookkeepingRecords(): Observable<number> {
-        // each bookkeeping record is mapped to 1 and summed to the total
-        // console.table(this.getAllBookkeepingRecords());
-        // return this.getAllBookkeepingRecords().pipe(
-        //     map(() => 1),
-        //     reduce((total, count) => total + count, 0)
-        // );
         let totalRecords = 0;
 
         this._apiService.getAllStatementItems().subscribe((data: any) => {
             this.records = data;
             totalRecords = this.records.length;
-            this._totalBookkeepingRecords$.next(totalRecords);
+            this.totalBookkeepingRecords$.next(totalRecords);
         });
 
-        return this._totalBookkeepingRecords$;
+        return this.totalBookkeepingRecords$;
+    }
+
+    // gets the current income statement to save the record to
+    getIncomeStatement() {
+        // TODO: save a record to an income statement based on the date of the record
     }
 
     // loads bookkeeping data according to pagination
