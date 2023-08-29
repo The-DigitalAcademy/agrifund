@@ -42,7 +42,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this._apiService.getFarmerUser().subscribe((farmer: any) => {
+        this._apiService.getFarmerByEmail().subscribe((farmer: any) => {
             this.personalInfo = farmer;
             this.myForm.get('first_name')?.setValue(farmer.first_name);
             this.myForm.get('last_name')?.setValue(farmer.last_name);
