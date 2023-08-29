@@ -50,15 +50,3 @@ export class CreateAssetComponent {
 }
 
 
-//  this._apiService.getAllEquipment(this.id).subscribe(
-//             (user: any) => {
-//                 this.assets = user;
-                // Populate the form with user details
-            //     this.assetForm.patchValue({
-            //         equipmentName: user.name,
-            //         equipmentType: user.type,
-            //         age: user.age,
-            //         purchase_Amount: user.purchase_price,
-            //     });
-                 
-            // },
