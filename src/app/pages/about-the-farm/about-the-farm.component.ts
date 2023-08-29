@@ -65,8 +65,8 @@ export class AboutTheFarmComponent implements OnInit {
 
     ngOnInit() {
         this.cropForm = this.fb.group({
-            seasonFarm: ['', Validators.required],
-            cropType: ['', Validators.required],
+            name: ['', Validators.required],
+            season: ['', Validators.required],
             type: ['', Validators.required],
         });
 
@@ -110,18 +110,16 @@ export class AboutTheFarmComponent implements OnInit {
         }
 
         if (this.cropForm.valid) {
+             const formInputValue = this.cropForm.value;
             this.crop = {
-                farm_id: 0,
-                season: this.cropForm.get('seasonFarm')?.value,
-                name: this.cropForm.get('cropType')?.value,
-                type: this.cropForm.get('type')?.value,
+                name: formInputValue.name,
+                season: formInputValue.season,
+                type: formInputValue.type,
             };
 
-            // console.table(this.crop);
-
-            this._apiService.addCropInfo(this.crop).subscribe(data => {
-                console.table(data);
-            });
+            console.table(this.crop);
+             this._portfolioService.createFarmerCropInfo(this.crop);
+        
         }
         if (this.plotForm.valid) {
               const formInputValue = this.plotForm.value;
@@ -131,7 +129,6 @@ export class AboutTheFarmComponent implements OnInit {
                 dateOfOwnership: formInputValue.date,
             };
             this._portfolioService.createFarmerPlotInfo(this.plot);
-            console.table(this.plot);
             // this._apiService.addPlotInfo(this.plot).subscribe(data => {
             //     console.table(data);
             // });

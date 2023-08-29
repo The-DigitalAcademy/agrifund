@@ -1,6 +1,5 @@
 export interface Crop {
-    farm_id: number;
-    season: string;
     name: string;
+    season: string;
     type: string;
 }
