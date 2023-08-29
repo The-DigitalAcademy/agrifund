@@ -97,4 +97,5 @@ export class PortfolioService {
         // return the behaviour subject containing the crop info data if it is not blank
         return this.crops;
     }
+    
 }
