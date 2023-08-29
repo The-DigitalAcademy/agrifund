@@ -6,32 +6,28 @@
             <div class="justify-start">
                 <h2>Add Equipment</h2>
             </div>
-            <div class="justify-end">
-                <button class="btn icon-btn close-btn" [routerLink]="['/portfolio']">
-                    <fa-icon icon="times"></fa-icon>
-                </button>
-            </div>
+           
         </div>
         <hr />
         <div class="content mobile-hidden">
-            <form [formGroup]="equipForm" (ngSubmit)="saveEquipment()">
+            <form [formGroup]="assetForm" (ngSubmit)="saveEquipment()">
                <div class="form-group">
-                    <label for="equipmentName">Name of equipment</label>
-                    <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
+                    <label for="assetName">Name of equipment</label>
+                    <input formControlName="assetName" class="form-control" id="assetName" />
                   </div>
                <div class="form-group">
-                  <label for="equipmentType">Type of</label>
-                   <input formControlName="equipmentType" class="form-control" id="type" />
+                  <label for="assetType">Type of</label>
+                   <input formControlName="assetType" class="form-control" id="assetType" />
                      </div>
                 <div class="form-group">
                     <label for="age">Age in years</label>
                     <input formControlName="age" class="form-control" id="age" />
                   </div>
                   <div class="form-group">
-                    <label for="purchase_Amount">Purchase Amount</label>
-                    <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
+                    <label for="purchasePrice">Purchase Amount</label>
+                    <input formControlName="purchasePrice" class="form-control" id="purchasePrice" />
                   </div>
-                 <div class="form-group">
+                 <!-- <div class="form-group">
                      <label for="proof" class="proof">Proof of Ownership</label>
                   <div class="document-upload">
                 <div class="doc-header justify-start">
@@ -51,10 +47,10 @@
                 </button>
                 </div>
             </div>
-            </div>
+            </div> -->
                 <div class="actions">
                     <div class="justify-start">
-                        <button class="btn colourful-btn btn-width left-btn" [routerLink]="['/slide5']">
+                        <button class="btn colourful-btn btn-width left-btn" type="submit">
                             Save
                         </button>
                     </div>

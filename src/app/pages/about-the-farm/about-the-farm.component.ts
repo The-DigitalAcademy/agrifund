@@ -88,7 +88,8 @@ export class AboutTheFarmComponent implements OnInit {
             equipmentType: ['', Validators.required],
             purchase_Amount: ['', Validators.required],
             age: ['', Validators.required],
-            recordProof: ['', Validators.required],
+          
+            
         });
 
         this.carousel.pause();

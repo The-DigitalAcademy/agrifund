@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Asset } from 'src/app/_models/asset';
 
 @Component({
@@ -7,46 +7,41 @@ import { Asset } from 'src/app/_models/asset';
     templateUrl: './create-asset.component.html',
     styleUrls: ['./create-asset.component.css'],
 })
-export class CreateAssetComponent {
-    fb: any;
-    private _apiService: any;
-    assets: Asset[] = [];
-    id = 0;
+
+export class CreateAssetComponent implements OnInit {
+    asset!: Asset;
     assetForm!: FormGroup;
-    router: any;
-    equipForm!: FormGroup;
-    ngOnInit() {
-        //  Assuming you have a method in your ApiService to get registered user details
-        // this._apiService.getAllEquipment(this.id).subscribe(
-        //     (user: any) => {
-        //         this.assets = user;
-        //         // Populate the form with user details
-        //         this.equipForm.patchValue({
-        //             equipmentName: user.name,
-        //             equipmentType: user.type,
-        //             age: user.age,
-        //             purchase_Amount: user.purchase_price,
-        //         });
-        //     },
-        //     (error: any) => {
-        //         console.error('Error fetching user details:', error);
-        //     }
-        // );
-        this.equipForm = this.fb.group({
-            equipmentName: ['', Validators.required],
-            equipmentType: ['', Validators.required],
-            purchase_Amount: ['', Validators.required],
-            age: ['', Validators.required],
-            recordProof:['', Validators.required],
-        
+    createEquipmentForm!: FormGroup;
+    submitted = false;
+    private _fb: any;
+    private _portfolioService: any;
+   
+    ngOnInit(): void {
+        this.assetForm = this._fb.group({
+            assetName: ['', [Validators.required]],
+            assetType: ['', [Validators.required]],
+            age: ['', [Validators.required]],
+            purchasePrice: ['', [Validators.required]],
+            // proofOfOwnership: ['', [Validators.required]],
         });
     }
 
+    //test if the the data filled in the form is valid
+    //also check if the data can display on the console
     saveEquipment() {
-        this.router.navigate(['/about-farm'], {
-            fragment: 'slide5',
-        });
+        if (this.assetForm.valid) {
+            const formInputValue = this.assetForm.value;
+            this.asset = {
+                assetName: formInputValue.assetName,
+                assetType: formInputValue.assetType,
+                age: formInputValue.age,
+                purchasePrice: formInputValue.purchasePrice,
+                // proofOfOwnership: formInputValue.proofOfOfOwnership,
+            };
+            this._portfolioService.createFarmerAssetInfo(this.asset);
+            console.table(this.asset)
+        }
     }
+  
 }
-
 
