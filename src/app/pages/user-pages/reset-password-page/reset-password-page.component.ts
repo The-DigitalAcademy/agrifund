@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Ntokozo Radebe
@@ -23,7 +24,7 @@ export class ResetPasswordPageComponent {
         email: new FormControl(''),
     });
 
-    constructor(private _apiService: ApiService) {} // Inject the OTP service
+    constructor(private _apiService: ApiService,private router:Router) {} // Inject the OTP service
 
     onSubmit() {
         const email = this.ResetPasswordForm.value.email??'';
@@ -32,10 +33,12 @@ export class ResetPasswordPageComponent {
             response => {
                 console.log('OTP request successful');
                 // Display a success message to the user or navigate to a confirmation page
+                 this.router.navigate(['/forgot-password']);
             },
             error => {
                 console.error('OTP request failed', error);
                 // Display an error message to the user
+
             }
         );
     }
