@@ -136,7 +136,7 @@ export class BookkeepingService {
             category: recordBody.category,
             amount: recordBody.amount,
             description: recordBody.description,
-            proofOfReceipt: recordBody.proof,
+            recordProof: recordBody.proof,
         };
 
         this._apiService
@@ -153,6 +153,11 @@ export class BookkeepingService {
                     console.log(error);
                 }
             );
+    }
+
+    // uploads proof of a record to the api
+    uploadRecordProof(incomeStatmentId: number, recordProof: File) {
+
     }
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}

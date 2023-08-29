@@ -543,6 +543,8 @@ input,
 
     background-color: var(--light);
     height: var(--xx-large-s);
+
+    padding: var(--xx-small-s) var(--small-s) ;
 }
 
 /* styling for form input fields */

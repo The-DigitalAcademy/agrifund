@@ -41,6 +41,8 @@ export class BookkeepingCreatePageComponent implements OnInit {
     };
     // stores the file name for an uploaded file
     fileName = '';
+    // stores the file to bue uploaded
+    fileToUpload!: File;
 
     constructor(
         private router: Router,
@@ -61,14 +63,38 @@ export class BookkeepingCreatePageComponent implements OnInit {
 
         // disabled the file upload input from accepting user input
         this.createRecordForm.controls['recordProof'].disable();
+        // sets the value for a record name
+        this.createRecordForm.controls['recordProof'].setValue(
+            this.getRecordProofFileName()
+        );
+    }
+
+    getRecordProofFileName() {
+        const formInputVal = this.createRecordForm.value;
+        if (!formInputVal.recordProof) {
+            return 'No file uploaded yet.';
+        } else {
+            return this.fileName;
+        }
     }
 
     get createRecordControl() {
         return this.createRecordForm.controls;
     }
 
-    // manges the label and name of a file that is uploaded
-    fileUpload(file: FileList) {}
+    onFileChange(event: any) {
+        console.log(event.target.files[0]);
+        this.fileToUpload = event.target.files[0];
+
+        // sets the file name to the uploaded files name
+        this.fileName = this.fileToUpload.name;
+        console.log(this.fileName);
+
+        // sets the value for a record name
+        this.createRecordForm.controls['recordProof'].setValue(
+            this.getRecordProofFileName()
+        );
+    }
 
     // used to save a new bookkeeping record
     saveRecord() {
@@ -83,10 +109,8 @@ export class BookkeepingCreatePageComponent implements OnInit {
                 description: formInputVal.recordName,
                 category: formInputVal.recordType,
                 amount: formInputVal.recordAmount,
-                proof:
-                    'src/assets/mock-api/bookkeeping-record-proof/' +
-                    formInputVal.recordProof,
-                date: this.createRecordForm.get('recordDate')?.value,
+                proof: formInputVal.recordProof,
+                date: formInputVal.recordDate,
             };
 
             // console.table(this.record);

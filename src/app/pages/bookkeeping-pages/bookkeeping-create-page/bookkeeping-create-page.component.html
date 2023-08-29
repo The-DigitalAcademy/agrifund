@@ -138,16 +138,19 @@
                             <div class="justify-start">
                                 <input
                                     formControlName="recordProof"
+                                    class="form-control file-input"
+                                    type="file"
+                                    id="recordProof"
+                                    (change)="this.onFileChange($event)"
+                                    #fileUpload />
+                                <input
                                     class="form-control file-upload"
                                     type="text"
-                                    id="recordProof"
-                                    class="file-upload"
-                                    placeholder="{{
-                                        fileName || 'No file uploaded yet.'
-                                    }}" />
+                                    formControlName="recordProof" />
                             </div>
-                            <div class="">
+                            <div>
                                 <button
+                                    (click)="fileUpload.click()"
                                     class="btn colourful-btn btn-width right-btn">
                                     Choose
                                 </button>

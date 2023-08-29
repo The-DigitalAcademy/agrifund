@@ -44,12 +44,12 @@ h2 {
     margin-top: var(--s-small-s) !important;
 }
 
-/* changes the look of the browse button */
-.custom-file-input:lang(en)~.custom-file-label::after {
-    content: "Choose";
-}
-
-input {
+.file-upload {
     /* changes the width of the file upload input fields */
     min-width: 100%;
+    user-select: none;
+}
+
+.file-input {
+    display: none;
 }
