@@ -104,6 +104,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
 
 @NgModule({
     declarations: [
@@ -137,6 +138,7 @@ import {
         DynamicInputsComponent,
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
+        OtpPageComponent,
     ],
     imports: [
         BrowserModule,

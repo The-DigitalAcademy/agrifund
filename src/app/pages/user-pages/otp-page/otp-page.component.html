@@ -1,13 +1,14 @@
+
 <!-- 
     AUTHOR: Ntokozo Radebe
-    CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    CREATE DATE: 29 Aug 2023
+    UPDATED DATE: 29 Aug 2023 
  -->
 <div class="page-body page-background justify-center">
     <div class="mobile-header"></div>
     <div class="container form-container">
             <!-- Reset Password Form -->
-            <form [formGroup]="ResetPasswordForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="OtpForm">
                 <!-- Form Row -->
                 <div class="row">
                     <div class="col-sm-12 resetform">
@@ -18,9 +19,7 @@
                             </div>
                             <div class="justify-end">
                                 <!-- Close Button -->
-                                <button
-                                    class="icon-btn btn-icon"
-                                    [routerLink]="['/login']">
+                                <button class="icon-btn btn-icon" [routerLink]="['/login']">
                                     <fa-icon icon="times"></fa-icon>
                                 </button>
                             </div>
@@ -28,25 +27,19 @@
 
                         <!-- Instructions for Password Reset -->
                         <p>
-                            Please enter your email, and we will send you
-                            instructions on how to reset your password.
+                            Please enter the OTP that has been sent to your email.
                         </p>
                         <br />
 
                         <!-- Email Input -->
                         <div class="form-input">
-                            <label for="email">Enter Email Address</label><br />
-                            <input
-                                formControlName="email"
-                                class="form-control between-button"
-                                id="emailinput" />
+                            <label for="email">OTP</label><br />
+                            <input formControlName="otp" class="form-control between-button" id="otpinput" />
                         </div>
 
                         <!-- Send Message Button -->
                         <div class="form-group">
-                            <button
-                                type="submit"
-                                [disabled]="!ResetPasswordForm.valid"
+                            <button type="submit" [disabled]="!OtpForm.valid"
                                 class="btn actions colourful-btn">
                                 Send Message
                             </button>
@@ -56,4 +49,3 @@
             </form>
         </div>
     </div>
-

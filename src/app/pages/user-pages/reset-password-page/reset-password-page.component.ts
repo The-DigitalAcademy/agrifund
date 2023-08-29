@@ -33,7 +33,7 @@ export class ResetPasswordPageComponent {
             response => {
                 console.log('OTP request successful');
                 // Display a success message to the user or navigate to a confirmation page
-                 this.router.navigate(['/forgot-password']);
+                 this.router.navigate(['/otp-page']);
             },
             error => {
                 console.error('OTP request failed', error);
