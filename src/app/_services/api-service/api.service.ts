@@ -191,5 +191,8 @@ export class ApiService {
     addFarmInfo(farmBody: Farm) {
         return this.http.post(`${this.FARMER_FARM_URL}`, farmBody);
     }
+    addAssetInfo(farmBody: Asset) {
+        return this.http.post(`${this.FARMER_ASSET_URL}`, farmBody);
+    }
 }
 

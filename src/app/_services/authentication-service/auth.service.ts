@@ -87,6 +87,21 @@ export class AuthService {
                     // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
                     this.router.navigate(['/about-farm']);
                 }
+                  if (this._portfolioService.getPlotInfo().length > 0) {
+                      // routes to dashboard if the login was successful
+                      this.router.navigate(['/dashboard']);
+                  } else {
+                      // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
+                      this.router.navigate(['/about-farm']);
+                  }
+                  if (this._portfolioService.getCropInfo().length > 0) {
+                      // routes to dashboard if the login was successful
+                      this.router.navigate(['/dashboard']);
+                  } else {
+                      // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
+                      this.router.navigate(['/about-farm']);
+                  }
+                
             },
             error => {
                 console.error(`Error occurred while logging in`);
