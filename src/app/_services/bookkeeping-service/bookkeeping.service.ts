@@ -21,6 +21,7 @@ import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
 import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
+import { state } from '@angular/animations';
 
 @Injectable({
     providedIn: 'root',
@@ -61,17 +62,26 @@ export class BookkeepingService {
     ----------------------------------*/
     // sets data from the api to the bookkeeping observable
     setBookkeepingRecords() {
-        this._apiService.getAllStatementItems().subscribe((data: any) => {
-            this.records = data;
-            // console.log(this.records);
-            this.records.forEach(record => {
-                this.addRecord(record);
-            });
-        });
+        this._apiService.getAllStatementItems().subscribe(
+            (data: any) => {
+                this.records = data;
+                // each record fetched from the api is added to the bookkeeping record observable
+                this.records.forEach(record => {
+                    this.addRecord(record);
+                });
+            },
+            error => {
+                console.error(
+                    `Error occurred while getting bookkeeping records`
+                );
+                console.error(error);
+            }
+        );
     }
 
     // returns all bookkeeping records within the behavior subject
     getAllBookkeepingRecords(): Observable<any> {
+        this.setBookkeepingRecords();
         return this.bookkeepingRecords$;
     }
 
@@ -134,6 +144,20 @@ export class BookkeepingService {
         this.records.push(addedRecord);
         // adds record to bookkeeping record observable
         this.bookkeepingRecords$.next(this.records);
+    }
+
+    // create a new bookkeeping record for a specific income statement
+    createNewRecord(statementId: number, recordBody: IncomeStatementItem) {
+        // adds value from the record body to the new records object that matches how the data is received by the api
+        const newRecord = {
+            date: recordBody.date,
+            category: recordBody.category,
+            amount: recordBody.amount,
+            description: recordBody.description,
+            proofOfReceipt: recordBody.proof,
+        };
+
+        this._apiService.createIncomeStatementItem(statementId, newRecord);
     }
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}

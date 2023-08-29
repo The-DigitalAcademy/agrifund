@@ -20,7 +20,7 @@ import { Injectable } from '@angular/core';
 import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -56,7 +56,7 @@ export class AuthService {
     }
 
     // gets the set session token
-    getSessionToken() { 
+    getSessionToken() {
         this.setSessionToken();
         return this.sessionToken$;
     }
