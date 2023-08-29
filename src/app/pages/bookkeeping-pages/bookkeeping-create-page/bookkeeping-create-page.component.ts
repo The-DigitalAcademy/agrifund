@@ -40,7 +40,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         date: '',
     };
     // stores the file name for an uploaded file
-    fileName = '';
+    fileName = 'No file uploaded yet.';
     // stores the file to bue uploaded
     fileToUpload!: File;
 
@@ -82,6 +82,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         return this.createRecordForm.controls;
     }
 
+    // when the chang
     onFileChange(event: any) {
         console.log(event.target.files[0]);
         this.fileToUpload = event.target.files[0];
@@ -89,11 +90,8 @@ export class BookkeepingCreatePageComponent implements OnInit {
         // sets the file name to the uploaded files name
         this.fileName = this.fileToUpload.name;
         console.log(this.fileName);
-
         // sets the value for a record name
-        this.createRecordForm.controls['recordProof'].setValue(
-            this.getRecordProofFileName()
-        );
+        this.createRecordForm.controls['recordProof'].setValue(this.fileName);
     }
 
     // used to save a new bookkeeping record

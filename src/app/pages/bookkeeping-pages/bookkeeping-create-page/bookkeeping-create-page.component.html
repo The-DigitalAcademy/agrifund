@@ -137,7 +137,6 @@
                             <!-- where the file name will be displayed -->
                             <div class="justify-start">
                                 <input
-                                    formControlName="recordProof"
                                     class="form-control file-input"
                                     type="file"
                                     id="recordProof"
@@ -146,7 +145,8 @@
                                 <input
                                     class="form-control file-upload"
                                     type="text"
-                                    formControlName="recordProof" />
+                                    formControlName="recordProof"
+                                    placeholder="{{ fileName }}" />
                             </div>
                             <div>
                                 <button
