@@ -1,7 +1,8 @@
+import { IncomeStatement } from './../../_models/IncomeStatement';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 25 Aug 2023 
+    UPDATED DATE: 29 Aug 2023 
 
     DESCRIPTION:
         This service manages all functions related to bookkeeping:
@@ -31,6 +32,10 @@ export class BookkeepingService {
     /*---------------------------------
         OBSERVABLES
     ----------------------------------*/
+    // used to store all initial values fetched from the api
+    private statements: IncomeStatementItem[] = [];
+    // will be used to store all income statement items
+    private incomeStatements$ = new BehaviorSubject<IncomeStatement[]>([]);
     // stores all the bookkeeping records
     private records: IncomeStatementItem[] = [];
     // used to store bookkeeping records as observables
@@ -39,6 +44,8 @@ export class BookkeepingService {
     );
     // stores the total bookkeeping records number as a behavior subject
     private totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
+    // 
+    
 
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
@@ -56,7 +63,54 @@ export class BookkeepingService {
     ) {}
 
     /*---------------------------------
-        GET & SET DATA
+        INCOME STATEMENTS 
+    ----------------------------------*/
+    // gets all the income statements from the api
+    getAllIncomeStatements() {}
+
+    // checks if an income statement has been created for current financial year
+    incomeStatementExist() {}
+
+    // creates a new income statement item
+    createIncomeStatement() {}
+
+    setIncomeStatement() {
+        // if the income statement exists for the current year
+        // new income statement date is created
+    }
+
+    // sets the date for an income statement
+    setIncomeStatementDate() {
+        // gets the current date
+        const today: Date = new Date();
+        // gets the current year
+        const currentYear = today.getFullYear();
+        // South African financial year starts on the 1st of march
+        const financialYearStartMonth = 2; //month of the March -> index starts at 0
+        // sets the date value as string value
+
+        // sets the default financial year
+        let financialYearStart = new Date(
+            currentYear,
+            financialYearStartMonth,
+            1
+        );
+
+        // checks if the current data is less than the financial start year
+        if (today < financialYearStart) {
+            // sets the financial data a the previous year, the month of March
+            financialYearStart = new Date(
+                currentYear - 1,
+                financialYearStartMonth,
+                1
+            );
+        }
+
+        return financialYearStart;
+    }
+
+    /*---------------------------------
+        INCOME STATEMENT ITEMS/RECORDS 
     ----------------------------------*/
     // sets data from the api to the bookkeeping observable
     setBookkeepingRecords() {
@@ -129,7 +183,7 @@ export class BookkeepingService {
     }
 
     // create a new bookkeeping record for a specific income statement
-    createNewRecord(statementId: number, recordBody: IncomeStatementItem) {
+    createNewRecord(recordBody: IncomeStatementItem) {
         // adds value from the record body to the new records object that matches how the data is received by the api
         const newRecord = {
             date: recordBody.date,
@@ -139,8 +193,9 @@ export class BookkeepingService {
             recordProof: recordBody.proof,
         };
 
+        console.table(newRecord);
         this._apiService
-            .createIncomeStatementItem(statementId, newRecord)
+            .createIncomeStatementItem(recordBody.statement_id, newRecord)
             .subscribe(
                 data => {
                     console.log(data);
@@ -156,9 +211,7 @@ export class BookkeepingService {
     }
 
     // uploads proof of a record to the api
-    uploadRecordProof(incomeStatmentId: number, recordProof: File) {
-
-    }
+    uploadRecordProof(incomeStatmentId: number, recordProof: File) {}
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}
 
