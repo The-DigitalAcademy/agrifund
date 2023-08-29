@@ -55,10 +55,12 @@ export class ChartService {
     // fetch total income
     getTotalIncome(): Observable<any> {
         return this.http.get<any>('http://localhost:3000/total_income');
+        // return this.http.get<any>('${this. }')
     }
     // fetch total net income (profit)
     getTotalNetIncome(): Observable<any> {
         return this.http.get<any>('http://localhost:3000/net_income');
+        // return this.http.get<any>('${this. }')
     }
     // private processIncomeStatement(response: IncomeStatement): Response {
     //   return {

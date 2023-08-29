@@ -6,7 +6,7 @@
 //     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
 //     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Chart, registerables } from 'chart.js/auto';
 import { ChartService } from 'src/app/_services/chart-service/chart.service';
 
