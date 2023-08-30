@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Asset } from 'src/app/_models/asset';
+import { AssetService } from 'src/app/_services/asset-service/asset.service';
 
 @Component({
     selector: 'app-create-asset',
@@ -14,7 +15,7 @@ export class CreateAssetComponent implements OnInit {
     createEquipmentForm!: FormGroup;
     submitted = false;
     private _fb: any;
-    private _portfolioService: any;
+    private _assetService: any;
     router: any;
    
     ngOnInit(): void {
@@ -33,13 +34,14 @@ export class CreateAssetComponent implements OnInit {
         if (this.assetForm.valid) {
             const formInputValue = this.assetForm.value;
             this.asset = {
+                id : 0,
                 assetName: formInputValue.assetName,
                 assetType: formInputValue.assetType,
                 purchasePrice: formInputValue.purchasePrice,
                 age: formInputValue.age,
                 // proofOfOwnership: formInputValue.proofOfOfOwnership,
             };
-            this._portfolioService.createFarmerAssetInfo(this.asset);
+            this._assetService.createFarmerAsset(this.asset);
             console.table(this.asset)
                   this.router.navigate(['/about-farm']);
         }

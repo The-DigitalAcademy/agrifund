@@ -64,6 +64,7 @@ export class EquipmentEditComponent implements OnInit {
         if (this.editEquipmentForm.valid) {
             this.asset = {
                 //keep the initial id of the record
+                id: 0,
                 assetName: this.editEquipmentForm.get('assetName')?.value,
                 assetType: this.editEquipmentForm.get('assetType')?.value,
                 age: this.editEquipmentForm.get('age')?.value,

@@ -39,6 +39,7 @@ export class EquipmentCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createEquipmentForm.valid) {
             this.asset = {
+                id:0,
                 assetName: this.createEquipmentForm.get('assetName')?.value,
                 assetType: this.createEquipmentForm.get('assetType')?.value,
                 age: this.createEquipmentForm.get('age')?.value,

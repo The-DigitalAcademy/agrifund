@@ -8,6 +8,10 @@ import { Plot } from 'src/app/_models/plot';
 import { Farm } from 'src/app/_models/Farm';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { CropService } from 'src/app/_services/crop-service/crop.service';
+import { FarmService } from 'src/app/_services/farm-service/farm.service';
+import { AssetService } from 'src/app/_services/asset-service/asset.service';
+import { PlotService } from 'src/app/_services/plot-service/plot.service';
 
 @Component({
     selector: 'app-about-the-farm',
@@ -16,25 +20,15 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
     styleUrls: ['./about-the-farm.component.css'],
 })
 export class AboutTheFarmComponent implements OnInit {
-    equipmentName: any;
-    onEditClicked(arg0: number) {
-        throw new Error('Method not implemented.');
-    }
-    isDisabled: any;
-
+    // used to refer to the bootstrap carousel on HTML
+    @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
     // stores the current active slide number -> default to first slide
     activeSlideId: number = 1;
     // stores the total slides of the carousel
     totalSlides: number = 6;
-
-    onFileSelected($event: Event) {
-        throw new Error('Method not implemented.');
-    }
-
-    // used to refer to the bootstrap carousel on HTML
-    @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
     // sets the first slide as the active slide
     slides: any = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5'];
+
     cropForm!: FormGroup;
     plotForm!: FormGroup;
     farmForm!: FormGroup;
@@ -53,7 +47,11 @@ export class AboutTheFarmComponent implements OnInit {
         private router: Router,
         carouselConfig: NgbCarouselConfig,
         private _apiService: ApiService,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _cropService: CropService,
+        private _plotService: PlotService,
+        private _farmService: FarmService,
+        private _assetService: AssetService
     ) {
         // prevents the carousel from wrapping
         carouselConfig.wrap = false;
@@ -79,15 +77,15 @@ export class AboutTheFarmComponent implements OnInit {
             farmName: ['', Validators.required],
             farmAddress: ['', Validators.required],
             yearsActive: ['', Validators.required],
-            numEmployee: ['', Validators.required],
-            fundingReason: ['', Validators.required],
+           numberOfEmployees: ['', Validators.required],
+            farmingReason: ['', Validators.required],
         });
         this.assetForm = this.fb.group({
             assetName: ['', Validators.required],
             assetType: ['', Validators.required],
             purchasePrice: ['', Validators.required],
             age: ['', Validators.required],
-        }); 
+        });
 
         this.carousel.pause();
     }
@@ -110,22 +108,25 @@ export class AboutTheFarmComponent implements OnInit {
         if (this.cropForm.valid) {
             const formInputValue = this.cropForm.value;
             this.crop = {
+                id: 0,
                 name: formInputValue.name,
                 season: formInputValue.season,
                 type: formInputValue.type,
+                farm_id: this._portfolioService.getFarmId(),
             };
 
             console.table(this.crop);
-            this._portfolioService.createFarmerCropInfo(this.crop);
+            this._cropService.createFarmerCrop(this.crop);
         }
         if (this.plotForm.valid) {
             const formInputValue = this.plotForm.value;
             this.plot = {
+                id: 0,
                 plotAddress: formInputValue.plotAddress,
                 plotSize: formInputValue.plotSize,
                 dateOfOwnership: formInputValue.date,
             };
-            this._portfolioService.createFarmerPlotInfo(this.plot);
+            this._plotService.createFarmerPlot(this.plot);
             // this._apiService.addPlotInfo(this.plot).subscribe(data => {
             //     console.table(data);
             // });
@@ -137,12 +138,13 @@ export class AboutTheFarmComponent implements OnInit {
                 farmName: formInputValue.farmName,
                 farmAddress: formInputValue.farmAddress,
                 yearsActive: formInputValue.yearsActive,
-                numEmployee: formInputValue.numEmployee,
+                numberOfEmployees: formInputValue.numberOfEmployees,
                 address: formInputValue.address,
-                fundingReason: formInputValue.fundingReason,
+                farmingReason: formInputValue.farmingReason,
             };
 
-            this._portfolioService.createFarmerFarmInfo(this.farm);
+            this._farmService.createFarmerFarm(this.farm);
+            console.log(this.farm);
 
             // this._apiService.addFarmInfo(this.farm).subscribe(data => {
             //     console.table(data);
@@ -150,15 +152,15 @@ export class AboutTheFarmComponent implements OnInit {
         }
         if (this.assetForm.valid) {
             const formInputValue = this.assetForm.value;
-            this.asset= {
+            this.asset = {
+                id: 0,
                 assetName: formInputValue.assetName,
                 assetType: formInputValue.assetType,
                 purchasePrice: formInputValue.purchasePrice,
                 age: formInputValue.age,
                 // proofOfOwnership: formInputValue.proofOfOfOwnership,
             };
-            this._portfolioService.createFarmerAssetInfo(this.asset);
-        
+            this._assetService.createFarmerAsset(this.asset);
         }
         if (this.activeSlideId === this.totalSlides) {
             // All slides have been filled out, navigate to the dashboard
@@ -167,6 +169,7 @@ export class AboutTheFarmComponent implements OnInit {
             this.carousel.next(); // Move to the next slide
         }
     }
+
     // navigates to the previous slide
     goToPreviousSlide() {
         if (this.activeSlideId != 1) {
@@ -179,4 +182,5 @@ export class AboutTheFarmComponent implements OnInit {
     //     // Assuming your assets array is available in this component
     //     return this.assetForm;
     // }
+
 }

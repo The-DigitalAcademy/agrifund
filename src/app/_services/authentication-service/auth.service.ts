@@ -1,3 +1,5 @@
+import { Crop } from 'src/app/_models/crop';
+import { PlotService } from './../plot-service/plot.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 21 Aug 2023 
@@ -22,6 +24,9 @@ import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
+import { FarmService } from '../farm-service/farm.service';
+import { CropService } from '../crop-service/crop.service';
+import { AssetService } from '../asset-service/asset.service';
 
 @Injectable({
     providedIn: 'root',
@@ -44,7 +49,11 @@ export class AuthService {
         private router: Router,
         private _apiService: ApiService,
         private _jwtService: JwtService,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _farmService: FarmService,
+        private _cropService: CropService,
+        private _plotService: PlotService,
+        private _assetService: AssetService
     ) {
         this.setSessionToken();
     }
@@ -79,7 +88,7 @@ export class AuthService {
                 // sets the user login state to true
                 this.setUserState();
                 
-                if (this._portfolioService.getFarmInfo().length > 0) {
+                if (this._farmService.getFarmInfo().length > 0) {
                     // routes to dashboard if the login was successful
                     this.router.navigate(['/dashboard']);
                 }
@@ -87,21 +96,29 @@ export class AuthService {
                     // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
                     this.router.navigate(['/about-farm']);
                 }
-                  if (this._portfolioService.getPlotInfo().length > 0) {
+                  if (this._plotService.getPlotInfo().length > 0) {
                       // routes to dashboard if the login was successful
                       this.router.navigate(['/dashboard']);
                   } else {
                       // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
                       this.router.navigate(['/about-farm']);
                   }
-                  if (this._portfolioService.getCropInfo().length > 0) {
-                      // routes to dashboard if the login was successful
-                      this.router.navigate(['/dashboard']);
-                  } else {
+            this._cropService.getCropInfo().subscribe((crops) => {
+            if (crops.length > 0) {
+                this.router.navigate(['/dashboard']);
+            } else {
+                this.router.navigate(['/about-farm']);
+            }
+        });
+                
+                //   if (this._cropService.getCropInfo().length > 0) {
+                //       // routes to dashboard if the login was successful
+                //       this.router.navigate(['/dashboard']);
+                //   } else {
                       // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
-                      this.router.navigate(['/about-farm']);
-                  }
-                   if (this._portfolioService.getAssetInfo().length > 0) {
+                //       this.router.navigate(['/about-farm']);
+                //   }
+                   if (this._assetService.getAssetInfo().length > 0) {
                        // routes to dashboard if the login was successful
                        this.router.navigate(['/dashboard']);
                    } else {
