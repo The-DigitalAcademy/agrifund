@@ -33,7 +33,7 @@ export class ExpensesBarChartComponent {
                 }
                 this.RenderChart(this.total_expense);
             }
-            // console.log(this.total_expense)
+            console.log(this.total_expense)
         });
 
         // this.RenderChart();
