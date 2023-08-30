@@ -97,5 +97,28 @@ export class PortfolioService {
         // return the behaviour subject containing the crop info data if it is not blank
         return this.crops;
     }
-    
+
+    createFarmerAssetInfo(assetBody: Crop) {
+        this._apiService.addCropInfo(assetBody).subscribe(
+            result => {
+                console.table(`Creates this asset data: ${assetBody}`);
+            },
+            error => {
+                console.error('error occured when create new asset data');
+                console.error(error);
+            }
+        );
+    }
+    setAssetInfo() {
+        // api connecition for getting asset info
+        // within api connection assign data to behaviour subject for asset info
+    }
+    // get plot info
+    getAssetInfo() {
+        // esnures that the crop info is set when get method is called
+        this.setAssetInfo();
+
+        // return the behaviour subject containing the crop info data if it is not blank
+        return this.assets;
+    }
 }
