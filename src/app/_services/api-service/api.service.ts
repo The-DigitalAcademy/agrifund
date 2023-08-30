@@ -76,8 +76,6 @@ export class ApiService {
     ---------------------------------*/
     // POST function for a farmer to login
     loginUser(loginBody: any) {
-        // console.log(this.LOGIN_URL);
-        console.log('base url: ' + this.BASE_URL);
         return this.http.post(`${this.LOGIN_URL}`, loginBody);
     }
 
@@ -225,21 +223,74 @@ export class ApiService {
     /* --------------------------------
         FARMER CROP REQUESTS
     ---------------------------------*/
+    // GET function to get a crop by id
+    getCropById(cropId: number) {
+        return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
+    }
 
+    // PUT function to update a farmer's crop info
+    updateCrop(cropId: number, cropBody: any) {
+        return this.http.put(`${this.FARMER_CROP_URL}/${cropId}`, cropBody);
+    }
+
+    // DELETE function for a farmer's crop
+    deleteCrop(cropId: number) {
+        return this.http.delete(`${this.FARMER_CROP_URL}/${cropId}`);
+    }
+
+    // POST function for creating a new crop for a farmer
+    addCrop(farmName: string, cropBody: any) {
+        return this.http.post(`${this.FARMER_CROP_URL}/${farmName}`, cropBody);
+    }
+
+    // GET function to get all farmer crops
+    getAllCrops(farmName: string) {
+        return this.http.get(`${this.FARMER_CROP_URL}/${farmName}`);
+    }
     /* --------------------------------
         FARMER PLOT REQUESTS
     ---------------------------------*/
+    // GET function to get a plot by id
+    getPlotById(plotId: number) {
+        return this.http.get(`${this.FARMER_PLOT_URL}/${plotId}`);
+    }
 
+    // PUT function to update a farmer's plot data
+    updatePlot(plotId: number, plotBody: any) {
+        return this.http.put(`${this.FARMER_PLOT_URL}/${plotId}`, plotBody);
+    }
+
+    // DELETE function to delete a farmer's plot data
+    deletePlot(plotId: number) {
+        return this.http.delete(`${this.FARMER_PLOT_URL}/${plotId}`);
+    }
+
+    // POST function to create a new plot for a farmer
+    addPlot(farmName: string, plotBody: any) {
+        return this.http.post(`${this.FARMER_PLOT_URL}/${farmName}`, plotBody);
+    }
+
+    // PATCH function to upload proof of plot ownership
+    uploadPlotOwnershipProof(plotId: number, ownershipProof: File) {
+        return this.http.patch(
+            `${this.FARMER_PLOT_URL}/${plotId}`,
+            ownershipProof
+        );
+    }
+
+    // GET function to get all plots for a farmer
+    getAllPlots(farmName: string) {
+        return this.http.get(`${this.FARMER_PLOT_URL}/${farmName}`);
+    }
     /* ----------------------------------------
         BOOKKEEPING INCOME STATEMENT REQUESTS
     ------------------------------------------*/
-
-    // get an income statement data based on the farm id
+    // GET all an income statement data based on the farm id
     getIncomeStatementsByFarm(farmId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmId}`);
     }
 
-    // get an income statement by their id
+    // GET an income statement by their id
     getIncomeStatementById(statementId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
@@ -274,7 +325,7 @@ export class ApiService {
         return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
     }
 
-    // get income statement records between two dates
-
-    //get an income statement record from a search text
+    /* --------------------------------------------
+        BOOKKEEPING INCOME STATEMENT ITEM REQUESTS
+    ----------------------------------------------*/
 }
