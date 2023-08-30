@@ -92,12 +92,11 @@ export class RegisterPageComponent implements OnInit {
             // Call the API service to register the user
             this.subscription.add(
                 this._apiService
-                    .registerFarmer(this.user)
+                    .registerUser(this.user)
                     .subscribe((data: any) => {
                         console.log(data);
                         this.router.navigate(['/login']);
                     })
-                    
             );
         }
     }

@@ -64,25 +64,5 @@ export class FarmerPortfolioProgressbarComponent {
             equipmentInfo: [false],
             bookkeepingInfo: [false],
         });
-
-        // Fetch user data from API and populate the form
-        this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: User) => {
-                // Update the checkbox
-                this.checklistForm.patchValue({
-                    personalInfo: true,
-                });
-
-                // this.checklistForm.patchValue({
-                //     farmInfo: true,
-                // });
-
-                // Update progress based on personal info completion
-                // this.progressService.setPersonalInfoCompleted(true);
-            },
-            error => {
-                console.error('Error fetching user details:', error);
-            }
-        );
     }
 }

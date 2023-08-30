@@ -49,9 +49,9 @@ export class EquipmentCreateComponent implements OnInit {
             };
 
             console.table(this.asset);
-            this._apiService.addEquipment(this.asset).subscribe(data => {
-                console.table(data);
-            });
+            // this._apiService.addAsset(this.asset).subscribe(data => {
+            //     console.table(data);
+            // });
 
             this.router.navigate(['/portfolio']);
         }

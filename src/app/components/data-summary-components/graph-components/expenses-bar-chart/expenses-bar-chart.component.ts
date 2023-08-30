@@ -25,7 +25,7 @@ export class ExpensesBarChartComponent {
     net_income: any = [];
 
     ngOnInit(): void {
-        this.chartService.Getchartinfo().subscribe(result => {
+        this.chartService.getFarmerByEmail().subscribe(result => {
             this.chartdata = result;
             if (this.chartdata != null) {
                 for (let i = 0; i < this.chartdata.length; i++) {
