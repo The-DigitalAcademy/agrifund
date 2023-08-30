@@ -45,6 +45,10 @@ export class ApiService {
     ---------------------------------*/
     // farmers url string piece for api connection
     private FARMERS_URL = this.BASE_URL + '/farmers';
+    // farmer url string piece for api connection
+    private FARMER_URL = this.FARMERS_URL + '/farmer';
+    // farmer url string piece to get otp
+    private FARMER_OTP_URL = this.FARMERS_URL + '/otp';
     // farmers portfolio api connection string
     private FARMERS_PORTFOLIO_URL = this.FARMERS_URL + '/portfolio';
     /* --------------------------------
@@ -82,7 +86,7 @@ export class ApiService {
     }
 
     /* --------------------------------
-        USER
+        USER REQUESTS
     ---------------------------------*/
     // GET function to get a user by their email -> ADMIN USE!
     getUserByEmail(userEmail: string) {
@@ -105,7 +109,7 @@ export class ApiService {
     }
 
     /* --------------------------------
-        FARMER
+        FARMER REQUESTS
     ---------------------------------*/
     // GET function to get all farmers -> ADMIN USE
     getAllFarmers() {
@@ -125,10 +129,36 @@ export class ApiService {
         );
     }
 
-    // GET function to get a farmer's portfolio
+    // GET function to get a farmer's portfolio data
     getFarmerPortfolio() {
         return this.http.get(`${this.FARMERS_PORTFOLIO_URL}`);
     }
+
+    // GET function to get an OTP for a farmer
+    getFarmerOTP(farmerEmail: string) {
+        return this.http.get(`${this.FARMER_OTP_URL}/${farmerEmail}`);
+    }
+
+    // GET function to get a farmer by their id number -> ADMIN USE!
+    getFarmerID(farmerId: string) {
+        return this.http.get(`${this.FARMER_URL}/${farmerId}`);
+    }
+
+    /* --------------------------------
+        FARMER FARM REQUESTS
+    ---------------------------------*/
+
+    /* --------------------------------
+        FARMER ASSET REQUESTS
+    ---------------------------------*/
+
+    /* --------------------------------
+        FARMER CROP REQUESTS
+    ---------------------------------*/
+
+    /* --------------------------------
+        FARMER PLOT REQUESTS
+    ---------------------------------*/
 
     // gets a farmer by their id
     getFarmerUser(userId: number): Observable<any> {
@@ -155,9 +185,9 @@ export class ApiService {
         return this.http.get(`${this.FARMER_ASSET_URL}/${equipmentId}`);
     }
 
-    /* --------------------------------
-        BOOKKEEP / INCOME STATEMENT
-    ---------------------------------*/
+    /* ----------------------------------------
+        BOOKKEEPING INCOME STATEMENT REQUESTS
+    ------------------------------------------*/
 
     // get an income statement data based on the farm id
     getIncomeStatementsByFarm(farmId: number) {
