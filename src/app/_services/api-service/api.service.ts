@@ -24,7 +24,7 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
     // base url of api connection
-    private BASE_URL = `${environment.API_URL}`;
+    private BASE_URL = environment.API_URL;
     //Headers
     // headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
 
@@ -71,6 +71,8 @@ export class ApiService {
     ---------------------------------*/
     // POST function for a farmer to login
     loginUser(loginBody: any) {
+        // console.log(this.LOGIN_URL);
+        console.log('base url: ' + this.BASE_URL);
         return this.http.post(`${this.LOGIN_URL}`, loginBody);
     }
 
@@ -110,11 +112,6 @@ export class ApiService {
         return this.http.get(`${this.FARMERS_URL}`);
     }
 
-    // GET function to get a farmer's portfolio
-    getFarmerPortfolio() {
-        return this.http.get(`${this.FARMERS_PORTFOLIO_URL}`);
-    }
-
     // PUT function to update a farmers details
     updateFarmerInfo(farmerInfoBody: any) {
         return this.http.put(`${this.FARMERS_URL}`, farmerInfoBody);
@@ -126,6 +123,11 @@ export class ApiService {
             `${this.FARMERS_URL}/${farmerEmail}`,
             passwordResetBody
         );
+    }
+
+    // GET function to get a farmer's portfolio
+    getFarmerPortfolio() {
+        return this.http.get(`${this.FARMERS_PORTFOLIO_URL}`);
     }
 
     // gets a farmer by their id
