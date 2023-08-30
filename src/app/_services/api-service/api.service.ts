@@ -334,6 +334,14 @@ export class ApiService {
         );
     }
 
+    // PATCH function to upload proof for a bookkeeping record/ income statement item
+    uploadRecordProof(recordId: number, recordProof: File) {
+        return this.http.patch(
+            `${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`,
+            recordProof
+        );
+    }
+
     // DELETE a bookkeeping record
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);

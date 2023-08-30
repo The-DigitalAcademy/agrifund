@@ -27,6 +27,7 @@ import { User } from 'src/app/_models/User';
 import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from './../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
+import { IncomeStatementService } from '../income-statement-service/income-statement.service';
 
 @Injectable({
     providedIn: 'root',
@@ -191,6 +192,36 @@ export class BookkeepingService {
     /*---------------------------------
         UPDATE DATA
     ----------------------------------*/
+    // update a bookkeeping record
+    updateBookkeepingRecord(record: IncomeStatementItem, recordProof: File) {
+        const recordBody = {
+            statement_id: record.statement_id,
+            category: record.category,
+            amount: record.amount,
+            description: '',
+            date: '',
+        };
+
+        // updates bookkeeping record data
+        this._apiService.updateRecord(record.id, recordBody).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                error.console(`Error in updating income statement item`, error);
+            }
+        );
+
+        // uploads bookkeeping record proof
+        this._apiService.uploadRecordProof(record.id, recordProof).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                error.console(`Error uploading proof for a record`, error);
+            }
+        );
+    }
 
     /*---------------------------------
         DELETE DATA
