@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { Asset } from '../../../_models/asset';
+import { Asset } from '../../../_models/Asset';
 import { PortfolioService } from '../../../_services/portfolio-service/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -40,7 +40,7 @@ export class EquipmentCreateComponent implements OnInit {
         if (this.createEquipmentForm.valid) {
             this.asset = {
                 id: this._portfolioServiceService.generateId(),
-                farm_id: this._portfolioServiceService.generateFarmId(),
+                // farm_id: this._portfolioServiceService.generateFarmId(),
                 name: this.createEquipmentForm.get('equipmentName')?.value,
                 type: this.createEquipmentForm.get('equipmentType')?.value,
                 age: this.createEquipmentForm.get('equipmentAge')?.value,

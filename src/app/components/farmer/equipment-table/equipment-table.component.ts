@@ -3,7 +3,7 @@
     ---------------------------------*/
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+import { Asset } from 'src/app/_models/Asset';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({

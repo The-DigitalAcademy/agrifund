@@ -6,7 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+import { Asset } from 'src/app/_models/Asset';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
@@ -65,7 +65,7 @@ export class EquipmentEditComponent implements OnInit {
             this.asset = {
                 //keep the initial id of the record
                 id: this.asset.id,
-                farm_id: this.asset.farm_id,
+                // farm_id: this.asset.farm_id,
                 name: this.editEquipmentForm.get('equipmentName')?.value,
                 type: this.editEquipmentForm.get('equipmentType')?.value,
                 age: this.editEquipmentForm.get('equipmentAge')?.value,

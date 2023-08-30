@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { Asset } from 'src/app/_models/asset';
+import { Asset } from 'src/app/_models/Asset';
 
 @Injectable({
     providedIn: 'root',
@@ -25,5 +25,13 @@ export class PortfolioService {
     generateFarmId() {
         const farm_id: number = this.assets.length;
         return farm_id;
+    }
+
+    getFarmId() {
+        
+    }
+
+    getFarmName() { 
+
     }
 }

@@ -7,11 +7,12 @@
     Model for bookkeeping record income statements
 
 -------------------------------------------------------------------------------------------------*/
+import { IncomeStatementItem } from './IncomeStatementItem';
 
 export interface IncomeStatement {
     farm_id: number;
     statement_date: string;
     total_income: number;
     total_expenses: number;
-    net_income: number;
+    incomeStatementItems: IncomeStatementItem[];
 }
