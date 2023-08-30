@@ -149,6 +149,10 @@ export class ApiService {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
 
+    /* -------------------------------------
+        BOOKKEEPING / INCOME STATEMENT ITEM
+    ---------------------------------------*/
+
     // POST function for creating an income statement item/ bookkeeping record for an income statement
     createIncomeStatementItem(statementId: number, recordItemBody: any) {
         return this.http.post(

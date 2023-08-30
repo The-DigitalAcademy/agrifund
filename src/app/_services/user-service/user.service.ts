@@ -13,7 +13,10 @@ export class UserService {
     constructor(
         private _apiService: ApiService,
         private _authService: AuthService
-    ) {}
+    ) {
+        // when the service is first call it will set the farmers info
+        this.getFarmerByEmail();
+    }
 
     getFarmerByEmail() {
         const userEmail = this._authService.getUserEmail();
@@ -33,5 +36,12 @@ export class UserService {
                 console.error(`Error occurred while getting a user, ${error}`);
             }
         );
+    }
+
+    getFarmName() {
+        const farmName = 'My Farm'
+        // get farm name by using a pipe to extract it from the observable
+        // this.user$
+        return farmName;
     }
 }

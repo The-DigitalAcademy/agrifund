@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/_services/user-service/user.service';
 import { IncomeStatement } from './../../_models/IncomeStatement';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
@@ -24,6 +25,8 @@ import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
 import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
 import { state } from '@angular/animations';
 import { Router } from '@angular/router';
+import { User } from 'src/app/_models/User';
+import { UserService } from '../user-service/user.service';
 
 @Injectable({
     providedIn: 'root',
@@ -33,7 +36,7 @@ export class BookkeepingService {
         OBSERVABLES
     ----------------------------------*/
     // used to store all initial values fetched from the api
-    private statements: IncomeStatementItem[] = [];
+    private statements: IncomeStatement[] = [];
     // will be used to store all income statement items
     private incomeStatements$ = new BehaviorSubject<IncomeStatement[]>([]);
     // stores all the bookkeeping records
@@ -44,9 +47,6 @@ export class BookkeepingService {
     );
     // stores the total bookkeeping records number as a behavior subject
     private totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
-    // 
-    
-
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
     // stores the total income for bookkeeping records (money in)
@@ -59,20 +59,44 @@ export class BookkeepingService {
 
     constructor(
         private _apiService: ApiService,
+        private _userService: UserService,
         private router: Router
     ) {}
 
     /*---------------------------------
         INCOME STATEMENTS 
     ----------------------------------*/
+    // populates the income statements observable
+    setAllIncomeStatements(farmName: string) {
+        this._apiService.getAllIncomeStatementsForFarm(farmName).subscribe(
+            (data: any) => {
+                // assigns the data retrived from the api to the statements array
+                this.statements = data;
+            },
+            error => {
+                console.error(
+                    `Error occurred while getting bookkeeping records`
+                );
+                console.error(error);
+            }
+        );
+    }
     // gets all the income statements from the api
-    getAllIncomeStatements() {}
+    getAllIncomeStatements(): Observable<IncomeStatement[]> {
+        // passes the farm name to the one assigned in user service
+        this.setAllIncomeStatements(this._userService.getFarmName());
+
+        return this.incomeStatements$;
+    }
 
     // checks if an income statement has been created for current financial year
     incomeStatementExist() {}
 
     // creates a new income statement item
     createIncomeStatement() {}
+
+    // used to get a single income statement by it's id
+    getSingleIncomeStatement(statmentId: number) {}
 
     setIncomeStatement() {
         // if the income statement exists for the current year
