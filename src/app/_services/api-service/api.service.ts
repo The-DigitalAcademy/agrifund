@@ -285,13 +285,12 @@ export class ApiService {
     /* ----------------------------------------
         BOOKKEEPING INCOME STATEMENT REQUESTS
     ------------------------------------------*/
-
-    // get an income statement data based on the farm id
+    // GET all an income statement data based on the farm id
     getIncomeStatementsByFarm(farmId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmId}`);
     }
 
-    // get an income statement by their id
+    // GET an income statement by their id
     getIncomeStatementById(statementId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
@@ -326,7 +325,7 @@ export class ApiService {
         return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
     }
 
-    // get income statement records between two dates
-
-    //get an income statement record from a search text
+    /* --------------------------------------------
+        BOOKKEEPING INCOME STATEMENT ITEM REQUESTS
+    ----------------------------------------------*/
 }
