@@ -25,7 +25,7 @@ export class UserService {
             return;
         }
 
-        this._apiService.getFarmerByEmail().subscribe(
+        this._apiService.getFarmerPortfolio().subscribe(
             (result: any) => {
                 console.log('API Response:', result);
                 this.user$.next(result);

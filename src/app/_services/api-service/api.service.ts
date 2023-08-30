@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Ntokozo, Monique, Kamo
+    AUTHOR: Monique Nagel
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 26 Aug 2023 
+    UPDATED DATE: 30 Aug 2023 
 
     DESCRIPTION:
      This service is used for all api connections 
@@ -24,81 +24,110 @@ import { environment } from 'src/environment/environment';
 export class ApiService {
     constructor(private http: HttpClient) {}
     // base url of api connection
-    private BASE_URL = `${environment.API_URL}`;
+    private BASE_URL = environment.API_URL;
     //Headers
     // headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
 
-    /* --------------------------------
-        USER CONNECTION STRINGS
-    ---------------------------------*/
+    /* ------------------------------------
+        AUTHENTICATION CONNECTION STRINGS
+    ---------------------------------------*/
     // authentication url of api connection
     private AUTH_URL = this.BASE_URL + '/auth';
     // register url of api connection
     private REGISTER_URL = this.AUTH_URL + '/register';
+    // login url of api connection
+    private LOGIN_URL = this.AUTH_URL + '/login';
     // users url for api connection
     private USERS_URL = this.BASE_URL + '/users';
 
     /* --------------------------------
         FARMER USER CONNECTION STRINGS
     ---------------------------------*/
-    // authenticate a farmer user
-    private FARMER_AUTH_URL = this.AUTH_URL + '/farmer';
-    // conneciotn to register a farmer user 
-    private REGISTER_FARMER_URL = this.REGISTER_URL + '/farmer';
     // farmers url string piece for api connection
     private FARMERS_URL = this.BASE_URL + '/farmers';
-    // farmer url string piece for api connection to get farmer information
-    private FARMER_URL = this.FARMERS_URL + '/farmer';
-    // connection string for farmer OTP function
-    private FARMER_OTP_URL = this.FARMERS_URL + '/otp'
-    
+    // farmers portfolio api connection string
+    private FARMERS_PORTFOLIO_URL = this.FARMERS_URL + '/portfolio';
     /* --------------------------------
        FARMER PORTFOLIO CONNECTION STRINGS
     ---------------------------------*/
+    // connection string for a farmer's farm info
+    private FARMER_FARM_URL = this.BASE_URL + '/farms';
     // connection string for farmer asset info
     private FARMER_ASSET_URL = this.BASE_URL + '/assets';
     //connection string for farmer crop info
     private FARMER_CROP_URL = this.BASE_URL + '/crops';
     // connection string for farmer plot info
-    private FARMER_PLOT_URL = this.BASE_URL + '/plots'
-    // connection string for a farmer's farm info
-    private FARMER_FARM_URL = this.BASE_URL + '/farms';
-
-    /* --------------------------------
-        ADMIN USER CONNECTION STRINGS
-    ---------------------------------*/
-
+    private FARMER_PLOT_URL = this.BASE_URL + '/plots';
     /* --------------------------------
         BOOKKEEPING CONNECTION STRINGS
     ---------------------------------*/
+    // connection string for income statement
     private INCOME_STATEMENT_URL = this.BASE_URL + '/income-Statements';
+    // connection string for income statement items
+    private INCOME_STATEMENT_ITEM_URL = this.BASE_URL + '/items';
+
+    /* --------------------------------
+        AUTHENTICATION REQUESTS
+    ---------------------------------*/
+    // POST function for a farmer to login
+    loginUser(loginBody: any) {
+        // console.log(this.LOGIN_URL);
+        console.log('base url: ' + this.BASE_URL);
+        return this.http.post(`${this.LOGIN_URL}`, loginBody);
+    }
+
+    // POST function for registering a new farmer user
+    registerUser(userBody: User) {
+        return this.http.post(`${this.REGISTER_URL}`, userBody);
+    }
 
     /* --------------------------------
         USER
     ---------------------------------*/
-    // POST function for a farmer to login
-    loginUser(loginBody: any) {
-        return this.http.post(`${this.FARMER_AUTH_URL}`, loginBody);
+    // GET function to get a user by their email -> ADMIN USE!
+    getUserByEmail(userEmail: string) {
+        return this.http.get(`${this.USERS_URL}/${userEmail}`);
     }
 
-    // TODO POST function for registering a new farmer user
+    // GET function to get an OTP to reset password
+    getResetPasswordOTP(userEmail: string) {
+        return this.http.get(`${this.USERS_URL}/${userEmail}`);
+    }
 
-    // GET function to get a user by their email
-    getUserByEmail() {
+    // GET function to get all users -> ADMIN USE!
+    getAllUsers() {
         return this.http.get(`${this.USERS_URL}`);
     }
 
-    // GET function to get a farmer by their email
-    getFarmerByEmail() {
-        return this.http.get(`${this.FARMER_URL}`);
+    // PATCH function to update an admin password
+    updateAdminPassword(adminEmail: string, passwordBody: any) {
+        return this.http.patch(`${this.USERS_URL}/${adminEmail}`, passwordBody);
     }
 
     /* --------------------------------
         FARMER
     ---------------------------------*/
-    // POST function for registering a new farmer user
-    registerFarmer(newFarmer: User) {
-        return this.http.post(`${this.REGISTER_FARMER_URL}`, newFarmer);
+    // GET function to get all farmers -> ADMIN USE
+    getAllFarmers() {
+        return this.http.get(`${this.FARMERS_URL}`);
+    }
+
+    // PUT function to update a farmers details
+    updateFarmerInfo(farmerInfoBody: any) {
+        return this.http.put(`${this.FARMERS_URL}`, farmerInfoBody);
+    }
+
+    // PATCH function to update a farmers password
+    changeFarmerPassword(farmerEmail: string, passwordResetBody: any) {
+        return this.http.patch(
+            `${this.FARMERS_URL}/${farmerEmail}`,
+            passwordResetBody
+        );
+    }
+
+    // GET function to get a farmer's portfolio
+    getFarmerPortfolio() {
+        return this.http.get(`${this.FARMERS_PORTFOLIO_URL}`);
     }
 
     // gets a farmer by their id
