@@ -36,10 +36,10 @@ export class EquipmentEditComponent implements OnInit {
         console.log(this.id);
 
         this.editEquipmentForm = this._fb.group({
-            equipmentName: ['', [Validators.required]],
-            equipmentType: ['', [Validators.required]],
-            equipmentAge: ['', [Validators.required]],
-            equipmentAmount: ['', [Validators.required]],
+            assetName: ['', [Validators.required]],
+            assetType: ['', [Validators.required]],
+            age: ['', [Validators.required]],
+            purchasePrice: ['', [Validators.required]],
         });
     }
 
@@ -47,10 +47,10 @@ export class EquipmentEditComponent implements OnInit {
         this._apiService.getEquipmentById(this.id).subscribe((data: any) => {
             this.asset = data;
             this.editEquipmentForm = this._fb.group({
-                equipmentName: new FormControl(this.asset.name),
-                equipmentType: new FormControl(this.asset.type),
-                equipmentAge: new FormControl(this.asset.age),
-                equipmentAmount: new FormControl(this.asset.purchase_price),
+                assetName: new FormControl(this.asset.assetName),
+                assetType: new FormControl(this.asset.assetType),
+                age: new FormControl(this.asset.age),
+                purchasePrice: new FormControl(this.asset.purchasePrice),
             });
         });
     }
@@ -64,21 +64,19 @@ export class EquipmentEditComponent implements OnInit {
         if (this.editEquipmentForm.valid) {
             this.asset = {
                 //keep the initial id of the record
-                id: this.asset.id,
-                farm_id: this.asset.farm_id,
-                name: this.editEquipmentForm.get('equipmentName')?.value,
-                type: this.editEquipmentForm.get('equipmentType')?.value,
-                age: this.editEquipmentForm.get('equipmentAge')?.value,
-                purchase_price:
-                    this.editEquipmentForm.get('equipmentAmount')?.value,
+                assetName: this.editEquipmentForm.get('assetName')?.value,
+                assetType: this.editEquipmentForm.get('assetType')?.value,
+                age: this.editEquipmentForm.get('age')?.value,
+                purchasePrice:
+                    this.editEquipmentForm.get('purchasePrice')?.value,
             };
-            console.table(this.asset);
-            this._apiService
-                .editEquipment(this.asset.id, this.asset)
-                .subscribe(data => {
+            // console.table();
+            // this._apiService
+            //     .editEquipment()
+            //     .subscribe(data => {
                     // Handle success (e.g., show a success message)
-                });
-            this.router.navigate(['/equipment-table', this.asset.id]);
+                // });
+            this.router.navigate(['/equipment-table']);
         }
     }
 }

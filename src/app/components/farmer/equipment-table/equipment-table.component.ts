@@ -29,7 +29,7 @@ export class EquipmentTableComponent {
 
     ngOnDestroy() {}
 
-    onEditClicked(id: number) {
-        this.router.navigate(['/equipment-edit', id]);
+    onEditClicked() {
+        this.router.navigate(['/equipment-edit']);
     }
 }

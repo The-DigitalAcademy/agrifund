@@ -18,13 +18,13 @@
         </thead>
         <tbody *ngFor="let asset of assets">
             <tr class="record-tr">
-                <td scope="row">{{asset.name}}</td> 
-                <td>{{asset.type}}</td>
+                <td scope="row">{{asset.assetName}}</td> 
+                <td>{{asset.assetType}}</td>
                 <td>{{asset.age}}</td>
-                <td>{{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}</td>
+                <td>{{asset.purchasePrice  | currency: ' R ' : 'symbol' : '.2'}}</td>
                <td>
                     <div class="action-buttons">
-                        <button class="btn colourful-btn btn-width" (click)="onEditClicked(asset.id)" [routerLink]="['/equipment-edit/:id']">Edit</button>
+                        <button class="btn colourful-btn btn-width" (click)="onEditClicked()" [routerLink]="['/equipment-edit/:id']">Edit</button>
                     </div>
                 </td>
             </tr>
@@ -37,16 +37,16 @@
         <div class="info">
             <div class="left justify-start">
                 <p class="bold justify-start">
-                    {{asset.type}}
+                    {{asset.assetType}}
                 </p>
                 <p class=" inline-content greyed  justify-end">
-                    {{ asset.name}}
+                    {{ asset.assetName}}
                     
                 </p>
             </div>
             <div class="right justify-end">
                 <p class="bold justify-end">
-                    {{asset.purchase_price  | currency: ' R ' : 'symbol' : '.2'}}
+                    {{asset.purchasePrice  | currency: ' R ' : 'symbol' : '.2'}}
                 </p>
                 <p class=" greyed justify-end">
                     {{ asset.age }} {{ asset.age === 1 || asset.age === 0 ? 'year' : 'years' }}
@@ -54,7 +54,7 @@
             </div>
             <div class=" justify-end">
                 <div class="action-buttons ">
-                    <button class="btn colourful-btn" (click)="onEditClicked(asset.id)">Edit</button>
+                    <button class="btn colourful-btn" (click)="onEditClicked()">Edit</button>
                 </div>
             </div>
        </div>
