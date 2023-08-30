@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +25,7 @@ export class AboutTheFarmComponent implements OnInit {
     // stores the current active slide number -> default to first slide
     activeSlideId: number = 1;
     // stores the total slides of the carousel
-    totalSlides: number = 5;
+    totalSlides: number = 6;
 
     onFileSelected($event: Event) {
         throw new Error('Method not implemented.');
@@ -44,7 +43,7 @@ export class AboutTheFarmComponent implements OnInit {
     crop!: Crop;
     plot!: Plot;
     farm!: Farm;
-    assets: Asset[] = [];
+    asset!: Asset;
     id = 0;
     isLast: any;
     assetForm!: FormGroup;
@@ -84,13 +83,11 @@ export class AboutTheFarmComponent implements OnInit {
             fundingReason: ['', Validators.required],
         });
         this.assetForm = this.fb.group({
-            equipmentName: ['', Validators.required],
-            equipmentType: ['', Validators.required],
-            purchase_Amount: ['', Validators.required],
+            assetName: ['', Validators.required],
+            assetType: ['', Validators.required],
+            purchasePrice: ['', Validators.required],
             age: ['', Validators.required],
-          
-            
-        });
+        }); 
 
         this.carousel.pause();
     }
@@ -111,7 +108,7 @@ export class AboutTheFarmComponent implements OnInit {
         }
 
         if (this.cropForm.valid) {
-             const formInputValue = this.cropForm.value;
+            const formInputValue = this.cropForm.value;
             this.crop = {
                 name: formInputValue.name,
                 season: formInputValue.season,
@@ -119,11 +116,10 @@ export class AboutTheFarmComponent implements OnInit {
             };
 
             console.table(this.crop);
-             this._portfolioService.createFarmerCropInfo(this.crop);
-        
+            this._portfolioService.createFarmerCropInfo(this.crop);
         }
         if (this.plotForm.valid) {
-              const formInputValue = this.plotForm.value;
+            const formInputValue = this.plotForm.value;
             this.plot = {
                 plotAddress: formInputValue.plotAddress,
                 plotSize: formInputValue.plotSize,
@@ -146,18 +142,31 @@ export class AboutTheFarmComponent implements OnInit {
                 fundingReason: formInputValue.fundingReason,
             };
 
-        
-
             this._portfolioService.createFarmerFarmInfo(this.farm);
-
 
             // this._apiService.addFarmInfo(this.farm).subscribe(data => {
             //     console.table(data);
             // });
         }
-        this.carousel.next(); // Move to the next slide
+        if (this.assetForm.valid) {
+            const formInputValue = this.assetForm.value;
+            this.asset= {
+                assetName: formInputValue.assetName,
+                assetType: formInputValue.assetType,
+                purchasePrice: formInputValue.purchasePrice,
+                age: formInputValue.age,
+                // proofOfOwnership: formInputValue.proofOfOfOwnership,
+            };
+            this._portfolioService.createFarmerAssetInfo(this.asset);
+        
+        }
+        if (this.activeSlideId === this.totalSlides) {
+            // All slides have been filled out, navigate to the dashboard
+            this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
+        } else {
+            this.carousel.next(); // Move to the next slide
+        }
     }
-
     // navigates to the previous slide
     goToPreviousSlide() {
         if (this.activeSlideId != 1) {
@@ -166,8 +175,8 @@ export class AboutTheFarmComponent implements OnInit {
         }
         this.carousel.prev();
     }
-    getAssetFormGroup(index: number): FormGroup {
-        // Assuming your assets array is available in this component
-        return this.assetForm;
-    }
+    // getAssetFormGroup(index: number): FormGroup {
+    //     // Assuming your assets array is available in this component
+    //     return this.assetForm;
+    // }
 }

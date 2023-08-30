@@ -98,8 +98,8 @@ export class PortfolioService {
         return this.crops;
     }
 
-    createFarmerAssetInfo(assetBody: Crop) {
-        this._apiService.addCropInfo(assetBody).subscribe(
+    createFarmerAssetInfo(assetBody: Asset) {
+        this._apiService.addAssetInfo(assetBody).subscribe(
             result => {
                 console.table(`Creates this asset data: ${assetBody}`);
             },

@@ -17,6 +17,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Farm } from 'src/app/_models/Farm';
 import { User } from 'src/app/_models/User';
+import { Asset } from 'src/app/_models/asset';
 import { Crop } from 'src/app/_models/crop';
 import { Plot } from 'src/app/_models/plot';
 import { environment } from 'src/environment/environment';
@@ -192,7 +193,7 @@ export class ApiService {
         return this.http.post(`${this.FARMER_FARM_URL}`, farmBody);
     }
     // POST function to create asset data for a farm user
-    addAssetInfo(assetBody: Farm) {
+    addAssetInfo(assetBody: Asset) {
         return this.http.post(`${this.FARMER_ASSET_URL}`, assetBody);
     }
 }
