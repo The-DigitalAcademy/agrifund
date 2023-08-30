@@ -112,6 +112,7 @@ export class AuthService {
             },
             error => {
                 console.error(`Error occurred while logging in`);
+                console.log(error);
                 // TODO: when a login fails it should print an error message from the api at the top of a form
             }
         );

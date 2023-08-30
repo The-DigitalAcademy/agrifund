@@ -21,7 +21,8 @@ export class EquipmentTableComponent {
 
     ngOnInit() {
         //use the method to get the all the data
-        this._apiService.getAllEquipment().subscribe((data: any) => {
+        const farmName = '';
+        this._apiService.getAllFarmAssets(farmName).subscribe((data: any) => {
             // console.table(assets)
             this.assets = data;
         });
