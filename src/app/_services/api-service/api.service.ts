@@ -193,7 +193,10 @@ export class ApiService {
 
     // POST function to add a new equipment/asset item
     addAsset(assetBody: any, farmName: any) {
-        return this.http.post(`${this.FARMER_ASSET_URL}`, assetBody);
+        return this.http.post(
+            `${this.FARMER_ASSET_URL}/${farmName}`,
+            assetBody
+        );
     }
 
     // DELETE function to delete a single farm asset
