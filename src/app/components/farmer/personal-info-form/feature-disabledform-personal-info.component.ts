@@ -39,23 +39,23 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
     ngOnInit() {
         // Assuming you have a method in your ApiService to get registered user details
-        this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: User) => {
-                // Populate the form with user details
-                this.myForm.patchValue({
-                    first_name: user.firstName,
-                    last_name: user.lastName,
-                    email: user.email,
-                    id_number: user.idNumber,
-                    cell_number: user.cellNumber,
-                });
-                // Disable the form fields
-                this.myForm.disable();
-            },
-            error => {
-                console.error('Error fetching user details:', error);
-            }
-        );
+        // this._apiService.getUserByEmail(this.farmerId).subscribe(
+        //     (user: User) => {
+        //         // Populate the form with user details
+        //         this.myForm.patchValue({
+        //             first_name: user.firstName,
+        //             last_name: user.lastName,
+        //             email: user.email,
+        //             id_number: user.idNumber,
+        //             cell_number: user.cellNumber,
+        //         });
+        //         // Disable the form fields
+        //         this.myForm.disable();
+        //     },
+        //     error => {
+        //         console.error('Error fetching user details:', error);
+        //     }
+        // );
 
         this.myForm = this.fb.group({
             first_name: new FormControl('', [

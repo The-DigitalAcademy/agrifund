@@ -1,5 +1,3 @@
-import { UserService } from 'src/app/_services/user-service/user.service';
-import { IncomeStatement } from './../../_models/IncomeStatement';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
@@ -27,6 +25,7 @@ import { state } from '@angular/animations';
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models/User';
 import { UserService } from '../user-service/user.service';
+import { IncomeStatement } from './../../_models/IncomeStatement';
 
 @Injectable({
     providedIn: 'root',
@@ -68,7 +67,7 @@ export class BookkeepingService {
     ----------------------------------*/
     // populates the income statements observable
     setAllIncomeStatements(farmName: string) {
-        this._apiService.getAllIncomeStatementsForFarm(farmName).subscribe(
+        this._apiService.getAllIncomeStatementsByFarm(farmName).subscribe(
             (data: any) => {
                 // assigns the data retrived from the api to the statements array
                 this.statements = data;
@@ -219,7 +218,7 @@ export class BookkeepingService {
 
         console.table(newRecord);
         this._apiService
-            .createIncomeStatementItem(recordBody.statement_id, newRecord)
+            .addRecord(newRecord, recordBody.statement_id)
             .subscribe(
                 data => {
                     console.log(data);

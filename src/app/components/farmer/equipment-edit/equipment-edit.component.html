@@ -9,7 +9,9 @@
                 <h2>Edit Equipment</h2>
             </div>
             <div class="justify-end">
-                <button class="btn icon-btn close-btn" [routerLink]="['/portfolio']">
+                <button
+                    class="btn icon-btn close-btn"
+                    [routerLink]="['/portfolio']">
                     <fa-icon icon="times"></fa-icon>
                 </button>
             </div>
@@ -18,41 +20,56 @@
         <div class="content mobile-hidden">
             <form [formGroup]="editEquipmentForm" (ngSubmit)="saveEquipment()">
                 <div class="form-input" id="label">
-                    <label for="equipmentName" class="form-label">
-                        Name
-                    </label>
+                    <label for="equipmentName" class="form-label"> Name </label>
 
-                    <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
-
+                    <input
+                        formControlName="equipmentName"
+                        type="text"
+                        class="form-control"
+                        id="equipmentName" />
                 </div>
                 <div class="form-input" id="form-label">
                     <label for="equipmentType">Type</label>
-                    <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
-
+                    <input
+                        formControlName="equipmentType"
+                        type="text"
+                        class="form-control"
+                        id="equipmentType" />
                 </div>
-       
 
                 <div class="form-input" id="label">
                     <label for="equipmentAge" class="form-label">
                         Age(years)
                     </label>
-                    <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
+                    <input
+                        formControlName="equipmentAge"
+                        type="text"
+                        class="form-control"
+                        id="equipmentAge" />
                 </div>
 
                 <div class="form-input" id="label">
                     <label for="equipmentAmount" class="form-label">
                         Purchase Amount
                     </label>
-                    <input formControlName="equipmentAmount" type="text" class="form-control" id="equipmentAmount" />
+                    <input
+                        formControlName="equipmentAmount"
+                        type="text"
+                        class="form-control"
+                        id="equipmentAmount" />
                 </div>
                 <div class="actions">
                     <div class="justify-start">
-                        <button class="btn colourful-btn btn-width left-btn" type="submit">
+                        <button
+                            class="btn colourful-btn btn-width left-btn"
+                            type="submit">
                             Save
                         </button>
                     </div>
                     <div class="justify-end">
-                        <button class="btn outline-btn btn-width right-btn" [routerLink]="['/portfolio']">
+                        <button
+                            class="btn outline-btn btn-width right-btn"
+                            [routerLink]="['/portfolio']">
                             Cancel
                         </button>
                     </div>
@@ -62,34 +79,41 @@
         <div class="content large-hidden">
             <form [formGroup]="editEquipmentForm" (ngSubmit)="saveEquipment()">
                 <div class="form-input" id="label">
-                    <label for="equipmentName" class="form-label">
-                        Name
-                    </label>
+                    <label for="equipmentName" class="form-label"> Name </label>
 
-                    <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
-
+                    <input
+                        formControlName="equipmentName"
+                        type="text"
+                        class="form-control"
+                        id="equipmentName" />
                 </div>
-               <div class="form-input" id="label">
+                <div class="form-input" id="label">
                     <label for="equipmentAmount" class="form-label">
                         Purchase Amount
                     </label>
-                    <input formControlName="equipmentAmount" type="text" class="form-control" id="equipmentAmount" />
+                    <input
+                        formControlName="equipmentAmount"
+                        type="text"
+                        class="form-control"
+                        id="equipmentAmount" />
                 </div>
                 <div class="actions">
                     <div class="justify-start">
-                        <button class="btn colourful-btn btn-width left-btn" type="submit">
+                        <button
+                            class="btn colourful-btn btn-width left-btn"
+                            type="submit">
                             Save changes
                         </button>
                     </div>
                     <div class="justify-end">
-                        <button class="btn outline-btn btn-width right-btn" [routerLink]="['/portfolio']">
+                        <button
+                            class="btn outline-btn btn-width right-btn"
+                            [routerLink]="['/portfolio']">
                             Cancel
                         </button>
                     </div>
                 </div>
             </form>
         </div>
-
-        
-</div>
+    </div>
 </div>

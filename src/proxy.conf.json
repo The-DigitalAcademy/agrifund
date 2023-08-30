@@ -2,7 +2,7 @@
     "/api":{
         "target": "https://agrifund.tech",
         "secure": false,
-        "changeOrigin": false,
+        "changeOrigin": true,
         "logLevel": "debug"
     }
 }

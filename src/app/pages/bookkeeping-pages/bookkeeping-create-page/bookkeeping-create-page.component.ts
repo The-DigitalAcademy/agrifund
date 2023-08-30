@@ -64,9 +64,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         // disabled the file upload input from accepting user input
         this.createRecordForm.controls['recordProof'].disable();
         // sets the value for a record name
-        this.createRecordForm.controls['recordProof'].setValue(
-            this.fileName
-        );
+        this.createRecordForm.controls['recordProof'].setValue(this.fileName);
     }
 
     get createRecordControl() {
@@ -75,7 +73,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
 
     // when the chang
     onFileChange(event: any) {
-        // sets the file to be uploaded to the selected file 
+        // sets the file to be uploaded to the selected file
         this.fileToUpload = event.target.files[0];
         // sets the file name to the uploaded files name
         this.fileName = this.fileToUpload.name;
@@ -102,12 +100,12 @@ export class BookkeepingCreatePageComponent implements OnInit {
 
             console.table(this.record);
 
-            this._apiService.addRecord(this.record).subscribe(data => {
-                // adds the new record to the observable array after successfully adding the record
-                this._bookkeepingService.addRecord(this.record);
-            });
+            // this._apiService.addRecord(this.record).subscribe(data => {
+            //     // adds the new record to the observable array after successfully adding the record
+            //     this._bookkeepingService.addRecord(this.record);
+            // });
 
-            this._bookkeepingService.createNewRecord(this.record);
+            // this.router.navigate(['/bookkeeping']);
         }
     }
 }
