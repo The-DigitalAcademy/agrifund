@@ -131,9 +131,9 @@ export class ApiService {
     }
 
     // gets a farmer by their id
-    getFarmerUser(){
-        return this.http.get(`${this.REGISTER_FARMER_URL}`);
-    }
+    // getFarmerUser(){
+    //     return this.http.get(`${this.REGISTER_FARMER_URL}`);
+    // }
 
     // adds a new equipment item
     addEquipment(body: any) {

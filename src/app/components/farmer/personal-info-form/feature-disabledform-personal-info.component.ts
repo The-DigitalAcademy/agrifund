@@ -70,7 +70,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.getPersonalDetails();
     }
     getPersonalDetails() {
-        this._apiService.getFarmerByEmail().subscribe(
+        this._apiService.getFarmerPortfolio().subscribe(
             (data: any) => {
                 console.log('API Response Data:', data);
                 this.personalInfo = data;
@@ -82,10 +82,6 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                     id_number: this.personalInfo.idNumber,
                     cell_number: this.personalInfo.cellNumber,
                 });
-
-                // Store the initial form values
-                this.originalFormValues = this.myForm.value;
-
                 console.log('Form Data:', this.myForm.value);
             },
             (error: any) => {
@@ -94,27 +90,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         );
     }
 
-    onSaveClicked(formData: any) {
-        this.submitted = true;
-
-        if (this.myForm.valid) {
-            // Simulate saving for demonstration
-            setTimeout(() => {
-                // You might perform actual saving here
-                this.isDisabled = true;
-                this.submitted = false;
-                // this.myForm.disable(); // Consider keeping the form enabled
-            }, 1000);
-        }
-    }
-
-    onCancelClicked() {
-        this.myForm.reset(this.originalFormValues); // Reset the form to initial values
-
-        // Disable the form fields again
-        this.isDisabled = true;
-        this.submitted = false;
-        // this.myForm.disable(); // Consider enabling the form
+    get createInfoControl() {
+        return this.myForm.controls;
     }
 
     enableFields() {
@@ -127,7 +104,24 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.isDisabled = true;
     }
 
+    onSaveClicked(formData: any) {
+        this.submitted = true; // Indicate that the form has been submitted
+        if (this.myForm.valid) {
+            // Save or update the data here
+            this.isDisabled = true;
+            this.submitted = false;
+            this.myForm.disable();
+        }
+    }
+    onCancelClicked() {
+        // Reset the form values to the original values
+        this.myForm.patchValue(this.originalFormValues);
 
+        // Disable the form fields again
+        this.isDisabled = true;
+        this.submitted = false;
+        this.myForm.disable();
+    }
 
     // Validations
 }

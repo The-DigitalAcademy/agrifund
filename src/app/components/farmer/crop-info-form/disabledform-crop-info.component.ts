@@ -20,6 +20,7 @@ export class DisabledformCropInfoComponent implements OnInit {
     isDisabled = true;
     editedData: any = null;
     originalFormValues: any;
+    submitted = false;
 
     constructor(
         private fb: FormBuilder,
@@ -27,40 +28,47 @@ export class DisabledformCropInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.farmerData = {
-            // Replace this with the actual farmer data
-            seasonFarm: 'Spring',
-            crop_name: 'Potatoes', // Selected crops as an array
-            seedsAmount: '70',
-        };
-
         this.myForm = this.fb.group({
-            seasonFarm: new FormControl({
-                value: this.farmerData.seasonFarm,
-                disabled: true,
-            }),
-            crop_name: new FormControl(
-                { value: this.farmerData.crop_name, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.textWithoutNumbersValidator(),
-                ]
-            ),
-            seedsAmount: new FormControl(
-                { value: this.farmerData.seedsAmount, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.isNumericValidator(),
-                ]
-            ),
-            cropsInfo: new FormControl({
-                value: this.farmerData.selectedCrops,
-                disabled: true,
-            }), // Include the cropsInfo field
+            seasonFarm: new FormControl('', []),
+            crop_name: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
+
+            crop_type: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
+            // ... other fields
         });
 
-        // Save the initial form values
-        this.originalFormValues = this.farmerData;
+        // this.myForm = this.fb.group({
+        //     seasonFarm: new FormControl({
+
+        //         disabled: true,
+        //     }),
+        //     crop_name: new FormControl(
+        //         { value: this.farmerData.crop_name, disabled: true },
+        //         [
+        //             Validators.required,
+        //             this._validationsService.textWithoutNumbersValidator(),
+        //         ]
+        //     ),
+        //     seedsAmount: new FormControl(
+        //         { value: this.farmerData.seedsAmount, disabled: true },
+        //         [
+        //             Validators.required,
+        //             this._validationsService.isNumericValidator(),
+        //         ]
+        //     ),
+        //     cropsInfo: new FormControl({
+        //         value: this.farmerData.selectedCrops,
+        //         disabled: true,
+        //     }), // Include the cropsInfo field
+        // });
+
+        // // Save the initial form values
+        // this.originalFormValues = this.farmerData;
     }
 
     enableFields() {
@@ -74,9 +82,13 @@ export class DisabledformCropInfoComponent implements OnInit {
     }
 
     onSaveClicked(formData: any) {
-        this.farmerData = formData;
-        this.isDisabled = true;
-        this.myForm.disable();
+        this.submitted = true; // Indicate that the form has been submitted
+         if (this.myForm.valid) {
+             // Save or update the data here
+             this.isDisabled = true;
+             this.submitted = false;
+             this.myForm.disable();
+         }
         // Set crop info completion status to true
         // this.progressService.setCropInfoCompleted(true);
     }
@@ -88,5 +100,6 @@ export class DisabledformCropInfoComponent implements OnInit {
         // Disable the form fields again
         this.isDisabled = true;
         this.myForm.disable();
+        this.submitted = false;
     }
 }
