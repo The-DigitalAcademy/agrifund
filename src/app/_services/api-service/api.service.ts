@@ -219,11 +219,6 @@ export class ApiService {
         return this.http.put(`${this.FARMER_ASSET_URL}/${equipmentId}`, body);
     }
 
-    // get a single equipment item by id
-    getEquipmentById(equipmentId: number) {
-        return this.http.get(`${this.FARMER_ASSET_URL}/${equipmentId}`);
-    }
-
     /* --------------------------------
         FARMER CROP REQUESTS
     ---------------------------------*/

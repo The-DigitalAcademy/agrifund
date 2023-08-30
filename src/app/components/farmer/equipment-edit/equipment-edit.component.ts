@@ -44,7 +44,7 @@ export class EquipmentEditComponent implements OnInit {
     }
 
     getEquipmentDetails(id: any) {
-        this._apiService.getEquipmentById(this.id).subscribe((data: any) => {
+        this._apiService.getAssetById(this.id).subscribe((data: any) => {
             this.asset = data;
             this.editEquipmentForm = this._fb.group({
                 equipmentName: new FormControl(this.asset.name),
