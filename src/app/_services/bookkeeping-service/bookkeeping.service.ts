@@ -26,6 +26,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/_models/User';
 import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from './../../_models/IncomeStatement';
+import { PortfolioService } from '../portfolio-service/portfolio.service';
 
 @Injectable({
     providedIn: 'root',
@@ -59,7 +60,8 @@ export class BookkeepingService {
     constructor(
         private _apiService: ApiService,
         private _userService: UserService,
-        private router: Router
+        private router: Router,
+        private portfolioService: PortfolioService
     ) {}
     /*---------------------------------
         CREATE/ADD DATA
@@ -117,28 +119,34 @@ export class BookkeepingService {
     }
 
     // uploads proof of a record to the api
-    uploadRecordProof(incomeStatmentId: number, recordProof: File) {}
+    uploadRecordProof(incomeStatementId: number, recordProof: File) {}
 
     /*---------------------------------
         SET DATA 
     ----------------------------------*/
     // sets data from the api to the bookkeeping observable
     setBookkeepingRecords() {
-        this._apiService.getAllStatementItems().subscribe(
-            (data: any) => {
-                this.records = data;
-                // each record fetched from the api is added to the bookkeeping record observable
-                this.records.forEach(record => {
-                    this.addRecord(record);
-                });
-            },
-            error => {
-                console.error(
-                    `Error occurred while getting bookkeeping records`
-                );
-                console.error(error);
-            }
-        );
+        this.portfolioService
+            .getFarmerPortfolio()
+            .subscribe((portfolioData: any) => {
+                portfolioData;
+            });
+
+        // this._apiService.getAllStatementItems().subscribe(
+        //     (data: any) => {
+        //         this.records = data;
+        //         // each record fetched from the api is added to the bookkeeping record observable
+        //         this.records.forEach(record => {
+        //             this.addRecord(record);
+        //         });
+        //     },
+        //     error => {
+        //         console.error(
+        //             `Error occurred while getting bookkeeping records`
+        //         );
+        //         console.error(error);
+        //     }
+        // );
     }
 
     /*---------------------------------
@@ -153,13 +161,13 @@ export class BookkeepingService {
 
     // get the total number of  bookkeeping records
     getTotalBookkeepingRecords(): Observable<number> {
-        let totalRecords = 0;
+        // let totalRecords = 0;
 
-        this._apiService.getAllStatementItems().subscribe((data: any) => {
-            this.records = data;
-            totalRecords = this.records.length;
-            this.totalBookkeepingRecords$.next(totalRecords);
-        });
+        // this._apiService.getAllStatementItems().subscribe((data: any) => {
+        //     this.records = data;
+        //     totalRecords = this.records.length;
+        //     this.totalBookkeepingRecords$.next(totalRecords);
+        // });
 
         return this.totalBookkeepingRecords$;
     }
@@ -194,13 +202,14 @@ export class BookkeepingService {
     // delete and income statement item
     deleteRecord(recordId: number) {
         console.log(`Before Delete: ${this.records.length}`);
-        return this._apiService
-            .getStatementItemById(recordId)
-            .subscribe((data: any) => {
-                console.log(`Before Delete: ${this.records.length}`);
+        return this._apiService.deleteIncomeStatementItem(recordId).subscribe(
+            (data: any) => {
                 console.log(data);
-                console.log('Successfully deleted record.');
-            });
+            },
+            error => {
+                error.console(`Error in deleting income statement item`, error);
+            }
+        );
     }
 
     /*---------------------------------

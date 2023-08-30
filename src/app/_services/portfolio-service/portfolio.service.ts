@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
 import { Asset } from 'src/app/_models/Asset';
 import { AuthService } from '../authentication-service/auth.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 
 @Injectable({
@@ -35,14 +35,14 @@ export class PortfolioService {
         return farm_id;
     }
 
-    // gets the farmer portfolio data
-    getFarmerPortfolio() {
+    // sets the farmer portfolio data
+    setFarmerPortfolio() {
         const userEmail = this._authService.getUserEmail();
         const sessionToken = this._authService.getSessionToken();
 
+        // checks if the user email and session token is still valid
         if (!userEmail || !sessionToken) {
             console.error('User email or session token not available');
-            return;
         }
 
         this._apiService.getFarmerPortfolio().subscribe(
@@ -51,17 +51,20 @@ export class PortfolioService {
                 this.farmerPortfolio = result;
                 console.log('API Response:', result);
                 this.farmerPortfolio$.next(result);
-
-                return this.farmerPortfolio$;
             },
             error => {
                 console.error(`Error occurred while getting a user:`, error);
             }
         );
-
     }
 
-    getFarmId() {}
+    // gets method for farmer portfolio data
+    getFarmerPortfolio(): Observable<FarmerPortfolio[]> {
+        this.setFarmerPortfolio();
+        return this.farmerPortfolio$;
+    }
 
+    // gets the farm name for the current portfolio
     getFarmName() {}
+
 }

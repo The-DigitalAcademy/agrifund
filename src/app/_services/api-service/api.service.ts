@@ -62,6 +62,7 @@ export class ApiService {
     private FARMER_CROP_URL = this.BASE_URL + '/crops';
     // connection string for farmer plot info
     private FARMER_PLOT_URL = this.BASE_URL + '/plots';
+
     /* --------------------------------
         BOOKKEEPING CONNECTION STRINGS
     -----------------------------------*/
@@ -299,12 +300,12 @@ export class ApiService {
         );
     }
 
-    // DELETE an income statement
+    // DELETE an income statement -> ADMIN USE!
     deleteIncomeStatement(statementId: number) {
         return this.http.delete(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
 
-    // GET all an income statements for a farm
+    // GET all an income statements for a farm -> ADMIN USE!
     getAllIncomeStatementsByFarm(farmName: string) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmName}`);
     }
@@ -336,15 +337,5 @@ export class ApiService {
     // DELETE a bookkeeping record
     deleteIncomeStatementItem(recordId: number) {
         return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
-    }
-
-    // get all bookkeeping records
-    getAllStatementItems() {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}`);
-    }
-
-    // get all bookkeeping records based on the statement id
-    getRecordsByStatementId(statementId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
 }
