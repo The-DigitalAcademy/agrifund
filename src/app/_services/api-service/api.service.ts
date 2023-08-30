@@ -76,8 +76,6 @@ export class ApiService {
     ---------------------------------*/
     // POST function for a farmer to login
     loginUser(loginBody: any) {
-        // console.log(this.LOGIN_URL);
-        console.log('base url: ' + this.BASE_URL);
         return this.http.post(`${this.LOGIN_URL}`, loginBody);
     }
 
@@ -225,7 +223,30 @@ export class ApiService {
     /* --------------------------------
         FARMER CROP REQUESTS
     ---------------------------------*/
+    // GET function to get a crop by id
+    getCropById(cropId: number) {
+        return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
+    }
 
+    // PUT function to update a farmer's crop info
+    updateCrop(cropId: number, cropBody: any) {
+        return this.http.put(`${this.FARMER_CROP_URL}`, cropBody);
+    }
+
+    // DELETE function for a farmer's crop
+    deleteCrop(cropId: number) {
+        return this.http.delete(`${this.FARMER_CROP_URL}`);
+    }
+
+    // POST function for creating a new crop for a farmer
+    addCrop(farmName: string, cropBody: any) {
+        return this.http.post(`${this.FARMER_CROP_URL}`, cropBody);
+    }
+
+    // GET function to get all farmer crops
+    getAllCrops(farmName: string) {
+        return this.http.get(`${this.FARMER_CROP_URL}/${farmName}`);
+    }
     /* --------------------------------
         FARMER PLOT REQUESTS
     ---------------------------------*/
