@@ -1,3 +1,4 @@
+import { Asset } from './../../_models/asset';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 24 Jul 2023
@@ -140,7 +141,7 @@ export class ApiService {
     }
 
     // GET function to get a farmer by their id number -> ADMIN USE!
-    getFarmerID(farmerId: string) {
+    getFarmerById(farmerId: string) {
         return this.http.get(`${this.FARMER_URL}/${farmerId}`);
     }
 
@@ -180,26 +181,40 @@ export class ApiService {
     /* --------------------------------
         FARMER ASSET REQUESTS
     ---------------------------------*/
-
-    /* --------------------------------
-        FARMER CROP REQUESTS
-    ---------------------------------*/
-
-    /* --------------------------------
-        FARMER PLOT REQUESTS
-    ---------------------------------*/
-
-    // adds a new equipment item
-    addEquipment(body: any) {
-        return this.http.post(`${this.FARMER_ASSET_URL}`, body);
+    // GET function to get a farm asset by its id
+    getAssetById(assetId: number) {
+        return this.http.get(`${this.FARMER_ASSET_URL}/${assetId}`);
     }
 
-    // gets all equipment items for a farmer
-    getAllEquipment() {
-        return this.http.get(`${this.FARMER_ASSET_URL}`);
+    // PUT function to update a farm asset's details
+    updateAsset(assetId: number, assetBody: any) {
+        return this.http.put(`${this.FARMER_ASSET_URL}/${assetId}`, assetBody);
     }
 
-    // update data for a single equipment record
+    // POST function to add a new equipment/asset item
+    addAsset(assetBody: any, farmName: any) {
+        return this.http.post(`${this.FARMER_ASSET_URL}`, assetBody);
+    }
+
+    // DELETE function to delete a single farm asset
+    deleteAsset(assetId: number) {
+        return this.http.delete(`${this.FARMER_ASSET_URL}/${assetId}`);
+    }
+
+    // PATCH function to upload proof of ownership for an asset
+    uploadAssetOwnershipProof(assetId: number, ownershipProof: File) {
+        return this.http.patch(
+            `${this.FARMER_ASSET_URL}/${assetId}`,
+            ownershipProof
+        );
+    }
+
+    // GET function to get all assets of a farmer by the farmName
+    getAllFarmAssets(farmName: string) {
+        return this.http.get(`${this.FARMER_ASSET_URL}/${farmName}`);
+    }
+
+    // PUT function to update data for a single asset
     editEquipment(equipmentId: number, body: any) {
         return this.http.put(`${this.FARMER_ASSET_URL}/${equipmentId}`, body);
     }
@@ -208,6 +223,14 @@ export class ApiService {
     getEquipmentById(equipmentId: number) {
         return this.http.get(`${this.FARMER_ASSET_URL}/${equipmentId}`);
     }
+
+    /* --------------------------------
+        FARMER CROP REQUESTS
+    ---------------------------------*/
+
+    /* --------------------------------
+        FARMER PLOT REQUESTS
+    ---------------------------------*/
 
     /* ----------------------------------------
         BOOKKEEPING INCOME STATEMENT REQUESTS
