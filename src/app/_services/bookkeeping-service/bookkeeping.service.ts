@@ -107,7 +107,6 @@ export class BookkeepingService {
             .subscribe(
                 data => {
                     console.log(data);
-
                     // routes back to bookkeeping view all page is the creation of a record was successful
                     this.router.navigate(['/bookkeeping']);
                 },
@@ -196,9 +195,6 @@ export class BookkeepingService {
     /*---------------------------------
         DELETE DATA
     ----------------------------------*/
-    // TODO
-    // delete and income statement
-
     // delete and income statement item
     deleteRecord(recordId: number) {
         console.log(`Before Delete: ${this.records.length}`);
