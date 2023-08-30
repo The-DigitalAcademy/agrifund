@@ -230,17 +230,17 @@ export class ApiService {
 
     // PUT function to update a farmer's crop info
     updateCrop(cropId: number, cropBody: any) {
-        return this.http.put(`${this.FARMER_CROP_URL}`, cropBody);
+        return this.http.put(`${this.FARMER_CROP_URL}/${cropId}`, cropBody);
     }
 
     // DELETE function for a farmer's crop
     deleteCrop(cropId: number) {
-        return this.http.delete(`${this.FARMER_CROP_URL}`);
+        return this.http.delete(`${this.FARMER_CROP_URL}/${cropId}`);
     }
 
     // POST function for creating a new crop for a farmer
     addCrop(farmName: string, cropBody: any) {
-        return this.http.post(`${this.FARMER_CROP_URL}`, cropBody);
+        return this.http.post(`${this.FARMER_CROP_URL}/${farmName}`, cropBody);
     }
 
     // GET function to get all farmer crops
@@ -250,7 +250,15 @@ export class ApiService {
     /* --------------------------------
         FARMER PLOT REQUESTS
     ---------------------------------*/
+    // GET function to get a plot by id
+    getPlotById(plotId: number) {
+        return this.http.get(`${this.FARMER_PLOT_URL}/${plotId}`);
+    }
 
+    // PUT function to update a farmer's plot data
+    updatePlot(plotId: number, plotBody: any) {
+        return this.http.get(`${this.FARMER_PLOT_URL}/${plotId}`, plotBody);
+    }
     /* ----------------------------------------
         BOOKKEEPING INCOME STATEMENT REQUESTS
     ------------------------------------------*/
