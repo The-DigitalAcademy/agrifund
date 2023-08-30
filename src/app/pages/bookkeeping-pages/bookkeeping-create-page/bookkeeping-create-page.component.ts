@@ -71,7 +71,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         return this.createRecordForm.controls;
     }
 
-    // when the chang
+    // when the an a new file has been uploaded
     onFileChange(event: any) {
         // sets the file to be uploaded to the selected file
         this.fileToUpload = event.target.files[0];

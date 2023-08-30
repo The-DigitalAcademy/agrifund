@@ -198,8 +198,8 @@ export class BookkeepingService {
             statement_id: record.statement_id,
             category: record.category,
             amount: record.amount,
-            description: '',
-            date: '',
+            description: record.description,
+            date: record.date,
         };
 
         // updates bookkeeping record data

@@ -43,13 +43,3 @@ h2 {
     /* adds margin to top of feedback text for input fields */
     margin-top: var(--s-small-s) !important;
 }
-
-.file-upload {
-    /* changes the width of the file upload input fields */
-    min-width: 100%;
-    user-select: none;
-}
-
-.file-input {
-    display: none;
-}
