@@ -15,13 +15,14 @@ export class CreateAssetComponent implements OnInit {
     submitted = false;
     private _fb: any;
     private _portfolioService: any;
+    router: any;
    
     ngOnInit(): void {
         this.assetForm = this._fb.group({
             assetName: ['', [Validators.required]],
             assetType: ['', [Validators.required]],
-            age: ['', [Validators.required]],
             purchasePrice: ['', [Validators.required]],
+            age: ['', [Validators.required]],
             // proofOfOwnership: ['', [Validators.required]],
         });
     }
@@ -34,12 +35,13 @@ export class CreateAssetComponent implements OnInit {
             this.asset = {
                 assetName: formInputValue.assetName,
                 assetType: formInputValue.assetType,
-                age: formInputValue.age,
                 purchasePrice: formInputValue.purchasePrice,
+                age: formInputValue.age,
                 // proofOfOwnership: formInputValue.proofOfOfOwnership,
             };
             this._portfolioService.createFarmerAssetInfo(this.asset);
             console.table(this.asset)
+                  this.router.navigate(['/about-farm']);
         }
     }
   

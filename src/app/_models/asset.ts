@@ -4,4 +4,5 @@ export interface Asset {
    assetType: string;
    age: number;
    purchasePrice: number;
+   // proofOfOwnership: string;
 }
