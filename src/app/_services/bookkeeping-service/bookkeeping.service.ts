@@ -61,123 +61,6 @@ export class BookkeepingService {
         private _userService: UserService,
         private router: Router
     ) {}
-
-    /*---------------------------------
-        INCOME STATEMENTS 
-    ----------------------------------*/
-    // populates the income statements observable
-    setAllIncomeStatements(farmName: string) {
-        this._apiService.getAllIncomeStatementsByFarm(farmName).subscribe(
-            (data: any) => {
-                // assigns the data retrived from the api to the statements array
-                this.statements = data;
-            },
-            error => {
-                console.error(
-                    `Error occurred while getting bookkeeping records`
-                );
-                console.error(error);
-            }
-        );
-    }
-    // gets all the income statements from the api
-    getAllIncomeStatements(): Observable<IncomeStatement[]> {
-        // passes the farm name to the one assigned in user service
-        this.setAllIncomeStatements(this._userService.getFarmName());
-
-        return this.incomeStatements$;
-    }
-
-    // checks if an income statement has been created for current financial year
-    incomeStatementExist() {}
-
-    // creates a new income statement item
-    createIncomeStatement() {}
-
-    // used to get a single income statement by it's id
-    getSingleIncomeStatement(statmentId: number) {}
-
-    setIncomeStatement() {
-        // if the income statement exists for the current year
-        // new income statement date is created
-    }
-
-    // sets the date for an income statement
-    setIncomeStatementDate() {
-        // gets the current date
-        const today: Date = new Date();
-        // gets the current year
-        const currentYear = today.getFullYear();
-        // South African financial year starts on the 1st of march
-        const financialYearStartMonth = 2; //month of the March -> index starts at 0
-        // sets the date value as string value
-
-        // sets the default financial year
-        let financialYearStart = new Date(
-            currentYear,
-            financialYearStartMonth,
-            1
-        );
-
-        // checks if the current data is less than the financial start year
-        if (today < financialYearStart) {
-            // sets the financial data a the previous year, the month of March
-            financialYearStart = new Date(
-                currentYear - 1,
-                financialYearStartMonth,
-                1
-            );
-        }
-
-        return financialYearStart;
-    }
-
-    /*---------------------------------
-        INCOME STATEMENT ITEMS/RECORDS 
-    ----------------------------------*/
-    // sets data from the api to the bookkeeping observable
-    setBookkeepingRecords() {
-        this._apiService.getAllStatementItems().subscribe(
-            (data: any) => {
-                this.records = data;
-                // each record fetched from the api is added to the bookkeeping record observable
-                this.records.forEach(record => {
-                    this.addRecord(record);
-                });
-            },
-            error => {
-                console.error(
-                    `Error occurred while getting bookkeeping records`
-                );
-                console.error(error);
-            }
-        );
-    }
-
-    // returns all bookkeeping records within the behavior subject
-    getAllBookkeepingRecords(): Observable<any> {
-        this.setBookkeepingRecords();
-        return this.bookkeepingRecords$;
-    }
-
-    // get the total number of  bookkeeping records
-    getTotalBookkeepingRecords(): Observable<number> {
-        let totalRecords = 0;
-
-        this._apiService.getAllStatementItems().subscribe((data: any) => {
-            this.records = data;
-            totalRecords = this.records.length;
-            this.totalBookkeepingRecords$.next(totalRecords);
-        });
-
-        return this.totalBookkeepingRecords$;
-    }
-
-    // gets the current income statement to save the record to
-    getIncomeStatement() {
-        // TODO: save a record to an income statement based on the date of the record
-    }
-
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/
@@ -235,6 +118,56 @@ export class BookkeepingService {
 
     // uploads proof of a record to the api
     uploadRecordProof(incomeStatmentId: number, recordProof: File) {}
+
+    /*---------------------------------
+        SET DATA 
+    ----------------------------------*/
+    // sets data from the api to the bookkeeping observable
+    setBookkeepingRecords() {
+        this._apiService.getAllStatementItems().subscribe(
+            (data: any) => {
+                this.records = data;
+                // each record fetched from the api is added to the bookkeeping record observable
+                this.records.forEach(record => {
+                    this.addRecord(record);
+                });
+            },
+            error => {
+                console.error(
+                    `Error occurred while getting bookkeeping records`
+                );
+                console.error(error);
+            }
+        );
+    }
+
+    /*---------------------------------
+        GET DATA 
+    ----------------------------------*/
+
+    // returns all bookkeeping records within the behavior subject
+    getAllBookkeepingRecords(): Observable<any> {
+        this.setBookkeepingRecords();
+        return this.bookkeepingRecords$;
+    }
+
+    // get the total number of  bookkeeping records
+    getTotalBookkeepingRecords(): Observable<number> {
+        let totalRecords = 0;
+
+        this._apiService.getAllStatementItems().subscribe((data: any) => {
+            this.records = data;
+            totalRecords = this.records.length;
+            this.totalBookkeepingRecords$.next(totalRecords);
+        });
+
+        return this.totalBookkeepingRecords$;
+    }
+
+    // gets the current income statement to save the record to
+    getIncomeStatement() {
+        // TODO: save a record to an income statement based on the date of the record
+    }
 
     // setBookkeepingRecords(record: IncomeStatementItem) {}
 
@@ -300,16 +233,4 @@ export class BookkeepingService {
     /*---------------------------------
         CALCULATIONS
     ----------------------------------*/
-
-    // // TODO
-    // // update income statement total income
-    // calculateTotalIncome() {}
-
-    // // TODO
-    // // update income statement total expense
-    // calculateTotalExpense() {}
-
-    // // TODO
-    // // update income statement total net income (profit)
-    // calculateTotalNetIncome() {}
 }

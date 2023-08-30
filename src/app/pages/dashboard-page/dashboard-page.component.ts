@@ -30,7 +30,7 @@ export class DashboardPageComponent implements OnInit {
         this._userService.getFarmerByEmail();
         this._userService.user$.subscribe(user => {
             if (user) {
-                this.user = user.
+                this.user = user;
                 console.log('User Data:', user);
                 // TODO: Handle user data as needed
             }
