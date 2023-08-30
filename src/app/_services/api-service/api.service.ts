@@ -257,7 +257,30 @@ export class ApiService {
 
     // PUT function to update a farmer's plot data
     updatePlot(plotId: number, plotBody: any) {
-        return this.http.get(`${this.FARMER_PLOT_URL}/${plotId}`, plotBody);
+        return this.http.put(`${this.FARMER_PLOT_URL}/${plotId}`, plotBody);
+    }
+
+    // DELETE function to delete a farmer's plot data
+    deletePlot(plotId: number) {
+        return this.http.delete(`${this.FARMER_PLOT_URL}/${plotId}`);
+    }
+
+    // POST function to create a new plot for a farmer
+    addPlot(farmName: string, plotBody: any) {
+        return this.http.post(`${this.FARMER_PLOT_URL}/${farmName}`, plotBody);
+    }
+
+    // PATCH function to upload proof of plot ownership
+    uploadPlotOwnershipProof(plotId: number, ownershipProof: File) {
+        return this.http.patch(
+            `${this.FARMER_PLOT_URL}/${plotId}`,
+            ownershipProof
+        );
+    }
+
+    // GET function to get all plots for a farmer
+    getAllPlots(farmName: string) {
+        return this.http.get(`${this.FARMER_PLOT_URL}/${farmName}`);
     }
     /* ----------------------------------------
         BOOKKEEPING INCOME STATEMENT REQUESTS
