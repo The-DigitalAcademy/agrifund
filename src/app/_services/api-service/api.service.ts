@@ -147,6 +147,35 @@ export class ApiService {
     /* --------------------------------
         FARMER FARM REQUESTS
     ---------------------------------*/
+    // GET function for getting a farmer's farm data by the id
+    getFarmById(farmId: number) {
+        return this.http.get(`${this.FARMER_FARM_URL}/${farmId}`);
+    }
+
+    // GET function to get a farmer's farm data by the farm name
+    getFarmByName(farmName: string) {
+        return this.http.get(`${this.FARMER_FARM_URL}/${farmName}`);
+    }
+
+    // GET function to get all farms
+    getAllFarms() {
+        return this.http.get(`${this.FARMER_FARM_URL}`);
+    }
+
+    // POST function for creating a farmer's farm data
+    addFarm(farmBody: any) {
+        return this.http.post(`${this.FARMER_FARM_URL}`, farmBody);
+    }
+
+    // PUT function to update a farmer's farm data
+    updateFarm(farmId: number, farmBody: any) {
+        return this.http.put(`${this.FARMER_FARM_URL}/${farmId}`, farmBody);
+    }
+
+    // DELETE function to delete a farmer's farm data
+    deleteFarm(farmName: string) {
+        return this.http.delete(`${this.FARMER_FARM_URL}/${farmName}`);
+    }
 
     /* --------------------------------
         FARMER ASSET REQUESTS
@@ -159,11 +188,6 @@ export class ApiService {
     /* --------------------------------
         FARMER PLOT REQUESTS
     ---------------------------------*/
-
-    // gets a farmer by their id
-    getFarmerUser(userId: number): Observable<any> {
-        return this.http.get(`${this.FARMERS_URL}/${userId}`);
-    }
 
     // adds a new equipment item
     addEquipment(body: any) {
