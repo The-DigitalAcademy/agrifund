@@ -26,10 +26,10 @@ export class EquipmentCreateComponent implements OnInit {
     ) {}
     ngOnInit(): void {
         this.createEquipmentForm = this._fb.group({
-            equipmentName: ['', [Validators.required]],
-            equipmentType: ['', [Validators.required]],
-            equipmentAge: ['', [Validators.required]],
-            equipmentAmount: ['', [Validators.required]],
+            assetName: ['', [Validators.required]],
+            assetType: ['', [Validators.required]],
+            age: ['', [Validators.required]],
+            purchasePrice: ['', [Validators.required]],
         });
     }
 
@@ -39,13 +39,11 @@ export class EquipmentCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createEquipmentForm.valid) {
             this.asset = {
-                id: 0,
-                farm_id: 0,
-                name: this.createEquipmentForm.get('equipmentName')?.value,
-                type: this.createEquipmentForm.get('equipmentType')?.value,
-                age: this.createEquipmentForm.get('equipmentAge')?.value,
-                purchase_price:
-                    this.createEquipmentForm.get('equipmentAmount')?.value,
+                assetName: this.createEquipmentForm.get('assetName')?.value,
+                assetType: this.createEquipmentForm.get('assetType')?.value,
+                age: this.createEquipmentForm.get('age')?.value,
+                purchasePrice:
+                    this.createEquipmentForm.get('purchasePrice')?.value,
             };
 
             console.table(this.asset);
