@@ -19,7 +19,15 @@
   border-color: var(--lighter-grey);
 }
 
-/* Styling for button container */
+/* Styling for horizontal rules (hr) */
+hr {
+  height: 2px;
+  border-color: var(--grey);
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Styling for buttons container */
 .button-container {
   display: flex;
   justify-content: center;
@@ -30,12 +38,9 @@
   margin: 30px;
 }
 
-/* Styling for horizontal rules (hr) */
-hr {
-  height: 2px;
-  border-color: var(--grey);
-  border: 1px solid #ccc;
-  margin-bottom: 19px;
+/* Styling for file input within the file container */
+.file-container input[type="file"] {
+  margin-top: 5px;
 }
 
 /* Styling for a heading with a profile section */

@@ -104,6 +104,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
 
 @NgModule({
     declarations: [
@@ -137,6 +138,7 @@ import {
         DynamicInputsComponent,
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
+        PlotInfoFormComponent,
     ],
     imports: [
         BrowserModule,

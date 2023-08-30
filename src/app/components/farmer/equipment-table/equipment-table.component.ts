@@ -2,6 +2,7 @@
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Asset } from 'src/app/_models/asset';
 import { ApiService } from 'src/app/_services/api-service/api.service';
@@ -12,18 +13,28 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
     styleUrls: ['./equipment-table.component.css'],
 })
 export class EquipmentTableComponent {
-    assets: Asset[] = [];
+    onSaveClicked($event: any) {
+        throw new Error('Method not implemented.');
+    }
+    enableFields() {
+        throw new Error('Method not implemented.');
+    }
+    isDisabled = true;
+    onFileSelected($event: Event) {}
+
+    assets: Asset[] = []; // Initializing assets with interfaceAsset
     isLast: any;
+    equipmentForm!: FormGroup;
+
     constructor(
         private _apiService: ApiService,
         private router: Router
     ) {}
 
     ngOnInit() {
-        //use the method to get the all the data
+        // Fetch all equipment data from the API service
         this._apiService.getAllEquipment().subscribe((data: any) => {
-            // console.table(assets)
-            this.assets = data;
+            this.assets = data; // Populate the assets array with retrieved data
         });
     }
 

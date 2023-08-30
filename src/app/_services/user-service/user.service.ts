@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../authentication-service/auth.service';
 import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject } from 'rxjs';
+import { User } from 'src/app/_models/User';
 
 @Injectable({
     providedIn: 'root',
@@ -9,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
     // stores the user values as a behavior subject
     user$ = new BehaviorSubject<any>({});
-
+    private inputs: User[] = [];
     constructor(
         private _apiService: ApiService,
         private _authService: AuthService
@@ -34,4 +35,28 @@ export class UserService {
             }
         );
     }
+
+//     setPortfolioData(){
+//         this._apiService.getFarmerByEmail().subscribe((data: any) => {
+
+//             this.inputs = data;
+//             this.inputs.forEach(input => {
+//              this.addInput(input);
+//             });
+//     });
+// }
+
+// addInput(input: User){
+
+//     const addedInput = {
+//     id: input.id,
+//     firstName: input.firstName,
+//     lastName: input.lastName,
+//     email: input.email,
+//     cellNumber: input.cellNumber,
+//     password: input.password,
+//     idNumber: input.idNumber,
+//     }
+
+// }
 }

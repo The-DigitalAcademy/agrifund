@@ -1,6 +1,3 @@
-/* --------------------------------
-      Created by Nkadimeng Kamogelo
-    ---------------------------------*/
 import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
@@ -20,15 +17,10 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 })
 export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
-
-    editedData: any;
-    farmerData: any;
-    isDisabled = true;
     originalFormValues: any;
+    isDisabled = true;
     submitted = false;
-
-    // stores a farmer's id
-    farmerId = 1;
+    personalInfo!: User;
 
     constructor(
         private fb: FormBuilder,
@@ -38,83 +30,104 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // Assuming you have a method in your ApiService to get registered user details
-        this._apiService.getFarmerUser(this.farmerId).subscribe(
-            (user: User) => {
-                // Populate the form with user details
-                this.myForm.patchValue({
-                    first_name: user.firstName,
-                    last_name: user.lastName,
-                    email: user.email,
-                    id_number: user.idNumber,
-                    cell_number: user.cellNumber,
-                });
-                // Disable the form fields
-                this.myForm.disable();
-            },
-            error => {
-                console.error('Error fetching user details:', error);
-            }
-        );
-
         this.myForm = this.fb.group({
             first_name: new FormControl('', [
-                // Notice the initial empty string value
                 Validators.required,
                 this._validationsService.textWithoutNumbersValidator(),
             ]),
             last_name: new FormControl('', [
-                // Initial empty string value
                 Validators.required,
                 this._validationsService.textWithoutNumbersValidator(),
             ]),
             email: new FormControl('', [
-                // Initial empty string value
                 Validators.required,
                 this._validationsService.emailValidator(),
             ]),
             id_number: new FormControl('', [
-                // Initial empty string value
                 Validators.required,
                 this._validationsService.idNumberValidator(),
             ]),
             cell_number: new FormControl('', [
-                // Initial empty string value
                 Validators.required,
                 this._validationsService.phoneNumberValidator(),
             ]),
             // ... other fields
         });
 
-        // Save the initial form values
-        // this.originalFormValues = userData;
-    }
+        // Fetch and populate user data
+        // this._apiService.getFarmerByEmail().subscribe((farmer: any) => {
+        //     this.personalInfo = farmer;
+        //     this.myForm.get('first_name')?.setValue(farmer.firstName);
+        //     this.myForm.get('last_name')?.setValue(farmer.lastName);
+        //     this.myForm.get('email')?.setValue(farmer.email);
+        //     this.myForm.get('id_number')?.setValue(farmer.idNumber);
+        //     this.myForm.get('cell_number')?.setValue(farmer.cellNumber);
+        //     console.table(farmer);
+        // });
 
-    enableFields() {
-        this.isDisabled = false; // Enable the fields by setting isDisabled to false
-        this.myForm.enable(); // Enable the formGroup
+        // Disable the form initially
+        // this.myForm.disable();
+        this.getPersonalDetails();
     }
-    saveFields() {
-        this.editedData = this.myForm.value;
-        this.isDisabled = true;
+    getPersonalDetails() {
+        this._apiService.getFarmerByEmail().subscribe(
+            (data: any) => {
+                console.log('API Response Data:', data);
+                this.personalInfo = data;
+
+                this.myForm.patchValue({
+                    first_name: this.personalInfo.firstName,
+                    last_name: this.personalInfo.lastName,
+                    email: this.personalInfo.email,
+                    id_number: this.personalInfo.idNumber,
+                    cell_number: this.personalInfo.cellNumber,
+                });
+
+                // Store the initial form values
+                this.originalFormValues = this.myForm.value;
+
+                console.log('Form Data:', this.myForm.value);
+            },
+            (error: any) => {
+                console.error('Error fetching user data:', error);
+            }
+        );
     }
 
     onSaveClicked(formData: any) {
-        this.farmerData = formData;
-        this.isDisabled = true;
-        this.myForm.disable();
-        // Set personal info completion status to true
-        // this.progressService.setPersonalInfoCompleted(true);
+        this.submitted = true;
+
+        if (this.myForm.valid) {
+            // Simulate saving for demonstration
+            setTimeout(() => {
+                // You might perform actual saving here
+                this.isDisabled = true;
+                this.submitted = false;
+                // this.myForm.disable(); // Consider keeping the form enabled
+            }, 1000);
+        }
     }
 
     onCancelClicked() {
-        // Reset the form values to the original values
-        this.myForm.patchValue(this.originalFormValues);
+        this.myForm.reset(this.originalFormValues); // Reset the form to initial values
 
         // Disable the form fields again
         this.isDisabled = true;
-        this.myForm.disable();
+        this.submitted = false;
+        // this.myForm.disable(); // Consider enabling the form
     }
 
-    //validations
+    enableFields() {
+        this.isDisabled = false;
+        this.myForm.enable();
+    }
+
+    saveFields() {
+        this.originalFormValues = this.myForm.value; // Save the current values as original
+        this.isDisabled = true;
+    }
+
+
+
+    // Validations
 }
