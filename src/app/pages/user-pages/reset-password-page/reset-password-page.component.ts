@@ -29,16 +29,15 @@ export class ResetPasswordPageComponent {
     onSubmit() {
         const email = this.ResetPasswordForm.value.email??'';
 
-        this._apiService.requestOtp(email).subscribe(
+        this._apiService.getFarmerOTP(email).subscribe(
             response => {
                 console.log('OTP request successful');
                 // Display a success message to the user or navigate to a confirmation page
-                 this.router.navigate(['/otp-page']);
+                this.router.navigate(['/otp-page']);
             },
             error => {
                 console.error('OTP request failed', error);
                 // Display an error message to the user
-
             }
         );
     }
