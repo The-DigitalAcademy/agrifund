@@ -32,13 +32,13 @@ export class EquipmentTableComponent {
     ) {}
 
     ngOnInit() {
-        // Fetch all equipment data from the API service
-        this._apiService.getAllEquipment().subscribe((data: any) => {
-            this.assets = data; // Populate the assets array with retrieved data
+        //use the method to get the all the data
+        const farmName = '';
+        this._apiService.getAllFarmAssets(farmName).subscribe((data: any) => {
+            // console.table(assets)
+            this.assets = data;
         });
     }
-
-    ngOnDestroy() {}
 
     onEditClicked(id: number) {
         this.router.navigate(['/equipment-edit', id]);

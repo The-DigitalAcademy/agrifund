@@ -58,9 +58,7 @@ export class EquipmentEditComponent implements OnInit {
 
     // This function fetches equipment details based on the provided 'id'
     getEquipmentDetails(id: any) {
-        // Using the _apiService to get equipment data by its ID
-        this._apiService.getEquipmentById(this.id).subscribe((data: any) => {
-            // Assigning the fetched data to the 'asset' variable
+        this._apiService.getAssetById(this.id).subscribe((data: any) => {
             this.asset = data;
 
             // Creating a new FormGroup for editing equipment details using the FormBuilder (_fb)

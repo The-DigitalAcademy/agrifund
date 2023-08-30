@@ -51,22 +51,9 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 Validators.required,
                 this._validationsService.phoneNumberValidator(),
             ]),
-            // ... other fields
+          
         });
 
-        // Fetch and populate user data
-        // this._apiService.getFarmerByEmail().subscribe((farmer: any) => {
-        //     this.personalInfo = farmer;
-        //     this.myForm.get('first_name')?.setValue(farmer.firstName);
-        //     this.myForm.get('last_name')?.setValue(farmer.lastName);
-        //     this.myForm.get('email')?.setValue(farmer.email);
-        //     this.myForm.get('id_number')?.setValue(farmer.idNumber);
-        //     this.myForm.get('cell_number')?.setValue(farmer.cellNumber);
-        //     console.table(farmer);
-        // });
-
-        // Disable the form initially
-        // this.myForm.disable();
         this.getPersonalDetails();
     }
     getPersonalDetails() {
@@ -75,17 +62,18 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 console.log('API Response Data:', data);
                 this.personalInfo = data;
 
+                // Populate form controls with retrieved data
                 this.myForm.patchValue({
                     first_name: this.personalInfo.firstName,
                     last_name: this.personalInfo.lastName,
                     email: this.personalInfo.email,
                     id_number: this.personalInfo.idNumber,
                     cell_number: this.personalInfo.cellNumber,
+                    
                 });
-                console.log('Form Data:', this.myForm.value);
             },
-            (error: any) => {
-                console.error('Error fetching user data:', error);
+            error => {
+                console.error('Error fetching personal details:', error);
             }
         );
     }
