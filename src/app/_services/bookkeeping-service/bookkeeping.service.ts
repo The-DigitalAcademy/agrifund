@@ -1,10 +1,11 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 29 Aug 2023 
+    UPDATED DATE: 31 Aug 2023 
 
     DESCRIPTION:
         This service manages all functions related to bookkeeping:
+        Gets bookkeeping data from the portfolio service 
         Manages bookkeeping CRUD operations
         Calculates the total bookkeeping records 
         Filters bookkeeping records
@@ -28,6 +29,7 @@ import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from './../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
+import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 
 @Injectable({
     providedIn: 'root',
@@ -50,20 +52,52 @@ export class BookkeepingService {
     private totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
     // stores the the filtered and searched records
     // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
-    // stores the total income for bookkeeping records (money in)
-    // private totalBookkeepingIncome$: BehaviorSubject<number>;
-    // stores the total expense for bookkeeping records (money out)
-    // private totalBookkeepingExpenses$: BehaviorSubject<number>;
-
-    // create incomeStatement observable
-    // create income statements observable
 
     constructor(
         private _apiService: ApiService,
-        private _userService: UserService,
         private router: Router,
         private _portfolioService: PortfolioService
     ) {}
+
+    /*---------------------------------
+        GET DATA 
+    ----------------------------------*/
+    // returns all bookkeeping records within the behavior subject
+    getAllBookkeepingRecords(): Observable<any> {
+        this.setBookkeepingRecords();
+        return this.bookkeepingRecords$;
+    }
+
+    // get the total number of  bookkeeping records
+    getTotalBookkeepingRecords(): Observable<number> {
+        // let totalRecords = 0;
+
+        // this._apiService.getAllStatementItems().subscribe((data: any) => {
+        //     this.records = data;
+        //     totalRecords = this.records.length;
+        //     this.totalBookkeepingRecords$.next(totalRecords);
+        // });
+
+        return this.totalBookkeepingRecords$;
+    }
+
+    // gets the current income statement to save the record to
+    getIncomeStatement() {
+        // TODO: save a record to an income statement based on the date of the record
+    }
+
+    // setBookkeepingRecords(record: IncomeStatementItem) {}
+
+    // getBookkeepingRecords() {
+
+    // }
+
+    // TODO
+    // create a new bookkeeping record
+
+    // TODO
+    // create a income statement
+
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/
@@ -136,45 +170,6 @@ export class BookkeepingService {
         // adds record to bookkeeping record observable
         this.bookkeepingRecords$.next(this.records);
     }
-
-    /*---------------------------------
-        GET DATA 
-    ----------------------------------*/
-    // returns all bookkeeping records within the behavior subject
-    getAllBookkeepingRecords(): Observable<any> {
-        this.setBookkeepingRecords();
-        return this.bookkeepingRecords$;
-    }
-
-    // get the total number of  bookkeeping records
-    getTotalBookkeepingRecords(): Observable<number> {
-        // let totalRecords = 0;
-
-        // this._apiService.getAllStatementItems().subscribe((data: any) => {
-        //     this.records = data;
-        //     totalRecords = this.records.length;
-        //     this.totalBookkeepingRecords$.next(totalRecords);
-        // });
-
-        return this.totalBookkeepingRecords$;
-    }
-
-    // gets the current income statement to save the record to
-    getIncomeStatement() {
-        // TODO: save a record to an income statement based on the date of the record
-    }
-
-    // setBookkeepingRecords(record: IncomeStatementItem) {}
-
-    // getBookkeepingRecords() {
-
-    // }
-
-    // TODO
-    // create a new bookkeeping record
-
-    // TODO
-    // create a income statement
 
     /*---------------------------------
         UPDATE DATA

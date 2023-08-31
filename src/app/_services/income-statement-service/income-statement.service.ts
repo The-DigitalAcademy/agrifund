@@ -17,15 +17,13 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from '../api-service/api.service';
-import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
-import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
-import { state } from '@angular/animations';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
-import { User } from 'src/app/_models/User';
 import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from '../../_models/IncomeStatement';
+import { Farm } from 'src/app/_models/FarmerPortfolio';
+import { FarmService } from '../farm-service/farm.service';
 
 @Injectable({
     providedIn: 'root',
@@ -34,6 +32,8 @@ export class IncomeStatementService {
     /*---------------------------------
         OBSERVABLES
     ----------------------------------*/
+    // farmer portfolio will be stored in her
+    private farmerFarm$: Observable<Farm[]>;
     // used to store all initial values fetched from the api
     private statements: IncomeStatement[] = [];
     // will be used to store all income statement items
@@ -42,9 +42,45 @@ export class IncomeStatementService {
     constructor(
         private _apiService: ApiService,
         private _userService: UserService,
+        private _farmService: FarmService,
         private router: Router
-    ) {}
+    ) {
+        // gets the farm data in order to get the income statement data
+        this.farmerFarm$ = this._farmService.getFarmerFarm();
+    }
+    /*---------------------------------
+        GET DATA
+    ----------------------------------*/
+    // gets the income statements from the farmer's farm data
+    getFarmerIncomeStatement() {
+        //: Observable<IncomeStatement[]>
+        // returns the user's farm data from the portfolio
+        // return this.farmerFarm$.pipe(map(farm => farm.incomeStatements));
+        const farm = { ...this.farmerFarm$ };
+        console.log(`Farm Data fetched`)
+    }
 
+    // gets all the income statements from the api
+    getAllIncomeStatements(): Observable<IncomeStatement[]> {
+        // passes the farm name to the one assigned in user service
+        this.setAllIncomeStatements(this._farmService.getFarmName());
+
+        return this.incomeStatements$;
+    }
+
+    // used to get a single income statement by it's id
+    getSingleIncomeStatement(statmentId: number) {}
+
+    // TODO
+    // update income statement total income
+    calculateTotalIncome() {}
+
+    // TODO
+    // update income statement total expense
+    calculateTotalExpense() {}
+
+    // update income statement total net income (profit)
+    calculateTotalNetIncome() {}
     /*---------------------------------
         CREATE DATA
     ----------------------------------*/
@@ -108,29 +144,4 @@ export class IncomeStatementService {
 
         return financialYearStart;
     }
-
-    /*---------------------------------
-        GET DATA
-    ----------------------------------*/
-    // gets all the income statements from the api
-    getAllIncomeStatements(): Observable<IncomeStatement[]> {
-        // passes the farm name to the one assigned in user service
-        this.setAllIncomeStatements(this._userService.getFarmName());
-
-        return this.incomeStatements$;
-    }
-
-    // used to get a single income statement by it's id
-    getSingleIncomeStatement(statmentId: number) {}
-
-    // TODO
-    // update income statement total income
-    calculateTotalIncome() {}
-
-    // TODO
-    // update income statement total expense
-    calculateTotalExpense() {}
-
-    // update income statement total net income (profit)
-    calculateTotalNetIncome() {}
 }

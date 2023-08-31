@@ -1,7 +1,9 @@
+import { JwtService } from './../JWT-service/jwt.service';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../authentication-service/auth.service';
 import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject } from 'rxjs';
+import { PortfolioService } from '../portfolio-service/portfolio.service';
 
 @Injectable({
     providedIn: 'root',
@@ -11,49 +13,17 @@ export class UserService {
     user$ = new BehaviorSubject<any>({});
 
     constructor(
-        private _apiService: ApiService,
-        private _authService: AuthService
+        private _jwtService: JwtService,
+        private _portfolioService: PortfolioService
     ) {
-        // when the service is first call it will set the farmers info
-        this.getFarmerByEmail();
+        // sets the farmer user portfolio data
+        this.setFarmerUserPortfolioData();
     }
 
-    getFarmerByEmail() {
-        const userEmail = this._authService.getUserEmail();
-        const sessionToken = this._authService.getSessionToken();
-
-        if (!userEmail || !sessionToken) {
-            console.error('User email or session token not available');
-            return;
+    setFarmerUserPortfolioData() {
+        if (this._jwtService.getToken()) {
+            // sets the farmer portfolio when a user successfully logs in
+            this._portfolioService.setFarmerPortfolio();
         }
-
-        this._apiService.getFarmerPortfolio().subscribe(
-            (result: any) => {
-                console.log('API Response:', result);
-                this.user$.next(result);
-            },
-            error => {
-                console.error(`Error occurred while getting a user, ${error}`);
-            }
-        );
     }
-
-    setFarmName(farmName: string) { 
-
-    }
-
-    getFarmName() {
-        const farmName = 'My Farm';
-        // get farm name by using a pipe to extract it from the observable
-        // this.user$
-        return farmName;
-    }
-
-    // sets user first name
-    setUserFirstName() {
-        
-    }
-
-    // get user first name
-    getUserFirstName() {}
 }

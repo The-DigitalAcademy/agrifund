@@ -22,9 +22,12 @@ export class DashboardPageComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this._portfolioService.getFarmerPortfolio().subscribe(() => {
-            // this._portfolioService.getFarmName();
-            console.table(this._farmService.getFarmName());
-        });
+        // this._portfolioService.getFarmerPortfolio().subscribe(() => {
+        //     // this._portfolioService.getFarmName();
+        //     console.table(this._farmService.getFarmName());
+        // });
+        // this._farmService.getFarmerFarm().subscribe(data => {
+        //     console.table(this._farmService.getFarmName());
+        // });
     }
 }

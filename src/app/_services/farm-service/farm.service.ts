@@ -38,9 +38,9 @@ export class FarmService {
         assets: [],
         incomeStatements: [],
     });
-    constructor(_portfolioService: PortfolioService) {
+    constructor(private _portfolioService: PortfolioService) {
         // gets the farmer portfolio from the portfolio service
-        this.farmerPortfolio$ = _portfolioService.getFarmerPortfolio();
+        this.farmerPortfolio$ = this._portfolioService.getFarmerPortfolio();
     }
 
     getFarmerFarm(): Observable<Farm[]> {
@@ -48,6 +48,7 @@ export class FarmService {
         return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
 
+    // gets the name of a farm stored within the farm data
     getFarmName() {
         // gets the farmer farm data and a
         this.getFarmerFarm().subscribe((farm: Farm[]) => {

@@ -72,4 +72,10 @@ export class PortfolioService {
     getFarmerPortfolio(): Observable<FarmerPortfolio> {
         return this.farmerPortfolio$;
     }
+
+    // sets user first name
+    setUserFirstName() {}
+
+    // get user first name
+    getUserFirstName() {}
 }
