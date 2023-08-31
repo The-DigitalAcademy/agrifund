@@ -11,32 +11,18 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from '../authentication-service/auth.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FarmerUserService {
-    value = 'mock-token';
-    // value: any = null;
-    // observable to store the user state
-    private userState$: BehaviorSubject<string>;
 
     constructor(private _authService: AuthService) {
-        this.userState$ = new BehaviorSubject(this.value);
+        
     }
 
-    // sets the users state
-    setUserState(value: any) {
-        this.userState$.next(value);
-        // console.log(this.userState$.value);
-    }
 
-    // returns the user state value
-    getUserState(): Observable<any> {
-        return this.userState$;
-    }
 
     //TODO: gets & set a users name
 

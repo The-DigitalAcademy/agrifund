@@ -102,14 +102,6 @@ export class BookkeepingService {
     ----------------------------------*/
     // sets data from the api to the bookkeeping observable
     setBookkeepingRecords() {
-        this._portfolioService
-            .getFarmerPortfolio()
-            .subscribe((portfolioData: any) => {
-                console.log(portfolioData);
-
-                this._portfolioService.getFarmName()
-            });
-
         // this._apiService.getAllStatementItems().subscribe(
         //     (data: any) => {
         //         this.records = data;
