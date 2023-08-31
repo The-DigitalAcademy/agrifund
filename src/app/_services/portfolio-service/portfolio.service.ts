@@ -35,21 +35,7 @@ export class PortfolioService {
             cellNumber: '',
             farms: [],
         });
-    // stores the farmers farm data
-    private farmerFarm: Farm[] = [];
-    // stores the farmers farm data as an observable -> initializes as empty
-    private farmerFarm$: BehaviorSubject<Farm> = new BehaviorSubject<Farm>({
-        id: 0,
-        numberOfEmployees: 0,
-        farmName: '',
-        farmAddress: '',
-        yearsActive: 0,
-        address: '', //stores residential address
-        farmingReason: '', //stores the reason for needing funding
-        crops: [],
-        assets: [],
-        incomeStatements: [],
-    });
+
     constructor(
         private _apiService: ApiService,
         private _authService: AuthService
@@ -85,27 +71,5 @@ export class PortfolioService {
     // gets method for farmer portfolio data
     getFarmerPortfolio(): Observable<FarmerPortfolio> {
         return this.farmerPortfolio$;
-    }
-
-    getFarmerFarm(): Observable<Farm[]> {
-        // returns the user's farm data from the portfolio
-        return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
-    }
-
-    getFarmName() {
-        // console.log('Farmer portfolio:', this.getFarmerPortfolio());
-        // // gets the farmer farm data
-        // const farmerFarm = this.getFarmerFarm();
-        // const farmData = { ...this.farmerFarm.values };
-        // console.log(`farmer's farm data, ${farmerFarm}`);
-        // // value to set farm name
-        // let farmName = '';
-        // // checks to see if the farm data is true
-        // if (farmData) {
-        //     // gets the farm name from the first instance of the farmerFarm array
-        //     farmName = farmerFarm[0].farmName;
-        //     console.log(farmName);
-        // }
-        // return farmName;
     }
 }

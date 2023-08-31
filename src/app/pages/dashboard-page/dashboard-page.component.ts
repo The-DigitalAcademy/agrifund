@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { UserService } from 'src/app/_services/user-service/user.service';
+import { FarmService } from 'src/app/_services/farm-service/farm.service';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -15,15 +16,15 @@ export class DashboardPageComponent implements OnInit {
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
     user!: User;
 
-    constructor(private _portfolioService: PortfolioService) {}
+    constructor(
+        private _portfolioService: PortfolioService,
+        private _farmService: FarmService
+    ) {}
 
     ngOnInit() {
         this._portfolioService.getFarmerPortfolio().subscribe(() => {
             // this._portfolioService.getFarmName();
-        });
-
-        this._portfolioService.getFarmerFarm().subscribe((farm: Farm[]) => {
-            console.table(farm);
+            console.table(this._farmService.getFarmName());
         });
     }
 }
