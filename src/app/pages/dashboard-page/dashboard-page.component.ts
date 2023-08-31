@@ -27,13 +27,13 @@ export class DashboardPageComponent implements OnInit {
     constructor(private _userService: UserService) {}
 
     ngOnInit() {
-        this._userService.getFarmerByEmail();
-        this._userService.user$.subscribe(user => {
-            if (user) {
-                this.user = user;
-                console.log('User Data:', user);
-                // TODO: Handle user data as needed
-            }
-        });
+        // this._userService.getFarmerByEmail();
+        // this._userService.user$.subscribe(user => {
+        //     if (user) {
+        //         this.user = user;
+        //         console.log('User Data:', user);
+        //         // TODO: Handle user data as needed
+        //     }
+        // });
     }
 }

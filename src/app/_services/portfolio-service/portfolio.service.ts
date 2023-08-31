@@ -15,14 +15,16 @@ export class PortfolioService {
     private farmerPortfolio: FarmerPortfolio[] = [];
     // stores the farmer portfolio data values as a behavior subject
     private farmerPortfolio$ = new BehaviorSubject<FarmerPortfolio[]>([]);
+    // stores the farm name as a behavior subject
+    private farmName = '';
+
     constructor(
         private _http: HttpClient,
         private _apiService: ApiService,
         private _authService: AuthService
     ) {
-        // this._apiService.getAllEquipment().subscribe((data: any) => {
-        //     this.assets = data;
-        // });
+        // sets the farmers portfolio when the service is called
+        this.setFarmerPortfolio();
     }
 
     generateId() {
@@ -47,10 +49,11 @@ export class PortfolioService {
 
         this._apiService.getFarmerPortfolio().subscribe(
             (result: any) => {
-                console.log('API Response:', result);
-                this.farmerPortfolio = result;
-                console.log('API Response:', result);
-                this.farmerPortfolio$.next(result);
+                // console.log('API Response:', result.data);
+                this.farmerPortfolio = result.data;
+                // console.table(this.farmerPortfolio);
+                this.farmerPortfolio$.next(result.data);
+                console.log('Observable Data:', this.farmerPortfolio$);
             },
             error => {
                 console.error(`Error occurred while getting a user:`, error);
@@ -64,7 +67,22 @@ export class PortfolioService {
         return this.farmerPortfolio$;
     }
 
-    // gets the farm name for the current portfolio
-    getFarmName() {}
+    setFarmName() {
+        for (const farmer of this.farmerPortfolio) {
+            console.table(farmer);
+            for (const farm of farmer.farms) {
+                this.farmName = farm.farmName
+                console.log(this.farmName);
+            }
+        }
+    }
 
+    // gets the farm name for the current portfolio
+    getFarmName(): string {
+        // calls method to set the farm name
+        this.setFarmName();
+        // console.log('Farm Name:', this.farmName);
+        // returns the farm name observable
+        return this.farmName;
+    }
 }

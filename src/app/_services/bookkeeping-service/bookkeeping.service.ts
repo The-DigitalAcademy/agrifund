@@ -19,7 +19,7 @@
 import { Injectable } from '@angular/core';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from '../api-service/api.service';
-import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
+import { BehaviorSubject, Observable, map, reduce, tap } from 'rxjs';
 import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
 import { state } from '@angular/animations';
 import { Router } from '@angular/router';
@@ -62,35 +62,11 @@ export class BookkeepingService {
         private _apiService: ApiService,
         private _userService: UserService,
         private router: Router,
-        private portfolioService: PortfolioService
+        private _portfolioService: PortfolioService
     ) {}
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/
-    // generate an id value for a bookkeeping record
-    generateRecordId() {
-        const id: number = this.records.length;
-        return id;
-    }
-
-    // adds bookkeeping record from api to observable bookkeeping
-    addRecord(record: IncomeStatementItem) {
-        const addedRecord = {
-            id: record.id,
-            statement_id: record.statement_id, //income statement id
-            category: record.category,
-            amount: record.amount,
-            proof: record.proof,
-            description: record.description,
-            date: record.date, //date of the record
-        };
-
-        // adds record to records
-        this.records.push(addedRecord);
-        // adds record to bookkeeping record observable
-        this.bookkeepingRecords$.next(this.records);
-    }
-
     // create a new bookkeeping record for a specific income statement
     createNewRecord(recordBody: IncomeStatementItem) {
         // adds value from the record body to the new records object that matches how the data is received by the api
@@ -126,10 +102,12 @@ export class BookkeepingService {
     ----------------------------------*/
     // sets data from the api to the bookkeeping observable
     setBookkeepingRecords() {
-        this.portfolioService
+        this._portfolioService
             .getFarmerPortfolio()
             .subscribe((portfolioData: any) => {
-                portfolioData;
+                console.log(portfolioData);
+
+                this._portfolioService.getFarmName()
             });
 
         // this._apiService.getAllStatementItems().subscribe(
@@ -149,10 +127,27 @@ export class BookkeepingService {
         // );
     }
 
+    // adds bookkeeping record from api to observable bookkeeping
+    addRecord(record: IncomeStatementItem) {
+        const addedRecord = {
+            id: record.id,
+            statement_id: record.statement_id, //income statement id
+            category: record.category,
+            amount: record.amount,
+            proof: record.proof,
+            description: record.description,
+            date: record.date, //date of the record
+        };
+
+        // adds record to records
+        this.records.push(addedRecord);
+        // adds record to bookkeeping record observable
+        this.bookkeepingRecords$.next(this.records);
+    }
+
     /*---------------------------------
         GET DATA 
     ----------------------------------*/
-
     // returns all bookkeeping records within the behavior subject
     getAllBookkeepingRecords(): Observable<any> {
         this.setBookkeepingRecords();
