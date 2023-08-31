@@ -17,6 +17,7 @@ import { ApiService } from '../api-service/api.service';
 import { AuthService } from '../authentication-service/auth.service';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio, Farm, Assets } from 'src/app/_models/FarmerPortfolio';
+import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 
 @Injectable({
     providedIn: 'root',
@@ -51,6 +52,16 @@ export class PortfolioService {
         assets: [],
         incomeStatements: [],
     });
+
+    // stores the income statement data as an observable -> -> initializes as empty
+    private incomeStatements$: BehaviorSubject<IncomeStatement> =
+        new BehaviorSubject<IncomeStatement>({
+            farm_id: 0,
+            statement_date: '',
+            total_income: 0,
+            total_expenses: 0,
+            incomeStatementItems: [],
+        });
 
     constructor(
         private _apiService: ApiService,
@@ -113,5 +124,13 @@ export class PortfolioService {
         });
         // returns the farm name within the first index of the farm name array
         return farmName[0];
+    }
+
+    /*---------------------------------
+        INCOME STATEMENT DATA
+    ----------------------------------*/
+    getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
+        // returns the income statement for a farm
+        return this.farmerFarm$.pipe(map(farm => farm.incomeStatements));
     }
 }

@@ -23,5 +23,11 @@ export class DashboardPageComponent implements OnInit {
         this._portfolioService.getFarmerFarm().subscribe((data: any) => {
             this._portfolioService.getFarmName();
         });
+
+        this._portfolioService
+            .getFarmerIncomeStatements()
+            .subscribe((data: any) => {
+                console.log(data);
+            });
     }
 }
