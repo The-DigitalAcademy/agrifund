@@ -35,6 +35,7 @@ export class PortfolioService {
             cellNumber: '',
             farms: [],
         });
+
     // stores the farmers farm data
     private farmerFarm: Farm[] = [];
     // stores the farmers farm data as an observable -> initializes as empty
@@ -50,6 +51,7 @@ export class PortfolioService {
         assets: [],
         incomeStatements: [],
     });
+
     constructor(
         private _apiService: ApiService,
         private _authService: AuthService
@@ -58,6 +60,9 @@ export class PortfolioService {
         this.setFarmerPortfolio();
     }
 
+    /*---------------------------------
+        ALL PORTFOLIO DATA
+    ----------------------------------*/
     // sets the farmer portfolio data
     setFarmerPortfolio() {
         const userEmail = this._authService.getUserEmail();
@@ -75,6 +80,7 @@ export class PortfolioService {
                 // console.table(this.farmerPortfolio);
                 this.farmerPortfolio$.next(result.data);
                 console.log('Observable Data:', this.farmerPortfolio$);
+                this.getFarmerFarm();
             },
             error => {
                 console.error(`Error occurred while getting a user:`, error);
@@ -87,25 +93,28 @@ export class PortfolioService {
         return this.farmerPortfolio$;
     }
 
+    /*---------------------------------
+        FARM DATA
+    ----------------------------------*/
+    // gets the farmer's fam data
     getFarmerFarm(): Observable<Farm[]> {
         // returns the user's farm data from the portfolio
         return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
 
+    // sets and gets the farm's name
     getFarmName() {
-        // console.log('Farmer portfolio:', this.getFarmerPortfolio());
-        // // gets the farmer farm data
-        // const farmerFarm = this.getFarmerFarm();
-        // const farmData = { ...this.farmerFarm.values };
-        // console.log(`farmer's farm data, ${farmerFarm}`);
-        // // value to set farm name
-        // let farmName = '';
-        // // checks to see if the farm data is true
-        // if (farmData) {
-        //     // gets the farm name from the first instance of the farmerFarm array
-        //     farmName = farmerFarm[0].farmName;
-        //     console.log(farmName);
-        // }
-        // return farmName;
+        // gets the farmer farm data and a
+        this.getFarmerFarm().subscribe((farm: Farm[]) => {
+            // assigns data from get farmer farm to the farmer farm array
+            this.farmerFarm = farm;
+            console.table(this.farmerFarm);
+        });
+        // gets the name of a farm
+        const farmName = this.farmerFarm.map(farm => {
+            return farm.farmName;
+        });
+        // returns the farm name within the first index of the farm name array
+        return farmName;
     }
 }
