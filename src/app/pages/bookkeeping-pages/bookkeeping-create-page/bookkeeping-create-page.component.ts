@@ -55,12 +55,12 @@ export class BookkeepingCreatePageComponent implements OnInit {
 
             // console.table(this.record);
 
-            this._apiService.addRecord(this.record).subscribe(data => {
-                // adds the new record to the observable array after successfully adding the record
-                this._bookkeepingService.addRecord(this.record);
-            });
+            // this._apiService.addRecord(this.record).subscribe(data => {
+            //     // adds the new record to the observable array after successfully adding the record
+            //     this._bookkeepingService.addRecord(this.record);
+            // });
 
-            this.router.navigate(['/bookkeeping']);
+            // this.router.navigate(['/bookkeeping']);
         }
     }
 }
