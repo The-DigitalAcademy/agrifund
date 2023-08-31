@@ -12,16 +12,39 @@ export class PlotService {
     private plots: Plot[] = [];
     // stores farmer plots as a behviour subject
     private farmerPlots$ = new BehaviorSubject<Plot[]>([]);
-    constructor(private _apiService: ApiService, private _portfolioService: PortfolioService) { }
-    
-    createFarmerPlot(farmName: string, plotBody: Plot) {
-        this._apiService.addPlot(farmName,plotBody).subscribe(
-            result => {
-                console.table(`Creates this farm data: ${farmName}`);
+    constructor(
+        private _apiService: ApiService,
+        private _portfolioService: PortfolioService
+    ) {}
+
+    // createFarmerPlot(farmName: string, plotBody: Plot) {
+    //     this._apiService.addPlot(farmName,plotBody).subscribe(
+    //         result => {
+    //             console.table(`Creates this farm data: ${farmName}`);
+    //         },
+    //         error => {
+    //             console.error('error occured when create new farm data');
+    //             console.error(error);
+    //         }
+    //     );
+    // }
+ 
+    createFarmerPlot(plotBody: Plot) {
+        const farmName = this._portfolioService.getFarmName();
+        const addedPlot = {
+            plotAddress : plotBody.plotAddress,
+            plotSize :plotBody.plotSize,
+            dateOfOwnership: plotBody.dateOfOwnership,
+        };
+        this._apiService.addPlot(farmName, addedPlot).subscribe(
+            data => {
+                console.log(data);
             },
             error => {
-                console.error('error occured when create new farm data');
-                console.error(error);
+                console.error(
+                    'Error occured when creating new crop data',
+                    error
+                );
             }
         );
     }
@@ -30,7 +53,7 @@ export class PlotService {
         // api connecition for getting plot info
         const farmName = this._portfolioService.getFarmName();
         // within api connec assign date to behviour subject for farm info
-              this._apiService.getAllPlots(farmName).subscribe(
+        this._apiService.getAllPlots(farmName).subscribe(
             (data: any) => {
                 this.plots = data;
                 // adds crop to crop data observable
@@ -42,7 +65,7 @@ export class PlotService {
             }
         );
     }
-    
+
     // get farm info
     getPlotInfo() {
         // esnures that the farm infor is set when get method is called
@@ -50,14 +73,5 @@ export class PlotService {
 
         // return the behaviour subject containing the farm info data if it is not blank
         return this.plots;
-    }
-    // adds crop record from api to observable bookkeeping
-    addPlot(plot: Plot) {
-        const addedPlot = {
-            id: plot.id,
-            plotAddress: plot.plotAddress,
-            plotSize: plot.plotSize,
-            dateOfOwnership: plot.dateOfOwnership,
-        };
     }
 }

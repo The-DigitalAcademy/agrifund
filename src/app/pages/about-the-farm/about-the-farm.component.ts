@@ -41,7 +41,7 @@ export class AboutTheFarmComponent implements OnInit {
     id = 0;
     isLast: any;
     assetForm!: FormGroup;
-    farmName = 'Precious Maphutha Farm';
+
 
 
     constructor(
@@ -118,7 +118,7 @@ export class AboutTheFarmComponent implements OnInit {
             };
             console.log(this.crop);
 
-            this._cropService.createFarmerCrop(this.farmName, this.crop);
+            this._cropService.createFarmerCrop(this.crop);
         }
         if (this.farmForm.valid) {
             const farmInputValue = this.farmForm.value;
@@ -142,8 +142,8 @@ export class AboutTheFarmComponent implements OnInit {
                 plotSize: formInputValue.plotSize,
                 dateOfOwnership: formInputValue.date,
             };
-            console.log(this.farmName,this.plot);
-            this._plotService.createFarmerPlot(this.farmName, this.plot);
+            console.log(this.plot);
+            this._plotService.createFarmerPlot(this.plot);
         }
         // console.log(this.farmForm,this.farmName);
         

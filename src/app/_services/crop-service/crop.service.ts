@@ -18,18 +18,25 @@ export class CropService {
         private _portfolioService: PortfolioService
     ) {}
 
-    createFarmerCrop(farmName: string, cropBody: Crop) {
-        this._apiService.addCrop(farmName,cropBody).subscribe(
-            result => {
-                console.table(`Creates this crop data: ${farmName}`);
+    createFarmerCrop(cropBody: Crop) {
+        const farmName = this._portfolioService.getFarmName();
+        const addedCrop = {
+            name: cropBody.name,
+            season: cropBody.season,
+            type: cropBody.type,
+        };
+        this._apiService.addCrop(farmName, addedCrop).subscribe(
+            data => {
+                console.log(data);
             },
             error => {
-                console.error('error occured when create new farm data');
-                console.error(error);
+                console.error(
+                    'Error occured when creating new crop data',
+                    error
+                );
             }
         );
     }
-
     // set plot info in observable
     setCropInfo() {
         // gets the current farm name for a user
