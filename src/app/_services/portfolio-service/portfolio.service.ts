@@ -1,40 +1,61 @@
-import { HttpClient } from '@angular/common/http';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique Nagel
+    CREATE DATE: 30 Jul 2023
+    UPDATED DATE: 31 Aug 2023 
+
+    DESCRIPTION:
+     This service is used for managing the overall farmer's portfolio data.
+     All portfolio data is fetched from the api here.
+
+    PARAMETERS:
+    registerUser( newUser: User) -> receives an body that is an instance of User
+    loginUser( email: string, password:string) -> both parameters passed should be a string
+
+-------------------------------------------------------------------------------------------------*/
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { Asset } from 'src/app/_models/Asset';
 import { AuthService } from '../authentication-service/auth.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
+import { BehaviorSubject, Observable, map } from 'rxjs';
+import { FarmerPortfolio, Farm, Assets } from 'src/app/_models/FarmerPortfolio';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PortfolioService {
-    private assets: Asset[] = [];
+    private assets: Assets[] = [];
     // stores the farmer portfolio as a array instance of farmer portfolio
     private farmerPortfolio: FarmerPortfolio[] = [];
-    // stores the farmer portfolio data values as a behavior subject
-    private farmerPortfolio$ = new BehaviorSubject<FarmerPortfolio[]>([]);
-    // stores the farm name as a behavior subject
-    private farmName = '';
-
+    // stores the farmer portfolio data values as a behavior subject -> initializes as empty
+    private farmerPortfolio$: BehaviorSubject<FarmerPortfolio> =
+        new BehaviorSubject<FarmerPortfolio>({
+            id: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            cellNumber: '',
+            farms: [],
+        });
+    // stores the farmers farm data
+    private farmerFarm: Farm[] = [];
+    // stores the farmers farm data as an observable -> initializes as empty
+    private farmerFarm$: BehaviorSubject<Farm> = new BehaviorSubject<Farm>({
+        id: 0,
+        numberOfEmployees: 0,
+        farmName: '',
+        farmAddress: '',
+        yearsActive: 0,
+        address: '', //stores residential address
+        farmingReason: '', //stores the reason for needing funding
+        crops: [],
+        assets: [],
+        incomeStatements: [],
+    });
     constructor(
-        private _http: HttpClient,
         private _apiService: ApiService,
         private _authService: AuthService
     ) {
-        // sets the farmers portfolio when the service is called
+        // sets the farmer portfolio when the service is called
         this.setFarmerPortfolio();
-    }
-
-    generateId() {
-        const id: number = this.assets.length;
-
-        return id;
-    }
-    generateFarmId() {
-        const farm_id: number = this.assets.length;
-        return farm_id;
     }
 
     // sets the farmer portfolio data
@@ -53,7 +74,6 @@ export class PortfolioService {
                 this.farmerPortfolio = result.data;
                 // console.table(this.farmerPortfolio);
                 this.farmerPortfolio$.next(result.data);
-                this.setFarmName();
                 console.log('Observable Data:', this.farmerPortfolio$);
             },
             error => {
@@ -63,39 +83,29 @@ export class PortfolioService {
     }
 
     // gets method for farmer portfolio data
-    getFarmerPortfolio(): Observable<FarmerPortfolio[]> {
-        this.setFarmerPortfolio();
+    getFarmerPortfolio(): Observable<FarmerPortfolio> {
         return this.farmerPortfolio$;
     }
 
-    setFarmerFarm() {
-        // this just get the observable data in plain form
-        // this.farmerPortfolio$.value[0] -> returns undefined
-        // map the data from farmer portfolio to get the farm data and each
-        //subsequent object stored within the portfolio
-        this.farmerPortfolio$.value;
+    getFarmerFarm(): Observable<Farm[]> {
+        // returns the user's farm data from the portfolio
+        return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
 
-    setFarmName() {
-        console.log('farmer portfolio:', this.getFarmerPortfolio())
-        // sets the farmer data to the first instance of the farmer portfolio data
-        const farmer = this.farmerPortfolio$.value[0];
-        console.log('farmer data', farmer);
-
-        if (farmer && farmer.farms.length > 0) {
-            // takes the first instance of the farms data and takes the value of the farm name
-            this.farmName = farmer.farms[0].farmName;
-            // console.log(this.farmName);
-        }
-        return this.farmName;
-    }
-
-    // gets the farm name for the current portfolio
-    getFarmName(): string {
-        // calls method to set the farm name
-        // this.setFarmName();
-        // console.log('Farm Name:', this.farmName);
-        // returns the farm name observable
-        return this.farmName;
+    getFarmName() {
+        // console.log('Farmer portfolio:', this.getFarmerPortfolio());
+        // // gets the farmer farm data
+        // const farmerFarm = this.getFarmerFarm();
+        // const farmData = { ...this.farmerFarm.values };
+        // console.log(`farmer's farm data, ${farmerFarm}`);
+        // // value to set farm name
+        // let farmName = '';
+        // // checks to see if the farm data is true
+        // if (farmData) {
+        //     // gets the farm name from the first instance of the farmerFarm array
+        //     farmName = farmerFarm[0].farmName;
+        //     console.log(farmName);
+        // }
+        // return farmName;
     }
 }

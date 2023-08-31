@@ -1,3 +1,4 @@
+import { Farm } from 'src/app/_models/FarmerPortfolio';
 import { User } from './../../_models/User';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -17,10 +18,12 @@ export class DashboardPageComponent implements OnInit {
     constructor(private _portfolioService: PortfolioService) {}
 
     ngOnInit() {
-        this._portfolioService.getFarmerPortfolio().subscribe((data: any) => {
-            const farmName = this._portfolioService.getFarmName();
-            console.log(`farmName: ${farmName}`);
+        this._portfolioService.getFarmerPortfolio().subscribe(() => {
+            // this._portfolioService.getFarmName();
         });
 
+        this._portfolioService.getFarmerFarm().subscribe((farm: Farm[]) => {
+            console.table(farm);
+        });
     }
 }

@@ -14,11 +14,11 @@ export interface FarmerPortfolio {
     lastName: string;
     email: string;
     cellNumber: string;
-    farms: Farms[];
+    farms: Farm[];
 }
 
-export interface Farms {
-    id: string;
+export interface Farm {
+    id: number;
     numberOfEmployees: number;
     farmName: string;
     farmAddress: string;
