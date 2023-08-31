@@ -80,7 +80,7 @@ export class RegisterPageComponent implements OnInit {
             const inputValue = this.RegisterForm.value;
             // Gather user data from the form
             this.user = {
-                id: this._portfolioService.generateId(),
+                id: 0,
                 firstName: inputValue.first_name,
                 lastName: inputValue.last_name,
                 email: inputValue.email,
