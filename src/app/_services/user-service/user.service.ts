@@ -10,7 +10,7 @@ import { User } from 'src/app/_models/User';
 export class UserService {
     // stores the user values as a behavior subject
     user$ = new BehaviorSubject<any>({});
-    private inputs: User[] = [];
+    
     constructor(
         private _apiService: ApiService,
         private _authService: AuthService

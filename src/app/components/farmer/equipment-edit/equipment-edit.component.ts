@@ -86,7 +86,7 @@ export class EquipmentEditComponent implements OnInit {
             // Create an object representing the asset data
             this.asset = {
                 // Keep the initial id of the record
-                id: this.asset.id,
+                id: this.id,
                 farm_id: this.asset.farm_id,
                 name: this.editEquipmentForm.get('equipmentName')?.value,
                 type: this.editEquipmentForm.get('equipmentType')?.value,

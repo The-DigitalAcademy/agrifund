@@ -5,7 +5,7 @@
         </div>
         <div class="action">
             <app-enableform-crop-info (enableFields)="enableFields()"
-                (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+                (saveData)="onSaveClicked()"></app-enableform-crop-info>
         </div>
     </div>
     <hr>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="button-container">
-                <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
+                <button *ngIf="!isDisabled" (click)="onSaveClicked()" [disabled]="!myForm.valid"
                     class="btn colourful-btn btn-width">Save</button>
                 <button *ngIf="!isDisabled" (click)="onCancelClicked()"
                     class="btn outline-btn btn-width">Cancel</button>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 // import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class FarmerPortfolioProgressbarComponent {
     constructor(
         private fb: FormBuilder,
         private _portfolioService: PortfolioService,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _progressService: ProgressServiceService
     ) {}
 
     toggleCheckbox(controlName: string) {
@@ -37,25 +39,27 @@ export class FarmerPortfolioProgressbarComponent {
     }
 
     ngOnInit() {
-        // this._portfolioService.personalInfoCompleted$.subscribe(
-        //     personalInfoCompleted => {
-        //         if (personalInfoCompleted) {
-        //             this.progressPercentage += 35;
-        //         }
-        //     }
-        // );
+        this._progressService.personalInfoCompleted$.subscribe(
+            personalInfoCompleted => {
+                if (personalInfoCompleted) {
+                    this.progressPercentage += 35;
+                }
+            }
+        );
 
-        // this.progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
-        //     if (cropInfoCompleted) {
-        //         this.progressPercentage += 30;
-        //     }
-        // });
+        this._progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
+            if (cropInfoCompleted) {
+                this.progressPercentage += 30;
+            }
+        });
 
-        // this.progressService.farmInfoCompleted$.subscribe(farmInfoCompleted => {
-        //     if (farmInfoCompleted) {
-        //         this.progressPercentage += 35;
-        //     }
-        // });
+        this._progressService.farmInfoCompleted$.subscribe(
+            farmInfoCompleted => {
+                if (farmInfoCompleted) {
+                    this.progressPercentage += 35;
+                }
+            }
+        );
 
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false

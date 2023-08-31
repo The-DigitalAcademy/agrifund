@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
@@ -5,9 +6,11 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
@@ -19,18 +22,25 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
     originalFormValues: any;
     isDisabled = true;
-    submitted = false;
+   
     personalInfo!: User;
+    id: any;
 
     constructor(
-        private fb: FormBuilder,
+        private router: Router,
+        private route: ActivatedRoute,
+        private _fb: FormBuilder,
         private _validationsService: ValidationService,
         private _portfolioService: PortfolioService,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _progressService: ProgressServiceService
     ) {}
 
     ngOnInit() {
-        this.myForm = this.fb.group({
+        this.getPersonalData((this.id = this.route.snapshot.params['id']));
+        console.log(this.id);
+
+        this.myForm = this._fb.group({
             first_name: new FormControl('', [
                 Validators.required,
                 this._validationsService.textWithoutNumbersValidator(),
@@ -51,26 +61,28 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 Validators.required,
                 this._validationsService.phoneNumberValidator(),
             ]),
-          
         });
 
         this.getPersonalDetails();
     }
+
     getPersonalDetails() {
         this._apiService.getFarmerPortfolio().subscribe(
             (data: any) => {
-                console.log('API Response Data:', data);
+                console.log('Response Data:', data);
                 this.personalInfo = data;
 
-                // Populate form controls with retrieved data
-                this.myForm.patchValue({
-                    first_name: this.personalInfo.firstName,
-                    last_name: this.personalInfo.lastName,
-                    email: this.personalInfo.email,
-                    id_number: this.personalInfo.idNumber,
-                    cell_number: this.personalInfo.cellNumber,
-                    
-                });
+                //Populate form controls with retrieved data
+                // this.myForm.patchValue({
+                //     first_name: this.personalInfo.firstName,
+                //     last_name: this.personalInfo.lastName,
+                //     email: this.personalInfo.email,
+                //     id_number: this.personalInfo.idNumber,
+                //     cell_number: this.personalInfo.cellNumber,
+                // });
+
+                // Update progress for personal info completion
+                this._progressService.setPersonalInfoCompleted(true);
             },
             error => {
                 console.error('Error fetching personal details:', error);
@@ -78,7 +90,21 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         );
     }
 
-    get createInfoControl() {
+    getPersonalData(id: any) {
+        this._apiService.getFarmerById(this.id).subscribe((data: any) => {
+            this.personalInfo = data;
+
+            this.myForm = this._fb.group({
+                first_name: new FormControl(this.personalInfo.firstName),
+                last_name: new FormControl(this.personalInfo.lastName),
+                email: new FormControl(this.personalInfo.email),
+                id_number: new FormControl(this.personalInfo.idNumber),
+                cell_number: new FormControl(this.personalInfo.cellNumber),
+            });
+        });
+    }
+
+    get createPersonalControl() {
         return this.myForm.controls;
     }
 
@@ -87,19 +113,32 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.myForm.enable();
     }
 
-    saveFields() {
-        this.originalFormValues = this.myForm.value; // Save the current values as original
-        this.isDisabled = true;
-    }
+    
 
     onSaveClicked(formData: any) {
-        this.submitted = true; // Indicate that the form has been submitted
         if (this.myForm.valid) {
-            // Save or update the data here
-            this.isDisabled = true;
-            this.submitted = false;
-            this.myForm.disable();
+            this.personalInfo = {
+                id: this.personalInfo.id,
+                password: this.personalInfo.password,
+                firstName: this.myForm.get('first_name')?.value,
+                lastName: this.myForm.get('last_name')?.value,
+                email: this.myForm.get('email')?.value,
+                idNumber: this.myForm.get('id_number')?.value,
+                cellNumber: this.myForm.get('cell_number')?.value,
+            };
+            console.table(this.personalInfo);
+
+            this._apiService
+                .updateFarmerInfo(this.personalInfo)
+                .subscribe(data => {
+                    // Save or update the data here
+                    
+                });
         }
+        this.isDisabled = true;
+        this._progressService.setPersonalInfoCompleted(true);
+        this.myForm.disable();
+         
     }
     onCancelClicked() {
         // Reset the form values to the original values
@@ -107,7 +146,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
         // Disable the form fields again
         this.isDisabled = true;
-        this.submitted = false;
+        
         this.myForm.disable();
     }
 

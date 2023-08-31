@@ -10,6 +10,9 @@ import {
 } from '@angular/forms';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/_models/User';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -17,69 +20,79 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
     styleUrls: ['./disabledform-farm-info.component.css'],
 })
 export class DisabledformFarmInfoComponent {
-    onFileSelected($event: Event) {
-        throw new Error('Method not implemented.');
-    }
+   
     originalFormValues: any;
     myForm!: FormGroup;
     isDisabled = true;
-    editedData: any;
-    farmerData: any;
 
+    farmInfo!: User;
+    id: any;
     constructor(
-        private fb: FormBuilder,
+        private _fb: FormBuilder,
         private _validationsService: ValidationService,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _apiService: ApiService,
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit() {
-        const farmerData = {
-            farmer: 'Mankweng-A Turfloop NO:3434 ',
-            farm: 'Mankweng-A Turfloop NO:3434 ', // Update with default values
-            size: '9', // Update with default values
-            years: '10', // Update with default values
-            num_employee: '2', // Update with default values
-            reasonForFunding:
-                'I want to improve my land of farming and equipments', // Update with default values
-        };
-
-        this.myForm = this.fb.group({
-            farmer: new FormControl(
-                { value: farmerData.farmer, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.addressContainsStreetValidator,
-                ]
-            ),
-            farm: new FormControl({ value: farmerData.farm, disabled: true }, [
+        this.getFarmInfo((this.id = this.route.snapshot.params['id']));
+        console.log(this.id);
+        this.myForm = this._fb.group({
+            farmer: new FormControl('', [
                 Validators.required,
                 this._validationsService.addressContainsStreetValidator,
             ]),
-            size: new FormControl({ value: farmerData.size, disabled: true }, [
+            farm: new FormControl('', [
+                Validators.required,
+                this._validationsService.addressContainsStreetValidator,
+            ]),
+            size: new FormControl('', [
                 Validators.required,
                 this._validationsService.positiveNumberValidator(),
             ]),
-            years: new FormControl(
-                { value: farmerData.years, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.isNumericValidator(),
-                ]
-            ),
-            num_employee: new FormControl(
-                { value: farmerData.num_employee, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.isNumericValidator(),
-                ]
-            ),
-            reasonForFunding: new FormControl(
-                { value: farmerData.reasonForFunding, disabled: true },
-                [Validators.required]
-            ),
+            years: new FormControl('', [
+                Validators.required,
+                this._validationsService.isNumericValidator(),
+            ]),
+            reasonForFunding: new FormControl('', [Validators.required]),
+            num_employee: new FormControl('', [
+                Validators.required,
+                this._validationsService.isNumericValidator(),
+            ]),
         });
 
-        this.originalFormValues = farmerData;
+        this.getFarmDetails();
+    }
+
+    getFarmDetails() {
+        this._apiService.getFarmerPortfolio().subscribe(
+            (data: any) => {
+                console.log('Response Data:', data);
+                this.farmInfo = data;
+            },
+            error => {
+                console.error('Error fetching crop details:', error);
+            }
+        );
+    }
+
+    getFarmInfo(id: any) {
+        this._apiService.getFarmerById(this.id).subscribe((data: any) => {
+            this.farmInfo = data;
+
+            this.myForm = this._fb.group({
+                farmer: new FormControl(this.farmInfo.firstName),
+                farm_name: new FormControl(this.farmInfo.lastName),
+                size: new FormControl(this.farmInfo.email),
+                years: new FormControl(this.farmInfo.idNumber),
+                num_employee: new FormControl(this.farmInfo.cellNumber),
+            });
+        });
+    }
+
+    get createFarmControl() {
+        return this.myForm.controls;
     }
 
     enableFields() {
@@ -88,12 +101,28 @@ export class DisabledformFarmInfoComponent {
     }
 
     saveFields() {
-        this.editedData = this.myForm.value;
+        this.isDisabled = false;
         this.isDisabled = true;
     }
 
     onSaveClicked(formData: any) {
-        this.farmerData = formData;
+        if (this.myForm.valid) {
+            this.farmInfo = {
+                id: this.farmInfo.id,
+                password: this.farmInfo.password,
+                firstName: this.myForm.get('farmer')?.value,
+                lastName: this.myForm.get('farm_name')?.value,
+                email: this.myForm.get('size')?.value,
+                idNumber: this.myForm.get('years')?.value,
+                cellNumber: this.myForm.get('num_employee')?.value,
+            };
+            console.table(this.farmInfo);
+
+            this._apiService.updateFarmerInfo(this.farmInfo).subscribe(data => {
+                // Save or update the data here
+            });
+        }
+
         this.isDisabled = true;
         this.myForm.disable();
         // this.progressService.setFarmInfoCompleted(true);

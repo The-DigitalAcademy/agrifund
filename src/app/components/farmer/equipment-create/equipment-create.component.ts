@@ -39,8 +39,8 @@ export class EquipmentCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createEquipmentForm.valid) {
             this.asset = {
-                id: this._portfolioServiceService.generateId(),
-                farm_id: this._portfolioServiceService.generateFarmId(),
+                id: this.asset.id,
+                farm_id: this.asset.farm_id,
                 name: this.createEquipmentForm.get('equipmentName')?.value,
                 type: this.createEquipmentForm.get('equipmentType')?.value,
                 age: this.createEquipmentForm.get('equipmentAge')?.value,
@@ -48,7 +48,7 @@ export class EquipmentCreateComponent implements OnInit {
                     this.createEquipmentForm.get('equipmentAmount')?.value,
             };
 
-            console.table(this.asset);
+            // console.table(this.asset);
             // this._apiService.addAsset(this.asset).subscribe(data => {
             //     console.table(data);
             // });

@@ -5,7 +5,10 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { User } from 'src/app/_models/User';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'app-plot-info-form',
     templateUrl: './plot-info-form.component.html',
@@ -17,45 +20,69 @@ export class PlotInfoFormComponent implements OnInit {
     isDisabled = true;
     editedData: any;
     farmerData: any;
+    plotInfo!: User;
+    id: any;
 
     constructor(
         private fb: FormBuilder,
-        private validationsService: ValidationService
+        private validationsService: ValidationService,
+        private _apiService: ApiService,
+        private _fb: FormBuilder,
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit() {
-        // Placeholder data for the farmer's information
-        const farmerData = {
-            farmer: 'Mankweng-A Turfloop NO:3434 ',
-            size: '9',
-            farm: 'Farm Address Placeholder',
-            date: '2023-07-13',
-        };
+        this.getPlotInfo((this.id = this.route.snapshot.params['id']));
+        console.log(this.id);
 
         this.myForm = this.fb.group({
-            farmer: new FormControl(
-                { value: farmerData.farmer, disabled: true },
-                [
-                    Validators.required,
-                    this.validationsService.addressContainsStreetValidator,
-                ]
-            ),
-            size: new FormControl({ value: farmerData.size, disabled: true }, [
-                Validators.required,
-                this.validationsService.positiveNumberValidator(),
-            ]),
-            farm: new FormControl({ value: farmerData.farm, disabled: true }, [
+            farmer: new FormControl('', [
                 Validators.required,
                 this.validationsService.addressContainsStreetValidator,
             ]),
-            date: new FormControl({ value: farmerData.date, disabled: true }, [
+            size: new FormControl('', [
                 Validators.required,
+                this.validationsService.positiveNumberValidator(),
             ]),
+            farm: new FormControl('', [
+                Validators.required,
+                this.validationsService.addressContainsStreetValidator,
+            ]),
+            date: new FormControl('', [Validators.required]),
         });
 
-        this.originalFormValues = farmerData;
+        //this.originalFormValues = farmerData;
+        this.getPlotDetails();
     }
 
+    getPlotDetails() {
+        this._apiService.getFarmerPortfolio().subscribe(
+            (data: any) => {
+                console.log('Response Data:', data);
+                this.plotInfo = data;
+            },
+            error => {
+                console.error('Error fetching plot details:', error);
+            }
+        );
+    }
+
+    getPlotInfo(id: any) {
+        this._apiService.getFarmerById(this.id).subscribe((data: any) => {
+            this.plotInfo = data;
+
+            this.myForm = this._fb.group({
+                farmer: new FormControl(this.plotInfo.firstName),
+                size: new FormControl(this.plotInfo.lastName),
+                farm: new FormControl(this.plotInfo.email),
+                date: new FormControl(this.plotInfo.idNumber),
+            });
+        });
+    }
+
+    get createPlotControl() {
+        return this.myForm.controls;
+    }
     enableFields() {
         this.isDisabled = false;
         this.myForm.enable();
@@ -67,8 +94,24 @@ export class PlotInfoFormComponent implements OnInit {
         this.myForm.disable();
     }
 
-    onSaveClicked(formData: any) {
-        this.farmerData = formData;
+    onSaveClicked() {
+        if (this.myForm.valid) {
+            this.plotInfo = {
+                id: this.plotInfo.id,
+                password: this.plotInfo.password,
+                firstName: this.myForm.get('farmer')?.value,
+                lastName: this.myForm.get('size')?.value,
+                email: this.myForm.get('farm')?.value,
+                idNumber: this.myForm.get('date')?.value,
+                cellNumber: this.myForm.get('cell_number')?.value,
+            };
+            console.table(this.plotInfo);
+
+            this._apiService.updateFarmerInfo(this.plotInfo).subscribe(data => {
+                // Save or update the data here
+            });
+        }
+
         this.isDisabled = true;
         this.myForm.disable();
     }

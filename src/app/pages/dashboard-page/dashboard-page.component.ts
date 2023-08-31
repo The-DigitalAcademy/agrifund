@@ -9,7 +9,7 @@ import { UserService } from 'src/app/_services/user-service/user.service';
     styleUrls: ['./dashboard-page.component.css'],
 })
 export class DashboardPageComponent implements OnInit {
-    bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
+    
 
     constructor(private _userService: UserService) {}
 

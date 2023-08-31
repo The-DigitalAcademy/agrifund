@@ -83,6 +83,9 @@ export class ApiService {
     registerUser(userBody: User) {
         return this.http.post(`${this.REGISTER_URL}`, userBody);
     }
+    getRegisterUser() {
+        return this.http.get(`${this.REGISTER_URL}`);
+    }
 
     /* --------------------------------
         USER REQUESTS
