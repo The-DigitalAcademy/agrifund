@@ -1,6 +1,6 @@
 export interface Plot {
-  id: number;
+    id: number;
     plotAddress: string;
     plotSize: string;
-  dateOfOwnership: string;
+    dateOfOwnership: string;
 }

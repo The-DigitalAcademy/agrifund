@@ -12,8 +12,7 @@ import { AuthService } from '../authentication-service/auth.service';
     providedIn: 'root',
 })
 export class PortfolioService {
-    
-    private plots: Plot[] = [];
+ 
     private farmName: string = '';
     
 

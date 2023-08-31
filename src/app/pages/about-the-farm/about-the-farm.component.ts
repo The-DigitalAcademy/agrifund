@@ -41,6 +41,8 @@ export class AboutTheFarmComponent implements OnInit {
     id = 0;
     isLast: any;
     assetForm!: FormGroup;
+    farmName = 'Precious Maphutha Farm';
+
 
     constructor(
         private fb: FormBuilder,
@@ -70,7 +72,7 @@ export class AboutTheFarmComponent implements OnInit {
         this.plotForm = this.fb.group({
             plotAddress: ['', Validators.required],
             plotSize: ['', Validators.required],
-            date: ['', Validators.required],
+            dateOfOwnership: ['', Validators.required],
         });
         this.farmForm = this.fb.group({
             address: ['', Validators.required],
@@ -104,34 +106,7 @@ export class AboutTheFarmComponent implements OnInit {
             // increments the active slide
             this.activeSlideId++;
         }
-        console.log(this.cropForm);
-
-        // if (this.cropForm.valid && this.farmForm.valid) {
-        //     const formInputValue = this.cropForm.value;
-        //     this.crop = {
-        //         id: 0,
-        //         name: formInputValue.name,
-        //         season: formInputValue.season,
-        //         type: formInputValue.type,
-        //         farm_id: this._portfolioService.getFarmId(),
-        //     };
-
-        //     const farmInputValue = this.farmForm.value;
-        //     this.farm = {
-        //         farmName: farmInputValue.farmName,
-        //         farmAddress: farmInputValue.farmAddress,
-        //         yearsActive: farmInputValue.yearsActive,
-        //         numberOfEmployees: farmInputValue.numberOfEmployees,
-        //         address: farmInputValue.address,
-        //         farmingReason: farmInputValue.farmingReason,
-        //     };
-
-            // this._farmService.createFarmerFarm(this.farm);
-            // console.log(this.farm);
-
-            // this._apiService.addFarmInfo(this.farm).subscribe(data => {
-            //     console.table(data);
-        // });
+        // console.log(this.cropForm);
         if (this.cropForm.valid) {
             const formInputValue = this.cropForm.value;
             this.crop = {
@@ -139,40 +114,39 @@ export class AboutTheFarmComponent implements OnInit {
                 name: formInputValue.name,
                 season: formInputValue.season,
                 type: formInputValue.type,
-                farm_id: this._portfolioService.getFarmId(),
+
             };
-              console.log(this.crop);
+            console.log(this.crop);
 
-              this._cropService.createFarmerCrop(this.farm, this.crop);
+            this._cropService.createFarmerCrop(this.farmName, this.crop);
         }
-            if(this.farmForm.valid){
-                const farmInputValue = this.farmForm.value;
-                this.farm = {
-                    farmName: farmInputValue.farmName,
-                    farmAddress: farmInputValue.farmAddress,
-                    yearsActive: farmInputValue.yearsActive,
-                    numberOfEmployees: farmInputValue.numberOfEmployees,
-                    address: farmInputValue.address,
-                    farmingReason: farmInputValue.farmingReason,
-                };
-                console.log(this.farm);
+        if (this.farmForm.valid) {
+            const farmInputValue = this.farmForm.value;
+            this.farm = {
+                farmName: farmInputValue.farmName,
+                farmAddress: farmInputValue.farmAddress,
+                yearsActive: farmInputValue.yearsActive,
+                numberOfEmployees: farmInputValue.numberOfEmployees,
+                address: farmInputValue.address,
+                farmingReason: farmInputValue.farmingReason,
+            };
+            console.log(this.farm);
 
-                this._farmService.createFarmerFarm(this.farm);
-            }
-        // if (this.plotForm.valid) {
-        //     const formInputValue = this.plotForm.value;
-        //     this.plot = {
-        //         id: 0,
-        //         plotAddress: formInputValue.plotAddress,
-        //         plotSize: formInputValue.plotSize,
-        //         dateOfOwnership: formInputValue.date,
-        //     };
-        //     this._plotService.createFarmerPlot(this.plot);
-            // this._apiService.addPlotInfo(this.plot).subscribe(data => {
-            //     console.table(data);
-            // });
-        // }
-
+            this._farmService.createFarmerFarm(this.farm);
+        }
+        if (this.plotForm.valid) {
+            const formInputValue = this.plotForm.value;
+            this.plot = {
+                id: 0,
+                plotAddress: formInputValue.plotAddress,
+                plotSize: formInputValue.plotSize,
+                dateOfOwnership: formInputValue.date,
+            };
+            console.log(this.farmName,this.plot);
+            this._plotService.createFarmerPlot(this.farmName, this.plot);
+        }
+        // console.log(this.farmForm,this.farmName);
+        
         // if (this.assetForm.valid) {
         //     const formInputValue = this.assetForm.value;
         //     this.asset = {
@@ -207,9 +181,12 @@ export class AboutTheFarmComponent implements OnInit {
     // }
 
     onSubmit() {
-        console.log("Farm form => ",this.farmForm, this.cropForm);
+        console.log(
+            'Farm form => ',
+            this.farmForm,
+            this.plotForm,
+            this.cropForm,
+        );
         // console.log(this.cropForm);
-        
-        
     }
 }

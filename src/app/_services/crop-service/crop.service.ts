@@ -17,22 +17,11 @@ export class CropService {
         private _apiService: ApiService,
         private _portfolioService: PortfolioService
     ) {}
-    // creates data for a farmers farm and sends to api
-    // createFarmerCrop(farmName: Crop, cropBody: Farm) {
-    //     this._apiService.addFarm(farmName).subscribe(
-    //         result => {
-    //             console.table(`Creates this farm data: ${farmName}`);
-    //         },
-    //         error => {
-    //             console.error('error occured when create new farm data');
-    //             console.error(error);
-    //         }
-    //     );
-    // }
-    createFarmerCrop(farmName: Farm, cropBody: Crop) {
-        this._apiService.addFarm(cropBody).subscribe(
+
+    createFarmerCrop(farmName: string, cropBody: Crop) {
+        this._apiService.addCrop(farmName,cropBody).subscribe(
             result => {
-                console.table(`Creates this farm data: ${farmName}`);
+                console.table(`Creates this crop data: ${farmName}`);
             },
             error => {
                 console.error('error occured when create new farm data');
@@ -49,7 +38,7 @@ export class CropService {
         this._apiService.getAllCrops(farmName).subscribe(
             (data: any) => {
                 this.crops = data;
-                // adds record to bookkeeping record observable
+                // adds crop to crop data observable
                 this.farmerCrops$.next(this.crops);
             },
             error => {
@@ -71,7 +60,6 @@ export class CropService {
     addCrop(crop: Crop) {
         const addedCrop = {
             id: crop.id,
-            farm_id: crop.farm_id, //income statement id
             name: crop.name,
             season: crop.season,
             type: crop.type,
