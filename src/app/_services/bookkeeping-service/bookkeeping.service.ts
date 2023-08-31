@@ -60,7 +60,6 @@ export class BookkeepingService {
 
     constructor(
         private _apiService: ApiService,
-        private _userService: UserService,
         private router: Router,
         private _portfolioService: PortfolioService
     ) {}

@@ -38,21 +38,8 @@ export class UserService {
         );
     }
 
-    setFarmName(farmName: string) { 
-
-    }
-
-    getFarmName() {
-        const farmName = 'My Farm';
-        // get farm name by using a pipe to extract it from the observable
-        // this.user$
-        return farmName;
-    }
-
     // sets user first name
-    setUserFirstName() {
-        
-    }
+    setUserFirstName() {}
 
     // get user first name
     getUserFirstName() {}

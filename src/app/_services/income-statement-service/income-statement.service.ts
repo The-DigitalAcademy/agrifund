@@ -65,15 +65,16 @@ export class IncomeStatementService {
         GET DATA
     ----------------------------------*/
     // gets the farmer's fam data
-    getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
-        // returns the user's farm data from the portfolio
-        // return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
-    }
+    // getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
+
+    //     // returns the user's farm data from the portfolio
+    //     return this.farmerPortfolio$.pipe(map(portfolio: => portfolio.farms));
+    // }
 
     // gets all the income statements from the api
     getAllIncomeStatements(): Observable<IncomeStatement[]> {
         // passes the farm name to the one assigned in user service
-        this.setAllIncomeStatements(this._userService.getFarmName());
+        this.setAllIncomeStatements(this._portfolioService.getFarmName());
 
         return this.incomeStatements$;
     }

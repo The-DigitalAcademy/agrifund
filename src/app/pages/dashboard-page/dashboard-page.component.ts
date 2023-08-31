@@ -1,10 +1,20 @@
-import { Farm } from 'src/app/_models/FarmerPortfolio';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique Nagel
+    CREATE DATE: 04 Aug 2023 
+    UPDATED DATE: 29 Aug 2023 
+
+    DESCRIPTION:
+       This component displays a farmer's portfolio data summary
+    PARAMETERS:
+    _portfolioService: PortfolioService -> used to get farmer portfolio data
+        
+-------------------------------------------------------------------------------------------------*/
+
 import { User } from './../../_models/User';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
-import { UserService } from 'src/app/_services/user-service/user.service';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -18,16 +28,17 @@ export class DashboardPageComponent implements OnInit {
     constructor(private _portfolioService: PortfolioService) {}
 
     ngOnInit() {
-        this._portfolioService.getFarmerPortfolio().subscribe(() => {});
-
-        this._portfolioService.getFarmerFarm().subscribe((data: any) => {
-            this._portfolioService.getFarmName();
+        // gets the farmers portfolio information
+        this._portfolioService.getFarmerPortfolio().subscribe(data => {
+            console.log(data);
         });
 
-        this._portfolioService
-            .getFarmerIncomeStatements()
-            .subscribe((data: any) => {
-                console.log(data);
-            });
+        // gets the farmers farm information
+        this._portfolioService.getFarmerFarm().subscribe(data => {
+            console.log(data);
+            // gets the farmers farm name
+            console.log(this._portfolioService.getFarmName());
+        });
+
     }
 }

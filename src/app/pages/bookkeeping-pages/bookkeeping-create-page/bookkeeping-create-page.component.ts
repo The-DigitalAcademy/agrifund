@@ -6,8 +6,6 @@
     DESCRIPTION:
         This file manages the capture of a new bookkeeping record's data and passes it to the  
         bookkeeping service to be passed to the api.
-
-
     PARAMETERS:
         
 -------------------------------------------------------------------------------------------------*/

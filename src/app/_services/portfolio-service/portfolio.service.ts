@@ -8,8 +8,8 @@
      All portfolio data is fetched from the api here.
 
     PARAMETERS:
-    registerUser( newUser: User) -> receives an body that is an instance of User
-    loginUser( email: string, password:string) -> both parameters passed should be a string
+    private _apiService: ApiService -> used to make use of all api connections methods within this service
+    private _authService: AuthService -> used to get methods related to authenticating a user
 
 -------------------------------------------------------------------------------------------------*/
 import { Injectable } from '@angular/core';
@@ -18,6 +18,7 @@ import { AuthService } from '../authentication-service/auth.service';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio, Farm, Assets } from 'src/app/_models/FarmerPortfolio';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 
 @Injectable({
     providedIn: 'root',
@@ -52,7 +53,8 @@ export class PortfolioService {
         assets: [],
         incomeStatements: [],
     });
-
+    // stores the farmers portfolio data
+    private farmerIncomeStatements: IncomeStatement[] = [];
     // stores the income statement data as an observable -> -> initializes as empty
     private incomeStatements$: BehaviorSubject<IncomeStatement> =
         new BehaviorSubject<IncomeStatement>({
@@ -61,6 +63,18 @@ export class PortfolioService {
             total_income: 0,
             total_expenses: 0,
             incomeStatementItems: [],
+        });
+
+    // stores the income statement data as an observable -> -> initializes as empty
+    private incomeStatementItems$: BehaviorSubject<IncomeStatementItem> =
+        new BehaviorSubject<IncomeStatementItem>({
+            id: 0,
+            statement_id: 0, //IncomeStatement;
+            category: '',
+            amount: 0,
+            proof: '',
+            description: '',
+            date: '', //date of the record
         });
 
     constructor(
@@ -88,7 +102,7 @@ export class PortfolioService {
             (result: any) => {
                 // console.log('API Response:', result.data);
                 this.farmerPortfolio = result.data;
-                // console.table(this.farmerPortfolio);
+                // adds the results from the api to the farmerPortfolio Observables
                 this.farmerPortfolio$.next(result.data);
             },
             error => {
@@ -111,13 +125,22 @@ export class PortfolioService {
         return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
 
-    // sets and gets the farm's name
-    getFarmName() {
-        // gets the farmer farm data and a
+    // sets the value for the farmer farm array and observable
+    setFarmerFarm() {
+        // gets the farmer farm data and assigns it to the array and the observable
         this.getFarmerFarm().subscribe((farm: Farm[]) => {
             // assigns data from get farmer farm to the farmer farm array
             this.farmerFarm = farm;
+
+            this.farmerFarm.forEach(farm => {
+                this.farmerFarm$.next(farm);
+            });
         });
+    }
+
+    // sets and gets the farm's name
+    getFarmName() {
+        this.setFarmerFarm();
         // gets the name of a farm
         const farmName = this.farmerFarm.map(farm => {
             return farm.farmName;
@@ -129,8 +152,37 @@ export class PortfolioService {
     /*---------------------------------
         INCOME STATEMENT DATA
     ----------------------------------*/
+    // used to get farmer income statements
     getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
         // returns the income statement for a farm
         return this.farmerFarm$.pipe(map(farm => farm.incomeStatements));
     }
+
+    // sets the value for the farmer income statement array and observable
+    setFarmerIncomeStatements() {
+        // const farm = { ...this.farmerFarm$.value };
+        this.getFarmerIncomeStatements().subscribe(
+            (incomeStatements: IncomeStatement[]) => {
+                // assigns the values retrieved from the get method to the array
+                this.farmerIncomeStatements = incomeStatements;
+                // this.farmerIncomeStatements.forEach(statement => {
+                //     farm.incomeStatements.push(statement);
+                // });
+            }
+        );
+
+        // this.incomeStatements$.next(farm.incomeStatements);
+    }
+
+    // used to get income statement record items of an income statement
+    getFarmerIncomeStatementItem(): Observable<IncomeStatementItem[]> {
+        this.getFarmerIncomeStatements().subscribe(statements => {
+            // assigns the value retrieved from the get method to the income statement array
+            this.farmerIncomeStatements = statements;
+        });
+        return this.incomeStatements$.pipe(
+            map(statements => statements.incomeStatementItems)
+        );
+    }
+
 }

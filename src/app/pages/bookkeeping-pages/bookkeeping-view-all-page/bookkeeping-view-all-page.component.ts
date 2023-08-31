@@ -1,9 +1,26 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique Nagel
+    CREATE DATE: 20 July 2023 
+    UPDATED DATE: 31 Aug 2023 
+
+    DESCRIPTION:
+        This component displays all bookkeeping data and provides navigation to 
+        bookkeeping create and view details functions
+    PARAMETERS:
+        private router: Router -> used to route to other bookkeeping functions
+        private _bookkeepingService: BookkeepingService -> used for bookkeeping income statement methods
+        private _offcanvasService: NgbOffcanvas -> the ngBootstrap service for the offcanvas menu
+        private _portfolioService: PortfolioService -> used to access portfolio service methods
+        
+-------------------------------------------------------------------------------------------------*/
+
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
     selector: 'app-bookkeeping-view-all-page',
@@ -28,7 +45,8 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private _bookkeepingService: BookkeepingService,
-        private _offcanvasService: NgbOffcanvas
+        private _offcanvasService: NgbOffcanvas,
+        private _portfolioService: PortfolioService
     ) {}
 
     ngOnInit() {
@@ -45,6 +63,15 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
                 .getAllBookkeepingRecords()
                 .subscribe(records => {
                     this.bookkeepingRecords$ = records;
+                })
+        );
+
+        // gets the farmer's income statements
+        this.subscription.add(
+            this._portfolioService
+                .getFarmerIncomeStatements()
+                .subscribe(data => {
+                    console.log(data);
                 })
         );
     }
