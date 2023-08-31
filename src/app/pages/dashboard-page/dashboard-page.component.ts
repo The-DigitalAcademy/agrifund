@@ -18,12 +18,10 @@ export class DashboardPageComponent implements OnInit {
     constructor(private _portfolioService: PortfolioService) {}
 
     ngOnInit() {
-        this._portfolioService.getFarmerPortfolio().subscribe(() => {
-            // this._portfolioService.getFarmName();
-        });
+        this._portfolioService.getFarmerPortfolio().subscribe(() => {});
 
-        this._portfolioService.getFarmerFarm().subscribe((farm: Farm[]) => {
-            console.table(farm);
+        this._portfolioService.getFarmerFarm().subscribe((data: any) => {
+            this._portfolioService.getFarmName();
         });
     }
 }

@@ -79,8 +79,6 @@ export class PortfolioService {
                 this.farmerPortfolio = result.data;
                 // console.table(this.farmerPortfolio);
                 this.farmerPortfolio$.next(result.data);
-                console.log('Observable Data:', this.farmerPortfolio$);
-                this.getFarmerFarm();
             },
             error => {
                 console.error(`Error occurred while getting a user:`, error);
@@ -108,13 +106,12 @@ export class PortfolioService {
         this.getFarmerFarm().subscribe((farm: Farm[]) => {
             // assigns data from get farmer farm to the farmer farm array
             this.farmerFarm = farm;
-            console.table(this.farmerFarm);
         });
         // gets the name of a farm
         const farmName = this.farmerFarm.map(farm => {
             return farm.farmName;
         });
         // returns the farm name within the first index of the farm name array
-        return farmName;
+        return farmName[0];
     }
 }
