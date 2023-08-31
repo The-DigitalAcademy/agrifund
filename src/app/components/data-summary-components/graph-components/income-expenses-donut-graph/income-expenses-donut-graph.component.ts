@@ -8,6 +8,7 @@
 import { Chart, registerables } from 'chart.js/auto';
 import { Component } from '@angular/core';
 import { ChartService } from 'src/app/_services/chart-service/chart.service';
+import { ApiService } from 'src/app/_services/api-service/api.service';
 
 Chart.register(...registerables);
 @Component({
@@ -16,7 +17,7 @@ Chart.register(...registerables);
     styleUrls: ['./income-expenses-donut-graph.component.css'],
 })
 export class IncomeExpensesDonutGraphComponent {
-    constructor(private chartService: ChartService) {}
+    constructor(private chartService: ChartService,private _apiService:ApiService) {}
 
     total_expense: any = [];
     total_income: any = [];
@@ -24,7 +25,7 @@ export class IncomeExpensesDonutGraphComponent {
     chartdata: any = [];
 
     ngOnInit(): void {
-        // method of fetching data and posting data of net income and this.total_income
+        // method of fetching dataof net income and this.total_income
         this.chartService.getTotalNetIncome().subscribe(result => {
             this.chartdata = result;
             if (this.chartdata != null) {

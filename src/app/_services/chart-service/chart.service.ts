@@ -31,7 +31,7 @@ export class ChartService {
     getFarmerByEmail() {
         return this.http.get<IncomeStatement>('http://localhost:3000/total_expense/')
         .pipe(
-            retry(4), // retry a failed request up to 4 times
+            retry(2), // retry a failed request up to 2 times
             catchError(this.handleError) // handling the error after failing to return data
         );
 
@@ -66,11 +66,12 @@ export class ChartService {
     }
     // fetch total income
     getTotalIncome() {
-        return this.http.get<any>('http://localhost:3000/total_income')
+        return this.http.get<IncomeStatement>('http://localhost:3000/total_income')
         .pipe(
-            retry(4), // retry a failed request up to 4 times
+            retry(2), // retry a failed request up to 2 times
             catchError(this.handleError) // handling the error after failing to return data
         );
+        
 
         //  .pipe(map(response => ({
         //     totalExpenses: response.totalIncome
@@ -81,7 +82,7 @@ export class ChartService {
     getTotalNetIncome() {
         return this.http.get<IncomeStatement>('http://localhost:3000/net_income')
         .pipe(
-            retry(4), // retry a failed request up to 4 times
+            retry(2), // retry a failed request up to 2 times
             catchError(this.handleError) // handling the error after failing to return data
         );
         
@@ -92,12 +93,7 @@ export class ChartService {
         // return this.http.get<any[]>(`${this.baseUrl}`);
     }
 
-    // private processIncomeStatement(response: IncomeStatement): Response {
-    //   return {
-    //     data: { ...response.data },
-    //     data: response.data.map((farm_id:number) =>{})
-    //   };
-    // }
+   
     private handleError(ex:HttpErrorResponse){
         if(ex.error instanceof ErrorEvent){
           console.log('client side error',ex.message);
