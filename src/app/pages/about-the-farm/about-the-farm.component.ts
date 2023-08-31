@@ -77,7 +77,7 @@ export class AboutTheFarmComponent implements OnInit {
             farmName: ['', Validators.required],
             farmAddress: ['', Validators.required],
             yearsActive: ['', Validators.required],
-           numberOfEmployees: ['', Validators.required],
+            numberOfEmployees: ['', Validators.required],
             farmingReason: ['', Validators.required],
         });
         this.assetForm = this.fb.group({
@@ -104,7 +104,34 @@ export class AboutTheFarmComponent implements OnInit {
             // increments the active slide
             this.activeSlideId++;
         }
+        console.log(this.cropForm);
 
+        // if (this.cropForm.valid && this.farmForm.valid) {
+        //     const formInputValue = this.cropForm.value;
+        //     this.crop = {
+        //         id: 0,
+        //         name: formInputValue.name,
+        //         season: formInputValue.season,
+        //         type: formInputValue.type,
+        //         farm_id: this._portfolioService.getFarmId(),
+        //     };
+
+        //     const farmInputValue = this.farmForm.value;
+        //     this.farm = {
+        //         farmName: farmInputValue.farmName,
+        //         farmAddress: farmInputValue.farmAddress,
+        //         yearsActive: farmInputValue.yearsActive,
+        //         numberOfEmployees: farmInputValue.numberOfEmployees,
+        //         address: farmInputValue.address,
+        //         farmingReason: farmInputValue.farmingReason,
+        //     };
+
+            // this._farmService.createFarmerFarm(this.farm);
+            // console.log(this.farm);
+
+            // this._apiService.addFarmInfo(this.farm).subscribe(data => {
+            //     console.table(data);
+        // });
         if (this.cropForm.valid) {
             const formInputValue = this.cropForm.value;
             this.crop = {
@@ -114,54 +141,50 @@ export class AboutTheFarmComponent implements OnInit {
                 type: formInputValue.type,
                 farm_id: this._portfolioService.getFarmId(),
             };
+              console.log(this.crop);
 
-            console.table(this.crop);
-            this._cropService.createFarmerCrop(this.crop);
+              this._cropService.createFarmerCrop(this.farm, this.crop);
         }
-        if (this.plotForm.valid) {
-            const formInputValue = this.plotForm.value;
-            this.plot = {
-                id: 0,
-                plotAddress: formInputValue.plotAddress,
-                plotSize: formInputValue.plotSize,
-                dateOfOwnership: formInputValue.date,
-            };
-            this._plotService.createFarmerPlot(this.plot);
+            if(this.farmForm.valid){
+                const farmInputValue = this.farmForm.value;
+                this.farm = {
+                    farmName: farmInputValue.farmName,
+                    farmAddress: farmInputValue.farmAddress,
+                    yearsActive: farmInputValue.yearsActive,
+                    numberOfEmployees: farmInputValue.numberOfEmployees,
+                    address: farmInputValue.address,
+                    farmingReason: farmInputValue.farmingReason,
+                };
+                console.log(this.farm);
+
+                this._farmService.createFarmerFarm(this.farm);
+            }
+        // if (this.plotForm.valid) {
+        //     const formInputValue = this.plotForm.value;
+        //     this.plot = {
+        //         id: 0,
+        //         plotAddress: formInputValue.plotAddress,
+        //         plotSize: formInputValue.plotSize,
+        //         dateOfOwnership: formInputValue.date,
+        //     };
+        //     this._plotService.createFarmerPlot(this.plot);
             // this._apiService.addPlotInfo(this.plot).subscribe(data => {
             //     console.table(data);
             // });
-        }
+        // }
 
-        if (this.farmForm.valid) {
-            const formInputValue = this.farmForm.value;
-            this.farm = {
-                farmName: formInputValue.farmName,
-                farmAddress: formInputValue.farmAddress,
-                yearsActive: formInputValue.yearsActive,
-                numberOfEmployees: formInputValue.numberOfEmployees,
-                address: formInputValue.address,
-                farmingReason: formInputValue.farmingReason,
-            };
-
-            this._farmService.createFarmerFarm(this.farm);
-            console.log(this.farm);
-
-            // this._apiService.addFarmInfo(this.farm).subscribe(data => {
-            //     console.table(data);
-            // });
-        }
-        if (this.assetForm.valid) {
-            const formInputValue = this.assetForm.value;
-            this.asset = {
-                id: 0,
-                assetName: formInputValue.assetName,
-                assetType: formInputValue.assetType,
-                purchasePrice: formInputValue.purchasePrice,
-                age: formInputValue.age,
-                // proofOfOwnership: formInputValue.proofOfOfOwnership,
-            };
-            this._assetService.createFarmerAsset(this.asset);
-        }
+        // if (this.assetForm.valid) {
+        //     const formInputValue = this.assetForm.value;
+        //     this.asset = {
+        //         id: 0,
+        //         assetName: formInputValue.assetName,
+        //         assetType: formInputValue.assetType,
+        //         purchasePrice: formInputValue.purchasePrice,
+        //         age: formInputValue.age,
+        //         // proofOfOwnership: formInputValue.proofOfOfOwnership,
+        //     };
+        //     this._assetService.createFarmerAsset(this.asset);
+        // }
         if (this.activeSlideId === this.totalSlides) {
             // All slides have been filled out, navigate to the dashboard
             this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
@@ -183,4 +206,10 @@ export class AboutTheFarmComponent implements OnInit {
     //     return this.assetForm;
     // }
 
+    onSubmit() {
+        console.log("Farm form => ",this.farmForm, this.cropForm);
+        // console.log(this.cropForm);
+        
+        
+    }
 }

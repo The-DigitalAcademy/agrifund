@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Crop } from 'src/app/_models/crop';
 import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
+import { Farm } from 'src/app/_models/Farm';
 
 @Injectable({
     providedIn: 'root',
@@ -16,9 +17,20 @@ export class CropService {
         private _apiService: ApiService,
         private _portfolioService: PortfolioService
     ) {}
-   // creates data for a farmers farm and sends to api
-    createFarmerCrop(farmName: Crop ) {
-        this._apiService.addFarm(farmName).subscribe(
+    // creates data for a farmers farm and sends to api
+    // createFarmerCrop(farmName: Crop, cropBody: Farm) {
+    //     this._apiService.addFarm(farmName).subscribe(
+    //         result => {
+    //             console.table(`Creates this farm data: ${farmName}`);
+    //         },
+    //         error => {
+    //             console.error('error occured when create new farm data');
+    //             console.error(error);
+    //         }
+    //     );
+    // }
+    createFarmerCrop(farmName: Farm, cropBody: Crop) {
+        this._apiService.addFarm(cropBody).subscribe(
             result => {
                 console.table(`Creates this farm data: ${farmName}`);
             },
@@ -28,7 +40,6 @@ export class CropService {
             }
         );
     }
-
 
     // set plot info in observable
     setCropInfo() {
@@ -51,7 +62,6 @@ export class CropService {
     getCropInfo() {
         // esnures that the farm infor is set when get method is called
         this.setCropInfo();
-
 
         // return the behaviour subject containing the farm info data if it is not blank
         return this.farmerCrops$;
