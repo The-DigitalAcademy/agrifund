@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 
@@ -23,17 +23,23 @@ export class ResetPasswordPageComponent {
     ResetPasswordForm = new FormGroup({
         email: new FormControl(''),
     });
-
-    constructor(private _apiService: ApiService,private router:Router) {} // Inject the OTP service
+    @Output() emailSubmitted = new EventEmitter<string>(); // Emit email value to parent component
+    constructor(
+        private _apiService: ApiService,
+        private router: Router
+    ) {} // Inject the OTP service
 
     onSubmit() {
-        const email = this.ResetPasswordForm.value.email??'';
+        const email = this.ResetPasswordForm.value.email ?? '';
 
         this._apiService.getFarmerOTP(email).subscribe(
             response => {
                 console.log('OTP request successful');
-                // Display a success message to the user or navigate to a confirmation page
                 this.router.navigate(['/otp-page']);
+                // Emit the email value to parent component
+                this.emailSubmitted.emit(email);
+                // Display a success message to the user or navigate to a confirmation page
+                
             },
             error => {
                 console.error('OTP request failed', error);

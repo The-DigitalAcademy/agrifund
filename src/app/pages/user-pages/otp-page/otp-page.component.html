@@ -36,11 +36,11 @@
                             <label for="email">OTP</label><br />
                             <input formControlName="otp" class="form-control between-button" id="otpinput" />
                         </div>
+                        
 
                         <!-- Send Message Button -->
                         <div class="form-group">
-                            <button type="submit" [disabled]="!OtpForm.valid"
-                                class="btn actions colourful-btn">
+                            <button type="submit" (click)="submitOtp()" class="btn actions colourful-btn">
                                 Send Message
                             </button>
                         </div>

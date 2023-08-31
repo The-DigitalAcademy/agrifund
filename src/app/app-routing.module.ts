@@ -41,6 +41,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardPageComponent },
     { path: 'bookkeeping', component: BookkeepingViewAllPageComponent },
     { path: 'otp-page', component: OtpPageComponent },
+    
     {
         path: 'bookkeeping/create-record',
         component: BookkeepingCreatePageComponent,
