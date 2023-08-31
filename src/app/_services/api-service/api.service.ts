@@ -248,11 +248,6 @@ export class ApiService {
     getAllCrops(farmName: string) {
         return this.http.get(`${this.FARMER_CROP_URL}/${farmName}`);
     }
-    // Make a GET request to generate OTP
-
-    requestOtp(email: string): Observable<any> {
-        return this.http.get(`${this.USERS_URL}/${email} `);
-    }
 
     /* --------------------------------
         FARMER PLOT REQUESTS
