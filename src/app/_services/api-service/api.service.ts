@@ -136,7 +136,7 @@ export class ApiService {
 
     // GET function to get an OTP for a farmer
     getFarmerOTP(farmerEmail: string) {
-        return this.http.get(`${this.FARMER_OTP_URL}${farmerEmail}`);
+        return this.http.get(`${this.FARMER_OTP_URL}?email=${farmerEmail}`);
     }
 
     // GET function to get a farmer by their id number -> ADMIN USE!
