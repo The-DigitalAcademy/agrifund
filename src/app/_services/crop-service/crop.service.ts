@@ -63,13 +63,4 @@ export class CropService {
         return this.farmerCrops$;
     }
 
-    // adds crop record from api to observable crop
-    addCrop(crop: Crop) {
-        const addedCrop = {
-            id: crop.id,
-            name: crop.name,
-            season: crop.season,
-            type: crop.type,
-        };
-    }
 }
