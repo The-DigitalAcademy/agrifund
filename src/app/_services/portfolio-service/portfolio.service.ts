@@ -16,10 +16,11 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
 import { AuthService } from '../authentication-service/auth.service';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { FarmerPortfolio, Farm } from 'src/app/_models/FarmerPortfolio';
+import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/assets';
+import { Farm } from 'src/app/_models/farm';
 
 @Injectable({
     providedIn: 'root',

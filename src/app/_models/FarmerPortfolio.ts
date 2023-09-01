@@ -6,8 +6,7 @@
     DESCRIPTION:
     Model for storing the data received from the portfolio api connection
 -------------------------------------------------------------------------------------------------*/
-import { IncomeStatement } from './IncomeStatement';
-import { Assets } from './assets';
+import { Farm } from './farm';
 
 export interface FarmerPortfolio {
     id: number;
@@ -18,24 +17,11 @@ export interface FarmerPortfolio {
     farms: Farm[];
 }
 
-export interface Farm {
-    id: number;
-    numberOfEmployees: number;
-    farmName: string;
-    farmAddress: string;
-    yearsActive: number;
-    address: string; //stores residential address
-    farmingReason: string; //stores the reason for needing funding
-    crops: Crops[];
-    assets: Assets[];
-    incomeStatements: IncomeStatement[];
-}
-
 export interface Crops {
+    id: number;
     name: string;
     season: string;
     // price: string;
     // marketValue: string;
     type: string; //stores the type of crop (vegetable/ fruit)
 }
-

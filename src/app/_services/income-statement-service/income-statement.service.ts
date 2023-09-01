@@ -27,7 +27,7 @@ import { User } from 'src/app/_models/User';
 import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { Farm } from 'src/app/_models/FarmerPortfolio';
+import { Farm } from 'src/app/_models/farm';
 
 @Injectable({
     providedIn: 'root',
