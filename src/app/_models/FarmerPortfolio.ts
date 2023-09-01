@@ -7,6 +7,7 @@
     Model for storing the data received from the portfolio api connection
 -------------------------------------------------------------------------------------------------*/
 import { IncomeStatement } from './IncomeStatement';
+import { Assets } from './assets';
 
 export interface FarmerPortfolio {
     id: number;
@@ -38,10 +39,3 @@ export interface Crops {
     type: string; //stores the type of crop (vegetable/ fruit)
 }
 
-export interface Assets {
-    assetName: string;
-    assetType: string;
-    age: number;
-    purchasePrice: number;
-    // assetValue: number; //stores the value of the asset
-}
