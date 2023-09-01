@@ -1,6 +1,6 @@
 import { Assets, Crops } from './FarmerPortfolio';
 import { IncomeStatement } from './IncomeStatement';
-export interface FarmData {
+export interface Farm {
     id: number;
     numberOfEmployees: number;
     farmName: string;

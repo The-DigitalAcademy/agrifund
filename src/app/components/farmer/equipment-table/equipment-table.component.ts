@@ -4,8 +4,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { Assets } from 'src/app/_models/FarmerPortfolio';
+import { Asset } from 'src/app/_models/asset';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class EquipmentTableComponent {
     isDisabled = true;
     onFileSelected($event: Event) {}
 
-    assets: Assets[] = []; // Initializing assets with interfaceAsset
+    asset: Asset[] = []; // Initializing assets with interfaceAsset
     isLast: any;
     equipmentForm!: FormGroup;
 
@@ -37,7 +36,7 @@ export class EquipmentTableComponent {
         const farmName = '';
         this._apiService.getAllFarmAssets(farmName).subscribe((data: any) => {
             // console.table(assets)
-            this.assets = data;
+            this.asset = data;
         });
     }
 

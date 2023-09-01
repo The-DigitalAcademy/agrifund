@@ -13,6 +13,7 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
+import { Farm } from 'src/app/_models/farm';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -24,7 +25,7 @@ export class DisabledformFarmInfoComponent {
     myForm!: FormGroup;
     isDisabled = true;
 
-    //     farmInfo!: User;
+    farmInfo!: Farm;
     //     id: any;
     constructor(
         private _fb: FormBuilder,

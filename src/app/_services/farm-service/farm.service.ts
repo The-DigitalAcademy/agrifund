@@ -67,8 +67,17 @@ export class FarmService {
         return farmName[0];
     }
 
-    createFarm() {
-        // api connection goes here
+   // creates data for a farmers farm and sends to api
+    createFarmerFarm(farmBody: Farm) {
+        this._apiService.addFarm(farmBody).subscribe(
+            result => {
+                console.table('Creates this farm data: ${farmBody}');
+            },
+            error => {
+                console.error('error occurred when create new farm data');
+                console.error(error);
+            }
+        );
     }
 
     editFarm(farmBody: Farm) {
