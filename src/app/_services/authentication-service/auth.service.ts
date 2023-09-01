@@ -96,44 +96,31 @@ export class AuthService {
                     // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
                     this.router.navigate(['/about-farm']);
                 }
-                  if (this._plotService.getPlotInfo().length > 0) {
-                      // routes to dashboard if the login was successful
-                      this.router.navigate(['/dashboard']);
-                  } else {
-                      // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
-                      this.router.navigate(['/about-farm']);
-                  }
-            this._cropService.getCropInfo().subscribe((crops) => {
-            if (crops.length > 0) {
-                this.router.navigate(['/dashboard']);
-            } else {
-                this.router.navigate(['/about-farm']);
-            }
-        });
+                if (this._plotService.getPlotInfo().length > 0) {
+                    // routes to dashboard if the login was successful
+                    this.router.navigate(['/dashboard']);
+                } else {
+                    // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
+                    this.router.navigate(['/about-farm']);
+                }
+                this._cropService.getCropInfo().subscribe((crops) => {
+                    if (crops.length > 0) {
+                        this.router.navigate(['/dashboard']);
+                    } else {
+                        this.router.navigate(['/about-farm']);
+                    }
+                });
                 
-                //   if (this._cropService.getCropInfo().length > 0) {
-                //       // routes to dashboard if the login was successful
-                //       this.router.navigate(['/dashboard']);
-                //   } else {
-                      // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
-                //       this.router.navigate(['/about-farm']);
-                //   }
-                   if (this._assetService.getAssetInfo().length > 0) {
-                       // routes to dashboard if the login was successful
-                       this.router.navigate(['/dashboard']);
-                   } else {
-                       // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
-                       this.router.navigate(['/about-farm']);
-                   }
-                
-            },
-            error => {
-                console.error(`Error occurred while logging in`);
-                console.log(error);
-                // TODO: when a login fails it should print an error message from the api at the top of a form
-            }
-        );
-    }
+                this._assetService.getAssetInfo().subscribe((plots) => {
+                    if (plots.length > 0) {
+                        this.router.navigate(['/dashboard']);
+                    } else {
+                        this.router.navigate(['/about-farm']);
+                    }
+                });
+        }
+    )}
+    
 
     logoutUser() {
         // sets the user token to null

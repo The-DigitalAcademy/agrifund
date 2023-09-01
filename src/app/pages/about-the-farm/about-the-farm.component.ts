@@ -147,18 +147,19 @@ export class AboutTheFarmComponent implements OnInit {
         }
         // console.log(this.farmForm,this.farmName);
         
-        // if (this.assetForm.valid) {
-        //     const formInputValue = this.assetForm.value;
-        //     this.asset = {
-        //         id: 0,
-        //         assetName: formInputValue.assetName,
-        //         assetType: formInputValue.assetType,
-        //         purchasePrice: formInputValue.purchasePrice,
-        //         age: formInputValue.age,
-        //         // proofOfOwnership: formInputValue.proofOfOfOwnership,
-        //     };
-        //     this._assetService.createFarmerAsset(this.asset);
-        // }
+        if (this.assetForm.valid) {
+            const formInputValue = this.assetForm.value;
+            this.asset = {
+                id: 0,
+                assetName: formInputValue.assetName,
+                assetType: formInputValue.assetType,
+                purchasePrice: formInputValue.purchasePrice,
+                age: formInputValue.age,
+                // proofOfOwnership: formInputValue.proofOfOfOwnership,
+            };
+              console.log(this.asset);
+            this._assetService.createFarmerAsset(this.asset);
+        }
         if (this.activeSlideId === this.totalSlides) {
             // All slides have been filled out, navigate to the dashboard
             this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
