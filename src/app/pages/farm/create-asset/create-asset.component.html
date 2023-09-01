@@ -1,0 +1,65 @@
+<div class="page-body justify-center">
+    <div class="mobile-header"></div>
+
+    <div class="container inner-container">
+        <div class="container-header">
+            <div class="justify-start">
+                <h2>Add Equipment</h2>
+            </div>
+           
+        </div>
+        <hr />
+        <div class="content mobile-hidden">
+            <form [formGroup]="assetForm" (ngSubmit)="saveEquipment()">
+               <div class="form-group">
+                    <label for="assetName">Name of equipment</label>
+                    <input formControlName="assetName" class="form-control" id="assetName" />
+                  </div>
+               <div class="form-group">
+                  <label for="assetType">Type of</label>
+                   <input formControlName="assetType" class="form-control" id="assetType" />
+                     </div>
+                     <div class="form-group">
+                    <label for="purchasePrice">Purchase Amount</label>
+                    <input formControlName="purchasePrice" class="form-control" id="purchasePrice" />
+                  </div>
+                <div class="form-group">
+                    <label for="age">Age in years</label>
+                    <input formControlName="age" class="form-control" id="age" />
+                  </div>
+                  
+                 <!-- <div class="form-group">
+                     <label for="proofOfOwnership" class="proofOfOwnership">Proof of Ownership</label>
+                  <div class="document-upload">
+                <div class="doc-header justify-start">
+                    <label for="proofOfOwnership">Upload Document </label>
+                    <div class="form-text">PDF, PNG, JPG</div>
+                </div>
+                <hr/>
+                <div class="file">
+                <input formControlName="proofOfOwnership" class="form-control" type="file" id="proofOfOwnership" />
+                <button 
+                    class="btn colourful-btn ">
+                    View
+                </button>
+                <button 
+                    class="btn outline-btn" >
+                    Replace
+                </button>
+                </div>
+            </div>
+            </div> -->
+                <div class="actions">
+                    <div class="justify-start">
+                        <button class="btn colourful-btn btn-width left-btn" type="submit">
+                            Save
+                        </button>
+                    </div>
+                    <div class="justify-end">
+                        <button class="btn outline-btn btn-width right-btn" [routerLink]="['/portfolio']">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>

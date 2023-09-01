@@ -17,7 +17,7 @@
         <hr />
         <div class="content mobile-hidden">
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
-                <div class="form-input" id="label">
+                <div class="form-group" id="label">
                     <label for="equipmentName" class="form-label">
                         Name
                     </label>
@@ -25,21 +25,21 @@
                     <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
 
                 </div>
-                <div class="form-input" id="form-label">
+                <div class="form-group" id="form-label">
                     <label for="equipmentType">Type</label>
                     <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
 
                 </div>
        
 
-                <div class="form-input" id="label">
+                <div class="form-group" id="label">
                     <label for="equipmentAge" class="form-label">
                         Age(years)
                     </label>
                     <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
                 </div>
 
-                <div class="form-input" id="label">
+                <div class="form-group" id="label">
                     <label for="equipmentAmount" class="form-label">
                         Purchase Amount
                     </label>
@@ -58,39 +58,36 @@
                     </div>
                 </div>
             </form>
-        </div>
-
-
-        
+        </div>    
         <div class="content large-hidden">
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
-                <div class="form-input" id="label">
-                    <label for="equipmentName" class="form-label">
+                <div class="form-group" id="label">
+                    <label for="assetName" class="form-label">
                         Name
                     </label>
 
-                    <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
+                    <input formControlName="assetName" type="text" class="form-control" id="assetName" />
 
                 </div>
 
-                <div class="form-input" id="form-label">
-                    <label for="equipmentType">Type</label>
-                    <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
+                <div class="form-group" id="form-label">
+                    <label for="assetType">Type</label>
+                    <input formControlName="assetType" type="text" class="form-control" id="assetType" />
 
                 </div>
 
-                <div class="form-input" id="label">
-                    <label for="equipmentAge" class="form-label">
+                <div class="form-group" id="label">
+                    <label for="age" class="form-label">
                         Age(years)
                     </label>
-                    <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
+                    <input formControlName="age" type="text" class="form-control" id="age" />
                 </div>
 
-               <div class="form-input" id="label">
-                    <label for="equipmentAmount" class="form-label">
+               <div class="form-group" id="label">
+                    <label for="purchasePrice" class="form-label">
                         Purchase Amount
                     </label>
-                    <input formControlName="equipmentAmount" type="text" class="form-control" id="equipmentAmount" />
+                    <input formControlName="purchasePrice" type="text" class="form-control" id="purchasePrice" />
                 </div>
                 <div class="actions">
                     <div class="justify-start">
@@ -105,8 +102,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-
-        
+        </div>     
 </div>
 </div>

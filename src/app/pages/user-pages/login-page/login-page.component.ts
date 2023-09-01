@@ -73,10 +73,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
                 this._authService.loginUser(
                     formInputVal.email,
                     formInputVal.password
+                    
                 )
+                
             );
-
-          
         }
     }
 }
