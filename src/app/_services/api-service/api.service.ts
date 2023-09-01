@@ -56,9 +56,10 @@ export class ApiService {
     private FARMER_OTP_URL = this.FARMERS_URL + '/otp';
     // farmers portfolio api connection string
     private FARMERS_PORTFOLIO_URL = this.FARMERS_URL + '/portfolio';
-    /* --------------------------------
+
+    /* -------------------------------------
        FARMER PORTFOLIO CONNECTION STRINGS
-    ---------------------------------*/
+    ----------------------------------------*/
     // connection string for a farmer's farm info
     private FARMER_FARM_URL = this.BASE_URL + '/farms';
     // connection string for farmer asset info
@@ -69,15 +70,15 @@ export class ApiService {
     private FARMER_PLOT_URL = this.BASE_URL + '/plots';
     /* --------------------------------
         BOOKKEEPING CONNECTION STRINGS
-    ---------------------------------*/
+    -----------------------------------*/
     // connection string for income statement
-    private INCOME_STATEMENT_URL = this.BASE_URL + '/income-Statements';
+    private INCOME_STATEMENT_URL = this.BASE_URL + '/income-statements';
     // connection string for income statement items
     private INCOME_STATEMENT_ITEM_URL = this.BASE_URL + '/items';
 
     /* --------------------------------
         AUTHENTICATION REQUESTS
-    ---------------------------------*/
+    ----------------------------------*/
     // POST function for a farmer to login
     loginUser(loginBody: any) {
         return this.http.post(`${this.LOGIN_URL}`, loginBody);
@@ -139,7 +140,7 @@ export class ApiService {
 
     // GET function to get an OTP for a farmer
     getFarmerOTP(farmerEmail: string) {
-        return this.http.get(`${this.FARMER_OTP_URL}/${farmerEmail}`);
+        return this.http.get(`${this.FARMER_OTP_URL}?email=${farmerEmail}`);
     }
 
     // GET function to get a farmer by their id number -> ADMIN USE!
@@ -251,6 +252,7 @@ export class ApiService {
     getAllCrops(farmName: string) {
         return this.http.get(`${this.FARMER_CROP_URL}/${farmName}`);
     }
+
     /* --------------------------------
         FARMER PLOT REQUESTS
     ---------------------------------*/
@@ -286,17 +288,60 @@ export class ApiService {
     getAllPlots(farmName: string) {
         return this.http.get(`${this.FARMER_PLOT_URL}/${farmName}`);
     }
+
     /* ----------------------------------------
         BOOKKEEPING INCOME STATEMENT REQUESTS
     ------------------------------------------*/
-    // GET all an income statement data based on the farm id
-    getIncomeStatementsByFarm(farmId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmId}`);
-    }
-
     // GET an income statement by their id
     getIncomeStatementById(statementId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
+    }
+
+    // POST to create a new income statement
+    createIncomeStatement(farmId: number, statementBody: any) {
+        return this.http.post(
+            `${this.INCOME_STATEMENT_URL}/${farmId}`,
+            statementBody
+        );
+    }
+
+    // DELETE an income statement
+    deleteIncomeStatement(statementId: number) {
+        return this.http.delete(`${this.INCOME_STATEMENT_URL}/${statementId}`);
+    }
+
+    // GET all an income statements for a farm
+    getAllIncomeStatementsByFarm(farmName: string) {
+        return this.http.get(`${this.INCOME_STATEMENT_URL}/${farmName}`);
+    }
+
+    /* --------------------------------------------
+        BOOKKEEPING INCOME STATEMENT ITEM REQUESTS
+    ----------------------------------------------*/
+    // GET a single income statement item
+    getStatementItemById(recordId: number) {
+        return this.http.get(`${this.INCOME_STATEMENT_URL}/${recordId}`);
+    }
+
+    // POST function to add a new income statement item
+    addRecord(recordBody: any, statementId: number) {
+        return this.http.post(
+            `${this.INCOME_STATEMENT_URL}/${statementId}`,
+            recordBody
+        );
+    }
+
+    // PUT function to update data for a single income statement item
+    updateRecord(recordId: number, recordBody: any) {
+        return this.http.put(
+            `${this.INCOME_STATEMENT_URL}/${recordId}`,
+            recordBody
+        );
+    }
+
+    // DELETE a bookkeeping record
+    deleteIncomeStatementItem(recordId: number) {
+        return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
     }
 
     // get all bookkeeping records
@@ -308,29 +353,5 @@ export class ApiService {
     getRecordsByStatementId(statementId: number) {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
-
-    // get a single income statement item
-    getStatementItemById(recordId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${recordId}`);
-    }
-
-    // add a new income statement record
-    addRecord(body: any) {
-        return this.http.post(`${this.INCOME_STATEMENT_URL}`, body);
-    }
-
-    // update data for a single income statement record
-    updateRecord(recordId: number, body: any) {
-        return this.http.put(`${this.INCOME_STATEMENT_URL}/${recordId}`, body);
-    }
-
-    // delete a bookkeeping record
-    deleteIncomeStatementItem(recordId: number) {
-        return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
-    }
-
-    /* --------------------------------------------
-        BOOKKEEPING INCOME STATEMENT ITEM REQUESTS
-    ----------------------------------------------*/
 }
 

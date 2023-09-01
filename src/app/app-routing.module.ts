@@ -19,6 +19,7 @@ import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeep
 import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
 import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
 import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
+import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
 import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
 
 /* --------------------------------
@@ -40,6 +41,8 @@ const routes: Routes = [
     { path: 'reset-password', component: ResetPasswordPageComponent },
     { path: 'dashboard', component: DashboardPageComponent },
     { path: 'bookkeeping', component: BookkeepingViewAllPageComponent },
+    { path: 'otp-page', component: OtpPageComponent },
+    
     {
         path: 'bookkeeping/create-record',
         component: BookkeepingCreatePageComponent,

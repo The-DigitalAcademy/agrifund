@@ -35,7 +35,7 @@ export class RegisterPageComponent implements OnInit {
         private _validationsService: ValidationService,
         private router: Router,
         private _apiService: ApiService,
-        private _portfolioService: PortfolioService
+        
     ) {}
 
     ngOnInit(): void {

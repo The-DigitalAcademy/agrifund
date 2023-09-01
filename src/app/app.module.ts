@@ -56,6 +56,10 @@ import { FarmerPortfolioProgressbarComponent } from './components/data-summary-c
 import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-form/disabledform-farm-info.component';
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
+import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
+import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
+import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
+import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 /* --------------------------------
     DATA SUMMARY
 ---------------------------------*/
@@ -100,10 +104,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
-import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
-import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
-import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
+import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
 
 @NgModule({
     declarations: [
@@ -136,6 +137,7 @@ import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.com
         DynamicInputsComponent,
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
+        OtpPageComponent,
         CreateAssetComponent,
         AboutTheFarmComponent,
     ],
