@@ -9,15 +9,15 @@ import { environment } from 'src/environment/environment';
 export class MockService {
     constructor(private http: HttpClient) {}
 
-    private BASE_URL = environment.MOCK_URL;
+    private BASe_URL = environment.MOCK_URL;
 
     /* --------------------------------
        ABOUT THE FARM CONNECTION
     ---------------------------------*/
-    private FARM_URL = this.BASE_URL + '/farms';
-    private CROP_URL = this.BASE_URL + '/crops';
-    private PLOT_URL = this.BASE_URL + '/plots';
-    private ASSET_URL = this.BASE_URL + '/assets';
+    private FARM_URL = this.BASe_URL + '/farms';
+    private CROP_URL = this.BASe_URL + '/crops';
+    private PLOT_URL = this.BASe_URL + '/plots';
+    private ASSET_URL = this.BASe_URL + '/assets';
 
     /* --------------------------------
         ABOUT THE FARM REQUESTS
@@ -29,7 +29,7 @@ export class MockService {
     }
 
     getCropInfo() {
-        return this.http.get(`${this.FARM_URL}`);
+        return this.http.get(`${this.CROP_URL}`);
     }
 
     plotInfo(body: any) {
@@ -37,7 +37,7 @@ export class MockService {
     }
 
     getPlotInfo() {
-        return this.http.get(`${this.FARM_URL}`);
+        return this.http.get(`${this.PLOT_URL}`);
     }
 
     farmInfo(body: any) {
@@ -53,6 +53,6 @@ export class MockService {
     }
 
     getAssetInfo() {
-        return this.http.get(`${this.FARM_URL}`);
+        return this.http.get(`${this.ASSET_URL}`);
     }
 }

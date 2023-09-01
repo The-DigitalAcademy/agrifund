@@ -7,7 +7,9 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/User';
+import { Crop } from 'src/app/_models/crop';
 import { ApiService } from 'src/app/_services/api-service/api.service';
+import { MockService } from 'src/app/_services/mockservice/mock.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
@@ -24,22 +26,19 @@ export class DisabledformCropInfoComponent implements OnInit {
     editedData: any = null;
     originalFormValues: any;
     submitted = false;
-    cropInfo!: User;
-    id: any;
+    cropInfo!: Crop;
+   
 
     constructor(
         private fb: FormBuilder,
         private _validationsService: ValidationService,
         private _apiService: ApiService,
         private _fb: FormBuilder,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private _mockService: MockService
     ) {}
 
     ngOnInit() {
-
-         this.getCropInfo((this.id = this.route.snapshot.params['id']));
-         console.log(this.id);
-
         this.myForm = this.fb.group({
             seasonFarm: new FormControl('', []),
             crop_name: new FormControl('', [
@@ -51,36 +50,31 @@ export class DisabledformCropInfoComponent implements OnInit {
                 Validators.required,
                 this._validationsService.textWithoutNumbersValidator(),
             ]),
-            // ... other fields
         });
-
-        // this.originalFormValues = this.farmerData;
 
         this.getCropDetails();
     }
 
+    // this._apiService.addRecord(this.record).subscribe(data => {
+    //     // adds the new record to the observable array after successfully adding the record
+    //     this._bookkeepingService.addRecord(this.record);
+    // });
+
     getCropDetails() {
-        this._apiService.getFarmerPortfolio().subscribe(
-            (data: any) => {
-                console.log('Response Data:', data);
+        if (!this.cropInfo) {
+            this._mockService.getCropInfo().subscribe((data: any) => {
                 this.cropInfo = data;
-            },
-            error => {
-                console.error('Error fetching crop details:', error);
-            }
-        );
-    }
 
-    getCropInfo(id: any) {
-        this._apiService.getFarmerById(this.id).subscribe((data: any) => {
-            this.cropInfo = data;
+                console.table(data);
 
-            this.myForm = this._fb.group({
-                seasonFarm: new FormControl(this.cropInfo.firstName),
-                crop_name: new FormControl(this.cropInfo.lastName),
-                crop_type: new FormControl(this.cropInfo.email),
+                // Populate the form fields
+                this.myForm.patchValue({
+                    seasonFarm: this.cropInfo.season,
+                    crop_name: this.cropInfo.name,
+                    crop_type: this.cropInfo.type,
+                });
             });
-        });
+        }
     }
 
     get createCropControl() {
@@ -100,23 +94,17 @@ export class DisabledformCropInfoComponent implements OnInit {
     onSaveClicked(formData: any) {
         this.submitted = true; // Indicate that the form has been submitted
         if (this.myForm.valid) {
+            this.cropInfo = {
+                id: this.cropInfo.id,
+                season: this.myForm.get('seasonFarm')?.value,
+                name: this.myForm.get('crop_name')?.value,
+                type: this.myForm.get(' crop_type')?.value,
+            };
+            console.table(this.cropInfo);
 
-               this.cropInfo = {
-                   id: this.cropInfo.id,
-                   password: this.cropInfo.password,
-                   firstName: this.myForm.get('seasonFarm')?.value,
-                   lastName: this.myForm.get('crop_name')?.value,
-                   email: this.myForm.get(' crop_type')?.value,
-                   idNumber: this.myForm.get('date')?.value,
-                   cellNumber: this.myForm.get('cell_number')?.value,
-               };
-               console.table(this.cropInfo);
-
-               this._apiService
-                   .updateFarmerInfo(this.cropInfo)
-                   .subscribe(data => {
-                       // Save or update the data here
-                   });
+            this._apiService.updateFarmerInfo(this.cropInfo).subscribe(data => {
+                // Save or update the data here
+            });
         }
         // Set crop info completion status to true
         // this.progressService.setCropInfoCompleted(true);

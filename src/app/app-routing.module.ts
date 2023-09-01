@@ -19,6 +19,7 @@ import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeep
 import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
 import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
 import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
+import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
 
 /* --------------------------------
     ACCESS GUARDS
@@ -58,6 +59,7 @@ const routes: Routes = [
     { path: 'equipment-create', component: EquipmentCreateComponent },
     { path: 'equipment-edit/:id', component: EquipmentEditComponent },
     { path: 'dynamic-inputs', component: DynamicInputsComponent },
+    {path: 'crop', component:DisabledformCropInfoComponent}
 ];
 
 @NgModule({
