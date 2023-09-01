@@ -12,6 +12,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
+import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 
 @Component({
     selector: 'app-feature-disabledform-personal-info',
@@ -22,8 +23,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     myForm!: FormGroup;
     originalFormValues: any;
     isDisabled = true;
-   
-    personalInfo!: User;
+
+    personalInfo!: FarmerPortfolio;
     id: any;
 
     constructor(
@@ -98,7 +99,6 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 first_name: new FormControl(this.personalInfo.firstName),
                 last_name: new FormControl(this.personalInfo.lastName),
                 email: new FormControl(this.personalInfo.email),
-                id_number: new FormControl(this.personalInfo.idNumber),
                 cell_number: new FormControl(this.personalInfo.cellNumber),
             });
         });
@@ -113,18 +113,15 @@ export class DisabledformPersonalInfoComponent implements OnInit {
         this.myForm.enable();
     }
 
-    
-
     onSaveClicked(formData: any) {
         if (this.myForm.valid) {
             this.personalInfo = {
                 id: this.personalInfo.id,
-                password: this.personalInfo.password,
                 firstName: this.myForm.get('first_name')?.value,
                 lastName: this.myForm.get('last_name')?.value,
                 email: this.myForm.get('email')?.value,
-                idNumber: this.myForm.get('id_number')?.value,
                 cellNumber: this.myForm.get('cell_number')?.value,
+                farms: this.myForm.get('farms')?.value
             };
             console.table(this.personalInfo);
 
@@ -132,13 +129,11 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 .updateFarmerInfo(this.personalInfo)
                 .subscribe(data => {
                     // Save or update the data here
-                    
                 });
         }
         this.isDisabled = true;
         this._progressService.setPersonalInfoCompleted(true);
         this.myForm.disable();
-         
     }
     onCancelClicked() {
         // Reset the form values to the original values
@@ -146,7 +141,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
         // Disable the form fields again
         this.isDisabled = true;
-        
+
         this.myForm.disable();
     }
 

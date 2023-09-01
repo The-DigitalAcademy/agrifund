@@ -4,7 +4,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+
+import { Assets } from 'src/app/_models/FarmerPortfolio';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class EquipmentTableComponent {
     isDisabled = true;
     onFileSelected($event: Event) {}
 
-    assets: Asset[] = []; // Initializing assets with interfaceAsset
+    assets: Assets[] = []; // Initializing assets with interfaceAsset
     isLast: any;
     equipmentForm!: FormGroup;
 

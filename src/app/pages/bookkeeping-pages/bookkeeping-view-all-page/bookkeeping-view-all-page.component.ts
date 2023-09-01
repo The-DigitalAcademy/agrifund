@@ -1,15 +1,8 @@
-import {
-    Component,
-    OnDestroy,
-    OnInit,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { ApiService } from 'src/app/_services/api-service/api.service';
 import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
 
 @Component({
@@ -34,14 +27,9 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private _apiService: ApiService,
         private _bookkeepingService: BookkeepingService,
         private _offcanvasService: NgbOffcanvas
     ) {}
-
-    viewRecordDetails(recordId: number) {
-        this.router.navigate(['/bookkeeping/view-record', recordId]);
-    }
 
     ngOnInit() {
         // sets the bookkeeping records
@@ -59,15 +47,15 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
                     this.bookkeepingRecords$ = records;
                 })
         );
+    }
+    ngOnDestroy() {
+        // unsubscribe from bookkeeping subscription
+        this.subscription.unsubscribe();
+    }
 
-        this.subscription.add(
-            this._bookkeepingService
-                .getTotalBookkeepingRecords()
-                .subscribe(total => {
-                    this.totalBookkeepingRecords$ = total;
-                    console.log(this.totalBookkeepingRecords$);
-                })
-        );
+    // when a record is clicked it will route to the view all page for singular viewing
+    viewRecordDetails(recordId: number) {
+        this.router.navigate(['/bookkeeping/view-record', recordId]);
     }
 
     // toggles the offcanvas mobile search bar
@@ -81,10 +69,5 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     // closes offcanvas search bar
     closeSearchbar() {
         this._offcanvasService.dismiss();
-    }
-
-    ngOnDestroy() {
-        // unsubscribe from bookkeeping subscription
-        this.subscription.unsubscribe();
     }
 }

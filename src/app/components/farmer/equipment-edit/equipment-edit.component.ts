@@ -17,7 +17,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+import { Assets } from 'src/app/_models/FarmerPortfolio';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
@@ -29,7 +29,7 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
 export class EquipmentEditComponent implements OnInit {
     editEquipmentForm!: FormGroup;
     submitted = false;
-    asset!: Asset;
+    asset!: Assets;
     id: any;
 
     constructor(
@@ -63,10 +63,10 @@ export class EquipmentEditComponent implements OnInit {
 
             // Creating a new FormGroup for editing equipment details using the FormBuilder (_fb)
             this.editEquipmentForm = this._fb.group({
-                equipmentName: new FormControl(this.asset.name), // Initializing equipmentName with the fetched name
-                equipmentType: new FormControl(this.asset.type), // Initializing equipmentType with the fetched type
+                equipmentName: new FormControl(this.asset.assetName), // Initializing equipmentName with the fetched name
+                equipmentType: new FormControl(this.asset.assetType), // Initializing equipmentType with the fetched type
                 equipmentAge: new FormControl(this.asset.age), // Initializing equipmentAge with the fetched age
-                equipmentAmount: new FormControl(this.asset.purchase_price), // Initializing equipmentAmount with the fetched purchase_price
+                equipmentAmount: new FormControl(this.asset.purchasePrice), // Initializing equipmentAmount with the fetched purchase_price
             });
         });
     }
@@ -86,12 +86,11 @@ export class EquipmentEditComponent implements OnInit {
             // Create an object representing the asset data
             this.asset = {
                 // Keep the initial id of the record
-                id: this.id,
-                farm_id: this.asset.farm_id,
-                name: this.editEquipmentForm.get('equipmentName')?.value,
-                type: this.editEquipmentForm.get('equipmentType')?.value,
+               id: this.asset.id,
+                assetName: this.editEquipmentForm.get('equipmentName')?.value,
+                assetType: this.editEquipmentForm.get('equipmentType')?.value,
                 age: this.editEquipmentForm.get('equipmentAge')?.value,
-                purchase_price:
+                purchasePrice:
                     this.editEquipmentForm.get('equipmentAmount')?.value,
             };
 

@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { Asset } from '../../../_models/asset';
+import { Assets } from 'src/app/_models/FarmerPortfolio';
 import { PortfolioService } from '../../../_services/portfolio-service/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
     styleUrls: ['./equipment-create.component.css'],
 })
 export class EquipmentCreateComponent implements OnInit {
-    asset!: Asset;
+    asset!: Assets;
 
     createEquipmentForm!: FormGroup;
     submitted = false;
@@ -40,11 +40,10 @@ export class EquipmentCreateComponent implements OnInit {
         if (this.createEquipmentForm.valid) {
             this.asset = {
                 id: this.asset.id,
-                farm_id: this.asset.farm_id,
-                name: this.createEquipmentForm.get('equipmentName')?.value,
-                type: this.createEquipmentForm.get('equipmentType')?.value,
+                assetName: this.createEquipmentForm.get('equipmentName')?.value,
+                assetType: this.createEquipmentForm.get('equipmentType')?.value,
                 age: this.createEquipmentForm.get('equipmentAge')?.value,
-                purchase_price:
+                purchasePrice:
                     this.createEquipmentForm.get('equipmentAmount')?.value,
             };
 

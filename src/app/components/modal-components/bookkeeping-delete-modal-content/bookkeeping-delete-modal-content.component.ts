@@ -44,14 +44,16 @@ export class BookkeepingDeleteModalContentComponent {
 
     // after a user confirms the delete by clicking yes, the id of a record is passed to the api service
     confirmedDelete() {
-        this._apiService
-            .deleteIncomeStatementItem(this.recordId)
-            .subscribe((message: unknown) => {
-                console.log(message);
-                // closes the modal after the record is deleted
-                this.activeModal.close();
-                // routes back to bookkeeping view all page after deletion
-                this.router.navigate(['/bookkeeping']);
-            });
+        // this._apiService
+        //     .deleteIncomeStatementItem(this.recordId)
+        //     .subscribe((message: unknown) => {
+        //         console.log(message);
+        //         // closes the modal after the record is deleted
+        //         this.activeModal.close();
+        //         // routes back to bookkeeping view all page after deletion
+        //         this.router.navigate(['/bookkeeping']);
+        //     });
+
+        this._bookkeepingService.deleteRecord(this.recordId);
     }
 }

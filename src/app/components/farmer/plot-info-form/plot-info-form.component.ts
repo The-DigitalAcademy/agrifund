@@ -36,7 +36,7 @@ export class PlotInfoFormComponent implements OnInit {
         console.log(this.id);
 
         this.myForm = this.fb.group({
-            farmer: new FormControl('', [
+            farmAddress: new FormControl('', [
                 Validators.required,
                 this.validationsService.addressContainsStreetValidator,
             ]),
@@ -44,10 +44,7 @@ export class PlotInfoFormComponent implements OnInit {
                 Validators.required,
                 this.validationsService.positiveNumberValidator(),
             ]),
-            farm: new FormControl('', [
-                Validators.required,
-                this.validationsService.addressContainsStreetValidator,
-            ]),
+
             date: new FormControl('', [Validators.required]),
         });
 
@@ -72,9 +69,9 @@ export class PlotInfoFormComponent implements OnInit {
             this.plotInfo = data;
 
             this.myForm = this._fb.group({
-                farmer: new FormControl(this.plotInfo.firstName),
+                farmAddress: new FormControl(this.plotInfo.firstName),
                 size: new FormControl(this.plotInfo.lastName),
-                farm: new FormControl(this.plotInfo.email),
+
                 date: new FormControl(this.plotInfo.idNumber),
             });
         });
@@ -94,7 +91,7 @@ export class PlotInfoFormComponent implements OnInit {
         this.myForm.disable();
     }
 
-    onSaveClicked() {
+    onSaveClicked(formData: any) {
         if (this.myForm.valid) {
             this.plotInfo = {
                 id: this.plotInfo.id,

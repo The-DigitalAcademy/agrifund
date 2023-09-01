@@ -1,33 +1,86 @@
-import { HttpClient } from '@angular/common/http';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique Nagel
+    CREATE DATE: 30 Jul 2023
+    UPDATED DATE: 31 Aug 2023 
+
+    DESCRIPTION:
+     This service is used for managing the overall farmer's portfolio data.
+     All portfolio data is fetched from the api here.
+
+    PARAMETERS:
+    registerUser( newUser: User) -> receives an body that is an instance of User
+    loginUser( email: string, password:string) -> both parameters passed should be a string
+
+-------------------------------------------------------------------------------------------------*/
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { Asset } from 'src/app/_models/asset';
-import { BehaviorSubject } from 'rxjs';
+import { AuthService } from '../authentication-service/auth.service';
+import { BehaviorSubject, Observable, map } from 'rxjs';
+import { FarmerPortfolio, Farm, Assets } from 'src/app/_models/FarmerPortfolio';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PortfolioService {
-    private assets: Asset[] = [];
+    private assets: Assets[] = [];
+    // stores the farmer portfolio as a array instance of farmer portfolio
+    private farmerPortfolio: FarmerPortfolio[] = [];
+    // stores the farmer portfolio data values as a behavior subject -> initializes as empty
+    private farmerPortfolio$: BehaviorSubject<FarmerPortfolio> =
+        new BehaviorSubject<FarmerPortfolio>({
+            id: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            cellNumber: '',
+            farms: [],
+        });
+
     user$ = new BehaviorSubject<any>({});
     constructor(
-        private _http: HttpClient,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _authService: AuthService,
+        private _http: HttpClient
     ) {
-        // this._apiService.getAllEquipment().subscribe((data: any) => {
-        //     this.assets = data;
-        // });
+        // sets the farmer portfolio when the service is called
+        this.setFarmerPortfolio();
     }
 
-    generateId() {
-        const id: number = this.assets.length;
+    // sets the farmer portfolio data
+    setFarmerPortfolio() {
+        const userEmail = this._authService.getUserEmail();
+        const sessionToken = this._authService.getSessionToken();
 
-        return id;
+        // checks if the user email and session token is still valid
+        if (!userEmail || !sessionToken) {
+            console.error('User email or session token not available');
+        }
+
+        this._apiService.getFarmerPortfolio().subscribe(
+            (result: any) => {
+                // console.log('API Response:', result.data);
+                this.farmerPortfolio = result.data;
+                // console.table(this.farmerPortfolio);
+                this.farmerPortfolio$.next(result.data);
+                console.log('Observable Data:', this.farmerPortfolio$);
+            },
+            error => {
+                console.error(`Error occurred while getting a user:`, error);
+            }
+        );
     }
-    generateFarmId() {
-        const farm_id: number = this.assets.length;
-        return farm_id;
+
+    // gets method for farmer portfolio data
+    getFarmerPortfolio(): Observable<FarmerPortfolio> {
+        return this.farmerPortfolio$;
     }
+
+    // sets user first name
+    setUserFirstName() {}
+
+    // get user first name
+    getUserFirstName() {}
 
     getPersonalDetails() {
         this._http.get('YOUR_API_ENDPOINT').subscribe(

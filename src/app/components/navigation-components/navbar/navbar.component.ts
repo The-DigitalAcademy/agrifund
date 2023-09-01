@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/_services/authentication-service/auth.service';
+import { UserService } from 'src/app/_services/user-service/user.service';
 
 @Component({
     selector: 'app-navbar',
@@ -35,10 +36,13 @@ export class NavbarComponent {
     constructor(
         private _offcanvasService: NgbOffcanvas,
         private _authService: AuthService,
+        private _userService: UserService,
         private router: Router
     ) {
         // gets the current user state
         this.userState$ = this._authService.getUserState();
+        // sets the farmer user data
+        this._userService.setFarmerUserPortfolioData();
     }
 
     // toggles the offcanvas visibility
