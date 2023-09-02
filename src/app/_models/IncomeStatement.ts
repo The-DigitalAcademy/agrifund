@@ -10,6 +10,7 @@
 import { IncomeStatementItem } from './IncomeStatementItem';
 
 export interface IncomeStatement {
+    id: number;
     farm_id: number;
     statement_date: string;
     total_income: number;
