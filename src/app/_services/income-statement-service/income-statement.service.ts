@@ -56,7 +56,34 @@ export class IncomeStatementService {
     constructor(
         private _apiService: ApiService,
         private _portfolioService: PortfolioService
-    ) {}
+    ) {
+        // makes it so that all
+        this.setAllIncomeStatements();
+    }
+
+    /*---------------------------------
+        SET DATA
+    ----------------------------------*/
+    // populates the income statements observable
+    setAllIncomeStatements() {
+        // gets all the income statements from the portfolio service
+        this._portfolioService
+            .getFarmerIncomeStatements()
+            .subscribe(statements => {
+                // sets statements value to the statements retrieved from the portfolio service
+                this.statements = statements;
+                // adds statements to income statements observable
+                this.incomeStatements$.next(this.statements);
+                console.log(`Income Statements stored in observable: `);
+                console.table(this.incomeStatements$);
+            });
+    }
+
+    // selects a singular income statement to use
+    setIncomeStatement(date: Date) {
+        // sets the income statement observable the one matching the given date
+        // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statement )
+    }
 
     /*---------------------------------
         GET DATA
@@ -70,16 +97,6 @@ export class IncomeStatementService {
 
     // gets all the income statements retrieved from the portfolio
     getAllIncomeStatements(): Observable<IncomeStatement[]> {
-        // gets all the income statements from the portfolio service
-        this._portfolioService
-            .getFarmerIncomeStatements()
-            .subscribe(statements => {
-                // sets statements value to the statements retrieved from the portfolio service
-                this.statements = statements;
-                // adds statements to income statements observable
-                this.incomeStatements$.next(this.statements);
-            });
-
         return this.incomeStatements$;
     }
 
@@ -173,31 +190,6 @@ export class IncomeStatementService {
     }
 
     /*---------------------------------
-        SET DATA
-    ----------------------------------*/
-    // populates the income statements observable ->
-    // setAllIncomeStatements(farmName: string) {
-    //     this._apiService.getAllIncomeStatementsByFarm(farmName).subscribe(
-    //         (data: any) => {
-    //             // assigns the data retrieved from the api to the statements array
-    //             this.statements = data;
-    //             console.table(`Statements Retrieved: ${this.statements}`);
-    //         },
-    //         error => {
-    //             console.error(
-    //                 `Error occurred while getting bookkeeping records`
-    //             );
-    //             console.error(error);
-    //         }
-    //     );
-    // }
-    // selects a singular income statement to use
-    setIncomeStatement(date: Date) {
-        // sets the income statement observable the one matching the given date
-        // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
-    }
-
-    /*---------------------------------
         CREATE DATA
     ----------------------------------*/
     // creates a new income statement item
@@ -251,7 +243,7 @@ export class IncomeStatementService {
     ----------------------------------*/
     // checks if an income statement has been created for a financial year
     statementExistsForFinancialYear(recordDate: Date) {
-        this;
+        this.getAllIncomeStatements();
         return false;
     }
 
