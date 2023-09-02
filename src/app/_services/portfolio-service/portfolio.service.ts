@@ -60,6 +60,7 @@ export class PortfolioService {
     // stores the income statement data as an observable -> -> initializes as empty
     private incomeStatements$: BehaviorSubject<IncomeStatement> =
         new BehaviorSubject<IncomeStatement>({
+            id: 0,
             farm_id: 0,
             statement_date: '',
             total_income: 0,

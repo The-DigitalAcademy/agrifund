@@ -4,8 +4,8 @@
     UPDATED DATE: 29 Aug 2023 
 
     DESCRIPTION:
-        This service manages all functions related to bookkeeping:
-        Manages bookkeeping CRUD operations
+        This service manages all functions related to income statement record items:
+        Manages CRUD operations
         Calculates the total bookkeeping records 
         Filters bookkeeping records
 
@@ -61,13 +61,25 @@ export class BookkeepingService {
     constructor(
         private _apiService: ApiService,
         private router: Router,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _incomeStatementService: IncomeStatementService
     ) {}
+    /*---------------------------------
+        GET DATA
+    ----------------------------------*/
+
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/
     // create a new bookkeeping record for a specific income statement
     createNewRecord(recordBody: IncomeStatementItem) {
+        // checks for the record category to change value to income or expense
+        if (recordBody.category === 'Money In') {
+            recordBody.category = 'Income';
+        } else {
+            recordBody.category = 'Expense';
+        }
+
         // adds value from the record body to the new records object that matches how the data is received by the api
         const newRecord = {
             date: recordBody.date,
@@ -77,20 +89,24 @@ export class BookkeepingService {
             recordProof: recordBody.proof,
         };
 
+        // get the statement id
+        const statementId = this._incomeStatementService.getIncomeStatementId();
+        console.log(statementId);
+
         console.table(newRecord);
-        this._apiService
-            .addRecord(newRecord, recordBody.statement_id)
-            .subscribe(
-                data => {
-                    console.log(data);
-                    // routes back to bookkeeping view all page is the creation of a record was successful
-                    this.router.navigate(['/bookkeeping']);
-                },
-                error => {
-                    console.error(`Error occurred while creating a new record`);
-                    console.log(error);
-                }
-            );
+        // this._apiService
+        //     .addRecord(newRecord, recordBody.statement_id)
+        //     .subscribe(
+        //         data => {
+        //             console.log(data);
+        //             // routes back to bookkeeping view all page is the creation of a record was successful
+        //             this.router.navigate(['/bookkeeping']);
+        //         },
+        //         error => {
+        //             console.error(`Error occurred while creating a new record`);
+        //             console.log(error);
+        //         }
+        //     );
     }
 
     // uploads proof of a record to the api

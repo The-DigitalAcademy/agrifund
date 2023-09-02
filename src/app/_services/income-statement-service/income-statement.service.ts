@@ -28,6 +28,7 @@ import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { Farm } from 'src/app/_models/farm';
+import { Statement } from '@angular/compiler';
 
 @Injectable({
     providedIn: 'root',
@@ -40,19 +41,16 @@ export class IncomeStatementService {
     private statements: IncomeStatement[] = [];
     // will be used to store all income statement items
     private incomeStatements$ = new BehaviorSubject<IncomeStatement[]>([]);
-    // stores the farmer portfolio data values as a behavior subject -> initializes as empty
-    private farmerFarm$: BehaviorSubject<Farm> = new BehaviorSubject<Farm>({
-        id: 0,
-        numberOfEmployees: 0,
-        farmName: '',
-        farmAddress: '',
-        yearsActive: 0,
-        address: '', //stores residential address
-        farmingReason: '', //stores the reason for needing funding
-        crops: [],
-        assets: [],
-        incomeStatements: [],
-    });
+    // stores a single income statement's value -> initializes as empty
+    private incomeStatement$: BehaviorSubject<IncomeStatement> =
+        new BehaviorSubject<IncomeStatement>({
+            id: 0,
+            farm_id: 0,
+            statement_date: '',
+            total_income: 0,
+            total_expenses: 0,
+            incomeStatementItems: [],
+        });
 
     constructor(
         private _apiService: ApiService,
@@ -80,27 +78,25 @@ export class IncomeStatementService {
     }
 
     // used to get a single income statement by it's id
-    getSingleIncomeStatement(statmentId: number) {}
+    getIncomeStatement() {}
 
-    // TODO
-    // update income statement total income
-    calculateTotalIncome() {}
+    // gets the total income for an income statement for money in
+    getTotalIncome() {
+        return this.incomeStatement$.pipe(
+            map(statement => statement.total_income)
+        );
+    }
 
-    // TODO
-    // update income statement total expense
-    calculateTotalExpense() {}
+    // get the total expenses for an income statement for money out
+    getTotalExpense() {}
 
-    // update income statement total net income (profit)
-    calculateTotalNetIncome() {}
+    // get the total net income for an income statement for profit value
+    getTotalNetIncome() {}
 
-    /*---------------------------------
-        CREATE DATA
-    ----------------------------------*/
-    // creates a new income statement item
-    createIncomeStatement() {}
-
-    // checks if an income statement has been created for current financial year
-    incomeStatementExist() {}
+    // used to get the income statement id for an income statement id
+    getIncomeStatementId() {
+        return this.incomeStatement$.pipe(map(statement => statement.id));
+    }
 
     /*---------------------------------
         SET DATA
@@ -122,9 +118,10 @@ export class IncomeStatementService {
         );
     }
     // selects a singular income statement to use
-    setIncomeStatement() {
+    setIncomeStatement(statmentId: number) {
         // if the income statement exists for the current year
         // new income statement date is created
+        // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
     }
 
     // sets the date for an income statement
@@ -156,4 +153,13 @@ export class IncomeStatementService {
 
         return financialYearStart;
     }
+
+    /*---------------------------------
+        CREATE DATA
+    ----------------------------------*/
+    // creates a new income statement item
+    createIncomeStatement() {}
+
+    // checks if an income statement has been created for current financial year
+    incomeStatementExist() {}
 }
