@@ -93,7 +93,7 @@ export class BookkeepingService {
             description: recordBody.description,
         };
 
-       // sets the statement id to and passes date value to method
+        // sets the statement id to and passes date value to method
         recordBody.statement_id =
             this._incomeStatementService.getIncomeStatementIdForCreate(
                 recordBody.date
@@ -276,5 +276,4 @@ export class BookkeepingService {
     /*---------------------------------
         CALCULATIONS
     ----------------------------------*/
-
 }

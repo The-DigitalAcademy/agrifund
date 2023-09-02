@@ -17,18 +17,10 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from '../api-service/api.service';
-import { BehaviorSubject, Observable, map, reduce } from 'rxjs';
-import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
-import { state } from '@angular/animations';
-import { Router } from '@angular/router';
-import { User } from 'src/app/_models/User';
-import { UserService } from '../user-service/user.service';
+import { BehaviorSubject, Observable, last, map } from 'rxjs';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { Farm } from 'src/app/_models/farm';
-import { Statement } from '@angular/compiler';
 
 @Injectable({
     providedIn: 'root',
@@ -108,13 +100,18 @@ export class IncomeStatementService {
         // converts the record date to a data value type
         const recordDateValue: Date = this.convertStringToDate(recordDate);
 
+        console.log(
+            `Does the statement exist for the record: ${this.statementExistsForFinancialYear(
+                recordDateValue
+            )}`
+        );
         // checks if an income statement exist for the financial year of the record
-        if (this.statementExistsForFinancialYear(recordDateValue)) {
-            // the statement observable will be set to statement for the added record's financial year
-        } else {
-            // if a statement doesn't exist for the financial year a new one will be created
-            this.createIncomeStatement();
-        }
+        // if (this.statementExistsForFinancialYear(recordDateValue)) {
+        //     // the statement observable will be set to statement for the added record's financial year
+        // } else {
+        //     // if a statement doesn't exist for the financial year a new one will be created
+        //     this.createIncomeStatement();
+        // }
 
         // call the method in this service to get the income statement id of income statement observable
         this.getIncomeStatementId().subscribe(incomeStatementId => {
@@ -123,7 +120,7 @@ export class IncomeStatementService {
             console.log(`This is the set statement Id: ${statementId}`);
         });
 
-        console.log(statementId);
+        // console.log(statementId);
 
         return statementId;
     }
@@ -243,8 +240,51 @@ export class IncomeStatementService {
     ----------------------------------*/
     // checks if an income statement has been created for a financial year
     statementExistsForFinancialYear(recordDate: Date) {
+        // checks to see if a statement exists for a financial year
         this.getAllIncomeStatements();
-        return false;
+
+        if (this.getStatementByDate(recordDate) != null) {
+            // returns true if the statement exists
+            return true;
+        } else {
+            // returns false if the statement does not exist
+            return false;
+        }
+    }
+
+    // get an incomeStatement by date
+    getStatementByDate(date: Date): IncomeStatement | null {
+        console.table(this.incomeStatement$);
+        let statement = null;
+
+        this.getAllIncomeStatements().subscribe(statements => {
+            // checks that the statement is not empty
+            if (statements.length > 0) {
+                statement = statements.reduce(
+                    (lastTrueStatement, currentStatement) => {
+                        // converts the income statement date to the date datatype
+                        const currentStatementDate = this.convertStringToDate(
+                            currentStatement.statement_date
+                        );
+
+                        if (
+                            currentStatementDate <= date ||
+                            currentStatementDate === date
+                        ) {
+                            //returns the last income statement that is less than the current data
+                            return currentStatement;
+                        }
+
+                        return lastTrueStatement;
+                    }
+                    // returns null if no statement passes the date condition
+                    // null
+                );
+            }
+        });
+
+        // returns a statement for the date
+        return statement;
     }
 
     /*---------------------------------
