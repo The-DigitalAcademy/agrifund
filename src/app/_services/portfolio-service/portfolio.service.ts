@@ -79,10 +79,7 @@ export class PortfolioService {
             date: '', //date of the record
         });
 
-    constructor(
-        private _apiService: ApiService,
-        private _authService: AuthService
-    ) {
+    constructor(private _apiService: ApiService) {
         // sets the farmer portfolio when the service is called
         this.setFarmerPortfolio();
     }
@@ -92,14 +89,6 @@ export class PortfolioService {
     ----------------------------------*/
     // sets the farmer portfolio data
     setFarmerPortfolio() {
-        const userEmail = this._authService.getUserEmail();
-        const sessionToken = this._authService.getSessionToken();
-
-        // checks if the user email and session token is still valid
-        if (!userEmail || !sessionToken) {
-            console.error('User email or session token not available');
-        }
-
         this._apiService.getFarmerPortfolio().subscribe(
             (result: any) => {
                 // console.log('API Response:', result.data);
@@ -186,5 +175,4 @@ export class PortfolioService {
             map(statements => statements.incomeStatementItems)
         );
     }
-
 }
