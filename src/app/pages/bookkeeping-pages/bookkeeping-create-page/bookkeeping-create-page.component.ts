@@ -25,7 +25,8 @@ import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookke
 export class BookkeepingCreatePageComponent implements OnInit {
     createRecordForm!: FormGroup;
     submitted = false;
-    recordType: any = ['Money In', 'Money Out'];
+    // stores the category types of a bookeepiign record
+    recordType = ['Money In', 'Money Out'];
 
     // creates an empty instance of an income statement item to store the created record
     record: IncomeStatementItem = {
@@ -96,7 +97,8 @@ export class BookkeepingCreatePageComponent implements OnInit {
                 date: formInputVal.recordDate,
             };
 
-            console.table(this.record);
+            // sends the new record data to the income statement item service
+            this._bookkeepingService.createNewRecord(this.record);
 
             // this._apiService.addRecord(this.record).subscribe(data => {
             //     // adds the new record to the observable array after successfully adding the record

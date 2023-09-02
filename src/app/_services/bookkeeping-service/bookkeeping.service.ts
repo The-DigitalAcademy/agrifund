@@ -91,7 +91,6 @@ export class BookkeepingService {
             category: recordBody.category,
             amount: recordBody.amount,
             description: recordBody.description,
-            recordProof: recordBody.proof,
         };
 
         // get the statement id
