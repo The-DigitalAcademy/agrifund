@@ -68,10 +68,17 @@ export class IncomeStatementService {
     //     return this.farmerPortfolio$.pipe(map(portfolio: => portfolio.farms));
     // }
 
-    // gets all the income statements from the api
+    // gets all the income statements retrieved from the portfolio
     getAllIncomeStatements(): Observable<IncomeStatement[]> {
-        // passes the farm name to the one assigned in user service
-        this.setAllIncomeStatements(this._portfolioService.getFarmName());
+        // gets all the income statements from the portfolio service
+        this._portfolioService
+            .getFarmerIncomeStatements()
+            .subscribe(statements => {
+                // sets statements value to the statements retrieved from the portfolio service
+                this.statements = statements;
+                // adds statements to income statements observable
+                this.incomeStatements$.next(this.statements);
+            });
 
         return this.incomeStatements$;
     }
@@ -169,21 +176,21 @@ export class IncomeStatementService {
         SET DATA
     ----------------------------------*/
     // populates the income statements observable ->
-    setAllIncomeStatements(farmName: string) {
-        this._apiService.getAllIncomeStatementsByFarm(farmName).subscribe(
-            (data: any) => {
-                // assigns the data retrieved from the api to the statements array
-                this.statements = data;
-                console.table(`Statements Retrieved: ${this.statements}`);
-            },
-            error => {
-                console.error(
-                    `Error occurred while getting bookkeeping records`
-                );
-                console.error(error);
-            }
-        );
-    }
+    // setAllIncomeStatements(farmName: string) {
+    //     this._apiService.getAllIncomeStatementsByFarm(farmName).subscribe(
+    //         (data: any) => {
+    //             // assigns the data retrieved from the api to the statements array
+    //             this.statements = data;
+    //             console.table(`Statements Retrieved: ${this.statements}`);
+    //         },
+    //         error => {
+    //             console.error(
+    //                 `Error occurred while getting bookkeeping records`
+    //             );
+    //             console.error(error);
+    //         }
+    //     );
+    // }
     // selects a singular income statement to use
     setIncomeStatement(date: Date) {
         // sets the income statement observable the one matching the given date
@@ -244,7 +251,7 @@ export class IncomeStatementService {
     ----------------------------------*/
     // checks if an income statement has been created for a financial year
     statementExistsForFinancialYear(recordDate: Date) {
-        
+        this;
         return false;
     }
 
