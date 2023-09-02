@@ -99,13 +99,6 @@ export class BookkeepingCreatePageComponent implements OnInit {
 
             // sends the new record data to the income statement item service
             this._bookkeepingService.createNewRecord(this.record);
-
-            // this._apiService.addRecord(this.record).subscribe(data => {
-            //     // adds the new record to the observable array after successfully adding the record
-            //     this._bookkeepingService.addRecord(this.record);
-            // });
-
-            // this.router.navigate(['/bookkeeping']);
         }
     }
 }

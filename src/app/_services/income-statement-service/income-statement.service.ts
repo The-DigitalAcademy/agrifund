@@ -76,6 +76,23 @@ export class IncomeStatementService {
         return this.incomeStatements$;
     }
 
+    // returns an income statement id based on the created record's date
+    getIncomeStatementIdForCreate(recordDate: Date): number {
+        // set variable that will be used to pass the statement id
+        let statementId = 0;
+
+        // call the method in this service to get the income statement id of income statement observable
+        this.getIncomeStatementId().subscribe(incomeStatementId => {
+            // assigns the income statement id retrieved from the set income statement
+            statementId = incomeStatementId;
+            console.log(`This is the set statement Id: ${statementId}`);
+        });
+
+        console.log(statementId);
+
+        return statementId;
+    }
+
     // used to get a single income statement by it's id
     getIncomeStatement() {
         return this.incomeStatement$;
@@ -103,7 +120,7 @@ export class IncomeStatementService {
     }
 
     // used to get the income statement id for an income statement id
-    getIncomeStatementId() {
+    getIncomeStatementId(): Observable<number> {
         return this.incomeStatement$.pipe(map(statement => statement.id));
     }
 
@@ -132,20 +149,6 @@ export class IncomeStatementService {
     //     // new income statement date is created
     //     // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
     // }
-
-    setIncomeStatement(newIncomeStatementDate: any) {
-        const statement: IncomeStatement = {
-            id: 0,
-            farm_id: 0,
-            statement_date: '',
-            total_income: 0,
-            total_expenses: 0,
-            net_income: 0,
-            incomeStatementItems: [],
-        };
-
-        // this.incomeStatement$.next(statementBody);
-    }
 
     // sets the date for an income statement
     getIncomeStatementDate() {
