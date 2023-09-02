@@ -77,9 +77,20 @@ export class IncomeStatementService {
     }
 
     // returns an income statement id based on the created record's date
-    getIncomeStatementIdForCreate(recordDate: Date): number {
+    getIncomeStatementIdForCreate(recordDate: string): number {
         // set variable that will be used to pass the statement id
         let statementId = 0;
+
+        // converts the record date to a data value type
+        const recordDateValue: Date = this.convertStringToDate(recordDate);
+
+        // checks if an income statement exist for the financial year of the record
+        if (this.statementExistsForFinancialYear(recordDateValue)) {
+            // the statement observable will be set to statement for the added record's financial year
+        } else {
+            // if a statement doesn't exist for the financial year a new one will be created
+            this.createIncomeStatement();
+        }
 
         // call the method in this service to get the income statement id of income statement observable
         this.getIncomeStatementId().subscribe(incomeStatementId => {
@@ -91,6 +102,36 @@ export class IncomeStatementService {
         console.log(statementId);
 
         return statementId;
+    }
+
+    // sets the date for an income statement and returns it
+    getIncomeStatementDate() {
+        // gets the current date
+        const today: Date = new Date();
+        // gets the current year
+        const currentYear = today.getFullYear();
+        // South African financial year starts on the 1st of march
+        const financialYearStartMonth = 2; //month of the March -> index starts at 0
+        // sets the date value as string value
+
+        // sets the default financial year for the current year
+        let financialYearStart = new Date(
+            currentYear,
+            financialYearStartMonth,
+            1
+        );
+
+        // checks if the current data is less than the financial start year
+        if (today < financialYearStart) {
+            // sets the financial date to the previous year, the month of March
+            financialYearStart = new Date(
+                currentYear - 1,
+                financialYearStartMonth,
+                1
+            );
+        }
+
+        return financialYearStart;
     }
 
     // used to get a single income statement by it's id
@@ -144,40 +185,9 @@ export class IncomeStatementService {
         );
     }
     // selects a singular income statement to use
-    // setIncomeStatement(statmentId: number) {
-    //     // if the income statement exists for the current year
-    //     // new income statement date is created
-    //     // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
-    // }
-
-    // sets the date for an income statement
-    getIncomeStatementDate() {
-        // gets the current date
-        const today: Date = new Date();
-        // gets the current year
-        const currentYear = today.getFullYear();
-        // South African financial year starts on the 1st of march
-        const financialYearStartMonth = 2; //month of the March -> index starts at 0
-        // sets the date value as string value
-
-        // sets the default financial year for the current year
-        let financialYearStart = new Date(
-            currentYear,
-            financialYearStartMonth,
-            1
-        );
-
-        // checks if the current data is less than the financial start year
-        if (today < financialYearStart) {
-            // sets the financial date to the previous year, the month of March
-            financialYearStart = new Date(
-                currentYear - 1,
-                financialYearStartMonth,
-                1
-            );
-        }
-
-        return financialYearStart;
+    setIncomeStatement(date: Date) {
+        // sets the income statement observable the one matching the given date
+        // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
     }
 
     /*---------------------------------
@@ -221,6 +231,24 @@ export class IncomeStatementService {
             );
     }
 
-    // checks if an income statement has been created for current financial year
-    incomeStatementExist() {}
+    /*---------------------------------
+        CONVERT DATA
+    ----------------------------------*/
+    // used to convert the string date values into the date format
+    convertStringToDate(recordDate: string) {
+        return new Date(recordDate);
+    }
+
+    /*---------------------------------
+        CHECK DATA
+    ----------------------------------*/
+    // checks if an income statement has been created for a financial year
+    statementExistsForFinancialYear(recordDate: Date) {
+        
+        return false;
+    }
+
+    /*---------------------------------
+        CALCULATIONS
+    ----------------------------------*/
 }

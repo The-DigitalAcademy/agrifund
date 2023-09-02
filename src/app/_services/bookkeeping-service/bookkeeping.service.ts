@@ -93,10 +93,10 @@ export class BookkeepingService {
             description: recordBody.description,
         };
 
-       // sets the statement id to income statement and passes date value to method
+       // sets the statement id to and passes date value to method
         recordBody.statement_id =
             this._incomeStatementService.getIncomeStatementIdForCreate(
-                this.convertStringToDate(recordBody.date)
+                recordBody.date
             );
 
         // get the statement id
@@ -277,11 +277,4 @@ export class BookkeepingService {
         CALCULATIONS
     ----------------------------------*/
 
-    /*---------------------------------
-        CONVERT DATA
-    ----------------------------------*/
-    // used to convert the string date values into the date format
-    convertStringToDate(recordDate: string) {
-        return new Date(recordDate);
-    }
 }
