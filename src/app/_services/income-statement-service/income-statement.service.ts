@@ -49,6 +49,7 @@ export class IncomeStatementService {
             statement_date: '',
             total_income: 0,
             total_expenses: 0,
+            net_income: 0,
             incomeStatementItems: [],
         });
 
@@ -91,7 +92,11 @@ export class IncomeStatementService {
     getTotalExpense() {}
 
     // get the total net income for an income statement for profit value
-    getTotalNetIncome() {}
+    getTotalNetIncome() {
+        return this.incomeStatement$.pipe(
+            map(statement => statement.net_income)
+        );
+    }
 
     // used to get the income statement id for an income statement id
     getIncomeStatementId() {

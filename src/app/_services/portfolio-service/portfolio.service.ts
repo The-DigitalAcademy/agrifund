@@ -65,6 +65,7 @@ export class PortfolioService {
             statement_date: '',
             total_income: 0,
             total_expenses: 0,
+            net_income: 0,
             incomeStatementItems: [],
         });
 

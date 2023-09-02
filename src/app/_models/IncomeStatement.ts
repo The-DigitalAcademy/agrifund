@@ -15,5 +15,6 @@ export interface IncomeStatement {
     statement_date: string;
     total_income: number;
     total_expenses: number;
+    net_income: number;
     incomeStatementItems: IncomeStatementItem[];
 }
