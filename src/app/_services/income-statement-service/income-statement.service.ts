@@ -79,7 +79,9 @@ export class IncomeStatementService {
     }
 
     // used to get a single income statement by it's id
-    getIncomeStatement() {}
+    getIncomeStatement() {
+        return this.incomeStatement$;
+    }
 
     // gets the total income for an income statement for money in
     getTotalIncome() {
