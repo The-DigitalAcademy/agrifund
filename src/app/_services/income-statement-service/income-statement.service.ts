@@ -89,7 +89,11 @@ export class IncomeStatementService {
     }
 
     // get the total expenses for an income statement for money out
-    getTotalExpense() {}
+    getTotalExpense() {
+        return this.incomeStatement$.pipe(
+            map(statement => statement.total_expenses)
+        );
+    }
 
     // get the total net income for an income statement for profit value
     getTotalNetIncome() {
