@@ -293,9 +293,9 @@ export class ApiService {
     }
 
     // POST to create a new income statement
-    createIncomeStatement(farmId: number, statementBody: any) {
+    createIncomeStatement(farmName: string, statementBody: any) {
         return this.http.post(
-            `${this.INCOME_STATEMENT_URL}/${farmId}`,
+            `${this.INCOME_STATEMENT_URL}/${farmName}`,
             statementBody
         );
     }

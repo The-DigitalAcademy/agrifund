@@ -68,6 +68,11 @@ export class BookkeepingService {
         GET DATA
     ----------------------------------*/
 
+    // get income statement record item date
+    // getIncomeStatementItemDate() {
+    //     return this.ico
+    // }
+
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/

@@ -55,9 +55,7 @@ export class IncomeStatementService {
 
     constructor(
         private _apiService: ApiService,
-        private _userService: UserService,
-        private _portfolioService: PortfolioService,
-        private router: Router
+        private _portfolioService: PortfolioService
     ) {}
 
     /*---------------------------------
@@ -112,7 +110,7 @@ export class IncomeStatementService {
     /*---------------------------------
         SET DATA
     ----------------------------------*/
-    // populates the income statements observable
+    // populates the income statements observable ->
     setAllIncomeStatements(farmName: string) {
         this._apiService.getAllIncomeStatementsByFarm(farmName).subscribe(
             (data: any) => {
@@ -129,14 +127,28 @@ export class IncomeStatementService {
         );
     }
     // selects a singular income statement to use
-    setIncomeStatement(statmentId: number) {
-        // if the income statement exists for the current year
-        // new income statement date is created
-        // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
+    // setIncomeStatement(statmentId: number) {
+    //     // if the income statement exists for the current year
+    //     // new income statement date is created
+    //     // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statment )
+    // }
+
+    setIncomeStatement(newIncomeStatementDate: any) {
+        const statement: IncomeStatement = {
+            id: 0,
+            farm_id: 0,
+            statement_date: '',
+            total_income: 0,
+            total_expenses: 0,
+            net_income: 0,
+            incomeStatementItems: [],
+        };
+
+        // this.incomeStatement$.next(statementBody);
     }
 
     // sets the date for an income statement
-    setIncomeStatementDate() {
+    getIncomeStatementDate() {
         // gets the current date
         const today: Date = new Date();
         // gets the current year
@@ -145,7 +157,7 @@ export class IncomeStatementService {
         const financialYearStartMonth = 2; //month of the March -> index starts at 0
         // sets the date value as string value
 
-        // sets the default financial year
+        // sets the default financial year for the current year
         let financialYearStart = new Date(
             currentYear,
             financialYearStartMonth,
@@ -154,7 +166,7 @@ export class IncomeStatementService {
 
         // checks if the current data is less than the financial start year
         if (today < financialYearStart) {
-            // sets the financial data a the previous year, the month of March
+            // sets the financial date to the previous year, the month of March
             financialYearStart = new Date(
                 currentYear - 1,
                 financialYearStartMonth,
@@ -169,7 +181,42 @@ export class IncomeStatementService {
         CREATE DATA
     ----------------------------------*/
     // creates a new income statement item
-    createIncomeStatement() {}
+    createIncomeStatement() {
+        // sets the farmName to pass to creating a new income statement item
+        const farmName = this._portfolioService.getFarmName();
+        console.log(
+            `Farm Name when creating a new income statement: ${farmName}`
+        );
+        const statementDate = this.getIncomeStatement();
+        console.log(
+            `Statement date for new income statement: ${statementDate}`
+        );
+
+        const statementBody = {
+            statement_date: statementDate,
+            total_income: 0,
+            total_expenses: 0,
+            net_income: 0,
+        };
+
+        // call api function to create new income statement
+        this._apiService
+            .createIncomeStatement(farmName, statementBody)
+            .subscribe(
+                (data: any) => {
+                    // assigns the data retrieved from the api to the statements array
+                    console.log(
+                        `Return after creating a new income statement: ${data}`
+                    );
+                },
+                error => {
+                    console.error(
+                        `Error occurred while getting bookkeeping records`
+                    );
+                    console.error(error);
+                }
+            );
+    }
 
     // checks if an income statement has been created for current financial year
     incomeStatementExist() {}
