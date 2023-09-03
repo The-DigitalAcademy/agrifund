@@ -15,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-bookkeeping-create-page',
@@ -25,7 +25,7 @@ import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookke
 export class BookkeepingCreatePageComponent implements OnInit {
     createRecordForm!: FormGroup;
     submitted = false;
-    // stores the category types of a bookeepiign record
+    // stores the category types of a bookkeeping record
     recordType = ['Money In', 'Money Out'];
 
     // creates an empty instance of an income statement item to store the created record
@@ -47,7 +47,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private _apiService: ApiService,
-        private _bookkeepingService: BookkeepingService
+        private _incomeStatementItemService: IncomeStatementItemService
     ) {}
 
     ngOnInit() {
@@ -98,7 +98,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
             };
 
             // sends the new record data to the income statement item service
-            this._bookkeepingService.createNewRecord(this.record);
+            this._incomeStatementItemService.createNewRecord(this.record);
         }
     }
 }

@@ -24,7 +24,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-bookkeeping-edit-page',
@@ -50,7 +50,7 @@ export class BookkeepingEditPageComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private _bookkeepingService: BookkeepingService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private fb: FormBuilder,
         private _apiService: ApiService
     ) {}
@@ -129,7 +129,7 @@ export class BookkeepingEditPageComponent implements OnInit {
             //         // console.table(this.editRecordForm.value);
             //     });
             // this.router.navigate(['bookkeeping/view-record', this.record.id]);
-            this._bookkeepingService.updateBookkeepingRecord(
+            this._incomeStatementItemService.updateBookkeepingRecord(
                 updatedRecord,
                 this.fileToUpload
             );

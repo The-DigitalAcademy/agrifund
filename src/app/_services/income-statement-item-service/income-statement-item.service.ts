@@ -25,14 +25,14 @@ import { state } from '@angular/animations';
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models/User';
 import { UserService } from '../user-service/user.service';
-import { IncomeStatement } from './../../_models/IncomeStatement';
+import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class BookkeepingService {
+export class IncomeStatementItemService {
     /*---------------------------------
         OBSERVABLES
     ----------------------------------*/

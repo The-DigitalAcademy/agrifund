@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-delete-modal-content',
@@ -32,7 +32,7 @@ export class BookkeepingDeleteModalContentComponent {
 
     constructor(
         private _apiService: ApiService,
-        private _bookkeepingService: BookkeepingService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private activeModal: NgbActiveModal,
         private router: Router
     ) {}
@@ -54,6 +54,6 @@ export class BookkeepingDeleteModalContentComponent {
         //         this.router.navigate(['/bookkeeping']);
         //     });
 
-        this._bookkeepingService.deleteRecord(this.recordId);
+        this._incomeStatementItemService.deleteRecord(this.recordId);
     }
 }

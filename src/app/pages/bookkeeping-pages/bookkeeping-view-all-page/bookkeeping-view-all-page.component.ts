@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
@@ -44,7 +44,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private _bookkeepingService: BookkeepingService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private _offcanvasService: NgbOffcanvas,
         private _portfolioService: PortfolioService
     ) {}
@@ -53,13 +53,13 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         // sets the bookkeeping records
         this.subscription.add(
             //populate sets the bookkeeping records value in the bookkeeping service
-            this._bookkeepingService.setBookkeepingRecords()
+            this._incomeStatementItemService.setBookkeepingRecords()
         );
 
         // gets all bookkeeping values stored in the bookkeeping service observable
         this.subscription.add(
             // gets all values now stored in observable in service
-            this._bookkeepingService
+            this._incomeStatementItemService
                 .getAllBookkeepingRecords()
                 .subscribe(records => {
                     this.bookkeepingRecords$ = records;
