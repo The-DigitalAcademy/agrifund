@@ -99,24 +99,20 @@ export class BookkeepingService {
                 recordBody.date
             );
 
-        // get the statement id
-        // const statementId = this._incomeStatementService.getIncomeStatementId();
-        // console.log(statementId);
-
         console.table(newRecord);
-        // this._apiService
-        //     .addRecord(newRecord, recordBody.statement_id)
-        //     .subscribe(
-        //         data => {
-        //             console.log(data);
-        //             // routes back to bookkeeping view all page is the creation of a record was successful
-        //             this.router.navigate(['/bookkeeping']);
-        //         },
-        //         error => {
-        //             console.error(`Error occurred while creating a new record`);
-        //             console.log(error);
-        //         }
-        //     );
+        this._apiService
+            .addRecord(newRecord, recordBody.statement_id)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    // routes back to bookkeeping view all page is the creation of a record was successful
+                    this.router.navigate(['/bookkeeping']);
+                },
+                error => {
+                    console.error(`Error occurred while creating a new record`);
+                    console.error(error);
+                }
+            );
     }
 
     // uploads proof of a record to the api

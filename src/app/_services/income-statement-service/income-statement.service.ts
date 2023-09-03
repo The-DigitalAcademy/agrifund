@@ -49,6 +49,8 @@ export class IncomeStatementService {
         private _apiService: ApiService,
         private _portfolioService: PortfolioService
     ) {
+        // sets the portfolio
+        this._portfolioService.setFarmerPortfolio();
         // makes it so that all
         this.setAllIncomeStatements();
     }
@@ -66,15 +68,18 @@ export class IncomeStatementService {
                 this.statements = statements;
                 // adds statements to income statements observable
                 this.incomeStatements$.next(this.statements);
-                console.log(`Income Statements stored in observable: `);
-                console.table(this.incomeStatements$);
+                console.table(
+                    'Income Statements stored in observable:' +
+                        this.incomeStatements$
+                );
             });
     }
 
-    // selects a singular income statement to use
-    setIncomeStatement(date: Date) {
-        // sets the income statement observable the one matching the given date
-        // this.incomeStatements$ = this.incomeStatements$.pipe(map(statements => statement )
+    // sets a current income statement
+    setIncomeStatement(statement: IncomeStatement) {
+        // assigns the statement to the statement observable
+        this.incomeStatement$.next(statement);
+        console.log(statement);
     }
 
     /*---------------------------------
@@ -83,34 +88,6 @@ export class IncomeStatementService {
     // gets all the income statements retrieved from the portfolio
     getAllIncomeStatements(): Observable<IncomeStatement[]> {
         return this.incomeStatements$;
-    }
-
-    // returns an income statement id based on the created record's date
-    getIncomeStatementIdForCreate(recordDate: string): number {
-        // set variable that will be used to pass the statement id
-        let statementId = 0;
-
-        // converts the record date to a data value type
-        const recordDateValue: Date = this.convertStringToDate(recordDate);
-
-        // checks if an income statement exist for the financial year of the record
-        if (this.statementExistsForFinancialYear(recordDateValue)) {
-            // the statement observable will be set to statement for the added record's financial year
-        } else {
-            // if a statement doesn't exist for the financial year a new one will be created
-            this.createIncomeStatement(recordDateValue);
-        }
-
-        // call the method in this service to get the income statement id of income statement observable
-        this.getIncomeStatementId().subscribe(incomeStatementId => {
-            // assigns the income statement id retrieved from the set income statement
-            statementId = incomeStatementId;
-            console.log(`This is the set statement Id: ${statementId}`);
-        });
-
-        // console.log(statementId);
-
-        return statementId;
     }
 
     // get an incomeStatement by date
@@ -140,7 +117,10 @@ export class IncomeStatementService {
                 );
             }
         });
-
+        if (statement) {
+            // assigns the statement to the statement observable
+            this.setIncomeStatement(statement);
+        }
         // returns a statement for the date
         return statement;
     }
@@ -176,6 +156,99 @@ export class IncomeStatementService {
         return this.incomeStatement$.pipe(map(statement => statement.id));
     }
 
+    /*---------------------------------
+        CREATING A STATEMENT
+    ----------------------------------*/
+    // returns an income statement id based on the created record's date
+    getIncomeStatementIdForCreate(recordDate: string): number {
+        // set variable that will be used to pass the statement id
+        let statementId = 0;
+
+        // converts the record date to a data value type
+        const recordDateValue: Date = this.convertStringToDate(recordDate);
+
+        // checks if an income statement exist for the financial year of the record
+        if (this.statementExistsForFinancialYear(recordDateValue)) {
+            // the statement observable will be set to statement for the added record's financial year
+            const statement = this.getStatementByDate(recordDateValue);
+            console.log(statement);
+            if (statement != null) {
+                statementId = statement.id;
+                // sets the income statement to the one an item is being added to
+                this.setIncomeStatement(statement);
+            }
+        } else {
+            // if a statement doesn't exist for the financial year a new one will be created
+            this.createIncomeStatement(recordDateValue);
+        }
+
+        // call the method in this service to get the income statement id of income statement observable
+        this.getIncomeStatementId().subscribe(incomeStatementId => {
+            // assigns the income statement id retrieved from the set income statement
+            statementId = incomeStatementId;
+            console.log(`This is the set statement Id: ${statementId}`);
+        });
+
+        // console.log(statementId);
+
+        return statementId;
+    }
+
+    // checks if an income statement has been created for a financial year
+    statementExistsForFinancialYear(recordDate: Date) {
+        // checks to see if a statement exists for a financial year
+        this.getAllIncomeStatements();
+
+        if (this.getStatementByDate(recordDate) != null) {
+            // returns true if the statement exists
+            return true;
+        } else {
+            // returns false if the statement does not exist
+            return false;
+        }
+    }
+
+    // creates a new income statement item
+    createIncomeStatement(date: Date) {
+        // sets the farmName to pass to creating a new income statement item
+        const farmName = this._portfolioService.getFarmName();
+        // assigns the statement date and converts it into a string
+        const statementDate = this.convertDateToString(
+            this.getIncomeStatementDate(date)
+        );
+
+        // sets the statement body to pass to create a new income statement
+        const statementBody = {
+            statement_date: statementDate,
+            total_income: 0,
+            total_expenses: 0,
+            net_income: 0,
+        };
+
+        console.log('Statement created');
+        console.table(statementBody);
+        // request to api to create new income statement
+        this._apiService
+            .createIncomeStatement(farmName, statementBody)
+            .subscribe(
+                (data: any) => {
+                    this.setAllIncomeStatements();
+                    console.table(
+                        'After creating a new income statement after setting:' +
+                            this.incomeStatements$
+                    );
+                    // gets the newly created income statement by its date
+                    this.getStatementByDate(date);
+                },
+                error => {
+                    console.error(
+                        `Error occurred while getting bookkeeping records`
+                    );
+                    console.error(error);
+                }
+            );
+    }
+
     // sets the date for an income statement and returns it based on the record data passed to it
     getIncomeStatementDate(date: Date) {
         // gets the current date
@@ -207,52 +280,6 @@ export class IncomeStatementService {
     }
 
     /*---------------------------------
-        CREATE DATA
-    ----------------------------------*/
-    // creates a new income statement item
-    createIncomeStatement(date: Date) {
-        // sets the farmName to pass to creating a new income statement item
-        const farmName = this._portfolioService.getFarmName();
-        console.log(
-            `Farm Name when creating a new income statement: ${farmName}`
-        );
-        // assigns the statement date and converts it into a string
-        const statementDate = this.convertDateToString(
-            this.getIncomeStatementDate(date)
-        );
-        console.log(
-            `Statement date for new income statement: ${statementDate}`
-        );
-
-        const statementBody = {
-            statement_date: statementDate,
-            total_income: 0,
-            total_expenses: 0,
-            net_income: 0,
-        };
-
-        console.log('Statement created');
-        console.table(statementBody);
-        // call api function to create new income statement
-        // this._apiService
-        //     .createIncomeStatement(farmName, statementBody)
-        //     .subscribe(
-        //         (data: any) => {
-        //             // assigns the data retrieved from the api to the statements array
-        //             console.log(
-        //                 `Return after creating a new income statement: ${data}`
-        //             );
-        //         },
-        //         error => {
-        //             console.error(
-        //                 `Error occurred while getting bookkeeping records`
-        //             );
-        //             console.error(error);
-        //         }
-        //     );
-    }
-
-    /*---------------------------------
         CONVERT DATA
     ----------------------------------*/
     // used to convert the string date values into the date format
@@ -273,23 +300,6 @@ export class IncomeStatementService {
 
         // returns the date as a string with dashes in between
         return [year, month, day].join('-');
-    }
-
-    /*---------------------------------
-        CHECK DATA
-    ----------------------------------*/
-    // checks if an income statement has been created for a financial year
-    statementExistsForFinancialYear(recordDate: Date) {
-        // checks to see if a statement exists for a financial year
-        this.getAllIncomeStatements();
-
-        if (this.getStatementByDate(recordDate) != null) {
-            // returns true if the statement exists
-            return true;
-        } else {
-            // returns false if the statement does not exist
-            return false;
-        }
     }
 
     /*---------------------------------

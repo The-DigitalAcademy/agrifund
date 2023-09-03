@@ -29,9 +29,7 @@ export class DashboardPageComponent implements OnInit {
 
     ngOnInit() {
         // gets the farmers portfolio information
-        this._portfolioService.getFarmerPortfolio().subscribe(data => {
-            console.log(data);
-        });
+        this._portfolioService.getFarmerPortfolio();
 
         // gets the farmers farm information
         this._portfolioService.getFarmerFarm().subscribe(data => {
@@ -39,6 +37,5 @@ export class DashboardPageComponent implements OnInit {
             // gets the farmers farm name
             console.log(this._portfolioService.getFarmName());
         });
-
     }
 }

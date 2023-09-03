@@ -321,7 +321,7 @@ export class ApiService {
     // POST function to add a new income statement item
     addRecord(recordBody: any, statementId: number) {
         return this.http.post(
-            `${this.INCOME_STATEMENT_URL}/${statementId}`,
+            `${this.INCOME_STATEMENT_URL}?id=${statementId}`,
             recordBody
         );
     }
