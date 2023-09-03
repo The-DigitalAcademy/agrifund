@@ -39,7 +39,9 @@
         <form [formGroup]="dateForm">
             <div class="form-input year-filter justify-end">
                 <label for="yearInput">For Financial Year: </label>
-                <select class="form-select">
+                <select
+                    class="form-select form-control"
+                    (change)="this.onYearChange($event)">
                     <option
                         *ngFor="
                             let statementYear of statementList;

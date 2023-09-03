@@ -179,6 +179,39 @@ export class IncomeStatementService {
         return this.incomeStatement$.pipe(map(statement => statement.id));
     }
 
+    // get income statements for a specific year
+    getIncomeStatementItemsForYear(
+        year: number,
+        statements: IncomeStatement[]
+    ) {
+        this.getAllIncomeStatements().subscribe(statements => {
+            // checks that the statement is not empty
+            console.table(statements);
+            if (statements.length > 0) {
+                // sets the statement to the first statement that matches the year
+                const statement = statements.find(statement => {
+                    const currentStatementDate = this.convertStringToDate(
+                        statement.statementDate
+                    );
+                    const currentStatementYear =
+                        currentStatementDate.getFullYear();
+                    // returns the first statement that satisfies the condition
+                    return currentStatementYear <= year;
+                });
+                // console.table(statement);
+                if (statement) {
+                    // assigns the statement to the statement observable
+                    this.incomeStatement$.next(statement);
+                    console.table(this.incomeStatementItem$);
+                }
+            }
+        });
+        // returns a statement for the date
+        return this.incomeStatement$.pipe(
+            map(statement => statement.incomeStatementItems)
+        );
+    }
+
     // used to get income statement record items of an income statement
     getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
         return this.incomeStatement$.pipe(

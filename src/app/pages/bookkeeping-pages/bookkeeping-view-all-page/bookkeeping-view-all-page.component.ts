@@ -48,8 +48,10 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     statements!: IncomeStatement[];
     // observable for storing income statements
     statements$!: Observable<IncomeStatement[]>;
+    // stores income statement records
+    incomeStatementRecords!: IncomeStatementItem[];
     // bookkeeping records stored within an observable
-    bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
+    incomeStatementRecords$!: Observable<IncomeStatementItem[]>;
     // stores the total bookkeeping records
     totalBookkeepingRecords$!: number;
     // bookkeeping records stored within an observable
@@ -97,6 +99,21 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
                 // sets the values for the year dropdown list
                 this.setIncomeStatementList();
             });
+
+        // sets the selected year value
+        const formInput = this.dateForm.value;
+        this.selectedYear = formInput.yearInput;
+        // gets income statement items for year
+        this._incomeStatementService
+            .getIncomeStatementItemsForYear(
+                Number(this.selectedYear),
+                this.statements
+            )
+            .subscribe(incomeStatementItems => {
+                console.table(incomeStatementItems);
+                this.incomeStatementRecords = incomeStatementItems;
+                console.table(this.incomeStatementRecords);
+            });
     }
 
     ngOnDestroy() {
@@ -129,6 +146,15 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
             });
         }
     }
+
+    // when the dropdown value for the year is changed
+    onYearChange(event: any) {
+        const formInput = this.dateForm.value;
+        this.selectedYear = formInput.yearInput;
+    }
+
+    // sets the income statement records to display for the year
+    statementsForSelectedYear(year: number) {}
 
     // when a record is clicked it will route to the view all page for singular viewing
     viewRecordDetails(recordId: number) {
