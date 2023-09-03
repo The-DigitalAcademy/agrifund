@@ -141,11 +141,10 @@ export class IncomeStatementService {
 
     // gets the date of an income statement
     getStatementYear(statementDate: string) {
-        console.log(`Statement date: ${statementDate}`);
-        // breaks date up into sections
-        const date = this.convertStringToDate(statementDate),
-            year = date.getFullYear();
-        console.log(year);
+        // coverts date in string to date value
+        const date = this.convertStringToDate(statementDate);
+        // gets the full year from the date value
+        const year = date.getFullYear();
         return year;
     }
 

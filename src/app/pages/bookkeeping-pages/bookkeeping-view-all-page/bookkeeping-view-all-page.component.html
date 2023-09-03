@@ -36,25 +36,22 @@
                 </span>
             </button>
         </div>
-        <div class="year-filter justify-end">
-            <div class="date-input">
-                <label for="recordType">For Financial Year: </label>
-                <select
-                    *ngFor="
-                        let statementYear of statementList;
-                        let firstIndex = first
-                    "
-                    formControlName="recordType"
-                    class="form-select"
-                    id="recordType">
-                    <option [ngValue]="statementYear">
-                        <span *ngIf="firstIndex" selected>{{
-                            statementYear
-                        }}</span>
+        <form [formGroup]="dateForm">
+            <div class="form-input year-filter justify-end">
+                <label for="yearInput">For Financial Year: </label>
+                <select class="form-select">
+                    <option
+                        *ngFor="
+                            let statementYear of statementList;
+                            let firstIndex = first
+                        "
+                        [value]="statementYear"
+                        id="yearInput">
+                        {{ statementYear }}
                     </option>
                 </select>
             </div>
-        </div>
+        </form>
         <!-- <div class="date-filter justify-end">
             <div class="date-input form-input mobile-hidden">
                 <label for="fromDate" class="form-label">From</label>

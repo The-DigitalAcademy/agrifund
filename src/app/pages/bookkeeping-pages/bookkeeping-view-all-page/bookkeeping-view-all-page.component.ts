@@ -15,6 +15,12 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
@@ -30,6 +36,14 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
     styleUrls: ['./bookkeeping-view-all-page.component.css'],
 })
 export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
+    // used to store subscriptions to services
+    private subscription = new Subscription();
+    // subscription for portfolio service
+    private portfolioSubscription = new Subscription();
+    // subscription for getting incomes statements service
+    private incomeStatementSubscription = new Subscription();
+    // subscription for an income statement's item
+    private incomeStatementItemSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // observable for storing income statements
@@ -40,14 +54,12 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     totalBookkeepingRecords$!: number;
     // bookkeeping records stored within an observable
     filteredRecords$!: Observable<IncomeStatementItem[]>;
-    // used to store subscriptions to services
-    private subscription = new Subscription();
-    // subscription for portfolio service
-    private portfolioSubscription = new Subscription();
-    // subscription for getting incomes statements service
-    private incomeStatementSubscription = new Subscription();
-    // subscription for an income statement's item
-    private incomeStatementItemSubscription = new Subscription();
+    // form for date filter
+    dateForm: FormGroup;
+    // sets the default value for dropdown
+    defaultYear = 0;
+    // stores the selected value of the dropdown list
+    selectedYear = '';
     // stores the value within the search bar
     searchValue = '';
     // refers to the offcanvas html element
@@ -61,19 +73,19 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         private _incomeStatementService: IncomeStatementService,
         private _incomeStatementItemService: IncomeStatementItemService,
         private _offcanvasService: NgbOffcanvas,
-        private _portfolioService: PortfolioService
-    ) {}
+        private _portfolioService: PortfolioService,
+        private fb: FormBuilder
+    ) {
+        this.dateForm = this.fb.group({
+            yearInput: ['', Validators.required],
+        });
+    }
 
     ngOnInit() {
         // gets the farmers portfolio information
         this.portfolioSubscription = this._portfolioService
             .getFarmerPortfolio()
             .subscribe();
-        // sets the bookkeeping records
-        // this.subscription.add(
-        //     //populate sets the bookkeeping records value in the bookkeeping service
-        //     this._incomeStatementItemService.setBookkeepingRecords()
-        // );
 
         // gets the farmer's income statements
         this.incomeStatementSubscription = this._portfolioService
@@ -98,16 +110,22 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     setIncomeStatementList() {
         if (this.statements) {
             this.statements.forEach(statement => {
-                console.log(statement.statementDate);
                 const statementYear =
                     this._incomeStatementService.getStatementYear(
                         statement.statementDate
                     );
-                console.log(statementYear);
+                // sets the default year to the most recent date
+                if (statementYear > this.defaultYear) {
+                    this.defaultYear = statementYear;
+                }
                 // only adds a new year if it doesn't already exist in the list
                 if (!this.statementList.includes(`${statementYear}`)) {
                     this.statementList.push(`${statementYear}`);
                 }
+            });
+            // sets the dropdown value to the default year
+            this.dateForm = this.fb.group({
+                yearInput: new FormControl(this.defaultYear),
             });
         }
     }

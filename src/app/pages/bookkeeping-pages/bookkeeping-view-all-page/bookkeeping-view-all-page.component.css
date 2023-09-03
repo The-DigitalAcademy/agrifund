@@ -72,6 +72,10 @@ tbody tr,
     margin-top: 0px !important;
 }
 
+select {
+    width: 80px;
+}
+
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
