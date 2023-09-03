@@ -18,7 +18,7 @@
             <!-- no bookkeeping data card displayed if bookkeeping records is empty-->
             <div
                 *ngIf="
-                    totalBookkeepingRecords$ > 0;
+                    statements.length > 0;
                     then recordsExist;
                     else noRecords
                 "></div>
@@ -36,7 +36,26 @@
                 </span>
             </button>
         </div>
-        <div class="date-filter justify-end">
+        <div class="year-filter justify-end">
+            <div class="date-input">
+                <label for="recordType">For Financial Year: </label>
+                <select
+                    *ngFor="
+                        let statementYear of statementList;
+                        let firstIndex = first
+                    "
+                    formControlName="recordType"
+                    class="form-select"
+                    id="recordType">
+                    <option [ngValue]="statementYear">
+                        <span *ngIf="firstIndex" selected>{{
+                            statementYear
+                        }}</span>
+                    </option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="date-filter justify-end">
             <div class="date-input form-input mobile-hidden">
                 <label for="fromDate" class="form-label">From</label>
                 <input type="date" class="form-control" id="fromDate" />
@@ -52,7 +71,7 @@
                     Filter by date
                 </span>
             </button>
-        </div>
+        </div> -->
     </div>
     <div class="money-card-summary">
         <app-money-card-summary></app-money-card-summary>
@@ -94,7 +113,7 @@
 
         <div class="container inner-container record-table">
             <!-- checks if bookkeeping records search result return anything -->
-            <ng-container
+            <!-- <ng-container
                 *ngIf="
                     (bookkeepingRecords$ | filter: searchValue).length > 0;
                     else noResults
@@ -197,7 +216,7 @@
                         </ul>
                     </nav>
                 </div>
-            </ng-container>
+            </ng-container> -->
         </div>
     </div>
 </ng-template>

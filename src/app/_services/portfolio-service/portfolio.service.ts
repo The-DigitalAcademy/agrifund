@@ -61,11 +61,11 @@ export class PortfolioService {
     private incomeStatements$: BehaviorSubject<IncomeStatement> =
         new BehaviorSubject<IncomeStatement>({
             id: 0,
-            farm_id: 0,
-            statement_date: '',
-            total_income: 0,
-            total_expenses: 0,
-            net_income: 0,
+            farmId: 0,
+            statementDate: '',
+            totalIncome: 0,
+            totalExpenses: 0,
+            netIncome: 0,
             incomeStatementItems: [],
         });
 
@@ -73,10 +73,10 @@ export class PortfolioService {
     private incomeStatementItems$: BehaviorSubject<IncomeStatementItem> =
         new BehaviorSubject<IncomeStatementItem>({
             id: 0,
-            statement_id: 0, //IncomeStatement;
+            statementId: 0, //IncomeStatement;
             category: '',
             amount: 0,
-            proof: '',
+            proofOfReceipt: '',
             description: '',
             date: '', //date of the record
         });
@@ -149,32 +149,5 @@ export class PortfolioService {
     getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
         // returns the income statement for a farm
         return this.farmerFarm$.pipe(map(farm => farm.incomeStatements));
-    }
-
-    // sets the value for the farmer income statement array and observable
-    setFarmerIncomeStatements() {
-        // const farm = { ...this.farmerFarm$.value };
-        this.getFarmerIncomeStatements().subscribe(
-            (incomeStatements: IncomeStatement[]) => {
-                // assigns the values retrieved from the get method to the array
-                this.farmerIncomeStatements = incomeStatements;
-                // this.farmerIncomeStatements.forEach(statement => {
-                //     farm.incomeStatements.push(statement);
-                // });
-            }
-        );
-
-        // this.incomeStatements$.next(farm.incomeStatements);
-    }
-
-    // used to get income statement record items of an income statement
-    getFarmerIncomeStatementItem(): Observable<IncomeStatementItem[]> {
-        this.getFarmerIncomeStatements().subscribe(statements => {
-            // assigns the value retrieved from the get method to the income statement array
-            this.farmerIncomeStatements = statements;
-        });
-        return this.incomeStatements$.pipe(
-            map(statements => statements.incomeStatementItems)
-        );
     }
 }

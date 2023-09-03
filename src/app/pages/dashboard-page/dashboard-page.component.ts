@@ -11,8 +11,8 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { User } from './../../_models/User';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
@@ -21,15 +21,24 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
     templateUrl: './dashboard-page.component.html',
     styleUrls: ['./dashboard-page.component.css'],
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent implements OnInit, OnDestroy {
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
+    // stores the currently logged in user data
     user!: User;
+    // used to store subscriptions to services
+    private subscription = new Subscription();
+    // subscription for portfolio service
+    private portfolioSubscription = new Subscription();
 
     constructor(private _portfolioService: PortfolioService) {}
 
     ngOnInit() {
         // gets the farmers portfolio information
-        this._portfolioService.getFarmerPortfolio();
+        this.portfolioSubscription = this._portfolioService
+            .getFarmerPortfolio()
+            .subscribe(data => {
+                console.table(data);
+            });
 
         // gets the farmers farm information
         this._portfolioService.getFarmerFarm().subscribe(data => {
@@ -37,5 +46,11 @@ export class DashboardPageComponent implements OnInit {
             // gets the farmers farm name
             console.log(this._portfolioService.getFarmName());
         });
+    }
+
+    ngOnDestroy() {
+        // unsubscribe from subscriptions
+        this.subscription.unsubscribe();
+        this.portfolioSubscription.unsubscribe();
     }
 }

@@ -94,25 +94,23 @@ export class IncomeStatementItemService {
         };
 
         // sets the statement id to and passes date value to method
-        recordBody.statement_id =
+        recordBody.statementId =
             this._incomeStatementService.getIncomeStatementIdForCreate(
                 recordBody.date
             );
 
         console.table(newRecord);
-        this._apiService
-            .addRecord(newRecord, recordBody.statement_id)
-            .subscribe(
-                data => {
-                    console.log(data);
-                    // routes back to bookkeeping view all page is the creation of a record was successful
-                    this.router.navigate(['/bookkeeping']);
-                },
-                error => {
-                    console.error(`Error occurred while creating a new record`);
-                    console.error(error);
-                }
-            );
+        this._apiService.addRecord(newRecord, recordBody.statementId).subscribe(
+            data => {
+                console.log(data);
+                // routes back to bookkeeping view all page is the creation of a record was successful
+                this.router.navigate(['/bookkeeping']);
+            },
+            error => {
+                console.error(`Error occurred while creating a new record`);
+                console.error(error);
+            }
+        );
     }
 
     // uploads proof of a record to the api
@@ -144,12 +142,12 @@ export class IncomeStatementItemService {
     addRecord(record: IncomeStatementItem) {
         const addedRecord = {
             id: record.id,
-            statement_id: record.statement_id, //income statement id
+            statementId: record.statementId, //income statement id
+            date: record.date, //date of the record
             category: record.category,
             amount: record.amount,
-            proof: record.proof,
+            proofOfReceipt: record.proofOfReceipt,
             description: record.description,
-            date: record.date, //date of the record
         };
 
         // adds record to records
@@ -198,7 +196,7 @@ export class IncomeStatementItemService {
     // update a bookkeeping record
     updateBookkeepingRecord(record: IncomeStatementItem, recordProof: File) {
         const recordBody = {
-            statement_id: record.statement_id,
+            statement_id: record.statementId,
             category: record.category,
             amount: record.amount,
             description: record.description,

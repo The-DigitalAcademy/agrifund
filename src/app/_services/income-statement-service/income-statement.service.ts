@@ -21,6 +21,7 @@ import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject, Observable, last, map } from 'rxjs';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 
 @Injectable({
     providedIn: 'root',
@@ -37,12 +38,29 @@ export class IncomeStatementService {
     private incomeStatement$: BehaviorSubject<IncomeStatement> =
         new BehaviorSubject<IncomeStatement>({
             id: 0,
-            farm_id: 0,
-            statement_date: '',
-            total_income: 0,
-            total_expenses: 0,
-            net_income: 0,
+            farmId: 0,
+            statementDate: '',
+            totalIncome: 0,
+            totalExpenses: 0,
+            netIncome: 0,
             incomeStatementItems: [],
+        });
+
+    private incomeStatementItems: IncomeStatementItem[] = [];
+    // will be used to store all income statement items
+    private incomeStatementItems$ = new BehaviorSubject<IncomeStatementItem[]>(
+        []
+    );
+    // stores a single income statement's value -> initializes as empty
+    private incomeStatementItem$: BehaviorSubject<IncomeStatementItem> =
+        new BehaviorSubject<IncomeStatementItem>({
+            id: 0,
+            statementId: 0, //IncomeStatement;
+            category: '',
+            amount: 0,
+            proofOfReceipt: '',
+            description: '',
+            date: '', //date of the record
         });
 
     constructor(
@@ -68,10 +86,6 @@ export class IncomeStatementService {
                 this.statements = statements;
                 // adds statements to income statements observable
                 this.incomeStatements$.next(this.statements);
-                console.table(
-                    'Income Statements stored in observable:' +
-                        this.incomeStatements$
-                );
             });
     }
 
@@ -101,7 +115,7 @@ export class IncomeStatementService {
                     (lastTrueStatement, currentStatement) => {
                         // converts the income statement date to the date datatype
                         const currentStatementDate = this.convertStringToDate(
-                            currentStatement.statement_date
+                            currentStatement.statementDate
                         );
 
                         if (
@@ -125,6 +139,16 @@ export class IncomeStatementService {
         return statement;
     }
 
+    // gets the date of an income statement
+    getStatementYear(statementDate: string) {
+        console.log(`Statement date: ${statementDate}`);
+        // breaks date up into sections
+        const date = this.convertStringToDate(statementDate),
+            year = date.getFullYear();
+        console.log(year);
+        return year;
+    }
+
     // used to get a single income statement by it's id
     getIncomeStatement() {
         return this.incomeStatement$;
@@ -133,27 +157,34 @@ export class IncomeStatementService {
     // gets the total income for an income statement for money in
     getTotalIncome() {
         return this.incomeStatement$.pipe(
-            map(statement => statement.total_income)
+            map(statement => statement.totalIncome)
         );
     }
 
     // get the total expenses for an income statement for money out
     getTotalExpense() {
         return this.incomeStatement$.pipe(
-            map(statement => statement.total_expenses)
+            map(statement => statement.totalExpenses)
         );
     }
 
     // get the total net income for an income statement for profit value
     getTotalNetIncome() {
         return this.incomeStatement$.pipe(
-            map(statement => statement.net_income)
+            map(statement => statement.netIncome)
         );
     }
 
     // used to get the income statement id for an income statement id
     getIncomeStatementId(): Observable<number> {
         return this.incomeStatement$.pipe(map(statement => statement.id));
+    }
+
+    // used to get income statement record items of an income statement
+    getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
+        return this.incomeStatement$.pipe(
+            map(statement => statement.incomeStatementItems)
+        );
     }
 
     /*---------------------------------
@@ -163,7 +194,6 @@ export class IncomeStatementService {
     getIncomeStatementIdForCreate(recordDate: string): number {
         // set variable that will be used to pass the statement id
         let statementId = 0;
-
         // converts the record date to a data value type
         const recordDateValue: Date = this.convertStringToDate(recordDate);
 
@@ -171,7 +201,6 @@ export class IncomeStatementService {
         if (this.statementExistsForFinancialYear(recordDateValue)) {
             // the statement observable will be set to statement for the added record's financial year
             const statement = this.getStatementByDate(recordDateValue);
-            console.log(statement);
             if (statement != null) {
                 statementId = statement.id;
                 // sets the income statement to the one an item is being added to
@@ -186,7 +215,6 @@ export class IncomeStatementService {
         this.getIncomeStatementId().subscribe(incomeStatementId => {
             // assigns the income statement id retrieved from the set income statement
             statementId = incomeStatementId;
-            console.log(`This is the set statement Id: ${statementId}`);
         });
 
         // console.log(statementId);
@@ -219,10 +247,10 @@ export class IncomeStatementService {
 
         // sets the statement body to pass to create a new income statement
         const statementBody = {
-            statement_date: statementDate,
-            total_income: 0,
-            total_expenses: 0,
-            net_income: 0,
+            statementDate: statementDate,
+            totalIncome: 0,
+            totalExpenses: 0,
+            netIncome: 0,
         };
 
         console.log('Statement created');
