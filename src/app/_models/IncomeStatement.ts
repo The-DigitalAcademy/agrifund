@@ -11,10 +11,10 @@ import { IncomeStatementItem } from './IncomeStatementItem';
 
 export interface IncomeStatement {
     id: number;
-    farm_id: number;
-    statement_date: string;
-    total_income: number;
-    total_expenses: number;
-    net_income: number;
+    farmId: number;
+    statementDate: string;
+    totalIncome: number;
+    totalExpenses: number;
+    netIncome: number;
     incomeStatementItems: IncomeStatementItem[];
 }
