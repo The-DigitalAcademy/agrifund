@@ -31,10 +31,10 @@ export class BookkeepingCreatePageComponent implements OnInit {
     // creates an empty instance of an income statement item to store the created record
     record: IncomeStatementItem = {
         id: 0,
-        statement_id: 0,
+        statementId: 0,
         category: '',
         amount: 0,
-        proof: '',
+        proofOfReceipt: '',
         description: '',
         date: '',
     };
@@ -89,11 +89,11 @@ export class BookkeepingCreatePageComponent implements OnInit {
             // adds the form data the the record object instance of incomeStatementItem
             this.record = {
                 id: 0,
-                statement_id: 0,
+                statementId: 0,
                 description: formInputVal.recordName,
                 category: formInputVal.recordType,
                 amount: formInputVal.recordAmount,
-                proof: this.fileName,
+                proofOfReceipt: this.fileName,
                 date: formInputVal.recordDate,
             };
 
