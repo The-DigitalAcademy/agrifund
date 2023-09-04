@@ -210,32 +210,41 @@ export class IncomeStatementItemService {
     // update a bookkeeping record
     updateBookkeepingRecord(record: IncomeStatementItem, recordProof: File) {
         const recordBody = {
-            statement_id: record.statementId,
             category: record.category,
             amount: record.amount,
             description: record.description,
             date: record.date,
         };
 
+        record.statementId = 1;
         // updates bookkeeping record data
-        this._apiService.updateRecord(record.id, recordBody).subscribe(
-            data => {
-                console.log(data);
-            },
-            error => {
-                error.console(`Error in updating income statement item`, error);
-            }
-        );
+        this._apiService
+            .updateRecord(record.id, record.statementId, recordBody)
+            .subscribe(
+                data => {
+                    // routes back to bookkeeping record details with the record id
+                    this.router.navigate([
+                        'bookkeeping/view-record',
+                        record.id,
+                    ]);
+                },
+                error => {
+                    console.error(
+                        `Error in updating income statement item`,
+                        error
+                    );
+                }
+            );
 
         // uploads bookkeeping record proof
-        this._apiService.uploadRecordProof(record.id, recordProof).subscribe(
-            data => {
-                console.log(data);
-            },
-            error => {
-                error.console(`Error uploading proof for a record`, error);
-            }
-        );
+        // this._apiService.uploadRecordProof(record.id, recordProof).subscribe(
+        //     data => {
+        //         console.log(data);
+        //     },
+        //     error => {
+        //         error.console(`Error uploading proof for a record`, error);
+        //     }
+        // );
     }
 
     /*---------------------------------

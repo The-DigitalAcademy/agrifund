@@ -114,12 +114,12 @@ export class BookkeepingEditPageComponent implements OnInit {
             const updatedRecord = {
                 // takes the existing record id and saves it to the object being passed
                 id: this.record.id,
-                statementId: 0,
+                statementId: 1,
                 description: formInputVal.recordName,
                 category: formInputVal.recordType,
                 amount: formInputVal.recordAmount,
                 proofOfReceipt: formInputVal.recordProof,
-                date: formInputVal.date,
+                date: this.record.date,
             };
 
             this._incomeStatementItemService.updateBookkeepingRecord(
