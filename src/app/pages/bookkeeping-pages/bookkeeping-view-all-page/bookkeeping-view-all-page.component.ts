@@ -67,7 +67,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private _incomeStatementService: IncomeStatementService,
-        private _incomeStatementItemService: IncomeStatementItemService,
         private _offcanvasService: NgbOffcanvas,
         private _portfolioService: PortfolioService,
         private fb: FormBuilder

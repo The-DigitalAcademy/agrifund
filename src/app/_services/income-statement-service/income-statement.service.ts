@@ -168,7 +168,34 @@ export class IncomeStatementService {
         return this.incomeStatement$.pipe(map(statement => statement.id));
     }
 
-    // get income statements for a specific year
+    // get income statement for a specific year
+    getIncomeStatementForYear(year: number) {
+        this.getAllIncomeStatements().subscribe(statements => {
+            console.table(statements);
+            // checks that the statement is not empty
+            if (statements.length > 0) {
+                // sets the statement to the first statement that matches the year
+                const statement = statements.find(statement => {
+                    const currentStatementDate = this.convertStringToDate(
+                        statement.statementDate
+                    );
+                    const currentStatementYear =
+                        currentStatementDate.getFullYear();
+                    // returns the first statement that satisfies the condition
+                    return currentStatementYear <= year;
+                });
+                // console.table(statement);
+                if (statement) {
+                    // assigns the statement to the statement observable
+                    this.incomeStatement$.next(statement);
+                }
+            }
+        });
+        // returns a statement for the date
+        return this.incomeStatement$;
+    }
+
+    // get income statement items for a specific year
     getIncomeStatementItemsForYear(year: number) {
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
