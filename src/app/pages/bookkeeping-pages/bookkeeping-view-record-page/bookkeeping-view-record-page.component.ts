@@ -16,25 +16,27 @@
         record -> used to store the selected record fetched by id 
 -------------------------------------------------------------------------------------------------*/
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal-components/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-bookkeeping-view-record-page',
     templateUrl: './bookkeeping-view-record-page.component.html',
     styleUrls: ['./bookkeeping-view-record-page.component.css'],
 })
-export class BookkeepingViewRecordPageComponent implements OnInit {
+export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
     // stores the income statement id
-    id!: number;
+    recordId!: number;
     // stores the income statement record
     record!: IncomeStatementItem;
+    // stores subscription for getting income statement item details
+    private recordDetailsSubscription = new Subscription();
 
     constructor(
         private route: ActivatedRoute,
@@ -45,12 +47,19 @@ export class BookkeepingViewRecordPageComponent implements OnInit {
 
     ngOnInit() {
         // passes and assigns the id in the url path to the id variable
-        this.getRecordDetails((this.id = this.route.snapshot.params['id']));
+        this.getRecordDetails(
+            (this.recordId = this.route.snapshot.params['id'])
+        );
+    }
+
+    ngOnDestroy() {
+        // unsubscribe from all subscriptions
+        this.recordDetailsSubscription.unsubscribe();
     }
 
     // fetches the record based on its ID
     getRecordDetails(id: number) {
-        this._incomeStatementItemService
+        this.recordDetailsSubscription = this._incomeStatementItemService
             .getIncomeStatementRecordById(id)
             .subscribe((record: IncomeStatementItem) => {
                 this.record = record;
@@ -61,8 +70,8 @@ export class BookkeepingViewRecordPageComponent implements OnInit {
     viewProof(documentUrl: string) {}
 
     // routes to the edit details page by passing the record id
-    editRecordDetails(recordId: any) {
-        this.router.navigate(['bookkeeping/edit-record', recordId]);
+    editRecordDetails(recordId: number) {
+        this.router.navigate(['bookkeeping/edit-record', this.recordId]);
     }
 
     // routes to delete page with the record id
@@ -72,6 +81,6 @@ export class BookkeepingViewRecordPageComponent implements OnInit {
             BookkeepingDeleteModalContentComponent
         );
         // assign the record id to the main modal component record id
-        modalRef.componentInstance.recordId = recordId;
+        modalRef.componentInstance.recordId = this.recordId;
     }
 }
