@@ -329,7 +329,7 @@ export class ApiService {
     // PUT function to update data for a single income statement item
     updateRecord(recordId: number, recordBody: any) {
         return this.http.put(
-            `${this.INCOME_STATEMENT_URL}/${recordId}`,
+            `${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`,
             recordBody
         );
     }

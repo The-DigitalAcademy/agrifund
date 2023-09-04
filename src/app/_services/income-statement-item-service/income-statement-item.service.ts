@@ -204,18 +204,6 @@ export class IncomeStatementItemService {
         return this.totalBookkeepingRecords$;
     }
 
-    // setBookkeepingRecords(record: IncomeStatementItem) {}
-
-    // getBookkeepingRecords() {
-
-    // }
-
-    // TODO
-    // create a new bookkeeping record
-
-    // TODO
-    // create a income statement
-
     /*---------------------------------
         UPDATE DATA
     ----------------------------------*/
