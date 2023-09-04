@@ -47,7 +47,7 @@ import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeep
 /* --------------------------------
     FARMER PORTFOLIO
 ---------------------------------*/
-import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
+
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
 import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
@@ -133,7 +133,7 @@ import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-a
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         EquipmentCreateComponent,
-        TellMeAboutFarmPageComponent,
+        
         ModalContainerComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
