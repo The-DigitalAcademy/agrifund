@@ -29,7 +29,7 @@ export class ChartService {
 
     // method to fetch data from the mock API
     getFarmerByEmail() {
-        return this.http.get<IncomeStatement>('http://localhost:3000/total_expense/')
+        return this.http.get<IncomeStatement>('http://localhost:3000/total_expense')
         .pipe(
             retry(2), // retry a failed request up to 2 times
             catchError(this.handleError) // handling the error after failing to return data
