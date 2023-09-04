@@ -25,8 +25,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
     // stores the currently logged in user data
     user!: User;
-    // used to store subscriptions to services
-    private subscription = new Subscription();
     // subscription for portfolio service
     private portfolioSubscription = new Subscription();
 
@@ -50,7 +48,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         // unsubscribe from subscriptions
-        this.subscription.unsubscribe();
         this.portfolioSubscription.unsubscribe();
     }
 }

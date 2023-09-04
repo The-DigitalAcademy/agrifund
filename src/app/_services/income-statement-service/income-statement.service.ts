@@ -192,9 +192,7 @@ export class IncomeStatementService {
             }
         });
         // returns a statement for the date
-        return this.incomeStatement$.pipe(
-            map(statement => statement.incomeStatementItems)
-        );
+        return this.getFarmerIncomeStatementItems();
     }
 
     // used to get income statement record items of an income statement
@@ -233,9 +231,6 @@ export class IncomeStatementService {
             // assigns the income statement id retrieved from the set income statement
             statementId = incomeStatementId;
         });
-
-        // console.log(statementId);
-
         return statementId;
     }
 

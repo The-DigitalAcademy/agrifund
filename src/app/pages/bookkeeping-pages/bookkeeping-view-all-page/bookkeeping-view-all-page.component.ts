@@ -36,8 +36,6 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
     styleUrls: ['./bookkeeping-view-all-page.component.css'],
 })
 export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
-    // used to store subscriptions to services
-    private subscription = new Subscription();
     // subscription for portfolio service
     private portfolioSubscription = new Subscription();
     // subscription for getting incomes statements service
@@ -80,18 +78,12 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // gets the farmers portfolio information
-        this.portfolioSubscription = this._portfolioService
-            .getFarmerPortfolio()
-            .subscribe();
-
         // gets the farmer's income statements
         this.incomeStatementSubscription = this._portfolioService
             .getFarmerIncomeStatements()
             .subscribe((data: IncomeStatement[]) => {
                 // assigns the statements to the statement array
                 this.statements = data;
-                console.table(this.statements);
                 // sets the values for the year dropdown list
                 this.setIncomeStatementList();
             });
@@ -110,7 +102,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         // unsubscribe from subscriptions
-        this.subscription.unsubscribe();
         this.portfolioSubscription.unsubscribe();
         this.incomeStatementSubscription.unsubscribe();
     }
