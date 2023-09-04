@@ -1,6 +1,4 @@
-import { CropService } from 'src/app/_services/crop-service/crop.service';
-
-import { PlotService } from './../plot-service/plot.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 21 Aug 2023 
@@ -19,26 +17,17 @@ import { PlotService } from './../plot-service/plot.service';
          
 -------------------------------------------------------------------------------------------------*/
 
-import { Inject, Injectable, forwardRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { FarmService } from '../farm-service/farm.service';
-import { AssetService } from '../asset-service/asset.service';
-
-
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UserService } from '../user-service/user.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    loginUser(email: any, password: any): import("rxjs").TeardownLogic {
-        throw new Error('Method not implemented.');
-    }
-    // loginUser(email: any, password: any): import("rxjs").TeardownLogic {
-    //     throw new Error('Method not implemented.');
-    // }
     // stores the user state value as a behavior subject
     userState$ = new BehaviorSubject<boolean>(false);
     // stores the session token as an observable
@@ -55,15 +44,7 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _jwtService: JwtService,
-        // // @Inject(forwardRef(() => FarmService))
-        // private _farmService: FarmService,
-        // // @Inject(forwardRef(() => PlotService))
-        // private _plotService: PlotService,
-        // // @Inject(forwardRef(() => CropService))
-        // private _cropService: CropService,
-        // // @Inject(forwardRef(() => AssetService))
-        // private _assetService: AssetService
+        private _jwtService: JwtService
     ) {
         this.setSessionToken();
     }
@@ -82,7 +63,30 @@ export class AuthService {
     }
 
     // logs a user into the application
-
+    loginUser(loginEmail: string, loginPassword: string) {
+        // set the body that will be passed to the api connection
+        const loginBody = {
+            email: loginEmail,
+            password: loginPassword,
+        };
+        this._apiService.loginUser(loginBody).subscribe(
+            (result: any) => {
+                // assigns the result to the structure of the api response object
+                this.apiResponse = result;
+                // sets the token to the one received from the api
+                this._jwtService.setToken(this.apiResponse.data);
+                // sets the user login state to true
+                this.setUserState();
+                // routes to dashboard if the login was successful
+                this.router.navigate(['/about-farm']);
+            },
+            error => {
+                console.error(`Error occurred while logging in`);
+                console.log(error);
+                // TODO: when a login fails it should print an error message from the api at the top of a form
+            }
+        );
+    }
 
     logoutUser() {
         // sets the user token to null

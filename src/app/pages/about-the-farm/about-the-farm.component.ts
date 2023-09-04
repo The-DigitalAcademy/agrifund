@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Assets } from 'src/app/_models/Assets';
-import { Crop } from 'src/app/_models/Crop';
+import { Crop } from 'src/app/_models/crop';
 import { Farm } from 'src/app/_models/Farm';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
@@ -131,7 +131,6 @@ export class AboutTheFarmComponent implements OnInit {
                 plots: [],
                 assets: [],
                 incomeStatements: [],
-            
             };
             console.log(this.farm);
 

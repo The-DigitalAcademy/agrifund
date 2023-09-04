@@ -1,7 +1,6 @@
+import { Crop } from 'src/app/_models/crop';
 import { Plot } from 'src/app/_models/plot';
 
-
-import { Crop } from 'src/app/_models/Crop';
 
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
@@ -14,6 +13,7 @@ import { Crop } from 'src/app/_models/Crop';
 
 import { IncomeStatement } from './IncomeStatement';
 import { Assets } from './Assets';
+
 
 
 

@@ -148,7 +148,6 @@ export class PortfolioService {
         // returns the farm name within the first index of the farm name array
         return farmName[0];
     }
-
     /*---------------------------------
         INCOME STATEMENT DATA
     ----------------------------------*/

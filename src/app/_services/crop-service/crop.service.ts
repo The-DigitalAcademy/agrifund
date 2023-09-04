@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { Farm } from 'src/app/_models/Farm';
-import { Crop } from 'src/app/_models/Crop';
+import { Crop } from 'src/app/_models/crop';
 
 @Injectable({
     providedIn: 'root',
@@ -62,5 +62,4 @@ export class CropService {
         // return the behaviour subject containing the farm info data if it is not blank
         return this.farmerCrops$;
     }
-
 }
