@@ -28,7 +28,7 @@ import { UserService } from '../user-service/user.service';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
-
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Injectable({
     providedIn: 'root',
 })
@@ -75,7 +75,8 @@ export class IncomeStatementItemService {
         private _apiService: ApiService,
         private router: Router,
         private _portfolioService: PortfolioService,
-        private _incomeStatementService: IncomeStatementService
+        private _incomeStatementService: IncomeStatementService,
+        private activeModal: NgbActiveModal
     ) {}
     /*---------------------------------
         GET DATA
@@ -252,15 +253,24 @@ export class IncomeStatementItemService {
     ----------------------------------*/
     // delete and income statement item
     deleteRecord(recordId: number) {
-        console.log(`Before Delete: ${this.records.length}`);
-        return this._apiService.deleteIncomeStatementItem(recordId).subscribe(
-            (data: any) => {
-                console.log(data);
-            },
-            error => {
-                console.error(`Error in deleting income statement item`, error);
-            }
-        );
+        const statementId = 1;
+        return this._apiService
+            .deleteIncomeStatementItem(recordId, statementId)
+            .subscribe(
+                (data: any) => {
+                    console.log(data);
+                    // closes the bookkeeping delete modal
+                    this.activeModal.close();
+                    // routes back to bookkeeping view all
+                    this.router.navigate(['/bookkeeping']);
+                },
+                error => {
+                    console.error(
+                        `Error in deleting income statement item`,
+                        error
+                    );
+                }
+            );
     }
 
     /*---------------------------------
