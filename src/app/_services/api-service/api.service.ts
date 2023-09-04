@@ -315,7 +315,7 @@ export class ApiService {
     ----------------------------------------------*/
     // GET a single income statement item
     getStatementItemById(recordId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${recordId}`);
+        return this.http.get(`${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`);
     }
 
     // POST function to add a new income statement item
