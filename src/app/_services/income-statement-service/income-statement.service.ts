@@ -180,10 +180,7 @@ export class IncomeStatementService {
     }
 
     // get income statements for a specific year
-    getIncomeStatementItemsForYear(
-        year: number,
-        statements: IncomeStatement[]
-    ) {
+    getIncomeStatementItemsForYear(year: number) {
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
             console.table(statements);

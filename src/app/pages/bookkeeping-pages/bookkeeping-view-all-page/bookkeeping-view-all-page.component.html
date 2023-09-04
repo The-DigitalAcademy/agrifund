@@ -112,9 +112,9 @@
 
         <div class="container inner-container record-table">
             <!-- checks if bookkeeping records search result return anything -->
-            <!-- <ng-container
+            <ng-container
                 *ngIf="
-                    (bookkeepingRecords$ | filter: searchValue).length > 0;
+                    (incomeStatementRecords | filter: searchValue).length > 0;
                     else noResults
                 ">
                 <div class="container inner-container record-table">
@@ -130,7 +130,7 @@
                         </thead>
                         <tbody
                             *ngFor="
-                                let record of bookkeepingRecords$
+                                let record of incomeStatementRecords
                                     | filter: searchValue
                             ">
                             <tr
@@ -160,7 +160,7 @@
                     <div
                         class="large-hidden"
                         *ngFor="
-                            let record of bookkeepingRecords$
+                            let record of incomeStatementRecords
                                 | filter: searchValue;
                             last as isLast
                         ">
@@ -215,7 +215,7 @@
                         </ul>
                     </nav>
                 </div>
-            </ng-container> -->
+            </ng-container>
         </div>
     </div>
 </ng-template>

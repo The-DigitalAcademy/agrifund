@@ -51,10 +51,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     // stores income statement records
     incomeStatementRecords!: IncomeStatementItem[];
     // bookkeeping records stored within an observable
-    incomeStatementRecords$!: Observable<IncomeStatementItem[]>;
-    // stores the total bookkeeping records
-    totalBookkeepingRecords$!: number;
-    // bookkeeping records stored within an observable
     filteredRecords$!: Observable<IncomeStatementItem[]>;
     // form for date filter
     dateForm: FormGroup;
@@ -105,12 +101,8 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         this.selectedYear = formInput.yearInput;
         // gets income statement items for year
         this._incomeStatementService
-            .getIncomeStatementItemsForYear(
-                Number(this.selectedYear),
-                this.statements
-            )
+            .getIncomeStatementItemsForYear(Number(this.selectedYear))
             .subscribe(incomeStatementItems => {
-                console.table(incomeStatementItems);
                 this.incomeStatementRecords = incomeStatementItems;
                 console.table(this.incomeStatementRecords);
             });
