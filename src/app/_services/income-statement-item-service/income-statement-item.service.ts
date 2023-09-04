@@ -258,7 +258,7 @@ export class IncomeStatementItemService {
                 console.log(data);
             },
             error => {
-                error.console(`Error in deleting income statement item`, error);
+                console.error(`Error in deleting income statement item`, error);
             }
         );
     }
