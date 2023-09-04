@@ -22,6 +22,7 @@
 .year-filter label{
     min-width: max-content;
     margin-right: var(--small-s) !important ;
+    margin-bottom: 0px !important;
 }
 
 .date-input {
@@ -114,10 +115,6 @@ select {
         border: var(--thin-border) var(--lighter-grey) !important;
     }
 
-    /* compacts the label for year filter label */
-    .year-filter label {
-        min-width: min-content;
-    }
 }
 
 /*---------------------------------
