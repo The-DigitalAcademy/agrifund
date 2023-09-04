@@ -327,15 +327,19 @@ export class ApiService {
     }
 
     // PUT function to update data for a single income statement item
-    updateRecord(recordId: number, recordBody: any) {
+    updateRecord(recordId: number, statementId: number, recordBody: any) {
         return this.http.put(
-            `${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`,
+            `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}/item/${recordId}`,
             recordBody
         );
     }
 
     // PATCH function to upload proof for a bookkeeping record/ income statement item
-    uploadRecordProof(recordId: number, recordProof: File) {
+    uploadRecordProof(
+        recordId: number,
+        statementId: number,
+        recordProof: File
+    ) {
         return this.http.patch(
             `${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`,
             recordProof
