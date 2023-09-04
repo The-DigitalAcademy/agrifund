@@ -59,6 +59,7 @@
                     </div>
                     <div class="view-btn justify-end">
                         <button
+                            *ngIf="record.proofOfReceipt !== 'N/A'"
                             class="btn colourful-btn btn-width right-btn"
                             (click)="viewProof(record.proofOfReceipt)">
                             View
