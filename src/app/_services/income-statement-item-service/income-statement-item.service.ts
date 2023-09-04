@@ -130,7 +130,7 @@ export class IncomeStatementItemService {
             data => {
                 console.log(data);
                 // routes back to bookkeeping view all page is the creation of a record was successful
-                // this.router.navigate(['/bookkeeping']);
+                this.router.navigate(['/bookkeeping']);
             },
             error => {
                 console.error(`Error occurred while creating a new record`);
