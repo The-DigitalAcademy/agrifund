@@ -2,35 +2,54 @@
   "total_expense": [
     
     {
-      
+      "id":23,
+      "name":"Bolebo",
+      "category": "water",
       "amount": 5240
     },
 
     {
+      "id":12,
+      "name":"lebo",
+      "category": "Seed",
       "amount": 11310
     },
 
     {
+      "id":3,
+      "name":"Bobo",
+      "category": "Equipment",
       "amount": 6960
     },
 
     {
+      "id":3,
+      "name":"Bolo",
+      "category": "Fertilizer",
       "amount": 7390
     },
 
     {
+      "id":3,
+      "name":"Bole",
+      "category": "Tools",
       "amount": 9570
     }
 
   ],
   "total_income": [
     {
-     
+      "id":112,
+      "name":"Booeng",
+      "category": "money in",
       "amount": 4672
     }
   ],
   "net_income": [
     {
+    "id":223,
+    "name":"Porto",
+    "category": "money out",
     "amount": 12355
     }
   ]
