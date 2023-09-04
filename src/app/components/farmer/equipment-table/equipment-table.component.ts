@@ -28,7 +28,9 @@ export class EquipmentTableComponent {
         });
     }
 
-    onEditClicked(id: number) {
-        this.router.navigate(['/equipment-edit', id]);
+    ngOnDestroy() {}
+
+    onEditClicked() {
+        this.router.navigate(['/equipment-edit']);
     }
 }

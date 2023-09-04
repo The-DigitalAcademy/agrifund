@@ -1,8 +1,8 @@
 export interface Asset {
    id: number;
-   farm_id: number;
-   name: string;
-   type: string;
+   assetName: string;
+   assetType: string;
    age: number;
-   purchase_price: number;
+   purchasePrice: number;
+   // proofOfOwnership: string;
 }

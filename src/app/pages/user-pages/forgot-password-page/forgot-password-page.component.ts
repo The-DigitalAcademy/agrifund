@@ -8,8 +8,10 @@
 
 -------------------------------------------------------------------------------------------------*/
 // Import necessary modules and components from Angular core and other sources
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/_services/api-service/api.service';
+
 
 @Component({
     selector: 'app-forgot-password-page',
@@ -18,10 +20,30 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ForgotPasswordPageComponent {
     // Create a new FormGroup for the forgot password form
+    @Input() userEmail!: string;
+
     ForgotPasswordForm = new FormGroup({
-        // Create a FormControl for the new password field
         Npassword: new FormControl(''),
-        // Create a FormControl for the confirm password field
         Cpassword: new FormControl(),
     });
+
+    constructor(private apiService: ApiService) {}
+
+    resetPassword() {
+        const passwordResetBody = {
+            // Construct your password reset body here
+        };
+
+        // Call the API to reset password using this.userEmail and passwordResetBody
+        this.apiService
+            .changeFarmerPassword(this.userEmail, passwordResetBody)
+            .subscribe(
+                response => {
+                    // Handle response
+                },
+                error => {
+                    // Handle error
+                }
+            );
+    }
 }

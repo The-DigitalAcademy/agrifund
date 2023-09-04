@@ -1,4 +1,4 @@
-import { Asset } from './../../_models/asset';
+
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 24 Jul 2023
@@ -16,7 +16,11 @@ import { Asset } from './../../_models/asset';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Farm } from 'src/app/_models/Farm';
 import { User } from 'src/app/_models/User';
+import { Asset } from 'src/app/_models/asset';
+import { Crop } from 'src/app/_models/crop';
+import { Plot } from 'src/app/_models/plot';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
@@ -136,7 +140,7 @@ export class ApiService {
 
     // GET function to get an OTP for a farmer
     getFarmerOTP(farmerEmail: string) {
-        return this.http.get(`${this.FARMER_OTP_URL}/${farmerEmail}`);
+        return this.http.get(`${this.FARMER_OTP_URL}?email=${farmerEmail}`);
     }
 
     // GET function to get a farmer by their id number -> ADMIN USE!
@@ -350,3 +354,4 @@ export class ApiService {
         return this.http.get(`${this.INCOME_STATEMENT_URL}/${statementId}`);
     }
 }
+

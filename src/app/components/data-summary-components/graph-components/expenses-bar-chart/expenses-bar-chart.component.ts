@@ -29,11 +29,11 @@ export class ExpensesBarChartComponent {
             this.chartdata = result;
             if (this.chartdata != null) {
                 for (let i = 0; i < this.chartdata.length; i++) {
-                    this.total_expense.push(this.chartdata[i].amount);
+                    this.total_expense.push(this.chartdata[i].totalExpense);
                 }
                 this.RenderChart(this.total_expense);
             }
-            console.log(this.total_expense)
+            // console.log(this.total_expense)
         });
 
         // this.RenderChart();
