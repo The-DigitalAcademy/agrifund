@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Asset } from 'src/app/_models/asset';
+
 import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
+import { Assets } from 'src/app/_models/Assets';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AssetService {
-    private assets: Asset[] = [];
+    private assets: Assets[] = [];
 
-    private farmerAssets$ = new BehaviorSubject<Asset[]>([]);
+    private farmerAssets$ = new BehaviorSubject<Assets[]>([]);
     constructor(
         private _apiService: ApiService,
         private _portfolioService: PortfolioService
     ) {}
  
    
-    createFarmerAsset(assetBody: Asset) {
+    createFarmerAsset(assetBody: Assets) {
         const farmName = this._portfolioService.getFarmName();
         const addedAsset = {
             assetName: assetBody.assetName,

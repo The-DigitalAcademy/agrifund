@@ -1,4 +1,5 @@
-import { Crop } from 'src/app/_models/crop';
+import { CropService } from 'src/app/_services/crop-service/crop.service';
+
 import { PlotService } from './../plot-service/plot.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
@@ -18,20 +19,26 @@ import { PlotService } from './../plot-service/plot.service';
          
 -------------------------------------------------------------------------------------------------*/
 
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, forwardRef } from '@angular/core';
 import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { FarmService } from '../farm-service/farm.service';
-import { CropService } from '../crop-service/crop.service';
 import { AssetService } from '../asset-service/asset.service';
+
+
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
+    loginUser(email: any, password: any): import("rxjs").TeardownLogic {
+        throw new Error('Method not implemented.');
+    }
+    // loginUser(email: any, password: any): import("rxjs").TeardownLogic {
+    //     throw new Error('Method not implemented.');
+    // }
     // stores the user state value as a behavior subject
     userState$ = new BehaviorSubject<boolean>(false);
     // stores the session token as an observable
@@ -49,15 +56,17 @@ export class AuthService {
         private router: Router,
         private _apiService: ApiService,
         private _jwtService: JwtService,
-        private _portfolioService: PortfolioService,
-        private _farmService: FarmService,
-        private _cropService: CropService,
-        private _plotService: PlotService,
-        private _assetService: AssetService
+        // // @Inject(forwardRef(() => FarmService))
+        // private _farmService: FarmService,
+        // // @Inject(forwardRef(() => PlotService))
+        // private _plotService: PlotService,
+        // // @Inject(forwardRef(() => CropService))
+        // private _cropService: CropService,
+        // // @Inject(forwardRef(() => AssetService))
+        // private _assetService: AssetService
     ) {
         this.setSessionToken();
     }
-
 
     // sets the session token to the one set in the jwt service
     setSessionToken() {
@@ -67,60 +76,13 @@ export class AuthService {
     }
 
     // gets the set session token
-    getSessionToken() { 
+    getSessionToken() {
         this.setSessionToken();
         return this.sessionToken$;
     }
 
     // logs a user into the application
-    loginUser(loginEmail: string, loginPassword: string) {
-        // set the body that will be passed to the api connection
-        const loginBody = {
-            email: loginEmail,
-            password: loginPassword,
-        };
-        this._apiService.loginUser(loginBody).subscribe(
-            (result: any) => {
-                // assigns the result to the structure of the api response object
-                this.apiResponse = result;
-                // sets the token to the one received from the api
-                this._jwtService.setToken(this.apiResponse.data);
-                // sets the user login state to true
-                this.setUserState();
-                
-                if (this._farmService.getFarmInfo().length > 0) {
-                    // routes to dashboard if the login was successful
-                    this.router.navigate(['/dashboard']);
-                }
-                else {
-                    // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
-                    this.router.navigate(['/about-farm']);
-                }
-                if (this._plotService.getPlotInfo().length > 0) {
-                    // routes to dashboard if the login was successful
-                    this.router.navigate(['/dashboard']);
-                } else {
-                    // TODO: if the farm, crop, plot, asset info is blank it will route to tell me about your farm
-                    this.router.navigate(['/about-farm']);
-                }
-                this._cropService.getCropInfo().subscribe((crops) => {
-                    if (crops.length > 0) {
-                        this.router.navigate(['/dashboard']);
-                    } else {
-                        this.router.navigate(['/about-farm']);
-                    }
-                });
-                
-                this._assetService.getAssetInfo().subscribe((plots) => {
-                    if (plots.length > 0) {
-                        this.router.navigate(['/dashboard']);
-                    } else {
-                        this.router.navigate(['/about-farm']);
-                    }
-                });
-        }
-    )}
-    
+
 
     logoutUser() {
         // sets the user token to null
@@ -156,7 +118,6 @@ export class AuthService {
     getUserEmail(): string | null {
         return this._jwtService.getUserEmail();
     }
-
 
     // TODO
     // check if a user is an administrator

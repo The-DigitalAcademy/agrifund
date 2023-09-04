@@ -1,10 +1,10 @@
+import { Plot } from 'src/app/_models/plot';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Asset } from 'src/app/_models/asset';
-import { Crop } from 'src/app/_models/crop';
-import { Plot } from 'src/app/_models/plot';
+import { Assets } from 'src/app/_models/Assets';
+import { Crop } from 'src/app/_models/Crop';
 import { Farm } from 'src/app/_models/Farm';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
@@ -37,12 +37,10 @@ export class AboutTheFarmComponent implements OnInit {
     crop!: Crop;
     plot!: Plot;
     farm!: Farm;
-    asset!: Asset;
+    asset!: Assets;
     id = 0;
     isLast: any;
     assetForm!: FormGroup;
-
-
 
     constructor(
         private fb: FormBuilder,
@@ -114,7 +112,6 @@ export class AboutTheFarmComponent implements OnInit {
                 name: formInputValue.name,
                 season: formInputValue.season,
                 type: formInputValue.type,
-
             };
             console.log(this.crop);
 
@@ -123,12 +120,18 @@ export class AboutTheFarmComponent implements OnInit {
         if (this.farmForm.valid) {
             const farmInputValue = this.farmForm.value;
             this.farm = {
+                id: 0,
                 farmName: farmInputValue.farmName,
                 farmAddress: farmInputValue.farmAddress,
                 yearsActive: farmInputValue.yearsActive,
                 numberOfEmployees: farmInputValue.numberOfEmployees,
                 address: farmInputValue.address,
                 farmingReason: farmInputValue.farmingReason,
+                crops: [],
+                plots: [],
+                assets: [],
+                incomeStatements: [],
+            
             };
             console.log(this.farm);
 
@@ -145,8 +148,7 @@ export class AboutTheFarmComponent implements OnInit {
             console.log(this.plot);
             this._plotService.createFarmerPlot(this.plot);
         }
-        // console.log(this.farmForm,this.farmName);
-        
+
         if (this.assetForm.valid) {
             const formInputValue = this.assetForm.value;
             this.asset = {
@@ -157,7 +159,7 @@ export class AboutTheFarmComponent implements OnInit {
                 age: formInputValue.age,
                 // proofOfOwnership: formInputValue.proofOfOfOwnership,
             };
-              console.log(this.asset);
+            console.log(this.asset);
             this._assetService.createFarmerAsset(this.asset);
         }
         if (this.activeSlideId === this.totalSlides) {
@@ -186,7 +188,7 @@ export class AboutTheFarmComponent implements OnInit {
             'Farm form => ',
             this.farmForm,
             this.plotForm,
-            this.cropForm,
+            this.cropForm
         );
         // console.log(this.cropForm);
     }

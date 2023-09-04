@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { Asset } from '../../../_models/asset';
+import { Assets } from '../../../_models/Assets';
 import { PortfolioService } from '../../../_services/portfolio-service/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
     styleUrls: ['./equipment-create.component.css'],
 })
 export class EquipmentCreateComponent implements OnInit {
-    asset!: Asset;
+    asset!: Assets;
 
     createEquipmentForm!: FormGroup;
     submitted = false;

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Crop } from 'src/app/_models/crop';
 import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { Farm } from 'src/app/_models/Farm';
+import { Crop } from 'src/app/_models/Crop';
 
 @Injectable({
     providedIn: 'root',

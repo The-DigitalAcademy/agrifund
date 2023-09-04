@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Asset } from 'src/app/_models/asset';
+import { Assets } from 'src/app/_models/Assets';
 import { AssetService } from 'src/app/_services/asset-service/asset.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AssetService } from 'src/app/_services/asset-service/asset.service';
 })
 
 export class CreateAssetComponent implements OnInit {
-    asset!: Asset;
+    asset!: Assets;
     assetForm!: FormGroup;
     createEquipmentForm!: FormGroup;
     submitted = false;

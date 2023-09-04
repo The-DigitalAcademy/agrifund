@@ -3,7 +3,8 @@
     ---------------------------------*/
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+import { Assets } from 'src/app/_models/Assets';
+
 import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
     styleUrls: ['./equipment-table.component.css'],
 })
 export class EquipmentTableComponent {
-    assets: Asset[] = [];
+    assets: Assets[] = [];
     isLast: any;
     constructor(
         private _apiService: ApiService,

@@ -6,7 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+import { Assets } from 'src/app/_models/Assets';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
@@ -18,7 +18,7 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
 export class EquipmentEditComponent implements OnInit {
     editEquipmentForm!: FormGroup;
     submitted = false;
-    asset!: Asset;
+    asset!: Assets;
     id: any;
 
     constructor(

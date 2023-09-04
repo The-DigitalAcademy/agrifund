@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 07 Aug 2023 
+    UPDATED DATE: 30 Aug 2023 
 
     DESCRIPTION:
         Within this component record details data is fetched to be edited within the reactive from
@@ -24,7 +24,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-bookkeeping-edit-page',
@@ -42,11 +42,15 @@ export class BookkeepingEditPageComponent implements OnInit {
     submitted = false;
     // array to store the types of categories a record can have
     recordType: any = ['Money In', 'Money Out'];
+    // stores the file name for an uploaded file
+    fileName = 'No file uploaded yet.';
+    // stores the file to bue uploaded
+    fileToUpload!: File;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private _bookkeepingService: BookkeepingService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private fb: FormBuilder,
         private _apiService: ApiService
     ) {}
@@ -63,8 +67,6 @@ export class BookkeepingEditPageComponent implements OnInit {
         });
     }
 
-    ngOnDestroy() {}
-
     getRecordDetails(id: any) {
         // subscribes to api connection to get a bookkeeping record by the id passed through the page url
         this._apiService
@@ -76,7 +78,7 @@ export class BookkeepingEditPageComponent implements OnInit {
                     recordName: new FormControl(this.record.description),
                     recordType: new FormControl(this.record.category),
                     recordAmount: new FormControl(this.record.amount),
-                    recordProof: new FormControl(this.record.proof),
+                    recordProof: new FormControl(this.record.proofOfReceipt),
                 });
             });
     }
@@ -91,33 +93,38 @@ export class BookkeepingEditPageComponent implements OnInit {
         return this.editRecordForm.controls;
     }
 
+    // when the an a new file has been uploaded
+    onFileChange(event: any) {
+        // sets the file to be uploaded to the selected file
+        this.fileToUpload = event.target.files[0];
+        // sets the file name to the uploaded files name
+        this.fileName = this.fileToUpload.name;
+        // sets the value for a record name
+        this.editRecordForm.controls['recordProof'].setValue(this.fileName);
+    }
+
     // when the save changes button is clicked
     saveRecord() {
         this.submitted = true;
+        const formInputVal = this.editRecordForm.value;
 
         if (this.editRecordForm.valid) {
             // when save button is clicked on form it will save the values in the input fields to the record object
-            this.record = {
+            const updatedRecord = {
                 // takes the existing record id and saves it to the object being passed
                 id: this.record.id,
-                statement_id: 0,
-                description: this.editRecordForm.get('recordName')?.value,
-                category: this.editRecordForm.get('recordType')?.value,
-                amount: this.editRecordForm.get('recordAmount')?.value,
-                proof:
-                    'src/assets/mock-api/bookkeeping-record-proof/' +
-                    this.editRecordForm.get('recordProof')?.value,
-                date: this.record.date,
+                statementId: 0,
+                description: formInputVal.recordName,
+                category: formInputVal.recordType,
+                amount: formInputVal.recordAmount,
+                proofOfReceipt: formInputVal.recordProof,
+                date: formInputVal.date,
             };
-            // console.table(this.record);
-            // passes body and record id to the api connection
-            this._apiService
-                .updateRecord(this.record.id, this.record)
-                .subscribe(data => {
-                    // console.log(data);
-                    // console.table(this.editRecordForm.value);
-                });
-            this.router.navigate(['bookkeeping/view-record', this.record.id]);
+
+            this._incomeStatementItemService.updateBookkeepingRecord(
+                updatedRecord,
+                this.fileToUpload
+            );
         }
     }
 }

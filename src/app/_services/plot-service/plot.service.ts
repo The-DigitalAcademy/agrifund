@@ -1,9 +1,14 @@
-import { Injectable } from '@angular/core';
 import { Plot } from 'src/app/_models/plot';
+
+
+
+import { Injectable } from '@angular/core';
+
 import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { BehaviorSubject } from 'rxjs';
-import { Farm } from 'src/app/_models/Farm';
+
+
 
 @Injectable({
     providedIn: 'root',
@@ -28,12 +33,12 @@ export class PlotService {
     //         }
     //     );
     // }
- 
+
     createFarmerPlot(plotBody: Plot) {
         const farmName = this._portfolioService.getFarmName();
         const addedPlot = {
-            plotAddress : plotBody.plotAddress,
-            plotSize :plotBody.plotSize,
+            plotAddress: plotBody.plotAddress,
+            plotSize: plotBody.plotSize,
             dateOfOwnership: plotBody.dateOfOwnership,
         };
         this._apiService.addPlot(farmName, addedPlot).subscribe(

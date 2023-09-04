@@ -56,36 +56,7 @@
             </div>
 
           </div>
-
-        </ng-template>
-        <ng-template id="slide3" ngbSlide>
-          <div class="justify-center">
-
-            <div class="justify-center">
-              <h2>Plot</h2>
-              <div class="container inner-container">
-                <form [formGroup]="plotForm">
-                  <div class="form-group">
-                    <label for="plotAddress">Where is your farm located?</label>
-                    <input formControlName="plotAddress" class="form-control description" id="plotAddress">
-                  </div>
-                  <div class="form-group">
-                    <label for="plotSize">What is the size of your farm in hectares (ha)?</label>
-                    <select id="plotSize" class="form-control" formControlName="plotSize">
-                      <option value="8 to 10 hectares">8 to 10 hectares</option>
-                      <option value="11 to 14 hectares">11 to 14 hectares</option>
-                      <option value="15 to 18 hectares">15 to 18 hectares</option>
-                      <option value="19 to 22 hectares">19 to 22 hectares</option>
-                    </select>
-                  </div>
-                  <label for="dateOfOwnership">When did you start farming on this land?</label>
-                  <input formControlName="dateOfOwnership" type="date" class="form-control" id="dateOfOwnership" />
-                </form>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template ngbSlide id="slide4">
+<ng-template ngbSlide id="slide3">
           <div class="justify-center">
 
             <div class="justify-center">
@@ -117,6 +88,34 @@
                       <option value="Fruits">Fruits</option>
                     </select>
                   </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        </ng-template>
+        <ng-template id="slide4" ngbSlide>
+          <div class="justify-center">
+
+            <div class="justify-center">
+              <h2>Plot</h2>
+              <div class="container inner-container">
+                <form [formGroup]="plotForm">
+                  <div class="form-group">
+                    <label for="plotAddress">Where is your farm located?</label>
+                    <input formControlName="plotAddress" class="form-control description" id="plotAddress">
+                  </div>
+                  <div class="form-group">
+                    <label for="plotSize">What is the size of your farm in hectares (ha)?</label>
+                    <select id="plotSize" class="form-control" formControlName="plotSize">
+                      <option value="8 to 10 hectares">8 to 10 hectares</option>
+                      <option value="11 to 14 hectares">11 to 14 hectares</option>
+                      <option value="15 to 18 hectares">15 to 18 hectares</option>
+                      <option value="19 to 22 hectares">19 to 22 hectares</option>
+                    </select>
+                  </div>
+                  <label for="dateOfOwnership">When did you start farming on this land?</label>
+                  <input formControlName="dateOfOwnership" type="date" class="form-control" id="dateOfOwnership" />
                 </form>
               </div>
             </div>

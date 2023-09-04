@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 30 Aug 2023 
 -------------------------------------------------------------------------------------------------*/
 
 @import "~bootstrap/dist/css/bootstrap.css";
@@ -656,6 +656,8 @@ input,
 
     background-color: var(--light);
     height: var(--xx-large-s);
+
+    padding: var(--xx-small-s) var(--small-s) ;
 }
 
 /* styling for form input fields */
@@ -726,6 +728,22 @@ input[type=number]:focus,
 .input-group:focus-within *:focus {
     /* removes the outline of input group */
     outline: 0;
+}
+
+.file-upload {
+    /* changes the width of the file upload input fields */
+    min-width: 100%;
+    user-select: none;
+}
+
+/* hides the default upload document style */
+.file-input {
+    display: none;
+}
+
+/* adds spacing above form input error messages  */
+.text-danger{
+    margin: var(--xx-small-s) 0px !important;
 }
 
 /*----------------------
