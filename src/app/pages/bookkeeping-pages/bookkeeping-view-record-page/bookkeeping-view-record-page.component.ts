@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 31 Jul 2023 
-    UPDATED DATE: 14 Aug 2023 
+    UPDATED DATE: 04 Sept 2023 
 
     DESCRIPTION:
         Within this component record details data is fetched to for a user to view.
@@ -23,6 +23,7 @@ import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-bookkeeping-view-record-page',
@@ -30,14 +31,15 @@ import { IncomeStatementItemService } from 'src/app/_services/income-statement-i
     styleUrls: ['./bookkeeping-view-record-page.component.css'],
 })
 export class BookkeepingViewRecordPageComponent implements OnInit {
-    id!: any;
+    // stores the income statement id
+    id!: number;
+    // stores the income statement record
     record!: IncomeStatementItem;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private _incomeStatementItemService: IncomeStatementItemService,
-        private _apiService: ApiService,
         private _modalService: NgbModal
     ) {}
 
@@ -47,11 +49,11 @@ export class BookkeepingViewRecordPageComponent implements OnInit {
     }
 
     // fetches the record based on its ID
-    getRecordDetails(id: any) {
-        this._apiService
-            .getStatementItemById(this.id)
-            .subscribe((data: any) => {
-                this.record = data;
+    getRecordDetails(id: number) {
+        this._incomeStatementItemService
+            .getIncomeStatementRecordById(id)
+            .subscribe((record: IncomeStatementItem) => {
+                this.record = record;
             });
     }
 

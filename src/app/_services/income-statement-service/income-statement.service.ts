@@ -51,17 +51,6 @@ export class IncomeStatementService {
     private incomeStatementItems$ = new BehaviorSubject<IncomeStatementItem[]>(
         []
     );
-    // stores a single income statement's value -> initializes as empty
-    private incomeStatementItem$: BehaviorSubject<IncomeStatementItem> =
-        new BehaviorSubject<IncomeStatementItem>({
-            id: 0,
-            statementId: 0, //IncomeStatement;
-            category: '',
-            amount: 0,
-            proofOfReceipt: '',
-            description: '',
-            date: '', //date of the record
-        });
 
     constructor(
         private _apiService: ApiService,
@@ -199,7 +188,6 @@ export class IncomeStatementService {
                 if (statement) {
                     // assigns the statement to the statement observable
                     this.incomeStatement$.next(statement);
-                    console.table(this.incomeStatementItem$);
                 }
             }
         });

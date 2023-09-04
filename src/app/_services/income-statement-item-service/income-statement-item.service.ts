@@ -48,15 +48,28 @@ export class IncomeStatementItemService {
     );
     // stores the total bookkeeping records number as a behavior subject
     private totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
-    // stores the the filtered and searched records
-    // private filteredRecords$: BehaviorSubject<IncomeStatementItem>;
-    // stores the total income for bookkeeping records (money in)
-    // private totalBookkeepingIncome$: BehaviorSubject<number>;
-    // stores the total expense for bookkeeping records (money out)
-    // private totalBookkeepingExpenses$: BehaviorSubject<number>;
+    // stores the income statement fetched from the api
+    private record: IncomeStatementItem = {
+        id: 0,
+        statementId: 0,
+        date: '',
+        category: '',
+        amount: 0,
+        description: '',
+        proofOfReceipt: '',
+    };
 
-    // create incomeStatement observable
-    // create income statements observable
+    // stores a single income statement record item's value -> initializes as empty
+    private incomeStatementItem$: BehaviorSubject<IncomeStatementItem> =
+        new BehaviorSubject<IncomeStatementItem>({
+            id: 0,
+            statementId: 0, //IncomeStatement;
+            category: '',
+            amount: 0,
+            proofOfReceipt: '',
+            description: '',
+            date: '', //date of the record
+        });
 
     constructor(
         private _apiService: ApiService,
@@ -68,10 +81,21 @@ export class IncomeStatementItemService {
         GET DATA
     ----------------------------------*/
 
-    // get income statement record item date
-    // getIncomeStatementItemDate() {
-    //     return this.ico
-    // }
+    // get a single income statement record
+    getIncomeStatementRecordById(
+        recordId: number
+    ): Observable<IncomeStatementItem> {
+        this._apiService
+            .getStatementItemById(recordId)
+            .subscribe((response: any) => {
+                this.record = response.data;
+                console.table(this.record);
+                // adds the record to the income statement item observable
+                this.incomeStatementItem$.next(this.record);
+                console.table(this.incomeStatementItem$);
+            });
+        return this.incomeStatementItem$;
+    }
 
     /*---------------------------------
         CREATE/ADD DATA
