@@ -50,8 +50,9 @@
     <span class="name-greeting">
         <p class="bold">Hello,</p>
         <pre>&#x20;</pre>
-        <a [routerLink]="['/portfolio']"
-        class="username bold">Monique</a>
+        <a [routerLink]="['/portfolio']" class="username bold">{{
+            userFirstName$ | async
+        }}</a>
     </span>
     <button type="button" class="btn outline-btn" (click)="logout()">
         Logout
@@ -78,7 +79,7 @@
     </div>
     <div class="offcanvas-body">
         <div class="offcanvas-greeting" *ngIf="(userState$ | async) !== false">
-            <h2>Hello, Username</h2>
+            <h2>Hello, {{ userFirstName$ | async }}</h2>
             <hr />
         </div>
         <app-sidebar></app-sidebar>

@@ -39,6 +39,8 @@ export class PortfolioService {
             cellNumber: '',
             farms: [],
         });
+    // stores a user's first name as an observable, default is just 'User
+    private userFirstName$: BehaviorSubject<string> = new BehaviorSubject<string>('User');
 
     // stores the farmers farm data
     private farmerFarm: Farm[] = [];
@@ -140,6 +142,14 @@ export class PortfolioService {
         });
         // returns the farm name within the first index of the farm name array
         return farmName[0];
+    }
+
+    getUserFirstName(): Observable<string> {
+
+        this.farmerPortfolio$.subscribe((portfolio: FarmerPortfolio) => {
+            this.userFirstName$.next(portfolio.firstName);
+        });
+        return this.userFirstName$;
     }
 
     /*---------------------------------
