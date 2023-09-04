@@ -42,7 +42,7 @@ export class NavbarComponent {
         // gets the current user state
         this.userState$ = this._authService.getUserState();
         // sets the farmer user data
-        this._userService.setFarmerUserPortfolioData();
+        //this._userService.setFarmerUserPortfolioData();
     }
 
     // toggles the offcanvas visibility

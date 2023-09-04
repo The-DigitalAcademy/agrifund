@@ -18,7 +18,7 @@
             <!-- no bookkeeping data card displayed if bookkeeping records is empty-->
             <div
                 *ngIf="
-                    totalBookkeepingRecords$ > 0;
+                    statements.length > 0;
                     then recordsExist;
                     else noRecords
                 "></div>
@@ -36,7 +36,25 @@
                 </span>
             </button>
         </div>
-        <div class="date-filter justify-end">
+        <form [formGroup]="dateForm">
+            <div class="form-input year-filter justify-end">
+                <label for="yearInput">For Financial Year: </label>
+                <select
+                    class="form-select form-control"
+                    (change)="this.onYearChange($event)">
+                    <option
+                        *ngFor="
+                            let statementYear of statementList;
+                            let firstIndex = first
+                        "
+                        [value]="statementYear"
+                        id="yearInput">
+                        {{ statementYear }}
+                    </option>
+                </select>
+            </div>
+        </form>
+        <!-- <div class="date-filter justify-end">
             <div class="date-input form-input mobile-hidden">
                 <label for="fromDate" class="form-label">From</label>
                 <input type="date" class="form-control" id="fromDate" />
@@ -52,7 +70,7 @@
                     Filter by date
                 </span>
             </button>
-        </div>
+        </div> -->
     </div>
     <div class="money-card-summary">
         <app-money-card-summary></app-money-card-summary>
@@ -96,7 +114,7 @@
             <!-- checks if bookkeeping records search result return anything -->
             <ng-container
                 *ngIf="
-                    (bookkeepingRecords$ | filter: searchValue).length > 0;
+                    (incomeStatementRecords | filter: searchValue).length > 0;
                     else noResults
                 ">
                 <div class="container inner-container record-table">
@@ -112,7 +130,7 @@
                         </thead>
                         <tbody
                             *ngFor="
-                                let record of bookkeepingRecords$
+                                let record of incomeStatementRecords
                                     | filter: searchValue
                             ">
                             <tr
@@ -142,7 +160,7 @@
                     <div
                         class="large-hidden"
                         *ngFor="
-                            let record of bookkeepingRecords$
+                            let record of incomeStatementRecords
                                 | filter: searchValue;
                             last as isLast
                         ">

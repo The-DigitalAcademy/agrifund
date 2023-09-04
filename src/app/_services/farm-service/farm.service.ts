@@ -14,12 +14,14 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { Farm, FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
+import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { ApiService } from '../api-service/api.service';
+import { Farm } from 'src/app/_models/Farm';
 
 @Injectable({
     providedIn: 'root',
+
 })
 export class FarmService {
     // farmer portfolio will be stored in her
@@ -36,6 +38,7 @@ export class FarmService {
         address: '', //stores residential address
         farmingReason: '', //stores the reason for needing funding
         crops: [],
+        plots: [],
         assets: [],
         incomeStatements: [],
     });

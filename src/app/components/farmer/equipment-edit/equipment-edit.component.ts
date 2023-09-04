@@ -17,7 +17,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Assets } from 'src/app/_models/FarmerPortfolio';
+import { Assets } from 'src/app/_models/Assets';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
@@ -85,8 +85,8 @@ export class EquipmentEditComponent implements OnInit {
         if (this.editEquipmentForm.valid) {
             // Create an object representing the asset data
             this.asset = {
-                // Keep the initial id of the record
-               id: this.asset.id,
+               
+               
                 assetName: this.editEquipmentForm.get('equipmentName')?.value,
                 assetType: this.editEquipmentForm.get('equipmentType')?.value,
                 age: this.editEquipmentForm.get('equipmentAge')?.value,
@@ -99,7 +99,7 @@ export class EquipmentEditComponent implements OnInit {
 
             // Call the API service to edit the equipment data
             this._apiService
-                .editEquipment(this.asset.id, this.asset)
+                .editEquipment( this.asset)
                 .subscribe(data => {
                     // Handle success response (e.g., show a success message)
                     // This part can be filled with appropriate actions or notifications

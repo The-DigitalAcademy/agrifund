@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../authentication-service/auth.service';
 import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject } from 'rxjs';
-import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { User } from 'src/app/_models/User';
 
 @Injectable({
     providedIn: 'root',
@@ -12,43 +10,39 @@ import { User } from 'src/app/_models/User';
 export class UserService {
     // stores the user values as a behavior subject
     user$ = new BehaviorSubject<any>({});
-    
+
     constructor(
-        private _jwtService: JwtService,
-        private _portfolioService: PortfolioService
+        private _apiService: ApiService,
+        private _authService: AuthService
     ) {
-        // sets the farmer user portfolio data
-        this.setFarmerUserPortfolioData();
+        // when the service is first call it will set the farmers info
+        this.getFarmerByEmail();
     }
 
-    setFarmerUserPortfolioData() {
-        if (this._jwtService.getToken()) {
-            // sets the farmer portfolio when a user successfully logs in
-            this._portfolioService.setFarmerPortfolio();
+    getFarmerByEmail() {
+        const userEmail = this._authService.getUserEmail();
+        const sessionToken = this._authService.getSessionToken();
+
+        if (!userEmail || !sessionToken) {
+            console.error('User email or session token not available');
+            return;
         }
+
+        this._apiService.getFarmerPortfolio().subscribe(
+            (result: any) => {
+                console.log('API Response:', result);
+                this.user$.next(result);
+            },
+            error => {
+                console.error(`Error occurred while getting a user, ${error}`);
+            }
+        );
     }
 
-//     setPortfolioData(){
-//         this._apiService.getFarmerByEmail().subscribe((data: any) => {
+    // sets user first name
+    setUserFirstName() {}
 
-//             this.inputs = data;
-//             this.inputs.forEach(input => {
-//              this.addInput(input);
-//             });
-//     });
-// }
+    // get user first name
+    getUserFirstName() {}
 
-// addInput(input: User){
-
-//     const addedInput = {
-//     id: input.id,
-//     firstName: input.firstName,
-//     lastName: input.lastName,
-//     email: input.email,
-//     cellNumber: input.cellNumber,
-//     password: input.password,
-//     idNumber: input.idNumber,
-//     }
-
-// }
 }

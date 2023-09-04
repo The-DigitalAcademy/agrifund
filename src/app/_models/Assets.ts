@@ -4,14 +4,13 @@
     UPDATED DATE: 
 
     DESCRIPTION:
-    Model for storing the data for a Farmer's crop data
+    Model for storing the data for a Farmer's asset data
 -------------------------------------------------------------------------------------------------*/
 
-export interface Crop {
-    id: number;
-    name: string;
-    season: string;
-    // price: string;
-    // marketValue: string;
-    type: string; //stores the type of crop (vegetable/ fruit)
+export interface Assets {
+    assetName: string;
+    assetType: string;
+    age: number;
+    purchasePrice: number;
+    // assetValue: number; //stores the value of the asset
 }

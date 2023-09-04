@@ -24,7 +24,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-bookkeeping-edit-page',
@@ -50,7 +50,7 @@ export class BookkeepingEditPageComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private _bookkeepingService: BookkeepingService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private fb: FormBuilder,
         private _apiService: ApiService
     ) {}
@@ -78,7 +78,7 @@ export class BookkeepingEditPageComponent implements OnInit {
                     recordName: new FormControl(this.record.description),
                     recordType: new FormControl(this.record.category),
                     recordAmount: new FormControl(this.record.amount),
-                    recordProof: new FormControl(this.record.proof),
+                    recordProof: new FormControl(this.record.proofOfReceipt),
                 });
             });
     }
@@ -113,23 +113,15 @@ export class BookkeepingEditPageComponent implements OnInit {
             const updatedRecord = {
                 // takes the existing record id and saves it to the object being passed
                 id: this.record.id,
-                statement_id: 0,
+                statementId: 0,
                 description: formInputVal.recordName,
                 category: formInputVal.recordType,
                 amount: formInputVal.recordAmount,
-                proof: formInputVal.recordProof,
+                proofOfReceipt: formInputVal.recordProof,
                 date: formInputVal.date,
             };
-            // console.table(this.record);
-            // passes body and record id to the api connection
-            // this._apiService
-            //     .updateRecord(this.record.id, this.record)
-            //     .subscribe(data => {
-            //         // console.log(data);
-            //         // console.table(this.editRecordForm.value);
-            //     });
-            // this.router.navigate(['bookkeeping/view-record', this.record.id]);
-            this._bookkeepingService.updateBookkeepingRecord(
+
+            this._incomeStatementItemService.updateBookkeepingRecord(
                 updatedRecord,
                 this.fileToUpload
             );

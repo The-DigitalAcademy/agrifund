@@ -219,8 +219,8 @@ export class ApiService {
     }
 
     // PUT function to update data for a single asset
-    editEquipment(equipmentId: number, body: any) {
-        return this.http.put(`${this.FARMER_ASSET_URL}/${equipmentId}`, body);
+    editEquipment( body: any) {
+        return this.http.put(`${this.FARMER_ASSET_URL}`, body);
     }
 
     /* --------------------------------
@@ -229,6 +229,10 @@ export class ApiService {
     // GET function to get a crop by id
     getCropById(cropId: number) {
         return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
+    }
+
+    getCrop(){
+       return this.http.get(`${this.FARMER_CROP_URL}`);
     }
 
     // PUT function to update a farmer's crop info
@@ -296,9 +300,9 @@ export class ApiService {
     }
 
     // POST to create a new income statement
-    createIncomeStatement(farmId: number, statementBody: any) {
+    createIncomeStatement(farmName: string, statementBody: any) {
         return this.http.post(
-            `${this.INCOME_STATEMENT_URL}/${farmId}`,
+            `${this.INCOME_STATEMENT_URL}/${farmName}`,
             statementBody
         );
     }
@@ -324,7 +328,7 @@ export class ApiService {
     // POST function to add a new income statement item
     addRecord(recordBody: any, statementId: number) {
         return this.http.post(
-            `${this.INCOME_STATEMENT_URL}/${statementId}`,
+            `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}`,
             recordBody
         );
     }

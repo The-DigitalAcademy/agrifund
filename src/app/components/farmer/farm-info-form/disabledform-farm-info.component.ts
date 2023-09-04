@@ -13,7 +13,8 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { Farm } from 'src/app/_models/farm';
+import { Farm } from 'src/app/_models/Farm';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -24,7 +25,7 @@ export class DisabledformFarmInfoComponent {
     originalFormValues: any;
     myForm!: FormGroup;
     isDisabled = true;
-
+    private farmSubscription = new Subscription();
     farmInfo!: Farm;
     //     id: any;
     constructor(
@@ -64,8 +65,34 @@ export class DisabledformFarmInfoComponent {
             ]),
         });
 
-        // ~
+               this._portfolioService.setFarmerFarm();
+
+          {
+              this.farmSubscription = this._portfolioService
+                  .getFarmerFarm()
+                  .subscribe((farms: Farm[]) => {
+                      console.table(farms);
+
+                      // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
+                      this.myForm.patchValue({
+                          farm_name: farms[0].farmName,
+                          farmAddress: farms[0].farmAddress,
+                          years: farms[0].yearsActive,
+                          farmerAddress: farms[0].address,
+                          num_employee: farms[0].numberOfEmployees,
+                          reasonForFunding: farms[0].farmingReason,
+                      });
+
+                      //Update progress for personal info completion
+                      //this._progressService.setPersonalInfoCompleted(true);
+
+                      // Set the 'isDisabled' flag to false to enable form editing
+                      this.isDisabled = false;
+                  });
+          }
     }
+
+   
 
     //         this.getFarmDetails();
     //     }
@@ -96,9 +123,9 @@ export class DisabledformFarmInfoComponent {
     //         });
     //     }
 
-    //     get createFarmControl() {
-    //         return this.myForm.controls;
-    //     }
+        get createFarmControl() {
+            return this.myForm.controls;
+        }
 
     enableFields() {
         this.isDisabled = false; // Enable the fields by setting isDisabled to false

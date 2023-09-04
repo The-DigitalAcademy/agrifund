@@ -21,7 +21,7 @@
                     *ngIf="myForm.controls['farmAddress'].hasError('addressContainsStreet') && myForm.controls['farmAddress'].dirty"
                     class="text-danger">Please enter word Street in your address</small>
                 <div class="form-text text-danger"
-                    *ngIf="myForm.controls['farmAddress'].hasError('required') && myForm.controls['farmer'].dirty"
+                    *ngIf="myForm.controls['farmAddress'].hasError('required') && myForm.controls['farmAddress'].dirty"
                     class="text-danger">
                     Field is required.</div>
             </div>

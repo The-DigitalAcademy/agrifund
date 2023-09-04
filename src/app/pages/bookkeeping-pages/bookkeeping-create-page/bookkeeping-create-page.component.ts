@@ -6,8 +6,6 @@
     DESCRIPTION:
         This file manages the capture of a new bookkeeping record's data and passes it to the  
         bookkeeping service to be passed to the api.
-
-
     PARAMETERS:
         
 -------------------------------------------------------------------------------------------------*/
@@ -17,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-bookkeeping-create-page',
@@ -27,15 +25,16 @@ import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookke
 export class BookkeepingCreatePageComponent implements OnInit {
     createRecordForm!: FormGroup;
     submitted = false;
-    recordType: any = ['Money In', 'Money Out'];
+    // stores the category types of a bookkeeping record
+    recordType = ['Money In', 'Money Out'];
 
     // creates an empty instance of an income statement item to store the created record
     record: IncomeStatementItem = {
         id: 0,
-        statement_id: 0,
+        statementId: 0,
         category: '',
         amount: 0,
-        proof: '',
+        proofOfReceipt: '',
         description: '',
         date: '',
     };
@@ -48,7 +47,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private _apiService: ApiService,
-        private _bookkeepingService: BookkeepingService
+        private _incomeStatementItemService: IncomeStatementItemService
     ) {}
 
     ngOnInit() {
@@ -90,22 +89,16 @@ export class BookkeepingCreatePageComponent implements OnInit {
             // adds the form data the the record object instance of incomeStatementItem
             this.record = {
                 id: 0,
-                statement_id: 0,
+                statementId: 0,
                 description: formInputVal.recordName,
                 category: formInputVal.recordType,
                 amount: formInputVal.recordAmount,
-                proof: this.fileName,
+                proofOfReceipt: this.fileName,
                 date: formInputVal.recordDate,
             };
 
-            console.table(this.record);
-
-            // this._apiService.addRecord(this.record).subscribe(data => {
-            //     // adds the new record to the observable array after successfully adding the record
-            //     this._bookkeepingService.addRecord(this.record);
-            // });
-
-            // this.router.navigate(['/bookkeeping']);
+            // sends the new record data to the income statement item service
+            this._incomeStatementItemService.createNewRecord(this.record);
         }
     }
 }

@@ -7,10 +7,13 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/User';
-import { Crop } from 'src/app/_models/crop';
+import { Crop } from 'src/app/_models/Crop';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { MockService } from 'src/app/_services/mockservice/mock.service';
+
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
+import { Subscription } from 'rxjs';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { CropService } from 'src/app/_services/crop-service/crop.service';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -27,7 +30,8 @@ export class DisabledformCropInfoComponent implements OnInit {
     originalFormValues: any;
     submitted = false;
     cropInfo!: Crop;
-   
+    private cropSubscription = new Subscription();
+    private portfolioSubscription = new Subscription();
 
     constructor(
         private fb: FormBuilder,
@@ -35,7 +39,8 @@ export class DisabledformCropInfoComponent implements OnInit {
         private _apiService: ApiService,
         private _fb: FormBuilder,
         private route: ActivatedRoute,
-        private _mockService: MockService
+        private _cropService: CropService,
+        private _portfolioService: PortfolioService
     ) {}
 
     ngOnInit() {
@@ -52,7 +57,28 @@ export class DisabledformCropInfoComponent implements OnInit {
             ]),
         });
 
-        this.getCropDetails();
+       this._portfolioService.setFarmerPortfolio();
+        //  this._cropService.setCropData();
+
+        //  this._cropService.getCropData();
+        this.cropSubscription = this._portfolioService
+            .getFarmerCropInfo()
+            .subscribe((crops: Crop[]) => {
+                console.table(crops);
+
+                // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
+                this.myForm.patchValue({
+                    seasonFarm: crops[0].season,
+                    crop_name: crops[0].name,
+                    crop_type: crops[0].type,
+                });
+
+                //Update progress for personal info completion
+                //this._progressService.setPersonalInfoCompleted(true);
+
+                // Set the 'isDisabled' flag to false to enable form editing
+                this.isDisabled = false;
+            });
     }
 
     // this._apiService.addRecord(this.record).subscribe(data => {
@@ -60,22 +86,22 @@ export class DisabledformCropInfoComponent implements OnInit {
     //     this._bookkeepingService.addRecord(this.record);
     // });
 
-    getCropDetails() {
-        if (!this.cropInfo) {
-            this._mockService.getCropInfo().subscribe((data: any) => {
-                this.cropInfo = data;
+    // getCropDetails() {
+    //     if (!this.cropInfo) {
+    //         this._mockService.getCropInfo().subscribe((data: any) => {
+    //             this.cropInfo = data;
 
-                console.table(data);
+    //             console.table(data);
 
-                // Populate the form fields
-                this.myForm.patchValue({
-                    seasonFarm: this.cropInfo.season,
-                    crop_name: this.cropInfo.name,
-                    crop_type: this.cropInfo.type,
-                });
-            });
-        }
-    }
+    //             // Populate the form fields
+    //             this.myForm.patchValue({
+    //                 seasonFarm: this.cropInfo.season,
+    //                 crop_name: this.cropInfo.name,
+    //                 crop_type: this.cropInfo.type,
+    //             });
+    //         });
+    //     }
+    // }
 
     get createCropControl() {
         return this.myForm.controls;
