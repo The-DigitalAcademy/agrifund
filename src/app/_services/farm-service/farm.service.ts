@@ -33,7 +33,7 @@ export class FarmService {
                 console.table(`Creates this farm data: ${farmBody}`);
             },
             error => {
-                console.error('error occured when create new farm data');
+                
                 console.error(error);
             }
         );
