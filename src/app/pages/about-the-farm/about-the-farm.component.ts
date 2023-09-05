@@ -102,7 +102,7 @@ export class AboutTheFarmComponent implements OnInit {
         if (this.farmForm.valid) {
             const farmInputValue = this.farmForm.value;
             this.farm = {
-                id: 0,
+                id: this.id,
                 farmName: farmInputValue.farmName,
                 farmAddress: farmInputValue.farmAddress,
                 yearsActive: farmInputValue.yearsActive,
@@ -139,19 +139,20 @@ export class AboutTheFarmComponent implements OnInit {
         if (this.plotForm.valid) {
             const formInputValue = this.plotForm.value;
             this.plot = {
-                id: 0,
+                id: this.id,
                 plotAddress: formInputValue.plotAddress,
                 plotSize: formInputValue.plotSize,
                 dateOfOwnership: formInputValue.date,
             };
             console.log(this.plot);
-            this._plotService.createFarmerPlot(this.plot);
+            this.checkPlotInfo();
+            // this._plotService.createFarmerPlot(this.plot);
         }
 
         if (this.assetForm.valid) {
             const formInputValue = this.assetForm.value;
             this.asset = {
-                id: 0,
+                id: this.id,
                 assetName: formInputValue.assetName,
                 assetType: formInputValue.assetType,
                 purchasePrice: formInputValue.purchasePrice,
@@ -182,16 +183,6 @@ export class AboutTheFarmComponent implements OnInit {
     //     return this.assetForm;
     // }
 
-    onSubmit() {
-        // console.log(
-        //     'Farm form => ',
-        //     this.farmForm,
-        //     this.cropForm,
-        //     this.plotForm,
-        //     this.assetForm
-        // );
-        // console.log(this.cropForm);
-    }
 
     // check if farm info has already been submitted
     checkFarmInfo() {
