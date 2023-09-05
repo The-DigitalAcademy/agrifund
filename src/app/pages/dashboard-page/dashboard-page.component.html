@@ -63,14 +63,33 @@
 
         <!-- <ng-template [ngIf]=""> -->
 
-        <div class="container">
+        <div class="outer-container">
             <app-money-card-summary></app-money-card-summary>
-            <div class="row">
-                <div class="col-6">
-                    <!-- <app-income-expenses-donut-graph></app-income-expenses-donut-graph> -->
+            <div class="justify-center">
+                <div class="container">
+                    <div class="container-header">
+                        <label class="card-title"> Money In & Money Out </label>
+                    </div>
+                    <app-income-expenses-donut-graph></app-income-expenses-donut-graph>
                 </div>
-                <div class="col-6">
-                    <!-- <app-expenses-bar-chart></app-expenses-bar-chart> -->
+            </div>
+
+            <div class="justify-center">
+                <div class="justify-start container">
+                    <div class="container-header">
+                        <label class="card-title">
+                            Five Highest Money Out Values
+                        </label>
+                    </div>
+                    <app-expenses-bar-chart></app-expenses-bar-chart>
+                </div>
+                <div class="justify-end container">
+                    <div class="container-header">
+                        <label class="card-title">
+                            Five Highest Money In Values
+                        </label>
+                    </div>
+                    <!-- put graphs to summarize top 5 most expenses here -->
                 </div>
             </div>
         </div>
