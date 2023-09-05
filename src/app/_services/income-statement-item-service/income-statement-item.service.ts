@@ -76,7 +76,6 @@ export class IncomeStatementItemService {
         private router: Router,
         private _portfolioService: PortfolioService,
         private _incomeStatementService: IncomeStatementService,
-        private activeModal: NgbActiveModal
     ) {}
     /*---------------------------------
         GET DATA
@@ -253,6 +252,7 @@ export class IncomeStatementItemService {
     ----------------------------------*/
     // delete and income statement item
     deleteRecord(recordId: number) {
+        // let activeModal: NgbActiveModal;
         const statementId = 1;
         return this._apiService
             .deleteIncomeStatementItem(recordId, statementId)
@@ -260,7 +260,7 @@ export class IncomeStatementItemService {
                 (data: any) => {
                     console.log(data);
                     // closes the bookkeeping delete modal
-                    this.activeModal.close();
+                    // activeModal.close();
                     // routes back to bookkeeping view all
                     this.router.navigate(['/bookkeeping']);
                 },
