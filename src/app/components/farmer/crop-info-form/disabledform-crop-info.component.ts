@@ -7,13 +7,13 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/User';
-import { Crop } from 'src/app/_models/Crop';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { CropService } from 'src/app/_services/crop-service/crop.service';
+import { Crop } from 'src/app/_models/crop';
 
 @Component({
     selector: 'app-disabledform-crop-info',

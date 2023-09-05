@@ -22,8 +22,8 @@ import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/Assets';
 import { Farm } from 'src/app/_models/Farm';
 import { HttpClient } from '@angular/common/http';
-import { Crop } from 'src/app/_models/Crop';
 import { Plot } from 'src/app/_models/plot';
+import { Crop } from 'src/app/_models/crop';
 
 @Injectable({
     providedIn: 'root',

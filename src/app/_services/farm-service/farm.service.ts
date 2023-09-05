@@ -21,7 +21,6 @@ import { Farm } from 'src/app/_models/Farm';
 
 @Injectable({
     providedIn: 'root',
-
 })
 export class FarmService {
     // farmer portfolio will be stored in her
