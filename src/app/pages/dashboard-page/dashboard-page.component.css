@@ -9,6 +9,11 @@
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
+.actions{
+    /* removes margins from actions container */
+    margin: 0px;
+}
+
 button{
     margin-left: var(--small-s);
 }
