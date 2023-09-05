@@ -47,11 +47,13 @@ export class FarmerPortfolioProgressbarComponent {
             }
         );
 
-        this._progressService.cropInfoCompleted$.subscribe(cropInfoCompleted => {
-            if (cropInfoCompleted) {
-                this.progressPercentage += 30;
+        this._progressService.cropInfoCompleted$.subscribe(
+            cropInfoCompleted => {
+                if (cropInfoCompleted) {
+                    this.progressPercentage += 30;
+                }
             }
-        });
+        );
 
         this._progressService.farmInfoCompleted$.subscribe(
             farmInfoCompleted => {
@@ -65,24 +67,29 @@ export class FarmerPortfolioProgressbarComponent {
             personalInfo: [false], // Set initial value to false
             farmInfo: [false], // Set initial value to
             cropInfo: [false],
-            equipmentInfo: [false],
+            plotInfo: [false],
             bookkeepingInfo: [false],
         });
 
-        // Fetch user data from API and populate the form
-        // this._apiService.getFarmerUser().subscribe(
-        //     (user: User) => {
-        //         // Update the checkbox
-        //         this.checklistForm.patchValue({
-        //             personalInfo: true,
-        //         });
+        //Fetch user data from API and populate the form
 
-                // this.checklistForm.patchValue({
-                //     farmInfo: true,
-                // });
+        this.checklistForm.patchValue({
+            personalInfo: true,
+        });
 
-                // Update progress based on personal info completion
-                // this.progressService.setPersonalInfoCompleted(true);
+        this.checklistForm.patchValue({
+            farmInfo: true,
+        });
+
+        this.checklistForm.patchValue({
+            plotInfo: true,
+        });
+
+        this.checklistForm.patchValue({
+            cropInfo: true,
+        });
+        // Update progress based on personal info completion
+        // this.progressService.setPersonalInfoCompleted(true);
         //     },
         //     error => {
         //         console.error('Error fetching user details:', error);
