@@ -10,7 +10,6 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { CropService } from 'src/app/_services/crop-service/crop.service';
 import { FarmService } from 'src/app/_services/farm-service/farm.service';
-import { AssetService } from 'src/app/_services/asset-service/asset.service';
 import { PlotService } from 'src/app/_services/plot-service/plot.service';
 
 @Component({
@@ -25,13 +24,13 @@ export class AboutTheFarmComponent implements OnInit {
     // stores the current active slide number -> default to first slide
     activeSlideId: number = 1;
     // stores the total slides of the carousel
-    totalSlides: number = 6;
+    totalSlides: number = 5;
     // sets the first slide as the active slide
-    slides: any = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5'];
+    slides: any = ['slide1', 'slide2', 'slide3', 'slide4'];
     farmForm!: FormGroup;
     cropForm!: FormGroup;
     plotForm!: FormGroup;
-    equipForm!: FormGroup;
+
     submitted = false;
     farm!: Farm;
     crop!: Crop;
@@ -49,7 +48,6 @@ export class AboutTheFarmComponent implements OnInit {
         private _cropService: CropService,
         private _plotService: PlotService,
         private _farmService: FarmService,
-        private _assetService: AssetService
     ) {
         // prevents the carousel from wrapping
         carouselConfig.wrap = false;
@@ -79,13 +77,6 @@ export class AboutTheFarmComponent implements OnInit {
             dateOfOwnership: ['', Validators.required],
         });
 
-        this.equipForm = this.fb.group({
-            assetName: ['', Validators.required],
-            assetType: ['', Validators.required],
-            purchasePrice: ['', Validators.required],
-            age: ['', Validators.required],
-        });
-
         this.carousel.pause();
     }
 
@@ -98,7 +89,10 @@ export class AboutTheFarmComponent implements OnInit {
     // navigates to the next slide
     goToNextSlide() {
         this.submitted = true;
-
+ if (this.activeSlideId != this.totalSlides) {
+     // increments the active slide
+     this.activeSlideId++;
+ }
         if (this.farmForm.valid) {
             const farmInputValue = this.farmForm.value;
             this.farm = {
@@ -117,10 +111,7 @@ export class AboutTheFarmComponent implements OnInit {
             console.log(this.farm);
 
             this.checkFarmInfo();
-        }
-        if (this.activeSlideId != this.totalSlides) {
-            // increments the active slide
-            this.activeSlideId++;
+                //   this._farmService.createFarmerFarm(this.farm);
         }
         // console.log(this.cropForm);
         if (this.cropForm.valid) {
@@ -134,6 +125,7 @@ export class AboutTheFarmComponent implements OnInit {
             console.log(this.crop);
 
             this.checkCropInfo();
+                //   this._cropService.createFarmerCrop(this.crop);
         }
 
         if (this.plotForm.valid) {
@@ -149,19 +141,6 @@ export class AboutTheFarmComponent implements OnInit {
             // this._plotService.createFarmerPlot(this.plot);
         }
 
-        if (this.equipForm.valid) {
-            const formInputValue = this.equipForm.value;
-            this.asset = {
-                id: this.id,
-                assetName: formInputValue.assetName,
-                assetType: formInputValue.assetType,
-                purchasePrice: formInputValue.purchasePrice,
-                age: formInputValue.age,
-    
-            };
-            console.log(this.asset);
-            this._assetService.createFarmerAsset(this.asset);
-        }
         if (this.activeSlideId === this.totalSlides) {
             // All slides have been filled out, navigate to the dashboard
             this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
@@ -230,19 +209,4 @@ export class AboutTheFarmComponent implements OnInit {
             }
         });
     }
-
-    // check if farm info has already been submitted
-    checkAssetInfo() {
-        // set the portfolio info for a logged in farmer
-        this._portfolioService.setFarmerPortfolio();
-
-        this._portfolioService.getFarmerFarm().subscribe(asset => {
-            console.table(asset);
-            // checks if the crop info is not empty
-            if (asset.length === 0) {
-                this._assetService.createFarmerAsset(this.asset);
-                console.log(`Farm has been submitted`);
-            }
-        });
-    } 
 }

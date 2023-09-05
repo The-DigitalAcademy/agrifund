@@ -20,7 +20,7 @@ import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bo
 import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
 import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
 import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
-import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
+
 
 /* --------------------------------
     ACCESS GUARDS
@@ -62,7 +62,6 @@ const routes: Routes = [
     { path: 'equipment-create', component: EquipmentCreateComponent },
     { path: 'equipment-edit/:id', component: EquipmentEditComponent },
     { path: 'dynamic-inputs', component: DynamicInputsComponent },
-    { path: 'create-asset', component: CreateAssetComponent },
 ];
 
 @NgModule({

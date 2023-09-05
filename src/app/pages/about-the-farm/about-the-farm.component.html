@@ -121,67 +121,6 @@
             </div>
           </div>
         </ng-template>
-        <ng-template ngbSlide id="slide5">
-          <div class="justify-center">
-
-            <div class="justify-center">
-              <h2>Equipment</h2>
-              <h2>What type of tools do you use on your farm?</h2>
-              <div class="add-icon-container justify-end">
-                <button class="btn icon-btn btn" type="button" [routerLink]="['/create-asset']">
-                  <fa-icon icon="plus"></fa-icon>Add another
-                </button>
-              </div>
-              <div class="container inner-container">
-                <form [formGroup]="equipForm" >
-                  <div class = "equipment-container">
-                  <div class="form-group">
-                    <label for="assetName">Name of equipment</label>
-                    <input formControlName="assetName" class="form-control" id="assetName" />
-                  </div>
-                    <div class="form-group">
-                  <label for="assetType">Type of</label>
-                   <input formControlName="assetType" class="form-control" id="assetType" />
-                     </div>
-                  </div>
-                  <div class = "equip-container">
-                  <div class="form-group">
-                    <label for="age">Age in years</label>
-                    <input formControlName="age" class="form-control" id="age" />
-                  </div>
-                   <div class="form-group">
-                    <label for="purchasePrice">Purchase Amount</label>
-                    <input formControlName="purchasePrice" class="form-control" id="purchasePrice" />
-                  </div>
-                </div>
-                   <!-- <div class="form-group">
-                     <label for="proof" class="proof">Proof of Ownership</label>
-                  <div class="document-upload">
-                <div class="doc-header justify-start">
-                    <label for="recordProof">Upload Document </label>
-                    <div class="form-text">PDF, PNG, JPG</div>
-                </div>
-                <hr/>
-                <div class="file">
-                <input formControlName="recordProof" class="form-control" type="file" id="recordProof" />
-                <button 
-                    class="btn colourful-btn ">
-                    View
-                </button>  -->
-                <!-- <button 
-                    class="btn outline-btn" >
-                    Replace
-                </button>
-                </div>
-            </div> -->
-            <!-- </div> -->
-   <hr/>
-                </form>
-              </div>
-            </div>
-
-          </div>
-        </ng-template>
       </ngb-carousel>
       <div class="actions">
         <div class="justify-start">
