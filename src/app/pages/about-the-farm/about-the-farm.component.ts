@@ -31,7 +31,7 @@ export class AboutTheFarmComponent implements OnInit {
     farmForm!: FormGroup;
     cropForm!: FormGroup;
     plotForm!: FormGroup;
-    assetForm!: FormGroup;
+    equipForm!: FormGroup;
     submitted = false;
     farm!: Farm;
     crop!: Crop;
@@ -79,7 +79,7 @@ export class AboutTheFarmComponent implements OnInit {
             dateOfOwnership: ['', Validators.required],
         });
 
-        this.assetForm = this.fb.group({
+        this.equipForm = this.fb.group({
             assetName: ['', Validators.required],
             assetType: ['', Validators.required],
             purchasePrice: ['', Validators.required],
@@ -126,7 +126,7 @@ export class AboutTheFarmComponent implements OnInit {
         if (this.cropForm.valid) {
             const formInputValue = this.cropForm.value;
             this.crop = {
-                id: 0,
+                id: this.id,
                 name: formInputValue.name,
                 season: formInputValue.season,
                 type: formInputValue.type,
@@ -149,15 +149,15 @@ export class AboutTheFarmComponent implements OnInit {
             // this._plotService.createFarmerPlot(this.plot);
         }
 
-        if (this.assetForm.valid) {
-            const formInputValue = this.assetForm.value;
+        if (this.equipForm.valid) {
+            const formInputValue = this.equipForm.value;
             this.asset = {
                 id: this.id,
                 assetName: formInputValue.assetName,
                 assetType: formInputValue.assetType,
                 purchasePrice: formInputValue.purchasePrice,
                 age: formInputValue.age,
-                // proofOfOwnership: formInputValue.proofOfOfOwnership,
+    
             };
             console.log(this.asset);
             this._assetService.createFarmerAsset(this.asset);
