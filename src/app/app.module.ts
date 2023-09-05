@@ -47,7 +47,7 @@ import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeep
 /* --------------------------------
     FARMER PORTFOLIO
 ---------------------------------*/
-import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
+
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
 import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
@@ -104,6 +104,8 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
+import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-all-forms.component';
 
 @NgModule({
     declarations: [
@@ -131,12 +133,14 @@ import {
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         EquipmentCreateComponent,
-        TellMeAboutFarmPageComponent,
+        
         ModalContainerComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
+        PlotInfoFormComponent,
+        EditAllFormsComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,20 +1,17 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
-    CREATE DATE: 30 Aug 2023
+    CREATE DATE: 01 Sept 2023
     UPDATED DATE: 
 
     DESCRIPTION:
-    Model for storing the data received from the portfolio api connection
+    Model for storing the data for a Farmer's crop data
 -------------------------------------------------------------------------------------------------*/
 
-import { Farm } from "./Farm";
-
-
-export interface FarmerPortfolio {
+export interface Crop {
     id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    cellNumber: string;
-    farms: Farm[];
+    name: string;
+    season: string;
+    // price: string;
+    // marketValue: string;
+    type: string; //stores the type of crop (vegetable/ fruit)
 }

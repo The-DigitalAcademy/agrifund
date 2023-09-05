@@ -83,6 +83,9 @@ export class ApiService {
     registerUser(userBody: User) {
         return this.http.post(`${this.REGISTER_URL}`, userBody);
     }
+    getRegisterUser() {
+        return this.http.get(`${this.REGISTER_URL}`);
+    }
 
     /* --------------------------------
         USER REQUESTS
@@ -216,8 +219,8 @@ export class ApiService {
     }
 
     // PUT function to update data for a single asset
-    editEquipment(equipmentId: number, body: any) {
-        return this.http.put(`${this.FARMER_ASSET_URL}/${equipmentId}`, body);
+    editEquipment( body: any) {
+        return this.http.put(`${this.FARMER_ASSET_URL}`, body);
     }
 
     /* --------------------------------
@@ -226,6 +229,10 @@ export class ApiService {
     // GET function to get a crop by id
     getCropById(cropId: number) {
         return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
+    }
+
+    getCrop(){
+       return this.http.get(`${this.FARMER_CROP_URL}`);
     }
 
     // PUT function to update a farmer's crop info

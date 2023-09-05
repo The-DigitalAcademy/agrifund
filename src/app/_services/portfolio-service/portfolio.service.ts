@@ -19,8 +19,11 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { Assets } from 'src/app/_models/assets';
-import { Farm } from 'src/app/_models/farm';
+import { Assets } from 'src/app/_models/Assets';
+import { Farm } from 'src/app/_models/Farm';
+import { HttpClient } from '@angular/common/http';
+import { Crop } from 'src/app/_models/Crop';
+import { Plot } from 'src/app/_models/plot';
 
 @Injectable({
     providedIn: 'root',
@@ -54,9 +57,11 @@ export class PortfolioService {
         address: '', //stores residential address
         farmingReason: '', //stores the reason for needing funding
         crops: [],
+        plots: [],
         assets: [],
         incomeStatements: [],
     });
+
     // stores the farmers portfolio data
     private farmerIncomeStatements: IncomeStatement[] = [];
     // stores the income statement data as an observable -> -> initializes as empty
@@ -85,7 +90,7 @@ export class PortfolioService {
 
     constructor(private _apiService: ApiService) {
         // sets the farmer portfolio when the service is called
-        this.setFarmerPortfolio();
+        // this.setFarmerPortfolio();
     }
 
     /*---------------------------------
@@ -159,5 +164,12 @@ export class PortfolioService {
     getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
         // returns the income statement for a farm
         return this.farmerFarm$.pipe(map(farm => farm.incomeStatements));
+    }
+
+    getFarmerCropInfo(): Observable<Crop[]> {
+        return this.farmerFarm$.pipe(map(farm => farm.crops));
+    }
+    getFarmerPlotInfo(): Observable<Plot[]> {
+        return this.farmerFarm$.pipe(map(farm => farm.plots));
     }
 }

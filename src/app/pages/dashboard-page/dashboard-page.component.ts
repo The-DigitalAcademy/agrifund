@@ -15,6 +15,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { FarmService } from 'src/app/_services/farm-service/farm.service';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -28,9 +29,14 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     // subscription for portfolio service
     private portfolioSubscription = new Subscription();
 
-    constructor(private _portfolioService: PortfolioService) {}
+    constructor(
+        private _portfolioService: PortfolioService,
+        private _farmService: FarmService
+    ) {}
 
     ngOnInit() {
+
+        this._portfolioService.setFarmerPortfolio()
         // gets the farmers portfolio information
         this.portfolioSubscription = this._portfolioService
             .getFarmerPortfolio()

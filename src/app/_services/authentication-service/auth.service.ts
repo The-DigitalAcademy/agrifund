@@ -1,3 +1,4 @@
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 21 Aug 2023 
@@ -21,6 +22,7 @@ import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserService } from '../user-service/user.service';
 
 @Injectable({
     providedIn: 'root',
@@ -46,7 +48,6 @@ export class AuthService {
     ) {
         this.setSessionToken();
     }
-
 
     // sets the session token to the one set in the jwt service
     setSessionToken() {
