@@ -12,19 +12,6 @@
     width: 100% !important;
 }
 
-.date-filter .form-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0px 0px 0px var(--small-s) !important;
-}
-
-.year-filter label{
-    min-width: max-content;
-    margin-right: var(--small-s) !important ;
-    margin-bottom: 0px !important;
-}
-
 .date-input {
     margin: var(--small-s);
 }

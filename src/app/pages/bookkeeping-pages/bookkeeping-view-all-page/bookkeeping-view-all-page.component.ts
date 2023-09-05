@@ -40,8 +40,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     private portfolioSubscription = new Subscription();
     // subscription for getting incomes statements service
     private incomeStatementSubscription = new Subscription();
-    // subscription for an income statement's item
-    private incomeStatementItemSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // observable for storing income statements
@@ -134,9 +132,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
     }
-
-    // sets the income statement records to display for the year
-    statementsForSelectedYear(year: number) {}
 
     // when a record is clicked it will route to the view all page for singular viewing
     viewRecordDetails(recordId: number) {

@@ -752,6 +752,13 @@ input[type=number]:focus,
     margin-right: var(--small-s) !important;
     margin-bottom: 0px !important;
 }
+/* styles for date filter form input container */
+.date-filter .form-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 0px 0px var(--small-s) !important;
+}
 /*----------------------
     BUTTONS
 ----------------------*/
