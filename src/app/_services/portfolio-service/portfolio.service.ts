@@ -30,6 +30,9 @@ import { FarmerFarm } from 'src/app/_models/farmerFarm';
     providedIn: 'root',
 })
 export class PortfolioService {
+    setFarmerIncomeStatements() {
+        throw new Error('Method not implemented.');
+    }
     private assets: Assets[] = [];
     // stores the farmer portfolio as a array instance of farmer portfolio
     private farmerPortfolio: FarmerPortfolio[] = [];

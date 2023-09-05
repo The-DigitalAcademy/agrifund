@@ -16,6 +16,14 @@ import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { FarmService } from 'src/app/_services/farm-service/farm.service';
+import { IncomeStatement } from 'src/app/_models/IncomeStatement';
+import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -23,16 +31,32 @@ import { FarmService } from 'src/app/_services/farm-service/farm.service';
     styleUrls: ['./dashboard-page.component.css'],
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
-    bookkeepingRecords$!: Observable<IncomeStatementItem[]>;
-    // stores the currently logged in user data
-    user!: User;
     // subscription for portfolio service
     private portfolioSubscription = new Subscription();
+    // subscription for getting incomes statements service
+    private incomeStatementSubscription = new Subscription();
+    // array for storing income statements
+    statements!: IncomeStatement[];
+    // stores the currently logged in user data
+    user!: User;
+    // form for date filter
+    dateForm: FormGroup;
+    // sets the default value for dropdown
+    defaultYear = 0;
+    // stores the selected value of the dropdown list
+    selectedYear = '';
+    // stores the list of year for income statements
+    statementList: string[] = [];
 
     constructor(
         private _portfolioService: PortfolioService,
-        private _farmService: FarmService
-    ) {}
+        private _incomeStatementService: IncomeStatementService,
+        private fb: FormBuilder
+    ) {
+        this.dateForm = this.fb.group({
+            yearInput: ['', Validators.required],
+        });
+    }
 
     ngOnInit() {
         this._portfolioService.setFarmerPortfolio();
@@ -41,18 +65,47 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
             .getFarmerPortfolio()
             .subscribe(data => {
                 console.table(data);
+                // sets the farmer's farm data in order to get income statement data
+                this._portfolioService.setFarmerFarm();
+                // sets the farmer's income statement list after teh income statements have been set
+                this.setIncomeStatementList();
             });
 
-        // gets the farmers farm information
-        this._portfolioService.getFarmerFarm().subscribe(data => {
-            console.log(data);
-            // gets the farmers farm name
-            console.log(this._portfolioService.getFarmName());
-        });
-    }
+        this._portfolioService
+            .getFarmerIncomeStatements()
+            .subscribe(statements => {
+                // assigns the statement from the farmer income statements service to the statements variable
+                this.statements = statements;
+            });
 
+        // sets the selected year value
+        const formInput = this.dateForm.value;
+        this.selectedYear = formInput.yearInput;
+    }
     ngOnDestroy() {
         // unsubscribe from subscriptions
         this.portfolioSubscription.unsubscribe();
+        this.incomeStatementSubscription.unsubscribe();
+    }
+
+    // function to set the values for the income statement dropdown
+    setIncomeStatementList() {
+        if (this.statements) {
+            // sets the farmer's income statement list
+            this._incomeStatementService.setIncomeStatementYearList();
+            // gets the farmer income statement list and sets it to the statement list
+            this.statementList =
+                this._incomeStatementService.getIncomeStatementYearList();
+            // sets the dropdown value to the default year
+            this.dateForm = this.fb.group({
+                yearInput: new FormControl(this.defaultYear),
+            });
+        }
+    }
+
+    // when the dropdown value for the year is changed
+    onYearChange(event: any) {
+        const formInput = this.dateForm.value;
+        this.selectedYear = formInput.yearInput;
     }
 }

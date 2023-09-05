@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 29 Aug 2023 
+    UPDATED DATE: 05 Sept 2023 
 
     DESCRIPTION:
         This service manages all functions related to bookkeeping:
@@ -53,6 +53,8 @@ export class IncomeStatementService {
     private incomeStatementItems$ = new BehaviorSubject<IncomeStatementItem[]>(
         []
     );
+    // stores the list of years for income statements as a string for dropdown
+    private statementYearList: string[] = [];
 
     constructor(
         private _apiService: ApiService,
@@ -229,6 +231,34 @@ export class IncomeStatementService {
         return this.incomeStatement$.pipe(
             map(statement => statement.incomeStatementItems)
         );
+    }
+
+    // function to set and return a list of income statement year values
+    setIncomeStatementYearList() {
+        // sets the default value for the current year
+        let currentYear = 0;
+        // stored
+
+        if (this.statements) {
+            this.statements.forEach(statement => {
+                const statementYear = this.getStatementYear(
+                    statement.statementDate
+                );
+                // sets the current year to the most recent date
+                if (statementYear > currentYear) {
+                    currentYear = statementYear;
+                }
+                // only adds a new year if it doesn't already exist in the list
+                if (!this.statementYearList.includes(`${statementYear}`)) {
+                    this.statementYearList.push(`${statementYear}`);
+                }
+            });
+        }
+    }
+
+    // returns the income statement year list
+    getIncomeStatementYearList() {
+        return this.statementYearList;
     }
 
     /*---------------------------------
