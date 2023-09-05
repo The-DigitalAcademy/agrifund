@@ -63,12 +63,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     onSubmit() {
         if (this.LoginForm.valid) {
             const formInputVal = this.LoginForm.value;
-            // sets the data that will be sent to the api
-            const loginBody = {
-                email: formInputVal.email,
-                password: formInputVal.password,
-            };
-
+            // passes the from data to the authentication service
             this.subscription.add(
                 this._authService.loginUser(
                     formInputVal.email,

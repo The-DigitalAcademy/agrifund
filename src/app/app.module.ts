@@ -35,6 +35,7 @@ import { LoginPageComponent } from './pages/user-pages/login-page/login-page.com
 import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
 import { ForgotPasswordPageComponent } from './pages/user-pages/forgot-password-page/forgot-password-page.component';
 import { ResetPasswordPageComponent } from './pages/user-pages/reset-password-page/reset-password-page.component';
+import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
 
 /* --------------------------------
     BOOKKEEPING
@@ -47,6 +48,7 @@ import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeep
 /* --------------------------------
     FARMER PORTFOLIO
 ---------------------------------*/
+
 import { DisabledformPersonalInfoComponent } from './components/farmer/personal-info-form/feature-disabledform-personal-info.component';
 import { EquipmentInfoComponent } from './components/farmer/equipment-info/equipment-info.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
@@ -59,7 +61,8 @@ import { EquipmentCreateComponent } from './components/farmer/equipment-create/e
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { CreateAssetComponent } from './pages/farm/create-asset/create-asset.component';
-import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
+import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
+import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-all-forms.component';
 /* --------------------------------
     DATA SUMMARY
 ---------------------------------*/
@@ -104,7 +107,6 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
 
 @NgModule({
     declarations: [
@@ -137,9 +139,10 @@ import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component
         DynamicInputsComponent,
         ExpensesBarChartComponent,
         IncomeExpensesDonutGraphComponent,
-        OtpPageComponent,
+        PlotInfoFormComponent,
+        EditAllFormsComponent,
         CreateAssetComponent,
-        AboutTheFarmComponent,
+        OtpPageComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,40 +1,45 @@
+<<<<<<< HEAD
 <!-- Mamotsoko Precious Maphutha Validations 07/08/2023-->
 <div class="container">
+=======
+<div class="container" id="container">
+>>>>>>> 8bcf3bed66a27efc7f72c315986f876b7927a11c
     <div class="profile-heading">
         <div class="heading">
             <h3>Your Crop Info</h3>
+            
         </div>
         <div class="action">
-            <app-enableform-crop-info
-                (enableFields)="enableFields()"
-                (saveData)="onSaveClicked($event)"></app-enableform-crop-info>
+            <app-edit-all-forms (enableFields)="enableFields()"
+                (saveData)="onSaveClicked($event)"></app-edit-all-forms>
         </div>
     </div>
     <hr />
-    <div class="sub-container">
-        <form
-            [formGroup]="myForm"
-            [attr.disabled]="isDisabled ? 'disabled' : null">
-            <div class="form-input">
-                <label for="seasonFarm" class="form-label"
-                    >I usually farm during:</label
-                >
-                <select
-                    id="seasonFarm"
-                    class="form-control"
-                    formControlName="seasonFarm">
+    <div class="container">
+        <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
+            <div class="form-input" >
+                <label for="seasonFarm" class="form-label">What season do you usually farm in?</label>
+                <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
                     <option value="Spring">Spring</option>
                     <option value="Summer">Summer</option>
                     <option value="Fall">Fall</option>
                     <option value="Winter">Winter</option>
                 </select>
+<<<<<<< HEAD
                   <!--This is the validation for field is required-->
                 <div class="form-text text-danger" *ngIf="myForm.controls['seasonFarm'].hasError('required') && myForm.controls['seasonFarm'].dirty" class="text-danger">Field is required.</div>
+=======
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['seasonFarm'].hasError('required') && myForm.controls['seasonFarm'].dirty"
+                    class="text-danger">Field is required.</div>
+>>>>>>> 8bcf3bed66a27efc7f72c315986f876b7927a11c
             </div>
-            <div class="form-input" [ngClass]="{'has-success': myForm.controls['crop_name'].valid && myForm.controls['crop_name'].dirty, 'has-error': myForm.controls['crop_name'].invalid && myForm.controls['crop_name'].dirty}">
-                <label for="crop_name" class="form-label">I farm with these crops:</label>
+            <div class="form-input"
+                [ngClass]="{'has-success': myForm.controls['crop_name'].valid && myForm.controls['crop_name'].dirty, 'has-error': myForm.controls['crop_name'].invalid && myForm.controls['crop_name'].dirty}">
+                <label for="crop_name" class="form-label">What crops do you farm?</label>
                 <input type="crop_name" class="form-control" formControlName="crop_name"
                     [attr.disabled]="isDisabled ? 'disabled' : null" />
+<<<<<<< HEAD
                 <div class="form-text text-danger" *ngIf="myForm.controls['crop_name'].hasError('textWithoutNumbers') && myForm.controls['crop_name'].dirty" class="text-danger">This field contains text only.</div>
                 <div class="form-text text-danger" *ngIf="myForm.controls['crop_name'].hasError('required') && myForm.controls['crop_name'].dirty" class="text-danger">Field is required.</div>
             </div>
@@ -45,23 +50,37 @@
                 <!--This is the validation for seeds amount-->
                 <div class="form-text text-danger" *ngIf="myForm.controls['seedsAmount'].hasError('isNumeric') && myForm.controls['seedsAmount'].dirty" class="text-danger">This field contains text only.</div>
                 <div class="form-text text-danger"  *ngIf="myForm.controls['seedsAmount'].hasError('required') && myForm.controls['seedsAmount'].dirty" class="text-danger">Field is required.</div>
+=======
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['crop_name'].hasError('textWithoutNumbers') && myForm.controls['crop_name'].dirty"
+                    class="text-danger">This field contains text only.</div>
+                <div class="form-text text-danger"
+                    *ngIf="myForm.controls['crop_name'].hasError('required') && myForm.controls['crop_name'].dirty"
+                    class="text-danger">Field is required.</div>
+>>>>>>> 8bcf3bed66a27efc7f72c315986f876b7927a11c
             </div>
+        <div class="form-input"
+            [ngClass]="{'has-success': myForm.controls['crop_type'].valid && myForm.controls['crop_type'].dirty, 'has-error': myForm.controls['crop_type'].invalid && myForm.controls['crop_type'].dirty}">
+            <label for="crop_type" class="form-label">What type of crops do you farm?</label>
+            <input type="crop_type" class="form-control" formControlName="crop_type"
+                [attr.disabled]="isDisabled ? 'disabled' : null" />
+            <div class="form-text text-danger"
+                *ngIf="myForm.controls['crop_type'].hasError('textWithoutNumbers') && myForm.controls['crop_type'].dirty"
+                class="text-danger">This field contains text only.</div>
+            <div class="form-text text-danger"
+                *ngIf="myForm.controls['crop_type'].hasError('required') && myForm.controls['crop_type'].dirty"
+                class="text-danger">Field is required.</div>
+        </div>
 
-            <div class="button-container">
-                <button
-                    *ngIf="!isDisabled"
-                    (click)="onSaveClicked(myForm.value)"
-                    [disabled]="!myForm.valid"
+            <!-- <div class="button-container">
+                <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
                     class="btn colourful-btn btn-width">
                     Save
                 </button>
-                <button
-                    *ngIf="!isDisabled"
-                    (click)="onCancelClicked()"
-                    class="btn outline-btn btn-width">
+                <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">
                     Cancel
                 </button>
-            </div>
+            </div> -->
         </form>
     </div>
 </div>

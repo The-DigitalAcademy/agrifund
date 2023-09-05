@@ -5,7 +5,15 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/_models/User';
+import { ApiService } from 'src/app/_services/api-service/api.service';
+
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
+import { Subscription } from 'rxjs';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { CropService } from 'src/app/_services/crop-service/crop.service';
+import { Crop } from 'src/app/_models/crop';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -20,47 +28,83 @@ export class DisabledformCropInfoComponent implements OnInit {
     isDisabled = true;
     editedData: any = null;
     originalFormValues: any;
+    submitted = false;
+    cropInfo!: Crop;
+    private cropSubscription = new Subscription();
+    private portfolioSubscription = new Subscription();
 
     constructor(
         private fb: FormBuilder,
-        private _validationsService: ValidationService
+        private _validationsService: ValidationService,
+        private _apiService: ApiService,
+        private _fb: FormBuilder,
+        private route: ActivatedRoute,
+        private _cropService: CropService,
+        private _portfolioService: PortfolioService
     ) {}
 
     ngOnInit() {
-        this.farmerData = {
-            // Replace this with the actual farmer data
-            seasonFarm: 'Spring',
-            crop_name: 'Potatoes', // Selected crops as an array
-            seedsAmount: '70',
-        };
-
         this.myForm = this.fb.group({
-            seasonFarm: new FormControl({
-                value: this.farmerData.seasonFarm,
-                disabled: true,
-            }),
-            crop_name: new FormControl(
-                { value: this.farmerData.crop_name, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.textWithoutNumbersValidator(),
-                ]
-            ),
-            seedsAmount: new FormControl(
-                { value: this.farmerData.seedsAmount, disabled: true },
-                [
-                    Validators.required,
-                    this._validationsService.isNumericValidator(),
-                ]
-            ),
-            cropsInfo: new FormControl({
-                value: this.farmerData.selectedCrops,
-                disabled: true,
-            }), // Include the cropsInfo field
+            seasonFarm: new FormControl('', []),
+            crop_name: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
+
+            crop_type: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
         });
 
-        // Save the initial form values
-        this.originalFormValues = this.farmerData;
+       this._portfolioService.setFarmerPortfolio();
+        //  this._cropService.setCropData();
+
+        //  this._cropService.getCropData();
+        this.cropSubscription = this._portfolioService
+            .getFarmerCropInfo()
+            .subscribe((crops: Crop[]) => {
+                console.table(crops);
+
+                // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
+                this.myForm.patchValue({
+                    seasonFarm: crops[0].season,
+                    crop_name: crops[0].name,
+                    crop_type: crops[0].type,
+                });
+
+                //Update progress for personal info completion
+                //this._progressService.setPersonalInfoCompleted(true);
+
+                // Set the 'isDisabled' flag to false to enable form editing
+                this.isDisabled = false;
+            });
+    }
+
+    // this._apiService.addRecord(this.record).subscribe(data => {
+    //     // adds the new record to the observable array after successfully adding the record
+    //     this._bookkeepingService.addRecord(this.record);
+    // });
+
+    // getCropDetails() {
+    //     if (!this.cropInfo) {
+    //         this._mockService.getCropInfo().subscribe((data: any) => {
+    //             this.cropInfo = data;
+
+    //             console.table(data);
+
+    //             // Populate the form fields
+    //             this.myForm.patchValue({
+    //                 seasonFarm: this.cropInfo.season,
+    //                 crop_name: this.cropInfo.name,
+    //                 crop_type: this.cropInfo.type,
+    //             });
+    //         });
+    //     }
+    // }
+
+    get createCropControl() {
+        return this.myForm.controls;
     }
 
     enableFields() {
@@ -74,11 +118,27 @@ export class DisabledformCropInfoComponent implements OnInit {
     }
 
     onSaveClicked(formData: any) {
-        this.farmerData = formData;
-        this.isDisabled = true;
-        this.myForm.disable();
+        this.submitted = true; // Indicate that the form has been submitted
+        if (this.myForm.valid) {
+            this.cropInfo = {
+                id: this.cropInfo.id,
+                season: this.myForm.get('seasonFarm')?.value,
+                name: this.myForm.get('crop_name')?.value,
+                type: this.myForm.get(' crop_type')?.value,
+            };
+            console.table(this.cropInfo);
+
+            this._apiService.updateFarmerInfo(this.cropInfo).subscribe(data => {
+                // Save or update the data here
+            });
+        }
         // Set crop info completion status to true
         // this.progressService.setCropInfoCompleted(true);
+
+        // Save or update the data here
+        this.isDisabled = true;
+        this.submitted = false;
+        this.myForm.disable();
     }
 
     onCancelClicked() {
@@ -88,5 +148,6 @@ export class DisabledformCropInfoComponent implements OnInit {
         // Disable the form fields again
         this.isDisabled = true;
         this.myForm.disable();
+        this.submitted = false;
     }
 }

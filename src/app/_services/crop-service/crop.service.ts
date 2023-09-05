@@ -1,75 +1,52 @@
+import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Crop } from 'src/app/_models/crop';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from '../api-service/api.service';
-import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { Farm } from 'src/app/_models/Farm';
+import { Crop } from 'src/app/_models/crop';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CropService {
-    private crops: Crop[] = [];
-    // stores farmer crops as a behviour subject
-    private farmerCrops$ = new BehaviorSubject<Crop[]>([]);
+    private crop: Crop = {
+        id: 0,
+        name: '',
+        season: '',
+        type: '',
+    };
 
-    constructor(
-        private _apiService: ApiService,
-        private _portfolioService: PortfolioService
-    ) {}
+    private cropData$: BehaviorSubject<Crop> = new BehaviorSubject<Crop>({
+        id: 0,
+        name: '',
+        season: '',
+        type: '',
+    });
 
-    createFarmerCrop(cropBody: Crop) {
-        const farmName = this._portfolioService.getFarmName();
-        const addedCrop = {
-            name: cropBody.name,
-            season: cropBody.season,
-            type: cropBody.type,
-        };
-        this._apiService.addCrop(farmName, addedCrop).subscribe(
-            data => {
-                console.log(data);
-            },
-            error => {
-                console.error(
-                    'Error occured when creating new crop data',
-                    error
-                );
-            }
-        );
-    }
-    // set plot info in observable
-    setCropInfo() {
-        // gets the current farm name for a user
-        const farmName = this._portfolioService.getFarmName();
-        // api connecition for getting crop info
-        this._apiService.getAllCrops(farmName).subscribe(
-            (data: any) => {
-                this.crops = data;
-                // adds crop to crop data observable
-                this.farmerCrops$.next(this.crops);
-            },
-            error => {
-                console.error('Error occured fetching crops data');
-                console.error(error);
-            }
-        );
-    }
-    // get farm info
-    getCropInfo() {
-        // esnures that the farm infor is set when get method is called
-        this.setCropInfo();
-
-        // return the behaviour subject containing the farm info data if it is not blank
-        return this.farmerCrops$;
+    constructor(private _portfolioService: PortfolioService) {
+        this.setCropData();
     }
 
-    // adds crop record from api to observable crop
-    addCrop(crop: Crop) {
-        const addedCrop = {
-            id: crop.id,
-            name: crop.name,
-            season: crop.season,
-            type: crop.type,
-        };
+    /*---------------------------------
+        ALL CROP DATA
+    ----------------------------------*/
+
+    // sets the crop data
+
+    setCropData() {
+        //: Observable<Crop>
+        this._portfolioService.setFarmerPortfolio();
+        this._portfolioService
+            .getFarmerCropInfo()
+            .subscribe((crops: Crop[]) => {
+                // sets the crop object to the first crop object in the crop observable
+                this.crop = crops[0];
+                this.cropData$.next(this.crop);
+            });
+        console.table(this.cropData$);
+    }
+
+    getCropData(): Observable<Crop> {
+        return this.cropData$;
     }
 }

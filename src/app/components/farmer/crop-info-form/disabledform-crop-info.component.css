@@ -1,49 +1,67 @@
+/* --------------------------------
+      Created by Nkadimeng Kamogelo
+    ---------------------------------*/
+
+/* Styling for a general container */
 .container {
-  
-    border-color: var(--light-grey);
-    border: 1px solid #ccc;
-  }
-  
-  .form-control {
-    border-color: var(--lighter-grey);
-  }
-  
-  
-  .button-container{
-    display: flex;
-    justify-content: center;
-    
-  }
-  .btn{
-    margin: 30px;
-  }
- hr {
-   
-    height: 2px;
-    border-color: var(--grey);
-    border: 1px solid #ccc;
-    margin-bottom: 19px;
-    }
+  border-color: var(--light-grey);
+  border: 1px solid #ccc;
+  background-color: var(--light-1);
+}
 
-    .profile-heading{
-        display: flex;
-        align-items: center;
-        width:100%;
-      }
+/* Additional styling for a specific container with id "container" */
+#container {
+  background-color: var(--light-1);
+}
 
-      .heading{
-        display:flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-      }
-      .action{
-        display:flex;
-        align-items: center;
-        justify-content: flex-end;
-        width: 100%;
-      }
-       /* CSS Styles for Success and Error States */
+/* Styling for form controls (input fields, etc.) */
+.form-control {
+  border-color: var(--lighter-grey);
+}
+
+/* Styling for button container */
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for buttons */
+.btn {
+  margin: 30px;
+}
+
+/* Styling for horizontal rules (hr) */
+hr {
+  height: 2px;
+  border-color: var(--grey);
+  border: 1px solid #ccc;
+  margin-bottom: 19px;
+}
+
+/* Styling for a heading with a profile section */
+.profile-heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling for a heading section */
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Styling for an action section */
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* CSS Styles for Success and Error States */
 .has-success .form-control {
   border-color: green;
 }

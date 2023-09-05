@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Asset } from 'src/app/_models/asset';
 import { ApiService } from '../api-service/api.service';
+import { Assets } from 'src/app/_models/Assets';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AssetService {
-    private assets: Asset[] = [];
+    private assets: Assets[] = [];
 
-    private farmerAssets$ = new BehaviorSubject<Asset[]>([]);
+    private farmerAssets$ = new BehaviorSubject<Assets[]>([]);
     constructor(private _apiService: ApiService) {}
-    createFarmerAsset(asset: Asset) {}
+    createFarmerAsset(asset: Assets) {}
     // set asset info in observable
     setAssetInfo() {
         // api connecition for getting plot info
@@ -26,7 +26,7 @@ export class AssetService {
         return this.assets;
     }
     // adds crop record from api to observable bookkeeping
-    addAsset(asset: Asset) {
+    addAsset(asset: Assets) {
         const addedAsset = {
             id: asset.id,
             assetName: asset.assetName,

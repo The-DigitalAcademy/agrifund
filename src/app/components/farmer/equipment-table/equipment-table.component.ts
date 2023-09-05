@@ -2,8 +2,9 @@
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Asset } from 'src/app/_models/asset';
+import { Assets } from 'src/app/_models/Assets';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 
 @Component({
@@ -12,12 +13,23 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
     styleUrls: ['./equipment-table.component.css'],
 })
 export class EquipmentTableComponent {
-    assets: Asset[] = [];
+    assets: Assets[] = []; // Initializing assets with interfaceAsset
     isLast: any;
+    equipmentForm!: FormGroup;
+
     constructor(
         private _apiService: ApiService,
         private router: Router
-    ) {}
+    ) { }
+
+    onSaveClicked($event: any) {
+        throw new Error('Method not implemented.');
+    }
+    enableFields() {
+        throw new Error('Method not implemented.');
+    }
+    isDisabled = true;
+    onFileSelected($event: Event) {}
 
     ngOnInit() {
         //use the method to get the all the data
@@ -28,9 +40,7 @@ export class EquipmentTableComponent {
         });
     }
 
-    ngOnDestroy() {}
-
-    onEditClicked() {
-        this.router.navigate(['/equipment-edit']);
+    onEditClicked(id: number) {
+        this.router.navigate(['/equipment-edit', id]);
     }
 }
