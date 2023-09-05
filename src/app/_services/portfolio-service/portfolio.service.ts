@@ -20,10 +20,11 @@ import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/Assets';
-import { Farm } from 'src/app/_models/Farm';
+
 import { HttpClient } from '@angular/common/http';
 import { Plot } from 'src/app/_models/plot';
 import { Crop } from 'src/app/_models/crop';
+import { FarmerFarm } from 'src/app/_models/farmerFarm';
 
 @Injectable({
     providedIn: 'root',
@@ -43,24 +44,26 @@ export class PortfolioService {
             farms: [],
         });
     // stores a user's first name as an observable, default is just 'User
-    private userFirstName$: BehaviorSubject<string> = new BehaviorSubject<string>('User');
+    private userFirstName$: BehaviorSubject<string> =
+        new BehaviorSubject<string>('User');
 
     // stores the farmers farm data
-    private farmerFarm: Farm[] = [];
+    private farmerFarm: FarmerFarm[] = [];
     // stores the farmers farm data as an observable -> initializes as empty
-    private farmerFarm$: BehaviorSubject<Farm> = new BehaviorSubject<Farm>({
-        id: 0,
-        numberOfEmployees: 0,
-        farmName: '',
-        farmAddress: '',
-        yearsActive: 0,
-        address: '', //stores residential address
-        farmingReason: '', //stores the reason for needing funding
-        crops: [],
-        plots: [],
-        assets: [],
-        incomeStatements: [],
-    });
+    private farmerFarm$: BehaviorSubject<FarmerFarm> =
+        new BehaviorSubject<FarmerFarm>({
+            id: 0,
+            numberOfEmployees: 0,
+            farmName: '',
+            farmAddress: '',
+            yearsActive: 0,
+            address: '', //stores residential address
+            farmingReason: '', //stores the reason for needing funding
+            crops: [],
+            plots: [],
+            assets: [],
+            incomeStatements: [],
+        });
 
     // stores the farmers portfolio data
     private farmerIncomeStatements: IncomeStatement[] = [];
@@ -120,7 +123,7 @@ export class PortfolioService {
         FARM DATA
     ----------------------------------*/
     // gets the farmer's fam data
-    getFarmerFarm(): Observable<Farm[]> {
+    getFarmerFarm(): Observable<FarmerFarm[]> {
         // returns the user's farm data from the portfolio
         return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
@@ -128,7 +131,7 @@ export class PortfolioService {
     // sets the value for the farmer farm array and observable
     setFarmerFarm() {
         // gets the farmer farm data and assigns it to the array and the observable
-        this.getFarmerFarm().subscribe((farm: Farm[]) => {
+        this.getFarmerFarm().subscribe((farm: FarmerFarm[]) => {
             // assigns data from get farmer farm to the farmer farm array
             this.farmerFarm = farm;
 
@@ -150,7 +153,6 @@ export class PortfolioService {
     }
 
     getUserFirstName(): Observable<string> {
-
         this.farmerPortfolio$.subscribe((portfolio: FarmerPortfolio) => {
             this.userFirstName$.next(portfolio.firstName);
         });
