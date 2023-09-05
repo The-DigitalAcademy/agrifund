@@ -61,6 +61,14 @@ export class AboutTheFarmComponent implements OnInit {
     }
 
     ngOnInit() {
+         this.farmForm = this.fb.group({
+             address: ['', Validators.required],
+             farmName: ['', Validators.required],
+             farmAddress: ['', Validators.required],
+             yearsActive: ['', Validators.required],
+             numberOfEmployees: ['', Validators.required],
+             farmingReason: ['', Validators.required],
+         });
         this.cropForm = this.fb.group({
             name: ['', Validators.required],
             season: ['', Validators.required],
@@ -72,14 +80,7 @@ export class AboutTheFarmComponent implements OnInit {
             plotSize: ['', Validators.required],
             dateOfOwnership: ['', Validators.required],
         });
-        this.farmForm = this.fb.group({
-            address: ['', Validators.required],
-            farmName: ['', Validators.required],
-            farmAddress: ['', Validators.required],
-            yearsActive: ['', Validators.required],
-            numberOfEmployees: ['', Validators.required],
-            farmingReason: ['', Validators.required],
-        });
+       
         this.assetForm = this.fb.group({
             assetName: ['', Validators.required],
             assetType: ['', Validators.required],
@@ -100,6 +101,25 @@ export class AboutTheFarmComponent implements OnInit {
     goToNextSlide() {
         this.submitted = true;
 
+          if (this.farmForm.valid) {
+              const farmInputValue = this.farmForm.value;
+              this.farm = {
+                  id: 0,
+                  farmName: farmInputValue.farmName,
+                  farmAddress: farmInputValue.farmAddress,
+                  yearsActive: farmInputValue.yearsActive,
+                  numberOfEmployees: farmInputValue.numberOfEmployees,
+                  address: farmInputValue.address,
+                  farmingReason: farmInputValue.farmingReason,
+                  crops: [],
+                  plots: [],
+                  assets: [],
+                  incomeStatements: [],
+              };
+              console.log(this.farm);
+
+              this._farmService.createFarmerFarm(this.farm);
+          }
         if (this.activeSlideId != this.totalSlides) {
             // increments the active slide
             this.activeSlideId++;
@@ -117,25 +137,7 @@ export class AboutTheFarmComponent implements OnInit {
 
             this._cropService.createFarmerCrop(this.crop);
         }
-        if (this.farmForm.valid) {
-            const farmInputValue = this.farmForm.value;
-            this.farm = {
-                id: 0,
-                farmName: farmInputValue.farmName,
-                farmAddress: farmInputValue.farmAddress,
-                yearsActive: farmInputValue.yearsActive,
-                numberOfEmployees: farmInputValue.numberOfEmployees,
-                address: farmInputValue.address,
-                farmingReason: farmInputValue.farmingReason,
-                crops: [],
-                plots: [],
-                assets: [],
-                incomeStatements: [],
-            };
-            console.log(this.farm);
-
-            this._farmService.createFarmerFarm(this.farm);
-        }
+  
         if (this.plotForm.valid) {
             const formInputValue = this.plotForm.value;
             this.plot = {
@@ -186,8 +188,9 @@ export class AboutTheFarmComponent implements OnInit {
         console.log(
             'Farm form => ',
             this.farmForm,
-            this.plotForm,
-            this.cropForm
+            this.cropForm,
+            this.plotForm
+            
         );
         // console.log(this.cropForm);
     }
