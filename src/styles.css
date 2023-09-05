@@ -759,6 +759,11 @@ input[type=number]:focus,
     align-items: center;
     margin: 0px 0px 0px var(--small-s) !important;
 }
+
+.year-filter select {
+    /* sets width for year filter dropdown */
+    width: 80px;
+}
 /*----------------------
     BUTTONS
 ----------------------*/
