@@ -746,6 +746,12 @@ input[type=number]:focus,
     margin: var(--xx-small-s) 0px !important;
 }
 
+/* styles for the filter by year form label */
+.year-filter label {
+    min-width: max-content;
+    margin-right: var(--small-s) !important;
+    margin-bottom: 0px !important;
+}
 /*----------------------
     BUTTONS
 ----------------------*/
