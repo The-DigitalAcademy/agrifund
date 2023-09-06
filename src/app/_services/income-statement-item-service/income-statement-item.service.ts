@@ -97,6 +97,10 @@ export class IncomeStatementItemService {
         return this.incomeStatementItem$;
     }
 
+    // getFiveHighestExpenses(): Observable<IncomeStatementItem>[] {
+        
+    // }
+
     /*---------------------------------
         CREATE/ADD DATA
     ----------------------------------*/
@@ -145,25 +149,6 @@ export class IncomeStatementItemService {
     /*---------------------------------
         SET DATA 
     ----------------------------------*/
-    // sets data from the api to the bookkeeping observable
-    setBookkeepingRecords() {
-        // this._apiService.getAllStatementItems().subscribe(
-        //     (data: any) => {
-        //         this.records = data;
-        //         // each record fetched from the api is added to the bookkeeping record observable
-        //         this.records.forEach(record => {
-        //             this.addRecord(record);
-        //         });
-        //     },
-        //     error => {
-        //         console.error(
-        //             `Error occurred while getting bookkeeping records`
-        //         );
-        //         console.error(error);
-        //     }
-        // );
-    }
-
     // adds bookkeeping record from api to observable bookkeeping
     addRecord(record: IncomeStatementItem) {
         const addedRecord = {
@@ -187,7 +172,6 @@ export class IncomeStatementItemService {
     ----------------------------------*/
     // returns all bookkeeping records within the behavior subject
     getAllBookkeepingRecords(): Observable<any> {
-        this.setBookkeepingRecords();
         return this.bookkeepingRecords$;
     }
 

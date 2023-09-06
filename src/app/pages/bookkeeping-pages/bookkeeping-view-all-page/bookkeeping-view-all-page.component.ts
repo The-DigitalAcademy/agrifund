@@ -90,7 +90,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         this.selectedYear = formInput.yearInput;
         // gets income statement items for year
         this._incomeStatementService
-            .getIncomeStatementItemsForYear(Number(this.selectedYear))
+            .getFarmerIncomeStatementItems()
             .subscribe(incomeStatementItems => {
                 this.incomeStatementRecords = incomeStatementItems;
                 console.table(this.incomeStatementRecords);

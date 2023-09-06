@@ -38,6 +38,8 @@ export class ExpensesBarChartComponent implements OnInit {
         // sets the labels for the five highest expenses
         // this.fiveHighestExpenses.sub
 
+        // this.fiveHighestExpenses = this._incomeStatementItemService.
+
 
 
 
