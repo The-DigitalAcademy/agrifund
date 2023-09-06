@@ -7,13 +7,11 @@
         This component is responsible for the creation and generation of a donut chart for income 
         and expenses
     PARAMETERS:
-        _portfolioService: PortfolioService -> used to access portfolio service methods
         _incomeStatementService: IncomeStatementService -> used to access income statement service methods
         
 -------------------------------------------------------------------------------------------------*/
 import { Chart } from 'chart.js/auto';
-import { Component, Input, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { Component, OnInit } from '@angular/core';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
 import { Observable } from 'rxjs';
 @Component({
@@ -31,10 +29,7 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
     // stores the number value of total expense
     totalExpense = 0;
 
-    constructor(
-        private _portfolioService: PortfolioService,
-        private _incomeStatementService: IncomeStatementService
-    ) {}
+    constructor(private _incomeStatementService: IncomeStatementService) {}
 
     ngOnInit() {
         // sets the total expense to the one in the income statement service
