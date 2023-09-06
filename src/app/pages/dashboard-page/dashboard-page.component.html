@@ -36,7 +36,7 @@
 </ng-template>
 
 <ng-template #hasData>
-    <div class="outer-container">
+    <div class="container outer-container">
         <div class="container-header">
             <div class="actions">
                 <div class="justify-start"></div>
@@ -61,46 +61,44 @@
             </div>
         </div>
 
-        <div class="outer-container">
-            <app-money-card-summary></app-money-card-summary>
-            <div class="justify-center">
-                <div class="container">
-                    <div class="container-header">
-                        <label class="card-title"> Money In & Money Out </label>
-                    </div>
-                    <!-- container for doughnut chart -->
-                    <div class="chart-container">
-                        <app-income-expenses-donut-graph
-                            [totalExpense$]="totalExpense$"
-                            [totalIncome$]="
-                                totalIncome$
-                            "></app-income-expenses-donut-graph>
-                    </div>
+        <app-money-card-summary></app-money-card-summary>
+        <div class="justify-center">
+            <div class="container">
+                <div class="container-header">
+                    <label class="card-title"> Money In & Money Out </label>
                 </div>
-            </div>
-
-            <div class="justify-center">
-                <div class="justify-start container">
-                    <div class="container-header">
-                        <label class="card-title">
-                            Five Highest Money Out Values
-                        </label>
-                    </div>
-                </div>
-                <div class="justify-end container">
-                    <div class="container-header">
-                        <label class="card-title">
-                            Five Highest Money In Values
-                        </label>
-                    </div>
-                    <!-- put graphs to summarize top 5 most expenses here -->
+                <!-- container for doughnut chart -->
+                <div class="chart-container">
+                    <app-income-expenses-donut-graph
+                        [totalExpense$]="totalExpense$"
+                        [totalIncome$]="
+                            totalIncome$
+                        "></app-income-expenses-donut-graph>
                 </div>
             </div>
         </div>
 
-        <div class="outer-container">
-            <!-- <app-farmer-portfolio-progressbar></app-farmer-portfolio-progressbar> -->
+        <div class="justify-center money-graphs">
+            <div class="justify-start container">
+                <div class="container-header">
+                    <label class="card-title">
+                        Five Highest Money Out Values
+                    </label>
+                </div>
+            </div>
+            <div class="justify-end container">
+                <div class="container-header">
+                    <label class="card-title">
+                        Five Highest Money In Values
+                    </label>
+                </div>
+                <!-- put graphs to summarize top 5 most expenses here -->
+            </div>
         </div>
-        <!-- </ng-template> -->
     </div>
+
+    <div class="container outer-container">
+        <app-farmer-portfolio-progressbar></app-farmer-portfolio-progressbar>
+    </div>
+    <!-- </ng-template> -->
 </ng-template>
