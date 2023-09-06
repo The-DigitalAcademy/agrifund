@@ -9,7 +9,7 @@ UPDATED DATE: 17 AUG 2023  */
 /* Container for doughnut chart */
 .chart-container {
   height: 100% !important;
-  width: 95% !important;
+  width: 100% !important;
   position: relative !important;
   background-color: #F7F7F7 !important;
   flex-wrap: wrap;
