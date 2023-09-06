@@ -1,4 +1,3 @@
-import { IncomeStatement } from './../../_models/IncomeStatement';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
@@ -22,6 +21,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
+import { IncomeStatement } from './../../_models/IncomeStatement';
 @Injectable({
     providedIn: 'root',
 })
@@ -113,7 +113,25 @@ export class IncomeStatementItemService {
         return this.incomeStatementItem$;
     }
 
-    // getFiveHighestExpenses(): Observable<incomeStatementItem>[] {
+    // gets all records that are an expense
+    getExpenseRecords() {
+        return this.getFarmerIncomeStatementItems().pipe(
+            // records are filtered to only return records that are expenses
+            map(records =>
+                records.filter(record => record.category === 'Expense')
+            )
+        );
+    }
+
+    // gets the five highest expenses for the current income statement items
+    // getFiveHighestExpenses(): Observable<IncomeStatementItem[]> {
+    //     // the income statement records are sorted from the highest value to the lowest
+    //     this.getExpenseRecords().pipe(
+    //         map(records => {
+    //             records.sort((a, b) => a.amount - b.amount)
+    //         }),
+    //         slice(0,5) // gets the five highest values from the array
+    //     );
 
     // }
 
