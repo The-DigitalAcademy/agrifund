@@ -1,54 +1,60 @@
-// AUTHOR: Bolebo Mohlala
-//     CREATE DATE: 08 AUG 2023
-//     UPDATED DATE: 21 Aug 2023
+import { Observable } from 'rxjs';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Bolebo Mohlala, Monique Nagel
+    CREATE DATE: 08 Aug 2023 
+    UPDATED DATE: 06 Sept 2023 
 
-//     DESCRIPTION:
-//     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
-//     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
+    DESCRIPTION:
+        This component is responsible for the creation and generation of a bar chart that summarizes
+        the highest expenses for a farmer for the year selected on dashboard
+    PARAMETERS:
+        _portfolioService: PortfolioService -> used to access portfolio service methods
+        _incomeStatementService: IncomeStatementService -> used to access income statement service methods
+        
+-------------------------------------------------------------------------------------------------*/
 
-import { Component } from '@angular/core';
-import { Chart, registerables } from 'chart.js/auto';
-import { ChartService } from 'src/app/_services/chart-service/chart.service';
+import { Component, OnInit } from '@angular/core';
+import { Chart } from 'chart.js/auto';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
-Chart.register(...registerables);
 @Component({
     selector: 'app-expenses-bar-chart',
     templateUrl: './expenses-bar-chart.component.html',
     styleUrls: ['./expenses-bar-chart.component.css'],
 })
-export class ExpensesBarChartComponent {
-    constructor(private chartService: ChartService) {}
+export class ExpensesBarChartComponent implements OnInit {
+    constructor(
+        private _incomeStatementItemService: IncomeStatementItemService
+    ) {}
 
-    chartdata: any = [];
-    total_expense: any = [];
-    total_income: any = [];
-    net_income: any = [];
+    // stores the five highest expenses in an observable
+    fiveHighestExpenses: Observable<IncomeStatementItem>[] = [];
+    // stores the labels for a chart
+    chartLabels: any = [];
+    // stores the data used in the chart
 
-    ngOnInit(): void {
-        this.chartService.getFarmerByEmail().subscribe(result => {
-            this.chartdata = result;
-            if (this.chartdata != null) {
-                for (let i = 0; i < this.chartdata.length; i++) {
-                    this.total_expense.push(this.chartdata[i].amount);
-                }
-                this.RenderChart(this.total_expense);
-            }
-            // console.log(this.total_expense)
-        });
+    ngOnInit() {
+        // sets the labels for the five highest expenses
+        // this.fiveHighestExpenses.sub
 
-        // this.RenderChart();
+
+
+
+
+        this.RenderChart();
     }
 
     // size of the graph properties
-    RenderChart(total_expense: any) {
+    RenderChart() {
         new Chart('barchart', {
             type: 'bar',
             data: {
                 labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
                 datasets: [
                     {
-                        label: 'Expenses',
-                        data: total_expense,
+                        label: '',
+                        data: '',
                         backgroundColor: ['#5A6537'],
                     },
                 ],

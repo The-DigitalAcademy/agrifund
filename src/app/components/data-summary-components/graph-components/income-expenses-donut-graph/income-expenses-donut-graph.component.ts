@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs';
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Bolebo Mohlala Monique Nagel
+    AUTHOR: Bolebo Mohlala, Monique Nagel
     CREATE DATE: 08 Aug 2023 
     UPDATED DATE: 06 Sept 2023 
 
@@ -8,18 +7,15 @@ import { Observable } from 'rxjs';
         This component is responsible for the creation and generation of a donut chart for income 
         and expenses
     PARAMETERS:
-        private router: Router -> used to route to other bookkeeping functions
-        private _bookkeepingService: BookkeepingService -> used for bookkeeping income statement methods
-        private _offcanvasService: NgbOffcanvas -> the ngBootstrap service for the offcanvas menu
-        private _portfolioService: PortfolioService -> used to access portfolio service methods
+        _portfolioService: PortfolioService -> used to access portfolio service methods
+        _incomeStatementService: IncomeStatementService -> used to access income statement service methods
         
 -------------------------------------------------------------------------------------------------*/
-
 import { Chart } from 'chart.js/auto';
 import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
-
+import { Observable } from 'rxjs';
 @Component({
     selector: 'app-income-expenses-donut-graph',
     templateUrl: './income-expenses-donut-graph.component.html',
@@ -27,9 +23,9 @@ import { IncomeStatementService } from 'src/app/_services/income-statement-servi
 })
 export class IncomeExpensesDonutGraphComponent implements OnInit {
     // gets value for income from the dashboard parent
-    @Input() totalExpense$!: Observable<number>;
+    totalExpense$!: Observable<number>;
     // stores the value of the total income/money in for an income statement of the year
-    @Input() totalIncome$!: Observable<number>;
+    totalIncome$!: Observable<number>;
     //stores the number value of total income
     totalIncome = 0;
     // stores the number value of total expense
@@ -41,9 +37,6 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // ensures the the portfolio data is set to extract income statement info from
-        this._portfolioService.setFarmerPortfolio();
-
         // sets the total expense to the one in the income statement service
         this.totalExpense$ = this._incomeStatementService.getTotalExpense();
         // assigns the value of the observable to the total expenses variable
@@ -71,7 +64,7 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
                         label: '',
                         data: [income, expense],
                         backgroundColor: ['#5A6537', '#9BA66F'],
-                        hoverOffset: 10,
+                        hoverOffset: 5,
                     },
                 ],
             },
