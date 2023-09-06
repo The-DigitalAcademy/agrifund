@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Bolebo Mohlala, Monique Nagel
     CREATE DATE: 08 Aug 2023 
@@ -12,7 +11,7 @@ import { Observable } from 'rxjs';
         _incomeStatementService: IncomeStatementService -> used to access income statement service methods
         
 -------------------------------------------------------------------------------------------------*/
-
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
@@ -39,10 +38,6 @@ export class ExpensesBarChartComponent implements OnInit {
         // this.fiveHighestExpenses.sub
 
         // this.fiveHighestExpenses = this._incomeStatementItemService.
-
-
-
-
 
         this.RenderChart();
     }

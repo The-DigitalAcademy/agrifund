@@ -1,34 +1,27 @@
+import { IncomeStatement } from './../../_models/IncomeStatement';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 29 Aug 2023 
+    UPDATED DATE: 06 Sept 2023 
 
     DESCRIPTION:
         This service manages all functions related to income statement record items:
         Manages CRUD operations
-        Calculates the total bookkeeping records 
-        Filters bookkeeping records
+        Calculates the total bookkeeping incomeStatementItem 
+        Filters bookkeeping incomeStatementItem
 
     PARAMETERS:
+        router: Router -> used to rout to other bookkeeping pages
         _apiService - used to subscribe and call methods related to the api connection
-        _bookkeepingService -> used to subscribe and call methods within the bookkeeping service
-        $bookkeepingRecord -> stores the bookkeeping record as an observable.
-        editRecordForm -> name of the form group used for the reactive form
+        _incomeStatementService: IncomeStatementService -> used to access other income statement service methods
 -------------------------------------------------------------------------------------------------*/
 
 import { Injectable } from '@angular/core';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from '../api-service/api.service';
-import { BehaviorSubject, Observable, map, reduce, tap } from 'rxjs';
-import { PaginationLoadData } from 'src/app/_models/PaginationLoadData';
-import { state } from '@angular/animations';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
-import { User } from 'src/app/_models/User';
-import { UserService } from '../user-service/user.service';
-import { IncomeStatement } from '../../_models/IncomeStatement';
-import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 @Injectable({
     providedIn: 'root',
 })
@@ -36,18 +29,24 @@ export class IncomeStatementItemService {
     /*---------------------------------
         OBSERVABLES
     ----------------------------------*/
-    // used to store all initial values fetched from the api
-    private statements: IncomeStatement[] = [];
-    // will be used to store all income statement items
-    private incomeStatements$ = new BehaviorSubject<IncomeStatement[]>([]);
-    // stores all the bookkeeping records
-    private records: IncomeStatementItem[] = [];
-    // used to store bookkeeping records as observables
-    private bookkeepingRecords$ = new BehaviorSubject<IncomeStatementItem[]>(
+    // stores current income statement as an array
+    // private incomeStatement: IncomeStatement = [];
+    // stores current income statement as an observable
+    private incomeStatement$ = new BehaviorSubject<IncomeStatement>({
+        id: 0,
+        farmId: 0,
+        statementDate: '',
+        totalIncome: 0,
+        totalExpenses: 0,
+        netIncome: 0,
+        incomeStatementItems: [],
+    });
+    // stores income statement items as an array
+    private incomeStatementItem: IncomeStatementItem[] = [];
+    // used to store bookkeeping incomeStatementItem as observables
+    private incomeStatementItems$ = new BehaviorSubject<IncomeStatementItem[]>(
         []
     );
-    // stores the total bookkeeping records number as a behavior subject
-    private totalBookkeepingRecords$ = new BehaviorSubject<number>(0);
     // stores the income statement fetched from the api
     private record: IncomeStatementItem = {
         id: 0,
@@ -74,12 +73,29 @@ export class IncomeStatementItemService {
     constructor(
         private _apiService: ApiService,
         private router: Router,
-        private _portfolioService: PortfolioService,
-        private _incomeStatementService: IncomeStatementService,
-    ) {}
+        private _incomeStatementService: IncomeStatementService
+    ) {
+        // calls method to set the current income statement to us for records
+        this.setCurrentIncomeStatement();
+    }
+
+    // sets the current income statement to the one set in the income statement service
+    setCurrentIncomeStatement() {
+        this._incomeStatementService
+            .getIncomeStatement()
+            .subscribe(incomeStatement => {
+                this.incomeStatement$.next(incomeStatement);
+            });
+    }
     /*---------------------------------
         GET DATA
     ----------------------------------*/
+    // used to get income statement record items of an income statement
+    getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
+        return this.incomeStatement$.pipe(
+            map(statement => statement.incomeStatementItems)
+        );
+    }
 
     // get a single income statement record
     getIncomeStatementRecordById(
@@ -97,8 +113,8 @@ export class IncomeStatementItemService {
         return this.incomeStatementItem$;
     }
 
-    // getFiveHighestExpenses(): Observable<IncomeStatementItem>[] {
-        
+    // getFiveHighestExpenses(): Observable<incomeStatementItem>[] {
+
     // }
 
     /*---------------------------------
@@ -113,7 +129,7 @@ export class IncomeStatementItemService {
             recordBody.category = 'Expense';
         }
 
-        // adds value from the record body to the new records object that matches how the data is received by the api
+        // adds value from the record body to the new incomeStatementItem object that matches how the data is received by the api
         const newRecord = {
             date: recordBody.date,
             category: recordBody.category,
@@ -161,31 +177,18 @@ export class IncomeStatementItemService {
             description: record.description,
         };
 
-        // adds record to records
-        this.records.push(addedRecord);
+        // adds record to incomeStatementItem
+        this.incomeStatementItem.push(addedRecord);
         // adds record to bookkeeping record observable
-        this.bookkeepingRecords$.next(this.records);
+        this.incomeStatementItems$.next(this.incomeStatementItem);
     }
 
     /*---------------------------------
         GET DATA 
     ----------------------------------*/
-    // returns all bookkeeping records within the behavior subject
+    // returns all bookkeeping incomeStatementItem within the behavior subject
     getAllBookkeepingRecords(): Observable<any> {
-        return this.bookkeepingRecords$;
-    }
-
-    // get the total number of  bookkeeping records
-    getTotalBookkeepingRecords(): Observable<number> {
-        // let totalRecords = 0;
-
-        // this._apiService.getAllStatementItems().subscribe((data: any) => {
-        //     this.records = data;
-        //     totalRecords = this.records.length;
-        //     this.totalBookkeepingRecords$.next(totalRecords);
-        // });
-
-        return this.totalBookkeepingRecords$;
+        return this.incomeStatementItems$;
     }
 
     /*---------------------------------
@@ -263,11 +266,11 @@ export class IncomeStatementItemService {
     // loads bookkeeping data according to pagination
     // public loadBookkeepingRecords(
     //     page: number,
-    //     recordsPerPage: number
+    //     incomeStatementItemPerPage: number
     // ): Observable<BookkeepingLoadData> {
-    //     return this.bookkeepingRecords$.pipe(map(records => ({
+    //     return this.bookkeepingRecords$.pipe(map(incomeStatementItem => ({
     //         metadata: {
-    //             itemsPerPage: recordsPerPage,
+    //             itemsPerPage: incomeStatementItemPerPage,
     //             page: page,
     //             totalItems: 10,
     //         },
@@ -282,7 +285,7 @@ export class IncomeStatementItemService {
     // filter by date receives two parameters: startDate and endDate
 
     // TODO
-    // get records by search text
+    // get incomeStatementItem by search text
 
     /*---------------------------------
         CALCULATIONS

@@ -18,10 +18,9 @@
 
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { BehaviorSubject, Observable, last, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 
 @Injectable({
     providedIn: 'root',
@@ -47,12 +46,6 @@ export class IncomeStatementService {
             netIncome: 0,
             incomeStatementItems: [],
         });
-
-    private incomeStatementItems: IncomeStatementItem[] = [];
-    // will be used to store all income statement items
-    private incomeStatementItems$ = new BehaviorSubject<IncomeStatementItem[]>(
-        []
-    );
     // stores the list of years for income statements as a string for dropdown
     private statementYearList: string[] = [];
 
@@ -142,7 +135,7 @@ export class IncomeStatementService {
     }
 
     // used to get a single income statement by it's id
-    getIncomeStatement() {
+    getIncomeStatement(): Observable<IncomeStatement> {
         return this.incomeStatement$;
     }
 
@@ -196,13 +189,6 @@ export class IncomeStatementService {
         });
         // returns a statement for the date
         return this.incomeStatement$;
-    }
-
-    // used to get income statement record items of an income statement
-    getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
-        return this.incomeStatement$.pipe(
-            map(statement => statement.incomeStatementItems)
-        );
     }
 
     // function to set and return a list of income statement year values

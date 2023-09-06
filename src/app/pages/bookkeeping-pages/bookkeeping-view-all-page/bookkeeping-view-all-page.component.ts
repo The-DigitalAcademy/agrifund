@@ -65,6 +65,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private _incomeStatementService: IncomeStatementService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private _offcanvasService: NgbOffcanvas,
         private _portfolioService: PortfolioService,
         private fb: FormBuilder
@@ -89,7 +90,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
         // gets income statement items for year
-        this._incomeStatementService
+        this._incomeStatementItemService
             .getFarmerIncomeStatementItems()
             .subscribe(incomeStatementItems => {
                 this.incomeStatementRecords = incomeStatementItems;
