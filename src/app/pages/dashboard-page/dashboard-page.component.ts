@@ -37,8 +37,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     private incomeStatementSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
-    // stores the currently logged in user data
-    user!: User;
     // form for date filter
     dateForm: FormGroup;
     // sets the default value for dropdown
