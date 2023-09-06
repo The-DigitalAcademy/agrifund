@@ -22,33 +22,37 @@ button {
     flex-direction: column;
 }
 
-label{
+label {
     /* aligns label text to the center */
     text-align: center;
     /* label will stretch to the full available width in a container */
     width: 100%;
 }
 
-#hasData .container {
+.graph-container {
     /* add margin at the top of the containers within has data */
     margin-top: var(--large-s) !important;
 }
 
-.progress-container{
-    /* add margin at the top of the container to make space between 
-    bookkeeping summary and progress */
+.money-graph {
+    /* add space at top of money graphs */
     margin-top: var(--large-s) !important;
 }
 
-
-@media (min-width: 300px) and (max-width:428px) {
-
+.progress-container {
+    /* add margin at the top of the container to make space between 
+    bookkeeping summary and progress */
+    margin-top: var(--large-s) !important;
 }
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
+    .justify-center {
+        /* stacks to graphs on top of each other */
+        flex-direction: column;
+    }
 
 }
 
@@ -56,20 +60,18 @@ label{
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
+    .justify-center {
+        flex-direction: column;
+    }
 
 }
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1024px) {
-
-}
+@media (min-width: 768px) and (max-width: 1024px) {}
 
 /*--------------------------------------
     Media Query for laptops & desktops
 ----------------------------------------*/
-@media (min-width: 1025px) and (max-width: 1280px) {
-
-    
-}
+@media (min-width: 1025px) and (max-width: 1280px) {}
