@@ -40,8 +40,8 @@ export class ExpensesBarChartComponent implements OnInit {
         // this.fiveHighestExpenses = this._incomeStatementItemService.
 
         this._incomeStatementItemService
-            .getIncomeRecords()
-            .subscribe(records => {
+            .getFiveHighestExpenses()
+            .subscribe((records: IncomeStatementItem[]) => {
                 console.table(records);
             });
 

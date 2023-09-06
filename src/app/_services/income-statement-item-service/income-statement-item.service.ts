@@ -134,16 +134,22 @@ export class IncomeStatementItemService {
     }
 
     // gets the five highest expenses for the current income statement items
-    // getFiveHighestExpenses(): Observable<IncomeStatementItem[]> {
-    //     // the income statement records are sorted from the highest value to the lowest
-    //     this.getExpenseRecords().pipe(
-    //         map(records => {
-    //             records.sort((a, b) => a.amount - b.amount)
-    //         }),
-    //         slice(0,5) // gets the five highest values from the array
-    //     );
+    getFiveHighestExpenses() {
+        // the income statement records are sorted from the highest value to the lowest
+        // const sortedList = this.getExpenseRecords().subscribe(records => {
+        //     const sortedList = records.sort((a, b) => b.amount - a.amount);
+        //     return sortedList.slice(0, 5);
+        // });
 
-    // }
+        const fiveHighestExpenses = this.getExpenseRecords().pipe(
+            map(records => {
+                const sortedList = records.sort((a, b) => b.amount - a.amount);
+                return sortedList.slice(0, 5);
+            })
+        );
+
+        return fiveHighestExpenses;
+    }
 
     /*---------------------------------
         CREATE/ADD DATA
