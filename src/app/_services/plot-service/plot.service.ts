@@ -22,18 +22,6 @@ export class PlotService {
         private _portfolioService: PortfolioService
     ) {}
 
-    // createFarmerPlot(farmName: string, plotBody: Plot) {
-    //     this._apiService.addPlot(farmName,plotBody).subscribe(
-    //         result => {
-    //             console.table(`Creates this farm data: ${farmName}`);
-    //         },
-    //         error => {
-    //             console.error('error occured when create new farm data');
-    //             console.error(error);
-    //         }
-    //     );
-    // }
-
     createFarmerPlot(plotBody: Plot) {
         const farmName = this._portfolioService.getFarmName();
         const addedPlot = {

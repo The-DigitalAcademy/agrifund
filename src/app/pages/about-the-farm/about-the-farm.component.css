@@ -59,7 +59,7 @@
 
 
  /*sets the height of the form control on farm form */
- #funding_reason {
+ #farmingReason {
      height: 50px !important;
      resize: vertical;
  }

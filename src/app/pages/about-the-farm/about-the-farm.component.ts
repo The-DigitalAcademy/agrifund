@@ -89,10 +89,12 @@ export class AboutTheFarmComponent implements OnInit {
     // navigates to the next slide
     goToNextSlide() {
         this.submitted = true;
- if (this.activeSlideId != this.totalSlides) {
-     // increments the active slide
-     this.activeSlideId++;
- }
+        if (this.activeSlideId != this.totalSlides) {
+    //  increments the active slide
+        this.activeSlideId++;
+        }
+
+        
         if (this.farmForm.valid) {
             const farmInputValue = this.farmForm.value;
             this.farm = {
@@ -110,8 +112,8 @@ export class AboutTheFarmComponent implements OnInit {
             };
             console.log(this.farm);
 
-            this.checkFarmInfo();
-                //   this._farmService.createFarmerFarm(this.farm);
+            // this.checkFarmInfo();
+                  this._farmService.createFarmerFarm(this.farm);
         }
         // console.log(this.cropForm);
         if (this.cropForm.valid) {
@@ -124,8 +126,8 @@ export class AboutTheFarmComponent implements OnInit {
             };
             console.log(this.crop);
 
-            this.checkCropInfo();
-                //   this._cropService.createFarmerCrop(this.crop);
+            // this.checkCropInfo();
+                  this._cropService.createFarmerCrop(this.crop);
         }
 
         if (this.plotForm.valid) {
@@ -137,8 +139,8 @@ export class AboutTheFarmComponent implements OnInit {
                 dateOfOwnership: formInputValue.date,
             };
             console.log(this.plot);
-            this.checkPlotInfo();
-            // this._plotService.createFarmerPlot(this.plot);
+            // this.checkPlotInfo();
+            this._plotService.createFarmerPlot(this.plot);
         }
 
         if (this.activeSlideId === this.totalSlides) {
@@ -157,56 +159,77 @@ export class AboutTheFarmComponent implements OnInit {
         }
         this.carousel.prev();
     }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     // getAssetFormGroup(index: number): FormGroup {
     //     // Assuming your assets array is available in this component
     //     return this.assetForm;
     // }
 
 
-    // check if farm info has already been submitted
-    checkFarmInfo() {
+    // // check if farm info has already been submitted
+    // checkFarmInfo() {
         // set the portfolio info for a logged in farmer
-        this._portfolioService.setFarmerPortfolio();
+        // this._portfolioService.setFarmerPortfolio();
 
-        this._portfolioService.getFarmerFarm().subscribe(farm => {
-            console.table(farm);
+        // this._portfolioService.getFarmerFarm().subscribe(farm => {
+        //     console.table(farm);
             // checks if the farm info is not empty
-            if (farm.length === 0) {
-                this._farmService.createFarmerFarm(this.farm);
-                console.log(`Farm has been submitted`);
-            } else {
-                console.log(`Farm already exists`);
-            }
-        });
-    }
+    //         if (farm.length === 0) {
+    //             this._farmService.createFarmerFarm(this.farm);
+    //             console.log(`Farm has been submitted`);
+    //         } else {
+    //             console.log(`Farm already exists`);
+    //         }
+    //     });
+    // }
 
     // check if farm info has already been submitted
-    checkCropInfo() {
+    // checkCropInfo() {
         // set the portfolio info for a logged in farmer
-        this._portfolioService.setFarmerPortfolio();
+        // this._portfolioService.setFarmerPortfolio();
 
-        this._portfolioService.getFarmerFarm().subscribe(crop => {
-            console.table(crop);
+        // this._portfolioService.getFarmerFarm().subscribe(crop => {
+        //     console.table(crop);
             // checks if the crop info is not empty
-            if (crop.length === 0) {
-                this._cropService.createFarmerCrop(this.crop);
-                console.log(`Farm has been submitted`);
-            }
-        });
-    }
+    //         if (crop.length === 0) {
+    //             this._cropService.createFarmerCrop(this.crop);
+    //             console.log(`Farm has been submitted`);
+    //         }
+    //     });
+    // }
 
     // check if farm info has already been submitted
-    checkPlotInfo() {
+    // checkPlotInfo() {
         // set the portfolio info for a logged in farmer
-        this._portfolioService.setFarmerPortfolio();
+        // this._portfolioService.setFarmerPortfolio();
 
-        this._portfolioService.getFarmerFarm().subscribe(plot => {
-            console.table(plot);
+        // this._portfolioService.getFarmerFarm().subscribe(plot => {
+            // console.table(plot);
             // checks if the crop info is not empty
-            if (plot.length === 0) {
-                this._plotService.createFarmerPlot(this.plot);
-                console.log(`Farm has been submitted`);
-            }
-        });
-    }
-}
+    //         if (plot.length === 0) {
+    //             this._plotService.createFarmerPlot(this.plot);
+    //             console.log(`Farm has been submitted`);
+    //         }
+    //     });
+    // }
+

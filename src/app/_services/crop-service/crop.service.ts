@@ -62,4 +62,5 @@ export class CropService {
         // return the behaviour subject containing the farm info data if it is not blank
         return this.farmerCrops$;
     }
+
 }

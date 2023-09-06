@@ -123,13 +123,13 @@
         </ng-template>
       </ngb-carousel>
       <div class="actions">
-        <div class="justify-start">
+        <div *ngIf="activeSlideId >1" class="justify-start">
           <button class="carousel-control-prev btn icon-btn-dark" type="button" (click)="goToPreviousSlide()">
             <fa-icon icon="arrow-left"></fa-icon>
             Prev
           </button>
         </div>
-        <div class="carousel slide justify-center">
+        <div *ngIf="activeSlideId > 1" class="carousel slide justify-center">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#aboutFarmCarousel" data-bs-slide-to="0" class="active"
               aria-current="true" aria-label="Slide 1"></button>
@@ -139,8 +139,6 @@
               aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#aboutFarmCarousel" data-bs-slide-to="4"
               aria-label="Slide 5"></button>
-            <button type="button" data-bs-target="#aboutFarmCarousel" data-bs-slide-to="5"
-              aria-label="Slide 6"></button>
           </div>
         </div>
         <div class="justify-end">
