@@ -63,6 +63,14 @@
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
+                        <span class="custom-checkbox" (click)="toggleCheckbox('equipmentInfo')">
+                            <fa-icon *ngIf="isCheckboxChecked('equipmentInfo')" icon="check" class="tick-icon"></fa-icon>
+                        </span>
+                        Equipment Information
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
                         <span
                             class="custom-checkbox"
                             (click)="toggleCheckbox('bookkeepingInfo')">

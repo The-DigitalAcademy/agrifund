@@ -14,6 +14,7 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { CropService } from 'src/app/_services/crop-service/crop.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -40,7 +41,8 @@ export class DisabledformCropInfoComponent implements OnInit {
         private _fb: FormBuilder,
         private route: ActivatedRoute,
         private _cropService: CropService,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _progressService: ProgressServiceService
     ) {}
 
     ngOnInit() {
@@ -57,14 +59,14 @@ export class DisabledformCropInfoComponent implements OnInit {
             ]),
         });
 
-       this._portfolioService.setFarmerPortfolio();
+        this._portfolioService.setFarmerPortfolio();
         //  this._cropService.setCropData();
 
         //  this._cropService.getCropData();
         this.cropSubscription = this._portfolioService
             .getFarmerCropInfo()
             .subscribe((crops: Crop[]) => {
-                console.table(crops);
+                // console.table(crops);
 
                 // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
                 this.myForm.patchValue({
@@ -74,10 +76,10 @@ export class DisabledformCropInfoComponent implements OnInit {
                 });
 
                 //Update progress for personal info completion
-                //this._progressService.setPersonalInfoCompleted(true);
+                this._progressService.setPersonalInfoCompleted(true);
 
                 // Set the 'isDisabled' flag to false to enable form editing
-                this.isDisabled = false;
+                this.isDisabled = true;
             });
     }
 
@@ -112,32 +114,27 @@ export class DisabledformCropInfoComponent implements OnInit {
         this.myForm.enable();
     }
 
-    saveFields() {
-        this.editedData = this.myForm.value;
-        this.isDisabled = true;
-    }
-
     onSaveClicked(formData: any) {
-        this.submitted = true; // Indicate that the form has been submitted
-        if (this.myForm.valid) {
-            this.cropInfo = {
-                id: this.cropInfo.id,
-                season: this.myForm.get('seasonFarm')?.value,
-                name: this.myForm.get('crop_name')?.value,
-                type: this.myForm.get(' crop_type')?.value,
-            };
-            console.table(this.cropInfo);
+        // this.submitted = true; // Indicate that the form has been submitted
+        // if (this.myForm.valid) {
+        //     this.cropInfo = {
+        //         id: this.cropInfo.id,
+        //         season: this.myForm.get('seasonFarm')?.value,
+        //         name: this.myForm.get('crop_name')?.value,
+        //         type: this.myForm.get(' crop_type')?.value,
+        //     };
+        //     console.table(this.cropInfo);
 
-            this._apiService.updateFarmerInfo(this.cropInfo).subscribe(data => {
-                // Save or update the data here
-            });
-        }
+        //     this._apiService.updateFarmerInfo(this.cropInfo).subscribe(data => {
+        //         // Save or update the data here
+        //     });
+        // }
         // Set crop info completion status to true
         // this.progressService.setCropInfoCompleted(true);
 
         // Save or update the data here
         this.isDisabled = true;
-        this.submitted = false;
+
         this.myForm.disable();
     }
 
@@ -148,6 +145,5 @@ export class DisabledformCropInfoComponent implements OnInit {
         // Disable the form fields again
         this.isDisabled = true;
         this.myForm.disable();
-        this.submitted = false;
     }
 }

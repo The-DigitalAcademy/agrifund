@@ -61,17 +61,14 @@ h1 {
     }
 
     /* Adjust margins for specific sections */
-    .crop-info {
-        margin-top: var(--normal-s);
-    }
-    .farm-info {
-        margin-bottom: var(--normal-s);
-    }
+   .personal-info{
+     padding-top: var(--normal-s) !important;
+   }
     .equipment-info {
         padding-bottom: var(--normal-s) !important;
     }
     .plot-info {
-        padding-top: 0 !important;
+        padding-top: var(--normal-s) !important;
     }
     /* Remove padding for specific elements */
     .page-content > * {
@@ -82,8 +79,8 @@ h1 {
     h1 {
         padding: 4% 2% !important;
     }
-    .page-body{
-      width: 100%;
-      display: flex;
+    .page-body {
+        width: 100%;
+        display: flex;
     }
 }

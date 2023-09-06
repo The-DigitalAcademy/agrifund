@@ -11,7 +11,7 @@
     </div>
     <hr />
     <div class="container">
-        <form [formGroup]="myForm" [attr.disabled]="isDisabled ? 'disabled' : null">
+        <form [formGroup]="myForm">
             <div class="form-input" >
                 <label for="seasonFarm" class="form-label">What season do you usually farm in?</label>
                 <select id="seasonFarm" class="form-control" formControlName="seasonFarm">
@@ -49,7 +49,7 @@
                 class="text-danger">Field is required.</div>
         </div>
 
-            <!-- <div class="button-container">
+            <div class="button-container">
                 <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
                     class="btn colourful-btn btn-width">
                     Save
@@ -57,7 +57,7 @@
                 <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">
                     Cancel
                 </button>
-            </div> -->
+            </div>
         </form>
     </div>
 </div>

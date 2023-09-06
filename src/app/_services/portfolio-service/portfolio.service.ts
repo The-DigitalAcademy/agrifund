@@ -162,4 +162,8 @@ export class PortfolioService {
     getFarmerPlotInfo(): Observable<Plot[]> {
         return this.farmerFarm$.pipe(map(farm => farm.plots));
     }
+
+    getFarmerAssetInfo():Observable<Assets[]> {
+        return this.farmerFarm$.pipe(map(farm => farm.assets));
+}
 }

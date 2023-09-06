@@ -165,7 +165,7 @@ export class ApiService {
     }
 
     // POST function for creating a farmer's farm data
-    addFarm(farmBody: any) {
+    addFarm(farmBody: any, ) {
         return this.http.post(`${this.FARMER_FARM_URL}`, farmBody);
     }
 

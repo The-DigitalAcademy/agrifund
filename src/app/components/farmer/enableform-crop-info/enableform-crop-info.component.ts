@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class EnableformCropInfoComponent {
   @Output() enableFields = new EventEmitter<void>();
-  @Output() saveData = new EventEmitter<any>();
+  //@Output() saveData = new EventEmitter<any>();
   @Output() cancelData = new EventEmitter<any>();
   myForm!: FormGroup;
 
@@ -18,7 +18,7 @@ export class EnableformCropInfoComponent {
 
 
   onSaveClicked() {
-    this.saveData.emit(this.myForm.value);
+    //this.saveData.emit(this.myForm.value);
   }
 
   onCancelClicked() {

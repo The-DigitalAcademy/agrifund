@@ -17,34 +17,42 @@
         <hr />
         <div class="content mobile-hidden">
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
-                <div class="form-input" id="label">
-                    <label for="equipmentName" class="form-label">
-                        Name
-                    </label>
-
-                    <input formControlName="equipmentName" type="text" class="form-control" id="equipmentName" />
-
+                <div class="form-group">
+                    <label for="equipmentName">Name of equipment</label>
+                    <div class="form-text">
+                        Describe the equipment in 1-10 words. Example: Wooden Rake
+                    </div>
+                    <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
                 </div>
-                <div class="form-input" id="form-label">
-                    <label for="equipmentType">Type</label>
-                    <input formControlName="equipmentType" type="text" class="form-control" id="equipmentType" />
-
-                </div>
-       
-
-                <div class="form-input" id="label">
-                    <label for="equipmentAge" class="form-label">
-                        Age(years)
-                    </label>
-                    <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
+                <div class="form-group">
+                    <label for="equipmentType">Type of</label>
+                    <input formControlName="equipmentType" class="form-control" id="equipmentTypeInfa-pull-left" />
                 </div>
 
-                <div class="form-input" id="label">
-                    <label for="equipmentAmount" class="form-label">
-                        Purchase Amount
-                    </label>
-                    <input formControlName="equipmentAmount" type="text" class="form-control" id="equipmentAmount" />
+
+                <div class="form-group">
+                    <label for="purchase_Amount">Purchase Amount</label>
+                    <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
                 </div>
+
+                <div class="form-group">
+                    <label for="age">Age in years</label>
+                    <input formControlName="age" class="form-control" id="age" />
+                </div>
+
+                <!-- <div class="document-upload">
+                    <div class="doc-header justify-start">
+                        <label for="recordProof">Upload Proof of Ownership </label>
+                        <div class="form-text">PDF, PNG, JPG</div>
+                    </div>
+                    <hr />
+                    <div class="file">
+                        <input formControlName="recordProof" class="form-control" type="file" id="recordProof" />
+                        <button class="btn colourful-btn ">
+                            View
+                        </button>
+                    </div>
+                </div> -->
                 <div class="actions">
                     <div class="justify-start">
                         <button class="btn colourful-btn btn-width left-btn" type="submit">
@@ -61,8 +69,8 @@
         </div>
 
 
-        
-        <div class="content large-hidden">
+
+        <!-- <div class="content large-hidden">
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
                 <div class="form-input" id="label">
                     <label for="equipmentName" class="form-label">
@@ -86,7 +94,7 @@
                     <input formControlName="equipmentAge" type="text" class="form-control" id="equipmentAge" />
                 </div>
 
-               <div class="form-input" id="label">
+                <div class="form-input" id="label">
                     <label for="equipmentAmount" class="form-label">
                         Purchase Amount
                     </label>
@@ -105,8 +113,8 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
 
-        
-</div>
+
+    </div>
 </div>

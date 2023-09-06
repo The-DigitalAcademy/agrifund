@@ -50,7 +50,7 @@ export class FarmerPortfolioProgressbarComponent {
         this._progressService.cropInfoCompleted$.subscribe(
             cropInfoCompleted => {
                 if (cropInfoCompleted) {
-                    this.progressPercentage += 30;
+                    this.progressPercentage += 7;
                 }
             }
         );
@@ -63,11 +63,14 @@ export class FarmerPortfolioProgressbarComponent {
             }
         );
 
+        this.progressPercentage = Math.min(this.progressPercentage, 100);
+
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false
             farmInfo: [false], // Set initial value to
             cropInfo: [false],
             plotInfo: [false],
+            equipmentInfo: [false],
             bookkeepingInfo: [false],
         });
 
@@ -84,6 +87,9 @@ export class FarmerPortfolioProgressbarComponent {
         this.checklistForm.patchValue({
             plotInfo: true,
         });
+        this.checklistForm.patchValue({
+            equipmentInfo: true,
+        });
 
         this.checklistForm.patchValue({
             cropInfo: true,
@@ -96,4 +102,6 @@ export class FarmerPortfolioProgressbarComponent {
         //     }
         // );
     }
+    
+   
 }

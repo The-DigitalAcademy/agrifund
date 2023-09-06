@@ -67,11 +67,11 @@ export class DisabledformFarmInfoComponent {
 
                this._portfolioService.setFarmerFarm();
 
-          {
+          
               this.farmSubscription = this._portfolioService
                   .getFarmerFarm()
                   .subscribe((farms: Farm[]) => {
-                      console.table(farms);
+                    //   console.table(farms);
 
                       // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
                       this.myForm.patchValue({
@@ -87,41 +87,14 @@ export class DisabledformFarmInfoComponent {
                       //this._progressService.setPersonalInfoCompleted(true);
 
                       // Set the 'isDisabled' flag to false to enable form editing
-                      this.isDisabled = false;
+                      this.isDisabled = true;
                   });
-          }
+          
     }
 
    
 
-    //         this.getFarmDetails();
-    //     }
-
-    //     getFarmDetails() {
-    //         this._apiService.getFarmerPortfolio().subscribe(
-    //             (data: any) => {
-    //                 console.log('Response Data:', data);
-    //                 this.farmInfo = data;
-    //             },
-    //             error => {
-    //                 console.error('Error fetching crop details:', error);
-    //             }
-    //         );
-    //     }
-
-    //     getFarmInfo(id: any) {
-    //         this._apiService.getFarmerById(this.id).subscribe((data: any) => {
-    //             this.farmInfo = data;
-
-    //             this.myForm = this._fb.group({
-    //                 farmer: new FormControl(this.farmInfo.firstName),
-    //                 farm_name: new FormControl(this.farmInfo.lastName),
-    //                 size: new FormControl(this.farmInfo.email),
-    //                 years: new FormControl(this.farmInfo.idNumber),
-    //                 num_employee: new FormControl(this.farmInfo.cellNumber),
-    //             });
-    //         });
-    //     }
+  
 
         get createFarmControl() {
             return this.myForm.controls;
@@ -132,28 +105,10 @@ export class DisabledformFarmInfoComponent {
         this.myForm.enable(); // Enable the formGroup
     }
 
-    saveFields() {
-        this.isDisabled = false;
-        this.isDisabled = true;
-    }
+    
 
     onSaveClicked(formData: any) {
-        //         if (this.myForm.valid) {
-        //             this.farmInfo = {
-        //                 id: this.farmInfo.id,
-        //                 password: this.farmInfo.password,
-        //                 firstName: this.myForm.get('first_name')?.value,
-        //                 lastName: this.myForm.get('last_name')?.value,
-        //                 email: this.myForm.get('email')?.value,
-        //                 idNumber: this.myForm.get('id_number')?.value,
-        //                 cellNumber: this.myForm.get('cell_number')?.value,
-        //             };
-        //             console.table(this.farmInfo);
-
-        //             this._apiService.updateFarmerInfo(this.farmInfo).subscribe(data => {
-        //                 // Save or update the data here
-        //             });
-        // }
+       
 
         this.isDisabled = true;
         this.myForm.disable();

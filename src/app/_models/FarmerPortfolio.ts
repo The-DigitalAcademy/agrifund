@@ -11,6 +11,7 @@ import { Farm } from "./Farm";
 
 
 export interface FarmerPortfolio {
+   
     id: number;
     firstName: string;
     lastName: string;
