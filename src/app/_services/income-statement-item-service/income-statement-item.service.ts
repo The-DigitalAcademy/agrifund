@@ -123,6 +123,16 @@ export class IncomeStatementItemService {
         );
     }
 
+    // gets all records that are an incomes
+    getIncomeRecords() {
+        return this.getFarmerIncomeStatementItems().pipe(
+            // records are filtered to only return records that are incomes
+            map(records =>
+                records.filter(record => record.category === 'Income')
+            )
+        );
+    }
+
     // gets the five highest expenses for the current income statement items
     // getFiveHighestExpenses(): Observable<IncomeStatementItem[]> {
     //     // the income statement records are sorted from the highest value to the lowest
