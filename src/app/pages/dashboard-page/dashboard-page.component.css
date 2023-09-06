@@ -30,10 +30,15 @@ label{
 }
 
 #hasData .container {
-    /* add margin at the top of the  */
+    /* add margin at the top of the containers within has data */
     margin-top: var(--large-s) !important;
 }
 
+.progress-container{
+    /* add margin at the top of the container to make space between 
+    bookkeeping summary and progress */
+    margin-top: var(--large-s) !important;
+}
 
 
 @media (min-width: 300px) and (max-width:428px) {
