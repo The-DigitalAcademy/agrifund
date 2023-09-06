@@ -11,7 +11,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { User } from './../../_models/User';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
@@ -47,6 +47,14 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     selectedYear = '';
     // stores the list of year for income statements
     statementList: string[] = [];
+    // stores the value of the total expenses/money out for an income statement of the year
+    total_expense = 0;
+    // stores the value of the total income/money in for an income statement of the year
+    total_income = 0;
+    // stores the value of the total income/money in for an income statement of the year
+    net_income = 0;
+    // stores the data used for the doughnut chart
+    doughnutChartData: any = [];
 
     constructor(
         private _portfolioService: PortfolioService,
@@ -108,4 +116,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
     }
+
+    // method to generate the doughnut chart
 }

@@ -1,13 +1,25 @@
-// AUTHOR: Bolebo Mohlala
-//     CREATE DATE: 08 AUG 2023
-//     UPDATED DATE: 21 Aug 2023
-//     DESCRIPTION:
-//     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
-//     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
+import { IncomeStatement } from 'src/app/_models/IncomeStatement';
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Bolebo Mohlala Monique Nagel
+    CREATE DATE: 08 Aug 2023 
+    UPDATED DATE: 06 Sept 2023 
+
+    DESCRIPTION:
+        This component is responsible for the creation and generation of a donut chart for income 
+        and expenses
+    PARAMETERS:
+        private router: Router -> used to route to other bookkeeping functions
+        private _bookkeepingService: BookkeepingService -> used for bookkeeping income statement methods
+        private _offcanvasService: NgbOffcanvas -> the ngBootstrap service for the offcanvas menu
+        private _portfolioService: PortfolioService -> used to access portfolio service methods
+        
+-------------------------------------------------------------------------------------------------*/
 
 import { Chart, registerables } from 'chart.js/auto';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartService } from 'src/app/_services/chart-service/chart.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
 
 Chart.register(...registerables);
 @Component({
@@ -15,16 +27,28 @@ Chart.register(...registerables);
     templateUrl: './income-expenses-donut-graph.component.html',
     styleUrls: ['./income-expenses-donut-graph.component.css'],
 })
-export class IncomeExpensesDonutGraphComponent {
-    constructor(private chartService: ChartService) {}
-
-    total_expense: any = [];
-    total_income: any = [];
-    net_income: any = [];
+export class IncomeExpensesDonutGraphComponent implements OnInit {
+    // stores the value of the total expenses/money out for an income statement of the year
+    total_expense = 0;
+    // stores the value of the total income/money in for an income statement of the year
+    total_income = 0;
+    // stores the value of the total income/money in for an income statement of the year
+    net_income = 0;
+    // stores the data used for a chart
     chartdata: any = [];
 
-    ngOnInit(): void {
+    constructor(
+        private chartService: ChartService,
+        private _portfolioService: PortfolioService,
+        private _incomeStatementService: IncomeStatementService
+    ) {}
+
+    ngOnInit() {
+        // ensures the the portfolio data is set to extract income statement info from
+        this._portfolioService.setFarmerPortfolio();
+
         // method of fetching data and posting data of net income and this.total_income
+
         this.chartService.getTotalNetIncome().subscribe(result => {
             this.chartdata = result;
             if (this.chartdata != null) {
@@ -49,12 +73,10 @@ export class IncomeExpensesDonutGraphComponent {
             // console.log(this.total_income)
         });
     }
-    // RenderChart(total_expense:any)
 
-    // doughnut graph properties
-
+    // function for rendering chart based on the properties passed
     RenderChart(net_income: any, total_income: any) {
-        new Chart('Piechart', {
+        new Chart('incomeExpensesDoughnutChart', {
             type: 'doughnut',
             data: {
                 labels: ['Money Out', 'Money In'],
