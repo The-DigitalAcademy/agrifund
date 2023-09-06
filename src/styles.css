@@ -235,6 +235,18 @@ app-sidebar {
 
 }
 
+/* Container for charts */
+.chart-container {
+  height: 100% !important;
+  width: 100% !important;
+  position: relative !important;
+  flex-wrap: wrap;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  
+}
+
 /* container for container headings */
 .container-header {
     display: flex;
