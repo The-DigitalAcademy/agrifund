@@ -34,11 +34,6 @@ export class ExpensesBarChartComponent implements OnInit {
     // stores the data used in the chart
 
     ngOnInit() {
-        // sets the labels for the five highest expenses
-        // this.fiveHighestExpenses.sub
-
-        // this.fiveHighestExpenses = this._incomeStatementItemService.
-
         this._incomeStatementItemService
             .getFiveHighestExpenses()
             .subscribe((records: IncomeStatementItem[]) => {

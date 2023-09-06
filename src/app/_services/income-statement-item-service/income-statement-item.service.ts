@@ -133,22 +133,24 @@ export class IncomeStatementItemService {
         );
     }
 
-    // gets the five highest expenses for the current income statement items
+    // gets the five highest expenses for the current income statement items for the year
     getFiveHighestExpenses() {
-        // the income statement records are sorted from the highest value to the lowest
-        // const sortedList = this.getExpenseRecords().subscribe(records => {
-        //     const sortedList = records.sort((a, b) => b.amount - a.amount);
-        //     return sortedList.slice(0, 5);
-        // });
-
-        const fiveHighestExpenses = this.getExpenseRecords().pipe(
+        return this.getExpenseRecords().pipe(
             map(records => {
                 const sortedList = records.sort((a, b) => b.amount - a.amount);
                 return sortedList.slice(0, 5);
             })
         );
+    }
 
-        return fiveHighestExpenses;
+    // gets the five highest incomes for the current income statement items for the year
+    getFiveHighestIncomes() {
+        return this.getIncomeRecords().pipe(
+            map(records => {
+                const sortedList = records.sort((a, b) => b.amount - a.amount);
+                return sortedList.slice(0, 5);
+            })
+        );
     }
 
     /*---------------------------------
