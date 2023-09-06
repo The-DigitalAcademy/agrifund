@@ -10,12 +10,16 @@
         
 -------------------------------------------------------------------------------------------------*/
 
-import { User } from './../../_models/User';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnDestroy,
+    OnInit,
+    ViewChild,
+} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
-import { FarmService } from 'src/app/_services/farm-service/farm.service';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
 import {
@@ -24,6 +28,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import Chart from 'chart.js/auto';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -45,14 +50,10 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     selectedYear = '';
     // stores the list of year for income statements
     statementList: string[] = [];
-    // stores the value of the total expenses/money out for an income statement of the year
-    total_expense = 0;
-    // stores the value of the total income/money in for an income statement of the year
-    total_income = 0;
-    // stores the value of the total income/money in for an income statement of the year
-    net_income = 0;
-    // stores the data used for the doughnut chart
-    doughnutChartData: any = [];
+    // stores the value of the total expenses/money out for an income statement of the year as observable
+    totalExpense$!: Observable<number>;
+    // stores the value of the total income/money in for an income statement of the year as observable
+    totalIncome$!: Observable<number>;
 
     constructor(
         private _portfolioService: PortfolioService,
@@ -70,7 +71,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         this.portfolioSubscription = this._portfolioService
             .getFarmerPortfolio()
             .subscribe(data => {
-                console.table(data);
                 // sets the farmer's farm data in order to get income statement data
                 this._portfolioService.setFarmerFarm();
                 // sets the farmer's income statement list after teh income statements have been set
@@ -87,7 +87,12 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         // sets the selected year value
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
+        // sets the current
+        this._incomeStatementService.getIncomeStatementForYear(
+            Number(this.selectedYear)
+        );
     }
+
     ngOnDestroy() {
         // unsubscribe from subscriptions
         this.portfolioSubscription.unsubscribe();
@@ -114,6 +119,4 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
     }
-
-    // method to generate the doughnut chart
 }

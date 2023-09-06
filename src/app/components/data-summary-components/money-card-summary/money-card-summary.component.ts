@@ -62,7 +62,7 @@ export class MoneyCardSummaryComponent implements OnInit, OnDestroy {
         this.incomeStatementSubscription = this._incomeStatementService
             .getIncomeStatementForYear(2023)
             .subscribe((incomeStatement: IncomeStatement) => {
-                console.table(incomeStatement);
+                // console.table(incomeStatement);
             });
 
         // gets the expenses for the year

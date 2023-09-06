@@ -175,7 +175,6 @@ export class IncomeStatementService {
     // get income statement for a specific year
     getIncomeStatementForYear(year: number) {
         this.getAllIncomeStatements().subscribe(statements => {
-            console.table(statements);
             // checks that the statement is not empty
             if (statements.length > 0) {
                 // sets the statement to the first statement that matches the year
