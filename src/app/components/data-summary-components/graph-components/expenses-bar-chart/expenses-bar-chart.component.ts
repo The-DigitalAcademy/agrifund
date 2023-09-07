@@ -69,6 +69,11 @@ export class ExpensesBarChartComponent implements OnInit {
                 ],
             },
             options: {
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
                 responsive: true,
                 maintainAspectRatio: true,
                 aspectRatio: 1.5,
