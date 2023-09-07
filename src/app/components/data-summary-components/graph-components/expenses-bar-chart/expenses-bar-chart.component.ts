@@ -53,19 +53,19 @@ export class ExpensesBarChartComponent implements OnInit {
             this.chartData.push(record.amount);
         });
 
-        this.RenderChart();
+        this.RenderChart(this.chartLabels, this.chartData);
     }
 
     // size of the graph properties
-    RenderChart() {
+    RenderChart(chartLabels: string[], chartData: number[]) {
         new Chart('barchart', {
             type: 'bar',
             data: {
-                labels: ['Water', 'Seed', 'Equipment', 'Fertilizer', 'Tools'],
+                labels: chartLabels,
                 datasets: [
                     {
                         label: '',
-                        data: '',
+                        data: chartData,
                         backgroundColor: ['#5A6537'],
                     },
                 ],
