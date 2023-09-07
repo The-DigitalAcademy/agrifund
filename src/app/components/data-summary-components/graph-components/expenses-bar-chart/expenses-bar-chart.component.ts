@@ -43,10 +43,9 @@ export class ExpensesBarChartComponent implements OnInit {
                 // assigns values from service method to fiveHighestExpenses Array
                 this.fiveHighestExpenses = records;
             });
-        console.table(this.fiveHighestExpenses);
 
+        // loops through five highest expenses array to assign char labels and data
         this.fiveHighestExpenses.forEach(record => {
-            console.table(record);
             // adds the record description as a chart label
             this.chartLabels.push(record.description);
             // add the record amount as the chart data
@@ -58,7 +57,7 @@ export class ExpensesBarChartComponent implements OnInit {
 
     // size of the graph properties
     RenderChart(chartLabels: string[], chartData: number[]) {
-        new Chart('barchart', {
+        new Chart('barChart', {
             type: 'bar',
             data: {
                 labels: chartLabels,
@@ -66,7 +65,7 @@ export class ExpensesBarChartComponent implements OnInit {
                     {
                         label: '',
                         data: chartData,
-                        backgroundColor: ['#5A6537'],
+                        backgroundColor: ['#9BA66F'],
                     },
                 ],
             },
