@@ -65,6 +65,12 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
             },
             // size of the graph properties
             options: {
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        align: 'start',
+                    },
+                },
                 responsive: true,
                 maintainAspectRatio: true,
                 aspectRatio: 1.7,
