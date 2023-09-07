@@ -28,7 +28,9 @@ export class ExpensesBarChartComponent implements OnInit {
     ) {}
 
     // stores the five highest expenses in an observable
-    fiveHighestExpenses: Observable<IncomeStatementItem>[] = [];
+    fiveHighestExpenses$: Observable<IncomeStatementItem>[] = [];
+    // five highest expenses stored in array
+    fiveHighestExpenses: IncomeStatementItem[] = [];
     // stores the labels for a chart
     chartLabels: any = [];
     // stores the data used in the chart
@@ -37,8 +39,14 @@ export class ExpensesBarChartComponent implements OnInit {
         this._incomeStatementItemService
             .getFiveHighestExpenses()
             .subscribe((records: IncomeStatementItem[]) => {
-                console.table(records);
+                // assigns values from service method to fiveHighestExpenses Array
+                this.fiveHighestExpenses = records;
             });
+        console.table(this.fiveHighestExpenses);
+
+        this.fiveHighestExpenses.forEach(record => {
+            console.table(record);
+        });
 
         this.RenderChart();
     }
