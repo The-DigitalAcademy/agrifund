@@ -45,11 +45,11 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
             this.totalIncome = value;
         });
 
-        this.RenderChart(this.totalIncome, this.totalExpense);
+        this.renderChart(this.totalIncome, this.totalExpense);
     }
 
     // function for rendering chart based on the properties passed
-    RenderChart(income: number, expense: number) {
+    renderChart(income: number, expense: number) {
         new Chart('incomeExpensesDoughnutChart', {
             type: 'doughnut',
             data: {

@@ -51,11 +51,11 @@ export class ExpensesBarChartComponent implements OnInit {
             this.chartData.push(record.amount);
         });
 
-        this.RenderChart(this.chartLabels, this.chartData);
+        this.renderChart(this.chartLabels, this.chartData);
     }
 
     // size of the graph properties
-    RenderChart(chartLabels: string[], chartData: number[]) {
+    renderChart(chartLabels: string[], chartData: number[]) {
         new Chart('barChart', {
             type: 'bar',
             data: {
