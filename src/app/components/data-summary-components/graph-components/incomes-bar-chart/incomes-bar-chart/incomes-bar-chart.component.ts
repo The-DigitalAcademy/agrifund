@@ -37,7 +37,7 @@ export class IncomesBarChartComponent implements OnInit {
 
     ngOnInit() {
         this._incomeStatementItemService
-            .getFiveHighestExpenses()
+            .getFiveHighestIncomes()
             .subscribe((records: IncomeStatementItem[]) => {
                 // assigns values from service method to fiveHighestExpenses Array
                 this.fiveHighestIncomes = records;
@@ -55,7 +55,7 @@ export class IncomesBarChartComponent implements OnInit {
     }
 
     renderChart(chartLabels: string[], chartData: number[]) {
-        new Chart('barChart', {
+        new Chart('incomeBarChart', {
             type: 'bar',
             data: {
                 labels: chartLabels,
@@ -69,7 +69,12 @@ export class IncomesBarChartComponent implements OnInit {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+                maintainAspectRatio: false,
                 aspectRatio: 1.5,
             },
         });
