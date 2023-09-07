@@ -74,7 +74,7 @@ export class IncomesBarChartComponent implements OnInit {
                     },
                 },
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
                 aspectRatio: 1.5,
             },
         });

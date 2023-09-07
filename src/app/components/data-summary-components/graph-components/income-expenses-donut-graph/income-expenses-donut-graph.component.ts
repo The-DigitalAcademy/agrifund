@@ -71,9 +71,8 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
                         align: 'start',
                     },
                 },
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 1.7,
+                // maintainAspectRatio: true,
+                aspectRatio: 1.5,
             },
         });
     }

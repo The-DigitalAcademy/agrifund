@@ -56,7 +56,7 @@ export class ExpensesBarChartComponent implements OnInit {
 
     // size of the graph properties
     renderChart(chartLabels: string[], chartData: number[]) {
-        new Chart('barChart', {
+        new Chart('expenseBarChart', {
             type: 'bar',
             data: {
                 labels: chartLabels,

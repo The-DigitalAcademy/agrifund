@@ -34,24 +34,41 @@ label {
     margin-top: var(--large-s) !important;
 }
 
-.money-graph {
-    /* add space at top of money graphs */
-    margin-top: var(--large-s) !important;
+.graph-container .justify-start{
+    /* adds space between graph on the left and the right */
+    margin-right: var(--normal-s) !important;
+}
+
+.graph-container .justify-end {
+    /* adds space between graph on the right and the left */
+    margin-left: var(--normal-s)!important;
 }
 
 .progress-container {
     /* add margin at the top of the container to make space between 
     bookkeeping summary and progress */
-    margin-top: var(--large-s) !important;
+    margin-top: var(--large-s);
 }
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
-    .justify-center {
+    .graph-container{
         /* stacks to graphs on top of each other */
         flex-direction: column;
+    }
+
+    .graph-container .justify-start {
+        /* removes right margin due to being stacked now */
+        margin-right: 0px !important;
+    }
+
+    .graph-container .justify-end {
+        /* removes left margin due to being stacked now */
+        margin-left: 0px !important;;
+        /* adds space  between the top and bottom graph*/
+        margin-top: var(--large-s) !important;
     }
 
 }
