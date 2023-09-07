@@ -32,8 +32,9 @@ export class ExpensesBarChartComponent implements OnInit {
     // five highest expenses stored in array
     fiveHighestExpenses: IncomeStatementItem[] = [];
     // stores the labels for a chart
-    chartLabels: any = [];
+    chartLabels: string[] = [];
     // stores the data used in the chart
+    chartData: number[] = [];
 
     ngOnInit() {
         this._incomeStatementItemService
@@ -46,6 +47,10 @@ export class ExpensesBarChartComponent implements OnInit {
 
         this.fiveHighestExpenses.forEach(record => {
             console.table(record);
+            // adds the record description as a chart label
+            this.chartLabels.push(record.description);
+            // add the record amount as the chart data
+            this.chartData.push(record.amount);
         });
 
         this.RenderChart();
