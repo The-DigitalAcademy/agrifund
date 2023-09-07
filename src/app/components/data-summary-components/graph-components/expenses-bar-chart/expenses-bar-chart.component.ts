@@ -7,7 +7,6 @@
         This component is responsible for the creation and generation of a bar chart that summarizes
         the highest expenses for a farmer for the year selected on dashboard
     PARAMETERS:
-        _portfolioService: PortfolioService -> used to access portfolio service methods
         _incomeStatementService: IncomeStatementService -> used to access income statement service methods
         
 -------------------------------------------------------------------------------------------------*/
