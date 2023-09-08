@@ -79,7 +79,6 @@ export class IncomeStatementService {
     setIncomeStatement(statement: IncomeStatement) {
         // assigns the statement to the statement observable
         this.incomeStatement$.next(statement);
-        console.log(statement);
     }
 
     /*---------------------------------
@@ -183,7 +182,6 @@ export class IncomeStatementService {
                     // returns the first statement that satisfies the condition
                     return currentStatementYear <= year;
                 });
-                // console.table(statement);
                 if (statement) {
                     // assigns the statement to the statement observable
                     this.incomeStatement$.next(statement);
@@ -285,18 +283,12 @@ export class IncomeStatementService {
             netIncome: 0,
         };
 
-        console.log('Statement created');
-        console.table(statementBody);
         // request to api to create new income statement
         this._apiService
             .createIncomeStatement(farmName, statementBody)
             .subscribe(
                 (data: any) => {
                     this.setAllIncomeStatements();
-                    console.table(
-                        'After creating a new income statement after setting:' +
-                            this.incomeStatements$
-                    );
                     // gets the newly created income statement by its date
                     this.getStatementByDate(date);
                 },
