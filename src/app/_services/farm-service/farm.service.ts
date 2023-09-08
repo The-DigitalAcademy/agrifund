@@ -21,7 +21,9 @@ export class FarmService {
     createFarmerFarm(farmBody: Farm) {
         this._apiService.addFarm(farmBody).subscribe(
             result => {
-                console.table(`Creates this farm data: ${farmBody}`);
+                // console.table(`Creates this farm data: ${farmBody}`);
+                console.log(result);
+                
             },
             error => {
                 console.error(error);
