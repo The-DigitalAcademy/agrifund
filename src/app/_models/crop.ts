@@ -11,7 +11,7 @@ export interface Crop {
     id: number;
     name: string;
     season: string;
-    // price: string;
+    price: number;
     // marketValue: string;
     type: string; //stores the type of crop (vegetable/ fruit)
 }

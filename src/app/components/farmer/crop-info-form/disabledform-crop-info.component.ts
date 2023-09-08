@@ -46,18 +46,21 @@ export class DisabledformCropInfoComponent implements OnInit {
     ngOnInit() {
         this.myForm = this.fb.group({
             seasonFarm: new FormControl('', []),
-            crop_name: new FormControl('', [
+            cropName: new FormControl('', [
                 Validators.required,
                 this._validationsService.textWithoutNumbersValidator(),
             ]),
-
-            crop_type: new FormControl('', [
+            cropType: new FormControl('', [
                 Validators.required,
                 this._validationsService.textWithoutNumbersValidator(),
+            ]),
+            cropPrice: new FormControl('', [
+                Validators.required,
+                this._validationsService.positiveNumberValidator(),
             ]),
         });
 
-       this._portfolioService.setFarmerPortfolio();
+        this._portfolioService.setFarmerPortfolio();
         //  this._cropService.setCropData();
 
         //  this._cropService.getCropData();
@@ -69,8 +72,9 @@ export class DisabledformCropInfoComponent implements OnInit {
                 // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
                 this.myForm.patchValue({
                     seasonFarm: crops[0].season,
-                    crop_name: crops[0].name,
-                    crop_type: crops[0].type,
+                    cropName: crops[0].name,
+                    cropType: crops[0].type,
+                    cropPrice: crops[0].price,
                 });
 
                 //Update progress for personal info completion
@@ -80,28 +84,6 @@ export class DisabledformCropInfoComponent implements OnInit {
                 this.isDisabled = false;
             });
     }
-
-    // this._apiService.addRecord(this.record).subscribe(data => {
-    //     // adds the new record to the observable array after successfully adding the record
-    //     this._bookkeepingService.addRecord(this.record);
-    // });
-
-    // getCropDetails() {
-    //     if (!this.cropInfo) {
-    //         this._mockService.getCropInfo().subscribe((data: any) => {
-    //             this.cropInfo = data;
-
-    //             console.table(data);
-
-    //             // Populate the form fields
-    //             this.myForm.patchValue({
-    //                 seasonFarm: this.cropInfo.season,
-    //                 crop_name: this.cropInfo.name,
-    //                 crop_type: this.cropInfo.type,
-    //             });
-    //         });
-    //     }
-    // }
 
     get createCropControl() {
         return this.myForm.controls;
@@ -123,8 +105,9 @@ export class DisabledformCropInfoComponent implements OnInit {
             this.cropInfo = {
                 id: this.cropInfo.id,
                 season: this.myForm.get('seasonFarm')?.value,
-                name: this.myForm.get('crop_name')?.value,
-                type: this.myForm.get(' crop_type')?.value,
+                name: this.myForm.get('cropName')?.value,
+                type: this.myForm.get(' cropType')?.value,
+                price: this.myForm.get('cropPrice')?.value,
             };
             console.table(this.cropInfo);
 

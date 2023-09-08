@@ -86,6 +86,7 @@ export class IncomeStatementService {
     ----------------------------------*/
     // gets all the income statements retrieved from the portfolio
     getAllIncomeStatements(): Observable<IncomeStatement[]> {
+        this.setAllIncomeStatements();
         return this.incomeStatements$;
     }
 

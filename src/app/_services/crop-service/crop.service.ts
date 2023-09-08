@@ -14,6 +14,7 @@ export class CropService {
         name: '',
         season: '',
         type: '',
+        price: 0,
     };
 
     private cropData$: BehaviorSubject<Crop> = new BehaviorSubject<Crop>({
@@ -21,6 +22,7 @@ export class CropService {
         name: '',
         season: '',
         type: '',
+        price: 0,
     });
 
     constructor(private _portfolioService: PortfolioService) {
