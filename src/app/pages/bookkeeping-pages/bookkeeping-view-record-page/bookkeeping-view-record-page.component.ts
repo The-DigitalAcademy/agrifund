@@ -63,6 +63,14 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
             .getIncomeStatementRecordById(id)
             .subscribe((record: IncomeStatementItem) => {
                 this.record = record;
+                if (this.record.category === 'Income') {
+                    // displays income as money in
+                    this.record.category = 'Money In';
+                } else {
+                    // displays expense as money out
+                    this.record.category = 'Money Out';
+                }
+
             });
     }
 
