@@ -11,7 +11,7 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 import { ActivatedRoute, Router } from '@angular/router';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Subscription } from 'rxjs';
-import { Plot } from 'src/app/_models/plot';
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
 @Component({
     selector: 'app-plot-info-form',
     templateUrl: './plot-info-form.component.html',
@@ -23,7 +23,7 @@ export class PlotInfoFormComponent implements OnInit {
     isDisabled = true;
     editedData: any;
     farmerData: any;
-    plotInfo!: Plot;
+    plotInfo!: FarmerPlot;
     id: any;
     private plotSubscription = new Subscription();
 
@@ -60,7 +60,7 @@ export class PlotInfoFormComponent implements OnInit {
         //  this._cropService.getCropData();
         this.plotSubscription = this._portfolioService
             .getFarmerPlotInfo()
-            .subscribe((plots: Plot[]) => {
+            .subscribe((plots: FarmerPlot[]) => {
                 console.table(plots);
 
                 // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number

@@ -1,4 +1,4 @@
-export interface Plot {
+export interface FarmerPlot {
     id: number;
     plotAddress: string;
     plotSize: string;

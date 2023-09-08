@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Plot } from 'src/app/_models/plot';
+import { Plot } from 'src/app/_models/farmerPlot';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 
 @Injectable({

@@ -22,7 +22,7 @@ import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/Assets';
 
 import { HttpClient } from '@angular/common/http';
-import { Plot } from 'src/app/_models/plot';
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
 import { FarmerFarm } from 'src/app/_models/farmerFarm';
 import { FarmerCrop } from 'src/app/_models/farmerCrop';
 
@@ -174,7 +174,7 @@ export class PortfolioService {
     getFarmerCropInfo(): Observable<FarmerCrop[]> {
         return this.farmerFarm$.pipe(map(farm => farm.crops));
     }
-    getFarmerPlotInfo(): Observable<Plot[]> {
+    getFarmerPlotInfo(): Observable<FarmerPlot[]> {
         return this.farmerFarm$.pipe(map(farm => farm.plots));
     }
 }
