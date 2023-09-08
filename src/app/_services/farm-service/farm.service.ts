@@ -13,17 +13,8 @@ export class FarmService {
 
     // set farm info in observable
     setFarmInfo() {
-        // api connecition for getting farmer info
-        // within api connec tin assign date to behviour subject for farm info
-    }
-
-    // get farm info
-    getFarmInfo() {
-        // esnures that the farm infor is set when get method is called
-        this.setFarmInfo();
-
-        // return the behaviour subject containing the farm info data if it is not blank
-        return this.farms;
+        // api connection for getting farmer info
+        // within api connection assign date to behavior subject for farm info
     }
 
     // creates data for a farmers farm and sends to api
@@ -33,9 +24,17 @@ export class FarmService {
                 console.table(`Creates this farm data: ${farmBody}`);
             },
             error => {
-                
                 console.error(error);
             }
         );
+    }
+
+    // get farm info
+    getFarmInfo() {
+        // ensures that the farm info is set when get method is called
+        this.setFarmInfo();
+
+        // return the behavior subject containing the farm info data if it is not blank
+        return this.farms;
     }
 }

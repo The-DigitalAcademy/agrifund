@@ -5,12 +5,13 @@ import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { Farm } from 'src/app/_models/Farm';
 import { Crop } from 'src/app/_models/crop';
 
+
 @Injectable({
     providedIn: 'root',
 })
 export class CropService {
     private crops: Crop[] = [];
-    // stores farmer crops as a behviour subject
+    // stores farmer crops as a behavior subject
     private farmerCrops$ = new BehaviorSubject<Crop[]>([]);
 
     constructor(
@@ -41,7 +42,7 @@ export class CropService {
     setCropInfo() {
         // gets the current farm name for a user
         const farmName = this._portfolioService.getFarmName();
-        // api connecition for getting crop info
+        // api connection for getting crop info
         this._apiService.getAllCrops(farmName).subscribe(
             (data: any) => {
                 this.crops = data;
@@ -56,10 +57,10 @@ export class CropService {
     }
     // get farm info
     getCropInfo() {
-        // esnures that the farm infor is set when get method is called
+        // ensures that the crop info is set when get method is called
         this.setCropInfo();
 
-        // return the behaviour subject containing the farm info data if it is not blank
+        // return the behavior subject containing the crop info data if it is not blank
         return this.farmerCrops$;
     }
 
