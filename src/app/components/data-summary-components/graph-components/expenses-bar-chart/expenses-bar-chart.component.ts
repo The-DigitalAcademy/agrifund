@@ -25,9 +25,6 @@ export class ExpensesBarChartComponent implements OnInit {
     constructor(
         private _incomeStatementItemService: IncomeStatementItemService
     ) {}
-
-    // stores the five highest expenses in an observable
-    fiveHighestExpenses$: Observable<IncomeStatementItem>[] = [];
     // five highest expenses stored in array
     fiveHighestExpenses: IncomeStatementItem[] = [];
     // stores the labels for a chart
