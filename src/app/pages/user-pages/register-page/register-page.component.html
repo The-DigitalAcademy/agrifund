@@ -253,12 +253,12 @@
                             class="form-control"
                             id="passwordinput"
                             [type]="showPassword ? 'text' : 'password'" />
-                        <span
-                            class="toggle-password"
+                        <button
+                            class="toggle-password-button"
                             (click)="togglePassword()">
                             {{ showPassword ? 'Hide' : 'Show' }}
-                            <!-- Toggle text -->
-                        </span>
+                        </button>
+                        </div>
                         <small
                             *ngIf="
                                 RegisterForm.controls['password'].hasError(
@@ -278,7 +278,7 @@
                             class="text-danger"
                             >Field is required.</small
                         >
-                    </div>
+                   
 
                     <!-- Confirm Password Input -->
                     <div
@@ -296,13 +296,13 @@
                             formControlName="cpassword"
                             class="form-control between-button"
                             id="cpassword"
-                            [type]="
-                                showConfirmPassword ? 'text' : 'password'
-                            " />
-                            <span class="toggle-password" (click)="toggleConfirmPassword()">
-                                {{ showConfirmPassword ? 'Hide' : 'Show' }}
-                                <!-- Toggle text -->
-                            </span>
+                            [type]="showConfirmPassword ? 'text' : 'password'" />
+                        <button
+                            class="toggle-password"
+                            (click)="toggleConfirmPassword()">
+                            {{ showConfirmPassword ? 'Hide' : 'Show' }}
+                            <!-- Toggle text -->
+                        </button>
 
                         <small
                             *ngIf="

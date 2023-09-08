@@ -79,12 +79,12 @@
                            type="{{ showPassword ? 'text' : 'password' }}"
                             class="form-control between-button"
                             id="passwordinput" />
-                        <span
+                        <button
                             class="toggle-password"
                             (click)="togglePassword()">
                             {{ showPassword ? 'Hide' : 'Show' }}
                             <!-- Toggle text -->
-                        </span>
+                        </button>
                         <small
                             *ngIf="
                                 LoginForm.controls['password'].hasError(
