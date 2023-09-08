@@ -93,6 +93,8 @@ export class IncomeStatementService {
     // get an incomeStatement by date
     getStatementByDate(date: Date): IncomeStatement | null {
         let statement = null;
+        // gets the fill year from the data that was passed
+        const year = date.getFullYear();
 
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
@@ -104,11 +106,12 @@ export class IncomeStatementService {
                             currentStatement.statementDate
                         );
 
-                        if (
-                            currentStatementDate <= date ||
-                            currentStatementDate === date
-                        ) {
-                            //returns the last income statement that is less than the current data
+                        // gets the full year of the current statement's date
+                        const currentStatementYear =
+                            currentStatementDate.getFullYear();
+
+                        if (currentStatementYear === year) {
+                            //returns the income statement has the same year as the record
                             return currentStatement;
                         }
 

@@ -94,7 +94,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
             .getFarmerIncomeStatementItems()
             .subscribe(incomeStatementItems => {
                 this.incomeStatementRecords = incomeStatementItems;
-                console.table(this.incomeStatementRecords);
             });
     }
 
