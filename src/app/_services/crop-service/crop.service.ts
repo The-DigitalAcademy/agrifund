@@ -1,8 +1,6 @@
-import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ApiService } from '../api-service/api.service';
 import { Crop } from 'src/app/_models/crop';
 
 @Injectable({

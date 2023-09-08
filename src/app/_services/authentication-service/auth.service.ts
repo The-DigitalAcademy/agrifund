@@ -34,7 +34,7 @@ export class AuthService {
     // stores the session token as an observable
     sessionToken$!: string | null;
     // stores the error message sent by the api
-    errorMessage = '';
+    apiMessage = '';
     // api response structure
     apiResponse = {
         data: '',
@@ -71,8 +71,9 @@ export class AuthService {
             email: loginEmail,
             password: loginPassword,
         };
-        this._apiService.loginUser(loginBody).subscribe(
-            (result: any) => {
+
+        this._apiService.loginUser(loginBody).subscribe({
+            next: (result: any) => {
                 // assigns the result to the structure of the api response object
                 this.apiResponse = result;
                 // sets the token to the one received from the api
@@ -81,13 +82,15 @@ export class AuthService {
                 this.setUserState();
                 //routes to dashboard
                 this.router.navigate(['/dashboard']);
+                this.apiMessage = result.message;
             },
-            error => {
+            error: (error: any) => {
                 console.error(`Error occurred while logging in`);
                 console.log(error);
+                this.apiMessage = error.message;
                 // TODO: when a login fails it should print an error message from the api at the top of a form
-            }
-        );
+            },
+        });
     }
 
     logoutUser() {
