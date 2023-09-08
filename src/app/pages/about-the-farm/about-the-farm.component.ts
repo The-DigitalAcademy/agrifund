@@ -126,10 +126,11 @@ export class AboutTheFarmComponent implements OnInit {
                 season: formInputValue.season,
                 type: formInputValue.type,
             };
-            console.log(this.crop);
+            this._cropService.createFarmerCrop(this.crop);
+            console.table(this.crop);
 
-            this.checkCropInfo();
-                //   this._cropService.createFarmerCrop(this.crop);
+            // this.checkCropInfo();
+                 
         }
 
         if (this.plotForm.valid) {

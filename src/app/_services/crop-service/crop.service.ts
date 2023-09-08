@@ -4,6 +4,7 @@ import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { Farm } from 'src/app/_models/Farm';
 import { Crop } from 'src/app/_models/crop';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -16,52 +17,35 @@ export class CropService {
 
     constructor(
         private _apiService: ApiService,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _http: HttpClient
     ) {}
 
-    createFarmerCrop(cropBody: Crop) {
+    createFarmerCrop(crop: Crop) {
         const farmName = this._portfolioService.getFarmName();
-        const addedCrop = {
-            name: cropBody.name,
-            season: cropBody.season,
-            type: cropBody.type,
-        };
-        this._apiService.addCrop(farmName, addedCrop).subscribe(
-            data => {
+
+        this._apiService.addCrop(farmName, crop).subscribe(
+            (data: any) => {
                 console.log(data);
+                this.crops.push(data);
+                this.farmerCrops$.next(this.crops);
             },
             error => {
                 console.error(
                     'Error occured when creating new crop data',
-                    error
+                    console.error(error)
                 );
             }
         );
     }
-    // set plot info in observable
-    setCropInfo() {
-        // gets the current farm name for a user
-        const farmName = this._portfolioService.getFarmName();
-        // api connection for getting crop info
-        this._apiService.getAllCrops(farmName).subscribe(
-            (data: any) => {
-                this.crops = data;
-                // adds crop to crop data observable
-                this.farmerCrops$.next(this.crops);
-            },
-            error => {
-                console.error('Error occured fetching crops data');
-                console.error(error);
-            }
-        );
+    addCrop(crop: Crop) {
+        const AddedCrop = {
+            id: crop.id,
+            name: crop.name,
+            season: crop.season,
+            type: crop.type,
+        };
+        this.crops.push(AddedCrop);
+        this.farmerCrops$.next(this.crops);
     }
-    // get farm info
-    getCropInfo() {
-        // ensures that the crop info is set when get method is called
-        this.setCropInfo();
-
-        // return the behavior subject containing the crop info data if it is not blank
-        return this.farmerCrops$;
-    }
-
 }
