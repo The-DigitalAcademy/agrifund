@@ -50,7 +50,7 @@ export class FarmerPortfolioProgressbarComponent {
         this._progressService.cropInfoCompleted$.subscribe(
             cropInfoCompleted => {
                 if (cropInfoCompleted) {
-                    this.progressPercentage += 7;
+                    this.progressPercentage += 35;
                 }
             }
         );

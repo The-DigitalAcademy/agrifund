@@ -59,11 +59,12 @@ export class EquipmentCreateComponent implements OnInit {
                 age: formInputVal.age,
                 purchasePrice: formInputVal.purchase_Amount,
             };
-
-              console.table(this.asset);
+            // sends the new asset data 
+            this._assetService.createFarmerAsset(this.asset);
+            console.table(this.asset);
         }
 
-        this._assetService.createFarmerAsset(this.asset);
+        //this._assetService.createFarmerAsset(this.asset);
        
        
         this.router.navigate(['/portfolio']);
