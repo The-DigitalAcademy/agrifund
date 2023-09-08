@@ -13,7 +13,7 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { CropService } from 'src/app/_services/crop-service/crop.service';
-import { Crop } from 'src/app/_models/crop';
+import { FarmerCrop } from 'src/app/_models/farmerCrop';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -29,7 +29,7 @@ export class DisabledformCropInfoComponent implements OnInit {
     editedData: any = null;
     originalFormValues: any;
     submitted = false;
-    cropInfo!: Crop;
+    cropInfo!: FarmerCrop;
     private cropSubscription = new Subscription();
     private portfolioSubscription = new Subscription();
 
@@ -66,7 +66,7 @@ export class DisabledformCropInfoComponent implements OnInit {
         //  this._cropService.getCropData();
         this.cropSubscription = this._portfolioService
             .getFarmerCropInfo()
-            .subscribe((crops: Crop[]) => {
+            .subscribe((crops: FarmerCrop[]) => {
                 console.table(crops);
 
                 // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number

@@ -22,8 +22,6 @@ import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserService } from '../user-service/user.service';
-import { Crop } from 'src/app/_models/crop';
 
 @Injectable({
     providedIn: 'root',

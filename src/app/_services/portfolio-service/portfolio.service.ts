@@ -23,8 +23,8 @@ import { Assets } from 'src/app/_models/Assets';
 
 import { HttpClient } from '@angular/common/http';
 import { Plot } from 'src/app/_models/plot';
-import { Crop } from 'src/app/_models/crop';
 import { FarmerFarm } from 'src/app/_models/farmerFarm';
+import { FarmerCrop } from 'src/app/_models/farmerCrop';
 
 @Injectable({
     providedIn: 'root',
@@ -171,7 +171,7 @@ export class PortfolioService {
         return this.farmerFarm$.pipe(map(farm => farm.incomeStatements));
     }
 
-    getFarmerCropInfo(): Observable<Crop[]> {
+    getFarmerCropInfo(): Observable<FarmerCrop[]> {
         return this.farmerFarm$.pipe(map(farm => farm.crops));
     }
     getFarmerPlotInfo(): Observable<Plot[]> {
