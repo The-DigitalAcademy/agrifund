@@ -994,6 +994,11 @@ hr {
         font-size: var(--font-normal);
     }
 
+    .page-background{
+        /* removes the background image from the mobile device */
+        background-image: none;
+    }
+
     .page-content,
     .mobile-header {
         /* add space at the top to take the navbar size into consideration 
@@ -1014,7 +1019,8 @@ hr {
     .container,
     .form-container {
         width: 100%;
-        /* height: 100%; */
+        /* makes the container take up 100% of the screen height */
+            height: 100%;
         /* border: none !important; */
     }
 

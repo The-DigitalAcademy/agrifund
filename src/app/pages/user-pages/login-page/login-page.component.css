@@ -20,13 +20,9 @@
     }
 
     .page-body {
-        /* removes the background image from the mobile device */
-        background-image: none;
         justify-content: center;/*center items */
     }
     .container {
-        /* makes the container take up 100% of the screen height */
-        height: 100%;
         border: none;/*remove borders from the container*/
     }
 }
