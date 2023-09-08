@@ -20,14 +20,18 @@
     }
 
     .page-body {
-     
-
+        /* removes the background image from the mobile device */
+        background-image: none;
         justify-content: center;/*center items */
     }
     .container {
+        /* makes the container take up 100% of the screen height */
+        height: 100%;
         border: none;/*remove borders from the container*/
     }
 }
+
+
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
@@ -40,11 +44,4 @@
         width: 35% !important;/* width of container to 35% */
     }
 }
-/* CSS Styles for Success and Error States */
-.has-success .form-control {
-    border-color: green;
-}
 
-.has-error .form-control {
-    border-color: red;
-}
