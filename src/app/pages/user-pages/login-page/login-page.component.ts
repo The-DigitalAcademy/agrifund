@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     message = ''; // Message to display error or validation messages
     // used to store subscriptions to services
     private subscription = new Subscription();
+    showPassword = false;
 
     constructor(
         private fb: FormBuilder,
@@ -75,8 +76,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
                     formInputVal.password
                 )
             );
-
-          
         }
     }
+    togglePassword() {
+        this.showPassword = !this.showPassword;
+    }
 }
+

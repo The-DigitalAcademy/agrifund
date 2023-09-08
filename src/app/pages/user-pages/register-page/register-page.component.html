@@ -251,7 +251,14 @@
                         <input
                             formControlName="password"
                             class="form-control"
-                            id="passwordinput" />
+                            id="passwordinput"
+                            [type]="showPassword ? 'text' : 'password'" />
+                        <span
+                            class="toggle-password"
+                            (click)="togglePassword()">
+                            {{ showPassword ? 'Hide' : 'Show' }}
+                            <!-- Toggle text -->
+                        </span>
                         <small
                             *ngIf="
                                 RegisterForm.controls['password'].hasError(
@@ -288,7 +295,15 @@
                         <input
                             formControlName="cpassword"
                             class="form-control between-button"
-                            id="cpassword" />
+                            id="cpassword"
+                            [type]="
+                                showConfirmPassword ? 'text' : 'password'
+                            " />
+                            <span class="toggle-password" (click)="toggleConfirmPassword()">
+                                {{ showConfirmPassword ? 'Hide' : 'Show' }}
+                                <!-- Toggle text -->
+                            </span>
+
                         <small
                             *ngIf="
                                 RegisterForm.hasError('passwordsMatch') &&

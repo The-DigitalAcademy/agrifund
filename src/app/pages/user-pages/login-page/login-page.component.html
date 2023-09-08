@@ -76,8 +76,15 @@
                         <label for="password">Password:</label>
                         <input
                             formControlName="password"
+                           type="{{ showPassword ? 'text' : 'password' }}"
                             class="form-control between-button"
                             id="passwordinput" />
+                        <span
+                            class="toggle-password"
+                            (click)="togglePassword()">
+                            {{ showPassword ? 'Hide' : 'Show' }}
+                            <!-- Toggle text -->
+                        </span>
                         <small
                             *ngIf="
                                 LoginForm.controls['password'].hasError(

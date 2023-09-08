@@ -27,6 +27,8 @@ export class RegisterPageComponent implements OnInit {
     user!: User;
     RegisterForm!: FormGroup;
     submitted = false;
+    showPassword = false;
+    showConfirmPassword = false;
     // used to store subscriptions to services
     private subscription = new Subscription();
 
@@ -34,8 +36,7 @@ export class RegisterPageComponent implements OnInit {
         private fb: FormBuilder,
         private _validationsService: ValidationService,
         private router: Router,
-        private _apiService: ApiService,
-        
+        private _apiService: ApiService
     ) {}
 
     ngOnInit(): void {
@@ -99,5 +100,12 @@ export class RegisterPageComponent implements OnInit {
                     })
             );
         }
+    }
+    togglePassword() {
+        this.showPassword = !this.showPassword;
+    }
+
+    toggleConfirmPassword() {
+        this.showConfirmPassword = !this.showConfirmPassword;
     }
 }
