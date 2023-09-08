@@ -150,7 +150,7 @@ app-sidebar {
     height: 100%;
     width: 100%;
 
-    background-image: url("src/assets/images/background/orange-trees.webp");
+    background-image: url("src/assets/images/background/orange-trees.webp"); 
     background-size: cover;
     background-color: var(--light);
     background-repeat: fill no-repeat;
