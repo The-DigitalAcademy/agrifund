@@ -17,7 +17,7 @@ button {
     margin-left: var(--small-s);
 }
 
-label {
+.graph-container label {
     /* aligns label text to the center */
     text-align: center;
     /* label will stretch to the full available width in a container */
@@ -38,12 +38,12 @@ label {
     height: 100% !important;
 }
 
-.justify-start{
+.justify-start .graph{
     /* adds space between graph on the left and the right */
     margin-right: var(--normal-s) !important;
 }
 
-.justify-end {
+.justify-end .graph {
     /* adds space between graph on the right and the left */
     margin-left: var(--normal-s)!important;
 }

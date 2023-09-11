@@ -11,12 +11,9 @@
 -------------------------------------------------------------------------------------------------*/
 
 import {
-    AfterViewInit,
     Component,
-    ElementRef,
     OnDestroy,
     OnInit,
-    ViewChild,
 } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
@@ -28,7 +25,6 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import Chart from 'chart.js/auto';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -77,7 +73,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
                 this.setIncomeStatementList();
             });
 
-        this._portfolioService
+        this.incomeStatementSubscription = this._portfolioService
             .getFarmerIncomeStatements()
             .subscribe(statements => {
                 // assigns the statement from the farmer income statements service to the statements variable

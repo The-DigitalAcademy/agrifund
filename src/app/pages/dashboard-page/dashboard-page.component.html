@@ -39,7 +39,9 @@
     <div class="container outer-container">
         <div class="container-header">
             <div class="actions">
-                <div class="justify-start"></div>
+                <div class="justify-start">
+                    <h2>Bookkeeping Overview</h2>
+                </div>
                 <form [formGroup]="dateForm">
                     <div class="form-input year-filter justify-end">
                         <label for="yearInput">For Year: </label>
@@ -77,9 +79,7 @@
         <div class="justify-center">
             <div class="container graph-container justify-start">
                 <div class="container-header">
-                    <label class="card-title">
-                        Five Highest Money Out Values
-                    </label>
+                    <label class="card-title"> Highest Money Out Values </label>
                 </div>
                 <div class="graph">
                     <!-- put graphs to summarize top 5 most expenses here -->
@@ -88,9 +88,7 @@
             </div>
             <div class="container graph-container justify-end">
                 <div class="container-header">
-                    <label class="card-title">
-                        Five Highest Money In Values
-                    </label>
+                    <label class="card-title"> Highest Money In Values </label>
                 </div>
                 <!-- put graphs to summarize top 5 most incomes here -->
                 <div class="graph">
