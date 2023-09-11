@@ -21,9 +21,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal-components/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
-import { ApiService } from 'src/app/_services/api-service/api.service';
 import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-bookkeeping-view-record-page',
@@ -70,7 +69,6 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
                     // displays expense as money out
                     this.record.category = 'Money Out';
                 }
-
             });
     }
 
@@ -83,7 +81,7 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
     }
 
     // routes to delete page with the record id
-    deleteRecord(recordId: any) {
+    deleteRecord() {
         // sets that the main modal component should open and instance of the delete modal
         const modalRef = this._modalService.open(
             BookkeepingDeleteModalContentComponent

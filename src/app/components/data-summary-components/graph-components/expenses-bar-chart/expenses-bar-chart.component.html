@@ -4,7 +4,20 @@
     UPDATED DATE: 07 Sept 2023 
  -->
 <!-- a graph in a container -->
-<div class="chart-container">
+<div
+    class="chart-container"
+    *ngIf="
+        fiveHighestExpenses.length > 1;
+        then hasExpenseData;
+        else hasNoExpenseData
+    "></div>
+
+<ng-template #hasExpenseData>
     <!-- doughnut canvas -->
     <canvas id="expenseBarChart"></canvas>
-</div>
+</ng-template>
+
+<!-- when a user doesn't have expense data -->
+<ng-template #hasNoExpenseData>
+    <label>You don't have any money out records.</label>
+</ng-template>

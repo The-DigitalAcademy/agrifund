@@ -29,8 +29,6 @@ export class IncomeStatementService {
     /*---------------------------------
         OBSERVABLES
     ----------------------------------*/
-    // farmer portfolio will be stored in her
-    //private farmerFarm$: Observable<Farm[]>;
     // used to store all initial values fetched from the api
     private statements: IncomeStatement[] = [];
     // will be used to store all income statement items

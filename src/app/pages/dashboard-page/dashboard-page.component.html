@@ -62,8 +62,8 @@
         </div>
 
         <app-money-card-summary></app-money-card-summary>
-        <div class="justify-center graph-container">
-            <div class="container doughnut-graph">
+        <div class="justify-center">
+            <div class="container graph-container doughnut-graph">
                 <div class="container-header">
                     <label class="card-title"> Money In & Money Out </label>
                 </div>
@@ -74,24 +74,28 @@
             </div>
         </div>
 
-        <div class="justify-center graph-container">
-            <div class="justify-start container">
+        <div class="justify-center">
+            <div class="container graph-container justify-start">
                 <div class="container-header">
                     <label class="card-title">
                         Five Highest Money Out Values
-                        <!-- put graphs to summarize top 5 most expenses here -->
-                        <app-expenses-bar-chart></app-expenses-bar-chart>
                     </label>
                 </div>
+                <div class="graph">
+                    <!-- put graphs to summarize top 5 most expenses here -->
+                    <app-expenses-bar-chart></app-expenses-bar-chart>
+                </div>
             </div>
-            <div class="justify-end container">
+            <div class="container graph-container justify-end">
                 <div class="container-header">
                     <label class="card-title">
                         Five Highest Money In Values
                     </label>
                 </div>
                 <!-- put graphs to summarize top 5 most incomes here -->
-                <app-incomes-bar-chart></app-incomes-bar-chart>
+                <div class="graph">
+                    <app-incomes-bar-chart> </app-incomes-bar-chart>
+                </div>
             </div>
         </div>
     </div>

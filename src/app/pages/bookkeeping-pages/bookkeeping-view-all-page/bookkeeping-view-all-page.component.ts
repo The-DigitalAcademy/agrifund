@@ -77,11 +77,11 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // gets the farmer's income statements
-        this.incomeStatementSubscription = this._portfolioService
+        this._portfolioService
             .getFarmerIncomeStatements()
-            .subscribe((data: IncomeStatement[]) => {
+            .subscribe((statements: IncomeStatement[]) => {
                 // assigns the statements to the statement array
-                this.statements = data;
+                this.statements = statements;
                 // sets the values for the year dropdown list
                 this.setIncomeStatementList();
             });
