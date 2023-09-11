@@ -34,6 +34,8 @@ export class IncomesBarChartComponent implements OnInit {
     chartLabels: string[] = [];
     // stores the data used in the chart
     chartData: number[] = [];
+    // stores the chart
+    incomeBarChart: any = [];
 
     ngOnInit() {
         this._incomeStatementItemService
@@ -55,7 +57,7 @@ export class IncomesBarChartComponent implements OnInit {
     }
 
     renderChart(chartLabels: string[], chartData: number[]) {
-        new Chart('incomeBarChart', {
+        this.incomeBarChart = new Chart('incomeBarChart', {
             type: 'bar',
             data: {
                 labels: chartLabels,
