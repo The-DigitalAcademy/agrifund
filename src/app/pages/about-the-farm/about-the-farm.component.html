@@ -10,7 +10,7 @@
       </div>
 
       <ngb-carousel class="container inner-container" #carousel="ngbCarousel">
-        <ng-template ngbSlide id="slide1">
+        <ng-template ngbSlide id="introSlide">
           <div class="justify-center">
             <img class="carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
             <h1>Welcome To AgriFund</h1>
@@ -21,7 +21,7 @@
           </div>
         </ng-template>
         <!-- slide 2 for farm -->
-        <ng-template ngbSlide #farm>
+        <ng-template ngbSlide id="farmSlide">
           <div class="justify-center">
             <h2 class="justify-center">Farm</h2>
             <div class="container inner-container">
@@ -31,25 +31,81 @@
                   Please enter your residential address. Might not be te same as your farm address.
                   <input formControlName="address" class="form-control" id="address" />
                 </div>
+                <div class="form-text text-danger" *ngIf="
+                            (farmForm.controls['address'].touched ||
+                                submitted) &&
+                            farmForm.controls['address'].errors?.[
+                                'required'
+                            ]
+                        ">
+                  Please enter the correct address.
+                </div>
                 <div class="form-group">
                   <label for="farmName">What is the name of your farm?</label>
                   <input formControlName="farmName" class="form-control" id="farmName" />
+                </div>
+                <div class="form-text text-danger" *ngIf="
+                                                  (farmForm.controls['farmName'].touched ||
+                                                      submitted) &&
+                                                  farmForm.controls['farmName'].errors?.[
+                                                      'required'
+                                                  ]
+                                              ">
+                  Please enter the correct farm name.
                 </div>
                 <div class="form-group">
                   <label for="farmAddress">Where is your farm located?</label>
                   <input formControlName="farmAddress" class="form-control" id="farmAddress" />
                 </div>
+                <div class="form-text text-danger" *ngIf="
+                                                      (farmForm.controls['farmAddress'].touched ||
+                                                          submitted) &&
+                                                      farmForm.controls['farmAddress'].errors?.[
+                                                          'required'
+                                                      ]
+                                                  ">
+                  Please enter the correct address.
+                </div>
                 <div class="form-group">
                   <label for="yearsActive">How many years have you been actively farming?</label>
                   <input formControlName="yearsActive" class="form-control" id="yearsActive" />
                 </div>
+                <div class="form-text text-danger" *ngIf="
+                                            (farmForm.controls['yearsActive'].touched ||
+                                            submitted) &&
+                                           farmForm.controls['yearsActive'].errors?.[
+                                          'required'
+                                          ]
+                                                                                ">
+                  Please enter years active for the farm.
+                </div>
                 <div class="form-group">
                   <label for="numberOfEmployees">How many people help you with your farming?</label>
                   <input formControlName="numberOfEmployees" class="form-control" id="numberOfEmployees" />
+                  <div class="form-text text-danger" *ngIf="
+                                                                      (farmForm.controls['numberOfEmployees'].touched ||
+                                                                      submitted) &&
+                                                                     farmForm.controls['numberOfEmployees'].errors?.[
+                                                                    'required'
+                                                                    ]
+                                                                                                          ">
+                    Please enter number of employees who work at the farm.
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="farmingReason">Why do you need funding for your farming activities?</label>
                   <input formControlName="farmingReason" class="form-control" id="farmingReason" />
+
+                  <div class="form-text text-danger"
+                    *ngIf="
+                                                        (farmForm.controls['farmingReason'].touched ||
+                                                                          submitted) &&
+                                                        farmForm.controls['farmingReason'].errors?.[
+                                                          'required'
+                                                        ]
+                                                                                                                                    ">
+                    Please enter number the reason why you want funding.
+                  </div>
                 </div>
               </form>
             </div>
@@ -71,6 +127,14 @@
                         <option value="Fall">Fall</option>
                         <option value="Winter">Winter</option>
                       </select>
+                      <div class="form-text text-danger" *ngIf="
+                                                    cropForm.controls['season'].touched &&
+                                                    cropForm.controls['season'].errors?.[
+                                                        'required'
+                                                    ]
+                                                ">
+                        Please select a season for crop.
+                      </div>
                     </div>
                     <div class="form-group">
                       <label for="name">What crops do you farm?</label>
@@ -80,6 +144,14 @@
                         <option value="Fibre">Fibre Crops</option>
                         <option value="Wheat">Wheat</option>
                       </select>
+                      <div class="form-text text-danger" *ngIf="
+                                        cropForm.controls['name'].touched &&
+                                        cropForm.controls['name'].errors?.[
+                                       'required'
+                                        ]
+                                    ">
+                        Please select a name for crop.
+                      </div>
                     </div>
                     <div class="form-group">
                       <label for="type">What is the type of your crop?</label>
@@ -87,6 +159,14 @@
                         <option value="Vegetables">Vegetables</option>
                         <option value="Fruits">Fruits</option>
                       </select>
+                      <div class="form-text text-danger" *ngIf="
+                                    cropForm.controls['type'].touched &&
+                                    cropForm.controls['type'].errors?.[
+                                    'required'
+                                    ]
+                                 ">
+                        Please select the type of crop.
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -95,7 +175,7 @@
           </ng-template>
         </ng-template>
         <!-- slide 4 for plot -->
-        <ng-template ngbSlide #plot>
+        <ng-template ngbSlide id="plotSlide">
           <div class="justify-center">
 
             <div class="justify-center">
@@ -114,10 +194,26 @@
                       <option value="15 to 18 hectares">15 to 18 hectares</option>
                       <option value="19 to 22 hectares">19 to 22 hectares</option>
                     </select>
+                    <div class="form-text text-danger" *ngIf="
+                                                            plotForm.controls['plotSize'].touched &&
+                                                            plotForm.controls['plotSize'].errors?.[
+                                                            'required'
+                                                            ]
+                                                         ">
+                      Please select the size of your farm.
+                    </div>
                   </div>
                   <label for="dateOfOwnership">When did you start farming on this land?</label>
                   <input formControlName="dateOfOwnership" type="date" class="form-control" id="dateOfOwnership" />
                 </form>
+                <div class="form-text text-danger" *ngIf="
+                                      plotForm.controls['dateOfOwnership'].touched &&
+                                      plotForm.controls['dateOfOwnership'].errors?.[
+                                    'required'
+                                    ]
+                                  ">
+                  Please specify a valid date for your farm.
+                </div>
               </div>
             </div>
           </div>

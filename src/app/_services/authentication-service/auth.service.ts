@@ -43,6 +43,7 @@ export class AuthService {
         private router: Router,
         private _apiService: ApiService,
         private _jwtService: JwtService,
+
     ) {
         this.setSessionToken();
     }
@@ -77,7 +78,7 @@ export class AuthService {
                 // sets the user login state to true
                 this.setUserState();
                 //routes to dashboard
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/about-farm']);
                 this.apiMessage = result.message;
             },
             error: (error: any) => {
