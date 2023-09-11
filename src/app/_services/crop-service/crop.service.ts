@@ -22,7 +22,10 @@ export class CropService {
     ) {}
 
     createFarmerCrop(crop: Crop) {
+        this._portfolioService.setFarmerPortfolio();
+        this._portfolioService.setFarmerFarm();
         const farmName = this._portfolioService.getFarmName();
+        console.log(`Farm Name for crop: ${farmName}`);
 
         this._apiService.addCrop(farmName, crop).subscribe(
             (data: any) => {

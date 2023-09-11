@@ -1,4 +1,3 @@
-
 import { Plot } from 'src/app/_models/plot';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,7 +27,7 @@ export class AboutTheFarmComponent implements OnInit {
     // stores the total slides of the carousel
     totalSlides: number = 5;
     // sets the first slide as the active slide
-    slides: any = ['slide1', 'slide2', 'slide3', 'slide4'];
+    slides: any = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5'];
     farmForm!: FormGroup;
     cropForm!: FormGroup;
     plotForm!: FormGroup;
@@ -49,7 +48,7 @@ export class AboutTheFarmComponent implements OnInit {
         private _portfolioService: PortfolioService,
         private _cropService: CropService,
         private _plotService: PlotService,
-        private _farmService: FarmService,
+        private _farmService: FarmService
     ) {
         // prevents the carousel from wrapping
         carouselConfig.wrap = false;
@@ -91,59 +90,65 @@ export class AboutTheFarmComponent implements OnInit {
     // navigates to the next slide
     goToNextSlide() {
         this.submitted = true;
-        if (this.activeSlideId != this.totalSlides) {
-    //  increments the active slide
-        this.activeSlideId++;
+        if (this.activeSlideId <= this.totalSlides) {
+            //  increments the active slide
+            this.activeSlideId++;
+            console.log(`Current slide: ${this.activeSlideId}`);
         }
 
-        
-        if (this.farmForm.valid) {
-            const farmInputValue = this.farmForm.value;
-            this.farm = {
-                id: this.id,
-                farmName: farmInputValue.farmName,
-                farmAddress: farmInputValue.farmAddress,
-                yearsActive: farmInputValue.yearsActive,
-                numberOfEmployees: farmInputValue.numberOfEmployees,
-                address: farmInputValue.address,
-                farmingReason: farmInputValue.farmingReason,
-                crops: [],
-                plots: [],
-                assets: [],
-                incomeStatements: [],
-            };
-            console.log(this.farm);
+        if ((this.activeSlideId === 2)) {
+            if (this.farmForm.valid) {
+                const farmInputValue = this.farmForm.value;
+                this.farm = {
+                    id: this.id,
+                    farmName: farmInputValue.farmName,
+                    farmAddress: farmInputValue.farmAddress,
+                    yearsActive: farmInputValue.yearsActive,
+                    numberOfEmployees: farmInputValue.numberOfEmployees,
+                    address: farmInputValue.address,
+                    farmingReason: farmInputValue.farmingReason,
+                    crops: [],
+                    plots: [],
+                    assets: [],
+                    incomeStatements: [],
+                };
+                console.log(this.farm);
 
-            this.checkFarmInfo();
+                this.checkFarmInfo();
                 //   this._farmService.createFarmerFarm(this.farm);
-        }
-        // console.log(this.cropForm);
-        if (this.cropForm.valid) {
-            const formInputValue = this.cropForm.value;
-            this.crop = {
-                id: this.id,
-                name: formInputValue.name,
-                season: formInputValue.season,
-                type: formInputValue.type,
-            };
-            this._cropService.createFarmerCrop(this.crop);
-            console.table(this.crop);
-
-            // this.checkCropInfo();
-                 
+            }
         }
 
-        if (this.plotForm.valid) {
-            const formInputValue = this.plotForm.value;
-            this.plot = {
-                id: this.id,
-                plotAddress: formInputValue.plotAddress,
-                plotSize: formInputValue.plotSize,
-                dateOfOwnership: formInputValue.date,
-            };
-            console.log(this.plot);
-            this.checkPlotInfo();
-            // this._plotService.createFarmerPlot(this.plot);
+        if (this.activeSlideId === 3) {
+            // console.log(this.cropForm);
+            if (this.cropForm.valid) {
+                const formInputValue = this.cropForm.value;
+                this.crop = {
+                    id: this.id,
+                    name: formInputValue.name,
+                    season: formInputValue.season,
+                    type: formInputValue.type,
+                };
+                // this._cropService.createFarmerCrop(this.crop);
+                console.table(this.crop);
+
+                this.checkCropInfo();
+            }
+        }
+
+        if (this.activeSlideId === 4) {
+            if (this.plotForm.valid) {
+                const formInputValue = this.plotForm.value;
+                this.plot = {
+                    id: this.id,
+                    plotAddress: formInputValue.plotAddress,
+                    plotSize: formInputValue.plotSize,
+                    dateOfOwnership: formInputValue.date,
+                };
+                console.log(this.plot);
+                this.checkPlotInfo();
+                // this._plotService.createFarmerPlot(this.plot);
+            }
         }
 
         if (this.activeSlideId === this.totalSlides) {
@@ -159,10 +164,12 @@ export class AboutTheFarmComponent implements OnInit {
         if (this.activeSlideId != 1) {
             // decrements the active slide
             this.activeSlideId--;
+            console.log(`Current slide: ${this.activeSlideId}`);
         }
+
         this.carousel.prev();
     }
-    
+
     // check if farm info has already been submitted
     checkFarmInfo() {
         // set the portfolio info for a logged in farmer
@@ -186,11 +193,11 @@ export class AboutTheFarmComponent implements OnInit {
         this._portfolioService.setFarmerPortfolio();
 
         this._portfolioService.getFarmerFarm().subscribe(crop => {
-            console.table(crop);
+            // console.table(crop);
             // checks if the crop info is not empty
             if (crop.length === 0) {
                 this._cropService.createFarmerCrop(this.crop);
-                console.log(`Farm has been submitted`);
+                console.log(`Crop has been submitted`);
             }
         });
     }

@@ -5,12 +5,11 @@
 
 
     <form class="form-container container outer-container">
-      <div *ngIf="activeSlideId > 1"
-      class="page-heading">
+      <div *ngIf="activeSlideId > 1" class="page-heading">
         <h1>Tell Me About Your Farm</h1>
       </div>
 
-      <ngb-carousel class="container inner-container" #carousel="ngbCarousel" [activeId]="'slide1'">
+      <ngb-carousel class="container inner-container" #carousel="ngbCarousel">
         <ng-template ngbSlide id="slide1">
           <div class="justify-center">
             <img class="carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
@@ -21,8 +20,8 @@
             </p>
           </div>
         </ng-template>
-
-        <ng-template ngbSlide id="slide2">
+        <!-- slide 2 for farm -->
+        <ng-template ngbSlide #farm>
           <div class="justify-center">
             <h2 class="justify-center">Farm</h2>
             <div class="container inner-container">
@@ -56,45 +55,47 @@
             </div>
 
           </div>
-<ng-template ngbSlide id="slide3">
-          <div class="justify-center">
-
+          <!-- slide 3 for crop -->
+          <ng-template ngbSlide id="cropSlide">
             <div class="justify-center">
-              <h2>Crops</h2>
-              <div class="container inner-container">
-                <form [formGroup]="cropForm">
-                  <div class="form-group">
-                    <label for="season">What season do you usually farm in?</label>
-                    <select id="season" class="form-control" formControlName="season">
-                      <option value="Spring">Spring</option>
-                      <option value="Summer">Summer</option>
-                      <option value="Fall">Fall</option>
-                      <option value="Winter">Winter</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">What crops do you farm?</label>
-                    <select id="name" class="form-control" formControlName="name">
-                      <option value="Corn">Corn</option>
-                      <option value="Maize">Maize</option>
-                      <option value="Fibre">Fibre Crops</option>
-                      <option value="Wheat">Wheat</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="type">What is the type of your crop?</label>
-                    <select id="type" class="form-control" formControlName="type">
-                      <option value="Vegetables">Vegetables</option>
-                      <option value="Fruits">Fruits</option>
-                    </select>
-                  </div>
-                </form>
+
+              <div class="justify-center">
+                <h2>Crops</h2>
+                <div class="container inner-container">
+                  <form [formGroup]="cropForm">
+                    <div class="form-group">
+                      <label for="season">What season do you usually farm in?</label>
+                      <select id="season" class="form-control" formControlName="season">
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Winter">Winter</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">What crops do you farm?</label>
+                      <select id="name" class="form-control" formControlName="name">
+                        <option value="Corn">Corn</option>
+                        <option value="Maize">Maize</option>
+                        <option value="Fibre">Fibre Crops</option>
+                        <option value="Wheat">Wheat</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="type">What is the type of your crop?</label>
+                      <select id="type" class="form-control" formControlName="type">
+                        <option value="Vegetables">Vegetables</option>
+                        <option value="Fruits">Fruits</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
+          </ng-template>
         </ng-template>
-        </ng-template>
-        <ng-template id="slide4" ngbSlide>
+        <!-- slide 4 for plot -->
+        <ng-template ngbSlide #plot>
           <div class="justify-center">
 
             <div class="justify-center">
