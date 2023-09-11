@@ -1,17 +1,17 @@
-import { Plot } from 'src/app/_models/plot';
+
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Assets } from 'src/app/_models/Assets';
-
-import { Farm } from 'src/app/_models/Farm';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { CropService } from 'src/app/_services/crop-service/crop.service';
 import { FarmService } from 'src/app/_services/farm-service/farm.service';
 import { PlotService } from 'src/app/_services/plot-service/plot.service';
-import { Crop } from 'src/app/_models/crop';
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
+import { FarmerFarm } from 'src/app/_models/farmerFarm';
+import { FarmerCrop } from 'src/app/_models/farmerCrop';
 
 @Component({
     selector: 'app-about-the-farm',
@@ -33,9 +33,9 @@ export class AboutTheFarmComponent implements OnInit {
     plotForm!: FormGroup;
 
     submitted = false;
-    farm!: Farm;
-    crop!: Crop;
-    plot!: Plot;
+    farm!: FarmerFarm;
+    crop!: FarmerCrop;
+    plot!: FarmerPlot;
     asset!: Assets;
     id = 0;
     isLast: any;
@@ -127,6 +127,7 @@ export class AboutTheFarmComponent implements OnInit {
                     id: this.id,
                     name: formInputValue.name,
                     season: formInputValue.season,
+                    price: 0,
                     type: formInputValue.type,
                 };
                 // this._cropService.createFarmerCrop(this.crop);

@@ -1,27 +1,66 @@
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { ApiService } from '../api-service/api.service';
-import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { Farm } from 'src/app/_models/Farm';
-import { Crop } from 'src/app/_models/crop';
 import { HttpClient } from '@angular/common/http';
-
+import { FarmerCrop } from 'src/app/_models/farmerCrop';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CropService {
-    private crops: Crop[] = [];
+    private crop: FarmerCrop = {
+        id: 0,
+        name: '',
+        season: '',
+        type: '',
+        price: 0,
+    };
+    private crops: FarmerCrop[] = [];
     // stores farmer crops as a behavior subject
-    private farmerCrops$ = new BehaviorSubject<Crop[]>([]);
+    private farmerCrops$ = new BehaviorSubject<FarmerCrop[]>([]);
+
+    private cropData$: BehaviorSubject<FarmerCrop> =
+        new BehaviorSubject<FarmerCrop>({
+            id: 0,
+            name: '',
+            season: '',
+            type: '',
+            price: 0,
+        });
 
     constructor(
         private _apiService: ApiService,
         private _portfolioService: PortfolioService,
         private _http: HttpClient
-    ) {}
+    ) {
+        this.setCropData();
+    }
 
-    createFarmerCrop(crop: Crop) {
+    /*---------------------------------
+        ALL CROP DATA
+    ----------------------------------*/
+
+    // sets the crop data
+
+    setCropData() {
+        //: Observable<Crop>
+        this._portfolioService.setFarmerPortfolio();
+        this._portfolioService
+            .getFarmerCropInfo()
+            .subscribe((crops: FarmerCrop[]) => {
+                // sets the crop object to the first crop object in the crop observable
+                this.crop = crops[0];
+                this.cropData$.next(this.crop);
+            });
+        console.table(this.cropData$);
+    }
+
+    getCropData(): Observable<FarmerCrop> {
+        return this.cropData$;
+    }
+    createFarmerCrop(crop: FarmerCrop) {
         this._portfolioService.setFarmerPortfolio();
         this._portfolioService.setFarmerFarm();
         const farmName = this._portfolioService.getFarmName();
@@ -41,11 +80,12 @@ export class CropService {
             }
         );
     }
-    addCrop(crop: Crop) {
+    addCrop(crop: FarmerCrop) {
         const AddedCrop = {
             id: crop.id,
             name: crop.name,
             season: crop.season,
+            price: 0,
             type: crop.type,
         };
         this.crops.push(AddedCrop);

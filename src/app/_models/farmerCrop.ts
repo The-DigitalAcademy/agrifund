@@ -7,11 +7,11 @@
     Model for storing the data for a Farmer's crop data
 -------------------------------------------------------------------------------------------------*/
 
-export interface Crop {
+export interface FarmerCrop {
     id: number;
     name: string;
     season: string;
-    // price: string;
-    // marketValue: string;
+    price: number;
+    // marketValue: number;
     type: string; //stores the type of crop (vegetable/ fruit)
 }

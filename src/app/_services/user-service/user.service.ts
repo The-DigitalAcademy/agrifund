@@ -1,3 +1,4 @@
+import { JwtService } from './../JWT-service/jwt.service';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../authentication-service/auth.service';
 import { ApiService } from '../api-service/api.service';
@@ -43,4 +44,5 @@ export class UserService {
 
     // get user first name
     getUserFirstName() {}
+
 }

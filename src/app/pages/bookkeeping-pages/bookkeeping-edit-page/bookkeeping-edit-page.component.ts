@@ -33,7 +33,7 @@ import { IncomeStatementItemService } from 'src/app/_services/income-statement-i
 })
 export class BookkeepingEditPageComponent implements OnInit {
     // used to store the id of the bookkeeping record
-    id!: any;
+    recordId!: number;
     // used to store the bookkeeping record's data retrieved from the api
     record!: IncomeStatementItem;
     // reactive form used
@@ -57,7 +57,9 @@ export class BookkeepingEditPageComponent implements OnInit {
 
     ngOnInit() {
         // gets the id passed through the routing url
-        this.getRecordDetails((this.id = this.route.snapshot.params['id']));
+        this.recordId = this.route.snapshot.params['id'];
+        this.getRecordDetails();
+        console.log(this.recordId);
 
         this.editRecordForm = this.fb.group({
             recordName: ['', [Validators.required]],
@@ -67,26 +69,25 @@ export class BookkeepingEditPageComponent implements OnInit {
         });
     }
 
-    getRecordDetails(id: any) {
+    getRecordDetails() {
         // subscribes to api connection to get a bookkeeping record by the id passed through the page url
-        this._apiService
-            .getStatementItemById(this.id)
-            .subscribe((data: any) => {
-                this.record = data;
+        this._incomeStatementItemService
+            .getIncomeStatementRecordById(this.recordId)
+            .subscribe(record => {
+                this.record = record;
                 // set the input values to the data from the api service
-                this.editRecordForm = this.fb.group({
-                    recordName: new FormControl(this.record.description),
-                    recordType: new FormControl(this.record.category),
-                    recordAmount: new FormControl(this.record.amount),
-                    recordProof: new FormControl(this.record.proofOfReceipt),
+                this.editRecordForm.patchValue({
+                    recordName: this.record.description,
+                    recordType: this.record.category,
+                    recordAmount: this.record.amount,
+                    recordProof: this.record.proofOfReceipt,
                 });
             });
     }
 
     // routes back to view record page
-    goBackToDetails(recordId: any) {
-        // console.log(recordId);
-        this.router.navigate(['bookkeeping/view-record', recordId]);
+    goBackToDetails() {
+        this.router.navigate(['bookkeeping/view-record', this.recordId]);
     }
 
     get createRecordControl() {
@@ -113,12 +114,12 @@ export class BookkeepingEditPageComponent implements OnInit {
             const updatedRecord = {
                 // takes the existing record id and saves it to the object being passed
                 id: this.record.id,
-                statementId: 0,
+                statementId: 1,
                 description: formInputVal.recordName,
                 category: formInputVal.recordType,
                 amount: formInputVal.recordAmount,
                 proofOfReceipt: formInputVal.recordProof,
-                date: formInputVal.date,
+                date: this.record.date,
             };
 
             this._incomeStatementItemService.updateBookkeepingRecord(

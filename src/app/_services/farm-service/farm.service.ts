@@ -1,9 +1,23 @@
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Monique Nagel
+    CREATE DATE: 31 Jul 2023
+    UPDATED DATE: 
+
+    DESCRIPTION:
+     This service is used to manage all CRUD functionality for a farmer's farm
+
+    PARAMETERS:
+    registerUser( newUser: User) -> receives an body that is an instance of User
+    loginUser( email: string, password:string) -> both parameters passed should be a string
+
+-------------------------------------------------------------------------------------------------*/
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { ApiService } from '../api-service/api.service';
-import { Farm } from 'src/app/_models/Farm';
+import { FarmerFarm } from 'src/app/_models/farmerFarm';
 
 @Injectable({
     providedIn: 'root',
@@ -12,21 +26,22 @@ export class FarmService {
     // farmer portfolio will be stored in her
     private farmerPortfolio$: Observable<FarmerPortfolio>;
     // stores the farmers farm data
-    private farmerFarm: Farm[] = [];
+    private farmerFarm: FarmerFarm[] = [];
     // stores the farmers farm data as an observable -> initializes as empty
-    private farmerFarm$: BehaviorSubject<Farm> = new BehaviorSubject<Farm>({
-        id: 0,
-        numberOfEmployees: 0,
-        farmName: '',
-        farmAddress: '',
-        yearsActive: 0,
-        address: '', //stores residential address
-        farmingReason: '', //stores the reason for needing funding
-        crops: [],
-        plots: [],
-        assets: [],
-        incomeStatements: [],
-    });
+    private farmerFarm$: BehaviorSubject<FarmerFarm> =
+        new BehaviorSubject<FarmerFarm>({
+            id: 0,
+            numberOfEmployees: 0,
+            farmName: '',
+            farmAddress: '',
+            yearsActive: 0,
+            address: '', //stores residential address
+            farmingReason: '', //stores the reason for needing funding
+            crops: [],
+            plots: [],
+            assets: [],
+            incomeStatements: [],
+        });
     constructor(
         private _portfolioService: PortfolioService,
         private _apiService: ApiService
@@ -35,7 +50,7 @@ export class FarmService {
         this.farmerPortfolio$ = this._portfolioService.getFarmerPortfolio();
     }
 
-    getFarmerFarm(): Observable<Farm[]> {
+    getFarmerFarm(): Observable<FarmerFarm[]> {
         // returns the user's farm data from the portfolio
         return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
@@ -43,7 +58,7 @@ export class FarmService {
     // gets the name of a farm stored within the farm data
     getFarmName() {
         // gets the farmer farm data and a
-        this.getFarmerFarm().subscribe((farm: Farm[]) => {
+        this.getFarmerFarm().subscribe((farm: FarmerFarm[]) => {
             // assigns data from get farmer farm to the farmer farm array
             this.farmerFarm = farm;
         });
@@ -56,7 +71,7 @@ export class FarmService {
     }
 
     // creates data for a farmers farm and sends to api
-    createFarmerFarm(farmBody: Farm) {
+    createFarmerFarm(farmBody: FarmerFarm) {
         this._apiService.addFarm(farmBody).subscribe(
             result => {
                 console.table('Creates this farm data: ${farmBody}');
@@ -68,7 +83,7 @@ export class FarmService {
         );
     }
 
-    editFarm(farmBody: Farm) {
+    editFarm(farmBody: FarmerFarm) {
         const farmName = this.getFarmName();
         console.log('Farm Name:', farmName);
 

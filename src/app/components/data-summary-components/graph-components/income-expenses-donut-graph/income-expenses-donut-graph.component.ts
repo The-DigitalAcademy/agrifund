@@ -1,78 +1,79 @@
-// AUTHOR: Bolebo
-//     CREATE DATE: 08 AUG 2023
-//     UPDATED DATE: 21 Aug 2023
-//     DESCRIPTION:
-//     I INJECTED A SERVICE "CHARTSERVICE" TO FETCH DATA FROM THE API AND METHODS TO FETCH CHART INFO FROM THE MOCK API TO DISPLAY DATA. ADDED A METHOD TO RENDER CHART INFO
-//     RenderChart -> A METHOD TO RENDER CHART INFO FROM THE MOCK API
+/* ------------------------------------------------------------------------------------------------
+    AUTHOR: Bolebo Mohlala, Monique Nagel
+    CREATE DATE: 08 Aug 2023 
+    UPDATED DATE: 06 Sept 2023 
 
-// import { Chart, registerables } from 'chart.js/auto';
-import { Component } from '@angular/core';
-import { ChartService } from 'src/app/_services/chart-service/chart.service';
-
-// Chart.register(...registerables);
+    DESCRIPTION:
+        This component is responsible for the creation and generation of a donut chart for income 
+        and expenses
+    PARAMETERS:
+        _incomeStatementService: IncomeStatementService -> used to access income statement service methods
+        
+-------------------------------------------------------------------------------------------------*/
+import { Chart } from 'chart.js/auto';
+import { Component, OnInit } from '@angular/core';
+import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
+import { Observable } from 'rxjs';
 @Component({
     selector: 'app-income-expenses-donut-graph',
     templateUrl: './income-expenses-donut-graph.component.html',
     styleUrls: ['./income-expenses-donut-graph.component.css'],
 })
-export class IncomeExpensesDonutGraphComponent {
-    constructor(private chartService: ChartService) {}
+export class IncomeExpensesDonutGraphComponent implements OnInit {
+    // gets value for income from the dashboard parent
+    totalExpense$!: Observable<number>;
+    // stores the value of the total income/money in for an income statement of the year
+    totalIncome$!: Observable<number>;
+    //stores the number value of total income
+    totalIncome = 0;
+    // stores the number value of total expense
+    totalExpense = 0;
 
-    total_expense: any = [];
-    total_income: any = [];
-    net_income: any = [];
-    chartdata: any = [];
+    constructor(private _incomeStatementService: IncomeStatementService) {}
 
-    ngOnInit(): void {
-        // method of fetching data and posting data of net income and this.total_income
-        this.chartService.getTotalNetIncome().subscribe(result => {
-            this.chartdata = result;
-            if (this.chartdata != null) {
-                for (let i = 0; i < this.chartdata.length; i++) {
-                    this.net_income.push(this.chartdata[i].amount);
-                    // this.total_expense.push(this.chartdata[i].amount)
-                }
-                // this.RenderChart(this.net_income, this.total_income);
-            }
-
-            // console.log(this.net_income)
+    ngOnInit() {
+        // sets the total expense to the one in the income statement service
+        this.totalExpense$ = this._incomeStatementService.getTotalExpense();
+        // assigns the value of the observable to the total expenses variable
+        this.totalExpense$.subscribe(value => {
+            this.totalExpense = value;
+        });
+        // sets the total income to the one in the income statement service
+        this.totalIncome$ = this._incomeStatementService.getTotalIncome();
+        // assigns the value of the observable to the total expenses variable
+        this.totalIncome$.subscribe(value => {
+            this.totalIncome = value;
         });
 
-        this.chartService.getTotalIncome().subscribe(result => {
-            this.chartdata = result;
-            if (this.chartdata != null) {
-                for (let i = 0; i < this.chartdata.length; i++) {
-                    this.total_income.push(this.chartdata[i].amount);
-                }
-                // this.RenderChart(this.total_income, this);
-            }
-            // console.log(this.total_income)
-        });
+        this.renderChart(this.totalIncome, this.totalExpense);
     }
-    // RenderChart(total_expense:any)
 
-    // doughnut graph properties
-
-    // RenderChart(net_income: any, total_income: any) {
-    //     new Chart('Piechart', {
-    //         type: 'doughnut',
-    //         data: {
-    //             labels: ['Money Out', 'Money In'],
-    //             datasets: [
-    //                 {
-    //                     label: 'Money In/Out Summary',
-    //                     data: [net_income, total_income],
-    //                     backgroundColor: ['#5A6537', '#9BA66F'],
-    //                     hoverOffset: 10,
-    //                 },
-    //             ],
-    //         },
+    // function for rendering chart based on the properties passed
+    renderChart(income: number, expense: number) {
+        new Chart('incomeExpensesDoughnutChart', {
+            type: 'doughnut',
+            data: {
+                labels: ['Money In', 'Money Out'],
+                datasets: [
+                    {
+                        label: '',
+                        data: [income, expense],
+                        backgroundColor: ['#5A6537', '#9BA66F'],
+                        hoverOffset: 5,
+                    },
+                ],
+            },
             // size of the graph properties
-        //     options: {
-        //         responsive: true,
-        //         maintainAspectRatio: true,
-        //         aspectRatio: 1.7,
-        //     },
-        // });
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        align: 'start',
+                    },
+                },
+                // maintainAspectRatio: true,
+                aspectRatio: 1.5,
+            },
+        });
     }
-// }
+}

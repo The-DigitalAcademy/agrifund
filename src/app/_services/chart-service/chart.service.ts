@@ -12,23 +12,35 @@
 // fetch total net income (profit)
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, map, retry, throwError } from 'rxjs';
+import { IncomeStatement } from 'src/app/_models/IncomeStatement';
+import { catchError } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ChartService {
-    private readonly apiUrl: string = '';
+    private baseUrl = "";
 
     income: any;
     expense: any;
     constructor(private http: HttpClient) {}
 
     // method to fetch data from the mock API
-    Getchartinfo(): Observable<any> {
-        return this.http.get<any>('http://localhost:3000/total_expense');
-        // return this.http.get<any>('${this. }')
+    getFarmerByEmail() {
+        return this.http.get<IncomeStatement>('http://localhost:3000/total_expense')
+        .pipe(
+            retry(2), // retry a failed request up to 2 times
+            catchError(this.handleError) // handling the error after failing to return data
+        );
+
+        
+        // .pipe(map(response => ({
+        //     totalExpenses: response.totalExpense
+        // })))
+        // return this.http.get<any>('http://localhost:3000/data');
+        // return this.http.get<any[]>(`${this.baseUrl}`);
     }
 
     // update income statement total income
@@ -53,17 +65,42 @@ export class ChartService {
         return this.http.get('');
     }
     // fetch total income
-    getTotalIncome(): Observable<any> {
-        return this.http.get<any>('http://localhost:3000/total_income');
+    getTotalIncome() {
+        return this.http.get<IncomeStatement>('http://localhost:3000/total_income')
+        .pipe(
+            retry(2), // retry a failed request up to 2 times
+            catchError(this.handleError) // handling the error after failing to return data
+        );
+        
+
+        //  .pipe(map(response => ({
+        //     totalExpenses: response.totalIncome
+        // })))
+        // return this.http.get<any[]>(`${this.baseUrl}`);
     }
     // fetch total net income (profit)
-    getTotalNetIncome(): Observable<any> {
-        return this.http.get<any>('http://localhost:3000/net_income');
+    getTotalNetIncome() {
+        return this.http.get<IncomeStatement>('http://localhost:3000/net_income')
+        .pipe(
+            retry(2), // retry a failed request up to 2 times
+            catchError(this.handleError) // handling the error after failing to return data
+        );
+        
+        
+        // .pipe(map(response => ({
+        //     totalExpenses: response.totalNetIncome
+        // })))
+        // return this.http.get<any[]>(`${this.baseUrl}`);
     }
-    // private processIncomeStatement(response: IncomeStatement): Response {
-    //   return {
-    //     data: { ...response.data },
-    //     data: response.data.map((farm_id:number) =>{})
-    //   };
-    // }
+
+   
+    private handleError(ex:HttpErrorResponse){
+        if(ex.error instanceof ErrorEvent){
+          console.log('client side error',ex.message);
+        }
+        else{
+          console.log('server side error',ex.message);
+        }
+       return  throwError('something went wrong');
+      }
 }

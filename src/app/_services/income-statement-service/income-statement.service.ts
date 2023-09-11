@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 04 Aug 2023 
-    UPDATED DATE: 29 Aug 2023 
+    UPDATED DATE: 05 Sept 2023 
 
     DESCRIPTION:
         This service manages all functions related to bookkeeping:
@@ -18,10 +18,9 @@
 
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { BehaviorSubject, Observable, last, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { IncomeStatement } from '../../_models/IncomeStatement';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 
 @Injectable({
     providedIn: 'root',
@@ -45,23 +44,8 @@ export class IncomeStatementService {
             netIncome: 0,
             incomeStatementItems: [],
         });
-
-    private incomeStatementItems: IncomeStatementItem[] = [];
-    // will be used to store all income statement items
-    private incomeStatementItems$ = new BehaviorSubject<IncomeStatementItem[]>(
-        []
-    );
-    // stores a single income statement's value -> initializes as empty
-    private incomeStatementItem$: BehaviorSubject<IncomeStatementItem> =
-        new BehaviorSubject<IncomeStatementItem>({
-            id: 0,
-            statementId: 0, //IncomeStatement;
-            category: '',
-            amount: 0,
-            proofOfReceipt: '',
-            description: '',
-            date: '', //date of the record
-        });
+    // stores the list of years for income statements as a string for dropdown
+    private statementYearList: string[] = [];
 
     constructor(
         private _apiService: ApiService,
@@ -93,7 +77,6 @@ export class IncomeStatementService {
     setIncomeStatement(statement: IncomeStatement) {
         // assigns the statement to the statement observable
         this.incomeStatement$.next(statement);
-        console.log(statement);
     }
 
     /*---------------------------------
@@ -101,12 +84,15 @@ export class IncomeStatementService {
     ----------------------------------*/
     // gets all the income statements retrieved from the portfolio
     getAllIncomeStatements(): Observable<IncomeStatement[]> {
+        this.setAllIncomeStatements();
         return this.incomeStatements$;
     }
 
     // get an incomeStatement by date
     getStatementByDate(date: Date): IncomeStatement | null {
         let statement = null;
+        // gets the fill year from the data that was passed
+        const year = date.getFullYear();
 
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
@@ -118,11 +104,12 @@ export class IncomeStatementService {
                             currentStatement.statementDate
                         );
 
-                        if (
-                            currentStatementDate <= date ||
-                            currentStatementDate === date
-                        ) {
-                            //returns the last income statement that is less than the current data
+                        // gets the full year of the current statement's date
+                        const currentStatementYear =
+                            currentStatementDate.getFullYear();
+
+                        if (currentStatementYear === year) {
+                            //returns the income statement has the same year as the record
                             return currentStatement;
                         }
 
@@ -149,7 +136,7 @@ export class IncomeStatementService {
     }
 
     // used to get a single income statement by it's id
-    getIncomeStatement() {
+    getIncomeStatement(): Observable<IncomeStatement> {
         return this.incomeStatement$;
     }
 
@@ -179,11 +166,10 @@ export class IncomeStatementService {
         return this.incomeStatement$.pipe(map(statement => statement.id));
     }
 
-    // get income statements for a specific year
-    getIncomeStatementItemsForYear(year: number) {
+    // get income statement for a specific year
+    getIncomeStatementForYear(year: number) {
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
-            console.table(statements);
             if (statements.length > 0) {
                 // sets the statement to the first statement that matches the year
                 const statement = statements.find(statement => {
@@ -195,25 +181,42 @@ export class IncomeStatementService {
                     // returns the first statement that satisfies the condition
                     return currentStatementYear <= year;
                 });
-                // console.table(statement);
                 if (statement) {
                     // assigns the statement to the statement observable
                     this.incomeStatement$.next(statement);
-                    console.table(this.incomeStatementItem$);
                 }
             }
         });
         // returns a statement for the date
-        return this.incomeStatement$.pipe(
-            map(statement => statement.incomeStatementItems)
-        );
+        return this.incomeStatement$;
     }
 
-    // used to get income statement record items of an income statement
-    getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
-        return this.incomeStatement$.pipe(
-            map(statement => statement.incomeStatementItems)
-        );
+    // function to set and return a list of income statement year values
+    setIncomeStatementYearList() {
+        // sets the default value for the current year
+        let currentYear = 0;
+        // stored
+
+        if (this.statements) {
+            this.statements.forEach(statement => {
+                const statementYear = this.getStatementYear(
+                    statement.statementDate
+                );
+                // sets the current year to the most recent date
+                if (statementYear > currentYear) {
+                    currentYear = statementYear;
+                }
+                // only adds a new year if it doesn't already exist in the list
+                if (!this.statementYearList.includes(`${statementYear}`)) {
+                    this.statementYearList.push(`${statementYear}`);
+                }
+            });
+        }
+    }
+
+    // returns the income statement year list
+    getIncomeStatementYearList() {
+        return this.statementYearList;
     }
 
     /*---------------------------------
@@ -245,9 +248,6 @@ export class IncomeStatementService {
             // assigns the income statement id retrieved from the set income statement
             statementId = incomeStatementId;
         });
-
-        // console.log(statementId);
-
         return statementId;
     }
 
@@ -282,18 +282,12 @@ export class IncomeStatementService {
             netIncome: 0,
         };
 
-        console.log('Statement created');
-        console.table(statementBody);
         // request to api to create new income statement
         this._apiService
             .createIncomeStatement(farmName, statementBody)
             .subscribe(
                 (data: any) => {
                     this.setAllIncomeStatements();
-                    console.table(
-                        'After creating a new income statement after setting:' +
-                            this.incomeStatements$
-                    );
                     // gets the newly created income statement by its date
                     this.getStatementByDate(date);
                 },

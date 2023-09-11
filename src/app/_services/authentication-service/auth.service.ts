@@ -1,4 +1,3 @@
-import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 21 Aug 2023 
@@ -22,7 +21,6 @@ import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserService } from '../user-service/user.service';
 
 @Injectable({
     providedIn: 'root',
@@ -33,7 +31,7 @@ export class AuthService {
     // stores the session token as an observable
     sessionToken$!: string | null;
     // stores the error message sent by the api
-    errorMessage = '';
+    apiMessage = '';
     // api response structure
     apiResponse = {
         data: '',
@@ -44,7 +42,7 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _jwtService: JwtService
+        private _jwtService: JwtService,
     ) {
         this.setSessionToken();
     }
@@ -69,23 +67,26 @@ export class AuthService {
             email: loginEmail,
             password: loginPassword,
         };
-        this._apiService.loginUser(loginBody).subscribe(
-            (result: any) => {
+
+        this._apiService.loginUser(loginBody).subscribe({
+            next: (result: any) => {
                 // assigns the result to the structure of the api response object
                 this.apiResponse = result;
                 // sets the token to the one received from the api
                 this._jwtService.setToken(this.apiResponse.data);
                 // sets the user login state to true
                 this.setUserState();
-                // routes to dashboard if the login was successful
-                this.router.navigate(['/about-farm']);
+                //routes to dashboard
+                this.router.navigate(['/dashboard']);
+                this.apiMessage = result.message;
             },
-            error => {
+            error: (error: any) => {
                 console.error(`Error occurred while logging in`);
                 console.log(error);
+                this.apiMessage = error.message;
                 // TODO: when a login fails it should print an error message from the api at the top of a form
-            }
-        );
+            },
+        });
     }
 
     logoutUser() {

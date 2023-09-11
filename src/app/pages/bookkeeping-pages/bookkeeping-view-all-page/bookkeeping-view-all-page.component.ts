@@ -36,14 +36,10 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
     styleUrls: ['./bookkeeping-view-all-page.component.css'],
 })
 export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
-    // used to store subscriptions to services
-    private subscription = new Subscription();
     // subscription for portfolio service
     private portfolioSubscription = new Subscription();
     // subscription for getting incomes statements service
     private incomeStatementSubscription = new Subscription();
-    // subscription for an income statement's item
-    private incomeStatementItemSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // observable for storing income statements
@@ -80,18 +76,12 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // gets the farmers portfolio information
-        this.portfolioSubscription = this._portfolioService
-            .getFarmerPortfolio()
-            .subscribe();
-
         // gets the farmer's income statements
-        this.incomeStatementSubscription = this._portfolioService
+        this._portfolioService
             .getFarmerIncomeStatements()
-            .subscribe((data: IncomeStatement[]) => {
+            .subscribe((statements: IncomeStatement[]) => {
                 // assigns the statements to the statement array
-                this.statements = data;
-                console.table(this.statements);
+                this.statements = statements;
                 // sets the values for the year dropdown list
                 this.setIncomeStatementList();
             });
@@ -100,17 +90,15 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
         // gets income statement items for year
-        this._incomeStatementService
-            .getIncomeStatementItemsForYear(Number(this.selectedYear))
+        this._incomeStatementItemService
+            .getFarmerIncomeStatementItems()
             .subscribe(incomeStatementItems => {
                 this.incomeStatementRecords = incomeStatementItems;
-                console.table(this.incomeStatementRecords);
             });
     }
 
     ngOnDestroy() {
         // unsubscribe from subscriptions
-        this.subscription.unsubscribe();
         this.portfolioSubscription.unsubscribe();
         this.incomeStatementSubscription.unsubscribe();
     }
@@ -144,9 +132,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
     }
-
-    // sets the income statement records to display for the year
-    statementsForSelectedYear(year: number) {}
 
     // when a record is clicked it will route to the view all page for singular viewing
     viewRecordDetails(recordId: number) {

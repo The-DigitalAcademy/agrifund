@@ -5,88 +5,90 @@
 -------------------------------------------------------------------------------------------------*/
 
 .page-body {
-  /* align-items: flex-start; */
-  background-image: url(src/assets/images/background/orange-trees.webp);
+    background-image: url(src/assets/images/background/orange-trees.webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.page-content {
-  width: 100% !important;
-}
-
+/* Styling for crop information section */
 .crop-info {
-  margin-top: var(--normal-s);
+    margin-top: var(--normal-s);
 }
 
+/* Styling for farm information section */
 .farm-info {
-  margin-top: var(--normal-s);
+    margin-top: var(--normal-s);
 }
-
+.equipment-info {
+    padding-top: var(--normal-s) !important;
+}
+/* Styling for headings and their alignment */
 .headings {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
 }
 
+/* Styling for the left section */
 #left {
-  padding-right: var(--small-s) !important;
-
-
+    padding-right: var(--small-s) !important;
 }
 
+/* Styling for the right section */
 #right {
-
-  padding-left: var(--small-s) !important;
-
+    padding-left: var(--small-s) !important;
 }
 
-#bottom {
-
-  padding-top: var(--normal-s) !important;
+.plot-info {
+    padding-top: var(--normal-s) !important;
 }
 
+/* Styling for h1 headings */
 h1 {
-  position: relative;
+    position: relative;
 }
 
-
-
-@media (max-width: 767px) {
-
-  
-
-  #left {
-    padding-right:0 !important;
-   
-  
-  }
-  #right {
-
-    padding-left: 0 !important;
-  
-  }
-
-  #bottom {
-
-    padding: 0  !important;
-  }
-
-  .crop-info {
-    margin-top: var(--normal-s);
-  }
-
-  .farm-info {
+.portfolio-cards>*{
+    /* adds space below each portfolio card */
     margin-bottom: var(--normal-s);
-  }
+}
 
-  .equipment-info {
-    margin-top: var(--normal-s);
-  }
+/* Media query for screens with max width 767px */
+@media (max-width: 767px) {
+    /* Adjust padding and margins for responsive layout */
 
+    #left {
+        padding-right: 0 !important;
+    }
+    #right {
+        padding-left: 0 !important;
+    }
 
-  h1 {
-    padding: 4% 2% !important;
+    /* Adjust margins for specific sections */
+    .crop-info {
+        margin-top: var(--normal-s);
+    }
+    .farm-info {
+        margin-bottom: var(--normal-s);
+    }
+    .equipment-info {
+        padding-bottom: var(--normal-s) !important;
+    }
+    .plot-info {
+        padding-top: 0 !important;
+    }
+    /* Remove padding for specific elements */
+    .page-content > * {
+        padding: 0px !important;
+    }
 
-  }
-
+    /* Adjust padding for h1 headings */
+    h1 {
+        padding: 4% 2% !important;
+    }
+    .page-body{
+      width: 100%;
+      display: flex;
+    }
 }

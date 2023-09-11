@@ -1,28 +1,56 @@
-import { Plot } from 'src/app/_models/plot';
-
-
-
 import { Injectable } from '@angular/core';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from '../api-service/api.service';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
-import { BehaviorSubject } from 'rxjs';
-
-
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PlotService {
-    private plots: Plot[] = [];
-    // stores farmer plots as a behviour subject
-    private farmerPlots$ = new BehaviorSubject<Plot[]>([]);
-    constructor(
-        private _apiService: ApiService,
-        private _portfolioService: PortfolioService
-    ) {}
+    private plot: FarmerPlot = {
+        id: 0,
+        plotAddress: '',
+        plotSize: '',
+        dateOfOwnership: '',
+    };
 
-    createFarmerPlot(plotBody: Plot) {
+    private plotData$: BehaviorSubject<FarmerPlot> =
+        new BehaviorSubject<FarmerPlot>({
+            id: 0,
+            plotAddress: '',
+            plotSize: '',
+            dateOfOwnership: '',
+        });
+
+    constructor(
+        private _portfolioService: PortfolioService,
+        private _apiService: ApiService
+    ) {
+        this.setPlotData();
+    }
+
+    setPlotData() {
+        //: Observable<Crop>
+        this._portfolioService.setFarmerPortfolio();
+        this._portfolioService
+            .getFarmerPlotInfo()
+            .subscribe((plots: FarmerPlot[]) => {
+                // sets the crop object to the first crop object in the crop observable
+                this.plot = plots[0];
+                this.plotData$.next(this.plot);
+            });
+        console.table(this.plotData$);
+    }
+
+    getPlotData(): Observable<FarmerPlot> {
+        return this.plotData$;
+    }
+    private plots: FarmerPlot[] = [];
+    // stores farmer plots as a behviour subject
+    private farmerPlots$ = new BehaviorSubject<FarmerPlot[]>([]);
+
+    createFarmerPlot(plotBody: FarmerPlot) {
         const farmName = this._portfolioService.getFarmName();
         const addedPlot = {
             plotAddress: plotBody.plotAddress,
@@ -40,31 +68,5 @@ export class PlotService {
                 );
             }
         );
-    }
-    // set plot info in observable
-    setPlotInfo() {
-        // api connecition for getting plot info
-        const farmName = this._portfolioService.getFarmName();
-        // within api connec assign date to behviour subject for farm info
-        this._apiService.getAllPlots(farmName).subscribe(
-            (data: any) => {
-                this.plots = data;
-                // adds crop to crop data observable
-                this.farmerPlots$.next(this.plots);
-            },
-            error => {
-                console.error('Error occured fetching plots data');
-                console.error(error);
-            }
-        );
-    }
-
-    // get farm info
-    getPlotInfo() {
-        // esnures that the farm infor is set when get method is called
-        this.setPlotInfo();
-
-        // return the behaviour subject containing the farm info data if it is not blank
-        return this.plots;
     }
 }

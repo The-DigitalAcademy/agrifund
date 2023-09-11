@@ -7,8 +7,7 @@
     Model for storing the data received from the portfolio api connection
 -------------------------------------------------------------------------------------------------*/
 
-import { Farm } from "./Farm";
-
+import { FarmerFarm } from './farmerFarm';
 
 export interface FarmerPortfolio {
     id: number;
@@ -16,5 +15,5 @@ export interface FarmerPortfolio {
     lastName: string;
     email: string;
     cellNumber: string;
-    farms: Farm[];
+    farms: FarmerFarm[];
 }

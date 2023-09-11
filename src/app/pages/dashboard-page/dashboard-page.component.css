@@ -1,56 +1,98 @@
-.align-center
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Monique
+    AUTHOR: Monique Nagel, Bolebo
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 06 Sept 2023 
 -------------------------------------------------------------------------------------------------*/
 
 .page-body {
     background-image: url("src/assets/images/background/orange-trees.webp");
 }
 
-button{
+.actions {
+    /* removes margins from actions container */
+    margin: 0px;
+}
+
+button {
     margin-left: var(--small-s);
 }
 
-@media (min-width: 300px) and (max-width:428px) {
+.graph-container label {
+    /* aligns label text to the center */
+    text-align: center;
+    /* label will stretch to the full available width in a container */
+    width: 100%;
+}
 
-    .page-body {
-        background-image: url("src/assets/images/background/orange-trees.webp");
-    }
-
-.row {
-    
-    /* height: 50%; */
+.graph-container {
     display: flex;
-    flex-wrap: wrap;
+    /* ensures that all graphs are the same size */
+    min-height: 280px;
+    /* add margin at the top of the containers within has data */
+    margin-top: var(--large-s) !important;
+    /* makes content stack on top of each other */
     flex-direction: column;
 }
 
-.col-6 {
-    width: 100%;
-    margin: 5%;
-}
-.container {
-    height: auto;
+.graph{
+    height: 100% !important;
 }
 
-.actions {
-    padding: 0 !important;
+.justify-start .graph{
+    /* adds space between graph on the left and the right */
+    margin-right: var(--normal-s) !important;
 }
 
+.justify-end .graph {
+    /* adds space between graph on the right and the left */
+    margin-left: var(--normal-s)!important;
+}
+
+.progress-container {
+    /* add margin at the top of the container to make space between 
+    bookkeeping summary and progress */
+    margin-top: var(--large-s);
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+    .graph-container{
+        /* stacks to graphs on top of each other */
+        flex-direction: column;
+    }
+
+    .graph-container .justify-start {
+        /* removes right margin due to being stacked now */
+        margin-right: 0px !important;
+    }
+
+    .graph-container .justify-end {
+        /* removes left margin due to being stacked now */
+        margin-left: 0px !important;;
+        /* adds space  between the top and bottom graph*/
+        margin-top: var(--large-s) !important;
+    }
 
 }
 
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
-    .page-body {
-        background-image: url("src/assets/images/background/orange-trees.webp");
+    .justify-center {
+        flex-direction: column;
     }
-    
+
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    .page-body {
-        /* background-image: url("src/assets/images/background/orange-trees.webp"); */
-    }
-}
+/*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+@media (min-width: 1025px) and (max-width: 1280px) {}

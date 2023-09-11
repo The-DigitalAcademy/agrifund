@@ -16,7 +16,7 @@
             <div class="justify-end">
                 <button
                     class="btn icon-btn close-btn"
-                    (click)="goBackToDetails(record.id)">
+                    (click)="goBackToDetails()">
                     <fa-icon icon="times"></fa-icon>
                 </button>
             </div>
@@ -36,7 +36,8 @@
                         formControlName="recordName"
                         type="text"
                         class="form-control"
-                        id="recordName" />
+                        id="recordName"
+                        [value]="record.description" />
                     <div
                         class="form-text text-danger"
                         *ngIf="
@@ -60,7 +61,7 @@
                         </option>
                         <option
                             *ngFor="let type of recordType"
-                            [ngValue]="type">
+                            [value]="record.category">
                             {{ type }}
                         </option>
                     </select>
@@ -161,7 +162,7 @@
                     <div class="justify-end">
                         <button
                             class="btn outline-btn btn-width right-btn"
-                            (click)="goBackToDetails(record.id)">
+                            (click)="goBackToDetails()">
                             Cancel
                         </button>
                     </div>

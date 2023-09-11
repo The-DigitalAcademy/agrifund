@@ -14,7 +14,6 @@
 // Import necessary modules and components from Angular core and other sources
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User } from 'src/app/_models/User';
 import { environment } from 'src/environment/environment';
 
@@ -83,6 +82,9 @@ export class ApiService {
     // POST function for registering a new farmer user
     registerUser(userBody: User) {
         return this.http.post(`${this.REGISTER_URL}`, userBody);
+    }
+    getRegisterUser() {
+        return this.http.get(`${this.REGISTER_URL}`);
     }
 
     /* --------------------------------
@@ -217,8 +219,8 @@ export class ApiService {
     }
 
     // PUT function to update data for a single asset
-    editEquipment(equipmentId: number, body: any) {
-        return this.http.put(`${this.FARMER_ASSET_URL}/${equipmentId}`, body);
+    editEquipment( body: any) {
+        return this.http.put(`${this.FARMER_ASSET_URL}`, body);
     }
 
     /* --------------------------------
@@ -227,6 +229,10 @@ export class ApiService {
     // GET function to get a crop by id
     getCropById(cropId: number) {
         return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
+    }
+
+    getCrop(){
+       return this.http.get(`${this.FARMER_CROP_URL}`);
     }
 
     // PUT function to update a farmer's crop info
@@ -316,7 +322,7 @@ export class ApiService {
     ----------------------------------------------*/
     // GET a single income statement item
     getStatementItemById(recordId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${recordId}`);
+        return this.http.get(`${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`);
     }
 
     // POST function to add a new income statement item
@@ -328,15 +334,19 @@ export class ApiService {
     }
 
     // PUT function to update data for a single income statement item
-    updateRecord(recordId: number, recordBody: any) {
+    updateRecord(recordId: number, statementId: number, recordBody: any) {
         return this.http.put(
-            `${this.INCOME_STATEMENT_URL}/${recordId}`,
+            `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}/item/${recordId}`,
             recordBody
         );
     }
 
     // PATCH function to upload proof for a bookkeeping record/ income statement item
-    uploadRecordProof(recordId: number, recordProof: File) {
+    uploadRecordProof(
+        recordId: number,
+        statementId: number,
+        recordProof: File
+    ) {
         return this.http.patch(
             `${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`,
             recordProof
@@ -344,7 +354,9 @@ export class ApiService {
     }
 
     // DELETE a bookkeeping record
-    deleteIncomeStatementItem(recordId: number) {
-        return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
+    deleteIncomeStatementItem(recordId: number, statementId: number) {
+        return this.http.delete(
+            `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}/item/${recordId}`
+        );
     }
 }
