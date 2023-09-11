@@ -31,6 +31,8 @@ export class ExpensesBarChartComponent implements OnInit {
     chartLabels: string[] = [];
     // stores the data used in the chart
     chartData: number[] = [];
+    // stores the chart
+    expenseBarChart: any = [];
 
     ngOnInit() {
         this._incomeStatementItemService
@@ -53,7 +55,7 @@ export class ExpensesBarChartComponent implements OnInit {
 
     // size of the graph properties
     renderChart(chartLabels: string[], chartData: number[]) {
-        new Chart('expenseBarChart', {
+        this.expenseBarChart = new Chart('expenseBarChart', {
             type: 'bar',
             data: {
                 labels: chartLabels,
