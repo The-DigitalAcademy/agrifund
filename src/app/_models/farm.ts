@@ -12,7 +12,6 @@ import { Crop } from './Crop';
 import { IncomeStatement } from './IncomeStatement';
 import { Plot } from './plot';
 
-
 export interface Farm {
     id: number;
     numberOfEmployees: number;
