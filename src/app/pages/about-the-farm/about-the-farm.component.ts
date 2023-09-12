@@ -21,14 +21,15 @@ import { FarmerCrop } from 'src/app/_models/farmerCrop';
 export class AboutTheFarmComponent implements OnInit {
     // used to refer to the bootstrap carousel on HTML
     @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
-    // stores the current active slide number -> default to first slide
-    activeSlideId: number = 1;
-    // stores the total slides of the carousel
-    totalSlides: number = 4;
     // stores the active slide name id default is the first slide
     activeSlideName: string = 'introSlide';
-    // sets the first slide as the active slide
-    slides: any = ['introSlide', 'farmSlide', 'cropSlide', 'plotSlide'];
+    // sets the list of slides and their active status
+    slides: [string, string][] = [
+        ['introSlide', 'active'],
+        ['farmSlide', 'inactive'],
+        ['cropSlide', 'inactive'],
+        ['plotSlide', 'inactive']];
+
     farmForm!: FormGroup;
     cropForm!: FormGroup;
     plotForm!: FormGroup;
@@ -85,9 +86,12 @@ export class AboutTheFarmComponent implements OnInit {
     }
 
     // navigates to a specific slide
-    goToSlide(item: any) {
-        this.carousel.select(item);
-        console.log(item);
+    goToSlide(slideId: string) {
+        this.carousel.select(slideId);
+        this.activeSlideName = this.carousel.activeId;
+        console.log(
+            'Active slide name from select slide:' + this.activeSlideName
+        );
     }
 
     // navigates to the next slide
@@ -174,6 +178,7 @@ export class AboutTheFarmComponent implements OnInit {
     // navigates to the previous slide
     goToPreviousSlide() {
         this.carousel.prev();
+        this.activeSlideName = this.carousel.activeId;
     }
 
     // check if farm info has already been submitted
@@ -226,27 +231,36 @@ export class AboutTheFarmComponent implements OnInit {
 
     // check if farm info has already been submitted
     createPlotInfo() {
-           if (this.plotForm.valid) {
-               const plotFormInputValue = this.plotForm.value;
-               this.plots = {
-                   id: this.id,
-                   plotAddress: plotFormInputValue.plotAddress,
-                   plotSize: plotFormInputValue.plotSize,
-                   dateOfOwnership: plotFormInputValue.date,
-               };
-               console.table(this.plots);
-               this._plotService.createFarmerPlot(this.plots);
-               // Check if all slides have been filled out
-               if (this.carousel.activeId === 'plotSlide') {
-                   // All slides have been filled out, navigate to the dashboard
-                   this.router.navigate(['/dashboard']);
-               } else {
-                   // Go to the next slide if not on the plot slide
-                   this.carousel.next();
-               }
-           } else {
-               console.log('Plot form is not valid');
-           }
+        if (this.plotForm.valid) {
+            const plotFormInputValue = this.plotForm.value;
+            this.plots = {
+                id: this.id,
+                plotAddress: plotFormInputValue.plotAddress,
+                plotSize: plotFormInputValue.plotSize,
+                dateOfOwnership: plotFormInputValue.date,
+            };
+            console.table(this.plots);
+            this._plotService.createFarmerPlot(this.plots);
+            // Check if all slides have been filled out
+            if (this.carousel.activeId === 'plotSlide') {
+                // All slides have been filled out, navigate to the dashboard
+                this.router.navigate(['/dashboard']);
+            } else {
+                // Go to the next slide if not on the plot slide
+                this.carousel.next();
+            }
+        } else {
+            console.log('Plot form is not valid');
+        }
     }
-    
+
+    // checks to see if a slide is active
+    isActiveSlide(slideId: string) {
+        // default value is false
+        let isActive = false;
+        // returns true or false on whether a slide is active or not
+        (this.carousel.activeId === slideId) ? isActive = true : isActive;
+
+        return isActive;
+    }
 }
