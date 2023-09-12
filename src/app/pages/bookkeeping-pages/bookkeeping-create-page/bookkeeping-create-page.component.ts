@@ -98,7 +98,10 @@ export class BookkeepingCreatePageComponent implements OnInit {
             };
 
             // sends the new record data to the income statement item service
-            this._incomeStatementItemService.createNewRecord(this.record);
+            this._incomeStatementItemService.createNewRecord(
+                this.record,
+                this.fileToUpload
+            );
         }
     }
 }

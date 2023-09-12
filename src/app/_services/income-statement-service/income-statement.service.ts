@@ -91,8 +91,6 @@ export class IncomeStatementService {
     // get an incomeStatement by date
     getStatementByDate(date: Date): IncomeStatement | null {
         let statement = null;
-        // gets the fill year from the data that was passed
-        const year = date.getFullYear();
 
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
@@ -104,23 +102,27 @@ export class IncomeStatementService {
                             currentStatement.statementDate
                         );
 
-                        // gets the full year of the current statement's date
-                        const currentStatementYear =
-                            currentStatementDate.getFullYear();
-
-                        if (currentStatementYear === year) {
+                        // checks that a statement falls within the data specified
+                        if (
+                            currentStatementDate <= date &&
+                            date <=
+                                this.getFinancialYearEnd(currentStatementDate)
+                        ) {
                             //returns the income statement has the same year as the record
                             return currentStatement;
                         }
 
+                        // returns the last income statement that was true
                         return lastTrueStatement;
                     }
                 );
             }
         });
+        // if an income statement exists
         if (statement) {
             // assigns the statement to the statement observable
             this.setIncomeStatement(statement);
+            this.incomeStatement$.next(statement);
         }
         // returns a statement for the date
         return statement;
@@ -235,12 +237,18 @@ export class IncomeStatementService {
             const statement = this.getStatementByDate(recordDateValue);
             if (statement != null) {
                 statementId = statement.id;
+                console.log(statementId);
                 // sets the income statement to the one an item is being added to
                 this.setIncomeStatement(statement);
             }
         } else {
             // if a statement doesn't exist for the financial year a new one will be created
             this.createIncomeStatement(recordDateValue);
+            // the statement observable will be set to statement for the added record's financial year
+            const statement = this.getStatementByDate(recordDateValue);
+            console.log(
+                `Newly created statement for financial year chosen: ${statement}`
+            );
         }
 
         // call the method in this service to get the income statement id of income statement observable
@@ -282,6 +290,8 @@ export class IncomeStatementService {
             netIncome: 0,
         };
 
+        console.table(statementBody);
+
         // request to api to create new income statement
         this._apiService
             .createIncomeStatement(farmName, statementBody)
@@ -308,7 +318,6 @@ export class IncomeStatementService {
         const recordYear = recordDate.getFullYear();
         // South African financial year starts on the 1st of march
         const financialYearStartMonth = 2; //month of the March -> index starts at 0
-        // sets the date value as string value
 
         // sets the default financial year for the current year
         let financialYearStart = new Date(
@@ -328,6 +337,32 @@ export class IncomeStatementService {
         }
 
         return financialYearStart;
+    }
+
+    // gets the financial year end date based on the financial year start date
+    getFinancialYearEnd(financialStartDate: Date): Date {
+        // gets the year from the current financial year start date
+        const financialYear = financialStartDate.getFullYear();
+        // sets the financial end year to the next years date
+        const nextYear = financialYear + 1;
+        // stores value wether the year is a leap year or not
+        let isYearLeap = false;
+
+        // checks whether the next year is leap year
+        if (
+            nextYear % 4 === 0 &&
+            (nextYear % 100 !== 0 || nextYear % 400 === 0)
+        ) {
+            isYearLeap = true;
+        }
+
+        // passes the last date of february based on whether it is leap year or not
+        const dayOfMonth = isYearLeap ? 29 : 28;
+
+        // checks if the financial end year is a leap year
+
+        // returns the financial year end date as the next year the last day February
+        return new Date(financialYear + 1, 1, dayOfMonth);
     }
 
     /*---------------------------------

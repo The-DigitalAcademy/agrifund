@@ -219,7 +219,7 @@ export class ApiService {
     }
 
     // PUT function to update data for a single asset
-    editEquipment( body: any) {
+    editEquipment(body: any) {
         return this.http.put(`${this.FARMER_ASSET_URL}`, body);
     }
 
@@ -231,8 +231,8 @@ export class ApiService {
         return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
     }
 
-    getCrop(){
-       return this.http.get(`${this.FARMER_CROP_URL}`);
+    getCrop() {
+        return this.http.get(`${this.FARMER_CROP_URL}`);
     }
 
     // PUT function to update a farmer's crop info
@@ -326,7 +326,7 @@ export class ApiService {
     }
 
     // POST function to add a new income statement item
-    addRecord(recordBody: any, statementId: number) {
+    addRecord(recordBody: FormData, statementId: number) {
         return this.http.post(
             `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}`,
             recordBody
@@ -360,4 +360,3 @@ export class ApiService {
         );
     }
 }
-

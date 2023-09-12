@@ -157,7 +157,9 @@ export class IncomeStatementItemService {
         CREATE/ADD DATA
     ----------------------------------*/
     // create a new bookkeeping record for a specific income statement
-    createNewRecord(recordBody: IncomeStatementItem) {
+    createNewRecord(recordBody: IncomeStatementItem, recordProof: File) {
+        // used to store the records multiform body to pass data adn file
+        const recordMultiFormBody = new FormData();
         // checks for the record category to change value to income or expense
         if (recordBody.category === 'Money In') {
             recordBody.category = 'Income';
@@ -173,6 +175,13 @@ export class IncomeStatementItemService {
             description: recordBody.description,
         };
 
+        // adds info to multiform body
+        recordMultiFormBody.append('info', JSON.stringify(newRecord));
+        // adds file to multiform body
+        recordMultiFormBody.append('file', recordProof);
+
+        console.table(recordMultiFormBody);
+
         // sets the statement id to and passes date value to method
         recordBody.statementId =
             this._incomeStatementService.getIncomeStatementIdForCreate(
@@ -182,17 +191,19 @@ export class IncomeStatementItemService {
         console.log(`Statement ID for record: ${recordBody.statementId}`);
 
         console.table(newRecord);
-        this._apiService.addRecord(newRecord, recordBody.statementId).subscribe(
-            data => {
-                console.log(data);
-                // routes back to bookkeeping view all page is the creation of a record was successful
-                this.router.navigate(['/bookkeeping']);
-            },
-            error => {
-                console.error(`Error occurred while creating a new record`);
-                console.error(error);
-            }
-        );
+        this._apiService
+            .addRecord(recordMultiFormBody, recordBody.statementId)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    // routes back to bookkeeping view all page is the creation of a record was successful
+                    this.router.navigate(['/bookkeeping']);
+                },
+                error => {
+                    console.error(`Error occurred while creating a new record`);
+                    console.error(error);
+                }
+            );
     }
 
     // uploads proof of a record to the api
