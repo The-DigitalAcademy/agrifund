@@ -132,6 +132,7 @@ export class AboutTheFarmComponent implements OnInit {
                 if (crop.length != 0) {
                     cropExists = true;
                 }
+                  console.log(`Crop has been submitted`);
             });
 
             // checks if the crop info is empty
