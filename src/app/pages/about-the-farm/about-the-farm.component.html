@@ -220,7 +220,7 @@
         </ng-template>
       </ngb-carousel>
       <div class="actions">
-        <div *ngIf="activeSlideId >1" class="justify-start">
+        <div *ngIf="activeSlideName != 'introSlide'" class="justify-start">
           <button class="carousel-control-prev btn icon-btn-dark" type="button" (click)="goToPreviousSlide()">
             <fa-icon icon="arrow-left"></fa-icon>
             Prev

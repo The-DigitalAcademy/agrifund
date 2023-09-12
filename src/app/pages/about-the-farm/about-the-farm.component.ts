@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,6 +25,8 @@ export class AboutTheFarmComponent implements OnInit {
     activeSlideId: number = 1;
     // stores the total slides of the carousel
     totalSlides: number = 4;
+    // stores the active slide name id default is the first slide
+    activeSlideName: string = 'introSlide';
     // sets the first slide as the active slide
     slides: any = ['introSlide', 'farmSlide', 'cropSlide', 'plotSlide'];
     farmForm!: FormGroup;
@@ -66,7 +67,7 @@ export class AboutTheFarmComponent implements OnInit {
             numberOfEmployees: ['', Validators.required],
             farmingReason: ['', Validators.required],
         });
-        
+
         this.cropForm = this.fb.group({
             name: ['', Validators.required],
             season: ['', Validators.required],
@@ -90,6 +91,7 @@ export class AboutTheFarmComponent implements OnInit {
 
     // navigates to the next slide
     goToNextSlide() {
+        this.submitted = true;
         // set the portfolio info for a logged in farmer
         this._portfolioService.setFarmerPortfolio();
 
@@ -99,8 +101,23 @@ export class AboutTheFarmComponent implements OnInit {
         }
 
         if (this.carousel.activeId === 'farmSlide') {
-            this.submitted = true;
-            this.createFarmInfo();
+            this._portfolioService.getFarmerFarm().subscribe(farm => {
+                console.table(farm);
+                // checks if the farm info is not empty
+                if (farm.length === 0) {
+                    // calls method to create farmer farm
+                    this.createFarmInfo();
+                } else {
+                    console.log(`Farm already exists`);
+                    this.carousel.next();
+                }
+            });
+        }
+
+        //  checks to see if the carousel is on the last slide
+        if (this.carousel.activeId === 'plotSlide') {
+            // All slides have been filled out, navigate to the dashboard
+            this.router.navigate(['/dashboard']);
         }
 
         // if (this.activeSlideId === 3) {
@@ -153,64 +170,48 @@ export class AboutTheFarmComponent implements OnInit {
         //         console.log('Plot form is not valid');
         //     }
         // }
+
+        // sets the current slides name to the variable 
+        this.activeSlideName = this.carousel.activeId;
+        console.log('Active slide name:' + this.activeSlideName);
     }
 
     // navigates to the previous slide
     goToPreviousSlide() {
-        if (this.activeSlideId != 1) {
-            // decrements the active slide
-            this.activeSlideId--;
-            console.log(`Current slide: ${this.activeSlideId}`);
-        }
+        // if (this.carousel.activeId === 'introSlide') {
+        //     // decrements the active slide
+        //     // this.activeSlideId--;
+        //     console.log(`Current slide: ${this.activeSlideId}`);
+        // }
 
         this.carousel.prev();
     }
 
     // check if farm info has already been submitted
     createFarmInfo() {
-        
-
-
-
-            if (this.farmForm.valid) {
-                const farmInputValue = this.farmForm.value;
-                this.farm = {
-                    id: this.id,
-                    farmName: farmInputValue.farmName,
-                    farmAddress: farmInputValue.farmAddress,
-                    yearsActive: farmInputValue.yearsActive,
-                    numberOfEmployees: farmInputValue.numberOfEmployees,
-                    address: farmInputValue.address,
-                    farmingReason: farmInputValue.farmingReason,
-                    crops: [],
-                    plots: [],
-                    assets: [],
-                    incomeStatements: [],
-                };
-                console.log(this.farm);
-
-                this.createFarmInfo();
-                //   this._farmService.createFarmerFarm(this.farm);
-                if (this.activeSlideId === this.totalSlides) {
-                    // All slides have been filled out, navigate to the dashboard
-                    this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
-                } else {
-                    this.carousel.next(); // Move to the next slide
-                }
-            } else {
-                console.log('Farm form is not valid');
-            }
-
-        this._portfolioService.getFarmerFarm().subscribe(farm => {
-            console.table(farm);
-            // checks if the farm info is not empty
-            if (farm.length === 0) {
-                this._farmService.createFarmerFarm(this.farm);
-                console.log(`Farm has been submitted`);
-            } else {
-                console.log(`Farm already exists`);
-            }
-        });
+        // checks if the form inputs are valid
+        if (this.farmForm.valid) {
+            const farmInputValue = this.farmForm.value;
+            this.farm = {
+                id: this.id,
+                farmName: farmInputValue.farmName,
+                farmAddress: farmInputValue.farmAddress,
+                yearsActive: farmInputValue.yearsActive,
+                numberOfEmployees: farmInputValue.numberOfEmployees,
+                address: farmInputValue.address,
+                farmingReason: farmInputValue.farmingReason,
+                crops: [],
+                plots: [],
+                assets: [],
+                incomeStatements: [],
+            };
+            console.log(this.farm);
+            // creates a farmer's farm within the farm service
+            this._farmService.createFarmerFarm(this.farm);
+            console.log(`Farm has been submitted`);
+        } else {
+            console.log('Farm form is not valid');
+        }
     }
 
     // check if farm info has already been submitted
