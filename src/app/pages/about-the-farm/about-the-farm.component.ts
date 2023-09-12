@@ -72,6 +72,7 @@ export class AboutTheFarmComponent implements OnInit {
             name: ['', Validators.required],
             season: ['', Validators.required],
             type: ['', Validators.required],
+            cropSeedPrice: ['', Validators.required],
         });
 
         this.plotForm = this.fb.group({
@@ -94,8 +95,10 @@ export class AboutTheFarmComponent implements OnInit {
         this.submitted = true;
         // stores value whether a farm already exists
         let farmExists = false;
-
         // stores value whether a crop already exists
+        let cropExists = false;
+        // stores value whether a plot already exists
+        let plotExists = false;
 
         // set the portfolio info for a logged in farmer
         this._portfolioService.setFarmerPortfolio();
@@ -123,62 +126,44 @@ export class AboutTheFarmComponent implements OnInit {
             }
         }
 
-        //  checks to see if the carousel is on the last slide
-        if (this.carousel.activeId === 'plotSlide') {
-            // All slides have been filled out, navigate to the dashboard
-            this.router.navigate(['/dashboard']);
+        if (this.carousel.activeId === 'cropSlide') {
+            this._portfolioService.getFarmerCropInfo().subscribe(crop => {
+                // checks if a user has already added a crop
+                if (crop.length != 0) {
+                    cropExists = true;
+                }
+            });
+
+            // checks if the crop info is empty
+            if (!cropExists) {
+                // calls method to create farmer farm
+                this.createCropInfo();
+            } else {
+                console.log(`Crop already exists`);
+                // if the crop already exists it will go to the next slide
+                this.carousel.next();
+            }
         }
 
-        // if (this.activeSlideId === 3) {
-        //     // console.log(this.cropForm);
-        //     if (this.cropForm.valid) {
-        //         console.log('I am running');
-        //         const formInputValue = this.cropForm.value;
-        //         this.crops = {
-        //             id: this.id,
-        //             name: formInputValue.name,
-        //             season: formInputValue.season,
-        //             price: 0,
-        //             type: formInputValue.type,
-        //         };
-        //         // this._cropService.createFarmerCrop(this.crop);
-        //         console.table(this.crops);
+        if (this.carousel.activeId === 'plotSlide') {
+            this._portfolioService.getFarmerPlotInfo().subscribe(plot => {
+                // checks if a user has already added a plot
+                if (plot.length != 0) {
+                    plotExists = true;
+                }
+                console.log(`Plot has been submitted`);
+            });
 
-        //         this.checkCropInfo();
-
-        //         if (this.activeSlideId === this.totalSlides) {
-        //             // All slides have been filled out, navigate to the dashboard
-        //             this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
-        //         } else {
-        //             this.carousel.next(); // Move to the next slide
-        //         }
-        //     } else {
-        //         console.log('Crop form is not valid');
-        //     }
-        // }
-
-        // if (this.activeSlideId === 4) {
-        //     if (this.plotForm.valid) {
-        //         const formInputValue = this.plotForm.value;
-        //         this.plots = {
-        //             id: this.id,
-        //             plotAddress: formInputValue.plotAddress,
-        //             plotSize: formInputValue.plotSize,
-        //             dateOfOwnership: formInputValue.date,
-        //         };
-        //         console.log(this.plots);
-        //         this.checkPlotInfo();
-        //         // this._plotService.createFarmerPlot(this.plot);
-        //         if (this.activeSlideId === this.totalSlides) {
-        //             // All slides have been filled out, navigate to the dashboard
-        //             this.router.navigate(['/dashboard']); // Replace '/dashboard' with your actual dashboard route
-        //         } else {
-        //             this.carousel.next(); // Move to the next slide
-        //         }
-        //     } else {
-        //         console.log('Plot form is not valid');
-        //     }
-        // }
+            // checks if the crop info is empty
+            if (!plotExists) {
+                // calls method to create farmer farm
+                this.createPlotInfo();
+            } else {
+                console.log(`Plot already exists`);
+                // if the crop already exists it will go to the next slide
+                this.carousel.next();
+            }
+        }
 
         // sets the current slides name to the variable
         this.activeSlideName = this.carousel.activeId;
@@ -208,11 +193,9 @@ export class AboutTheFarmComponent implements OnInit {
                 assets: [],
                 incomeStatements: [],
             };
-            console.log(this.farm);
             // creates a farmer's farm within the farm service
             this._farmService.createFarmerFarm(this.farm);
-            console.log(`Farm has been submitted`);
-            // routes to next page after a farmer has been successfully created
+            // routes to next carousel  page after a farmer has been successfully created
             this.carousel.next();
         } else {
             console.log('Farm form is not valid');
@@ -220,32 +203,47 @@ export class AboutTheFarmComponent implements OnInit {
     }
 
     // check if farm info has already been submitted
-    checkCropInfo() {
-        // set the portfolio info for a logged in farmer
-        this._portfolioService.setFarmerPortfolio();
-
-        this._portfolioService.getFarmerCropInfo().subscribe(crops => {
-            // console.table(crop);
-            // checks if the crop info is not empty
-            if (crops.length === 0) {
-                this._cropService.createFarmerCrop(this.crops);
-                console.log(`Crop has been submitted`);
-            }
-        });
+    createCropInfo() {
+        if (this.cropForm.valid) {
+            console.log('I am running');
+            const cropFromInputValue = this.cropForm.value;
+            this.crops = {
+                id: this.id,
+                name: cropFromInputValue.name,
+                season: cropFromInputValue.season,
+                price: cropFromInputValue.cropSeedPrice,
+                type: cropFromInputValue.type,
+            };
+            console.table(this.crops);
+            this._cropService.createFarmerCrop(this.crops);
+            // routes to next carousel  page after a crop has been successfully created
+            this.carousel.next();
+        } else {
+            console.log('Crop form is not valid');
+        }
     }
 
     // check if farm info has already been submitted
-    checkPlotInfo() {
-        // set the portfolio info for a logged in farmer
-        this._portfolioService.setFarmerPortfolio();
-
-        this._portfolioService.getFarmerPlotInfo().subscribe(plots => {
-            console.table(plots);
-            // checks if the plot info is not empty
-            if (plots.length === 0) {
-                this._plotService.createFarmerPlot(this.plots);
-                console.log(`Plot has been submitted`);
-            }
-        });
+    createPlotInfo() {
+           if (this.plotForm.valid) {
+               const plotFormInputValue = this.plotForm.value;
+               this.plots = {
+                   id: this.id,
+                   plotAddress: plotFormInputValue.plotAddress,
+                   plotSize: plotFormInputValue.plotSize,
+                   dateOfOwnership: plotFormInputValue.date,
+               };
+               console.table(this.plots);
+               this._plotService.createFarmerPlot(this.plots);
+               // routes to next carousel  page after a crop has been successfully created
+                  this.carousel.next();
+               // All slides have been filled out, navigate to the dashboard
+            //    this.router.navigate(['/dashboard']);
+           } else {
+               console.log('Plot form is not valid');
+           }
+        // All slides have been filled out, navigate to the dashboard
+        this.router.navigate(['/dashboard']);
     }
+    
 }

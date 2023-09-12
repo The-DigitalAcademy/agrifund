@@ -60,21 +60,29 @@ export class CropService {
     getCropData(): Observable<FarmerCrop> {
         return this.cropData$;
     }
-    createFarmerCrop(crop: FarmerCrop) {
+    createFarmerCrop(cropBody: FarmerCrop) {
         this._portfolioService.setFarmerPortfolio();
-        this._portfolioService.setFarmerFarm();
+        // sets the farm ame according to the created farm's name
         const farmName = this._portfolioService.getFarmName();
         console.log(`Farm Name for crop: ${farmName}`);
+        this._portfolioService.setFarmerFarm();
 
-        this._apiService.addCrop(farmName, crop).subscribe(
+        const newCropBody = {
+            name: cropBody.name,
+            season: cropBody.season,
+            price: cropBody.price,
+            type: cropBody.type,
+        }
+
+        this._apiService.addCrop(farmName, newCropBody).subscribe(
             (data: any) => {
                 console.log(data);
-                this.crops.push(data);
-                this.farmerCrops$.next(this.crops);
+                // this.crops.push(data);
+                // this.farmerCrops$.next(this.crops);
             },
             error => {
                 console.error(
-                    'Error occured when creating new crop data',
+                    'Error occurred when creating new crop data',
                     console.error(error)
                 );
             }

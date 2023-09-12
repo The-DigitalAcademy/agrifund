@@ -153,6 +153,25 @@
                         Please select a name for crop.
                       </div>
                     </div>
+
+                    <!-- input for the price of a crop seed -->
+                    <div class="form-input" id="label">
+                      <label for="cropSeedPrice" class="form-label">
+                        How much do you normally pay for seeds per kilogram (kg)?
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text">R</span>
+                        <input formControlName="cropSeedPrice" type="text" class="form-control" id="cropSeedPrice" />
+                      </div>
+                      <div class="form-text text-danger" *ngIf="
+                                                cropForm.controls['cropSeedPrice'].touched &&
+                                                cropForm.controls['cropSeedPrice'].errors?.[
+                                                    'required'
+                                                ]
+                                            ">
+                        Please provide a price for your crop seeds.
+                      </div>
+                    </div>
                     <div class="form-group">
                       <label for="type">What is the type of your crop?</label>
                       <select id="type" class="form-control" formControlName="type">
