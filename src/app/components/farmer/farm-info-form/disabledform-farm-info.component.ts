@@ -13,8 +13,8 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { Farm } from 'src/app/_models/Farm';
 import { Subscription } from 'rxjs';
+import { FarmerFarm } from 'src/app/_models/farmerFarm';
 import { FarmService } from 'src/app/_services/farm-service/farm.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class DisabledformFarmInfoComponent {
     myForm!: FormGroup;
     isDisabled = true;
     private farmSubscription = new Subscription();
-    farmInfo!: Farm;
+    farmInfo!: FarmerFarm;
     submitted = false;
     //     id: any;
     constructor(
@@ -89,10 +89,11 @@ export class DisabledformFarmInfoComponent {
 
         this._portfolioService.setFarmerFarm();
 
-        this.farmSubscription = this._portfolioService
-            .getFarmerFarm()
-            .subscribe((farms: Farm[]) => {
-                //   console.table(farms);
+        
+            this.farmSubscription = this._portfolioService
+                .getFarmerFarm()
+                .subscribe((farms: FarmerFarm[]) => {
+                    console.table(farms);
 
                 // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
                   if (farms.length > 0) {
@@ -164,3 +165,4 @@ export class DisabledformFarmInfoComponent {
         this.myForm.disable();
     }
 }
+

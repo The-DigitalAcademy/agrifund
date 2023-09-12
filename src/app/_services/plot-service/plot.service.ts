@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Plot } from 'src/app/_models/plot';
+
 import { PortfolioService } from '../portfolio-service/portfolio.service';
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
 import { ApiService } from '../api-service/api.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PlotService {
-    private plot: Plot = {
+    private plot: FarmerPlot = {
         id: 0,
         plotAddress: '',
         plotSize: '',
         dateOfOwnership: '',
     };
 
-    private plotData$: BehaviorSubject<Plot> = new BehaviorSubject<Plot>({
-        id: 0,
-        plotAddress: '',
-        plotSize: '',
-        dateOfOwnership: '',
-    });
+    private plotData$: BehaviorSubject<FarmerPlot> =
+        new BehaviorSubject<FarmerPlot>({
+            id: 0,
+            plotAddress: '',
+            plotSize: '',
+            dateOfOwnership: '',
+        });
 
     constructor(
         private _portfolioService: PortfolioService,
@@ -34,7 +36,7 @@ export class PlotService {
         this._portfolioService.setFarmerPortfolio();
         this._portfolioService
             .getFarmerPlotInfo()
-            .subscribe((plots: Plot[]) => {
+            .subscribe((plots: FarmerPlot[]) => {
                 // sets the crop object to the first crop object in the crop observable
                 this.plot = plots[0];
                 this.plotData$.next(this.plot);
@@ -42,11 +44,34 @@ export class PlotService {
         console.table(this.plotData$);
     }
 
-    getPlotData(): Observable<Plot> {
+    getPlotData(): Observable<FarmerPlot> {
         return this.plotData$;
     }
+    private plots: FarmerPlot[] = [];
+    // stores farmer plots as a behviour subject
+    private farmerPlots$ = new BehaviorSubject<FarmerPlot[]>([]);
 
-    editPlot(plot: Plot) {
+    createFarmerPlot(plotBody: FarmerPlot) {
+        const farmName = this._portfolioService.getFarmName();
+        const addedPlot = {
+            plotAddress: plotBody.plotAddress,
+            plotSize: plotBody.plotSize,
+            dateOfOwnership: plotBody.dateOfOwnership,
+        };
+        this._apiService.addPlot(farmName, addedPlot).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.error(
+                    'Error occured when creating new crop data',
+                    error
+                );
+            }
+        );
+    }
+
+    editPlot(plot: FarmerPlot) {
         const updatedPlot = {
             id: plot.id,
             plotAddress: plot.plotAddress,

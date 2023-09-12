@@ -17,31 +17,31 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { ApiService } from '../api-service/api.service';
-import { Farm } from 'src/app/_models/Farm';
+import { FarmerFarm } from 'src/app/_models/farmerFarm';
 
 @Injectable({
     providedIn: 'root',
-
 })
 export class FarmService {
     // farmer portfolio will be stored in her
     private farmerPortfolio$: Observable<FarmerPortfolio>;
     // stores the farmers farm data
-    private farmerFarm: Farm[] = [];
+    private farmerFarm: FarmerFarm[] = [];
     // stores the farmers farm data as an observable -> initializes as empty
-    private farmerFarm$: BehaviorSubject<Farm> = new BehaviorSubject<Farm>({
-        id: 0,
-        numberOfEmployees: 0,
-        farmName: '',
-        farmAddress: '',
-        yearsActive: 0,
-        address: '', //stores residential address
-        farmingReason: '', //stores the reason for needing funding
-        crops: [],
-        plots: [],
-        assets: [],
-        incomeStatements: [],
-    });
+    private farmerFarm$: BehaviorSubject<FarmerFarm> =
+        new BehaviorSubject<FarmerFarm>({
+            id: 0,
+            numberOfEmployees: 0,
+            farmName: '',
+            farmAddress: '',
+            yearsActive: 0,
+            address: '', //stores residential address
+            farmingReason: '', //stores the reason for needing funding
+            crops: [],
+            plots: [],
+            assets: [],
+            incomeStatements: [],
+        });
     constructor(
         private _portfolioService: PortfolioService,
         private _apiService: ApiService
@@ -50,7 +50,7 @@ export class FarmService {
         this.farmerPortfolio$ = this._portfolioService.getFarmerPortfolio();
     }
 
-    getFarmerFarm(): Observable<Farm[]> {
+    getFarmerFarm(): Observable<FarmerFarm[]> {
         // returns the user's farm data from the portfolio
         return this.farmerPortfolio$.pipe(map(portfolio => portfolio.farms));
     }
@@ -58,7 +58,7 @@ export class FarmService {
     // gets the name of a farm stored within the farm data
     getFarmName() {
         // gets the farmer farm data and a
-        this.getFarmerFarm().subscribe((farm: Farm[]) => {
+        this.getFarmerFarm().subscribe((farm: FarmerFarm[]) => {
             // assigns data from get farmer farm to the farmer farm array
             this.farmerFarm = farm;
         });
@@ -70,9 +70,17 @@ export class FarmService {
         return farmName[0];
     }
 
-   // creates data for a farmers farm and sends to api
-    createFarmerFarm(farmBody: Farm) {
-        this._apiService.addFarm(farmBody).subscribe(
+    // creates data for a farmers farm and sends to api
+    createFarmerFarm(farmBody: FarmerFarm) {
+        let newFarmBody ={
+            numberOfEmployees: farmBody.numberOfEmployees,
+            farmName: farmBody.farmName,
+            farmAddress: farmBody.farmAddress,
+            yearsActive: farmBody.yearsActive,
+            address: farmBody.address,
+            farmingReason: farmBody.farmingReason,
+        }
+        this._apiService.addFarm(newFarmBody).subscribe(
             result => {
                 console.table('Creates this farm data: ${farmBody}');
             },
@@ -83,27 +91,27 @@ export class FarmService {
         );
     }
 
-    editFarm(farm: Farm) {
+    editFarm(farmBody: FarmerFarm) {
         const farmName = this.getFarmName();
         console.log('Farm Name:', farmName);
 
         const updatedFarm = {
-            id: farm.id,
-            numberOfEmployees: farm.numberOfEmployees,
-            farmName:farmName,
-            farmAddress: farm.farmAddress,
-            yearsActive: farm.yearsActive,
-            address: farm.address, //stores residential address
-            farmingReason: farm.farmingReason, //stores the reason for needing funding
-            crops: farm.crops,
-            plots: farm.plots,
-            assets: farm.assets,
-            incomeStatements: farm.incomeStatements,
+            id: farmBody.id,
+            numberOfEmployees: farmBody.numberOfEmployees,
+            farmName: farmName,
+            farmAddress: farmBody.farmAddress,
+            yearsActive: farmBody.yearsActive,
+            address: farmBody.address, //stores residential address
+            farmingReason: farmBody.farmingReason, //stores the reason for needing funding
+            crops: farmBody.crops,
+            plots: farmBody.plots,
+            assets: farmBody.assets,
+            incomeStatements: farmBody.incomeStatements,
         };
         // api connection goes here
-        this._apiService.updateFarm(farm.id, updatedFarm).subscribe(
+        this._apiService.updateFarm(farmBody.id, updatedFarm).subscribe(
             data => {
-                 console.log('Farm data updated successfully:', data);
+                console.log('Farm data updated successfully:', data);
             },
             error => {
                 console.error('Error updating farm:', error);

@@ -1,7 +1,7 @@
 <!-- 
-    AUTHOR: Monique Nagel, Bolebo 
+    AUTHOR: Monique Nagel, Bolebo Mohlala
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 25 Aug 2023 
+    UPDATED DATE: 05 Sept 2023 
  -->
 
 <app-navbar></app-navbar>
@@ -13,59 +13,93 @@
             <h1>Dashboard</h1>
         </div>
 
-        <!-- <div *ngIf=""></div> -->
-
-        <!-- no bookkeeping data card -->
-        <div class="content justify-center no-data-card">
-            <div class="container justify-center no-data-card-inner">
-                <h1 class="align-center">
-                    Your Dashboard Is Looking A Bit Empty...
-                </h1>
-                <h3 class="align-center">
-                    Add bookkeeping records to fill it up!
-                </h3>
-                <div class="actions justify-center">
-                    <button
-                        class="btn colourful-btn"
-                        type="button"
-                        [routerLink]="['/bookkeeping']">
-                        Go to Bookkeeping
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- 
-        <div class="container">
-            <div class="container-header">
-                <div class="justify-start"></div>
-                <!-- <div class="justify-end">
-                    <button class="btn colourful-btn">
-                        <p>Month</p>
-                    </button>
-                    <button class="white-btn">
-                        <p>Year</p>
-                    </button>
-                </div>
-            </div>
-
-            <div class="container">
-                <app-money-card-summary></app-money-card-summary>
-                <div class="row">
-                    <div class="col-6">
-                        <app-income-expenses-donut-graph></app-income-expenses-donut-graph>
-                    </div>
-                    <div class="col-6">
-                        <app-bar-chart></app-bar-chart>
-                    </div>
-                </div>
-            </div>
-
-            <div class="outer-container">
-                <app-farmer-portfolio-progressbar></app-farmer-portfolio-progressbar>
-            </div>
-        </div>
-         -->
+        <div
+            *ngIf="statements.length > 0; then hasData; else noData"
+            class="justify-center no-data-card"></div>
     </div>
 </div>
 
-<ng-template #NoBookkepingData></ng-template>
+<!-- no bookkeeping data card -->
+<ng-template #noData>
+    <div class="container justify-center no-data-card-inner">
+        <h1 class="align-center">Your Dashboard Is Looking A Bit Empty...</h1>
+        <h3 class="align-center">Add bookkeeping records to fill it up!</h3>
+        <div class="actions justify-center">
+            <button
+                class="btn colourful-btn"
+                type="button"
+                [routerLink]="['/bookkeeping']">
+                Go to Bookkeeping
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #hasData>
+    <div class="container outer-container">
+        <div class="container-header">
+            <div class="actions">
+                <div class="justify-start">
+                    <h2>Bookkeeping Overview</h2>
+                </div>
+                <form [formGroup]="dateForm">
+                    <div class="form-input year-filter justify-end">
+                        <label for="yearInput">For Year: </label>
+                        <select
+                            class="form-select form-control"
+                            (change)="this.onYearChange($event)">
+                            <option
+                                *ngFor="
+                                    let statementYear of statementList;
+                                    let firstIndex = first
+                                "
+                                [value]="statementYear"
+                                id="yearInput">
+                                {{ statementYear }}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <app-money-card-summary></app-money-card-summary>
+        <div class="justify-center">
+            <div class="container graph-container doughnut-graph">
+                <div class="container-header">
+                    <label class="card-title"> Money In & Money Out </label>
+                </div>
+                <!-- container for doughnut chart -->
+                <div class="chart-container">
+                    <app-income-expenses-donut-graph></app-income-expenses-donut-graph>
+                </div>
+            </div>
+        </div>
+
+        <div class="justify-center">
+            <div class="container graph-container justify-start">
+                <div class="container-header">
+                    <label class="card-title"> Highest Money Out Values </label>
+                </div>
+                <div class="graph">
+                    <!-- put graphs to summarize top 5 most expenses here -->
+                    <app-expenses-bar-chart></app-expenses-bar-chart>
+                </div>
+            </div>
+            <div class="container graph-container justify-end">
+                <div class="container-header">
+                    <label class="card-title"> Highest Money In Values </label>
+                </div>
+                <!-- put graphs to summarize top 5 most incomes here -->
+                <div class="graph">
+                    <app-incomes-bar-chart> </app-incomes-bar-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container outer-container progress-container">
+        <app-farmer-portfolio-progressbar></app-farmer-portfolio-progressbar>
+    </div>
+    <!-- </ng-template> -->
+</ng-template>

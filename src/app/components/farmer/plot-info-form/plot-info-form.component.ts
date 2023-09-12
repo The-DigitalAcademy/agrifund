@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Plot } from 'src/app/_models/plot';
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
 import { PlotService } from 'src/app/_services/plot-service/plot.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
@@ -20,7 +20,9 @@ import { ValidationService } from 'src/app/_services/validation-service/validati
 export class PlotInfoFormComponent implements OnInit {
     myForm!: FormGroup;
     isDisabled = true;
-    plotInfo!: Plot;
+    editedData: any;
+    farmerData: any;
+    plotInfo!: FarmerPlot;
     id: any;
 
     private plotSubscription = new Subscription();
@@ -53,7 +55,7 @@ export class PlotInfoFormComponent implements OnInit {
         this._portfolioService.setFarmerPortfolio();
         this.plotSubscription = this._portfolioService
             .getFarmerPlotInfo()
-            .subscribe((plots: Plot[]) => {
+            .subscribe((plots: FarmerPlot[]) => {
                 if (plots.length > 0) {
                     this.plotInfo = plots[0];
                     this.myForm.patchValue({

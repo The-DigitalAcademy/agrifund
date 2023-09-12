@@ -1,10 +1,14 @@
-<div class=" record-table" id="container">
+<div class="record-table" id="container">
     <div class="add-icon-container">
-        <button class="btn icon-btn btn" type="button" [routerLink]="['/equipment-create']">
+        <button
+            class="btn icon-btn btn"
+            type="button"
+            [routerLink]="['/equipment-create']">
             <fa-icon icon="plus"></fa-icon>Add
         </button>
         <div class="action">
-            <app-edit-all-forms (enableFields)="enableFields()"
+            <app-edit-all-forms
+                (enableFields)="enableFields()"
                 (saveData)="onSaveClicked($event)"></app-edit-all-forms>
         </div>
     </div>
@@ -15,15 +19,24 @@
                 <div class="form-text">
                     Describe the equipment in 1-10 words. Example: Wooden Rake
                 </div>
-                <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
+                <input
+                    formControlName="equipmentName"
+                    class="form-control"
+                    id="equipmentNameInfa-pull-left" />
             </div>
             <div class="form-group">
                 <label for="equipmentType">Type of</label>
-                <input formControlName="equipmentType" class="form-control" id="equipmentTypeInfa-pull-left" />
+                <input
+                    formControlName="equipmentType"
+                    class="form-control"
+                    id="equipmentTypeInfa-pull-left" />
             </div>
             <div class="form-group">
                 <label for="purchase_Amount">Purchase Amount</label>
-                <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
+                <input
+                    formControlName="purchase_Amount"
+                    class="form-control"
+                    id="purchase_AmountInfa-pull-left" />
             </div>
             <div class="form-group">
                 <label for="age">Age in years</label>
@@ -36,15 +49,14 @@
                 </div>
                 <hr />
                 <div class="file">
-                    <input formControlName="recordProof" class="form-control" type="file" id="recordProof" />
-                    <button class="btn colourful-btn ">
-                        View
-                    </button>
+                    <input
+                        formControlName="recordProof"
+                        class="form-control"
+                        type="file"
+                        id="recordProof" />
+                    <button class="btn colourful-btn">View</button>
                 </div>
             </div>
-
         </form>
     </div>
-
-
 </div>

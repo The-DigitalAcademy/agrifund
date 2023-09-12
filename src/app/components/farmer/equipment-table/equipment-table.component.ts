@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Subscription } from 'rxjs';
 import { Assets } from 'src/app/_models/Assets';
 import { ApiService } from 'src/app/_services/api-service/api.service';
@@ -15,15 +16,6 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
     styleUrls: ['./equipment-table.component.css'],
 })
 export class EquipmentTableComponent {
-    onSaveClicked($event: any) {
-        throw new Error('Method not implemented.');
-    }
-    enableFields() {
-        throw new Error('Method not implemented.');
-    }
-    isDisabled = true;
-    onFileSelected($event: Event) {}
-
     asset: Assets[] = []; // Initializing assets with interfaceAsset
     isLast: any;
     equipmentForm!: FormGroup;
@@ -34,6 +26,15 @@ export class EquipmentTableComponent {
         private _fb: FormBuilder,
         private _portfolioService: PortfolioService
     ) {}
+
+    onSaveClicked($event: any) {
+        throw new Error('Method not implemented.');
+    }
+    enableFields() {
+        throw new Error('Method not implemented.');
+    }
+    isDisabled = true;
+    onFileSelected($event: Event) {}
 
     ngOnInit() {
         this.equipmentForm = this._fb.group({

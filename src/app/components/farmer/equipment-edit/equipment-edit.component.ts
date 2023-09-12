@@ -85,8 +85,8 @@ export class EquipmentEditComponent implements OnInit {
         if (this.editEquipmentForm.valid) {
             // Create an object representing the asset data
             this.asset = {
-               
-               
+                //keep the initial id of the record
+                id: 0,
                 assetName: this.editEquipmentForm.get('equipmentName')?.value,
                 assetType: this.editEquipmentForm.get('equipmentType')?.value,
                 age: this.editEquipmentForm.get('equipmentAge')?.value,
@@ -98,12 +98,10 @@ export class EquipmentEditComponent implements OnInit {
             console.table(this.asset);
 
             // Call the API service to edit the equipment data
-            this._apiService
-                .editEquipment( this.asset)
-                .subscribe(data => {
-                    // Handle success response (e.g., show a success message)
-                    // This part can be filled with appropriate actions or notifications
-                });
+            this._apiService.editEquipment(this.asset).subscribe(data => {
+                // Handle success response (e.g., show a success message)
+                // This part can be filled with appropriate actions or notifications
+            });
 
             // Navigate to the '/portfolio' route after saving
             this.router.navigate(['/portfolio']);

@@ -49,6 +49,11 @@ h1 {
     position: relative;
 }
 
+.portfolio-cards>*{
+    /* adds space below each portfolio card */
+    margin-bottom: var(--normal-s);
+}
+
 /* Media query for screens with max width 767px */
 @media (max-width: 767px) {
     /* Adjust padding and margins for responsive layout */

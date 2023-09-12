@@ -141,7 +141,7 @@ export class ApiService {
 
     // GET function to get an OTP for a farmer
     getFarmerOTP(farmerEmail: string) {
-        return this.http.get(`${this.FARMER_OTP_URL}/${farmerEmail}`);
+        return this.http.get(`${this.FARMER_OTP_URL}?email=${farmerEmail}`);
     }
 
     // GET function to get a farmer by their id number -> ADMIN USE!
@@ -159,7 +159,7 @@ export class ApiService {
 
     // GET function to get a farmer's farm data by the farm name
     getFarmByName(farmName: string) {
-        return this.http.get(`${this.FARMER_FARM_URL}/${farmName}`);
+        return this.http.get(`${this.FARMER_FARM_URL}/?farmName=${farmName}`);
     }
 
     // GET function to get all farms
@@ -325,7 +325,7 @@ export class ApiService {
     ----------------------------------------------*/
     // GET a single income statement item
     getStatementItemById(recordId: number) {
-        return this.http.get(`${this.INCOME_STATEMENT_URL}/${recordId}`);
+        return this.http.get(`${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`);
     }
 
     // POST function to add a new income statement item
@@ -337,15 +337,19 @@ export class ApiService {
     }
 
     // PUT function to update data for a single income statement item
-    updateRecord(recordId: number, recordBody: any) {
+    updateRecord(recordId: number, statementId: number, recordBody: any) {
         return this.http.put(
-            `${this.INCOME_STATEMENT_URL}/${recordId}`,
+            `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}/item/${recordId}`,
             recordBody
         );
     }
 
     // PATCH function to upload proof for a bookkeeping record/ income statement item
-    uploadRecordProof(recordId: number, recordProof: File) {
+    uploadRecordProof(
+        recordId: number,
+        statementId: number,
+        recordProof: File
+    ) {
         return this.http.patch(
             `${this.INCOME_STATEMENT_ITEM_URL}/${recordId}`,
             recordProof
@@ -353,7 +357,9 @@ export class ApiService {
     }
 
     // DELETE a bookkeeping record
-    deleteIncomeStatementItem(recordId: number) {
-        return this.http.delete(`${this.INCOME_STATEMENT_URL}/${recordId}`);
+    deleteIncomeStatementItem(recordId: number, statementId: number) {
+        return this.http.delete(
+            `${this.INCOME_STATEMENT_ITEM_URL}/${statementId}/item/${recordId}`
+        );
     }
 }

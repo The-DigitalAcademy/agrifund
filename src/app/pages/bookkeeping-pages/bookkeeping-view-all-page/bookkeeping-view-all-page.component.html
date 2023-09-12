@@ -29,16 +29,14 @@
 <ng-template #recordsExist>
     <div class="actions">
         <div class="justify-start">
-            <button class="btn colourful-btn btn-width">
-                <span class="justify-center">
-                    <fa-icon icon="file-download"></fa-icon>
-                    Get Report
-                </span>
+            <button class="btn colourful-btn">
+                <fa-icon icon="file-download"></fa-icon>
+                Get Report
             </button>
         </div>
         <form [formGroup]="dateForm">
             <div class="form-input year-filter justify-end">
-                <label for="yearInput">For Financial Year: </label>
+                <label for="yearInput">For Year: </label>
                 <select
                     class="form-select form-control"
                     (change)="this.onYearChange($event)">

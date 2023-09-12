@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
 })
 export class EquipmentCreateComponent implements OnInit {
     asset: Assets = {
+        id: 0,
         assetName: '',
         assetType: '',
         age: 0,
@@ -54,6 +55,7 @@ export class EquipmentCreateComponent implements OnInit {
         const formInputVal = this.createEquipmentForm.value;
         if (this.createEquipmentForm.valid) {
             this.asset = {
+                id: this.asset.id,
                 assetName: formInputVal.equipmentName,
                 assetType: formInputVal.equipmentType,
                 age: formInputVal.age,

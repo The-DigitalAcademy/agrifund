@@ -1,10 +1,10 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Ntokozo Radebe
-    CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 8 Aug 2023 
+    CREATE DATE: 29 Aug 2023
+    UPDATED DATE: 29 Aug 2023
 -------------------------------------------------------------------------------------------------*/
 .page-body {
-    background-image: url('src/assets/images/background/orange-trees.webp');/*added background image to the page body*/
+    background-image: url('src/assets/images/background/barn.webp');/*added background image to the page body*/
     flex-direction: column;
 }
 
@@ -16,18 +16,18 @@
 ----------------------------------*/
 @media only screen and (max-width: 575px) {
     .mobile-header {
-        background-image: url('src/assets/images/background/orange-trees.webp');/*background image*/
+        background-image: url('src/assets/images/background/barn.webp');/*background image*/
     }
 
     .page-body {
+     
+
         justify-content: center;/*center items */
     }
     .container {
         border: none;/*remove borders from the container*/
     }
 }
-
-
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
@@ -40,4 +40,11 @@
         width: 35% !important;/* width of container to 35% */
     }
 }
+/* CSS Styles for Success and Error States */
+.has-success .form-control {
+    border-color: green;
+}
 
+.has-error .form-control {
+    border-color: red;
+}

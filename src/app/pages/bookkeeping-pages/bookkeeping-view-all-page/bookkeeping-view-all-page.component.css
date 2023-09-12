@@ -12,18 +12,6 @@
     width: 100% !important;
 }
 
-.date-filter .form-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0px 0px 0px var(--small-s) !important;
-}
-
-label{
-    min-width: max-content;
-    margin-right: var(--small-s) !important ;
-}
-
 .date-input {
     margin: var(--small-s);
 }
@@ -72,10 +60,6 @@ tbody tr,
     margin-top: 0px !important;
 }
 
-select {
-    width: 80px;
-}
-
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
@@ -113,6 +97,7 @@ select {
         border-radius: var(--border-radius);
         border: var(--thin-border) var(--lighter-grey) !important;
     }
+
 }
 
 /*---------------------------------

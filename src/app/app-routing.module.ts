@@ -19,6 +19,8 @@ import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bo
 import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
 import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
 import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
+import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
+import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
 /* --------------------------------
     ACCESS GUARDS
@@ -36,8 +38,10 @@ const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent },
     { path: 'reset-password', component: ResetPasswordPageComponent },
+    { path: 'about-farm', component: AboutTheFarmComponent},
     { path: 'dashboard', component: DashboardPageComponent },
     { path: 'bookkeeping', component: BookkeepingViewAllPageComponent },
+    { path: 'otp-page', component: OtpPageComponent },
     {
         path: 'bookkeeping/create-record',
         component: BookkeepingCreatePageComponent,

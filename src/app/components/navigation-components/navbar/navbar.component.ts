@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/_services/authentication-service/auth.service';
-import { UserService } from 'src/app/_services/user-service/user.service';
+import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 
 @Component({
     selector: 'app-navbar',
@@ -32,17 +32,26 @@ export class NavbarComponent {
     userState$!: Observable<boolean>;
     // refers to the offcanvas html element
     @ViewChild('offcanvas', { static: true }) private offcanvas!: NgbOffcanvas;
+    // stores the user's first name
+    userFirstName$!: Observable<string>;
 
     constructor(
         private _offcanvasService: NgbOffcanvas,
         private _authService: AuthService,
-        private _userService: UserService,
-        private router: Router
+        private router: Router,
+        private _portfolioService: PortfolioService
     ) {
         // gets the current user state
         this.userState$ = this._authService.getUserState();
-        // sets the farmer user data
-        //this._userService.setFarmerUserPortfolioData();
+
+        if (this.userState$) {
+            this.setGreetingFirstName();
+        }
+    }
+
+    // sets the first name of the user in the navbar and offcanvas
+    setGreetingFirstName() {
+        this.userFirstName$ = this._portfolioService.getUserFirstName();
     }
 
     // toggles the offcanvas visibility

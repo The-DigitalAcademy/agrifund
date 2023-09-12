@@ -8,6 +8,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 export interface Assets {
+    id: number;
     assetName: string;
     assetType: string;
     age: number;

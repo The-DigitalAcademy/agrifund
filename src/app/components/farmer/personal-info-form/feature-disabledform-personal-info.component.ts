@@ -71,7 +71,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
             firstName: '',
             lastName: '',
             email: '',
-            cellNumber: 0,
+            cellNumber: '',
             farms: [],
         };
 

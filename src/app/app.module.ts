@@ -35,6 +35,7 @@ import { LoginPageComponent } from './pages/user-pages/login-page/login-page.com
 import { RegisterPageComponent } from './pages/user-pages/register-page/register-page.component';
 import { ForgotPasswordPageComponent } from './pages/user-pages/forgot-password-page/forgot-password-page.component';
 import { ResetPasswordPageComponent } from './pages/user-pages/reset-password-page/reset-password-page.component';
+import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
 
 /* --------------------------------
     BOOKKEEPING
@@ -59,7 +60,9 @@ import { EquipmentTableComponent } from './components/farmer/equipment-table/equ
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
-
+import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
+import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-all-forms.component';
+import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 /* --------------------------------
     DATA SUMMARY
 ---------------------------------*/
@@ -104,8 +107,7 @@ import {
     faUser,
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { PlotInfoFormComponent } from './components/farmer/plot-info-form/plot-info-form.component';
-import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-all-forms.component';
+import { IncomesBarChartComponent } from './components/data-summary-components/graph-components/incomes-bar-chart/incomes-bar-chart/incomes-bar-chart.component';
 
 @NgModule({
     declarations: [
@@ -133,7 +135,6 @@ import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-a
         EquipmentTableComponent,
         MoneyCardSummaryComponent,
         EquipmentCreateComponent,
-        
         ModalContainerComponent,
         EquipmentEditComponent,
         DynamicInputsComponent,
@@ -141,6 +142,10 @@ import { EditAllFormsComponent } from './components/farmer/edit-all-forms/edit-a
         IncomeExpensesDonutGraphComponent,
         PlotInfoFormComponent,
         EditAllFormsComponent,
+        OtpPageComponent,
+        IncomesBarChartComponent,
+        OtpPageComponent,
+        AboutTheFarmComponent,
     ],
     imports: [
         BrowserModule,

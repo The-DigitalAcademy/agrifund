@@ -1,49 +1,52 @@
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Bolebo Mohlala, Monique Nagel
-    CREATE DATE: 08 Aug 2023 
-    UPDATED DATE: 06 Sept 2023 
+    AUTHOR: Monique Nagel
+    CREATE DATE: 07 Sept 2023 
+    UPDATED DATE: 
 
     DESCRIPTION:
         This component is responsible for the creation and generation of a bar chart that summarizes
-        the highest expenses for a farmer for the year selected on dashboard
+        the highest incomes for a farmer for the year selected on dashboard
     PARAMETERS:
         _incomeStatementService: IncomeStatementService -> used to access income statement service methods
         
 -------------------------------------------------------------------------------------------------*/
-import { Observable } from 'rxjs';
+
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+import Chart from 'chart.js/auto';
+import { Observable } from 'rxjs';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
-    selector: 'app-expenses-bar-chart',
-    templateUrl: './expenses-bar-chart.component.html',
-    styleUrls: ['./expenses-bar-chart.component.css'],
+    selector: 'app-incomes-bar-chart',
+    templateUrl: './incomes-bar-chart.component.html',
+    styleUrls: ['./incomes-bar-chart.component.css'],
 })
-export class ExpensesBarChartComponent implements OnInit {
+export class IncomesBarChartComponent implements OnInit {
     constructor(
         private _incomeStatementItemService: IncomeStatementItemService
     ) {}
-    // five highest expenses stored in array
-    fiveHighestExpenses: IncomeStatementItem[] = [];
+    // stores the five highest incomes in an observable
+    fiveHighestIncomes$: Observable<IncomeStatementItem>[] = [];
+    // five highest incomes stored in array
+    fiveHighestIncomes: IncomeStatementItem[] = [];
     // stores the labels for a chart
     chartLabels: string[] = [];
     // stores the data used in the chart
     chartData: number[] = [];
     // stores the chart
-    expenseBarChart: any = [];
+    incomeBarChart: any = [];
 
     ngOnInit() {
         this._incomeStatementItemService
-            .getFiveHighestExpenses()
+            .getFiveHighestIncomes()
             .subscribe((records: IncomeStatementItem[]) => {
                 // assigns values from service method to fiveHighestExpenses Array
-                this.fiveHighestExpenses = records;
+                this.fiveHighestIncomes = records;
             });
 
         // loops through five highest expenses array to assign char labels and data
-        this.fiveHighestExpenses.forEach(record => {
+        this.fiveHighestIncomes.forEach(record => {
             // adds the record description as a chart label
             this.chartLabels.push(record.description);
             // add the record amount as the chart data
@@ -53,9 +56,8 @@ export class ExpensesBarChartComponent implements OnInit {
         this.renderChart(this.chartLabels, this.chartData);
     }
 
-    // size of the graph properties
     renderChart(chartLabels: string[], chartData: number[]) {
-        this.expenseBarChart = new Chart('expenseBarChart', {
+        this.incomeBarChart = new Chart('incomeBarChart', {
             type: 'bar',
             data: {
                 labels: chartLabels,
@@ -63,7 +65,7 @@ export class ExpensesBarChartComponent implements OnInit {
                     {
                         label: '',
                         data: chartData,
-                        backgroundColor: ['#9BA66F'],
+                        backgroundColor: ['#5A6537'],
                     },
                 ],
             },
