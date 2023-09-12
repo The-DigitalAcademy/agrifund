@@ -5,7 +5,7 @@
 
 
     <form class="form-container container outer-container">
-      <div *ngIf="activeSlideId > 1" class="page-heading">
+      <div *ngIf="activeSlideName ==='introSLide'" class="page-heading">
         <h1>Tell Me About Your Farm</h1>
       </div>
 
@@ -245,16 +245,13 @@
             Prev
           </button>
         </div>
-        <div *ngIf="activeSlideId > 1" class="carousel slide justify-center">
+        <div *ngIf="activeSlideName !='introSlide'" class="carousel slide justify-center">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#aboutFarmCarousel" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="##aboutFarmCarousel" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="##aboutFarmCarousel" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#aboutFarmCarousel" data-bs-slide-to="4"
-              aria-label="Slide 5"></button>
+            <button [className]="isActiveSlide('introSlide') ? 'activeIndicator': 'inactiveIndicator'"
+            type="button" class="indictorButton" id="welcomeIndicator" (click)="goToSlide('introSlide')"></button>
+            <button [className]="isActiveSlide('farmSlide') ? 'activeIndicator': 'inactiveIndicator'" type="button" class="indictorButton" id="farmIndicator" (click)="goToSlide('farmSlide')"></button>
+            <button [className]="isActiveSlide('cropSlide') ? 'activeIndicator': 'inactiveIndicator'" type="button" class="indictorButton" id="cropIndicator" (click)="goToSlide('cropSlide')"></button>
+            <button [className]="isActiveSlide('plotSlide') ? 'activeIndicator': 'inactiveIndicator'" type="button" class="indictorButton" id="plotIndicator" (click)="goToSlide('plotSlide')"></button>
           </div>
         </div>
         <div class="justify-end">
