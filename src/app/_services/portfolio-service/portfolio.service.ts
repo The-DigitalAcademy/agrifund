@@ -22,7 +22,7 @@ import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/Assets';
 import { Farm } from 'src/app/_models/Farm';
 import { HttpClient } from '@angular/common/http';
-import { Crop } from 'src/app/_models/Crop';
+import { Crop } from 'src/app/_models/crop';
 import { Plot } from 'src/app/_models/plot';
 
 @Injectable({
@@ -147,7 +147,7 @@ export class PortfolioService {
         return farmName[0];
     }
 
-    editPortfolio(portfolio: FarmerPortfolio){
+    editPortfolio(portfolio: FarmerPortfolio) {
         const updatedPortfolio = {
             id: portfolio.id,
             firstName: portfolio.firstName,
@@ -159,7 +159,7 @@ export class PortfolioService {
 
         // api connection goes here
         this._apiService
-            .updateFarmerInfo(portfolio.id, updatedPortfolio )
+            .updateFarmerInfo(portfolio.id, updatedPortfolio)
             .subscribe(
                 data => {
                     console.log('Portfolio data updated successfully:', data);
@@ -186,7 +186,7 @@ export class PortfolioService {
         return this.farmerFarm$.pipe(map(farm => farm.plots));
     }
 
-    getFarmerAssetInfo():Observable<Assets[]> {
+    getFarmerAssetInfo(): Observable<Assets[]> {
         return this.farmerFarm$.pipe(map(farm => farm.assets));
-}
+    }
 }

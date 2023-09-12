@@ -8,8 +8,9 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { IncomeStatement } from './IncomeStatement';
-import { Assets } from './assets';
+import { Assets } from './Assets';
 import { Crop } from './crop';
+import { Plot } from './plot';
 
 export interface Farm {
     id: number;
@@ -20,6 +21,7 @@ export interface Farm {
     address: string; //stores residential address
     farmingReason: string; //stores the reason for needing funding
     crops: Crop[];
+    plots: Plot[];
     assets: Assets[];
     incomeStatements: IncomeStatement[];
 }
