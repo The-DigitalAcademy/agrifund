@@ -125,7 +125,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
         }
         this.isDisabled = true;
-        //this._progressService.setPersonalInfoCompleted(true);
+        this._progressService.setPersonalInfoCompleted(true);
         this.myForm.disable();
     }
     onCancelClicked() {
