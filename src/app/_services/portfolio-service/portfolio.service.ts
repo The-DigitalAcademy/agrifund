@@ -39,7 +39,7 @@ export class PortfolioService {
             firstName: '',
             lastName: '',
             email: '',
-            cellNumber: '',
+            cellNumber: 0,
             farms: [],
         });
 
@@ -145,6 +145,29 @@ export class PortfolioService {
         });
         // returns the farm name within the first index of the farm name array
         return farmName[0];
+    }
+
+    editPortfolio(portfolio: FarmerPortfolio){
+        const updatedPortfolio = {
+            id: portfolio.id,
+            firstName: portfolio.firstName,
+            lastName: portfolio.lastName,
+            email: portfolio.email,
+            cellNumber: portfolio.cellNumber,
+            farms: portfolio.farms,
+        };
+
+        // api connection goes here
+        this._apiService
+            .updateFarmerInfo(portfolio.id, updatedPortfolio )
+            .subscribe(
+                data => {
+                    console.log('Portfolio data updated successfully:', data);
+                },
+                error => {
+                    console.error('Error updating Portfolio:', error);
+                }
+            );
     }
 
     /*---------------------------------

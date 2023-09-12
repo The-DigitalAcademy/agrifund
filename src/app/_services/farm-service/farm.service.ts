@@ -83,16 +83,28 @@ export class FarmService {
         );
     }
 
-    editFarm(farmBody: Farm) {
+    editFarm(farm: Farm) {
         const farmName = this.getFarmName();
         console.log('Farm Name:', farmName);
 
         const updatedFarm = {
-            farmName: farmName,
+            id: farm.id,
+            numberOfEmployees: farm.numberOfEmployees,
+            farmName:farmName,
+            farmAddress: farm.farmAddress,
+            yearsActive: farm.yearsActive,
+            address: farm.address, //stores residential address
+            farmingReason: farm.farmingReason, //stores the reason for needing funding
+            crops: farm.crops,
+            plots: farm.plots,
+            assets: farm.assets,
+            incomeStatements: farm.incomeStatements,
         };
         // api connection goes here
-        this._apiService.updateFarm(farmBody.id, updatedFarm).subscribe(
-            data => {},
+        this._apiService.updateFarm(farm.id, updatedFarm).subscribe(
+            data => {
+                 console.log('Farm data updated successfully:', data);
+            },
             error => {
                 console.error('Error updating farm:', error);
             }

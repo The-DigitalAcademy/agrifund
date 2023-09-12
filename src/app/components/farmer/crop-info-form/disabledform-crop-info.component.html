@@ -6,7 +6,7 @@
         </div>
         <div class="action">
             <app-edit-all-forms (enableFields)="enableFields()"
-                (saveData)="onSaveClicked($event)"></app-edit-all-forms>
+                ></app-edit-all-forms>
         </div>
     </div>
     <hr />
@@ -50,7 +50,7 @@
         </div>
 
             <div class="button-container">
-                <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
+                <button *ngIf="!isDisabled" (click)="onSaveClicked()" [disabled]="!myForm.valid"
                     class="btn colourful-btn btn-width">
                     Save
                 </button>

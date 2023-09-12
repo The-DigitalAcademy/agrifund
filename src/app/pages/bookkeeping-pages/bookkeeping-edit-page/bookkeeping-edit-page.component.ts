@@ -67,7 +67,7 @@ export class BookkeepingEditPageComponent implements OnInit {
         });
     }
 
-    getRecordDetails(id: any) {
+    getRecordDetails(recordId: any) {
         // subscribes to api connection to get a bookkeeping record by the id passed through the page url
         this._apiService
             .getStatementItemById(this.id)

@@ -15,6 +15,7 @@ import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
 import { Farm } from 'src/app/_models/Farm';
 import { Subscription } from 'rxjs';
+import { FarmService } from 'src/app/_services/farm-service/farm.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -27,13 +28,15 @@ export class DisabledformFarmInfoComponent {
     isDisabled = true;
     private farmSubscription = new Subscription();
     farmInfo!: Farm;
+    submitted = false;
     //     id: any;
     constructor(
         private _fb: FormBuilder,
         private _validationsService: ValidationService,
         private _portfolioService: PortfolioService,
         private _apiService: ApiService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private _farmService: FarmService
     ) {}
 
     ngOnInit() {
@@ -43,7 +46,7 @@ export class DisabledformFarmInfoComponent {
         this.myForm = this._fb.group({
             farmerAddress: new FormControl('', [
                 Validators.required,
-                this._validationsService.addressContainsStreetValidator,
+                this._validationsService.addressLengthValidator,
             ]),
             farm_name: new FormControl('', [
                 Validators.required,
@@ -51,66 +54,103 @@ export class DisabledformFarmInfoComponent {
             ]),
             farmAddress: new FormControl('', [
                 Validators.required,
-                this._validationsService.addressContainsStreetValidator,
+                this._validationsService.addressLengthValidator,
             ]),
 
             years: new FormControl('', [
                 Validators.required,
                 this._validationsService.isNumericValidator(),
             ]),
-            reasonForFunding: new FormControl('', [Validators.required]),
+            reasonForFunding: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
+
             num_employee: new FormControl('', [
                 Validators.required,
                 this._validationsService.isNumericValidator(),
             ]),
         });
 
-               this._portfolioService.setFarmerFarm();
 
-          
-              this.farmSubscription = this._portfolioService
-                  .getFarmerFarm()
-                  .subscribe((farms: Farm[]) => {
-                    //   console.table(farms);
-
-                      // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
-                      this.myForm.patchValue({
-                          farm_name: farms[0].farmName,
-                          farmAddress: farms[0].farmAddress,
-                          years: farms[0].yearsActive,
-                          farmerAddress: farms[0].address,
-                          num_employee: farms[0].numberOfEmployees,
-                          reasonForFunding: farms[0].farmingReason,
-                      });
-
-                      //Update progress for personal info completion
-                      //this._progressService.setPersonalInfoCompleted(true);
-
-                      // Set the 'isDisabled' flag to false to enable form editing
-                      this.isDisabled = true;
-                  });
-          
+         this.farmInfo = { 
+        id: 0,
+        numberOfEmployees: 0,
+        farmName: '',
+        farmAddress: '',
+        yearsActive: 0,
+        address: '', //stores residential address
+        farmingReason: '', //stores the reason for needing funding
+        crops: [],
+        plots: [],
+        assets: [],
+        incomeStatements: [],
     }
 
-   
+        this._portfolioService.setFarmerFarm();
 
-  
+        this.farmSubscription = this._portfolioService
+            .getFarmerFarm()
+            .subscribe((farms: Farm[]) => {
+                //   console.table(farms);
 
-        get createFarmControl() {
-            return this.myForm.controls;
-        }
+                // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
+                  if (farms.length > 0) {
+                      this.farmInfo = farms[0]; // Assuming there's only one farm per farmer
+                      this.myForm.patchValue({
+                          farm_name: this.farmInfo.farmName,
+                          farmAddress: this.farmInfo.farmAddress,
+                          years: this.farmInfo.yearsActive,
+                          farmerAddress: this.farmInfo.address,
+                          num_employee: this.farmInfo.numberOfEmployees,
+                          reasonForFunding: this.farmInfo.farmingReason,
+                      });
+                  }
+
+                //Update progress for personal info completion
+                //this._progressService.setPersonalInfoCompleted(true);
+
+                // Set the 'isDisabled' flag to false to enable form editing
+                this.isDisabled = true;
+            });
+    }
+
+    get createFarmControl() {
+        return this.myForm.controls;
+    }
 
     enableFields() {
         this.isDisabled = false; // Enable the fields by setting isDisabled to false
         this.myForm.enable(); // Enable the formGroup
     }
 
-    
-
-    onSaveClicked(formData: any) {
+    onSaveClicked() {
+        this.submitted = true; // Indicate that the form has been submitted
        
+        if (this.myForm.valid) {
+            this.farmInfo = {
+                id: this.farmInfo.id,
+                crops: this.farmInfo.crops,
+                plots: this.farmInfo.plots,
+                assets: this.farmInfo.assets,
+                farmName: this.farmInfo.farmName,
+                incomeStatements: this.farmInfo.incomeStatements,
+                farmAddress: this.myForm.get('farmAddress')?.value,
+                yearsActive: this.myForm.get('years')?.value,
+                address: this.myForm.get('farmerAddress')?.value,
+                numberOfEmployees: this.myForm.get('num_employee')?.value,
+                farmingReason: this.myForm.get('reasonForFunding')?.value,
+            };
+            console.table(this.farmInfo);
 
+            this._farmService.editFarm(this.farmInfo);
+        }
+        // Set crop info completion status to true
+        // this.progressService.setCropInfoCompleted(true);
+
+        // Save or update the data here
         this.isDisabled = true;
+
         this.myForm.disable();
         // this.progressService.setFarmInfoCompleted(true);
     }

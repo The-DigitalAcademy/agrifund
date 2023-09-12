@@ -27,6 +27,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     private portfolioSubscription = new Subscription();
     personalInfo!: FarmerPortfolio;
     id: any;
+    submitted = false;
 
     constructor(
         private router: Router,
@@ -57,20 +58,25 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 Validators.required,
                 this._validationsService.emailValidator(),
             ]),
-            id_number: new FormControl('', [
-                Validators.required,
-                this._validationsService.idNumberValidator(),
-            ]),
+        
             cell_number: new FormControl('', [
                 Validators.required,
                 this._validationsService.phoneNumberValidator(),
             ]),
         });
 
-        this.getData();
-    }
 
-    getData() {
+        this.personalInfo = {
+            id: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            cellNumber: 0,
+            farms: [],
+        };
+
+         this._portfolioService.setFarmerFarm();
+        
         this.portfolioSubscription = this._portfolioService
             .getFarmerPortfolio()
             .subscribe(data => {
@@ -85,14 +91,15 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 });
 
                 //Update progress for personal info completion
-                // this._progressService.setPersonalInfoCompleted(true);
+                this._progressService.setPersonalInfoCompleted(true);
 
                 // Set the 'isDisabled' flag to false to enable form editing
                 this.isDisabled = true;
             });
+    
     }
 
-    getPersonalData(id: any) {}
+   
 
     enableFields() {
         this.isDisabled = false;
@@ -100,23 +107,23 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     }
 
     onSaveClicked(formData: any) {
-        // if (this.myForm.valid) {
-        //     this.personalInfo = {
-        //         id: this.personalInfo.id,
-        //         firstName: this.myForm.get('first_name')?.value,
-        //         lastName: this.myForm.get('last_name')?.value,
-        //         email: this.myForm.get('email')?.value,
-        //         cellNumber: this.myForm.get('cell_number')?.value,
-        //         farms: this.myForm.get('farms')?.value,
-        //     };
-        //     console.table(this.personalInfo);
+        this.submitted = true;
+        if (this.myForm.valid) {
+            this.personalInfo = {
+                id: this.personalInfo.id,
+                farms: this.personalInfo.farms,
+                firstName: this.myForm.get('first_name')?.value,
+                lastName: this.myForm.get('last_name')?.value,
+                email: this.myForm.get('email')?.value,
+                cellNumber: this.myForm.get('cell_number')?.value
+              
+            };
+            console.table(this.personalInfo);
 
-        //     this._apiService
-        //         .updateFarmerInfo(this.personalInfo)
-        //         .subscribe(data => {
-        //             // Save or update the data here
-        //         });
-        // }
+            this._portfolioService
+                .editPortfolio(this.personalInfo)
+
+        }
         this.isDisabled = true;
         //this._progressService.setPersonalInfoCompleted(true);
         this.myForm.disable();

@@ -23,7 +23,10 @@ export class CropService {
         type: '',
     });
 
-    constructor(private _portfolioService: PortfolioService) {
+    constructor(
+        private _portfolioService: PortfolioService,
+        private _apiService: ApiService
+    ) {
         this.setCropData();
     }
 
@@ -48,5 +51,23 @@ export class CropService {
 
     getCropData(): Observable<Crop> {
         return this.cropData$;
+    }
+
+    updateCropData(crop: Crop) {
+        const cropBody = {
+            id: crop.id,
+            name: crop.name,
+            season: crop.season,
+            type: crop.type,
+        };
+
+        this._apiService.updateCrop(crop.id, cropBody).subscribe(
+            data => {
+                console.log('Crop data updated successfully:', data);
+            },
+            error => {
+                console.error('Error updating crop data:', error);
+            }
+        );
     }
 }

@@ -119,8 +119,11 @@ export class ApiService {
     }
 
     // PUT function to update a farmers details
-    updateFarmerInfo(farmerInfoBody: any) {
-        return this.http.put(`${this.FARMERS_URL}`, farmerInfoBody);
+    updateFarmerInfo(portfolioId: number , farmerInfoBody: any) {
+        return this.http.put(
+            `${this.FARMERS_URL}/${portfolioId}`,
+            farmerInfoBody
+        );
     }
 
     // PATCH function to update a farmers password
@@ -165,7 +168,7 @@ export class ApiService {
     }
 
     // POST function for creating a farmer's farm data
-    addFarm(farmBody: any, ) {
+    addFarm(farmBody: any) {
         return this.http.post(`${this.FARMER_FARM_URL}`, farmBody);
     }
 
@@ -219,7 +222,7 @@ export class ApiService {
     }
 
     // PUT function to update data for a single asset
-    editEquipment( body: any) {
+    editEquipment(body: any) {
         return this.http.put(`${this.FARMER_ASSET_URL}`, body);
     }
 
@@ -231,8 +234,8 @@ export class ApiService {
         return this.http.get(`${this.FARMER_CROP_URL}/${cropId}`);
     }
 
-    getCrop(){
-       return this.http.get(`${this.FARMER_CROP_URL}`);
+    getCrop() {
+        return this.http.get(`${this.FARMER_CROP_URL}`);
     }
 
     // PUT function to update a farmer's crop info

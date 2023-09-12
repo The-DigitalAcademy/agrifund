@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Plot } from 'src/app/_models/plot';
+import { PlotService } from 'src/app/_services/plot-service/plot.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
@@ -28,48 +29,42 @@ export class PlotInfoFormComponent implements OnInit {
         private fb: FormBuilder,
         private route: ActivatedRoute,
         private _portfolioService: PortfolioService,
-        private _validationsService: ValidationService
+        private _validationsService: ValidationService,
+        private _plotService: PlotService
     ) {}
 
     ngOnInit() {
-        this.createForm();
-        this.getPlotInfo();
-    }
-
-    createForm() {
         this.myForm = this.fb.group({
-            farmAddress: new FormControl('', [
+            plotAddress: new FormControl('', [
                 Validators.required,
-                this._validationsService.addressContainsStreetValidator,
+                this._validationsService.addressLengthValidator,
             ]),
-            size: new FormControl('', [Validators.required]),
-            date: new FormControl('', [Validators.required]),
+            plotSize: new FormControl('', [Validators.required]),
+            dateOfOwnership: new FormControl('', [Validators.required]),
         });
-    }
 
-    getPlotInfo() {
+        this.plotInfo = {
+            id: 0,
+            plotAddress: '',
+            plotSize: '',
+            dateOfOwnership: '',
+        };
+
         this._portfolioService.setFarmerPortfolio();
         this.plotSubscription = this._portfolioService
             .getFarmerPlotInfo()
-            .subscribe(
-                (plots: Plot[]) => {
-                    if (plots.length > 0) {
-                        this.populateForm(plots[0]);
-                        this.isDisabled = true;
-                    }
-                },
-                error => {
-                    console.error('Error fetching plot info:', error);
+            .subscribe((plots: Plot[]) => {
+                if (plots.length > 0) {
+                    this.plotInfo = plots[0];
+                    this.myForm.patchValue({
+                        plotAddress: this.plotInfo.plotAddress,
+                        plotSize: this.plotInfo.plotSize,
+                        dateOfOwnership: this.plotInfo.dateOfOwnership,
+                    });
                 }
-            );
-    }
 
-    populateForm(plot: Plot) {
-        this.myForm.patchValue({
-            farmAddress: plot.plotAddress,
-            size: plot.plotSize,
-            date: plot.dateOfOwnership,
-        });
+                this.isDisabled = true;
+            });
     }
 
     enableFields() {
@@ -83,8 +78,18 @@ export class PlotInfoFormComponent implements OnInit {
         this.isDisabled = true;
     }
 
-    onSaveClicked(formData: any) {
-        // Add logic to handle save action, e.g., send data to a service
+    onSaveClicked() {
+        if (this.myForm.valid) {
+            this.plotInfo = {
+                id: this.plotInfo.id,
+                plotAddress: this.myForm.get('plotAddress')?.value,
+                plotSize: this.myForm.get('plotSize')?.value,
+                dateOfOwnership: this.myForm.get('dateOfOwnership')?.value,
+            };
+            console.table(this.plotInfo);
+            this._plotService.editPlot(this.plotInfo);
+        }
+
         this.myForm.disable();
         this.isDisabled = true;
     }
