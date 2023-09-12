@@ -241,6 +241,7 @@
         <div class="justify-end">
           <!-- *ngIf="slide !== last" -->
           <button class="carousel-control-next btn icon-btn-dark" type="submit" (click)="goToNextSlide()">
+            <span *ngIf=""></span>
             Next
             <fa-icon class="arrow-right" icon="arrow-right"></fa-icon>
           </button>

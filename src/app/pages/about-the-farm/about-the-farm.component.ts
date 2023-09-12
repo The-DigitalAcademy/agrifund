@@ -92,6 +92,11 @@ export class AboutTheFarmComponent implements OnInit {
     // navigates to the next slide
     goToNextSlide() {
         this.submitted = true;
+        // stores value whether a farm already exists
+        let farmExists = false;
+
+        // stores value whether a crop already exists
+
         // set the portfolio info for a logged in farmer
         this._portfolioService.setFarmerPortfolio();
 
@@ -102,16 +107,20 @@ export class AboutTheFarmComponent implements OnInit {
 
         if (this.carousel.activeId === 'farmSlide') {
             this._portfolioService.getFarmerFarm().subscribe(farm => {
-                console.table(farm);
-                // checks if the farm info is not empty
-                if (farm.length === 0) {
-                    // calls method to create farmer farm
-                    this.createFarmInfo();
-                } else {
-                    console.log(`Farm already exists`);
-                    this.carousel.next();
+                // checks if a user has already added a farm
+                if (farm.length != 0) {
+                    farmExists = true;
                 }
             });
+
+            // checks if the farm info is empty
+            if (!farmExists) {
+                // calls method to create farmer farm
+                this.createFarmInfo();
+            } else {
+                console.log(`Farm already exists`);
+                this.carousel.next();
+            }
         }
 
         //  checks to see if the carousel is on the last slide
@@ -171,19 +180,13 @@ export class AboutTheFarmComponent implements OnInit {
         //     }
         // }
 
-        // sets the current slides name to the variable 
+        // sets the current slides name to the variable
         this.activeSlideName = this.carousel.activeId;
         console.log('Active slide name:' + this.activeSlideName);
     }
 
     // navigates to the previous slide
     goToPreviousSlide() {
-        // if (this.carousel.activeId === 'introSlide') {
-        //     // decrements the active slide
-        //     // this.activeSlideId--;
-        //     console.log(`Current slide: ${this.activeSlideId}`);
-        // }
-
         this.carousel.prev();
     }
 
@@ -209,6 +212,8 @@ export class AboutTheFarmComponent implements OnInit {
             // creates a farmer's farm within the farm service
             this._farmService.createFarmerFarm(this.farm);
             console.log(`Farm has been submitted`);
+            // routes to next page after a farmer has been successfully created
+            this.carousel.next();
         } else {
             console.log('Farm form is not valid');
         }
