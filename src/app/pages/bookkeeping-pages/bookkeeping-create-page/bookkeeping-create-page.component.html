@@ -164,7 +164,9 @@
                                 submitted) &&
                             createRecordForm.controls['recordProof'].errors?.[
                                 'required'
-                            ]
+                            ] &&
+                            createRecordForm.controls['recordProof'].value ===
+                                'No file uploaded yet.'
                         ">
                         Please upload proof of your record.
                     </div>

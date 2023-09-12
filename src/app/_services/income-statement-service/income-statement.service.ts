@@ -277,6 +277,9 @@ export class IncomeStatementService {
     createIncomeStatement(date: Date) {
         // sets the farmName to pass to creating a new income statement item
         const farmName = this._portfolioService.getFarmName();
+        console.log(
+            `Farm name for creating a new income statement: ${farmName}`
+        );
         // assigns the statement date and converts it into a string
         const statementDate = this.convertDateToString(
             this.getIncomeStatementDate(date)

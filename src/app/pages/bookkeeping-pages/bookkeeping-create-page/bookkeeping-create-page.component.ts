@@ -85,7 +85,10 @@ export class BookkeepingCreatePageComponent implements OnInit {
         this.submitted = true;
         // creates a reusable variable to extract create form input value
         const formInputVal = this.createRecordForm.value;
-        if (this.createRecordForm.valid) {
+        if (
+            this.createRecordForm.valid &&
+            this.fileName != 'No file uploaded yet.'
+        ) {
             // adds the form data the the record object instance of incomeStatementItem
             this.record = {
                 id: 0,
