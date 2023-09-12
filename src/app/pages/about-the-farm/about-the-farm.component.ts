@@ -235,15 +235,17 @@ export class AboutTheFarmComponent implements OnInit {
                };
                console.table(this.plots);
                this._plotService.createFarmerPlot(this.plots);
-               // routes to next carousel  page after a crop has been successfully created
-                  this.carousel.next();
-               // All slides have been filled out, navigate to the dashboard
-            //    this.router.navigate(['/dashboard']);
+               // Check if all slides have been filled out
+               if (this.carousel.activeId === 'plotSlide') {
+                   // All slides have been filled out, navigate to the dashboard
+                   this.router.navigate(['/dashboard']);
+               } else {
+                   // Go to the next slide if not on the plot slide
+                   this.carousel.next();
+               }
            } else {
                console.log('Plot form is not valid');
            }
-        // All slides have been filled out, navigate to the dashboard
-        this.router.navigate(['/dashboard']);
     }
     
 }
