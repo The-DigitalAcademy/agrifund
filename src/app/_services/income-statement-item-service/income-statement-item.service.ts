@@ -186,27 +186,26 @@ export class IncomeStatementItemService {
         this._incomeStatementService
             .getStatementByDate(recordBody.date)
             .subscribe(statement => {
-                console.log(statement.id);
                 // assigns the id of the statement found to the new bookkeeping record
                 recordBody.statementId = statement.id;
+                console.log(recordBody.statementId);
             });
 
-        console.log(`Statement ID for record: ${recordBody.statementId}`);
-
+        console.log(recordBody.statementId);
         console.table(newRecord);
-        // this._apiService
-        //     .addRecord(recordMultiFormBody, recordBody.statementId)
-        //     .subscribe(
-        //         data => {
-        //             console.log(data);
-        //             // routes back to bookkeeping view all page is the creation of a record was successful
-        //             this.router.navigate(['/bookkeeping']);
-        //         },
-        //         error => {
-        //             console.error(`Error occurred while creating a new record`);
-        //             console.error(error);
-        //         }
-        //     );
+        this._apiService
+            .addRecord(recordMultiFormBody, recordBody.statementId)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    // routes back to bookkeeping view all page is the creation of a record was successful
+                    this.router.navigate(['/bookkeeping']);
+                },
+                error => {
+                    console.error(`Error occurred while creating a new record`);
+                    console.error(error);
+                }
+            );
     }
 
     /*---------------------------------
