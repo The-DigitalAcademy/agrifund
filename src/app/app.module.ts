@@ -77,6 +77,7 @@ import { BookkeepingDeleteModalContentComponent } from './components/modal-compo
     ICONS
 ---------------------------------*/
 import {
+    faEye,
     faAddressCard,
     faAngleDown,
     faAngleLeft,
@@ -162,6 +163,7 @@ import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {
         iconLib.addIcons(
+            faEye,
             faBars,
             faHome,
             faChartPie,

@@ -21,6 +21,7 @@ import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 @Injectable({
     providedIn: 'root',
@@ -42,11 +43,11 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _jwtService: JwtService
+        private _jwtService: JwtService,
+       
     ) {
         this.setSessionToken();
     }
-
 
     // sets the session token to the one set in the jwt service
     setSessionToken() {
@@ -56,7 +57,7 @@ export class AuthService {
     }
 
     // gets the set session token
-    getSessionToken() { 
+    getSessionToken() {
         this.setSessionToken();
         return this.sessionToken$;
     }
@@ -78,11 +79,54 @@ export class AuthService {
                 this.setUserState();
                 // routes to dashboard if the login was successful
                 this.router.navigate(['/dashboard']);
+
+                // Display a success SweetAlert
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successful!',
+                    text: 'You are now logged in.',
+                    confirmButtonColor: '#606C38',
+                });
             },
             error => {
                 console.error(`Error occurred while logging in`);
                 console.log(error);
-                // TODO: when a login fails it should print an error message from the api at the top of a form
+                if (error.status === 404) {
+                    // Resource not found error
+                    this.errorMessage =
+                        'User not found. Please check your credentials or register if you are a new user.';
+                } else if (error.status === 401) {
+                    // Unauthorized error
+                    this.errorMessage =
+                        'Unauthorized access. Please check your credentials.';
+                } else if (error.status === 403) {
+                    // Forbidden error
+                    this.errorMessage =
+                        'Access forbidden. You do not have permission to access this resource.';
+                } else if (
+                    error.status === 400 &&
+                    error.error &&
+                    error.error.message
+                ) {
+                    // Bad request with a custom error message from the API
+                    this.errorMessage = error.error.message;
+                } else if (error.status === 500 || error.status === 504) {
+                    // Internal server error or gateway timeout
+                    this.errorMessage =
+                        'An internal server error occurred. Please try again later.';
+                } else {
+                    // Other generic error
+                    this.errorMessage =
+                        'An error occurred while logging in. Please try again later.';
+                }
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: this.errorMessage,
+                    confirmButtonColor: '#606C38',
+                    
+                });
             }
         );
     }
@@ -121,7 +165,6 @@ export class AuthService {
     getUserEmail(): string | null {
         return this._jwtService.getUserEmail();
     }
-
 
     // TODO
     // check if a user is an administrator

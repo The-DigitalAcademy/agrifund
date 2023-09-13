@@ -74,6 +74,8 @@
                                 LoginForm.controls['password'].dirty
                         }">
                         <label for="password">Password:</label>
+                        <div class="container-header">
+                            
                         <input
                             formControlName="password"
                            type="{{ showPassword ? 'text' : 'password' }}"
@@ -82,9 +84,9 @@
                         <button
                             class="toggle-password"
                             (click)="togglePassword()">
-                            {{ showPassword ? 'Hide' : 'Show' }}
-                            <!-- Toggle text -->
+                        <fa-icon icon="eye">{{showPassword}}</fa-icon>
                         </button>
+                        </div>
                         <small
                             *ngIf="
                                 LoginForm.controls['password'].hasError(

@@ -248,6 +248,7 @@
                                 RegisterForm.controls['password'].dirty
                         }">
                         <label for="password">Password:</label>
+                        <div class="container-header">
                         <input
                             formControlName="password"
                             class="form-control"
@@ -256,8 +257,9 @@
                         <button
                             class="toggle-password-button"
                             (click)="togglePassword()">
-                            {{ showPassword ? 'Hide' : 'Show' }}
+                        <fa-icon icon="eye">{{showPassword}}</fa-icon>
                         </button>
+                        </div>
                         </div>
                         <small
                             *ngIf="
@@ -292,6 +294,7 @@
                                 RegisterForm.controls['cpassword'].dirty
                         }">
                         <label for="cpassword">Confirm Password:</label>
+                        <div class="container-header">
                         <input
                             formControlName="cpassword"
                             class="form-control between-button"
@@ -300,9 +303,10 @@
                         <button
                             class="toggle-password"
                             (click)="toggleConfirmPassword()">
-                            {{ showConfirmPassword ? 'Hide' : 'Show' }}
+                            <fa-icon icon="eye">{{showPassword}}</fa-icon>
                             <!-- Toggle text -->
                         </button>
+                        </div>
 
                         <small
                             *ngIf="
