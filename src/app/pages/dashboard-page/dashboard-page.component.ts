@@ -58,7 +58,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this._portfolioService.setFarmerPortfolio();
         // gets the farmers portfolio information
         this.portfolioSubscription = this._portfolioService
             .getFarmerPortfolio()

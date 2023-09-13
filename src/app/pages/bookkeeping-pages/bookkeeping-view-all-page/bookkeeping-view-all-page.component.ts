@@ -76,6 +76,18 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        // gets the farmers portfolio information
+        this.portfolioSubscription = this._portfolioService
+            .getFarmerPortfolio()
+            .subscribe(data => {
+                // sets the farmer's farm data in order to get income statement data
+                this._portfolioService.setFarmerFarm();
+                // sets the farmer's income statements
+                this._incomeStatementService.setAllIncomeStatements();
+                // sets the farmer's income statement list after teh income statements have been set
+                this.setIncomeStatementList();
+            });
+
         // gets the farmer's income statements
         this._portfolioService
             .getFarmerIncomeStatements()

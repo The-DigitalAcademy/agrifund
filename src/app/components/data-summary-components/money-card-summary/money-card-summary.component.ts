@@ -15,7 +15,7 @@
     
 -------------------------------------------------------------------------------------------------*/
 
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { Observable, Subscription, map } from 'rxjs';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
@@ -53,14 +53,6 @@ export class MoneyCardSummaryComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        console.log(this.selectedYear);
-        // gets the farmer's income statements
-        this.incomeStatementSubscription = this._portfolioService
-            .getFarmerIncomeStatements()
-            .subscribe((data: IncomeStatement[]) => {
-                // assigns the statements to the statement array
-            });
-
         // gets income statement for the year
         this.incomeStatementSubscription = this._incomeStatementService
             .getIncomeStatementForYear(2023)
@@ -92,6 +84,7 @@ export class MoneyCardSummaryComponent implements OnInit, OnDestroy {
                 this.profitTotal$ = netIncome;
             });
     }
+
 
     ngOnDestroy() {
         // unsubscribe from subscriptions
