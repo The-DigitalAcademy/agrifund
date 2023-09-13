@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { IncomeStatement } from './../../_models/IncomeStatement';
+import { Statement } from '@angular/compiler';
 @Injectable({
     providedIn: 'root',
 })
@@ -166,8 +167,8 @@ export class IncomeStatementItemService {
         } else {
             recordBody.category = 'Expense';
         }
-
-        // adds value from the record body to the new incomeStatementItem object that matches how the data is received by the api
+        /* adds value from the record body to the new incomeStatementItem object that 
+        matches how the data is received by the api */
         const newRecord = {
             date: recordBody.date,
             category: recordBody.category,
@@ -182,32 +183,31 @@ export class IncomeStatementItemService {
 
         console.table(recordMultiFormBody);
 
-        // sets the statement id to and passes date value to method
-        recordBody.statementId =
-            this._incomeStatementService.getIncomeStatementIdForCreate(
-                recordBody.date
-            );
+        this._incomeStatementService
+            .getStatementByDate(recordBody.date)
+            .subscribe(statement => {
+                console.log(statement.id);
+                // assigns the id of the statement found to the new bookkeeping record
+                recordBody.statementId = statement.id;
+            });
 
         console.log(`Statement ID for record: ${recordBody.statementId}`);
 
         console.table(newRecord);
-        this._apiService
-            .addRecord(recordMultiFormBody, recordBody.statementId)
-            .subscribe(
-                data => {
-                    console.log(data);
-                    // routes back to bookkeeping view all page is the creation of a record was successful
-                    this.router.navigate(['/bookkeeping']);
-                },
-                error => {
-                    console.error(`Error occurred while creating a new record`);
-                    console.error(error);
-                }
-            );
+        // this._apiService
+        //     .addRecord(recordMultiFormBody, recordBody.statementId)
+        //     .subscribe(
+        //         data => {
+        //             console.log(data);
+        //             // routes back to bookkeeping view all page is the creation of a record was successful
+        //             this.router.navigate(['/bookkeeping']);
+        //         },
+        //         error => {
+        //             console.error(`Error occurred while creating a new record`);
+        //             console.error(error);
+        //         }
+        //     );
     }
-
-    // uploads proof of a record to the api
-    uploadRecordProof(incomeStatementId: number, recordProof: File) {}
 
     /*---------------------------------
         SET DATA 
