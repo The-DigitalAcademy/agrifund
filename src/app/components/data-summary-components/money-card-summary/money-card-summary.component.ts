@@ -15,7 +15,7 @@
     
 -------------------------------------------------------------------------------------------------*/
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, map } from 'rxjs';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
@@ -37,6 +37,8 @@ export class MoneyCardSummaryComponent implements OnInit, OnDestroy {
     private expenseSubscription = new Subscription();
     // subscription for getting incomes statements service
     private profitSubscription = new Subscription();
+    // gets the value from a parent component
+    @Input() selectedYear = '';
 
     // stores the value of the expense/money out total as an observable
     moneyOutTotal$!: number;
@@ -51,6 +53,7 @@ export class MoneyCardSummaryComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
+        console.log(this.selectedYear);
         // gets the farmer's income statements
         this.incomeStatementSubscription = this._portfolioService
             .getFarmerIncomeStatements()

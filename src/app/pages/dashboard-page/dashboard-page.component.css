@@ -34,31 +34,37 @@ button {
     flex-direction: column;
 }
 
-.graph{
+.graph {
     height: 100% !important;
 }
 
-.justify-start .graph{
+.justify-start .graph {
     /* adds space between graph on the left and the right */
     margin-right: var(--normal-s) !important;
 }
 
 .justify-end .graph {
     /* adds space between graph on the right and the left */
-    margin-left: var(--normal-s)!important;
+    margin-left: var(--normal-s) !important;
 }
 
 .progress-container {
     /* add margin at the top of the container to make space between 
     bookkeeping summary and progress */
-    margin-top: var(--large-s);
+    margin-top: var(--large-s) !important;
 }
 
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
-    .graph-container{
+    .container {
+        /* sets the height for the graphs */
+        height: max-content !important;
+    }
+
+    .graph-container,
+    .justify-center {
         /* stacks to graphs on top of each other */
         flex-direction: column;
     }
@@ -70,7 +76,8 @@ button {
 
     .graph-container .justify-end {
         /* removes left margin due to being stacked now */
-        margin-left: 0px !important;;
+        margin-left: 0px !important;
+        ;
         /* adds space  between the top and bottom graph*/
         margin-top: var(--large-s) !important;
     }
@@ -81,16 +88,25 @@ button {
     Media Query for tablets/IPad
 ----------------------------------*/
 @media (min-width: 481px) and (max-width: 767px) {
+
+
+    .graph-container,
     .justify-center {
+        /* stacks to graphs on top of each other */
         flex-direction: column;
     }
-
 }
 
 /*-------------------------------------------------
     Media Query for tablets/IPad in landscape mode
 --------------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .graph-container,
+        .justify-center {
+            /* stacks to graphs on top of each other */
+            flex-direction: column;
+        }
+}
 
 /*--------------------------------------
     Media Query for laptops & desktops

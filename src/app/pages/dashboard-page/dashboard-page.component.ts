@@ -10,11 +10,7 @@
         
 -------------------------------------------------------------------------------------------------*/
 
-import {
-    Component,
-    OnDestroy,
-    OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
@@ -83,7 +79,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         // sets the selected year value
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
-        // sets the current
+        // sets the currently selected income statement
         this._incomeStatementService.getIncomeStatementForYear(
             Number(this.selectedYear)
         );
