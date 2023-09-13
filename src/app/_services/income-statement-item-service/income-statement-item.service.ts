@@ -88,6 +88,13 @@ export class IncomeStatementItemService {
                 this.incomeStatement$.next(incomeStatement);
             });
     }
+
+    // sets the value of the income statement item behavior subject
+    setIncomeStatementItems() {
+        this.getFarmerIncomeStatementItems().subscribe(records => {
+            this.incomeStatementItems$.next(records);
+        });
+    }
     /*---------------------------------
         GET DATA
     ----------------------------------*/
@@ -96,6 +103,14 @@ export class IncomeStatementItemService {
         return this.incomeStatement$.pipe(
             map(statement => statement.incomeStatementItems)
         );
+    }
+
+    // returns the value of the of the incomes statement items observable
+    getIncomeStatementItems() {
+        // ensures that the income statement items have been set
+        this.setIncomeStatementItems();
+        // returns the observable value
+        return this.incomeStatementItems$;
     }
 
     // get a single income statement record

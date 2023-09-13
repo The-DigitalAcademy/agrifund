@@ -40,12 +40,16 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     private portfolioSubscription = new Subscription();
     // subscription for getting incomes statements service
     private incomeStatementSubscription = new Subscription();
+    // subscription for getting incomes statements service
+    private incomeStatementRecordSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // observable for storing income statements
     statements$!: Observable<IncomeStatement[]>;
     // stores income statement records
     incomeStatementRecords!: IncomeStatementItem[];
+    // bookkeeping records stored within an observable
+    records$!: Observable<IncomeStatementItem[]>;
     // bookkeeping records stored within an observable
     filteredRecords$!: Observable<IncomeStatementItem[]>;
     // form for date filter
@@ -82,14 +86,10 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
             .subscribe(data => {
                 // sets the farmer's farm data in order to get income statement data
                 this._portfolioService.setFarmerFarm();
-                // sets the farmer's income statements
-                this._incomeStatementService.setAllIncomeStatements();
-                // sets the farmer's income statement list after teh income statements have been set
-                this.setIncomeStatementList();
             });
 
         // gets the farmer's income statements
-        this._portfolioService
+        this.incomeStatementSubscription = this._portfolioService
             .getFarmerIncomeStatements()
             .subscribe((statements: IncomeStatement[]) => {
                 // assigns the statements to the statement array
@@ -101,18 +101,21 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         // sets the selected year value
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
-        // gets income statement items for year
-        this._incomeStatementItemService
-            .getFarmerIncomeStatementItems()
-            .subscribe(incomeStatementItems => {
-                this.incomeStatementRecords = incomeStatementItems;
-            });
+
+        this.incomeStatementRecordSubscription =
+            this._incomeStatementItemService
+                .getIncomeStatementItems()
+                .subscribe(records => {
+                    //records retrieved from behavior subject are assigned to income statement records variable
+                    this.incomeStatementRecords = records;
+                });
     }
 
     ngOnDestroy() {
         // unsubscribe from subscriptions
         this.portfolioSubscription.unsubscribe();
         this.incomeStatementSubscription.unsubscribe();
+        this.incomeStatementRecordSubscription.unsubscribe();
     }
 
     // function to set the values for the income statement dropdown
