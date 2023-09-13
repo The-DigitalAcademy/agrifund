@@ -14,20 +14,21 @@ export class CropService {
         id: 0,
         name: '',
         season: '',
-        type: '',
         price: 0,
+        type: '',
+        farmId: 0,
     };
-    private crops: FarmerCrop[] = [];
+    // private crops: FarmerCrop[] = [];
     // stores farmer crops as a behavior subject
-    private farmerCrops$ = new BehaviorSubject<FarmerCrop[]>([]);
 
     private cropData$: BehaviorSubject<FarmerCrop> =
         new BehaviorSubject<FarmerCrop>({
             id: 0,
             name: '',
             season: '',
-            type: '',
             price: 0,
+            type: '',
+            farmId: 0,
         });
 
     constructor(
@@ -60,43 +61,28 @@ export class CropService {
     getCropData(): Observable<FarmerCrop> {
         return this.cropData$;
     }
-    createFarmerCrop(cropBody: FarmerCrop) {
-        this._portfolioService.setFarmerPortfolio();
-        // sets the farm ame according to the created farm's name
-        const farmName = this._portfolioService.getFarmName();
-        console.log(`Farm Name for crop: ${farmName}`);
-        this._portfolioService.setFarmerFarm();
+    private crops: FarmerCrop[] = [];
+    // stores farmer plots as a behviour subject
+    private farmerCrops$ = new BehaviorSubject<FarmerCrop[]>([]);
 
-        const newCropBody = {
+    createFarmerCrop(cropBody: FarmerCrop) {
+        const farmName = this._portfolioService.getFarmName();
+        const addedCrop = {
             name: cropBody.name,
             season: cropBody.season,
             price: cropBody.price,
             type: cropBody.type,
-        }
-
-        this._apiService.addCrop(farmName, newCropBody).subscribe(
-            (data: any) => {
+        };
+        this._apiService.addCrop(farmName, addedCrop).subscribe(
+            data => {
                 console.log(data);
-                // this.crops.push(data);
-                // this.farmerCrops$.next(this.crops);
             },
             error => {
                 console.error(
-                    'Error occurred when creating new crop data',
-                    console.error(error)
+                    'Error occured when creating new crop data',
+                    error
                 );
             }
         );
-    }
-    addCrop(crop: FarmerCrop) {
-        const AddedCrop = {
-            id: crop.id,
-            name: crop.name,
-            season: crop.season,
-            price: 0,
-            type: crop.type,
-        };
-        this.crops.push(AddedCrop);
-        this.farmerCrops$.next(this.crops);
     }
 }

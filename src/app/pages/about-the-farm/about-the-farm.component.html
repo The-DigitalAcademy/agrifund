@@ -111,6 +111,7 @@
             </div>
 
           </div>
+        </ng-template>
           <!-- slide 3 for crop -->
           <ng-template ngbSlide id="cropSlide">
             <div class="justify-center">
@@ -119,6 +120,18 @@
                 <h2>Crops</h2>
                 <div class="container inner-container">
                   <form [formGroup]="cropForm">
+                       <div class="form-group">
+            <label for="name" class="form-label">What crops do you farm?</label>
+            <input type="name" class="form-control" formControlName="name" />
+<div class="form-text text-danger" *ngIf="
+                                                cropForm.controls['name'].touched &&
+                                                cropForm.controls['name'].errors?.[
+                                                    'required'
+                                                ]
+                                            ">
+                        Please provide name for your crop seeds.
+                      </div>
+                    </div>
                     <div class="form-group">
                       <label for="season">What season do you usually farm in?</label>
                       <select id="season" class="form-control" formControlName="season">
@@ -136,62 +149,40 @@
                         Please select a season for crop.
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="name">What crops do you farm?</label>
-                      <select id="name" class="form-control" formControlName="name">
-                        <option value="Corn">Corn</option>
-                        <option value="Maize">Maize</option>
-                        <option value="Fibre">Fibre Crops</option>
-                        <option value="Wheat">Wheat</option>
-                      </select>
-                      <div class="form-text text-danger" *ngIf="
-                                        cropForm.controls['name'].touched &&
-                                        cropForm.controls['name'].errors?.[
-                                       'required'
-                                        ]
-                                    ">
-                        Please select a name for crop.
-                      </div>
-                    </div>
-
                     <!-- input for the price of a crop seed -->
-                    <div class="form-input" id="label">
-                      <label for="cropSeedPrice" class="form-label">
+                    <div class="form-group">
+                      <label for="price">
                         How much do you normally pay for seeds per kilogram (kg)?
                       </label>
-                      <div class="input-group">
-                        <span class="input-group-text">R</span>
-                        <input formControlName="cropSeedPrice" type="text" class="form-control" id="cropSeedPrice" />
+                        <div class="input-group">
+                        <span class="input-group-text">R</span>           
+                        <input formControlName="price" type="text" class="form-control" id="price" />
                       </div>
                       <div class="form-text text-danger" *ngIf="
-                                                cropForm.controls['cropSeedPrice'].touched &&
-                                                cropForm.controls['cropSeedPrice'].errors?.[
+                                                cropForm.controls['price'].touched &&
+                                                cropForm.controls['price'].errors?.[
                                                     'required'
                                                 ]
                                             ">
                         Please provide a price for your crop seeds.
-                      </div>
                     </div>
                     <div class="form-group">
-                      <label for="type">What is the type of your crop?</label>
-                      <select id="type" class="form-control" formControlName="type">
-                        <option value="Vegetables">Vegetables</option>
-                        <option value="Fruits">Fruits</option>
-                      </select>
-                      <div class="form-text text-danger" *ngIf="
-                                    cropForm.controls['type'].touched &&
-                                    cropForm.controls['type'].errors?.[
-                                    'required'
-                                    ]
-                                 ">
-                        Please select the type of crop.
+                <label for="type">What type of crops do you farm?</label>
+                <input type="type" class="form-control" formControlName="type" />
+                 <div class="form-text text-danger" *ngIf="
+                                                cropForm.controls['type'].touched &&
+                                                cropForm.controls['type'].errors?.[
+                                                    'required'
+                                                ]
+                                            ">
+                        Please provide type of your crop seeds.
+                      </div>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-          </ng-template>
         </ng-template>
         <!-- slide 4 for plot -->
         <ng-template ngbSlide id="plotSlide">

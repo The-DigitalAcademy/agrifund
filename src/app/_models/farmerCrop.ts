@@ -14,4 +14,5 @@ export interface FarmerCrop {
     price: number;
     // marketValue: number;
     type: string; //stores the type of crop (vegetable/ fruit)
+    farmId: number;
 }

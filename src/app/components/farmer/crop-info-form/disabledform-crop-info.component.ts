@@ -32,6 +32,7 @@ export class DisabledformCropInfoComponent implements OnInit {
     cropInfo!: FarmerCrop;
     private cropSubscription = new Subscription();
     private portfolioSubscription = new Subscription();
+    farmId = 0;
 
     constructor(
         private fb: FormBuilder,
@@ -108,6 +109,7 @@ export class DisabledformCropInfoComponent implements OnInit {
                 name: this.myForm.get('cropName')?.value,
                 type: this.myForm.get(' cropType')?.value,
                 price: this.myForm.get('cropPrice')?.value,
+                farmId: this.farmId,
             };
             console.table(this.cropInfo);
 
