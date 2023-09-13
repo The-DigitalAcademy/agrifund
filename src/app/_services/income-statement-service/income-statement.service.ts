@@ -90,6 +90,7 @@ export class IncomeStatementService {
 
     // get an incomeStatement by the date of a income statement item record
     getStatementByDate(recordDate: string): Observable<IncomeStatement> {
+
         // converts the date that is a string to a date value
         const date = this.convertStringToDate(recordDate);
         // checks if an income statement exists
@@ -98,10 +99,10 @@ export class IncomeStatementService {
             return this.getIncomeStatement();
         } else {
             this.createIncomeStatement(date);
-            console.log(`Statement was created`);
+
             // checks if the record exists after it has been created
             if (this.statementExistsForFinancialYear(date)) {
-                return this.getIncomeStatement();
+                console.log(this.getAllIncomeStatements());
             }
         }
 
@@ -178,7 +179,6 @@ export class IncomeStatementService {
     setIncomeStatementYearList() {
         // sets the default value for the current year
         let currentYear = 0;
-        // stored
 
         if (this.statements) {
             this.statements.forEach(statement => {
@@ -194,6 +194,7 @@ export class IncomeStatementService {
                     this.statementYearList.push(`${statementYear}`);
                 }
             });
+            this.statementYearList.sort((a, b) => Number(b) - Number(a));
         }
     }
 
@@ -207,7 +208,15 @@ export class IncomeStatementService {
     ----------------------------------*/
     // checks if an income statement has been created for a financial year
     statementExistsForFinancialYear(recordDate: Date) {
+        // sets the farmer's portfolio after a new record has been added
+        this._portfolioService.setFarmerPortfolio();
+        // sets the farmer's farm data after the portfolio has been set
+        this._portfolioService.setFarmerFarm();
+        // sets the farmer's income statements after the farmer's farm has been set
+        this._portfolioService.setFarmerIncomeStatements();
+        // the found statement will be stored here
         let statement;
+
         // checks to see if a statement exists for a financial year
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
@@ -277,7 +286,12 @@ export class IncomeStatementService {
             .subscribe(
                 (data: any) => {
                     console.log(data);
-                    this._portfolioService.getFarmerIncomeStatements();
+                    // sets the farmer's portfolio after a new record has been added
+                    this._portfolioService.setFarmerPortfolio();
+                    // sets the farmer's farm data after the portfolio has been set
+                    this._portfolioService.setFarmerFarm();
+                    // sets the farmer's income statements after the farmer's farm has been set
+                    this._portfolioService.setFarmerIncomeStatements();
                 },
                 error => {
                     console.error(
