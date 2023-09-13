@@ -1,3 +1,4 @@
+import { GenerateFileService } from './../../../_services/generate-file-service/generate-file.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 20 July 2023 
@@ -72,6 +73,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         private _incomeStatementItemService: IncomeStatementItemService,
         private _offcanvasService: NgbOffcanvas,
         private _portfolioService: PortfolioService,
+        private _fileGenerateService: GenerateFileService,
         private fb: FormBuilder
     ) {
         this.dateForm = this.fb.group({
@@ -142,6 +144,16 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         }
     }
 
+    // method to generate a bookkeeping report for current data
+    generateReport() {
+        // sets the selected year value
+        const formInput = this.dateForm.value;
+        this.selectedYear = formInput.yearInput;
+        this._fileGenerateService.generatePdfReport(
+            this.incomeStatementRecords,
+            this.selectedYear
+        );
+    }
     // when the dropdown value for the year is changed
     onYearChange(event: any) {
         const formInput = this.dateForm.value;

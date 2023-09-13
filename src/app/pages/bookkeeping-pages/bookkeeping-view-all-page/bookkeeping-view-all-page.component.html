@@ -29,7 +29,7 @@
 <ng-template #recordsExist>
     <div class="actions">
         <div class="justify-start">
-            <button class="btn colourful-btn">
+            <button class="btn colourful-btn" (click)="generateReport()">
                 <fa-icon icon="file-download"></fa-icon>
                 Get Report
             </button>
@@ -169,7 +169,7 @@
                 </div>
 
                 <hr />
-                <nav class="actions justify-center">
+                <!-- <nav class="actions justify-center">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" aria-label="Previous">
@@ -191,7 +191,7 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
         </ng-container>
     </div>
