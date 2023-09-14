@@ -110,6 +110,15 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
                 .subscribe(records => {
                     //records retrieved from behavior subject are assigned to income statement records variable
                     this.incomeStatementRecords = records;
+                    /*loops through records and changes values from income and expenses 
+                      to money in and money out*/
+                    this.incomeStatementRecords.forEach(record => {
+                        if (record.category === 'Income') {
+                            record.category = 'Money In';
+                        } else {
+                            record.category = 'Money Out';
+                        }
+                    });
                 });
     }
 

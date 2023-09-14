@@ -14,8 +14,8 @@
 import { Injectable } from '@angular/core';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 
 @Injectable({
     providedIn: 'root',
