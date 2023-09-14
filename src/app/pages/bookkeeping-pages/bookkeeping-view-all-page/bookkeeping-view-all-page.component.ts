@@ -1,4 +1,3 @@
-import { GenerateFileService } from './../../../_services/generate-file-service/generate-file.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 20 July 2023 
@@ -30,6 +29,8 @@ import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
     selector: 'app-bookkeeping-view-all-page',
@@ -43,6 +44,12 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     private incomeStatementSubscription = new Subscription();
     // subscription for getting incomes statements service
     private incomeStatementRecordSubscription = new Subscription();
+    // subscription for income for income statement
+    private incomeSubscription = new Subscription();
+    // subscription for expense for income statement
+    private expenseSubscription = new Subscription();
+    // subscription for getting incomes statements service
+    private profitSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // observable for storing income statements
@@ -66,6 +73,12 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     private mobileSearchBar!: NgbOffcanvas;
     // stores the list of year for income statements
     statementList: string[] = [];
+    // stores the value of the expense/money out total as an observable
+    moneyOutTotal!: number;
+    // stores the value of the income/money in total as an observable
+    moneyInTotal!: number;
+    // stores the value of the net-income/profit total as an observable
+    profitTotal!: number;
 
     constructor(
         private router: Router,
@@ -73,7 +86,6 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         private _incomeStatementItemService: IncomeStatementItemService,
         private _offcanvasService: NgbOffcanvas,
         private _portfolioService: PortfolioService,
-        private _fileGenerateService: GenerateFileService,
         private fb: FormBuilder
     ) {
         this.dateForm = this.fb.group({
@@ -127,6 +139,9 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         this.portfolioSubscription.unsubscribe();
         this.incomeStatementSubscription.unsubscribe();
         this.incomeStatementRecordSubscription.unsubscribe();
+        this.expenseSubscription.unsubscribe();
+        this.incomeStatementSubscription.unsubscribe();
+        this.profitSubscription.unsubscribe();
     }
 
     // function to set the values for the income statement dropdown
@@ -158,10 +173,69 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         // sets the selected year value
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
-        this._fileGenerateService.generatePdfReport(
-            this.incomeStatementRecords,
-            this.selectedYear
+
+        const report = new jsPDF();
+        // sets the heading for the report
+        report.text(
+            `Financial Report for the Financial Year of March ${this.selectedYear}`,
+            10,
+            10
         );
+
+        // gets the expenses for the year
+        this.expenseSubscription = this._incomeStatementService
+            .getTotalExpense()
+            .subscribe((expenseTotal: number) => {
+                // sets the total money out value to the expense total that was returned
+                this.moneyOutTotal = expenseTotal;
+            });
+
+        // gets the income for the year
+        this.incomeSubscription = this._incomeStatementService
+            .getTotalIncome()
+            .subscribe((incomeTotal: number) => {
+                // sets the total money in value to the income total that was returned
+                this.moneyInTotal = incomeTotal;
+            });
+
+        // gets the profit for the year
+        this.profitSubscription = this._incomeStatementService
+            .getTotalNetIncome()
+            .subscribe((netIncome: number) => {
+                // sets the profit value to the net income that was returned
+                this.profitTotal = netIncome;
+            });
+
+        // creates a table for income statement data summary cards
+        autoTable(report, {
+            head: [[`Year's Profit`, `Year's Income`, `Year's Expense`]],
+            body: [
+                [
+                    `R ${this.profitTotal}`,
+                    `R ${this.moneyInTotal}`,
+                    `R ${this.moneyOutTotal}`,
+                ],
+            ],
+        });
+
+        // sets the headers for the report table
+        const tableHeaders = ['Record Description', 'Type', 'Date', 'Amount'];
+        // sets the data for the pdf report
+        const tableData: any = this.incomeStatementRecords.map(record => [
+            record.description,
+            record.category,
+            record.date,
+            record.amount,
+        ]);
+
+        // creates a table for income statement records
+        autoTable(report, {
+            head: [tableHeaders],
+            body: tableData,
+        });
+
+        // downloads the report and saves it with a specified filename
+        report.save(`Financial_Report_March_${this.selectedYear}`);
     }
     // when the dropdown value for the year is changed
     onYearChange(event: any) {
