@@ -96,11 +96,24 @@ export class FarmService {
         console.log('Farm Name:', farmName);
 
         const updatedFarm = {
+            id: farmBody.id,
+            numberOfEmployees: farmBody.numberOfEmployees,
             farmName: farmName,
+            farmAddress: farmBody.farmAddress,
+            yearsActive: farmBody.yearsActive,
+            address: farmBody.address, //stores residential address
+            farmingReason: farmBody.farmingReason, //stores the reason for needing funding
+            crops: farmBody.crops,
+            plots: farmBody.plots,
+            assets: farmBody.assets,
+            incomeStatements: farmBody.incomeStatements,
         };
+        
         // api connection goes here
         this._apiService.updateFarm(farmBody.id, updatedFarm).subscribe(
-            data => {},
+            data => {
+                console.log('Farm data updated successfully:', data);
+            },
             error => {
                 console.error('Error updating farm:', error);
             }

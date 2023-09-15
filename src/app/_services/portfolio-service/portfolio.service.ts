@@ -19,10 +19,11 @@ import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/Assets';
-
-import { FarmerPlot } from 'src/app/_models/farmerPlot';
 import { FarmerFarm } from 'src/app/_models/farmerFarm';
 import { FarmerCrop } from 'src/app/_models/farmerCrop';
+import { FarmerPlot } from 'src/app/_models/farmerPlot';
+
+
 
 @Injectable({
     providedIn: 'root',
@@ -149,6 +150,31 @@ export class PortfolioService {
         return this.userFirstName$;
     }
 
+    editPortfolio(portfolio: FarmerPortfolio) {
+        const farmName = this.getFarmName();
+        console.log('Farm Name:', farmName);
+        const updatedPortfolio = {
+            id: portfolio.id,
+            firstName: portfolio.firstName,
+            lastName: portfolio.lastName,
+            email: portfolio.email,
+            cellNumber: portfolio.cellNumber,
+            farms: portfolio.farms,
+        };
+
+        // api connection goes here
+        this._apiService
+            .updateFarmerInfo(portfolio.id, updatedPortfolio)
+            .subscribe(
+                data => {
+                    console.log('Plot data updated successfully:', data);
+                },
+                error => {
+                    console.error('Error updating plot:', error);
+                }
+            );
+    }
+
     /*---------------------------------
         INCOME STATEMENT DATA
     ----------------------------------*/
@@ -170,5 +196,9 @@ export class PortfolioService {
     }
     getFarmerPlotInfo(): Observable<FarmerPlot[]> {
         return this.farmerFarm$.pipe(map(farm => farm.plots));
+    }
+
+    getFarmerAssetInfo(): Observable<Assets[]> {
+        return this.farmerFarm$.pipe(map(farm => farm.assets));
     }
 }

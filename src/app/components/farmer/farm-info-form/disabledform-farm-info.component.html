@@ -2,32 +2,32 @@
   <div class="profile-heading">
     <div class="heading">
       <h3>Your Farmer Info</h3>
-      
+
     </div>
     <div class="action">
-      <app-edit-all-forms (enableFields)="enableFields()"
-        (saveData)="onSaveClicked($event)"></app-edit-all-forms>
+      <app-edit-all-forms (enableFields)="enableFields()" 
+      ></app-edit-all-forms>
     </div>
   </div>
   <hr>
   <div class="container">
     <form [formGroup]="myForm">
 
-  <div class="form-input"
-    [ngClass]="{'has-success': myForm.controls['farmAddress'].valid && myForm.controls['farmAddress'].dirty, 'has-error': myForm.controls['farmAddress'].invalid && myForm.controls['farmAddress'].dirty}">
-    <label for="farmAddress" class="form-label">Residential Address</label>
-    <input type="text" class="form-control" id="farmAddress" aria-describedby="farmAddress" formControlName="farmAddress"
-      [disabled]="isDisabled">
-    <small
-      *ngIf="myForm.controls['farmAddress'].hasError('addressContainsStreet') && myForm.controls['farmAddress'].dirty"
-      class="text-danger">Please enter word Street in your address</small>
-    <div class="form-text text-danger"
-      *ngIf="myForm.controls['farmAddress'].hasError('required') && myForm.controls['farmAddress'].dirty"
-      class="text-danger">
-      Field is required.</div>
-  </div>
       <div class="form-input"
-        [ngClass]="{'has-success': myForm.controls['farm_name'].valid && myForm.controls['farm_name'].dirty, 'has-error': myForm.controls['farm_name'].invalid && myForm.controls['crop_name'].dirty}">
+        [ngClass]="{'has-success': myForm.controls['farmerAddress'].valid && myForm.controls['farmerAddress'].dirty, 'has-error': myForm.controls['farmerAddress'].invalid && myForm.controls['farmerAddress'].dirty}">
+        <label for="farmerAddress" class="form-label">Residential Address</label>
+        <input type="text" class="form-control" id="farmerAddress" aria-describedby="farmerAddress"
+          formControlName="farmerAddress" [disabled]="isDisabled">
+        <small
+          *ngIf="myForm.controls['farmerAddress'].hasError('addressLength') && myForm.controls['farmerAddress'].dirty"
+          class="text-danger">Address must be between 15 and 100 characters.</small>
+        <div class="form-text text-danger"
+          *ngIf="myForm.controls['farmerAddress'].hasError('required') && myForm.controls['farmerAddress'].dirty"
+          class="text-danger">
+          Field is required.</div>
+      </div>
+      <div class="form-input"
+        [ngClass]="{'has-success': myForm.controls['farm_name'].valid && myForm.controls['farm_name'].dirty, 'has-error': myForm.controls['farm_name'].invalid && myForm.controls['farm_name'].dirty}">
         <label for="farm_name" class="form-label">Farm Name</label>
         <input type="farm_name" class="form-control" formControlName="farm_name"
           [attr.disabled]="isDisabled ? 'disabled' : null" />
@@ -43,12 +43,13 @@
       <div class="form-input"
         [ngClass]="{'has-success': myForm.controls['farmAddress'].valid && myForm.controls['farmAddress'].dirty, 'has-error': myForm.controls['farmAddress'].invalid && myForm.controls['farmAddress'].dirty}">
         <label for="farmAddress" class="form-label">Farm Address</label>
-        <input type="text" class="form-control" id="farmAddress" aria-describedby="farmAddress" formControlName="farmAddress"
-          [disabled]="isDisabled">
-        <small *ngIf="myForm.controls['farmAddress'].hasError('addressContainsStreet') && myForm.controls['farmAddress'].dirty"
-          class="text-danger">Please enter word Street in your address</small>
+        <input type="text" class="form-control" id="farmAddress" aria-describedby="farmAddress"
+          formControlName="farmAddress" [disabled]="isDisabled">
+        <small *ngIf="myForm.controls['farmAddress'].hasError('farmAddressLength') && myForm.controls['farmAddress'].dirty"
+          class="text-danger">Address must be between 15 and 100 characters.</small>
         <div class="form-text text-danger"
-          *ngIf="myForm.controls['farmAddress'].hasError('required') && myForm.controls['farmAddress'].dirty" class="text-danger">
+          *ngIf="myForm.controls['farmAddress'].hasError('required') && myForm.controls['farmAddress'].dirty"
+          class="text-danger">
           Field is required.</div>
       </div>
       <div class="form-input"
@@ -85,12 +86,12 @@
           *ngIf="myForm.controls['reasonForFunding'].hasError('required') && myForm.controls['reasonForFunding'].dirty"
           class="text-danger">Field is required.</div>
       </div>
-      <!-- <div class="button-container">
-        <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
+      <div class="button-container">
+        <button *ngIf="!isDisabled" (click)="onSaveClicked()" [disabled]="!myForm.valid"
           class="btn colourful-btn btn-width">Save</button>
 
         <button *ngIf="!isDisabled" (click)="onCancelClicked()" class="btn outline-btn btn-width">Cancel</button>
-      </div> -->
+      </div>
 
     </form>
   </div>

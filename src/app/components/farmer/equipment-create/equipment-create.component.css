@@ -21,11 +21,28 @@ h2 {
     margin: 0px !important;
     align-items: center;
 }
-
+.file {
+    display: flex;
+    width: 100%;
+    gap: 2%;
+}
+.document-upload {
+    margin-top: 5%;
+}
+.form-group {
+    margin-top: 2%;
+}
 .doc-header>*{
     font-size: var(--font-small);
     padding-right: var(--small-s);
     margin-bottom: 0px !important;
+}
+/* Styling for an action section */
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .actions{

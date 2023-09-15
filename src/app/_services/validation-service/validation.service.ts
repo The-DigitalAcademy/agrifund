@@ -130,7 +130,7 @@ export class ValidationService {
     // }
     phoneNumberValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            const phoneNumberRegex = /^\+27\d{9}$/;
+            const phoneNumberRegex = /^\+27|0\d{9}$/;
             if (!phoneNumberRegex.test(control.value)) {
                 return { invalidPhoneNumber: true };
             }
@@ -169,17 +169,16 @@ export class ValidationService {
         };
     }
 
-    addressContainsStreetValidator(
-        control: AbstractControl
-    ): ValidationErrors | null {
+    addressLengthValidator(control: AbstractControl): ValidationErrors | null {
         const address = control.value as string;
 
-        if (!address.includes('Street')) {
-            return { addressContainsStreet: true };
+        if (address.length < 15 || address.length > 100) {
+            return { addressLength: true };
         }
 
         return null;
     }
+
     fileTypeValidator(allowedTypes: string[]): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             const file = control.value as File;

@@ -58,7 +58,7 @@ export class BookkeepingEditPageComponent implements OnInit {
     ngOnInit() {
         // gets the id passed through the routing url
         this.recordId = this.route.snapshot.params['id'];
-        this.getRecordDetails();
+        this.getRecordDetails(this.recordId);
         console.log(this.recordId);
 
         this.editRecordForm = this.fb.group({
@@ -69,7 +69,7 @@ export class BookkeepingEditPageComponent implements OnInit {
         });
     }
 
-    getRecordDetails() {
+    getRecordDetails(recordId: any) {
         // subscribes to api connection to get a bookkeeping record by the id passed through the page url
         this._incomeStatementItemService
             .getIncomeStatementRecordById(this.recordId)

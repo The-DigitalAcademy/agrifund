@@ -1,29 +1,53 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ProgressServiceService {
-    constructor() {}
-    
-
-    private personalInfoCompleted = new BehaviorSubject<boolean>(false);
-    private cropInfoCompleted = new BehaviorSubject<boolean>(false);
-    private farmInfoCompleted = new BehaviorSubject<boolean>(false);
+    private personalInfoCompleted = new BehaviorSubject<number>(0);
+    private cropInfoCompleted = new BehaviorSubject<number>(0);
+    private farmInfoCompleted = new BehaviorSubject<number>(0);
+    private assetInfoCompleted = new BehaviorSubject<number>(0);
+    private plotInfoCompleted = new BehaviorSubject<number>(0);
 
     personalInfoCompleted$ = this.personalInfoCompleted.asObservable();
     cropInfoCompleted$ = this.cropInfoCompleted.asObservable();
-    farmInfoCompleted$ = this.farmInfoCompleted.asObservable(); //
+    farmInfoCompleted$ = this.farmInfoCompleted.asObservable();
+    assetInfoCompleted$ = this.assetInfoCompleted.asObservable();
+    plotInfoCompleted$ = this.plotInfoCompleted.asObservable();
 
-    setPersonalInfoCompleted(status: boolean) {
-        this.personalInfoCompleted.next(status);
+    setPersonalInfoCompleted(progress: number) {
+        this.personalInfoCompleted.next(progress);
     }
 
-    setCropInfoCompleted(status: boolean) {
-        this.cropInfoCompleted.next(status);
+    setCropInfoCompleted(progress: number) {
+        this.cropInfoCompleted.next(progress);
     }
-    setFarmInfoCompleted(status: boolean) {
-        this.farmInfoCompleted.next(status);
+    setFarmInfoCompleted(progress: number) {
+        this.farmInfoCompleted.next(progress);
+    }
+    setAssetInfoCompleted(progress: number) {
+        this.assetInfoCompleted.next(progress);
+    }
+    setPlotInfoCompleted(progress: number) {
+        this.plotInfoCompleted.next(progress);
+    }
+
+    private cropInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    cropInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
+
+    private assetInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    assetInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
+    constructor() {}
+    // Update the checkbox state
+    updateCropInfoCompleted(completed: boolean) {
+        this.cropInfoCompletedSubject.next(completed);
+    }
+
+    updateAssetInfoCompleted(completed: boolean) {
+        this.assetInfoCompletedSubject.next(completed);
     }
 }

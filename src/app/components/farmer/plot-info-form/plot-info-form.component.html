@@ -5,52 +5,51 @@
         </div>
         <div class="action">
             <app-edit-all-forms (enableFields)="enableFields()"
-                (saveData)="onSaveClicked($event)"></app-edit-all-forms>
+               ></app-edit-all-forms>
         </div>
     </div>
     <hr>
     <div class="container">
         <form [formGroup]="myForm">
 
-        <!-- <div class="form-input"
-            [ngClass]="{'has-success': myForm.controls['farmAddress'].valid && myForm.controls['farmAddress'].dirty, 'has-error': myForm.controls['farmAddress'].invalid && myForm.controls['farmAddress'].dirty}">
-            <label for="farmAddress" class="form-label">Plot Address</label>
-            <input type="text" class="form-control" id="farmAddress" aria-describedby="farmAddress"
-                formControlName="farmAddress" [disabled]="isDisabled">
+        <div class="form-input"
+            [ngClass]="{'has-success': myForm.controls['plotAddress'].valid && myForm.controls['plotAddress'].dirty, 'has-error': myForm.controls['plotAddress'].invalid && myForm.controls['plotAddress'].dirty}">
+            <label for="plotAddress" class="form-label">Plot Address</label>
+            <input type="text" class="form-control" id="plotAddress" aria-describedby="plotAddress"
+                formControlName="plotAddress" [disabled]="isDisabled">
             <small
-                *ngIf="myForm.controls['farmAddress'].hasError('addressContainsStreet') && myForm.controls['farmAddress'].dirty"
-                class="text-danger">Please enter word Street in your address</small>
+                *ngIf="myForm.controls['plotAddress'].hasError('addressLength') && myForm.controls['plotAddress'].dirty"
+                class="text-danger">Address must be between 15 and 100 characters.</small>
             <div class="form-text text-danger"
-                *ngIf="myForm.controls['farmAddress'].hasError('required') && myForm.controls['farmAddress'].dirty"
+                *ngIf="myForm.controls['plotAddress'].hasError('required') && myForm.controls['plotAddress'].dirty"
                 class="text-danger">
                 Field is required.</div>
-        </div> -->
+        </div>
 
             <div class="form-input"
-                [ngClass]="{'has-success': myForm.controls['size'].valid && myForm.controls['size'].dirty, 'has-error': myForm.controls['size'].invalid && myForm.controls['size'].dirty}">
-                <label for="size" class="form-label">Size of farm (in hectares)</label>
-                <input type="text" class="form-control" id="size" formControlName="size" [disabled]="isDisabled">
+                [ngClass]="{'has-success': myForm.controls['plotSize'].valid && myForm.controls['plotSize'].dirty, 'has-error': myForm.controls['plotSize'].invalid && myForm.controls['plotSize'].dirty}">
+                <label for="plotSize" class="form-label">Size of farm (in hectares)</label>
+                <input type="text" class="form-control" id="plotSize" formControlName="plotSize" [disabled]="isDisabled">
                 <div class="form-text text-danger"
-                    *ngIf="myForm.controls['size'].hasError('invalidPositiveNumber') && myForm.controls['size'].dirty"
-                    class="text-danger">Please enter a positive number.</div>
-                <div class="form-text text-danger"
-                    *ngIf="myForm.controls['size'].hasError('required') && myForm.controls['size'].dirty"
+                    *ngIf="myForm.controls['plotSize'].hasError('required') && myForm.controls['plotSize'].dirty"
                     class="text-danger">Field is required.</div>
             </div>
 
             
 
             <div class="form-input">
-                <label for="date">When did you start farming on this land?</label>
-                <input formControlName="date" type="date" class="form-control" id="date" [disabled]="isDisabled" />
+                <label for="dateOfOwnership">When did you start farming on this land?</label>
+                <input formControlName="dateOfOwnership" type="date" class="form-control" id="dateOfOwnership" [disabled]="isDisabled" />
             </div>
 
-            <!-- <div class="button-container">
-                <button *ngIf="!isDisabled" (click)="onSaveClicked(myForm.value)" [disabled]="!myForm.valid"
+           
+            <div class="button-container">
+                <!-- Display the "Save" and "Cancel" buttons only when not disabled -->
+                <button *ngIf="!isDisabled" (click)="onSaveClicked()" [disabled]="!myForm.valid"
                     class="btn colourful-btn btn-width">Save</button>
                 <button *ngIf="!isDisabled" (click)="onCancelClicked()"
                     class="btn outline-btn btn-width">Cancel</button>
-            </div> -->
+            </div>
 
         </form>
     </div>

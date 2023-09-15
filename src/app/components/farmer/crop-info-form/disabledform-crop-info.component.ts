@@ -1,3 +1,5 @@
+// disabledform-crop-info.component.ts
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormBuilder,
@@ -6,14 +8,13 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/_models/User';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { CropService } from 'src/app/_services/crop-service/crop.service';
 import { FarmerCrop } from 'src/app/_models/farmerCrop';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 
 @Component({
     selector: 'app-disabledform-crop-info',
@@ -22,7 +23,7 @@ import { FarmerCrop } from 'src/app/_models/farmerCrop';
 })
 export class DisabledformCropInfoComponent implements OnInit {
     // Input to receive crop info progress
-
+    id: any;
     farmerData: any;
     myForm!: FormGroup;
     isDisabled = true;
@@ -33,57 +34,75 @@ export class DisabledformCropInfoComponent implements OnInit {
     private cropSubscription = new Subscription();
     private portfolioSubscription = new Subscription();
     farmId = 0;
+    private initialProgress = 0; // Initialize the initial progress
+    
 
     constructor(
         private fb: FormBuilder,
         private _validationsService: ValidationService,
         private _apiService: ApiService,
-        private _fb: FormBuilder,
         private route: ActivatedRoute,
         private _cropService: CropService,
-        private _portfolioService: PortfolioService
+        private _portfolioService: PortfolioService,
+        private _progressService: ProgressServiceService
     ) {}
 
     ngOnInit() {
         this.myForm = this.fb.group({
-            seasonFarm: new FormControl('', []),
-            cropName: new FormControl('', [
-                Validators.required,
-                this._validationsService.textWithoutNumbersValidator(),
-            ]),
-            cropType: new FormControl('', [
-                Validators.required,
-                this._validationsService.textWithoutNumbersValidator(),
-            ]),
-            cropPrice: new FormControl('', [
-                Validators.required,
-                this._validationsService.positiveNumberValidator(),
-            ]),
+            season: new FormControl('', [Validators.required]),
+            name: new FormControl('', [Validators.required]),
+            type: new FormControl('', [Validators.required]),
+            cropSeedPrice: new FormControl('', [Validators.required]),
         });
 
-        this._portfolioService.setFarmerPortfolio();
-        //  this._cropService.setCropData();
+        // Initialize cropInfo as an empty object
+        this.cropInfo = {
+            id: 0,
+            season: '',
+            name: '',
+            type: '',
+            price: 0,
+            farmId: 0,
+        };
 
-        //  this._cropService.getCropData();
+        this._portfolioService.setFarmerFarm();
+        // Fetch crop data and populate the form
         this.cropSubscription = this._portfolioService
             .getFarmerCropInfo()
             .subscribe((crops: FarmerCrop[]) => {
-                console.table(crops);
-
-                // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
-                this.myForm.patchValue({
-                    seasonFarm: crops[0].season,
-                    cropName: crops[0].name,
-                    cropType: crops[0].type,
-                    cropPrice: crops[0].price,
-                });
+                if (crops.length > 0) {
+                    this.cropInfo = crops[0];
+                    // Populate the form fields
+                    this.myForm.patchValue({
+                        season: this.cropInfo.season,
+                        name: this.cropInfo.name,
+                        type: this.cropInfo.type,
+                        cropSeedPrice: this.cropInfo.price,
+                    });
+                }
 
                 //Update progress for personal info completion
-                //this._progressService.setPersonalInfoCompleted(true);
+                // this._progressService.setPersonalInfoCompleted(true);
 
-                // Set the 'isDisabled' flag to false to enable form editing
-                this.isDisabled = false;
+                // Set the 'isDisabled' flag to true initially
+                this.isDisabled = true;
+                // Calculate the initial progress when the component is initialized
+                this.initialProgress = this.calculateProgress();
             });
+
+        this.myForm.valueChanges.subscribe(() => {
+            const progress = this.calculateProgress();
+            this._progressService.setCropInfoCompleted(progress);
+        });
+    }
+
+    calculateProgress(): number {
+        // Calculate and return the progress based on form completion
+        const totalFields = Object.keys(this.myForm.controls).length;
+        const completedFields = Object.keys(this.myForm.controls).filter(
+            controlName => this.myForm.controls[controlName].valid
+        ).length;
+        return (completedFields / totalFields) * 20;
     }
 
     get createCropControl() {
@@ -93,46 +112,50 @@ export class DisabledformCropInfoComponent implements OnInit {
     enableFields() {
         this.isDisabled = false;
         this.myForm.enable();
+        // Update the progress when "Edit" is clicked based on the initial progress
+        const progress = this.calculateProgress() - this.initialProgress;
+        this._progressService.setCropInfoCompleted(progress);
     }
 
-    saveFields() {
-        this.editedData = this.myForm.value;
-        this.isDisabled = true;
-    }
-
-    onSaveClicked(formData: any) {
+    onSaveClicked() {
         this.submitted = true; // Indicate that the form has been submitted
         if (this.myForm.valid) {
+            // Update cropInfo with form values
             this.cropInfo = {
-                id: this.cropInfo.id,
-                season: this.myForm.get('seasonFarm')?.value,
-                name: this.myForm.get('cropName')?.value,
-                type: this.myForm.get(' cropType')?.value,
-                price: this.myForm.get('cropPrice')?.value,
                 farmId: this.farmId,
+                id: this.cropInfo.id,
+                season: this.myForm.get('season')?.value,
+                name: this.myForm.get('name')?.value,
+                type: this.myForm.get('type')?.value,
+                price: this.myForm.get('cropSeedPrice')?.value,
             };
+           setTimeout(() => {
+               console.log('Form saved:', this.myForm.value);
+               // Assuming the save was successful, increase the progress
+               const progress = this.calculateProgress() + 20;
+               this._progressService.setCropInfoCompleted(progress);
+           }, 1000);
+
             console.table(this.cropInfo);
-
-            this._apiService.updateFarmerInfo(this.cropInfo).subscribe(data => {
-                // Save or update the data here
-            });
+             this._cropService.updateCropData(this.cropInfo);
         }
-        // Set crop info completion status to true
-        // this.progressService.setCropInfoCompleted(true);
 
-        // Save or update the data here
+        // Disable the form fields
         this.isDisabled = true;
-        this.submitted = false;
         this.myForm.disable();
     }
 
     onCancelClicked() {
-        // Reset the form values to the original values
-        this.myForm.patchValue(this.originalFormValues);
+        // Reset the form values to the original values (cropInfo)
+        this.myForm.patchValue({
+            season: this.cropInfo.season,
+            name: this.cropInfo.name,
+            type: this.cropInfo.type,
+            cropSeedPrice: this.cropInfo.price,
+        });
 
         // Disable the form fields again
         this.isDisabled = true;
         this.myForm.disable();
-        this.submitted = false;
     }
 }

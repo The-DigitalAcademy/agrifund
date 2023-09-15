@@ -66,6 +66,7 @@ export class CropService {
     private farmerCrops$ = new BehaviorSubject<FarmerCrop[]>([]);
 
     createFarmerCrop(cropBody: FarmerCrop) {
+        this._portfolioService.setFarmerPortfolio();
         const farmName = this._portfolioService.getFarmName();
         const addedCrop = {
             name: cropBody.name,
@@ -73,8 +74,9 @@ export class CropService {
             price: cropBody.price,
             type: cropBody.type,
         };
+
         this._apiService.addCrop(farmName, addedCrop).subscribe(
-            data => {
+            (data: any) => {
                 console.log(data);
             },
             error => {
@@ -82,6 +84,38 @@ export class CropService {
                     'Error occured when creating new crop data',
                     error
                 );
+            }
+        );
+    }
+    addCrop(crop: FarmerCrop) {
+        const AddedCrop = {
+            id: crop.id,
+            farmId: crop.farmId,
+            name: crop.name,
+            season: crop.season,
+            price: 0,
+            type: crop.type,
+        };
+        this.crops.push(AddedCrop);
+        this.farmerCrops$.next(this.crops);
+    }
+    updateCropData(crop: FarmerCrop) {
+        const cropBody = {
+            id: crop.id,
+            name: crop.name,
+            season: crop.season,
+            type: crop.type,
+            price: crop.price,
+        };
+
+        console.log(cropBody);
+
+        this._apiService.updateCrop(crop.id, cropBody).subscribe(
+            data => {
+                console.log('Crop data updated successfully:', data);
+            },
+            error => {
+                console.error('Error updating crop data:', error);
             }
         );
     }

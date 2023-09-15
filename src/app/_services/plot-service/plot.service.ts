@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ApiService } from '../api-service/api.service';
+
 import { PortfolioService } from '../portfolio-service/portfolio.service';
 import { FarmerPlot } from 'src/app/_models/farmerPlot';
+import { ApiService } from '../api-service/api.service';
 
 @Injectable({
     providedIn: 'root',
@@ -74,6 +75,25 @@ export class PlotService {
                     'Error occured when creating new plot data',
                     error
                 );
+            }
+        );
+    }
+
+    editPlot(plot: FarmerPlot) {
+        const updatedPlot = {
+            id: plot.id,
+            plotAddress: plot.plotAddress,
+            plotSize: plot.plotSize,
+            dateOfOwnership: plot.dateOfOwnership,
+        };
+
+        // api connection goes here
+        this._apiService.updatePlot(plot.id, updatedPlot).subscribe(
+            data => {
+                console.log('Plot data updated successfully:', data);
+            },
+            error => {
+                console.error('Error updating plot:', error);
             }
         );
     }

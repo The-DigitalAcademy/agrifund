@@ -12,19 +12,49 @@ import { ProgressServiceService } from 'src/app/_services/progress-service/progr
     styleUrls: ['./farmer-portfolio-progressbar.component.css'],
 })
 export class FarmerPortfolioProgressbarComponent {
-    @Input() progressPercentage = 0;
+    progress = 0;
 
     checklistForm!: FormGroup;
-
-    // hardcoded farmer id
-    farmerId = 1;
 
     constructor(
         private fb: FormBuilder,
         private _portfolioService: PortfolioService,
         private _apiService: ApiService,
         private _progressService: ProgressServiceService
-    ) {}
+    ) {
+        this._progressService.personalInfoCompleted$.subscribe(
+            personalProgress => {
+                this._progressService.cropInfoCompleted$.subscribe(
+                    cropProgress => {
+                        this._progressService.farmInfoCompleted$.subscribe(
+                            farmProgress => {
+                                this._progressService.plotInfoCompleted$.subscribe(
+                                    plotProgress => {
+                                        this._progressService.assetInfoCompleted$.subscribe(
+                                            assetProgress => {
+                                                const totalProgress =
+                                                    personalProgress +
+                                                    farmProgress +
+                                                    plotProgress +
+                                                    cropProgress +
+                                                    assetProgress;
+
+                                                // Calculate the progress as a percentage and round to the nearest whole number
+                                                this.progress =
+                                                    Math.round(totalProgress);
+                                            }
+                                        );
+                                    }
+                                );
+                            }
+                        );
+                    }
+                );
+            }
+        );
+    }
+
+  
 
     toggleCheckbox(controlName: string) {
         const checkboxControl = this.checklistForm.get(controlName);
@@ -39,35 +69,12 @@ export class FarmerPortfolioProgressbarComponent {
     }
 
     ngOnInit() {
-        this._progressService.personalInfoCompleted$.subscribe(
-            personalInfoCompleted => {
-                if (personalInfoCompleted) {
-                    this.progressPercentage += 35;
-                }
-            }
-        );
-
-        this._progressService.cropInfoCompleted$.subscribe(
-            cropInfoCompleted => {
-                if (cropInfoCompleted) {
-                    this.progressPercentage += 30;
-                }
-            }
-        );
-
-        this._progressService.farmInfoCompleted$.subscribe(
-            farmInfoCompleted => {
-                if (farmInfoCompleted) {
-                    this.progressPercentage += 35;
-                }
-            }
-        );
-
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false
             farmInfo: [false], // Set initial value to
             cropInfo: [false],
             plotInfo: [false],
+            equipmentInfo: [false],
             bookkeepingInfo: [false],
         });
 
@@ -84,16 +91,15 @@ export class FarmerPortfolioProgressbarComponent {
         this.checklistForm.patchValue({
             plotInfo: true,
         });
+        this.checklistForm.patchValue({
+            equipmentInfo: true,
+        });
 
         this.checklistForm.patchValue({
             cropInfo: true,
         });
-        // Update progress based on personal info completion
-        // this.progressService.setPersonalInfoCompleted(true);
-        //     },
-        //     error => {
-        //         console.error('Error fetching user details:', error);
-        //     }
-        // );
+         this.checklistForm.patchValue({
+             bookkeepingInfo: true,
+         });
     }
 }
