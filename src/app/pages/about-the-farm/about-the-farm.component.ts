@@ -257,7 +257,7 @@ export class AboutTheFarmComponent implements OnInit {
                 id: this.id,
                 plotAddress: plotFormInputValue.plotAddress,
                 plotSize: plotFormInputValue.plotSize,
-                dateOfOwnership: plotFormInputValue.date,
+                dateOfOwnership: plotFormInputValue.dateOfOwnership,
             };
             console.log(plotFormInputValue.date);
             this.plotFormSubmitted = true;
