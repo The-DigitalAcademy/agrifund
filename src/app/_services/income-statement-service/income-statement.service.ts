@@ -88,42 +88,31 @@ export class IncomeStatementService {
         return this.incomeStatements$;
     }
 
-    // get an incomeStatement by date
-    getStatementByDate(date: Date): IncomeStatement | null {
-        let statement = null;
-        // gets the fill year from the data that was passed
-        const year = date.getFullYear();
+    // get an incomeStatement by the date of a income statement item record
+    getStatementByDate(recordDate: string): Observable<IncomeStatement> {
+        // converts the date that is a string to a date value
+        const date = this.convertStringToDate(recordDate);
+        // checks if an income statement exists
+        if (this.statementExistsForFinancialYear(date)) {
+            // if the record exists, it was assigned to the incomeStatement$ observable
+            return this.getIncomeStatement();
+        } else {
+            this.createIncomeStatement(date);
 
-        this.getAllIncomeStatements().subscribe(statements => {
-            // checks that the statement is not empty
-            if (statements.length > 0) {
-                statement = statements.reduce(
-                    (lastTrueStatement, currentStatement) => {
-                        // converts the income statement date to the date datatype
-                        const currentStatementDate = this.convertStringToDate(
-                            currentStatement.statementDate
-                        );
-
-                        // gets the full year of the current statement's date
-                        const currentStatementYear =
-                            currentStatementDate.getFullYear();
-
-                        if (currentStatementYear === year) {
-                            //returns the income statement has the same year as the record
-                            return currentStatement;
-                        }
-
-                        return lastTrueStatement;
-                    }
-                );
-            }
-        });
-        if (statement) {
-            // assigns the statement to the statement observable
-            this.setIncomeStatement(statement);
+            this.statementExistsForFinancialYear(date);
         }
+        // // checks if the record exists after it has been created
+        // if (!this.statementExistsForFinancialYear(date)) {
+        //     this.createIncomeStatement(date);
+        // }
+
+        // // checks if the record exists after it has been created
+        // if (this.statementExistsForFinancialYear(date)) {
+        //     console.log(this.getAllIncomeStatements());
+        // }
+
         // returns a statement for the date
-        return statement;
+        return this.getIncomeStatement();
     }
 
     // gets the date of an income statement
@@ -195,7 +184,6 @@ export class IncomeStatementService {
     setIncomeStatementYearList() {
         // sets the default value for the current year
         let currentYear = 0;
-        // stored
 
         if (this.statements) {
             this.statements.forEach(statement => {
@@ -211,6 +199,8 @@ export class IncomeStatementService {
                     this.statementYearList.push(`${statementYear}`);
                 }
             });
+            // year sorts from newest to oldest
+            this.statementYearList.sort((a, b) => Number(b) - Number(a));
         }
     }
 
@@ -220,43 +210,51 @@ export class IncomeStatementService {
     }
 
     /*---------------------------------
-        CREATING A STATEMENT
+        CHECK INCOME STATEMENT
     ----------------------------------*/
-    // returns an income statement id based on the created record's date
-    getIncomeStatementIdForCreate(recordDate: string): number {
-        // set variable that will be used to pass the statement id
-        let statementId = 0;
-        // converts the record date to a data value type
-        const recordDateValue: Date = this.convertStringToDate(recordDate);
-
-        // checks if an income statement exist for the financial year of the record
-        if (this.statementExistsForFinancialYear(recordDateValue)) {
-            // the statement observable will be set to statement for the added record's financial year
-            const statement = this.getStatementByDate(recordDateValue);
-            if (statement != null) {
-                statementId = statement.id;
-                // sets the income statement to the one an item is being added to
-                this.setIncomeStatement(statement);
-            }
-        } else {
-            // if a statement doesn't exist for the financial year a new one will be created
-            this.createIncomeStatement(recordDateValue);
-        }
-
-        // call the method in this service to get the income statement id of income statement observable
-        this.getIncomeStatementId().subscribe(incomeStatementId => {
-            // assigns the income statement id retrieved from the set income statement
-            statementId = incomeStatementId;
-        });
-        return statementId;
-    }
-
     // checks if an income statement has been created for a financial year
     statementExistsForFinancialYear(recordDate: Date) {
-        // checks to see if a statement exists for a financial year
-        this.getAllIncomeStatements();
+        // sets the farmer's portfolio after a new record has been added
+        this._portfolioService.setFarmerPortfolio();
+        // sets the farmer's farm data after the portfolio has been set
+        this._portfolioService.setFarmerFarm();
+        // setst the farmer
+        // the found statement will be stored here
+        let statement;
 
-        if (this.getStatementByDate(recordDate) != null) {
+        console.table(this.getAllIncomeStatements());
+
+        // checks to see if a statement exists for a financial year
+        this.getAllIncomeStatements().subscribe(statements => {
+            // checks that the statement is not empty
+            if (statements.length > 0) {
+                statement = statements.reduce(
+                    (lastTrueStatement, currentStatement) => {
+                        // converts the income statement date to the date datatype
+                        const currentStatementDate = this.convertStringToDate(
+                            currentStatement.statementDate
+                        );
+
+                        // checks if statement exists for a bookkeeping record
+                        if (
+                            recordDate >= currentStatementDate &&
+                            recordDate <=
+                                this.getFinancialYearEnd(currentStatementDate)
+                        ) {
+                            //returns the income statement has the same year as the record
+                            return currentStatement;
+                        } else {
+                            // returns the last income statement that was true
+                            return lastTrueStatement;
+                        }
+                    }
+                );
+            }
+        });
+
+        if (statement != null) {
+            // sets the current statement to the found statement
+            this.incomeStatement$.next(statement);
             // returns true if the statement exists
             return true;
         } else {
@@ -265,18 +263,23 @@ export class IncomeStatementService {
         }
     }
 
+    /*---------------------------------
+        CREATING A STATEMENT
+    ----------------------------------*/
+
     // creates a new income statement item
     createIncomeStatement(date: Date) {
         // sets the farmName to pass to creating a new income statement item
         const farmName = this._portfolioService.getFarmName();
-        // assigns the statement date and converts it into a string
-        const statementDate = this.convertDateToString(
-            this.getIncomeStatementDate(date)
+        console.log(
+            `Farm name for creating a new income statement: ${farmName}`
         );
+        // gets a date for a statement
+        const statementDate = this.getIncomeStatementDate(date);
 
         // sets the statement body to pass to create a new income statement
         const statementBody = {
-            statementDate: statementDate,
+            statementDate: this.convertDateToString(statementDate),
             totalIncome: 0,
             totalExpenses: 0,
             netIncome: 0,
@@ -287,9 +290,10 @@ export class IncomeStatementService {
             .createIncomeStatement(farmName, statementBody)
             .subscribe(
                 (data: any) => {
-                    this.setAllIncomeStatements();
-                    // gets the newly created income statement by its date
-                    this.getStatementByDate(date);
+                    console.log(data);
+                    this.statementExistsForFinancialYear(
+                        this.convertStringToDate(statementBody.statementDate)
+                    );
                 },
                 error => {
                     console.error(
@@ -300,15 +304,16 @@ export class IncomeStatementService {
             );
     }
 
-    // sets the date for an income statement and returns it based on the record data passed to it
-    getIncomeStatementDate(date: Date) {
-        // gets the current date
-        const recordDate: Date = date;
+    /*---------------------------------
+        INCOME STATEMENT DATE
+    ----------------------------------*/
+    /* sets the date for an income statement and returns it based on the date passed to it
+    used when creating a new income statement*/
+    getIncomeStatementDate(recordDate: Date) {
         // gets the current year
         const recordYear = recordDate.getFullYear();
         // South African financial year starts on the 1st of march
         const financialYearStartMonth = 2; //month of the March -> index starts at 0
-        // sets the date value as string value
 
         // sets the default financial year for the current year
         let financialYearStart = new Date(
@@ -317,7 +322,7 @@ export class IncomeStatementService {
             1
         );
 
-        // checks if the current data is less than the financial start year
+        // checks if the current date is less than the financial start year
         if (recordDate < financialYearStart) {
             // sets the financial date to the previous year, the month of March
             financialYearStart = new Date(
@@ -328,6 +333,32 @@ export class IncomeStatementService {
         }
 
         return financialYearStart;
+    }
+
+    // gets the financial year end date based on the financial year start date
+    getFinancialYearEnd(financialStartDate: Date): Date {
+        // gets the year from the current financial year start date
+        const financialYear = financialStartDate.getFullYear();
+        // sets the financial end year to the next years date
+        const nextYear = financialYear + 1;
+        // stores value wether the year is a leap year or not
+        let isYearLeap = false;
+
+        // checks whether the next year is leap year
+        if (
+            nextYear % 4 === 0 &&
+            (nextYear % 100 !== 0 || nextYear % 400 === 0)
+        ) {
+            isYearLeap = true;
+        }
+
+        // passes the last date of february based on whether it is leap year or not
+        const dayOfMonth = isYearLeap ? 29 : 28;
+
+        // checks if the financial end year is a leap year
+
+        // returns the financial year end date as the next year the last day February
+        return new Date(financialYear + 1, 1, dayOfMonth);
     }
 
     /*---------------------------------

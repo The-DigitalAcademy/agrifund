@@ -22,25 +22,38 @@ export class AboutTheFarmComponent implements OnInit {
     // used to refer to the bootstrap carousel on HTML
     @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
     // stores the active slide name id default is the first slide
-    activeSlideName: string = 'introSlide';
+    activeSlideName = 'introSlide';
     // sets the list of slides and their active status
     slides: [string, string][] = [
         ['introSlide', 'active'],
         ['farmSlide', 'inactive'],
         ['cropSlide', 'inactive'],
-        ['plotSlide', 'inactive']];
+        ['plotSlide', 'inactive'],
+    ];
 
     farmForm!: FormGroup;
     cropForm!: FormGroup;
     plotForm!: FormGroup;
+    farmFormSubmitted = false;
+    cropFormSubmitted = false;
+    plotFormSubmitted = false;
 
     submitted = false;
     farm!: FarmerFarm;
-    crops!: FarmerCrop;
+    crop!: FarmerCrop;
     plots!: FarmerPlot;
     asset!: Assets;
-    id = 0;
     isLast: any;
+    id = 0;
+    // id!: number;
+
+    // stores value whether a crop already exists
+    private cropExists = false;
+    // stores value whether a farm already exists
+    private farmExists = false;
+    // stores value whether a plot already exists
+    private plotExists = false;
+    farmId = 0;
 
     constructor(
         private fb: FormBuilder,
@@ -72,8 +85,8 @@ export class AboutTheFarmComponent implements OnInit {
         this.cropForm = this.fb.group({
             name: ['', Validators.required],
             season: ['', Validators.required],
+            price: ['', Validators.required],
             type: ['', Validators.required],
-            cropSeedPrice: ['', Validators.required],
         });
 
         this.plotForm = this.fb.group({
@@ -81,8 +94,18 @@ export class AboutTheFarmComponent implements OnInit {
             plotSize: ['', Validators.required],
             dateOfOwnership: ['', Validators.required],
         });
+        // this.farmForm.disable();
+        // this.cropForm.disable();
+        // this.plotForm.disable();
 
         this.carousel.pause();
+        // does check to see if farm exists and fills in form data
+        this.populateFarmForm();
+
+        // does check to see if crop exists and fills in form data
+        this.populateCropForm();
+        // does check to see if the plot exists and fills in form data
+        this.populatePlotForm();
     }
 
     // navigates to a specific slide
@@ -96,16 +119,12 @@ export class AboutTheFarmComponent implements OnInit {
 
     // navigates to the next slide
     goToNextSlide() {
-        this.submitted = true;
-        // stores value whether a farm already exists
-        let farmExists = false;
-        // stores value whether a crop already exists
-        let cropExists = false;
-        // stores value whether a plot already exists
-        let plotExists = false;
+        // this.submitted = true;
 
         // set the portfolio info for a logged in farmer
         this._portfolioService.setFarmerPortfolio();
+        // sets the farmers farm
+        this._portfolioService.setFarmerFarm();
 
         // intro slide can just go to next slide on button click
         if (this.carousel.activeId === 'introSlide') {
@@ -116,16 +135,15 @@ export class AboutTheFarmComponent implements OnInit {
             this._portfolioService.getFarmerFarm().subscribe(farm => {
                 // checks if a user has already added a farm
                 if (farm.length != 0) {
-                    farmExists = true;
+                    this.farmExists = true;
                 }
             });
 
             // checks if the farm info is empty
-            if (!farmExists) {
+            if (!this.farmExists) {
                 // calls method to create farmer farm
                 this.createFarmInfo();
             } else {
-                console.log(`Farm already exists`);
                 this.carousel.next();
             }
         }
@@ -134,13 +152,15 @@ export class AboutTheFarmComponent implements OnInit {
             this._portfolioService.getFarmerCropInfo().subscribe(crop => {
                 // checks if a user has already added a crop
                 if (crop.length != 0) {
-                    cropExists = true;
+                    this.cropExists = true;
+                    // assigns the crop variable to the first instance of crop fetched
+                    this.crop = crop[0];
                 }
-                
+                console.log(`Crop has been submitted`);
             });
 
             // checks if the crop info is empty
-            if (!cropExists) {
+            if (!this.cropExists) {
                 // calls method to create farmer farm
                 this.createCropInfo();
             } else {
@@ -154,13 +174,12 @@ export class AboutTheFarmComponent implements OnInit {
             this._portfolioService.getFarmerPlotInfo().subscribe(plot => {
                 // checks if a user has already added a plot
                 if (plot.length != 0) {
-                    plotExists = true;
+                    this.plotExists = true;
                 }
-                console.log(`Plot has been submitted`);
             });
 
             // checks if the crop info is empty
-            if (!plotExists) {
+            if (!this.plotExists) {
                 // calls method to create farmer farm
                 this.createPlotInfo();
             } else {
@@ -199,6 +218,8 @@ export class AboutTheFarmComponent implements OnInit {
                 assets: [],
                 incomeStatements: [],
             };
+            this.farmFormSubmitted = true;
+            this.farmForm.disable();
             // creates a farmer's farm within the farm service
             this._farmService.createFarmerFarm(this.farm);
             // routes to next carousel  page after a farmer has been successfully created
@@ -209,19 +230,22 @@ export class AboutTheFarmComponent implements OnInit {
     }
 
     // check if farm info has already been submitted
+
     createCropInfo() {
         if (this.cropForm.valid) {
-            console.log('I am running');
-            const cropFromInputValue = this.cropForm.value;
-            this.crops = {
+            const cropFormInputValue = this.cropForm.value;
+            this.crop = {
                 id: this.id,
-                name: cropFromInputValue.name,
-                season: cropFromInputValue.season,
-                price: cropFromInputValue.cropSeedPrice,
-                type: cropFromInputValue.type,
+                name: cropFormInputValue.name,
+                season: cropFormInputValue.season,
+                price: cropFormInputValue.price,
+                type: cropFormInputValue.type,
+                farmId: this.farmId,
             };
-            console.table(this.crops);
-            this._cropService.createFarmerCrop(this.crops);
+            this.cropFormSubmitted = true;
+            this.cropForm.disable();
+            console.table(this.crop);
+            this._cropService.createFarmerCrop(this.crop);
             // routes to next carousel  page after a crop has been successfully created
             this.carousel.next();
         } else {
@@ -230,6 +254,7 @@ export class AboutTheFarmComponent implements OnInit {
     }
 
     // check if farm info has already been submitted
+
     createPlotInfo() {
         if (this.plotForm.valid) {
             const plotFormInputValue = this.plotForm.value;
@@ -239,6 +264,8 @@ export class AboutTheFarmComponent implements OnInit {
                 plotSize: plotFormInputValue.plotSize,
                 dateOfOwnership: plotFormInputValue.date,
             };
+            this.plotFormSubmitted = true;
+            this.plotForm.disable();
             console.table(this.plots);
             this._plotService.createFarmerPlot(this.plots);
             // Check if all slides have been filled out
@@ -259,8 +286,65 @@ export class AboutTheFarmComponent implements OnInit {
         // default value is false
         let isActive = false;
         // returns true or false on whether a slide is active or not
-        (this.carousel.activeId === slideId) ? isActive = true : isActive;
+        this.carousel.activeId === slideId ? (isActive = true) : isActive;
 
         return isActive;
+    }
+
+    populateFarmForm() {
+        this._portfolioService.getFarmerFarm().subscribe(farm => {
+            // checks if a user has already added a farm
+            if (farm.length != 0) {
+                this.farmExists = true;
+                this.farm = farm[0];
+                //populates the form data if the crop value already exists
+                this.farmForm.patchValue({
+                    address: this.farm.address,
+                    farmName: this.farm.farmName,
+                    farmAddress: this.farm.farmAddress,
+                    yearsActive: this.farm.yearsActive,
+                    numberOfEmployees: this.farm.numberOfEmployees,
+                    farmingReason: this.farm.farmingReason,
+                });
+            }
+        });
+    }
+
+    // populates the crop form if the data exists for it
+    populateCropForm() {
+        this._portfolioService.getFarmerCropInfo().subscribe(crop => {
+            // checks if a user has already added a crop
+
+            if (crop.length != 0) {
+                this.cropExists = true;
+                // assigns the crop variable to the first instance of crop fetched
+                this.crop = crop[0];
+                //populates the form data if the crop value already exists
+                this.cropForm.patchValue({
+                    name: this.crop.name,
+                    season: this.crop.season,
+                    price: this.crop.price,
+                    type: this.crop.type,
+                });
+            }
+        });
+    }
+
+    // populates the crop form if the data exists for it
+    populatePlotForm() {
+        this._portfolioService.getFarmerPlotInfo().subscribe(plot => {
+            // checks if a user has already added a crop
+            if (plot.length != 0) {
+                this.cropExists = true;
+                // assigns the crop variable to the first instance of crop fetched
+                this.plots = plot[0];
+                //populates the form data if the crop value already exists
+                this.plotForm.patchValue({
+                    plotAddress: this.plots.plotAddress,
+                    plotSize: this.plots.plotSize,
+                    dateOfOwnership: this.plots.dateOfOwnership,
+                });
+            }
+        });
     }
 }

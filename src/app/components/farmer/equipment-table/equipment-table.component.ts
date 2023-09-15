@@ -21,7 +21,7 @@ export class EquipmentTableComponent {
     submitted = false;
     isDisabled = true;
     equipmentForm!: FormGroup;
-    onFileSelected($event: Event) {}
+   
     private assetSubscription = new Subscription();
     constructor(
         private _apiService: ApiService,

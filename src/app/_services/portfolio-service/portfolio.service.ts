@@ -14,13 +14,11 @@
 -------------------------------------------------------------------------------------------------*/
 import { Inject, Injectable, forwardRef } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { AuthService } from '../authentication-service/auth.service';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';
 import { IncomeStatement } from 'src/app/_models/IncomeStatement';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { Assets } from 'src/app/_models/Assets';
-import { HttpClient } from '@angular/common/http';
 import { FarmerFarm } from 'src/app/_models/farmerFarm';
 import { FarmerCrop } from 'src/app/_models/farmerCrop';
 import { FarmerPlot } from 'src/app/_models/farmerPlot';
@@ -31,9 +29,6 @@ import { FarmerPlot } from 'src/app/_models/farmerPlot';
     providedIn: 'root',
 })
 export class PortfolioService {
-    setFarmerIncomeStatements() {
-        throw new Error('Method not implemented.');
-    }
     private assets: Assets[] = [];
     // stores the farmer portfolio as a array instance of farmer portfolio
     private farmerPortfolio: FarmerPortfolio[] = [];
@@ -72,16 +67,8 @@ export class PortfolioService {
     // stores the farmers portfolio data
     private farmerIncomeStatements: IncomeStatement[] = [];
     // stores the income statement data as an observable -> -> initializes as empty
-    private incomeStatements$: BehaviorSubject<IncomeStatement> =
-        new BehaviorSubject<IncomeStatement>({
-            id: 0,
-            farmId: 0,
-            statementDate: '',
-            totalIncome: 0,
-            totalExpenses: 0,
-            netIncome: 0,
-            incomeStatementItems: [],
-        });
+    private incomeStatements$: BehaviorSubject<IncomeStatement[]> =
+        new BehaviorSubject<IncomeStatement[]>([]);
 
     // stores the income statement data as an observable -> -> initializes as empty
     private incomeStatementItems$: BehaviorSubject<IncomeStatementItem> =
@@ -168,6 +155,13 @@ export class PortfolioService {
     /*---------------------------------
         INCOME STATEMENT DATA
     ----------------------------------*/
+    // used to set the farmer's income statements
+    setFarmerIncomeStatements() {
+        this.getFarmerIncomeStatements().subscribe(statements => {
+            this.incomeStatements$.next(statements);
+        });
+    }
+
     // used to get farmer income statements
     getFarmerIncomeStatements(): Observable<IncomeStatement[]> {
         // returns the income statement for a farm

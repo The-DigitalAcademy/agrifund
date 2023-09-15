@@ -64,7 +64,7 @@ export class PlotService {
             },
             error => {
                 console.error(
-                    'Error occured when creating new crop data',
+                    'Error occured when creating new plot data',
                     error
                 );
             }

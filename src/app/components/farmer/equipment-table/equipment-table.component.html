@@ -42,23 +42,7 @@
                 <label for="age">Age in years</label>
                 <input formControlName="age" class="form-control" id="age" />
             </div>
-            <div class="document-upload">
-                <div class="doc-header justify-start">
-                    <label for="recordProof">Upload Proof of Ownership </label>
-                    <div class="form-text">PDF, PNG, JPG</div>
-                </div>
-                <hr />
-                <div class="file">
-                    <input
-                        formControlName="recordProof"
-                        class="form-control"
-                        type="file"
-                        id="recordProof" />
-                    <button class="btn colourful-btn">View</button>
-                </div>
-
-               
-            </div>
+           
             <div class="button-container" id="btn">
                 <!-- Display the "Save" and "Cancel" buttons only when not disabled -->
                 <button *ngIf="!isDisabled" (click)="onSaveClicked()" [disabled]="!equipmentForm.valid"
