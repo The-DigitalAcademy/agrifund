@@ -133,24 +133,66 @@
                 </div>
                 <div class="carousel slide justify-center">
                     <div class="carousel-indicators">
-                        <button [className]="isActiveSlide('slide1') ? 'activeIndicator': 'inactiveIndicator'"
-                            type="button" class = "indicatorButton"
-                            id="firstSlide" (click)="goToSlide('slide1')"></button>
-                     <button [className]="isActiveSlide('slide2') ? 'activeIndicator': 'inactiveIndicator'"
-                            type="button" class = "indicatorButton"
-                            id="firstSlide" (click)="goToSlide('slide2')"></button>
-                <button [className]="isActiveSlide('slide3') ? 'activeIndicator': 'inactiveIndicator'"
-                            type="button" class = "indicatorButton"
-                            id="secondSlide" (click)="goToSlide('slide3')"></button>
-                       <button [className]="isActiveSlide('slide4') ? 'activeIndicator': 'inactiveIndicator'"
-                            type="button" class = "indicatorButton"
-                            id="thirdSlide" (click)="goToSlide('slide4')"></button>
-                      <button [className]="isActiveSlide('slide5') ? 'activeIndicator': 'inactiveIndicator'"
-                            type="button" class = "indicatorButton"
-                            id="fourthSlide" (click)="goToSlide('slide5')"></button>
-                       <button [className]="isActiveSlide('slide6') ? 'activeIndicator': 'inactiveIndicator'"
-                            type="button" class = "indicatorButton"
-                            id="fifthSlide" (click)="goToSlide('slide6')"></button>
+                        <button
+                            [className]="
+                                isActiveSlide('slide1')
+                                    ? 'activeIndicator'
+                                    : 'inactiveIndicator'
+                            "
+                            type="button"
+                            class="indicatorButton"
+                            id="firstSlide"
+                            (click)="goToSlide('slide1')"></button>
+                        <button
+                            [className]="
+                                isActiveSlide('slide2')
+                                    ? 'activeIndicator'
+                                    : 'inactiveIndicator'
+                            "
+                            type="button"
+                            class="indicatorButton"
+                            id="firstSlide"
+                            (click)="goToSlide('slide2')"></button>
+                        <button
+                            [className]="
+                                isActiveSlide('slide3')
+                                    ? 'activeIndicator'
+                                    : 'inactiveIndicator'
+                            "
+                            type="button"
+                            class="indicatorButton"
+                            id="secondSlide"
+                            (click)="goToSlide('slide3')"></button>
+                        <button
+                            [className]="
+                                isActiveSlide('slide4')
+                                    ? 'activeIndicator'
+                                    : 'inactiveIndicator'
+                            "
+                            type="button"
+                            class="indicatorButton"
+                            id="thirdSlide"
+                            (click)="goToSlide('slide4')"></button>
+                        <button
+                            [className]="
+                                isActiveSlide('slide5')
+                                    ? 'activeIndicator'
+                                    : 'inactiveIndicator'
+                            "
+                            type="button"
+                            class="indicatorButton"
+                            id="fourthSlide"
+                            (click)="goToSlide('slide5')"></button>
+                        <button
+                            [className]="
+                                isActiveSlide('slide6')
+                                    ? 'activeIndicator'
+                                    : 'inactiveIndicator'
+                            "
+                            type="button"
+                            class="indicatorButton"
+                            id="fifthSlide"
+                            (click)="goToSlide('slide6')"></button>
                     </div>
                 </div>
                 <div class="justify-end">
