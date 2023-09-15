@@ -75,6 +75,11 @@ export class BookkeepingEditPageComponent implements OnInit {
             .getIncomeStatementRecordById(this.recordId)
             .subscribe(record => {
                 this.record = record;
+                // gets the last index of the slash to ensures that the record receipt name only appears
+                const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
+                this.record.proofOfReceipt = record.proofOfReceipt.substring(
+                    lastSlashIndex + 1
+                );
                 // set the input values to the data from the api service
                 this.editRecordForm.patchValue({
                     recordName: this.record.description,
