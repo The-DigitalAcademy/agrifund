@@ -156,6 +156,7 @@ export class AboutTheFarmComponent implements OnInit {
                     // assigns the crop variable to the first instance of crop fetched
                     this.crop = crop[0];
                 }
+                  console.log(`Crop has been submitted`);
             });
 
             // checks if the crop info is empty
