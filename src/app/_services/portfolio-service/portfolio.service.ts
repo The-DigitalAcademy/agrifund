@@ -150,7 +150,30 @@ export class PortfolioService {
         return this.userFirstName$;
     }
 
-    editPortfolio(portfolio: FarmerPortfolio) {}
+    editPortfolio(portfolio: FarmerPortfolio) {
+        const farmName = this.getFarmName();
+        console.log('Farm Name:', farmName);
+        const updatedPortfolio = {
+            id: portfolio.id,
+            firstName: portfolio.firstName,
+            lastName: portfolio.lastName,
+            email: portfolio.email,
+            cellNumber: portfolio.cellNumber,
+            farms: portfolio.farms,
+        };
+
+        // api connection goes here
+        this._apiService
+            .updateFarmerInfo(portfolio.id, updatedPortfolio)
+            .subscribe(
+                data => {
+                    console.log('Plot data updated successfully:', data);
+                },
+                error => {
+                    console.error('Error updating plot:', error);
+                }
+            );
+    }
 
     /*---------------------------------
         INCOME STATEMENT DATA

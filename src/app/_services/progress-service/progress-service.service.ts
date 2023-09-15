@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ProgressServiceService {
-    constructor() {}
-
     private personalInfoCompleted = new BehaviorSubject<number>(0);
     private cropInfoCompleted = new BehaviorSubject<number>(0);
     private farmInfoCompleted = new BehaviorSubject<number>(0);
@@ -34,5 +32,22 @@ export class ProgressServiceService {
     }
     setPlotInfoCompleted(progress: number) {
         this.plotInfoCompleted.next(progress);
+    }
+
+    private cropInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    cropInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
+
+    private assetInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    assetInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
+    constructor() {}
+    // Update the checkbox state
+    updateCropInfoCompleted(completed: boolean) {
+        this.cropInfoCompletedSubject.next(completed);
+    }
+
+    updateAssetInfoCompleted(completed: boolean) {
+        this.assetInfoCompletedSubject.next(completed);
     }
 }

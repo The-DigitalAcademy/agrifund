@@ -61,14 +61,14 @@
                         Plot Information
                     </label>
                 </div>
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <label class="form-check-label">
                         <span class="custom-checkbox" (click)="toggleCheckbox('equipmentInfo')">
                             <fa-icon *ngIf="isCheckboxChecked('equipmentInfo')" icon="check" class="tick-icon"></fa-icon>
                         </span>
                         Equipment Information
                     </label>
-                </div>
+                </div> -->
                 <div class="form-check">
                     <label class="form-check-label">
                         <span
@@ -86,19 +86,21 @@
         </form>
     </div>
 
-    <div class="container-feedback">
-        <h2>You can qualify for business funding.</h2>
-        <p>
-            Click the button below to go to the ABSA website to apply for
-            business funding.
-        </p>
-        <div class="actions">
-            <a
-                class="btn colourful-btn"
-                href="https://www.absa.co.za/business/starting-my-business/access-to-finance/sme-contract-financing/"
-                target="_blank"
-                >Go to ABSA</a
-            >
+    <div class="container inner-container container-feedback">
+        <div class="overlay-container"></div>
+        <div class="feedback-content">
+            <h2 class="justify-center">You can qualify for business funding.</h2>
+            <p class="justify-center">
+                Click the button below to go to the ABSA website to apply for
+                business funding.
+            </p>
+            <div class="actions justify-center">
+                <a class="btn colourful-btn"
+                    href="https://www.absa.co.za/business/starting-my-business/access-to-finance/sme-contract-financing/"
+                    target="_blank">Go to ABSA</a>
+            </div>
+    
         </div>
+    
     </div>
 </div>

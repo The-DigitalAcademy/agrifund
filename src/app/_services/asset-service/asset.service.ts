@@ -51,4 +51,23 @@ export class AssetService {
         // add assets to asset observable
         this.assetData$.next(this.assets);
     }
+
+    editAsset(asset: Assets) {
+        const updatedAsset = {
+            id: asset.id,
+            assetName: asset.assetName,
+            assetType: asset.assetType,
+            age: asset.age,
+            purchasePrice: asset.purchasePrice,
+        };
+        // api connection goes here
+        this._apiService.updateAsset(asset.id, updatedAsset).subscribe(
+            data => {
+                console.log('Plot data updated successfully:', data);
+            },
+            error => {
+                console.error('Error updating plot:', error);
+            }
+        );
+    }
 }

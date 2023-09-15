@@ -41,7 +41,7 @@
 }
 
 .plot-info {
-    padding-top: var(--normal-s) !important;
+    padding-bottom: var(--small-s) !important;
 }
 
 /* Styling for h1 headings */

@@ -25,6 +25,7 @@ export class PlotInfoFormComponent implements OnInit {
     farmerData: any;
     plotInfo!: FarmerPlot;
     id: any;
+    private initialProgress = 0; // Initialize the initial progress
 
     private plotSubscription = new Subscription();
 
@@ -68,6 +69,8 @@ export class PlotInfoFormComponent implements OnInit {
                 }
 
                 this.isDisabled = true;
+                // Calculate the initial progress when the component is initialized
+                this.initialProgress = this.calculateProgress();
             });
 
         this.myForm.valueChanges.subscribe(() => {
@@ -88,6 +91,9 @@ export class PlotInfoFormComponent implements OnInit {
     enableFields() {
         this.isDisabled = false;
         this.myForm.enable();
+        // Update the progress when "Edit" is clicked based on the initial progress
+        const progress = this.calculateProgress() - this.initialProgress;
+        this._progressService.setPlotInfoCompleted(progress);
     }
 
     onCancelClicked() {
@@ -111,6 +117,12 @@ export class PlotInfoFormComponent implements OnInit {
                 plotSize: this.myForm.get('plotSize')?.value,
                 dateOfOwnership: this.myForm.get('dateOfOwnership')?.value,
             };
+            setTimeout(() => {
+                console.log('Form saved:', this.myForm.value);
+                // Assuming the save was successful, increase the progress
+                const progress = this.calculateProgress() + 20;
+                this._progressService.setPlotInfoCompleted(progress);
+            }, 1000);
             console.table(this.plotInfo);
             this._plotService.editPlot(this.plotInfo);
         }

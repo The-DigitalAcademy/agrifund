@@ -34,6 +34,8 @@ export class DisabledformCropInfoComponent implements OnInit {
     private cropSubscription = new Subscription();
     private portfolioSubscription = new Subscription();
     farmId = 0;
+    private initialProgress = 0; // Initialize the initial progress
+    
 
     constructor(
         private fb: FormBuilder,
@@ -84,11 +86,13 @@ export class DisabledformCropInfoComponent implements OnInit {
 
                 // Set the 'isDisabled' flag to true initially
                 this.isDisabled = true;
+                // Calculate the initial progress when the component is initialized
+                this.initialProgress = this.calculateProgress();
             });
 
         this.myForm.valueChanges.subscribe(() => {
-            const progress1 = this.calculateProgress();
-            this._progressService.setCropInfoCompleted(progress1);
+            const progress = this.calculateProgress();
+            this._progressService.setCropInfoCompleted(progress);
         });
     }
 
@@ -108,6 +112,9 @@ export class DisabledformCropInfoComponent implements OnInit {
     enableFields() {
         this.isDisabled = false;
         this.myForm.enable();
+        // Update the progress when "Edit" is clicked based on the initial progress
+        const progress = this.calculateProgress() - this.initialProgress;
+        this._progressService.setCropInfoCompleted(progress);
     }
 
     onSaveClicked() {
@@ -122,14 +129,16 @@ export class DisabledformCropInfoComponent implements OnInit {
                 type: this.myForm.get('type')?.value,
                 price: this.myForm.get('cropSeedPrice')?.value,
             };
+           setTimeout(() => {
+               console.log('Form saved:', this.myForm.value);
+               // Assuming the save was successful, increase the progress
+               const progress = this.calculateProgress() + 20;
+               this._progressService.setCropInfoCompleted(progress);
+           }, 1000);
 
             console.table(this.cropInfo);
-
-            // Update the crop data using the service
-            this._cropService.updateCropData(this.cropInfo);
+             this._cropService.updateCropData(this.cropInfo);
         }
-
-        
 
         // Disable the form fields
         this.isDisabled = true;

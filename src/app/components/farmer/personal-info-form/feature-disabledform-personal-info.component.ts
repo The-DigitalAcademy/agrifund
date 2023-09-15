@@ -29,6 +29,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     id: any;
     submitted = false;
 
+    private initialProgress = 0; // Initialize the initial progress
+
     constructor(
         private router: Router,
         private route: ActivatedRoute,
@@ -97,6 +99,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
                 // Set the 'isDisabled' flag to false to enable form editing
                 this.isDisabled = true;
+                // Calculate the initial progress when the component is initialized
+                this.initialProgress = this.calculateProgress();
             });
 
         this.myForm.valueChanges.subscribe(() => {
@@ -106,6 +110,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     }
 
     calculateProgress(): number {
+        // Calculate and return the progress based on form completion
         const totalFields = Object.keys(this.myForm.controls).length;
         const completedFields = Object.keys(this.myForm.controls).filter(
             controlName => this.myForm.controls[controlName].valid
@@ -116,6 +121,9 @@ export class DisabledformPersonalInfoComponent implements OnInit {
     enableFields() {
         this.isDisabled = false;
         this.myForm.enable();
+        // Update the progress when "Edit" is clicked based on the initial progress
+        const progress = this.calculateProgress() - this.initialProgress;
+        this._progressService.setPersonalInfoCompleted(progress);
     }
 
     onSaveClicked(formData: any) {
@@ -129,9 +137,16 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 email: this.myForm.get('email')?.value,
                 cellNumber: this.myForm.get('cell_number')?.value,
             };
-            console.table(this.personalInfo);
 
+            setTimeout(() => {
+                console.log('Form saved:', this.myForm.value);
+                // Assuming the save was successful, increase the progress
+                const progress = this.calculateProgress() + 20;
+                this._progressService.setPersonalInfoCompleted(progress);
+            }, 1000);
+            console.table(this.personalInfo);
             this._portfolioService.editPortfolio(this.personalInfo);
+
         }
         this.isDisabled = true;
         // this._progressService.setPersonalInfoCompleted(true);

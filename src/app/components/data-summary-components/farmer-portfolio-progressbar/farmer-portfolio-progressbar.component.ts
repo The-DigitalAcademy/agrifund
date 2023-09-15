@@ -16,42 +16,45 @@ export class FarmerPortfolioProgressbarComponent {
 
     checklistForm!: FormGroup;
 
-    
     constructor(
         private fb: FormBuilder,
         private _portfolioService: PortfolioService,
         private _apiService: ApiService,
         private _progressService: ProgressServiceService
     ) {
-           this._progressService.personalInfoCompleted$.subscribe(
-               personalProgress => {
-                   this._progressService.cropInfoCompleted$.subscribe(
-                       cropProgress => {
-                           this._progressService.farmInfoCompleted$.subscribe(
-                               farmProgress => {
-                                   this._progressService.plotInfoCompleted$.subscribe(
-                                       plotProgress => {
-                                           this._progressService.assetInfoCompleted$.subscribe(
-                                               assetProgress => {
-                                                   this.progress =
-                                                       personalProgress +
-                                                       farmProgress +
-                                                       plotProgress +
-                                                       cropProgress +
-                                                       assetProgress; // Calculate the progress
-                                               }
-                                           );
-                                       }
-                                   );
-                               }
-                           );
-                       }
-                   );
-               }
-           ); ;
-            
+        this._progressService.personalInfoCompleted$.subscribe(
+            personalProgress => {
+                this._progressService.cropInfoCompleted$.subscribe(
+                    cropProgress => {
+                        this._progressService.farmInfoCompleted$.subscribe(
+                            farmProgress => {
+                                this._progressService.plotInfoCompleted$.subscribe(
+                                    plotProgress => {
+                                        this._progressService.assetInfoCompleted$.subscribe(
+                                            assetProgress => {
+                                                const totalProgress =
+                                                    personalProgress +
+                                                    farmProgress +
+                                                    plotProgress +
+                                                    cropProgress +
+                                                    assetProgress;
+
+                                                // Calculate the progress as a percentage and round to the nearest whole number
+                                                this.progress =
+                                                    Math.round(totalProgress);
+                                            }
+                                        );
+                                    }
+                                );
+                            }
+                        );
+                    }
+                );
+            }
+        );
     }
-    
+
+  
 
     toggleCheckbox(controlName: string) {
         const checkboxControl = this.checklistForm.get(controlName);
@@ -66,8 +69,6 @@ export class FarmerPortfolioProgressbarComponent {
     }
 
     ngOnInit() {
-        
-
         this.checklistForm = this.fb.group({
             personalInfo: [false], // Set initial value to false
             farmInfo: [false], // Set initial value to
@@ -97,8 +98,8 @@ export class FarmerPortfolioProgressbarComponent {
         this.checklistForm.patchValue({
             cropInfo: true,
         });
-        
+         this.checklistForm.patchValue({
+             bookkeepingInfo: true,
+         });
     }
-    
-   
 }

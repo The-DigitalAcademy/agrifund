@@ -30,6 +30,7 @@ export class DisabledformFarmInfoComponent {
     private farmSubscription = new Subscription();
     farmInfo!: FarmerFarm;
     submitted = false;
+    private initialProgress = 0; // Initialize the initial progress
     //     id: any;
     constructor(
         private _fb: FormBuilder,
@@ -110,6 +111,8 @@ export class DisabledformFarmInfoComponent {
 
                 // Set the 'isDisabled' flag to false to enable form editing
                 this.isDisabled = true;
+                // Calculate the initial progress when the component is initialized
+                this.initialProgress = this.calculateProgress();
             });
 
         this.myForm.valueChanges.subscribe(() => {
@@ -134,6 +137,9 @@ export class DisabledformFarmInfoComponent {
     enableFields() {
         this.isDisabled = false; // Enable the fields by setting isDisabled to false
         this.myForm.enable(); // Enable the formGroup
+        // Update the progress when "Edit" is clicked based on the initial progress
+        const progress = this.calculateProgress() - this.initialProgress;
+        this._progressService.setFarmInfoCompleted(progress);
     }
 
     onSaveClicked() {
@@ -154,8 +160,15 @@ export class DisabledformFarmInfoComponent {
                 farmingReason: this.myForm.get('reasonForFunding')?.value,
             };
             // console.table(this.farmInfo);
+            setTimeout(() => {
+                console.log('Form saved:', this.myForm.value);
+                // Assuming the save was successful, increase the progress
+                const progress = this.calculateProgress() + 20;
+                this._progressService.setFarmInfoCompleted(progress);
+            }, 1000);
 
             this._farmService.editFarm(this.farmInfo);
+          
         }
 
         this.isDisabled = true;
@@ -179,4 +192,3 @@ export class DisabledformFarmInfoComponent {
         this.myForm.disable();
     }
 }
-

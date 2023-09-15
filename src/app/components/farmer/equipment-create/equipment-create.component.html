@@ -58,36 +58,32 @@
 
 
 
-        <!-- <div class="content large-hidden">
+        <div class="content large-hidden">
             <form [formGroup]="createEquipmentForm" (ngSubmit)="saveEquipment()">
-                <div class="form-group" id="label">
-                    <label for="assetName" class="form-label">
-                        Name
-                    </label>
-
-                    <input formControlName="assetName" type="text" class="form-control" id="assetName" />
-
+                <div class="form-group">
+                    <label for="equipmentName">Name of equipment</label>
+                    <div class="form-text">
+                        Describe the equipment in 1-10 words. Example: Wooden Rake
+                    </div>
+                    <input formControlName="equipmentName" class="form-control" id="equipmentNameInfa-pull-left" />
                 </div>
-
-                <div class="form-group" id="form-label">
-                    <label for="assetType">Type</label>
-                    <input formControlName="assetType" type="text" class="form-control" id="assetType" />
-
+                <div class="form-group">
+                    <label for="equipmentType">Type of</label>
+                    <input formControlName="equipmentType" class="form-control" id="equipmentTypeInfa-pull-left" />
                 </div>
-
-                <div class="form-group" id="label">
-                    <label for="age" class="form-label">
-                        Age(years)
-                    </label>
-                    <input formControlName="age" type="text" class="form-control" id="age" />
+            
+            
+                <div class="form-group">
+                    <label for="purchase_Amount">Purchase Amount</label>
+                    <input formControlName="purchase_Amount" class="form-control" id="purchase_AmountInfa-pull-left" />
                 </div>
-
-                <div class="form-input" id="label">
-                    <label for="equipmentAmount" class="form-label">
-                        Purchase Amount
-                    </label>
-                    <input formControlName="purchasePrice" type="text" class="form-control" id="purchasePrice" />
+            
+                <div class="form-group">
+                    <label for="age">Age in years</label>
+                    <input formControlName="age" class="form-control" id="age" />
                 </div>
+            
+            
                 <div class="actions">
                     <div class="justify-start">
                         <button class="btn colourful-btn btn-width left-btn" type="submit">
@@ -101,7 +97,7 @@
                     </div>
                 </div>
             </form>
-        </div> -->
+        </div>
 
 
     </div>
