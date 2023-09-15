@@ -69,6 +69,12 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
                     // displays expense as money out
                     this.record.category = 'Money Out';
                 }
+
+                // gets the last index of the slash to ensures that the record receipt name only appears
+                const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
+                this.record.proofOfReceipt = record.proofOfReceipt.substring(
+                    lastSlashIndex + 1
+                );
             });
     }
 
