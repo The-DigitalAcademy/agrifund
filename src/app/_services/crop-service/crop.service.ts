@@ -72,6 +72,7 @@ export class CropService {
             season: cropBody.season,
             price: cropBody.price,
             type: cropBody.type,
+            
         };
 
         this._apiService.addCrop(farmName, newCropBody).subscribe(
@@ -106,7 +107,10 @@ export class CropService {
             name: crop.name,
             season: crop.season,
             type: crop.type,
+            price: crop.price,
         };
+
+        console.log(cropBody);
 
         this._apiService.updateCrop(crop.id, cropBody).subscribe(
             data => {

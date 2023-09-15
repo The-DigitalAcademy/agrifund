@@ -173,7 +173,7 @@ export class ApiService {
     }
 
     // PUT function to update a farmer's farm data
-    updateFarm(farmId: number, farmBody: any) {
+    updateFarm(farmId: number, farmBody: any) {        
         return this.http.put(`${this.FARMER_FARM_URL}/${farmId}`, farmBody);
     }
 

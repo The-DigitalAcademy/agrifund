@@ -58,13 +58,12 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 Validators.required,
                 this._validationsService.emailValidator(),
             ]),
-        
+
             cell_number: new FormControl('', [
                 Validators.required,
                 this._validationsService.phoneNumberValidator(),
             ]),
         });
-
 
         this.personalInfo = {
             id: 0,
@@ -75,8 +74,8 @@ export class DisabledformPersonalInfoComponent implements OnInit {
             farms: [],
         };
 
-         this._portfolioService.setFarmerFarm();
-        
+        this._portfolioService.setFarmerFarm();
+
         this.portfolioSubscription = this._portfolioService
             .getFarmerPortfolio()
             .subscribe(data => {
@@ -90,16 +89,29 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                     cell_number: data.cellNumber,
                 });
 
+                const progress = this.calculateProgress();
+                this._progressService.setPersonalInfoCompleted(progress);
+
                 //Update progress for personal info completion
-                this._progressService.setPersonalInfoCompleted(true);
+                // this._progressService.setPersonalInfoCompleted(true);
 
                 // Set the 'isDisabled' flag to false to enable form editing
                 this.isDisabled = true;
             });
-    
+
+        this.myForm.valueChanges.subscribe(() => {
+            const progress = this.calculateProgress();
+            this._progressService.setPersonalInfoCompleted(progress);
+        });
     }
 
-   
+    calculateProgress(): number {
+        const totalFields = Object.keys(this.myForm.controls).length;
+        const completedFields = Object.keys(this.myForm.controls).filter(
+            controlName => this.myForm.controls[controlName].valid
+        ).length;
+        return (completedFields / totalFields) * 20;
+    }
 
     enableFields() {
         this.isDisabled = false;
@@ -115,26 +127,27 @@ export class DisabledformPersonalInfoComponent implements OnInit {
                 firstName: this.myForm.get('first_name')?.value,
                 lastName: this.myForm.get('last_name')?.value,
                 email: this.myForm.get('email')?.value,
-                cellNumber: this.myForm.get('cell_number')?.value
-              
+                cellNumber: this.myForm.get('cell_number')?.value,
             };
             console.table(this.personalInfo);
 
-            this._portfolioService
-                .editPortfolio(this.personalInfo)
-
+            this._portfolioService.editPortfolio(this.personalInfo);
         }
         this.isDisabled = true;
-        this._progressService.setPersonalInfoCompleted(true);
+        // this._progressService.setPersonalInfoCompleted(true);
         this.myForm.disable();
     }
     onCancelClicked() {
-        // Reset the form values to the original values
-        this.myForm.patchValue(this.originalFormValues);
+        // Reset the form values to the original values (cropInfo)
+        this.myForm.patchValue({
+            first_name: this.personalInfo.firstName,
+            last_name: this.personalInfo.lastName,
+            email: this.personalInfo.email,
+            cell_number: this.personalInfo.cellNumber,
+        });
 
         // Disable the form fields again
         this.isDisabled = true;
-
         this.myForm.disable();
     }
 

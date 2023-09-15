@@ -16,6 +16,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
 import { Subscription } from 'rxjs';
 import { FarmerFarm } from 'src/app/_models/farmerFarm';
 import { FarmService } from 'src/app/_services/farm-service/farm.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 
 @Component({
     selector: 'app-disabledform-farm-info',
@@ -36,7 +37,8 @@ export class DisabledformFarmInfoComponent {
         private _portfolioService: PortfolioService,
         private _apiService: ApiService,
         private route: ActivatedRoute,
-        private _farmService: FarmService
+        private _farmService: FarmService,
+        private _progressService: ProgressServiceService
     ) {}
 
     ngOnInit() {
@@ -72,48 +74,57 @@ export class DisabledformFarmInfoComponent {
             ]),
         });
 
-
-         this.farmInfo = { 
-        id: 0,
-        numberOfEmployees: 0,
-        farmName: '',
-        farmAddress: '',
-        yearsActive: 0,
-        address: '', //stores residential address
-        farmingReason: '', //stores the reason for needing funding
-        crops: [],
-        plots: [],
-        assets: [],
-        incomeStatements: [],
-    }
+        this.farmInfo = {
+            id: 0,
+            numberOfEmployees: 0,
+            farmName: '',
+            farmAddress: '',
+            yearsActive: 0,
+            address: '', //stores residential address
+            farmingReason: '', //stores the reason for needing funding
+            crops: [],
+            plots: [],
+            assets: [],
+            incomeStatements: [],
+        };
 
         this._portfolioService.setFarmerFarm();
 
-        
-            this.farmSubscription = this._portfolioService
-                .getFarmerFarm()
-                .subscribe((farms: FarmerFarm[]) => {
-                    console.table(farms);
+        this.farmSubscription = this._portfolioService
+            .getFarmerFarm()
+            .subscribe((farms: FarmerFarm[]) => {
+                // console.table(farms);
 
                 // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
-                  if (farms.length > 0) {
-                      this.farmInfo = farms[0]; // Assuming there's only one farm per farmer
-                      this.myForm.patchValue({
-                          farm_name: this.farmInfo.farmName,
-                          farmAddress: this.farmInfo.farmAddress,
-                          years: this.farmInfo.yearsActive,
-                          farmerAddress: this.farmInfo.address,
-                          num_employee: this.farmInfo.numberOfEmployees,
-                          reasonForFunding: this.farmInfo.farmingReason,
-                      });
-                  }
-
-                //Update progress for personal info completion
-                //this._progressService.setPersonalInfoCompleted(true);
+                if (farms.length > 0) {
+                    this.farmInfo = farms[0]; // Assuming there's only one farm per farmer
+                    this.myForm.patchValue({
+                        farm_name: this.farmInfo.farmName,
+                        farmAddress: this.farmInfo.farmAddress,
+                        years: this.farmInfo.yearsActive,
+                        farmerAddress: this.farmInfo.address,
+                        num_employee: this.farmInfo.numberOfEmployees,
+                        reasonForFunding: this.farmInfo.farmingReason,
+                    });
+                }
 
                 // Set the 'isDisabled' flag to false to enable form editing
                 this.isDisabled = true;
             });
+
+        this.myForm.valueChanges.subscribe(() => {
+            const progress = this.calculateProgress();
+            this._progressService.setFarmInfoCompleted(progress);
+        });
+    }
+
+    calculateProgress(): number {
+        // Calculate and return the progress based on form completion
+        const totalFields = Object.keys(this.myForm.controls).length;
+        const completedFields = Object.keys(this.myForm.controls).filter(
+            controlName => this.myForm.controls[controlName].valid
+        ).length;
+        return (completedFields / totalFields) * 20;
     }
 
     get createFarmControl() {
@@ -127,7 +138,7 @@ export class DisabledformFarmInfoComponent {
 
     onSaveClicked() {
         this.submitted = true; // Indicate that the form has been submitted
-       
+
         if (this.myForm.valid) {
             this.farmInfo = {
                 id: this.farmInfo.id,
@@ -142,23 +153,26 @@ export class DisabledformFarmInfoComponent {
                 numberOfEmployees: this.myForm.get('num_employee')?.value,
                 farmingReason: this.myForm.get('reasonForFunding')?.value,
             };
-            console.table(this.farmInfo);
+            // console.table(this.farmInfo);
 
             this._farmService.editFarm(this.farmInfo);
         }
-        // Set crop info completion status to true
-        // this.progressService.setCropInfoCompleted(true);
 
-        // Save or update the data here
         this.isDisabled = true;
 
         this.myForm.disable();
-        // this.progressService.setFarmInfoCompleted(true);
     }
 
     onCancelClicked() {
-        // Reset the form values to the original values
-        this.myForm.patchValue(this.originalFormValues);
+        // Reset the form values to the original values (cropInfo)
+        this.myForm.patchValue({
+            farmName: this.farmInfo.farmName,
+            farmAddress: this.farmInfo.farmAddress,
+            years: this.farmInfo.yearsActive,
+            farmerAddress: this.farmInfo.address,
+            num_employee: this.farmInfo.numberOfEmployees,
+            reasonForFunding: this.farmInfo.farmingReason,
+        });
 
         // Disable the form fields again
         this.isDisabled = true;

@@ -18,7 +18,10 @@ import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.
 export class EquipmentTableComponent {
     asset: Assets[] = []; // Initializing assets with interfaceAsset
     isLast: any;
+    submitted = false;
+    isDisabled = true;
     equipmentForm!: FormGroup;
+    onFileSelected($event: Event) {}
     private assetSubscription = new Subscription();
     constructor(
         private _apiService: ApiService,
@@ -26,15 +29,6 @@ export class EquipmentTableComponent {
         private _fb: FormBuilder,
         private _portfolioService: PortfolioService
     ) {}
-
-    onSaveClicked($event: any) {
-        throw new Error('Method not implemented.');
-    }
-    enableFields() {
-        throw new Error('Method not implemented.');
-    }
-    isDisabled = true;
-    onFileSelected($event: Event) {}
 
     ngOnInit() {
         this.equipmentForm = this._fb.group({
@@ -49,7 +43,7 @@ export class EquipmentTableComponent {
             .subscribe((asset: Assets[]) => {
                 console.table(asset);
 
-                // Assuming 'data' contains fields like first_name, last_name, email, id_number, cell_number
+                //  contains fields like first_name, last_name, email, id_number, cell_number
                 this.equipmentForm.patchValue({
                     equipmentName: asset[0].assetName,
                     equipmentType: asset[0].assetType,
@@ -67,5 +61,19 @@ export class EquipmentTableComponent {
 
     onEditClicked(id: number) {
         this.router.navigate(['/equipment-edit', id]);
+    }
+
+    onCancelClicked() {
+     this.isDisabled = true;
+     this.equipmentForm.disable();
+    }
+    onSaveClicked() {
+        this.equipmentForm.disable();
+        this.isDisabled = true;
+        this.submitted = true;
+    }
+    enableFields() {
+       this.isDisabled = false;
+       this.equipmentForm.enable();
     }
 }

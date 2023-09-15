@@ -14,6 +14,18 @@ fa-icon {
     width: 100%;
     gap: 2%;
 }
+/* Styling for buttons container */
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+/* Styling for buttons */
+#btn {
+    gap: 7%;
+    margin-top: 6%;
+}
+
+
 .document-upload {
     margin-top: 5%;
 }
@@ -40,11 +52,9 @@ fa-icon {
 
 /* Styling for a general container */
 .container {
-    width: 100%;
-
-    border-color: var(--light-grey);
-    border: 1px solid #ccc;
-    background-color: var(--light-3);
+   border-color: var(--light-grey);
+  border: 1px solid #ccc;
+  background-color: var(--light-1);
 }
 .form-text {
     padding-top: 2%;
@@ -70,11 +80,6 @@ fa-icon {
 
 /* Media Query for Mobile Devices (width range: 300px to 428px) */
 @media (min-width: 300px) and (max-width: 428px) {
-    /* Styles for buttons */
-    button {
-        margin-bottom: 10%;
-    }
-
     /* Styles for the "info" section */
     .info {
         display: flex;

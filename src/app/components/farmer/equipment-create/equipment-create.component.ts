@@ -41,34 +41,30 @@ export class EquipmentCreateComponent implements OnInit {
             age: ['', [Validators.required]],
             purchase_Amount: ['', [Validators.required]],
         });
-       
-}
+    }
 
     get createEquipmentControl() {
         return this.createEquipmentForm.controls;
     }
 
-    
     saveEquipment() {
         this.submitted = true;
         // creates a reusable variable to extract create form input value
         const formInputVal = this.createEquipmentForm.value;
         if (this.createEquipmentForm.valid) {
             this.asset = {
-                id: this.asset.id,
+                id:this.asset.id,
                 assetName: formInputVal.equipmentName,
                 assetType: formInputVal.equipmentType,
                 age: formInputVal.age,
                 purchasePrice: formInputVal.purchase_Amount,
             };
-            // sends the new asset data 
-            this._assetService.createFarmerAsset(this.asset);
+
             console.table(this.asset);
         }
 
-        //this._assetService.createFarmerAsset(this.asset);
-       
-       
+        this._assetService.createFarmerAsset(this.asset);
+
         this.router.navigate(['/portfolio']);
     }
 }

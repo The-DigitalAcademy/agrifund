@@ -108,6 +108,7 @@ export class FarmService {
             assets: farmBody.assets,
             incomeStatements: farmBody.incomeStatements,
         };
+        
         // api connection goes here
         this._apiService.updateFarm(farmBody.id, updatedFarm).subscribe(
             data => {

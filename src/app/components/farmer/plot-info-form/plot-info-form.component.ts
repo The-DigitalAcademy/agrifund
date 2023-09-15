@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { FarmerPlot } from 'src/app/_models/farmerPlot';
 import { PlotService } from 'src/app/_services/plot-service/plot.service';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
+import { ProgressServiceService } from 'src/app/_services/progress-service/progress-service.service';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
 
 @Component({
@@ -32,7 +33,8 @@ export class PlotInfoFormComponent implements OnInit {
         private route: ActivatedRoute,
         private _portfolioService: PortfolioService,
         private _validationsService: ValidationService,
-        private _plotService: PlotService
+        private _plotService: PlotService,
+        private _progressService: ProgressServiceService
     ) {}
 
     ngOnInit() {
@@ -67,6 +69,20 @@ export class PlotInfoFormComponent implements OnInit {
 
                 this.isDisabled = true;
             });
+
+        this.myForm.valueChanges.subscribe(() => {
+            const progress = this.calculateProgress();
+            this._progressService.setPlotInfoCompleted(progress);
+        });
+    }
+
+    calculateProgress(): number {
+        // Calculate and return the progress based on form completion
+        const totalFields = Object.keys(this.myForm.controls).length;
+        const completedFields = Object.keys(this.myForm.controls).filter(
+            controlName => this.myForm.controls[controlName].valid
+        ).length;
+        return (completedFields / totalFields) * 20;
     }
 
     enableFields() {
@@ -75,9 +91,16 @@ export class PlotInfoFormComponent implements OnInit {
     }
 
     onCancelClicked() {
-        // You can add logic to revert changes or handle cancel action if needed
-        this.myForm.disable();
+        // Reset the form values to the original values (cropInfo)
+        this.myForm.patchValue({
+            plotAddress: this.plotInfo.plotAddress,
+            plotSize: this.plotInfo.plotSize,
+            dateOfOwnership: this.plotInfo.dateOfOwnership,
+        });
+
+        // Disable the form fields again
         this.isDisabled = true;
+        this.myForm.disable();
     }
 
     onSaveClicked() {
