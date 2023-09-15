@@ -108,6 +108,7 @@ import {
     faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { IncomesBarChartComponent } from './components/data-summary-components/graph-components/incomes-bar-chart/incomes-bar-chart/incomes-bar-chart.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -146,6 +147,7 @@ import { IncomesBarChartComponent } from './components/data-summary-components/g
         IncomesBarChartComponent,
         OtpPageComponent,
         AboutTheFarmComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,

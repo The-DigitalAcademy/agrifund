@@ -1,0 +1,42 @@
+footer {
+    /* changes the colour of the footer to the primary colour */
+    background-color: var(--primary-colour);
+    display: flex;
+    vertical-align: center !important;
+    /* makes the navbar fill the width of the page */
+    width: 100%;
+    /* sets teh height of the navbar */
+    height: 55px !important;
+    /* removes margins and padding from navbar */
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    /* ensures that the navbar is above the background image opacity*/
+    position: relative;
+}
+
+label{
+    color: var(--light);
+}
+
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+    footer {
+        /* makes the navbar height shorter on smaller screens */
+        height: 45px !important;
+    }
+}
+
+/*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+    footer {
+        /* sets the height the navbar on tablets */
+        height: 45px !important;
+    }
+
+}
