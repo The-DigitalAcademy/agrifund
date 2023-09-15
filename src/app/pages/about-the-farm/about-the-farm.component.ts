@@ -23,12 +23,12 @@ export class AboutTheFarmComponent implements OnInit {
     @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
     // stores the active slide name id default is the first slide
     activeSlideName = 'introSlide';
-    // sets the list of slides and their active status
-    slides: [string, string][] = [
-        ['introSlide', 'active'],
-        ['farmSlide', 'inactive'],
-        ['cropSlide', 'inactive'],
-        ['plotSlide', 'inactive'],
+    // stores plot size values for the dropdown
+    plotSizes = [
+        '0 to 2 hectares',
+        '3 to 5 hectares',
+        '6 to 8 hectares',
+        '6 to 8 hectares',
     ];
 
     farmForm!: FormGroup;
@@ -94,10 +94,6 @@ export class AboutTheFarmComponent implements OnInit {
             plotSize: ['', Validators.required],
             dateOfOwnership: ['', Validators.required],
         });
-        // this.farmForm.disable();
-        // this.cropForm.disable();
-        // this.plotForm.disable();
-
         this.carousel.pause();
         // does check to see if farm exists and fills in form data
         this.populateFarmForm();
@@ -156,7 +152,6 @@ export class AboutTheFarmComponent implements OnInit {
                     // assigns the crop variable to the first instance of crop fetched
                     this.crop = crop[0];
                 }
-                console.log(`Crop has been submitted`);
             });
 
             // checks if the crop info is empty
@@ -264,6 +259,7 @@ export class AboutTheFarmComponent implements OnInit {
                 plotSize: plotFormInputValue.plotSize,
                 dateOfOwnership: plotFormInputValue.date,
             };
+            console.log(plotFormInputValue.date);
             this.plotFormSubmitted = true;
             this.plotForm.disable();
             console.table(this.plots);

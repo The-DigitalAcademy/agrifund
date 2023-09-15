@@ -52,12 +52,20 @@ export class PlotService {
 
     createFarmerPlot(plotBody: FarmerPlot) {
         const farmName = this._portfolioService.getFarmName();
+        // used to store the plot multiform body to pass data and file
+        const plotMultiFormBody = new FormData();
         const addedPlot = {
             plotAddress: plotBody.plotAddress,
             plotSize: plotBody.plotSize,
             dateOfOwnership: plotBody.dateOfOwnership,
         };
-        this._apiService.addPlot(farmName, addedPlot).subscribe(
+
+        // adds plot info to multiform body
+        plotMultiFormBody.append('info', JSON.stringify(addedPlot));
+        // adds file to multiform body
+        // plotMultiFormBody.append('file', ownershipProof);
+
+        this._apiService.addPlot(farmName, plotMultiFormBody).subscribe(
             data => {
                 console.log(data);
             },

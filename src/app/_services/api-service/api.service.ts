@@ -274,8 +274,11 @@ export class ApiService {
     }
 
     // POST function to create a new plot for a farmer
-    addPlot(farmName: string, plotBody: any) {
-        return this.http.post(`${this.FARMER_PLOT_URL}/${farmName}`, plotBody);
+    addPlot(farmName: string, plotBody: FormData) {
+        return this.http.post(
+            `${this.FARMER_PLOT_URL}?farmName=${farmName}`,
+            plotBody
+        );
     }
 
     // PATCH function to upload proof of plot ownership
