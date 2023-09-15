@@ -73,7 +73,9 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
     }
 
     // displays the uploaded proof of a record in a new browser window
-    viewProof(documentUrl: string) {}
+    viewProof(documentUrl: string) {
+        window.open(documentUrl);
+    }
 
     // routes to the edit details page by passing the record id
     editRecordDetails(recordId: number) {
