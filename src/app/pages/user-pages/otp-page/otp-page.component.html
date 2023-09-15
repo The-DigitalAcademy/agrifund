@@ -1,4 +1,3 @@
-
 <!-- 
     AUTHOR: Ntokozo Radebe
     CREATE DATE: 29 Aug 2023
@@ -7,45 +6,52 @@
 <div class="page-body page-background justify-center">
     <div class="mobile-header"></div>
     <div class="container form-container">
-            <!-- Reset Password Form -->
-            <form [formGroup]="OtpForm">
-                <!-- Form Row -->
-                <div class="row">
-                    <div class="col-sm-12 resetform">
-                        <!-- Container Header -->
-                        <div class="container-header">
-                            <div class="justify-start">
-                                <h1>Forgot Password</h1>
-                            </div>
-                            <div class="justify-end">
-                                <!-- Close Button -->
-                                <button class="icon-btn btn-icon" [routerLink]="['/login']">
-                                    <fa-icon icon="times"></fa-icon>
-                                </button>
-                            </div>
+        <!-- Reset Password Form -->
+        <form [formGroup]="OtpForm">
+            <!-- Form Row -->
+            <div class="row">
+                <div class="col-sm-12 resetform">
+                    <!-- Container Header -->
+                    <div class="container-header">
+                        <div class="justify-start">
+                            <h1>Forgot Password</h1>
                         </div>
-
-                        <!-- Instructions for Password Reset -->
-                        <p>
-                            Please enter the OTP that has been sent to your email.
-                        </p>
-                        <br />
-
-                        <!-- Email Input -->
-                        <div class="form-input">
-                            <label for="email">OTP</label><br />
-                            <input formControlName="otp" class="form-control between-button" id="otpinput" />
-                        </div>
-                        
-
-                        <!-- Send Message Button -->
-                        <div class="form-group">
-                            <button type="submit" (click)="submitOtp()" class="btn actions colourful-btn">
-                                Send Message
+                        <div class="justify-end">
+                            <!-- Close Button -->
+                            <button
+                                class="icon-btn btn-icon"
+                                [routerLink]="['/login']">
+                                <fa-icon icon="times"></fa-icon>
                             </button>
                         </div>
                     </div>
+
+                    <!-- Instructions for Password Reset -->
+                    <p>
+                        Please enter the OTP that has been sent to your email.
+                    </p>
+                    <br />
+
+                    <!-- Email Input -->
+                    <div class="form-input">
+                        <label for="email">OTP</label><br />
+                        <input
+                            formControlName="otp"
+                            class="form-control between-button"
+                            id="otpinput" />
+                    </div>
+
+                    <!-- Send Message Button -->
+                    <div class="form-group">
+                        <button
+                            type="submit"
+                            (click)="submitOtp()"
+                            class="btn actions colourful-btn">
+                            Send Message
+                        </button>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>

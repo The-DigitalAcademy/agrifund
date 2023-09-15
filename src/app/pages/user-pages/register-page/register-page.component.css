@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 .toggle-password {
-    margin-bottom: var(--large-s);
+   
     background-color: var(--primary-colour);
     border-radius: 0%;
     

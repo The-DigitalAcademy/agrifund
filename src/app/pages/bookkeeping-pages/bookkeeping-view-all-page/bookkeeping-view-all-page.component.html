@@ -18,7 +18,7 @@
             <!-- no bookkeeping data card displayed if bookkeeping records is empty-->
             <div
                 *ngIf="
-                    totalBookkeepingRecords$ > 0;
+                    statements.length > 0;
                     then recordsExist;
                     else noRecords
                 "></div>
@@ -29,30 +29,29 @@
 <ng-template #recordsExist>
     <div class="actions">
         <div class="justify-start">
-            <button class="btn colourful-btn btn-width">
-                <span class="justify-center">
-                    <fa-icon icon="file-download"></fa-icon>
-                    Get Report
-                </span>
+            <button class="btn colourful-btn" (click)="generateReport()">
+                <fa-icon icon="file-download"></fa-icon>
+                Get Report
             </button>
         </div>
-        <div class="date-filter justify-end">
-            <div class="date-input form-input mobile-hidden">
-                <label for="fromDate" class="form-label">From</label>
-                <input type="date" class="form-control" id="fromDate" />
+        <form [formGroup]="dateForm">
+            <div class="form-input year-filter justify-end">
+                <label for="yearInput">For Year: </label>
+                <select
+                    class="form-select form-control"
+                    (change)="this.onYearChange($event)">
+                    <option
+                        *ngFor="
+                            let statementYear of statementList;
+                            let firstIndex = first
+                        "
+                        [value]="statementYear"
+                        id="yearInput">
+                        {{ statementYear }}
+                    </option>
+                </select>
             </div>
-            <div class="date-input form-input mobile-hidden">
-                <label for="toDate" class="form-label">To</label>
-                <input type="date" class="form-control" id="toDate" />
-            </div>
-
-            <button class="btn icon-btn large-hidden">
-                <span>
-                    <fa-icon icon="filter"></fa-icon>
-                    Filter by date
-                </span>
-            </button>
-        </div>
+        </form>
     </div>
     <div class="money-card-summary">
         <app-money-card-summary></app-money-card-summary>
@@ -92,118 +91,114 @@
             </div>
         </div>
 
-        <div class="container inner-container record-table">
-            <!-- checks if bookkeeping records search result return anything -->
-            <ng-container
-                *ngIf="
-                    (bookkeepingRecords$ | filter: searchValue).length > 0;
-                    else noResults
-                ">
-                <div class="container inner-container record-table">
-                    <table class="table mobile-hidden">
-                        <thead>
-                            <tr>
-                                <th scope="col">Description</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody
-                            *ngFor="
-                                let record of bookkeepingRecords$
-                                    | filter: searchValue
-                            ">
-                            <tr
-                                class="record-tr"
-                                (click)="viewRecordDetails(record.id)">
-                                <td scope="row">
-                                    {{ record.description }}
-                                </td>
-                                <td>{{ record.category }}</td>
-                                <td>{{ record.date }}</td>
-                                <td>
-                                    {{
-                                        record.amount
-                                            | currency: ' R ' : 'symbol' : '.2'
-                                    }}
-                                </td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <div class="delete-btn"></div>
-                                        <div class="view-btn"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div
-                        class="large-hidden"
+        <!-- checks if bookkeeping records search result return anything -->
+        <ng-container
+            *ngIf="
+                (incomeStatementRecords | filter: searchValue).length > 0;
+                else noResults
+            ">
+            <div class="container inner-container record-table">
+                <table class="table mobile-hidden">
+                    <thead>
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody
                         *ngFor="
-                            let record of bookkeepingRecords$
-                                | filter: searchValue;
-                            last as isLast
+                            let record of incomeStatementRecords
+                                | filter: searchValue
                         ">
-                        <div
-                            class="info"
+                        <tr
+                            class="record-tr"
                             (click)="viewRecordDetails(record.id)">
-                            <div class="left justify-start">
-                                <p class="bold justify-start">
-                                    {{ record.description }}
-                                </p>
-                                <p class="greyed justify-start">
-                                    {{ record.date }}
-                                </p>
-                            </div>
-                            <div class="right justify-end">
-                                <p class="bold justify-end">
-                                    {{
-                                        record.amount
-                                            | currency: ' R ' : 'symbol' : '.2'
-                                    }}
-                                </p>
-                                <p class="greyed justify-end">
-                                    {{ record.category }}
-                                </p>
-                            </div>
-                        </div>
-                        <hr *ngIf="!isLast" />
-                    </div>
+                            <td scope="row">
+                                {{ record.description }}
+                            </td>
+                            <td>{{ record.category }}</td>
+                            <td>{{ record.date }}</td>
+                            <td>
+                                {{
+                                    record.amount
+                                        | currency: ' R ' : 'symbol' : '.2'
+                                }}
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <div class="delete-btn"></div>
+                                    <div class="view-btn"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <hr />
-                    <nav class="actions justify-center">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div
+                    class="large-hidden"
+                    *ngFor="
+                        let record of incomeStatementRecords
+                            | filter: searchValue;
+                        last as isLast
+                    ">
+                    <div class="info" (click)="viewRecordDetails(record.id)">
+                        <div class="left justify-start">
+                            <p class="bold justify-start">
+                                {{ record.description }}
+                            </p>
+                            <p class="greyed justify-start">
+                                {{ record.date }}
+                            </p>
+                        </div>
+                        <div class="right justify-end">
+                            <p class="bold justify-end">
+                                {{
+                                    record.amount
+                                        | currency: ' R ' : 'symbol' : '.2'
+                                }}
+                            </p>
+                            <p class="greyed justify-end">
+                                {{ record.category }}
+                            </p>
+                        </div>
+                    </div>
+                    <hr *ngIf="!isLast" />
                 </div>
-            </ng-container>
-        </div>
+
+                <hr />
+                <!-- <nav class="actions justify-center">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav> -->
+            </div>
+        </ng-container>
     </div>
 </ng-template>
 
 <ng-template #noRecords>
-    <div class="container justify-center no-data-card-inner">
+    <div class="justify-center no-data-card-inner">
         <h1 class="align-center">Add Your First Bookkeeping Record...</h1>
         <h3 class="align-center">
             Click the button below to add your first bookkeeping record!

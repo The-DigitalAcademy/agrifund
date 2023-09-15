@@ -12,13 +12,6 @@
     width: 100% !important;
 }
 
-.date-filter .form-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0px 0px 0px var(--small-s) !important;
-}
-
 .date-input {
     margin: var(--small-s);
 }
@@ -104,6 +97,7 @@ tbody tr,
         border-radius: var(--border-radius);
         border: var(--thin-border) var(--lighter-grey) !important;
     }
+
 }
 
 /*---------------------------------

@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 .toggle-password {
-    margin-bottom: var(--large-s);
+
     background-color: var(--primary-colour);
     border-radius: 0%;
     
@@ -33,6 +33,8 @@
         border: none; /*remove borders from the container*/
     }
 }
+
+
 /*--------------------------------
     Media Query for large screens
 ----------------------------------*/
@@ -45,11 +47,4 @@
         width: 35% !important; /* width of container to 35% */
     }
 }
-/* CSS Styles for Success and Error States */
-.has-success .form-control {
-    border-color: green;
-}
 
-.has-error .form-control {
-    border-color: red;
-}

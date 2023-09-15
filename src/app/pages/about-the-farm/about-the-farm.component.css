@@ -1,0 +1,149 @@
+ /* <!-- Author: Mamotsoko Maphutha 13/08/2023  -->  */
+ .page-body {
+
+     background-image: url("src/assets/images/background/orange-trees.webp");
+     flex-direction: column;
+ }
+
+ .page-heading h1 {
+     /* centers page heading text */
+     text-align: center;
+     height: fit-content;
+     /* changes the page headings to dark colour */
+     color: var(--dark);
+ }
+.equipment-container{
+    display: flex;
+    gap: 2% !important;
+}
+.wide-select{
+    width: 190% !important;
+}
+.equip-container{
+   display: flex;
+    gap: 2% !important;  
+}
+ /* makes the containers stretch to the full width available in their parent containers */
+ .justify-center,
+ .carousel-item>* {
+     width: 100%;
+ }
+
+ .justify-center{
+    display: flex;
+    align-items: center;
+    max-height: 100%;
+ }
+
+ .left,
+ .right {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+ }
+
+ h2 {
+     justify-content: center;
+ }
+
+
+ .justify-center {
+     /* makes everything display underneath each other*/
+     flex-direction: column;
+ }
+
+ p {
+     /* aligns items text to the center */
+     text-align: center;
+ }
+
+
+ /*sets the height of the form control on farm form */
+ #farmingReason {
+     height: 50px !important;
+     resize: vertical;
+ }
+
+ .view-button:hover,
+ .replace-button:hover {
+     background-color: var(--primary-colour);
+ }
+ .document-upload {
+    margin-top: 1%;
+}
+.doc-header > * {
+    padding-right: var(--small-s);
+    margin-bottom: 0px !important;
+}
+.file{
+    display: flex;
+    width: 100% !important;
+    gap: 2%;
+}
+.proof{
+    margin-top: 2% !important;
+}
+.container{
+    padding: 2% !important;
+}
+
+
+/* .indictorButton:focus{
+    background-color: var(--primary-colour) !important;
+} */
+
+ /*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+ @media (min-width: 300px) and (max-width:428px) {
+
+     .page-body {
+         /* removes the image from the background */
+         background-image: none;
+
+
+     }
+
+     .page-background::before {
+         /* removes the dark filter overlay from the background */
+         display: none;
+     }
+
+     .page-content {
+         /* removes padding */
+         padding: 0px !important;
+     }
+
+     .mobile-header {
+         background-image: url("src/assets/images/background/orange-trees.webp");
+
+     }
+       .container {
+        /* makes carousel container not stretch to off screen size */
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+
+    }
+
+ }
+
+ /*---------------------------------
+    Media Query for tablets/IPad
+----------------------------------*/
+ @media (min-width: 481px) and (max-width: 767px) {}
+
+ /*-------------------------------------------------
+    Media Query for tablets/IPad in landscape mode
+--------------------------------------------------*/
+ @media (min-width: 768px) and (max-width: 1024px) {}
+
+ /*--------------------------------------
+    Media Query for laptops & desktops
+----------------------------------------*/
+ @media (min-width: 1025px) and (max-width: 1280px) {}
+
+ /*--------------------------------
+    Media Query for large screens
+----------------------------------*/
+ @media (min-width: 1281px) {}

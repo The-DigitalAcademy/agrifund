@@ -1,7 +1,7 @@
 /* --------------------------------
       Created by Nkadimeng Kamogelo
     ---------------------------------*/
-import { Asset } from '../../../_models/asset';
+import { Assets } from 'src/app/_models/Assets';
 import { PortfolioService } from '../../../_services/portfolio-service/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { ApiService } from 'src/app/_services/api-service/api.service';
     styleUrls: ['./equipment-create.component.css'],
 })
 export class EquipmentCreateComponent implements OnInit {
-    asset!: Asset;
+    asset!: Assets;
 
     createEquipmentForm!: FormGroup;
     submitted = false;
@@ -26,10 +26,10 @@ export class EquipmentCreateComponent implements OnInit {
     ) {}
     ngOnInit(): void {
         this.createEquipmentForm = this._fb.group({
-            equipmentName: ['', [Validators.required]],
-            equipmentType: ['', [Validators.required]],
-            equipmentAge: ['', [Validators.required]],
-            equipmentAmount: ['', [Validators.required]],
+            assetName: ['', [Validators.required]],
+            assetType: ['', [Validators.required]],
+            age: ['', [Validators.required]],
+            purchasePrice: ['', [Validators.required]],
         });
     }
 
@@ -39,16 +39,15 @@ export class EquipmentCreateComponent implements OnInit {
         this.submitted = true;
         if (this.createEquipmentForm.valid) {
             this.asset = {
-                id: this._portfolioServiceService.generateId(),
-                farm_id: this._portfolioServiceService.generateFarmId(),
-                name: this.createEquipmentForm.get('equipmentName')?.value,
-                type: this.createEquipmentForm.get('equipmentType')?.value,
+                id: 0,
+                assetName: this.createEquipmentForm.get('equipmentName')?.value,
+                assetType: this.createEquipmentForm.get('equipmentType')?.value,
                 age: this.createEquipmentForm.get('equipmentAge')?.value,
-                purchase_price:
+                purchasePrice:
                     this.createEquipmentForm.get('equipmentAmount')?.value,
             };
 
-            console.table(this.asset);
+            // console.table(this.asset);
             // this._apiService.addAsset(this.asset).subscribe(data => {
             //     console.table(data);
             // });

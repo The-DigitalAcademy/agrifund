@@ -58,6 +58,7 @@ export class AuthService {
 
     // gets the set session token
     getSessionToken() {
+    
         this.setSessionToken();
         return this.sessionToken$;
     }
@@ -69,8 +70,9 @@ export class AuthService {
             email: loginEmail,
             password: loginPassword,
         };
-        this._apiService.loginUser(loginBody).subscribe(
-            (result: any) => {
+
+        this._apiService.loginUser(loginBody).subscribe({
+            next: (result: any) => {
                 // assigns the result to the structure of the api response object
                 this.apiResponse = result;
                 // sets the token to the one received from the api
@@ -78,7 +80,7 @@ export class AuthService {
                 // sets the user login state to true
                 this.setUserState();
                 // routes to dashboard if the login was successful
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/about-farm']);
 
                 // Display a success SweetAlert
                 Swal.fire({
@@ -88,7 +90,7 @@ export class AuthService {
                     confirmButtonColor: '#606C38',
                 });
             },
-            error => {
+            error: (error: any) => {
                 console.error(`Error occurred while logging in`);
                 console.log(error);
                 if (error.status === 404) {
@@ -128,7 +130,7 @@ export class AuthService {
                     
                 });
             }
-        );
+         } );
     }
 
     logoutUser() {

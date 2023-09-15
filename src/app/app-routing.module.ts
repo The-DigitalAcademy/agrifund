@@ -12,14 +12,15 @@ import { DisabledformFarmInfoComponent } from './components/farmer/farm-info-for
 import { EquipmentTableComponent } from './components/farmer/equipment-table/equipment-table.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { EquipmentCreateComponent } from './components/farmer/equipment-create/equipment-create.component';
-import { TellMeAboutFarmPageComponent } from './pages/tell-me-about-farm-page/tell-me-about-farm-page.component';
 import { EquipmentEditComponent } from './components/farmer/equipment-edit/equipment-edit.component';
 import { DynamicInputsComponent } from './components/farmer/dynamic-inputs/dynamic-inputs.component';
 import { BookkeepingEditPageComponent } from './pages/bookkeeping-pages/bookkeeping-edit-page/bookkeeping-edit-page.component';
 import { BookkeepingViewRecordPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-record-page/bookkeeping-view-record-page.component';
 import { BookkeepingViewAllPageComponent } from './pages/bookkeeping-pages/bookkeeping-view-all-page/bookkeeping-view-all-page.component';
 import { BookkeepingCreatePageComponent } from './pages/bookkeeping-pages/bookkeeping-create-page/bookkeeping-create-page.component';
+import { DisabledformCropInfoComponent } from './components/farmer/crop-info-form/disabledform-crop-info.component';
 import { OtpPageComponent } from './pages/user-pages/otp-page/otp-page.component';
+import { AboutTheFarmComponent } from './pages/about-the-farm/about-the-farm.component';
 
 /* --------------------------------
     ACCESS GUARDS
@@ -35,13 +36,12 @@ const routes: Routes = [
     { path: 'get-started', component: GetStartedPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'register', component: RegisterPageComponent },
-    { path: 'about-farm', component: TellMeAboutFarmPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent },
     { path: 'reset-password', component: ResetPasswordPageComponent },
+    { path: 'about-farm', component: AboutTheFarmComponent},
     { path: 'dashboard', component: DashboardPageComponent },
     { path: 'bookkeeping', component: BookkeepingViewAllPageComponent },
     { path: 'otp-page', component: OtpPageComponent },
-    
     {
         path: 'bookkeeping/create-record',
         component: BookkeepingCreatePageComponent,
@@ -61,6 +61,7 @@ const routes: Routes = [
     { path: 'equipment-create', component: EquipmentCreateComponent },
     { path: 'equipment-edit/:id', component: EquipmentEditComponent },
     { path: 'dynamic-inputs', component: DynamicInputsComponent },
+    {path: 'crop', component:DisabledformCropInfoComponent}
 ];
 
 @NgModule({

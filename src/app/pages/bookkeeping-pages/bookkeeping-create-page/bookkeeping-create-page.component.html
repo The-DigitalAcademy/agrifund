@@ -69,7 +69,7 @@
                         Please specify a valid date for your record.
                     </div>
                 </div>
-                <div class="form-input" id="form-label">
+                <div class="form-input">
                     <label for="recordType">Type of Record</label>
                     <select
                         formControlName="recordType"
@@ -133,11 +133,29 @@
                             <div class="form-text">PDF, PNG, JPG</div>
                         </div>
                         <hr />
-                        <input
-                            formControlName="recordProof"
-                            class="form-control"
-                            type="file"
-                            id="recordProof" />
+                        <div class="actions">
+                            <!-- where the file name will be displayed -->
+                            <div class="justify-start">
+                                <input
+                                    class="form-control file-input"
+                                    type="file"
+                                    id="recordProof"
+                                    (change)="this.onFileChange($event)"
+                                    #fileUpload />
+                                <input
+                                    class="form-control file-upload"
+                                    type="text"
+                                    formControlName="recordProof"
+                                    placeholder="{{ fileName }}" />
+                            </div>
+                            <div>
+                                <button
+                                    (click)="fileUpload.click()"
+                                    class="btn colourful-btn btn-width right-btn">
+                                    Choose
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div
                         class="form-text text-danger"
@@ -146,7 +164,9 @@
                                 submitted) &&
                             createRecordForm.controls['recordProof'].errors?.[
                                 'required'
-                            ]
+                            ] &&
+                            createRecordForm.controls['recordProof'].value ===
+                                'No file uploaded yet.'
                         ">
                         Please upload proof of your record.
                     </div>

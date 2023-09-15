@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 17 Aug 2023 
+    UPDATED DATE: 30 Aug 2023 
 -------------------------------------------------------------------------------------------------*/
 
 @import "~bootstrap/dist/css/bootstrap.css";
@@ -88,10 +88,6 @@
     --x-large-s: 28px;
     --xx-large-s: 36px;
 }
-/*space between the last control-input and button*/
-.between-button{
-    margin-bottom: var( --large-s);
- }
 
 html body {
     height: 100vh;
@@ -154,7 +150,7 @@ app-sidebar {
     height: 100%;
     width: 100%;
 
-    background-image: url("src/assets/images/background/orange-trees.webp");
+    background-image: url("src/assets/images/background/orange-trees.webp"); 
     background-size: cover;
     background-color: var(--light);
     background-repeat: fill no-repeat;
@@ -237,6 +233,18 @@ app-sidebar {
     width: 45%;
     position: relative;
 
+}
+
+/* Container for charts */
+.chart-container {
+  height: 100% !important;
+  width: 100% !important;
+  position: relative !important;
+  flex-wrap: wrap;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  
 }
 
 /* container for container headings */
@@ -374,6 +382,126 @@ app-sidebar {
     padding: 0px !important;
 }
 
+/*----------------------
+    CAROUSEL 
+----------------------*/
+
+ngb-carousel {
+    max-width: 100%;
+    height: min-content;
+    /* margin: 50px auto; */
+}
+
+.carousel-inner {
+    /* makes the carousel inner take up all the available space */
+    max-width: 100% !important;
+    min-height: 100% !important;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: flex !important;
+    /* hides in-active carousel item on the top to create sliding animation */
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.carousel-item {
+    /* immediately hides an inactive slide*/
+    transition: transform 0s ease-in-out;
+}
+
+.carousel-item.active {
+    /* places active carousel item on the top to create sliding animation */
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.carousel-image {
+    /* sets the size of carousel image */
+    min-height: 20% !important;
+    max-width: 20% !important;
+    /* makes image a circle */
+    border-radius: 100%;
+    /* adds space underneath the image */
+    margin-bottom: var(--normal-s);
+}
+
+.carousel-indicators button {
+    /* sets the size of carousel indicators */
+    height: var(--normal-s) !important;
+    width: var(--normal-s) !important;
+    /* sets the margins on the left and right of a carousel indicator */
+    margin: 0px var(--x-small-s) !important;
+    /* makes the indicators rounded */
+    border-radius: 100%;
+}
+
+/* when an indicator is active it be green */
+.activeIndicator {
+    background-color: var(--primary-colour) !important;
+}
+
+/* when an indicator is not active it will be grey */
+.inactiveIndicator {
+    background-color: var(--lighter-grey) !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    /* fixes carousel controls to the bottom of the page*/
+    display: flex;
+    flex-direction: row;
+    position: static;
+    /* changes the  carousel indicator colors to dark*/
+    color: var(--dark);
+    /* increases the opacity of controls */
+    opacity: 1;
+    /* makes indicator take up all available space */
+    width: auto;
+}
+
+.carousel-control-next{
+    /* removes padding on the right side of the  button so it aligns with other container items */
+    padding-right: 0px !important;
+}
+
+.carousel-control-prev {
+    /* removes padding on the left side of the  button so it aligns with other container items */
+        padding-left: 0px !important;
+}
+
+.carousel-indicators {
+    /* set default position to override bootstrap */
+    position: static;
+    width: auto !important;
+    height: auto !important;
+    padding: 0px !important;
+    /* removes bootstrap margins */
+    margin: 0px !important;
+}
+
+.carousel-control-next fa-icon,
+.carousel-control-prev fa-icon {
+    /* changes icon colors to dark */
+    color: var(--dark);
+    /* removes any preset margins from the icons */
+    margin: 0px !important;
+}
+
+/* puts space between the icon and the button text for next button */
+.carousel-control-next fa-icon{
+    margin-left: var(--small-s) !important;
+}
+
+/* puts space between the icon and the button text for previous button */
+.carousel-control-prev fa-icon {
+    margin-right: var(--small-s) !important;
+}
 
 /*----------------------
     JUSTIFY CONTENT
@@ -543,6 +671,8 @@ input,
 
     background-color: var(--light);
     height: var(--xx-large-s);
+
+    padding: var(--xx-small-s) var(--small-s) ;
 }
 
 /* styling for form input fields */
@@ -615,6 +745,40 @@ input[type=number]:focus,
     outline: 0;
 }
 
+.file-upload {
+    /* changes the width of the file upload input fields */
+    min-width: 100%;
+    user-select: none;
+}
+
+/* hides the default upload document style */
+.file-input {
+    display: none;
+}
+
+/* adds spacing above form input error messages  */
+.text-danger{
+    margin: var(--xx-small-s) 0px !important;
+}
+
+/* styles for the filter by year form label */
+.year-filter label {
+    min-width: max-content;
+    margin-right: var(--small-s) !important;
+    margin-bottom: 0px !important;
+}
+/* styles for date filter form input container */
+.date-filter .form-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 0px 0px var(--small-s) !important;
+}
+
+.year-filter select {
+    /* sets width for year filter dropdown */
+    width: 80px;
+}
 /*----------------------
     BUTTONS
 ----------------------*/
@@ -814,6 +978,12 @@ hr {
 ----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
 
+    ngb-carousel>* {
+        max-width: 100%;
+        height: min-content;
+        margin: 0px !important;
+    }
+
     /* TEXT */
     h1 {
         font-size: var(--font-large);
@@ -825,6 +995,11 @@ hr {
 
     h3 {
         font-size: var(--font-normal);
+    }
+
+    .page-background{
+        /* removes the background image from the mobile device */
+        background-image: none;
     }
 
     .page-content,
@@ -847,13 +1022,20 @@ hr {
     .container,
     .form-container {
         width: 100%;
-        height: 100%;
+        /* makes the container take up 100% of the screen height */
+            height: 100%;
         /* border: none !important; */
     }
 
     .container,
     .form-container {
         padding: var(--medium-s);
+    }
+
+    .carousel-image {
+        /* sets the size of carousel image to be larger on smaller devices*/
+        min-height: 30% !important;
+        max-width: 40% !important;
     }
 
     .page-heading {

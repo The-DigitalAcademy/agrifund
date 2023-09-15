@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/_services/api-service/api.service';
-import { BookkeepingService } from 'src/app/_services/bookkeeping-service/bookkeeping.service';
+import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
 
 @Component({
     selector: 'app-delete-modal-content',
@@ -32,7 +32,7 @@ export class BookkeepingDeleteModalContentComponent {
 
     constructor(
         private _apiService: ApiService,
-        private _bookkeepingService: BookkeepingService,
+        private _incomeStatementItemService: IncomeStatementItemService,
         private activeModal: NgbActiveModal,
         private router: Router
     ) {}
@@ -44,14 +44,9 @@ export class BookkeepingDeleteModalContentComponent {
 
     // after a user confirms the delete by clicking yes, the id of a record is passed to the api service
     confirmedDelete() {
-        this._apiService
-            .deleteIncomeStatementItem(this.recordId)
-            .subscribe((message: unknown) => {
-                console.log(message);
-                // closes the modal after the record is deleted
-                this.activeModal.close();
-                // routes back to bookkeeping view all page after deletion
-                this.router.navigate(['/bookkeeping']);
-            });
+        // runs a delete method
+        this._incomeStatementItemService.deleteRecord(this.recordId);
+        // closes the modal after the record is deleted
+        this.activeModal.close();
     }
 }
