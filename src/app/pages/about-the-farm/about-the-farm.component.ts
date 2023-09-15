@@ -45,7 +45,6 @@ export class AboutTheFarmComponent implements OnInit {
     asset!: Assets;
     isLast: any;
     id = 0;
-    // id!: number;
 
     // stores value whether a crop already exists
     private cropExists = false;

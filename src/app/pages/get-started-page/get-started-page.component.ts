@@ -24,15 +24,7 @@ export class GetStartedPageComponent implements OnInit {
     // used to refer to the bootstrap carousel on HTML
     @ViewChild('carousel', { static: true }) private carousel!: NgbCarousel;
     // sets the first slide as the active slide
-    activeSlideName: string = 'slide1';
-    // sets the list of slides and their active status
-    slides: [string, string][] = [
-        ['slide1', 'active'],
-        ['slide2', 'inactive'],
-        ['slide3', 'inactive'],
-        ['slide4', 'inactive'],
-        ['slide5', 'inactive'],
-    ];
+    activeSlideName = 'slide1';
 
     constructor(carouselConfig: NgbCarouselConfig) {
         // prevents the carousel from wrapping
@@ -59,11 +51,15 @@ export class GetStartedPageComponent implements OnInit {
     // navigates to the next slide
     goToNextSlide() {
         this.carousel.next();
+        // sets the active slide name
+        this.activeSlideName = this.carousel.activeId;
     }
 
     // navigates to the previous slide
     goToPreviousSlide() {
         this.carousel.prev();
+        // sets the active slide name
+        this.activeSlideName = this.carousel.activeId;
     }
     // checks to see if a slide is active
     isActiveSlide(slideId: string) {
