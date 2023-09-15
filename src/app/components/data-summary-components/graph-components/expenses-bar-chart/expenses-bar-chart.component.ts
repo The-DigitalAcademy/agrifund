@@ -63,7 +63,7 @@ export class ExpensesBarChartComponent implements OnInit {
                     {
                         label: '',
                         data: chartData,
-                        backgroundColor: ['#9BA66F'],
+                        backgroundColor: ['#D15F20'],
                     },
                 ],
             },

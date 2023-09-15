@@ -58,7 +58,7 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
                     {
                         label: '',
                         data: [income, expense],
-                        backgroundColor: ['#5A6537', '#9BA66F'],
+                        backgroundColor: ['#5A6537', '#D15F20'],
                         hoverOffset: 5,
                     },
                 ],
