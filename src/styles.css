@@ -439,13 +439,16 @@ ngb-carousel {
     margin: 0px var(--x-small-s) !important;
     /* makes the indicators rounded */
     border-radius: 100%;
-
-    background-color: var(--lighter-grey) !important;
 }
 
-.carousel-indicators .active {
-    /* changes the active indicator to green */
+/* when an indicator is active it be green */
+.activeIndicator {
     background-color: var(--primary-colour) !important;
+}
+
+/* when an indicator is not active it will be grey */
+.inactiveIndicator {
+    background-color: var(--lighter-grey) !important;
 }
 
 .carousel-control-next,

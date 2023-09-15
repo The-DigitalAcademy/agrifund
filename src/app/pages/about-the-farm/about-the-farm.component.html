@@ -1,0 +1,259 @@
+<!-- Author: Mamotsoko Maphutha 13/08/2023   -->
+<div class="row page-body page-background">
+  <div class="mobile-header"></div>
+  <div class="justify-center page-content">
+
+
+    <form class="form-container container outer-container">
+      <div *ngIf="activeSlideName ==='introSLide'" class="page-heading">
+        <h1>Tell Me About Your Farm</h1>
+      </div>
+
+      <ngb-carousel class="container inner-container" #carousel="ngbCarousel">
+        <ng-template ngbSlide id="introSlide">
+          <div class="justify-center">
+            <img class="carousel-image" src="assets/images/logo/f_carrot.png" alt="...">
+            <h1>Welcome To AgriFund</h1>
+            <p>We are happy to help you embark on your path to financial success.
+              <br>
+              <br> But first we would love to hear more about your farm!
+            </p>
+          </div>
+        </ng-template>
+        <!-- slide 2 for farm -->
+        <ng-template ngbSlide id="farmSlide">
+          <div class="justify-center">
+            <h2 class="justify-center">Farm</h2>
+            <div class="container inner-container">
+              <form [formGroup]="farmForm">
+                <div class="form-group">
+                  <label for="address">Where do you live?</label> <br>
+                  Please enter your residential address. Might not be te same as your farm address.
+                  <input formControlName="address" class="form-control" id="address" />
+                </div>
+                <div class="form-text text-danger" *ngIf="
+                            (farmForm.controls['address'].touched ||
+                                submitted) &&
+                            farmForm.controls['address'].errors?.[
+                                'required'
+                            ]
+                        ">
+                  Please enter the correct address.
+                </div>
+                <div class="form-group">
+                  <label for="farmName">What is the name of your farm?</label>
+                  <input formControlName="farmName" class="form-control" id="farmName" />
+                </div>
+                <div class="form-text text-danger" *ngIf="
+                                                  (farmForm.controls['farmName'].touched ||
+                                                      submitted) &&
+                                                  farmForm.controls['farmName'].errors?.[
+                                                      'required'
+                                                  ]
+                                              ">
+                  Please enter the correct farm name.
+                </div>
+                <div class="form-group">
+                  <label for="farmAddress">Where is your farm located?</label>
+                  <input formControlName="farmAddress" class="form-control" id="farmAddress" />
+                </div>
+                <div class="form-text text-danger" *ngIf="
+                                                      (farmForm.controls['farmAddress'].touched ||
+                                                          submitted) &&
+                                                      farmForm.controls['farmAddress'].errors?.[
+                                                          'required'
+                                                      ]
+                                                  ">
+                  Please enter the correct address.
+                </div>
+                <div class="form-group">
+                  <label for="yearsActive">How many years have you been actively farming?</label>
+                  <input formControlName="yearsActive" class="form-control" id="yearsActive" />
+                </div>
+                <div class="form-text text-danger" *ngIf="
+                                            (farmForm.controls['yearsActive'].touched ||
+                                            submitted) &&
+                                           farmForm.controls['yearsActive'].errors?.[
+                                          'required'
+                                          ]
+                                                                                ">
+                  Please enter years active for the farm.
+                </div>
+                <div class="form-group">
+                  <label for="numberOfEmployees">How many people help you with your farming?</label>
+                  <input formControlName="numberOfEmployees" class="form-control" id="numberOfEmployees" />
+                  <div class="form-text text-danger" *ngIf="
+                                                                      (farmForm.controls['numberOfEmployees'].touched ||
+                                                                      submitted) &&
+                                                                     farmForm.controls['numberOfEmployees'].errors?.[
+                                                                    'required'
+                                                                    ]
+                                                                                                          ">
+                    Please enter number of employees who work at the farm.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="farmingReason">Why do you need funding for your farming activities?</label>
+                  <input formControlName="farmingReason" class="form-control" id="farmingReason" />
+
+                  <div class="form-text text-danger"
+                    *ngIf="
+                                                        (farmForm.controls['farmingReason'].touched ||
+                                                                          submitted) &&
+                                                        farmForm.controls['farmingReason'].errors?.[
+                                                          'required'
+                                                        ]
+                                                                                                                                    ">
+                    Please enter number the reason why you want funding.
+                  </div>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </ng-template>
+          <!-- slide 3 for crop -->
+          <ng-template ngbSlide id="cropSlide">
+            <div class="justify-center">
+
+              <div class="justify-center">
+                <h2>Crops</h2>
+                <div class="container inner-container">
+                  <form [formGroup]="cropForm">
+                       <div class="form-group">
+            <label for="name" class="form-label">What crops do you farm?</label>
+            <input type="name" class="form-control" formControlName="name" />
+<div class="form-text text-danger" *ngIf="
+                                                cropForm.controls['name'].touched &&
+                                                cropForm.controls['name'].errors?.[
+                                                    'required'
+                                                ]
+                                            ">
+                        Please provide name for your crop seeds.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="season">What season do you usually farm in?</label>
+                      <select id="season" class="form-control" formControlName="season">
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Winter">Winter</option>
+                      </select>
+                      <div class="form-text text-danger" *ngIf="
+                                                    cropForm.controls['season'].touched &&
+                                                    cropForm.controls['season'].errors?.[
+                                                        'required'
+                                                    ]
+                                                ">
+                        Please select a season for crop.
+                      </div>
+                    </div>
+                    <!-- input for the price of a crop seed -->
+                    <div class="form-group">
+                      <label for="price">
+                        How much do you normally pay for seeds per kilogram (kg)?
+                      </label>
+                        <div class="input-group">
+                        <span class="input-group-text">R</span>           
+                        <input formControlName="price" type="text" class="form-control" id="price" />
+                      </div>
+                      <div class="form-text text-danger" *ngIf="
+                                                cropForm.controls['price'].touched &&
+                                                cropForm.controls['price'].errors?.[
+                                                    'required'
+                                                ]
+                                            ">
+                        Please provide a price for your crop seeds.
+                    </div>
+                    <div class="form-group">
+                <label for="type">What type of crops do you farm?</label>
+                <input type="type" class="form-control" formControlName="type" />
+                 <div class="form-text text-danger" *ngIf="
+                                                cropForm.controls['type'].touched &&
+                                                cropForm.controls['type'].errors?.[
+                                                    'required'
+                                                ]
+                                            ">
+                        Please provide type of your crop seeds.
+                      </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </ng-template>
+        <!-- slide 4 for plot -->
+        <ng-template ngbSlide id="plotSlide">
+          <div class="justify-center">
+
+            <div class="justify-center">
+              <h2>Plot</h2>
+              <div class="container inner-container">
+                <form [formGroup]="plotForm">
+                  <div class="form-group">
+                    <label for="plotAddress">Where is your farm located?</label>
+                    <input formControlName="plotAddress" class="form-control description" id="plotAddress">
+                  </div>
+                  <div class="form-group">
+                    <label for="plotSize">What is the size of your farm in hectares (ha)?</label>
+                    <select id="plotSize" class="form-control" formControlName="plotSize">
+                      <option value="8 to 10 hectares">8 to 10 hectares</option>
+                      <option value="11 to 14 hectares">11 to 14 hectares</option>
+                      <option value="15 to 18 hectares">15 to 18 hectares</option>
+                      <option value="19 to 22 hectares">19 to 22 hectares</option>
+                    </select>
+                    <div class="form-text text-danger" *ngIf="
+                                                            plotForm.controls['plotSize'].touched &&
+                                                            plotForm.controls['plotSize'].errors?.[
+                                                            'required'
+                                                            ]
+                                                         ">
+                      Please select the size of your farm.
+                    </div>
+                  </div>
+                  <label for="dateOfOwnership">When did you start farming on this land?</label>
+                  <input formControlName="dateOfOwnership" type="date" class="form-control" id="dateOfOwnership" />
+                </form>
+                <div class="form-text text-danger" *ngIf="
+                                      plotForm.controls['dateOfOwnership'].touched &&
+                                      plotForm.controls['dateOfOwnership'].errors?.[
+                                    'required'
+                                    ]
+                                  ">
+                  Please specify a valid date for your farm.
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+      <div class="actions">
+        <div *ngIf="activeSlideName != 'introSlide'" class="justify-start">
+          <button class="carousel-control-prev btn icon-btn-dark" type="button" (click)="goToPreviousSlide()">
+            <fa-icon icon="arrow-left"></fa-icon>
+            Prev
+          </button>
+        </div>
+        <div *ngIf="activeSlideName !='introSlide'" class="carousel slide justify-center">
+          <div class="carousel-indicators">
+            <button [className]="isActiveSlide('introSlide') ? 'activeIndicator': 'inactiveIndicator'"
+            type="button" class="indictorButton" id="welcomeIndicator" (click)="goToSlide('introSlide')"></button>
+            <button [className]="isActiveSlide('farmSlide') ? 'activeIndicator': 'inactiveIndicator'" type="button" class="indictorButton" id="farmIndicator" (click)="goToSlide('farmSlide')"></button>
+            <button [className]="isActiveSlide('cropSlide') ? 'activeIndicator': 'inactiveIndicator'" type="button" class="indictorButton" id="cropIndicator" (click)="goToSlide('cropSlide')"></button>
+            <button [className]="isActiveSlide('plotSlide') ? 'activeIndicator': 'inactiveIndicator'" type="button" class="indictorButton" id="plotIndicator" (click)="goToSlide('plotSlide')"></button>
+          </div>
+        </div>
+        <div class="justify-end">
+          <!-- *ngIf="slide !== last" -->
+          <button class="carousel-control-next btn icon-btn-dark" type="submit" (click)="goToNextSlide()">
+            <span *ngIf=""></span>
+            Next
+            <fa-icon class="arrow-right" icon="arrow-right"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

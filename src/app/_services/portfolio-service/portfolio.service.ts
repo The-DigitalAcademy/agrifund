@@ -12,7 +12,7 @@
     private _authService: AuthService -> used to get methods related to authenticating a user
 
 -------------------------------------------------------------------------------------------------*/
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, forwardRef } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { FarmerPortfolio } from 'src/app/_models/FarmerPortfolio';

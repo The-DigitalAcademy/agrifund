@@ -156,7 +156,7 @@ export class ApiService {
 
     // GET function to get a farmer's farm data by the farm name
     getFarmByName(farmName: string) {
-        return this.http.get(`${this.FARMER_FARM_URL}/${farmName}`);
+        return this.http.get(`${this.FARMER_FARM_URL}/?farmName=${farmName}`);
     }
 
     // GET function to get all farms

@@ -72,7 +72,15 @@ export class FarmService {
 
     // creates data for a farmers farm and sends to api
     createFarmerFarm(farmBody: FarmerFarm) {
-        this._apiService.addFarm(farmBody).subscribe(
+        let newFarmBody ={
+            numberOfEmployees: farmBody.numberOfEmployees,
+            farmName: farmBody.farmName,
+            farmAddress: farmBody.farmAddress,
+            yearsActive: farmBody.yearsActive,
+            address: farmBody.address,
+            farmingReason: farmBody.farmingReason,
+        }
+        this._apiService.addFarm(newFarmBody).subscribe(
             result => {
                 console.table('Creates this farm data: ${farmBody}');
             },

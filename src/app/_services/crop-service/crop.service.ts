@@ -1,7 +1,10 @@
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { ApiService } from '../api-service/api.service';
+import { HttpClient } from '@angular/common/http';
 import { FarmerCrop } from 'src/app/_models/farmerCrop';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -11,20 +14,28 @@ export class CropService {
         id: 0,
         name: '',
         season: '',
-        type: '',
         price: 0,
+        type: '',
+        farmId: 0,
     };
+    // private crops: FarmerCrop[] = [];
+    // stores farmer crops as a behavior subject
 
     private cropData$: BehaviorSubject<FarmerCrop> =
         new BehaviorSubject<FarmerCrop>({
             id: 0,
             name: '',
             season: '',
-            type: '',
             price: 0,
+            type: '',
+            farmId: 0,
         });
 
-    constructor(private _portfolioService: PortfolioService) {
+    constructor(
+        private _apiService: ApiService,
+        private _portfolioService: PortfolioService,
+        private _http: HttpClient
+    ) {
         this.setCropData();
     }
 
@@ -49,5 +60,29 @@ export class CropService {
 
     getCropData(): Observable<FarmerCrop> {
         return this.cropData$;
+    }
+    private crops: FarmerCrop[] = [];
+    // stores farmer plots as a behviour subject
+    private farmerCrops$ = new BehaviorSubject<FarmerCrop[]>([]);
+
+    createFarmerCrop(cropBody: FarmerCrop) {
+        const farmName = this._portfolioService.getFarmName();
+        const addedCrop = {
+            name: cropBody.name,
+            season: cropBody.season,
+            price: cropBody.price,
+            type: cropBody.type,
+        };
+        this._apiService.addCrop(farmName, addedCrop).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.error(
+                    'Error occured when creating new crop data',
+                    error
+                );
+            }
+        );
     }
 }
