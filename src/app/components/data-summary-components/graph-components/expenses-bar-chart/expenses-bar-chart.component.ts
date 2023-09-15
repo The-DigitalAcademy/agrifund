@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Bolebo Mohlala, Monique Nagel
     CREATE DATE: 08 Aug 2023 
-    UPDATED DATE: 06 Sept 2023 
+    UPDATED DATE: 15 Sept 2023 
 
     DESCRIPTION:
         This component is responsible for the creation and generation of a bar chart that summarizes
@@ -10,7 +10,7 @@
         _incomeStatementService: IncomeStatementService -> used to access income statement service methods
         
 -------------------------------------------------------------------------------------------------*/
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
@@ -27,6 +27,8 @@ export class ExpensesBarChartComponent implements OnInit {
     ) {}
     // five highest expenses stored in array
     fiveHighestExpenses: IncomeStatementItem[] = [];
+    // five hightest expenses as observable -> default is empty
+    fiveHighestExpenses$: Observable<IncomeStatementItem[]> = EMPTY;
     // stores the labels for a chart
     chartLabels: string[] = [];
     // stores the data used in the chart
@@ -40,6 +42,7 @@ export class ExpensesBarChartComponent implements OnInit {
             .subscribe((records: IncomeStatementItem[]) => {
                 // assigns values from service method to fiveHighestExpenses Array
                 this.fiveHighestExpenses = records;
+                // this.fiveHighestExpenses$ = this.fiveHighestExpenses
             });
 
         // loops through five highest expenses array to assign char labels and data

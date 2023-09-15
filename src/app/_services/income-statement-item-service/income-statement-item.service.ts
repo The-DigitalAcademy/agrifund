@@ -22,7 +22,6 @@ import { Router } from '@angular/router';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { IncomeStatement } from './../../_models/IncomeStatement';
-import { Statement } from '@angular/compiler';
 @Injectable({
     providedIn: 'root',
 })
@@ -203,7 +202,6 @@ export class IncomeStatementItemService {
             .subscribe(statement => {
                 // assigns the id of the statement found to the new bookkeeping record
                 recordBody.statementId = statement.id;
-                console.log(recordBody.statementId);
             });
 
         console.log(recordBody.statementId);
@@ -283,16 +281,6 @@ export class IncomeStatementItemService {
                     );
                 }
             );
-
-        // uploads bookkeeping record proof
-        // this._apiService.uploadRecordProof(record.id, recordProof).subscribe(
-        //     data => {
-        //         console.log(data);
-        //     },
-        //     error => {
-        //         error.console(`Error uploading proof for a record`, error);
-        //     }
-        // );
     }
 
     /*---------------------------------
