@@ -108,9 +108,6 @@ export class AboutTheFarmComponent implements OnInit {
     goToSlide(slideId: string) {
         this.carousel.select(slideId);
         this.activeSlideName = this.carousel.activeId;
-        console.log(
-            'Active slide name from select slide:' + this.activeSlideName
-        );
     }
 
     // navigates to the next slide
@@ -179,8 +176,8 @@ export class AboutTheFarmComponent implements OnInit {
                 this.createPlotInfo();
             } else {
                 console.log(`Plot already exists`);
-                // if the crop already exists it will go to the next slide
-                this.carousel.next();
+                // if the plot already exists it will rout to dashboard
+                this.router.navigate(['/dashboard']);
             }
         }
 
@@ -239,7 +236,6 @@ export class AboutTheFarmComponent implements OnInit {
             };
             this.cropFormSubmitted = true;
             this.cropForm.disable();
-            console.table(this.crop);
             this._cropService.createFarmerCrop(this.crop);
             // routes to next carousel  page after a crop has been successfully created
             this.carousel.next();
@@ -259,10 +255,8 @@ export class AboutTheFarmComponent implements OnInit {
                 plotSize: plotFormInputValue.plotSize,
                 dateOfOwnership: plotFormInputValue.dateOfOwnership,
             };
-            console.log(plotFormInputValue.date);
             this.plotFormSubmitted = true;
             this.plotForm.disable();
-            console.table(this.plots);
             this._plotService.createFarmerPlot(this.plots);
             // Check if all slides have been filled out
             if (this.carousel.activeId === 'plotSlide') {
