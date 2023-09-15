@@ -1009,11 +1009,6 @@ hr {
         padding: 55px 0px 0px !important;
     }
 
-    /* set styles for all content within page-content div */
-    .page-content>* {
-        padding: var(--normal-s) !important;
-    }
-
     /* outermost container */
     .outer-container {
         border: none !important;

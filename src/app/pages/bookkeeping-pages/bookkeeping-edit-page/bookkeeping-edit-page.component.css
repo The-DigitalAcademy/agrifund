@@ -21,7 +21,15 @@
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-@media (max-width: 390px) {
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+    /* set styles for all content within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
 
     .page-body {
         display: flex;

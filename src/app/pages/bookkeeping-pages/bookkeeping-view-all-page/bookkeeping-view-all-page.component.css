@@ -97,7 +97,11 @@ tbody tr,
         border-radius: var(--border-radius);
         border: var(--thin-border) var(--lighter-grey) !important;
     }
-
+    
+    /* set styles for all content within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
 }
 
 /*---------------------------------

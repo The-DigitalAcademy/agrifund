@@ -100,9 +100,12 @@
      .page-body {
          /* removes the image from the background */
          background-image: none;
-
-
      }
+
+         /* set styles for all content within page-content div */
+         .page-content>* {
+             padding: var(--normal-s) !important;
+         }
 
      .page-background::before {
          /* removes the dark filter overlay from the background */

@@ -14,7 +14,16 @@
 /*--------------------------------
     Media Query for small screens
 ----------------------------------*/
-@media only screen and (max-width: 575px) {
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+    /* set styles for all content within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+
     .mobile-header {
         background-image: url('src/assets/images/background/barn.webp');/*background image*/
     }

@@ -54,6 +54,18 @@ h1 {
     margin-bottom: var(--normal-s);
 }
 
+/*---------------------------------
+    Media Query for Mobile Devices
+----------------------------------*/
+@media (min-width: 300px) and (max-width:428px) {
+
+    /* set styles for all content within page-content div */
+    .page-content>* {
+        padding: var(--normal-s) !important;
+    }
+}
+
+
 /* Media query for screens with max width 767px */
 @media (max-width: 767px) {
     /* Adjust padding and margins for responsive layout */
