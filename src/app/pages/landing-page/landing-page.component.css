@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Bolebo Mohlala, Monique Nagel
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 25 Aug 2023 
+    UPDATED DATE: 15 Sept 2023 
 -------------------------------------------------------------------------------------------------*/
 
 .page-body {
@@ -69,6 +69,13 @@ button {
 .btn fa-icon,
 button fa-icon {
   margin: 0px 0px 0px var(--small-s);
+  /* increases the size of the icon for button */
+    width: var(--font-large);
+    height: var(--font-large);
+
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .image-container img {
