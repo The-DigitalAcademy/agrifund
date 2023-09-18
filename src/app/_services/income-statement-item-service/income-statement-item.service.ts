@@ -120,10 +120,8 @@ export class IncomeStatementItemService {
             .getStatementItemById(recordId)
             .subscribe((response: any) => {
                 this.record = response.data;
-                console.table(this.record);
                 // adds the record to the income statement item observable
                 this.incomeStatementItem$.next(this.record);
-                console.table(this.incomeStatementItem$);
             });
         return this.incomeStatementItem$;
     }
@@ -261,6 +259,15 @@ export class IncomeStatementItemService {
             description: record.description,
             date: record.date,
         };
+
+        // checks for the record category to change value to income or expense
+        if (recordBody.category === 'Money In') {
+            recordBody.category = 'Income';
+        } else {
+            recordBody.category = 'Expense';
+        }
+
+        console.table(recordBody);
 
         record.statementId = 1;
         // updates bookkeeping record data
