@@ -37,6 +37,15 @@ export class ProgressServiceService {
     private cropInfoCompletedSubject = new BehaviorSubject<boolean>(false);
     cropInfo$: Observable<boolean> =
         this.cropInfoCompletedSubject.asObservable();
+    private plotInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    plotInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
+    private personalInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    personalInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
+    private farmInfoCompletedSubject = new BehaviorSubject<boolean>(false);
+    farmInfo$: Observable<boolean> =
+        this.cropInfoCompletedSubject.asObservable();
 
     private assetInfoCompletedSubject = new BehaviorSubject<boolean>(false);
     assetInfo$: Observable<boolean> =
@@ -46,8 +55,17 @@ export class ProgressServiceService {
     updateCropInfoCompleted(completed: boolean) {
         this.cropInfoCompletedSubject.next(completed);
     }
-
+    updatePersonalInfoCompleted(completed: boolean) {
+        this.personalInfoCompletedSubject.next(completed);
+    }
+    updateFarmInfoCompleted(completed: boolean) {
+        this.farmInfoCompletedSubject.next(completed);
+    }
     updateAssetInfoCompleted(completed: boolean) {
         this.assetInfoCompletedSubject.next(completed);
+    }
+
+    updatePlotInfoCompleted(completed: boolean) {
+        this.plotInfoCompletedSubject.next(completed);
     }
 }

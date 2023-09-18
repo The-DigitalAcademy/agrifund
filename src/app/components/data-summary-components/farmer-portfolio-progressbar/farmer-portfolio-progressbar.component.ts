@@ -13,6 +13,7 @@ import { ProgressServiceService } from 'src/app/_services/progress-service/progr
 })
 export class FarmerPortfolioProgressbarComponent {
     progress = 0;
+    plotInfoCompleted = false;
 
     checklistForm!: FormGroup;
 
@@ -54,8 +55,6 @@ export class FarmerPortfolioProgressbarComponent {
         );
     }
 
-  
-
     toggleCheckbox(controlName: string) {
         const checkboxControl = this.checklistForm.get(controlName);
         if (checkboxControl) {
@@ -77,29 +76,46 @@ export class FarmerPortfolioProgressbarComponent {
             equipmentInfo: [false],
             bookkeepingInfo: [false],
         });
+        // Subscribe to the completion status of each form
+        this._progressService.personalInfoCompleted$.subscribe(completed => {
+            this.checklistForm.patchValue({
+                personalInfo: completed,
+            });
+        });
+
+        this._progressService.farmInfoCompleted$.subscribe(completed => {
+            this.checklistForm.patchValue({
+                farmInfo: completed,
+            });
+        });
+
+        this._progressService.cropInfoCompleted$.subscribe(completed => {
+            this.checklistForm.patchValue({
+                cropInfo: completed,
+            });
+        });
+
+        this._progressService.plotInfo$.subscribe(completed => {
+            this.checklistForm.patchValue({
+                plotInfo: completed,
+            });
+        });
+
+        this._progressService.assetInfoCompleted$.subscribe(completed => {
+            this.checklistForm.patchValue({
+                equipmentInfo: completed,
+            });
+        });
 
         //Fetch user data from API and populate the form
 
         this.checklistForm.patchValue({
             personalInfo: true,
-        });
-
-        this.checklistForm.patchValue({
             farmInfo: true,
-        });
-
-        this.checklistForm.patchValue({
-            plotInfo: true,
-        });
-        this.checklistForm.patchValue({
             equipmentInfo: true,
-        });
-
-        this.checklistForm.patchValue({
             cropInfo: true,
+            plotInfo: true,
+            bookkeepingInfo: true,
         });
-         this.checklistForm.patchValue({
-             bookkeepingInfo: true,
-         });
     }
 }
