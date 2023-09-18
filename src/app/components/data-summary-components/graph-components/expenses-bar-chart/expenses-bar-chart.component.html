@@ -5,6 +5,10 @@
  -->
 <!-- a graph in a container -->
 <div class="chart-container">
+    <!-- <div *ngIf="
+        (fiveHighestExpenses$ | async)?.length !== 0;
+    ">
+    </div> -->
     <!-- doughnut canvas -->
     <canvas id="expenseBarChart"></canvas>
 </div>

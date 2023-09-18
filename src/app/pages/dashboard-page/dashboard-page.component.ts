@@ -32,6 +32,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     private portfolioSubscription = new Subscription();
     // subscription for getting incomes statements service
     private incomeStatementSubscription = new Subscription();
+    // subscription for setting the income statement list
+    private incomeStatementYearListSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // form for date filter
@@ -40,8 +42,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     defaultYear = 0;
     // stores the selected value of the dropdown list
     selectedYear = '';
-    // stores the list of year for income statements
-    statementList: string[] = [];
+    // stores the year for a current user's statements
+    statementYearList$!: Observable<string[]>;
     // stores the value of the total expenses/money out for an income statement of the year as observable
     totalExpense$!: Observable<number>;
     // stores the value of the total income/money in for an income statement of the year as observable
@@ -82,12 +84,17 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         this._incomeStatementService.getIncomeStatementForYear(
             Number(this.selectedYear)
         );
+
+        // assigns the value of the observable to the value set in the service
+        this.statementYearList$ =
+            this._incomeStatementService.getIncomeStatementYearList();
     }
 
     ngOnDestroy() {
         // unsubscribe from subscriptions
         this.portfolioSubscription.unsubscribe();
         this.incomeStatementSubscription.unsubscribe();
+        this.incomeStatementYearListSubscription.unsubscribe();
     }
 
     // function to set the values for the income statement dropdown
@@ -96,7 +103,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
             // sets the farmer's income statement list
             this._incomeStatementService.setIncomeStatementYearList();
             // gets the farmer income statement list and sets it to the statement list
-            this.statementList =
+            this.statementYearList$ =
                 this._incomeStatementService.getIncomeStatementYearList();
             // sets the dropdown value to the default year
             this.dateForm = this.fb.group({

@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 20 July 2023 
-    UPDATED DATE: 31 Aug 2023 
+    UPDATED DATE: 18 Sept 2023 
 
     DESCRIPTION:
         This component displays all bookkeeping data and provides navigation to 
@@ -50,6 +50,8 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     private expenseSubscription = new Subscription();
     // subscription for getting incomes statements service
     private profitSubscription = new Subscription();
+    // subscription for setting the income statement list
+    private incomeStatementYearListSubscription = new Subscription();
     // array for storing income statements
     statements!: IncomeStatement[];
     // observable for storing income statements
@@ -73,6 +75,8 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     private mobileSearchBar!: NgbOffcanvas;
     // stores the list of year for income statements
     statementList: string[] = [];
+    // stores the year for a current user's statements
+    statementYearList$!: Observable<string[]>;
     // stores the value of the expense/money out total as an observable
     moneyOutTotal!: number;
     // stores the value of the income/money in total as an observable
@@ -108,13 +112,20 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
             .subscribe((statements: IncomeStatement[]) => {
                 // assigns the statements to the statement array
                 this.statements = statements;
-                // sets the values for the year dropdown list
-                this.setIncomeStatementList();
             });
 
         // sets the selected year value
         const formInput = this.dateForm.value;
         this.selectedYear = formInput.yearInput;
+        // assigns the value of the observable to the value set in the service
+        this.statementYearList$ =
+            this._incomeStatementService.getIncomeStatementYearList();
+        // adds statement year list to subscription
+        this.incomeStatementYearListSubscription =
+            this.statementYearList$.subscribe(statementYearList => {
+                // assigns the value of the observable to the array value
+                this.statementList = statementYearList;
+            });
 
         this.incomeStatementRecordSubscription =
             this._incomeStatementItemService
@@ -142,6 +153,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         this.expenseSubscription.unsubscribe();
         this.incomeStatementSubscription.unsubscribe();
         this.profitSubscription.unsubscribe();
+        this.incomeStatementYearListSubscription.unsubscribe();
     }
 
     // function to set the values for the income statement dropdown

@@ -50,7 +50,8 @@
                             (change)="this.onYearChange($event)">
                             <option
                                 *ngFor="
-                                    let statementYear of statementList;
+                                    let statementYear of statementYearList$
+                                        | async;
                                     let firstIndex = first
                                 "
                                 [value]="statementYear"

@@ -46,6 +46,10 @@ export class IncomeStatementService {
         });
     // stores the list of years for income statements as a string for dropdown
     private statementYearList: string[] = [];
+    // stores the statement year list as behavior subject
+    private statementYearList$: BehaviorSubject<string[]> = new BehaviorSubject<
+        string[]
+    >([]);
 
     constructor(
         private _apiService: ApiService,
@@ -201,12 +205,14 @@ export class IncomeStatementService {
             });
             // year sorts from newest to oldest
             this.statementYearList.sort((a, b) => Number(b) - Number(a));
+            // adds statement year list to observable for it
+            this.statementYearList$.next(this.statementYearList);
         }
     }
 
     // returns the income statement year list
-    getIncomeStatementYearList() {
-        return this.statementYearList;
+    getIncomeStatementYearList(): Observable<string[]> {
+        return this.statementYearList$;
     }
 
     /*---------------------------------

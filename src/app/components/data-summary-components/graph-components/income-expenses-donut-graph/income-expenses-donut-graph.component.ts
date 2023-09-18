@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Bolebo Mohlala, Monique Nagel
     CREATE DATE: 08 Aug 2023 
-    UPDATED DATE: 06 Sept 2023 
+    UPDATED DATE: 18 Sept 2023 
 
     DESCRIPTION:
         This component is responsible for the creation and generation of a donut chart for income 
