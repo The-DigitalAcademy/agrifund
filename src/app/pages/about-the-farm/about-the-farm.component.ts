@@ -123,6 +123,11 @@ export class AboutTheFarmComponent implements OnInit {
             this.carousel.next();
         }
 
+        // plot slide routes to dashboard on next -> is the last slide
+        if (this.carousel.activeId === 'plotSlide') {
+            this.router.navigate(['/dashboard']);
+        }
+
         if (this.carousel.activeId === 'farmSlide') {
             this._portfolioService.getFarmerFarm().subscribe(farm => {
                 // checks if a user has already added a farm
@@ -176,7 +181,6 @@ export class AboutTheFarmComponent implements OnInit {
             } else {
                 console.log(`Plot already exists`);
                 // if the plot already exists it will rout to dashboard
-                this.router.navigate(['/dashboard']);
             }
         }
 
