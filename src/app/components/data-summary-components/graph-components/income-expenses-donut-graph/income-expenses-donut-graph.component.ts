@@ -11,15 +11,20 @@
         
 -------------------------------------------------------------------------------------------------*/
 import { Chart } from 'chart.js/auto';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 @Component({
     selector: 'app-income-expenses-donut-graph',
     templateUrl: './income-expenses-donut-graph.component.html',
     styleUrls: ['./income-expenses-donut-graph.component.css'],
 })
-export class IncomeExpensesDonutGraphComponent implements OnInit {
+export class IncomeExpensesDonutGraphComponent implements OnInit, OnDestroy {
+    // will store the subscription to get the total income
+    private incomeSubscription!: Subscription;
+    // will store the subscription to get the total income
+    private expensesSubscription!: Subscription;
+
     // gets value for income from the dashboard parent
     totalExpense$!: Observable<number>;
     // stores the value of the total income/money in for an income statement of the year
@@ -35,17 +40,22 @@ export class IncomeExpensesDonutGraphComponent implements OnInit {
         // sets the total expense to the one in the income statement service
         this.totalExpense$ = this._incomeStatementService.getTotalExpense();
         // assigns the value of the observable to the total expenses variable
-        this.totalExpense$.subscribe(value => {
+        this.incomeSubscription = this.totalExpense$.subscribe(value => {
             this.totalExpense = value;
         });
         // sets the total income to the one in the income statement service
         this.totalIncome$ = this._incomeStatementService.getTotalIncome();
         // assigns the value of the observable to the total expenses variable
-        this.totalIncome$.subscribe(value => {
+        this.incomeSubscription = this.totalIncome$.subscribe(value => {
             this.totalIncome = value;
         });
 
         this.renderChart(this.totalIncome, this.totalExpense);
+    }
+
+    ngOnDestroy() {
+        this.incomeSubscription.unsubscribe();
+        this.expensesSubscription.unsubscribe();
     }
 
     // function for rendering chart based on the properties passed
