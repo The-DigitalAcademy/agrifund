@@ -7,7 +7,7 @@ import { User } from 'src/app/_models/User';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Subscription } from 'rxjs';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
-import { RegisterService } from 'src/app/user-service/register.service';
+import { RegisterService } from 'src/app/_services/user-service/register-service/register.service';
 
 // Import SweetAlert
 import Swal from 'sweetalert2';

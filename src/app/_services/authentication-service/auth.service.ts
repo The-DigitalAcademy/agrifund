@@ -43,8 +43,7 @@ export class AuthService {
     constructor(
         private router: Router,
         private _apiService: ApiService,
-        private _jwtService: JwtService,
-       
+        private _jwtService: JwtService
     ) {
         this.setSessionToken();
     }
@@ -58,7 +57,6 @@ export class AuthService {
 
     // gets the set session token
     getSessionToken() {
-    
         this.setSessionToken();
         return this.sessionToken$;
     }
@@ -127,10 +125,9 @@ export class AuthService {
                     title: 'Error',
                     text: this.errorMessage,
                     confirmButtonColor: '#606C38',
-                    
                 });
-            }
-         } );
+            },
+        });
     }
 
     logoutUser() {
