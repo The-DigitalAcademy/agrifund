@@ -13,7 +13,8 @@ import { ProgressServiceService } from 'src/app/_services/progress-service/progr
 })
 export class FarmerPortfolioProgressbarComponent {
     progress = 0;
-    plotInfoCompleted = false;
+ 
+
 
     checklistForm!: FormGroup;
 
@@ -77,19 +78,19 @@ export class FarmerPortfolioProgressbarComponent {
             bookkeepingInfo: [false],
         });
         // Subscribe to the completion status of each form
-        this._progressService.personalInfoCompleted$.subscribe(completed => {
+        this._progressService.personalInfo$.subscribe(completed => {
             this.checklistForm.patchValue({
                 personalInfo: completed,
             });
         });
 
-        this._progressService.farmInfoCompleted$.subscribe(completed => {
+        this._progressService.farmInfo$.subscribe(completed => {
             this.checklistForm.patchValue({
                 farmInfo: completed,
             });
         });
 
-        this._progressService.cropInfoCompleted$.subscribe(completed => {
+        this._progressService.cropInfo$.subscribe(completed => {
             this.checklistForm.patchValue({
                 cropInfo: completed,
             });

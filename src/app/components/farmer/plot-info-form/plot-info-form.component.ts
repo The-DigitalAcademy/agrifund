@@ -55,7 +55,6 @@ export class PlotInfoFormComponent implements OnInit {
             dateOfOwnership: '',
         };
 
-
         //set the farmer portfolio
         this._portfolioService.setFarmerPortfolio();
 
@@ -71,8 +70,6 @@ export class PlotInfoFormComponent implements OnInit {
                         dateOfOwnership: this.plotInfo.dateOfOwnership,
                     });
                 }
-                // Notify the progress service that the plot info form is completed
-                this._progressService.updatePlotInfoCompleted(true);
 
                 this.isDisabled = true;
                 // Calculate the initial progress when the component is initialized
@@ -123,8 +120,7 @@ export class PlotInfoFormComponent implements OnInit {
                 plotSize: this.myForm.get('plotSize')?.value,
                 dateOfOwnership: this.myForm.get('dateOfOwnership')?.value,
             };
-            // Notify the progress service that the plot info form is completed
-            this._progressService.updatePlotInfoCompleted(true);
+
             setTimeout(() => {
                 console.log('Form saved:', this.myForm.value);
                 //  the save was successful, increase the progress

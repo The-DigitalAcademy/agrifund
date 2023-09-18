@@ -50,7 +50,9 @@ export class ProgressServiceService {
     private assetInfoCompletedSubject = new BehaviorSubject<boolean>(false);
     assetInfo$: Observable<boolean> =
         this.cropInfoCompletedSubject.asObservable();
+
     constructor() {}
+    
     // Update the checkbox state
     updateCropInfoCompleted(completed: boolean) {
         this.cropInfoCompletedSubject.next(completed);

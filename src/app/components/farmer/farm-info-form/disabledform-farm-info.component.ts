@@ -108,6 +108,8 @@ export class DisabledformFarmInfoComponent {
                         reasonForFunding: this.farmInfo.farmingReason,
                     });
                 }
+                // Notify the progress service that the plot info form is completed
+                this._progressService.updateFarmInfoCompleted(true);
 
                 // Set the 'isDisabled' flag to false to enable form editing
                 this.isDisabled = true;
@@ -159,6 +161,8 @@ export class DisabledformFarmInfoComponent {
                 numberOfEmployees: this.myForm.get('num_employee')?.value,
                 farmingReason: this.myForm.get('reasonForFunding')?.value,
             };
+            // Notify the progress service that the plot info form is completed
+            this._progressService.updateFarmInfoCompleted(true);
             // console.table(this.farmInfo);
             setTimeout(() => {
                 console.log('Form saved:', this.myForm.value);
@@ -168,7 +172,6 @@ export class DisabledformFarmInfoComponent {
             }, 1000);
 
             this._farmService.editFarm(this.farmInfo);
-          
         }
 
         this.isDisabled = true;
