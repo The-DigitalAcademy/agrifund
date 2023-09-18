@@ -73,11 +73,19 @@
                                 LoginForm.controls['password'].dirty
                         }">
                         <label for="password">Password:</label>
+                        <div class="container-header">
+                            
                         <input
                             formControlName="password"
+                           type="{{ showPassword ? 'text' : 'password' }}"
                             class="form-control between-button"
                             id="passwordinput" />
-                            <!--This is the validation for invalid password-->
+                        <button
+                            class="toggle-password"
+                            (click)="togglePassword()">
+                        <fa-icon icon="eye">{{showPassword}}</fa-icon>
+                        </button>
+                        </div>
                         <small
                             *ngIf="
                                 LoginForm.controls['password'].hasError(
@@ -134,7 +142,7 @@
             <!-- End of Form Row -->
 
             <br /><br />
-            <p>{{ message }}</p>
+         
         </form>
     </div>
 </div>

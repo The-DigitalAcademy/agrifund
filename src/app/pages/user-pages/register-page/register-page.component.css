@@ -7,6 +7,17 @@
     background-image: url('src/assets/images/background/barn.webp');/*added background image to the page body*/
     flex-direction: column;
 }
+.toggle-password {
+   
+    background-color: var(--primary-colour);
+    border-radius: 0%;
+    
+}
+.toggle-password-button{
+    
+    background-color: var(--primary-colour);
+    border-radius: 0%; 
+}
 
 .icon-btn {
     background-color: var(--light);

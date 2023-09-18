@@ -1,13 +1,3 @@
-/* ------------------------------------------------------------------------------------------------
-    AUTHOR: Ntokozo Radebe
-    CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 10 Aug 2023 
-
-    DESCRIPTION:
-    All the methods related to registering a farmer
-
--------------------------------------------------------------------------------------------------*/
-// Import necessary modules and components from Angular core and other sources
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
@@ -17,6 +7,10 @@ import { User } from 'src/app/_models/User';
 import { PortfolioService } from 'src/app/_services/portfolio-service/portfolio.service';
 import { Subscription } from 'rxjs';
 import { ValidationService } from 'src/app/_services/validation-service/validation.service';
+import { RegisterService } from 'src/app/user-service/register.service';
+
+// Import SweetAlert
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-register-page',
@@ -27,6 +21,8 @@ export class RegisterPageComponent implements OnInit {
     user!: User;
     RegisterForm!: FormGroup;
     submitted = false;
+    showPassword = false;
+    showConfirmPassword = false;
     // used to store subscriptions to services
     private subscription = new Subscription();
 
@@ -34,44 +30,38 @@ export class RegisterPageComponent implements OnInit {
         private fb: FormBuilder,
         private _validationsService: ValidationService,
         private router: Router,
-        private _apiService: ApiService,
-        
+        private registerService: RegisterService // Inject the new service
     ) {}
 
     ngOnInit(): void {
         // Initialize the registration form with validation rules
-        this.RegisterForm = this.fb.group(
-            {
-                first_name: new FormControl('', [
-                    Validators.required,
-                    this._validationsService.textWithoutNumbersValidator(),
-                ]),
-                last_name: new FormControl('', [
-                    Validators.required,
-                    this._validationsService.textWithoutNumbersValidator(),
-                ]),
-                id_number: new FormControl('', [
-                    Validators.required,
-                    this._validationsService.idNumberValidator(),
-                ]),
-                email: new FormControl('', [
-                    Validators.required,
-                    this._validationsService.emailValidator(),
-                ]),
-                cell_number: new FormControl('', [
-                    Validators.required,
-                    this._validationsService.phoneNumberValidator(),
-                ]),
-                password: new FormControl('', [
-                    Validators.required,
-                    this._validationsService.passwordValidator(),
-                ]),
-                cpassword: ['', [Validators.required]],
-            },
-            {
-                validators: [this._validationsService.passwordsMatchValidator], // Add custom password matching validation method from your validation service
-            }
-        );
+        this.RegisterForm = this.fb.group({
+            first_name: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
+            last_name: new FormControl('', [
+                Validators.required,
+                this._validationsService.textWithoutNumbersValidator(),
+            ]),
+            id_number: new FormControl('', [
+                Validators.required,
+                this._validationsService.idNumberValidator(),
+            ]),
+            email: new FormControl('', [
+                Validators.required,
+                this._validationsService.emailValidator(),
+            ]),
+            cell_number: new FormControl('', [
+                Validators.required,
+                this._validationsService.phoneNumberValidator(),
+            ]),
+            password: new FormControl('', [
+                Validators.required,
+                this._validationsService.passwordValidator(),
+            ]),
+            cpassword: ['', [Validators.required]],
+        });
     }
 
     onSubmit() {
@@ -89,15 +79,31 @@ export class RegisterPageComponent implements OnInit {
                 idNumber: inputValue.id_number,
             };
 
-            // Call the API service to register the user
+            // Call the registration service to register the user
             this.subscription.add(
-                this._apiService
+                this.registerService
                     .registerUser(this.user)
                     .subscribe((data: any) => {
                         console.log(data);
-                        this.router.navigate(['/login']);
+
+                        // Display a success message using SweetAlert
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registration Successful',
+                            text: 'You have successfully registered!',
+                        }).then(() => {
+                            this.router.navigate(['/login']);
+                        });
                     })
             );
         }
+    }
+
+    togglePassword() {
+        this.showPassword = !this.showPassword;
+    }
+
+    toggleConfirmPassword() {
+        this.showConfirmPassword = !this.showConfirmPassword;
     }
 }

@@ -80,6 +80,7 @@ import { BookkeepingDeleteModalContentComponent } from './components/modal-compo
     ICONS
 ---------------------------------*/
 import {
+    faEye,
     faAddressCard,
     faAngleDown,
     faAngleLeft,
@@ -169,6 +170,7 @@ import { FooterComponent } from './components/footer/footer.component';
 export class AppModule {
     constructor(iconLib: FaIconLibrary) {
         iconLib.addIcons(
+            faEye,
             faBars,
             faHome,
             faChartPie,

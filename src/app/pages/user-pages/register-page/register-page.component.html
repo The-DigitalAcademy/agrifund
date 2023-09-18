@@ -254,11 +254,19 @@
                                 RegisterForm.controls['password'].dirty
                         }">
                         <label for="password">Password:</label>
+                        <div class="container-header">
                         <input
                             formControlName="password"
                             class="form-control"
-                            id="passwordinput" />
-                                 <!--This is the validation for invalid password-->
+                            id="passwordinput"
+                            [type]="showPassword ? 'text' : 'password'" />
+                        <button
+                            class="toggle-password-button"
+                            (click)="togglePassword()">
+                        <fa-icon icon="eye">{{showPassword}}</fa-icon>
+                        </button>
+                        </div>
+                        </div>
                         <small
                             *ngIf="
                                 RegisterForm.controls['password'].hasError(
@@ -278,7 +286,7 @@
                             class="text-danger"
                             >Field is required.</small
                         >
-                    </div>
+                   
 
                     <!-- Confirm Password Input -->
                     <div
@@ -292,11 +300,20 @@
                                 RegisterForm.controls['cpassword'].dirty
                         }">
                         <label for="cpassword">Confirm Password:</label>
+                        <div class="container-header">
                         <input
                             formControlName="cpassword"
                             class="form-control between-button"
-                            id="cpassword" />
-                               <!--This is the validation for invalid confirm password-->
+                            id="cpassword"
+                            [type]="showConfirmPassword ? 'text' : 'password'" />
+                        <button
+                            class="toggle-password"
+                            (click)="toggleConfirmPassword()">
+                            <fa-icon icon="eye">{{showPassword}}</fa-icon>
+                            <!-- Toggle text -->
+                        </button>
+                        </div>
+
                         <small
                             *ngIf="
                                 RegisterForm.hasError('passwordsMatch') &&
