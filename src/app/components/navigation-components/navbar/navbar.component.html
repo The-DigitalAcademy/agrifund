@@ -98,28 +98,17 @@
 
 <!-- footer button after login -->
 <ng-template #offcanvasFooterAfterLogin>
-    <button
-        class="btn btn colourful-btn"
-        (click)="logout()"
-        data-bs-dismiss="offcanvas">
-        Logout
-    </button>
+    <button class="btn btn colourful-btn" (click)="logout()">Logout</button>
 </ng-template>
 <!-- footer button before login -->
 <ng-template #offcanvasFooterBeforeLogin>
     <div class="justify-start">
-        <button
-            class="btn btn colourful-btn"
-            [routerLink]="['/login']"
-            data-bs-dismiss="offcanvas">
+        <button class="btn btn colourful-btn" (click)="goToRegister()">
             Login
         </button>
     </div>
     <div class="justify-end">
-        <button
-            class="btn outline-btn"
-            [routerLink]="['/register']"
-            data-bs-dismiss="offcanvas">
+        <button class="btn outline-btn" (click)="goToRegister()">
             Register
         </button>
     </div>

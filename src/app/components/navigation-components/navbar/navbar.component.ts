@@ -2,7 +2,7 @@ import { map } from 'rxjs';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique
     CREATE DATE: 24 Jul 2023
-    UPDATED DATE: 26 Aug 2023 
+    UPDATED DATE: 18 Sept 2023 
 
     DESCRIPTION:
         This component is for the navbar that is used for navigation toggling the sidebar and offcanvas.
@@ -70,5 +70,19 @@ export class NavbarComponent {
     logout() {
         this._authService.logoutUser();
         this.router.navigate(['']);
+        // dismisses the offcanvas if it was open
+        this._offcanvasService.dismiss();
+    }
+
+    goToLogin() {
+        this.router.navigate(['/login']);
+        // dismisses the offcanvas if it was open
+        this._offcanvasService.dismiss();
+    }
+
+    goToRegister() {
+        this.router.navigate(['/register']);
+        // dismisses the offcanvas if it was open
+        this._offcanvasService.dismiss();
     }
 }
