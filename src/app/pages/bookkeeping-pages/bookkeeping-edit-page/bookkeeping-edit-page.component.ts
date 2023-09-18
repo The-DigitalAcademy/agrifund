@@ -17,7 +17,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
-    FormControl,
     FormGroup,
     Validators,
 } from '@angular/forms';
@@ -33,7 +32,7 @@ import { IncomeStatementItemService } from 'src/app/_services/income-statement-i
 })
 export class BookkeepingEditPageComponent implements OnInit {
     // used to store the id of the bookkeeping record
-    recordId!: number;
+    private recordId!: number;
     // used to store the bookkeeping record's data retrieved from the api
     record!: IncomeStatementItem;
     // reactive form used
@@ -41,7 +40,7 @@ export class BookkeepingEditPageComponent implements OnInit {
     // boolean value to check if the save button was clicked
     submitted = false;
     // array to store the types of categories a record can have
-    recordType: any = ['Money In', 'Money Out'];
+    recordType: string[] = ['Money In', 'Money Out'];
     // stores the file name for an uploaded file
     fileName = 'No file uploaded yet.';
     // stores the file to bue uploaded
@@ -59,7 +58,6 @@ export class BookkeepingEditPageComponent implements OnInit {
         // gets the id passed through the routing url
         this.recordId = this.route.snapshot.params['id'];
         this.getRecordDetails();
-        console.log(this.recordId);
 
         this.editRecordForm = this.fb.group({
             recordName: ['', [Validators.required]],
@@ -80,6 +78,12 @@ export class BookkeepingEditPageComponent implements OnInit {
                 this.record.proofOfReceipt = record.proofOfReceipt.substring(
                     lastSlashIndex + 1
                 );
+
+                this.record.category === 'Income'
+                    ? (this.record.category = 'Money In')
+                    : (this.record.category = 'Money Out');
+                console.log(this.record.category);
+
                 // set the input values to the data from the api service
                 this.editRecordForm.patchValue({
                     recordName: this.record.description,
@@ -87,6 +91,8 @@ export class BookkeepingEditPageComponent implements OnInit {
                     recordAmount: this.record.amount,
                     recordProof: this.record.proofOfReceipt,
                 });
+
+                console.table(this.editRecordForm.value);
             });
     }
 
