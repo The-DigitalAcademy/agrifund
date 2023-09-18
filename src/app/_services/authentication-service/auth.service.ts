@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
-    AUTHOR: Monique
+    AUTHOR: Monique Nagel
     CREATE DATE: 21 Aug 2023 
-    UPDATED DATE: 26 Aug 2023
+    UPDATED DATE: 18 September 2023
 
     DESCRIPTION:
         Methods within this service is used to perform functions related to user authentication and 
@@ -20,7 +20,7 @@ import { Injectable } from '@angular/core';
 import { JwtService } from '../JWT-service/jwt.service';
 import { ApiService } from '../api-service/api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import Swal from 'sweetalert2'; // Import SweetAlert2
 
 @Injectable({
