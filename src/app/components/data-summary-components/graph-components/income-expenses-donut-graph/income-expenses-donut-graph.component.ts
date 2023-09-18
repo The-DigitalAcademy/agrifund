@@ -40,7 +40,7 @@ export class IncomeExpensesDonutGraphComponent implements OnInit, OnDestroy {
         // sets the total expense to the one in the income statement service
         this.totalExpense$ = this._incomeStatementService.getTotalExpense();
         // assigns the value of the observable to the total expenses variable
-        this.incomeSubscription = this.totalExpense$.subscribe(value => {
+        this.expensesSubscription = this.totalExpense$.subscribe(value => {
             this.totalExpense = value;
         });
         // sets the total income to the one in the income statement service
