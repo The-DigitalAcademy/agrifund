@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 import { IncomeStatementService } from '../income-statement-service/income-statement.service';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { IncomeStatement } from './../../_models/IncomeStatement';
+import { PortfolioService } from '../portfolio-service/portfolio.service';
 @Injectable({
     providedIn: 'root',
 })
@@ -73,7 +74,8 @@ export class IncomeStatementItemService {
     constructor(
         private _apiService: ApiService,
         private router: Router,
-        private _incomeStatementService: IncomeStatementService
+        private _incomeStatementService: IncomeStatementService,
+        private _portfolioService: PortfolioService
     ) {
         // calls method to set the current income statement to us for records
         this.setCurrentIncomeStatement();
@@ -99,6 +101,7 @@ export class IncomeStatementItemService {
     ----------------------------------*/
     // used to get income statement record items of an income statement
     getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
+        this
         return this.incomeStatement$.pipe(
             map(statement => statement.incomeStatementItems)
         );
@@ -106,6 +109,9 @@ export class IncomeStatementItemService {
 
     // returns the value of the of the incomes statement items observable
     getIncomeStatementItems() {
+        this._portfolioService.setFarmerPortfolio();
+        this._portfolioService.setFarmerFarm();
+        this._portfolioService.setFarmerIncomeStatements();
         // ensures that the income statement items have been set
         this.setIncomeStatementItems();
         // returns the observable value

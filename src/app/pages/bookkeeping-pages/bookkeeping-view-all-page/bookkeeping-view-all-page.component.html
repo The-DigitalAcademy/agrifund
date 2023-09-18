@@ -94,7 +94,7 @@
         <!-- checks if bookkeeping records search result return anything -->
         <ng-container
             *ngIf="
-                (incomeStatementRecords | filter: searchValue).length > 0;
+                (records$ | async | filter: searchValue)?.length !== 0;
                 else noResults
             ">
             <div class="container inner-container record-table">
@@ -110,11 +110,11 @@
                     </thead>
                     <tbody
                         *ngFor="
-                            let record of incomeStatementRecords
-                                | filter: searchValue
+                            let record of records$ | async | filter: searchValue
                         ">
                         <tr
                             class="record-tr"
+                            *ngIf=""
                             (click)="viewRecordDetails(record.id)">
                             <td scope="row">
                                 {{ record.description }}
@@ -140,8 +140,7 @@
                 <div
                     class="large-hidden"
                     *ngFor="
-                        let record of incomeStatementRecords
-                            | filter: searchValue;
+                        let record of records$ | async | filter: searchValue;
                         last as isLast
                     ">
                     <div class="info" (click)="viewRecordDetails(record.id)">

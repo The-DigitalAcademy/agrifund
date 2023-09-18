@@ -104,6 +104,9 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
             .subscribe(data => {
                 // sets the farmer's farm data in order to get income statement data
                 this._portfolioService.setFarmerFarm();
+                this.setIncomeStatementList();
+                // sets the current selected year
+                this.setSelectedYear();
             });
 
         // gets the farmer's income statements
@@ -114,35 +117,24 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
                 this.statements = statements;
             });
 
-        // sets the selected year value
-        const formInput = this.dateForm.value;
-        this.selectedYear = formInput.yearInput;
-        // assigns the value of the observable to the value set in the service
-        this.statementYearList$ =
-            this._incomeStatementService.getIncomeStatementYearList();
-        // adds statement year list to subscription
-        this.incomeStatementYearListSubscription =
-            this.statementYearList$.subscribe(statementYearList => {
-                // assigns the value of the observable to the array value
-                this.statementList = statementYearList;
-            });
+        this.records$ =
+            this._incomeStatementItemService.getIncomeStatementItems();
 
-        this.incomeStatementRecordSubscription =
-            this._incomeStatementItemService
-                .getIncomeStatementItems()
-                .subscribe(records => {
-                    //records retrieved from behavior subject are assigned to income statement records variable
-                    this.incomeStatementRecords = records;
-                    /*loops through records and changes values from income and expenses 
+        this.incomeStatementRecordSubscription = this.records$.subscribe(
+            records => {
+                //records retrieved from behavior subject are assigned to income statement records variable
+                this.incomeStatementRecords = records;
+                /*loops through records and changes values from income and expenses
                       to money in and money out*/
-                    this.incomeStatementRecords.forEach(record => {
-                        if (record.category === 'Income') {
-                            record.category = 'Money In';
-                        } else {
-                            record.category = 'Money Out';
-                        }
-                    });
+                this.incomeStatementRecords.forEach(record => {
+                    if (record.category === 'Income') {
+                        record.category = 'Money In';
+                    } else {
+                        record.category = 'Money Out';
+                    }
                 });
+            }
+        );
     }
 
     ngOnDestroy() {
@@ -159,25 +151,31 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     // function to set the values for the income statement dropdown
     setIncomeStatementList() {
         if (this.statements) {
-            this.statements.forEach(statement => {
-                const statementYear =
-                    this._incomeStatementService.getStatementYear(
-                        statement.statementDate
-                    );
-                // sets the default year to the most recent date
-                if (statementYear > this.defaultYear) {
-                    this.defaultYear = statementYear;
-                }
-                // only adds a new year if it doesn't already exist in the list
-                if (!this.statementList.includes(`${statementYear}`)) {
-                    this.statementList.push(`${statementYear}`);
-                }
-            });
-            // sets the dropdown value to the default year
-            this.dateForm = this.fb.group({
-                yearInput: new FormControl(this.defaultYear),
-            });
+            // sets the selected year value
+            const formInput = this.dateForm.value;
+            this.selectedYear = formInput.yearInput;
+            // sets the farmer's income statement list
+            this._incomeStatementService.setIncomeStatementYearList();
+            // assigns the value of the observable to the value set in the service
+            this.statementYearList$ =
+                this._incomeStatementService.getIncomeStatementYearList();
+            // adds statement year list to subscription
+            this.incomeStatementYearListSubscription =
+                this.statementYearList$.subscribe(statementYearList => {
+                    // assigns the value of the observable to the array value
+                    this.statementList = statementYearList;
+                });
         }
+    }
+
+    setSelectedYear() {
+        // compares each value in the statement list and sets the selected value to the most recent date
+        this.statementList.forEach(statementYear => {
+            if (Number(statementYear) > Number(this.selectedYear)) {
+                this.selectedYear = statementYear;
+            }
+        });
+        console.log(this.selectedYear);
     }
 
     // method to generate a bookkeeping report for current data
