@@ -140,7 +140,7 @@ export class DisabledformPersonalInfoComponent implements OnInit {
 
             setTimeout(() => {
                console.log('Form saved:', this.myForm.value);
-               // Assuming the save was successful, increase the progress
+               // the save was successful, increase the progress
                const progress = this.calculateProgress() + 20;
                this._progressService.setPersonalInfoCompleted(progress);
            }, 1000);
