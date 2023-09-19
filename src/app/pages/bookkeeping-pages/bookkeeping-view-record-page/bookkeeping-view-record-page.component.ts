@@ -34,6 +34,8 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
     recordId!: number;
     // stores the income statement record
     record!: IncomeStatementItem;
+    // used to store the record proof document name
+    recordProofName!: string;
     // stores subscription for getting income statement item details
     private recordDetailsSubscription = new Subscription();
 
@@ -72,7 +74,7 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
 
                 // gets the last index of the slash to ensures that the record receipt name only appears
                 const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
-                this.record.proofOfReceipt = record.proofOfReceipt.substring(
+                this.recordProofName = record.proofOfReceipt.substring(
                     lastSlashIndex + 1
                 );
             });

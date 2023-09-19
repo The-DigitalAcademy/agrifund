@@ -57,9 +57,6 @@ button {
 /*---------------------------------
     Media Query for Mobile Devices
 ----------------------------------*/
-/*---------------------------------
-    Media Query for Mobile Devices
-----------------------------------*/
 @media (min-width: 300px) and (max-width:428px) {
 
     /* set styles for all content within page-content div */
@@ -69,7 +66,7 @@ button {
 
     .container {
         /* sets the height for the graphs */
-        height: max-content !important;
+        height: max-content;
     }
 
     .graph-container,
