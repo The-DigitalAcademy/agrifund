@@ -58,6 +58,7 @@ export class ExpensesBarChartComponent implements OnInit, OnDestroy {
                 });
                 // ensures that the chart has data before generating
                 if (this.chartData.length >= 1 && this.chartData.length <= 5) {
+                    // this.expenseBarChart.destroy();
                     this.renderChart(this.chartLabels, this.chartData);
                 }
             }
@@ -67,6 +68,9 @@ export class ExpensesBarChartComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.highestExpensesSubscription.unsubscribe();
         this.expenseBarChart.destroy();
+        // if (this.chartData.length >= 1) {
+        //     this.expenseBarChart.destroy();
+        // }
     }
 
     // size of the graph properties
