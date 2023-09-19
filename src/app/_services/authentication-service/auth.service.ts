@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 21 Aug 2023 
-    UPDATED DATE: 18 September 2023
+    UPDATED DATE: 19 September 2023
 
     DESCRIPTION:
         Methods within this service is used to perform functions related to user authentication and 
@@ -94,11 +94,11 @@ export class AuthService {
                 if (error.status === 404) {
                     // Resource not found error
                     this.errorMessage =
-                        'User not found. Please check your credentials or register if you are a new user.';
+                        'User not found. Please check if the email or password you have entered is correct or register if you are a new user.';
                 } else if (error.status === 401) {
                     // Unauthorized error
                     this.errorMessage =
-                        'Unauthorized access. Please check your credentials.';
+                        'Unauthorized access. Please check if the email or password you have entered is correct.';
                 } else if (error.status === 403) {
                     // Forbidden error
                     this.errorMessage =
