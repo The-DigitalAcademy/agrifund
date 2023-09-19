@@ -15,7 +15,6 @@ import { FarmerCrop } from 'src/app/_models/farmerCrop';
 @Component({
     selector: 'app-about-the-farm',
     templateUrl: './about-the-farm.component.html',
-    encapsulation: ViewEncapsulation.None,
     styleUrls: ['./about-the-farm.component.css'],
 })
 export class AboutTheFarmComponent implements OnInit {
@@ -123,11 +122,6 @@ export class AboutTheFarmComponent implements OnInit {
             this.carousel.next();
         }
 
-        // plot slide routes to dashboard on next -> is the last slide
-        if (this.carousel.activeId === 'plotSlide') {
-            this.router.navigate(['/dashboard']);
-        }
-
         if (this.carousel.activeId === 'farmSlide') {
             this._portfolioService.getFarmerFarm().subscribe(farm => {
                 // checks if a user has already added a farm
@@ -160,7 +154,6 @@ export class AboutTheFarmComponent implements OnInit {
                 // calls method to create farmer farm
                 this.createCropInfo();
             } else {
-                console.log(`Crop already exists`);
                 // if the crop already exists it will go to the next slide
                 this.carousel.next();
             }
@@ -178,15 +171,16 @@ export class AboutTheFarmComponent implements OnInit {
             if (!this.plotExists) {
                 // calls method to create farmer farm
                 this.createPlotInfo();
-            } else {
-                console.log(`Plot already exists`);
-                // if the plot already exists it will rout to dashboard
             }
         }
 
         // sets the current slides name to the variable
         this.activeSlideName = this.carousel.activeId;
-        console.log('Active slide name:' + this.activeSlideName);
+
+        // plot slide routes to dashboard on next -> is the last slide
+        if (this.carousel.activeId === 'plotSlide') {
+            this.goToDashboard();
+        }
     }
 
     // navigates to the previous slide
@@ -219,8 +213,6 @@ export class AboutTheFarmComponent implements OnInit {
             this._farmService.createFarmerFarm(this.farm);
             // routes to next carousel  page after a farmer has been successfully created
             this.carousel.next();
-        } else {
-            console.log('Farm form is not valid');
         }
     }
 
@@ -242,8 +234,6 @@ export class AboutTheFarmComponent implements OnInit {
             this._cropService.createFarmerCrop(this.crop);
             // routes to next carousel  page after a crop has been successfully created
             this.carousel.next();
-        } else {
-            console.log('Crop form is not valid');
         }
     }
 
@@ -269,8 +259,6 @@ export class AboutTheFarmComponent implements OnInit {
                 // Go to the next slide if not on the plot slide
                 this.carousel.next();
             }
-        } else {
-            console.log('Plot form is not valid');
         }
     }
 
@@ -339,5 +327,9 @@ export class AboutTheFarmComponent implements OnInit {
                 });
             }
         });
+    }
+
+    goToDashboard() {
+        this.router.navigate(['/dashboard']);
     }
 }
