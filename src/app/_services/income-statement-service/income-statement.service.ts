@@ -228,8 +228,6 @@ export class IncomeStatementService {
         // the found statement will be stored here
         let statement;
 
-        console.table(this.getAllIncomeStatements());
-
         // checks to see if a statement exists for a financial year
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
@@ -277,9 +275,6 @@ export class IncomeStatementService {
     createIncomeStatement(date: Date) {
         // sets the farmName to pass to creating a new income statement item
         const farmName = this._portfolioService.getFarmName();
-        console.log(
-            `Farm name for creating a new income statement: ${farmName}`
-        );
         // gets a date for a statement
         const statementDate = this.getIncomeStatementDate(date);
 
@@ -296,7 +291,6 @@ export class IncomeStatementService {
             .createIncomeStatement(farmName, statementBody)
             .subscribe(
                 (data: any) => {
-                    console.log(data);
                     this.statementExistsForFinancialYear(
                         this.convertStringToDate(statementBody.statementDate)
                     );

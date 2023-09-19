@@ -198,8 +198,6 @@ export class IncomeStatementItemService {
         // adds file to multiform body
         recordMultiFormBody.append('file', recordProof);
 
-        console.table(recordMultiFormBody);
-
         this._incomeStatementService
             .getStatementByDate(recordBody.date)
             .subscribe(statement => {
@@ -207,13 +205,10 @@ export class IncomeStatementItemService {
                 recordBody.statementId = statement.id;
             });
 
-        console.log(recordBody.statementId);
-        console.table(newRecord);
         this._apiService
             .addRecord(recordMultiFormBody, recordBody.statementId)
             .subscribe(
                 data => {
-                    console.log(data);
                     // routes back to bookkeeping view all page is the creation of a record was successful
                     this.router.navigate(['/bookkeeping']);
                 },
@@ -272,8 +267,6 @@ export class IncomeStatementItemService {
             recordBody.category = 'Expense';
         }
 
-        console.table(recordBody);
-
         record.statementId = 1;
         // updates bookkeeping record data
         this._apiService
@@ -306,7 +299,6 @@ export class IncomeStatementItemService {
             .deleteIncomeStatementItem(recordId, statementId)
             .subscribe(
                 (data: any) => {
-                    console.log(data);
                     // closes the bookkeeping delete modal
                     // activeModal.close();
                     // routes back to bookkeeping view all
