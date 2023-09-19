@@ -179,15 +179,13 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
     }
 
     // method to generate a bookkeeping report for current data
-    generateReport() {
-        // sets the selected year value
-        const formInput = this.dateForm.value;
-        this.selectedYear = formInput.yearInput;
+    generateReport(yearSelected: string) {
+        console.log(yearSelected);
 
         const report = new jsPDF();
         // sets the heading for the report
         report.text(
-            `Financial Report for the Financial Year of March ${this.selectedYear}`,
+            `Financial Report for the Financial Year of March ${yearSelected}`,
             10,
             10
         );
