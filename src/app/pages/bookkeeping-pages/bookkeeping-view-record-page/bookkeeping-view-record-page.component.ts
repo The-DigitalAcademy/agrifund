@@ -77,6 +77,7 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
 
                 // gets the last index of the slash to ensures that the record receipt name only appears
                 const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
+                // gets the last index of the file extension for a record receipt
                 const fileExtensionIndex =
                     record.proofOfReceipt.lastIndexOf('.');
                 this.recordProofName = record.proofOfReceipt.substring(

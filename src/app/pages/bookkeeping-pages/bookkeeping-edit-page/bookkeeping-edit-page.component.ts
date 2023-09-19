@@ -15,11 +15,7 @@
 -------------------------------------------------------------------------------------------------*/
 
 import { Component, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { ApiService } from 'src/app/_services/api-service/api.service';
@@ -45,6 +41,8 @@ export class BookkeepingEditPageComponent implements OnInit {
     fileName = 'No file uploaded yet.';
     // stores the file to bue uploaded
     fileToUpload!: File;
+    // used to store the record proof document name
+    recordProofName!: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -73,23 +71,27 @@ export class BookkeepingEditPageComponent implements OnInit {
             .getIncomeStatementRecordById(this.recordId)
             .subscribe(record => {
                 this.record = record;
-                // gets the last index of the slash to ensures that the record receipt name only appears
-                const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
-                this.record.proofOfReceipt = record.proofOfReceipt.substring(
-                    lastSlashIndex + 1
-                );
 
                 this.record.category === 'Income'
                     ? (this.record.category = 'Money In')
                     : (this.record.category = 'Money Out');
-                console.log(this.record.category);
+
+                // gets the last index of the slash to ensures that the record receipt name only appears
+                const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
+                // gets the last index of the file extension for a record receipt
+                const fileExtensionIndex =
+                    record.proofOfReceipt.lastIndexOf('.');
+                this.recordProofName = record.proofOfReceipt.substring(
+                    lastSlashIndex + 1,
+                    fileExtensionIndex
+                );
 
                 // set the input values to the data from the api service
                 this.editRecordForm.patchValue({
                     recordName: this.record.description,
                     recordType: this.record.category,
                     recordAmount: this.record.amount,
-                    recordProof: this.record.proofOfReceipt,
+                    recordProof: this.recordProofName,
                 });
 
                 console.table(this.editRecordForm.value);
