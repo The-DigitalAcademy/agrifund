@@ -90,7 +90,6 @@
                 </button>
             </div>
         </div>
-
         <!-- checks if bookkeeping records search result return anything -->
         <ng-container
             *ngIf="
@@ -114,7 +113,6 @@
                         ">
                         <tr
                             class="record-tr"
-                            *ngIf=""
                             (click)="viewRecordDetails(record.id)">
                             <td scope="row">
                                 {{ record.description }}
