@@ -48,22 +48,25 @@ export class ExpensesBarChartComponent implements OnInit, OnDestroy {
             (records: IncomeStatementItem[]) => {
                 // assigns values from service method to fiveHighestExpenses Array
                 this.fiveHighestExpenses = records;
+
+                // loops through five highest expenses array to assign char labels and data
+                this.fiveHighestExpenses.forEach(record => {
+                    // adds the record description as a chart label
+                    this.chartLabels.push(record.description);
+                    // add the record amount as the chart data
+                    this.chartData.push(record.amount);
+                });
+                // ensures that the chart has data before generating
+                if (this.chartData.length >= 1 && this.chartData.length <= 5) {
+                    this.renderChart(this.chartLabels, this.chartData);
+                }
             }
         );
-
-        // loops through five highest expenses array to assign char labels and data
-        this.fiveHighestExpenses.forEach(record => {
-            // adds the record description as a chart label
-            this.chartLabels.push(record.description);
-            // add the record amount as the chart data
-            this.chartData.push(record.amount);
-        });
-
-        this.renderChart(this.chartLabels, this.chartData);
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.highestExpensesSubscription.unsubscribe();
+        this.expenseBarChart.destroy();
     }
 
     // size of the graph properties

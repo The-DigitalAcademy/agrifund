@@ -5,10 +5,6 @@
  -->
 <!-- a graph in a container -->
 <div class="chart-container">
-    <!-- <div *ngIf="
-        (fiveHighestExpenses$ | async)?.length !== 0;
-    ">
-    </div> -->
     <!-- doughnut canvas -->
     <canvas id="expenseBarChart"></canvas>
 </div>
@@ -21,4 +17,9 @@
 <!-- when a user doesn't have expense data -->
 <ng-template #hasNoExpenseData>
     <label>You don't have any money out records.</label>
+</ng-template>
+
+<!-- when a user doesn't have expense data -->
+<ng-template #ExpenseData>
+    <label>You don't have enough money out records.</label>
 </ng-template>

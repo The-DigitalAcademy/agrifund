@@ -143,7 +143,7 @@ export class IncomeStatementItemService {
 
     // gets all records that are an incomes
     getIncomeRecords() {
-        return this.getFarmerIncomeStatementItems().pipe(
+        return this.getIncomeStatementItems().pipe(
             // records are filtered to only return records that are incomes
             map(records =>
                 records.filter(record => record.category === 'Income')
