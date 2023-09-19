@@ -101,7 +101,6 @@ export class IncomeStatementItemService {
     ----------------------------------*/
     // used to get income statement record items of an income statement
     getFarmerIncomeStatementItems(): Observable<IncomeStatementItem[]> {
-        this
         return this.incomeStatement$.pipe(
             map(statement => statement.incomeStatementItems)
         );
@@ -134,7 +133,7 @@ export class IncomeStatementItemService {
 
     // gets all records that are an expense
     getExpenseRecords() {
-        return this.getFarmerIncomeStatementItems().pipe(
+        return this.getIncomeStatementItems().pipe(
             // records are filtered to only return records that are expenses
             map(records =>
                 records.filter(record => record.category === 'Expense')
