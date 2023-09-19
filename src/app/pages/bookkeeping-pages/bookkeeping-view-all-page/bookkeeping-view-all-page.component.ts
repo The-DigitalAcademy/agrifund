@@ -129,7 +129,8 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
                 this.incomeStatementRecords.forEach(record => {
                     if (record.category === 'Income') {
                         record.category = 'Money In';
-                    } else {
+                    }
+                    if (record.category === 'Expense') {
                         record.category = 'Money Out';
                     }
                 });
