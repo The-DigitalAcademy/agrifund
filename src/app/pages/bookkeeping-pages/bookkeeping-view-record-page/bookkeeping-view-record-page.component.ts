@@ -22,7 +22,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookkeepingDeleteModalContentComponent } from 'src/app/components/modal-components/bookkeeping-delete-modal-content/bookkeeping-delete-modal-content.component';
 import { IncomeStatementItem } from 'src/app/_models/IncomeStatementItem';
 import { IncomeStatementItemService } from 'src/app/_services/income-statement-item-service/income-statement-item.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-bookkeeping-view-record-page',
@@ -34,6 +34,8 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
     recordId!: number;
     // stores the income statement record
     record!: IncomeStatementItem;
+    // stores the record as an observable
+    record$!: Observable<IncomeStatementItem>;
     // used to store the record proof document name
     recordProofName!: string;
     // stores subscription for getting income statement item details
@@ -60,9 +62,10 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
 
     // fetches the record based on its ID
     getRecordDetails(id: number) {
-        this.recordDetailsSubscription = this._incomeStatementItemService
-            .getIncomeStatementRecordById(id)
-            .subscribe((record: IncomeStatementItem) => {
+        this.record$ =
+            this._incomeStatementItemService.getIncomeStatementRecordById(id);
+        this.recordDetailsSubscription = this.record$.subscribe(
+            (record: IncomeStatementItem) => {
                 this.record = record;
                 if (this.record.category === 'Income') {
                     // displays income as money in
@@ -74,10 +77,14 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
 
                 // gets the last index of the slash to ensures that the record receipt name only appears
                 const lastSlashIndex = record.proofOfReceipt.lastIndexOf('/');
+                const fileExtensionIndex =
+                    record.proofOfReceipt.lastIndexOf('.');
                 this.recordProofName = record.proofOfReceipt.substring(
-                    lastSlashIndex + 1
+                    lastSlashIndex + 1,
+                    fileExtensionIndex
                 );
-            });
+            }
+        );
     }
 
     // displays the uploaded proof of a record in a new browser window
@@ -86,7 +93,7 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
     }
 
     // routes to the edit details page by passing the record id
-    editRecordDetails(recordId: number) {
+    editRecordDetails() {
         this.router.navigate(['bookkeeping/edit-record', this.recordId]);
     }
 

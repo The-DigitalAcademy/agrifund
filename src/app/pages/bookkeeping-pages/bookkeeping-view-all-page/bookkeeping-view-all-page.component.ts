@@ -123,7 +123,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
         this.incomeStatementRecordSubscription = this.records$.subscribe(
             records => {
                 //records retrieved from behavior subject are assigned to income statement records variable
-                this.incomeStatementRecords = records;
+                this.incomeStatementRecords = records.sort();
                 /*loops through records and changes values from income and expenses
                       to money in and money out*/
                 this.incomeStatementRecords.forEach(record => {
@@ -164,7 +164,7 @@ export class BookkeepingViewAllPageComponent implements OnInit, OnDestroy {
             this.incomeStatementYearListSubscription =
                 this.statementYearList$.subscribe(statementYearList => {
                     // assigns the value of the observable to the array value
-                    this.statementList = statementYearList;
+                    this.statementList = statementYearList.sort();
                 });
         }
     }
