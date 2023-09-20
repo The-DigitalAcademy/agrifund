@@ -122,6 +122,11 @@ export class AboutTheFarmComponent implements OnInit {
             this.carousel.next();
         }
 
+        // plot slide routes to dashboard on next -> is the last slide
+        if (this.carousel.activeId === 'plotSlide') {
+            this.goToDashboard();
+        }
+
         if (this.carousel.activeId === 'farmSlide') {
             this._portfolioService.getFarmerFarm().subscribe(farm => {
                 // checks if a user has already added a farm
@@ -176,11 +181,6 @@ export class AboutTheFarmComponent implements OnInit {
 
         // sets the current slides name to the variable
         this.activeSlideName = this.carousel.activeId;
-
-        // plot slide routes to dashboard on next -> is the last slide
-        if (this.carousel.activeId === 'plotSlide') {
-            this.goToDashboard();
-        }
     }
 
     // navigates to the previous slide
