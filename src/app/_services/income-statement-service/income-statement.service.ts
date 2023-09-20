@@ -102,8 +102,6 @@ export class IncomeStatementService {
             return this.getIncomeStatement();
         } else {
             this.createIncomeStatement(date);
-
-            this.statementExistsForFinancialYear(date);
         }
         // // checks if the record exists after it has been created
         // if (!this.statementExistsForFinancialYear(date)) {
@@ -160,7 +158,7 @@ export class IncomeStatementService {
     }
 
     // get income statement for a specific year
-    getIncomeStatementForYear(year: number) {
+    getIncomeStatementForYear(year: number): Observable<IncomeStatement> {
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
             if (statements.length > 0) {
@@ -224,9 +222,10 @@ export class IncomeStatementService {
         this._portfolioService.setFarmerPortfolio();
         // sets the farmer's farm data after the portfolio has been set
         this._portfolioService.setFarmerFarm();
-        // setst the farmer
+        // sets the farmer's income statements
+        // this._portfolioService.setFarmerIncomeStatements();
         // the found statement will be stored here
-        let statement;
+        let statement = null;
 
         // checks to see if a statement exists for a financial year
         this.getAllIncomeStatements().subscribe(statements => {
@@ -238,7 +237,7 @@ export class IncomeStatementService {
                         const currentStatementDate = this.convertStringToDate(
                             currentStatement.statementDate
                         );
-
+                        console.log(currentStatement);
                         // checks if statement exists for a bookkeeping record
                         if (
                             recordDate >= currentStatementDate &&
@@ -256,9 +255,30 @@ export class IncomeStatementService {
             }
         });
 
+        const statementReturned = this.getAllIncomeStatements().pipe(
+            map(statements =>
+                statements.filter((statement: IncomeStatement) => {
+                    // converts the statement date to a date value
+                    const statementDate = this.convertStringToDate(
+                        statement.statementDate
+                    );
+                    console.log(statementDate);
+                    // gets the current statement's financial year end
+                    const statementYearEnd =
+                        this.getFinancialYearEnd(statementDate);
+                    console.log(statementYearEnd);
+                    return (
+                        statementDate <= recordDate &&
+                        recordDate <= statementYearEnd
+                    );
+                })
+            )
+        );
+
         if (statement != null) {
+            console.log(statement);
             // sets the current statement to the found statement
-            this.incomeStatement$.next(statement);
+            // this.incomeStatement$.next(statement);
             // returns true if the statement exists
             return true;
         } else {

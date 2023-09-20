@@ -1,3 +1,4 @@
+import { IncomeStatementService } from 'src/app/_services/income-statement-service/income-statement.service';
 /* ------------------------------------------------------------------------------------------------
     AUTHOR: Monique Nagel
     CREATE DATE: 04 Aug 2023 
@@ -47,7 +48,8 @@ export class BookkeepingCreatePageComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private _apiService: ApiService,
-        private _incomeStatementItemService: IncomeStatementItemService
+        private _incomeStatementItemService: IncomeStatementItemService,
+        private _incomeStatementService: IncomeStatementService
     ) {}
 
     ngOnInit() {
@@ -80,6 +82,22 @@ export class BookkeepingCreatePageComponent implements OnInit {
         this.createRecordForm.controls['recordProof'].setValue(this.fileName);
     }
 
+    // check if income statement exists for a year
+    checkIfStatementExistsForRecord(recordDate: string) {
+        // converts the record sting value to a date
+        const recordDateValue = new Date(recordDate);
+        // if statement doesn't exists for the year -> new one will be created and set
+        if (
+            this._incomeStatementService.statementExistsForFinancialYear(
+                recordDateValue
+            )
+        ) {
+            console.log(`Statement exist!`);
+        } else {
+            console.log(`Statement doesn't exist`)
+        }
+    }
+
     // used to save a new bookkeeping record
     saveRecord() {
         this.submitted = true;
@@ -100,11 +118,13 @@ export class BookkeepingCreatePageComponent implements OnInit {
                 date: formInputVal.recordDate,
             };
 
+            this.checkIfStatementExistsForRecord(this.record.date);
+
             // sends the new record data to the income statement item service
-            this._incomeStatementItemService.createNewRecord(
-                this.record,
-                this.fileToUpload
-            );
+            // this._incomeStatementItemService.createNewRecord(
+            //     this.record,
+            //     this.fileToUpload
+            // );
         }
     }
 }

@@ -70,7 +70,7 @@ export class BookkeepingViewRecordPageComponent implements OnInit, OnDestroy {
                 if (this.record.category === 'Income') {
                     // displays income as money in
                     this.record.category = 'Money In';
-                } else {
+                } else if (this.record.category === 'Expense') {
                     // displays expense as money out
                     this.record.category = 'Money Out';
                 }
