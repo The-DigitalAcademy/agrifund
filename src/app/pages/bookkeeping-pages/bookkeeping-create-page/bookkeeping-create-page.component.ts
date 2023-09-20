@@ -82,7 +82,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
         this.createRecordForm.controls['recordProof'].setValue(this.fileName);
     }
 
-    // check if income statement exists for a year
+    // check if income statement exists for a year, if not it will be created
     checkIfStatementExistsForRecord(recordDate: string) {
         // converts the record sting value to a date
         const recordDateValue = new Date(recordDate);
@@ -94,7 +94,8 @@ export class BookkeepingCreatePageComponent implements OnInit {
         ) {
             console.log(`Statement exist!`);
         } else {
-            console.log(`Statement doesn't exist`)
+            // creates a new income statement for the the date
+            this._incomeStatementService.createIncomeStatement(recordDateValue)
         }
     }
 

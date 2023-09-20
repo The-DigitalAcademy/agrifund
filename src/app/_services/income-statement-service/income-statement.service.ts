@@ -103,15 +103,6 @@ export class IncomeStatementService {
         } else {
             this.createIncomeStatement(date);
         }
-        // // checks if the record exists after it has been created
-        // if (!this.statementExistsForFinancialYear(date)) {
-        //     this.createIncomeStatement(date);
-        // }
-
-        // // checks if the record exists after it has been created
-        // if (this.statementExistsForFinancialYear(date)) {
-        //     console.log(this.getAllIncomeStatements());
-        // }
 
         // returns a statement for the date
         return this.getIncomeStatement();
@@ -225,57 +216,57 @@ export class IncomeStatementService {
         // sets the farmer's income statements
         // this._portfolioService.setFarmerIncomeStatements();
         // the found statement will be stored here
-        let statement = null;
+        let statement: IncomeStatement | undefined;
 
         // checks to see if a statement exists for a financial year
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
             if (statements.length > 0) {
-                statement = statements.reduce(
-                    (lastTrueStatement, currentStatement) => {
-                        // converts the income statement date to the date datatype
-                        const currentStatementDate = this.convertStringToDate(
-                            currentStatement.statementDate
-                        );
-                        console.log(currentStatement);
-                        // checks if statement exists for a bookkeeping record
-                        if (
-                            recordDate >= currentStatementDate &&
-                            recordDate <=
-                                this.getFinancialYearEnd(currentStatementDate)
-                        ) {
-                            //returns the income statement has the same year as the record
-                            return currentStatement;
-                        } else {
-                            // returns the last income statement that was true
-                            return lastTrueStatement;
-                        }
-                    }
-                );
-            }
-        });
+                // statement = statements.reduce(
+                //     (lastTrueStatement, currentStatement) => {
+                //         // converts the income statement date to the date datatype
+                //         const currentStatementDate = this.convertStringToDate(
+                //             currentStatement.statementDate
+                //         );
+                //         console.log(currentStatement);
+                //         // checks if statement exists for a bookkeeping record
+                //         if (
+                //             recordDate >= currentStatementDate &&
+                //             recordDate <=
+                //                 this.getFinancialYearEnd(currentStatementDate)
+                //         ) {
+                //             //returns the income statement has the same year as the record
+                //             return currentStatement;
+                //         } else {
+                //             // returns the last income statement that was true
+                //             return lastTrueStatement;
+                //         }
+                //     }
+                // );
 
-        const statementReturned = this.getAllIncomeStatements().pipe(
-            map(statements =>
-                statements.filter((statement: IncomeStatement) => {
-                    // converts the statement date to a date value
-                    const statementDate = this.convertStringToDate(
+                // sets the statement to the first statement that matches the year
+                statement = statements.find(statement => {
+                    const statementStartDate = this.convertStringToDate(
                         statement.statementDate
                     );
-                    console.log(statementDate);
-                    // gets the current statement's financial year end
-                    const statementYearEnd =
-                        this.getFinancialYearEnd(statementDate);
-                    console.log(statementYearEnd);
-                    return (
-                        statementDate <= recordDate &&
-                        recordDate <= statementYearEnd
-                    );
-                })
-            )
-        );
+                    const statementEndDate =
+                        this.getFinancialYearEnd(statementStartDate);
 
-        if (statement != null) {
+                    // returns the first statement that satisfies the condition
+                    return (
+                        statementStartDate <= recordDate &&
+                        recordDate <= statementEndDate
+                    );
+                });
+            }
+
+            // if (statement) {
+            //     // assigns the statement to the statement observable
+            //     this.incomeStatement$.next(statement);
+            // }
+        });
+
+        if (statement != undefined) {
             console.log(statement);
             // sets the current statement to the found statement
             // this.incomeStatement$.next(statement);
@@ -291,7 +282,7 @@ export class IncomeStatementService {
         CREATING A STATEMENT
     ----------------------------------*/
 
-    // creates a new income statement item
+    // creates a new income statement based on a date
     createIncomeStatement(date: Date) {
         // sets the farmName to pass to creating a new income statement item
         const farmName = this._portfolioService.getFarmName();
@@ -306,22 +297,21 @@ export class IncomeStatementService {
             netIncome: 0,
         };
 
+        console.table(statementBody);
         // request to api to create new income statement
-        this._apiService
-            .createIncomeStatement(farmName, statementBody)
-            .subscribe(
-                (data: any) => {
-                    this.statementExistsForFinancialYear(
-                        this.convertStringToDate(statementBody.statementDate)
-                    );
-                },
-                error => {
-                    console.error(
-                        `Error occurred while getting bookkeeping records`
-                    );
-                    console.error(error);
-                }
-            );
+        // this._apiService
+        //     .createIncomeStatement(farmName, statementBody)
+        //     .subscribe(
+        //         (data: any) => {
+        //             console.log(data);
+        //         },
+        //         error => {
+        //             console.error(
+        //                 `Error occurred creating a new income statement`
+        //             );
+        //             console.error(error);
+        //         }
+        //     );
     }
 
     /*---------------------------------
