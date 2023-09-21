@@ -122,10 +122,10 @@ export class BookkeepingCreatePageComponent implements OnInit {
             this.checkIfStatementExistsForRecord(this.record.date);
 
             // sends the new record data to the income statement item service
-            // this._incomeStatementItemService.createNewRecord(
-            //     this.record,
-            //     this.fileToUpload
-            // );
+            this._incomeStatementItemService.createNewRecord(
+                this.record,
+                this.fileToUpload
+            );
         }
     }
 }
