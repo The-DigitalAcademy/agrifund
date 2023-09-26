@@ -299,19 +299,19 @@ export class IncomeStatementService {
 
         console.table(statementBody);
         // request to api to create new income statement
-        // this._apiService
-        //     .createIncomeStatement(farmName, statementBody)
-        //     .subscribe(
-        //         (data: any) => {
-        //             console.log(data);
-        //         },
-        //         error => {
-        //             console.error(
-        //                 `Error occurred creating a new income statement`
-        //             );
-        //             console.error(error);
-        //         }
-        //     );
+        this._apiService
+            .createIncomeStatement(farmName, statementBody)
+            .subscribe(
+                (data: any) => {
+                    console.log(data);
+                },
+                error => {
+                    console.error(
+                        `Error occurred creating a new income statement`
+                    );
+                    console.error(error);
+                }
+            );
     }
 
     /*---------------------------------
