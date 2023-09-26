@@ -23,12 +23,7 @@ export class AboutTheFarmComponent implements OnInit {
     // stores the active slide name id default is the first slide
     activeSlideName = 'introSlide';
     // stores plot size values for the dropdown
-    plotSizes = [
-        '0 to 2 hectares',
-        '3 to 5 hectares',
-        '6 to 8 hectares',
-        '6 to 8 hectares',
-    ];
+    plotSizes = ['0 to 2 hectares', '3 to 5 hectares', '6 to 8 hectares'];
 
     farmForm!: FormGroup;
     cropForm!: FormGroup;
