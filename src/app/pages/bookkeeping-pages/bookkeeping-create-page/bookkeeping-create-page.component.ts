@@ -95,7 +95,7 @@ export class BookkeepingCreatePageComponent implements OnInit {
             console.log(`Statement exist!`);
         } else {
             // creates a new income statement for the the date
-            this._incomeStatementService.createIncomeStatement(recordDateValue)
+            this._incomeStatementService.createIncomeStatement(recordDateValue);
         }
     }
 

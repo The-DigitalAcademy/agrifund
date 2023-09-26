@@ -100,8 +100,6 @@ export class IncomeStatementService {
         if (this.statementExistsForFinancialYear(date)) {
             // if the record exists, it was assigned to the incomeStatement$ observable
             return this.getIncomeStatement();
-        } else {
-            this.createIncomeStatement(date);
         }
 
         // returns a statement for the date
@@ -222,28 +220,6 @@ export class IncomeStatementService {
         this.getAllIncomeStatements().subscribe(statements => {
             // checks that the statement is not empty
             if (statements.length > 0) {
-                // statement = statements.reduce(
-                //     (lastTrueStatement, currentStatement) => {
-                //         // converts the income statement date to the date datatype
-                //         const currentStatementDate = this.convertStringToDate(
-                //             currentStatement.statementDate
-                //         );
-                //         console.log(currentStatement);
-                //         // checks if statement exists for a bookkeeping record
-                //         if (
-                //             recordDate >= currentStatementDate &&
-                //             recordDate <=
-                //                 this.getFinancialYearEnd(currentStatementDate)
-                //         ) {
-                //             //returns the income statement has the same year as the record
-                //             return currentStatement;
-                //         } else {
-                //             // returns the last income statement that was true
-                //             return lastTrueStatement;
-                //         }
-                //     }
-                // );
-
                 // sets the statement to the first statement that matches the year
                 statement = statements.find(statement => {
                     const statementStartDate = this.convertStringToDate(
@@ -259,17 +235,12 @@ export class IncomeStatementService {
                     );
                 });
             }
-
-            // if (statement) {
-            //     // assigns the statement to the statement observable
-            //     this.incomeStatement$.next(statement);
-            // }
         });
 
         if (statement != undefined) {
             console.log(statement);
             // sets the current statement to the found statement
-            // this.incomeStatement$.next(statement);
+            this.incomeStatement$.next(statement);
             // returns true if the statement exists
             return true;
         } else {
@@ -299,19 +270,19 @@ export class IncomeStatementService {
 
         console.table(statementBody);
         // request to api to create new income statement
-        // this._apiService
-        //     .createIncomeStatement(farmName, statementBody)
-        //     .subscribe(
-        //         (data: any) => {
-        //             console.log(data);
-        //         },
-        //         error => {
-        //             console.error(
-        //                 `Error occurred creating a new income statement`
-        //             );
-        //             console.error(error);
-        //         }
-        //     );
+        this._apiService
+            .createIncomeStatement(farmName, statementBody)
+            .subscribe(
+                (data: any) => {
+                    console.log(data);
+                },
+                error => {
+                    console.error(
+                        `Error occurred creating a new income statement`
+                    );
+                    console.error(error);
+                }
+            );
     }
 
     /*---------------------------------
